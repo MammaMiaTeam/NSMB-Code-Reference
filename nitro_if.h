@@ -3,7 +3,7 @@
 
 typedef void* NITRO_TYPE_REPLACEMENT;
 
-#ifdef NO_NITRO_SDK
+#ifdef NITRO_NO_SDK
 
 	#warning("Project built without Nitro-SDK/NNS, replacing interface")
 
@@ -11,6 +11,8 @@ typedef void* NITRO_TYPE_REPLACEMENT;
 	typedef NITRO_TYPE_REPLACEMENT OSMutex;
 	typedef NITRO_TYPE_REPLACEMENT OSArenaID;
 	typedef NITRO_TYPE_REPLACEMENT NNSFndList;
+	typedef NITRO_TYPE_REPLACEMENT NNSG2dFont;
+	typedef NITRO_TYPE_REPLACEMENT NNSG2dGlyph;
 
 	typedef unsigned char u8;
 	typedef unsigned short u16;
@@ -24,6 +26,7 @@ typedef void* NITRO_TYPE_REPLACEMENT;
 
 #else
 	#include "nitro.h"
+	#include "nnsys.h"
 #endif
 
 #endif	// NITRO_IF_H

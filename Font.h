@@ -1,284 +1,259 @@
 ﻿#ifndef NSMB_FONT_INCLUDED
 #define NSMB_FONT_INCLUDED
 
+#include "nitro_if.h"
+
 
 /*
-
-020171a0 - 02017250 [GarbageLink]
-020171a0: GarbageLink(); //Resets array and size to 0
-020171c0: ~GarbageLink(); //Destroys. Does nothing.
-020171c4: bool linkEmpty(); //Returns true if unk0c == 0
-020171d8: void addLink(u16** link); //Adds link to unk00[unk0c] and increments unk0c
-020171f4: u16** getLastLink(); //Returns a pointer to unk00[unk0c - 1]
-02017204: void removeLastLink(); //Sets unk00[unk0c - 1] to 0 and decrements the size
-02017224: void clear(); //Removes every element from the array
-
+	Stack that holds linking pointers to UTF-16 strings
+	Links are used to have special font cache's contents inlined into a string. 
+	If e.g. a NumberCache is linked, the FontLinkStack pushes the pointer to the next character in the main string and sets charPtr to the special cache's string start.
 */
+struct FontLinkStack {
 
+	u16* fontLinks[3];						//Font link stack
+	u32 linkCount;							//Font link count
+	
 
-struct GarbageLink {
-	u16* unk00[3];
-	unsigned unk0c; //Array size
+	FontLinkStack();						//Resets the stack
+	~FontLinkStack();						//Destroys. Does nothing.
+	
+	bool empty();							//Returns true if linkCount is 0
+	void push(u16** link);					//Pushes a new link on the stack and increments linkCount
+	u16** peek();							//Returns a pointer to the stack top (doesn't check if stack is empty)
+	void pop();								//Pops the topmost element from the stack and decrements the linkCount
+	void clear();							//Clears the stack and sets linkCount to 0
+
 };
 
 
+
+/*
+	Stores information on a UTF16 character
+	BUG: Cannot parse extended UTF-16 codepoints (>0xFFFF), possible fix is changing the instruction 02016bf8 from bcc to bcs
+*/
 struct UTF16Character {
 
-	u16* charPtr;			//Pointer to u16 array containing the UTF-16 codepoint
-	unsigned utf16Char;		//Decoded UTF-16 codepoint
-	unsigned size;			//2 or 4, depending on UTF-16 codepoint
-	u8 invalidChar;			//True if char is an invalid UTF-16 codepoint
+	u16* charPtr;				//Pointer to u16 array containing the UTF-16 codepoint
+	u32 utf16Char;				//Decoded UTF-16 codepoint
+	u32 size;					//2 or 4, depending on UTF-16 codepoint location
+	bool invalidChar;			//True if UTF-16 codepoint is invalid
 
-//02016c7c: UTF16Character(u16* ptr);	//Sets ptr to charPtr and calls decode()
-//02016ba0: void decode(); //Decodes the UTF-16 codepoint pointed to by charPtr and writes all other fields. BUG: Cannot parse extended UTF-16 codepoints (>0xFFFF), possible fix is changing the instruction 02016bf8 from bcc to bcs
+	UTF16Character(u16* ptr);	//Sets ptr to charPtr and calls decode()
+	void decode();				//Decodes the UTF-16 codepoint pointed to by charPtr and writes all other fields. 
 
 };
 
+
+
+
 /*
-Escape sequences are constructed with the following layout:
-0x0: Escape sequence identifier 0x001A
-0x2: Escape sequence length
-0x3: Primary selector ID (u8)
-0x4: Secondary selector ID (u16)
-0x6 (length=[0x2]-6]): Parameters
+	Holds escape sequence data
+	Escape sequences are constructed with the following layout:
+		0x0: Escape sequence identifier 0x001A
+		0x2: Escape sequence length
+		0x3: Primary selector ID (u8)
+		0x4: Secondary selector ID (u16)
+		0x6 (length=[0x2]-6]): Parameters (always as u16's)
+	In fact, parameter byte count could be greater than 2 (but must be even), getParameter() and readParameter() limit this to the first u16. However, more parameters could be read manually from params.
 */
 
 struct EscapeSequence {
 
-	unsigned unk00; //Primary sequence ID
-	unsigned unk04; //Secondary sequence ID
-	unsigned unk08; //Parameter byte count
-	unsigned unk0c; //Parameter pointer
-	unsigned unk10; //Sequence pointer
+	u32 psid;				//Primary sequence ID
+	u32 ssid;				//Secondary sequence ID
+	u32 paramBytes;			//Parameter byte count
+	u8* params;				//Parameter pointer
+	u8* sequence;			//Sequence pointer (start of sequence)
 
-//02016b34: EscapeSequence(u16* sequencePtr);
-//02016ac8: void parse(u16* sequencePtr);
-//02016a90: u16 getParameter();
-//02016aac: void readParameter(u16* param);
-};
+	EscapeSequence(u8* sequencePtr);			//Sets both ids to -1 and calls parse() when sequencePtr is non-null
+	void parse(u8* sequencePtr);				//Parses the sequence and updates the object's data accordingly
+	u16 getParameter();							//Returns the first parameter of the given sequence
+	void readParameter(u16* parameter);			//Writes the first parameter from params into parameter
+	u16 buildU16(u8* sequencePtr, u32 offset);	//Build a u16 from two consecutive bytes pointed to by sequencePtr + offset
+
+}; 
 
 
+
+
+
+/*
+	Escape sequence table entry
+	Used for escape sequence lookup.
+*/
 struct EscapeSequenceEntry {
-	unsigned unk00; //Primary sequence ID
-	unsigned unk04; //Secondary Sequence ID
-	unsigned unk08; //Callback address or virtual function offset, see unk0c
-	unsigned unk0c; //Call parameters, encoded by:
-					/*
-						0x01: Virtual function call flag: If set, unk08 is interpreted as the virtual function table offset
-						0xFFFFFFFE: Object offset: Determines the caller object by offsetting the this pointer.
-					*/
 
-/*
-	An escape sequence function is thereby called like:
+	u32 psid;				//Primary sequence ID
+	u32 ssid;				//Secondary sequence ID
+	u32 functionTarget;		//Callback address or virtual function offset, see unk0c
+	u32 callParams;			//Call parameters
 
-	object = reinterpret_cast<u8*>(object) + (entry->unk0c >> 1); //Offset address by object offset
+	/*
+		Call parameters are encoded as follows:
+			0x00000001: Virtual function call flag: If set, functionTarget is interpreted as the virtual function table offset
+			0xFFFFFFFE: Object offset: Determines the caller object by offsetting the object's current this pointer.
 
-	if(entry->unk0c & 1){
-		(**object + entry->unk08)(object, escapeSequence); //Call virtual function
-	}else{
-		entry->unk08(object, escapeSequence); //Call entry->unk08
-	}
+		An escape sequence function is thereby called like:
 
-	WARNING: An object offset greater than 1GB leads to unpredictable results; The object offset is calculated at 0x02015380 with [add r0,r0,r2, asr #0x1] and any u32 values where the MSB is set are arithmetically shifted to the right, leading to faults.
-*/
+			object = reinterpret_cast<u8*>(object) + (entry->callParams >> 1); //Offset address by object offset
+
+			if(entry->callParams & 1){
+				(**object + entry->functionTarget)(object, escapeSequence); //Call virtual function
+			}else{
+				entry->functionTarget(object, escapeSequence); //Call entry->functionTarget
+			}
+
+		WARNING: An object offset greater than 1GB leads to unpredictable results; The object offset is calculated at 0x02015380 with [add r0,r0,r2, asr #0x1] and any u32 values where the MSB is set are arithmetically shifted to the right, leading to faults.
+	*/
 };
 
 
-//02016c7c: 
-
-//vtable at 0203c0a4:
-/*
-02016a24 dtor
-020169f4 dtor_free
-020169c8 -
-020169c4 -
-020169c0 -
-020169bc -
-*/
-//ctor: 02016a4c
-//dtor2: 020169cc
-
-//02016a78: void clear(); //Sets unk04 to 0 and calls unk08.clear()
-//020167f4: void restoreLink(); //Sets unk04 to the last link in the array and removes the link from the array
-//02016818: void addLink(u16* newLink); //Copies unk04 to the array and sets unk04 to newLink
-//02016848: void copy(GarbageBase* src); //Copies src's parameters into the calling object and calls prepare
-//02016890: void setCharPtr(u16* charPtr); //Sets the charPtr and calls prepare
-//020168b0: bool processNextChar(bool stopAtNewline); //Processes the next char (dispatch, glyph render and restore font link when current string has been fully processed) and returns 1 if there are still chars left to dispatch. 
-													  //stopAtNewline forces a full stop if a newline character is encountered (also clears all links).
-													  //When a null character is encountered, the string is copied into the cache and returns 0.
-
-
-class GarbageBase {
-
-	u16* unk04;	//Current UTF-16 character dispatch pointer
-	GarbageLink unk08;
-
-	virtual ~GarbageBase();
-
-};
-
-
-
-
-//vtable at 0203c114
-//ctor at 020167c8
-//dtor at 020167a8
-//dtor_free at 02016780
-//020169c8: -
-//02016614: virtual void SetFontString(); //Copies a new string ranging from unk04 to unk1c into the buffer if unk18 is set
-//020169c0: -
-//020169bc: -
-//pure
-//pure
-/*
-02016744: ???
-02016714: ???
-020166bc: void renderString(unsigned copy, u16* string); //Renders the string given by string and (if copy is 1) is copied into the cache
-*/
-class GarbageExtension : public GarbageBase {
-
-	unsigned unk18; //Copy flag (if 1, the next processed string can be copied into the cache)
-	u16* unk1c; //UTF-16 string source pointer
-	u8 unk20;
-
-};
-
-
-
-
-//vtable at 0203c164
-//ctor at 020165f4
-//V18=string_size
-//V1c=string_offset
-//020165d4: dtor
-//020165ac: dtor_free
-//020169c8: -
-//02016614: virtual void SetFontString();
-//020169c0: -
-//020169bc: -
-//020165a4: virtual unsigned GetFontStringMaxSize();
-//0201659c: virtual u16* GetFontStringPtr();
-class YetAnotherGarbage : public GarbageExtension {
-
-	u16 unk24[128]; //Stored font chars
-
-};
-
-
-
-//vtable at 0203c13c
-//ctor at 0201657c
-//0201655c: dtor
-//02016534: dtor_free
-//020169c8: -
-//02016614: virtual void SetFontString();
-//020169c0: -
-//020169bc: -
-//02016430: virtual unsigned GetFontStringMaxSize();
-//02016428: virtual u16* GetFontStringPtr();
-/*
-020164b4: void stringifyNickname(); //Copies the nickname string into unk24
-02016438: void stringifyPartnerName(u16* name, unsigned length); //Copies name with length length (capped at 10) to unk24
-*/
-class GarbageBoss : public GarbageExtension {
-
-	u16 unk24[11];
-	u16 padding;
-
-};
-
-
-
-//vtable at 0203c0ec
-//ctor at 02016408
-//020163e8: dtor
-//020163c0: dtor_free
-//020169c8: -
-//02016614: virtual void SetFontString();
-//020169c0: -
-//020169bc: -
-//020163b8: virtual unsigned GetFontStringMaxSize();
-//020163b0: virtual u16* GetFontStringPtr();
-class LastGarbage : public GarbageExtension {
-
-	u16 unk24[32];
-
-};
-
-
-
-//vtable at 0203c0c4
-//ctor at 02016390
-//02016370: dtor
-//02016348: dtor_free
-//020169c8: -
-//02016614: virtual void SetFontString();
-//020169c0: -
-//020169bc: -
-//02016260: virtual unsigned GetFontStringMaxSize();
-//02016258: virtual u16* GetFontStringPtr();
-/*
-02016268: void stringifyNumber(unsigned number); //Converts number to a string and stores it in unk24
-*/
-class GarbageMaster : public GarbageExtension {
-
-	u16 unk24[11];
-	u16 padding;
-
-};
-
-
-
-
-//vtable at 0203c084 
-//ctor at 02015ec0
-
-//Missing members?
-
-//02015ea0: dtor
-//02015e78: dtor_free
-//020169c8: -
-//020169c4: -
-//02015c6c: virtual void render(const CharLink* c);
-//02015b38: virtual void parseEscapeSequence(EscapeSequence* sequence);
 
 
 /*
-02015e18: ???
-02015da4: ???
-02015d48: ???
-02015cf4: ???
-02015b04: void linkGarbageBoss(); 
-02015ad0: void linkGarbageMaster();
-02015a9c: void linkLastGarbage1();
-02015a68: void linkLastGarbage2();
-02015a34: void linkLastGarbage3();
-02015a00: void linkLastGarbage4();
-
+	Base class for all font related objects
 */
-class GarbageThing : public GarbageBase {
+class FontBase 
+{
+public:
 
-	WeirdGarbage* unk18;
-	unsigned unk1c;
-	NNSG2dFont* unk20;
-	u8 unk24;
-	u8 unk25, unk26, unk27; //Unused?
-	unsigned unk28;
-	unsigned unk2c; //Line count?
-	unsigned unk30;
+	u16* charPtr;						//Current UTF-16 character dispatch pointer
+	FontLinkStack linkStack;			//Font link stack
 
-//02089514: 
-	static unsigned sequenceTableInitialized; //1 if the escape sequence table has been initialized.
+	FontBase();
+	virtual ~FontBase();
+
+	virtual void prepare();											//Does nothing
+	virtual void onStringDispatched();								//Does nothing
+	virtual void processChar(UTF16Character* c);					//Does nothing
+	virtual void parseEscapeSequence(EscapeSequence* sequence);		//Does nothing
+
+	void reset();								//Sets charPtr to 0 and calls linkStack.clear()
+	void addLink(u16* fontLink);				//Copies charPtr to the link stack and sets charPtr to fontLink
+	void restoreLink();							//Sets charPtr to the topmost link on the stack and pops it thereafter
+	void copy(FontBase* src);					//Copies src's parameters into the calling object and calls prepare()
+	void setCharPtr(u16* cPtr);					//Sets charPtr to cPtr and calls prepare()
+	bool processNextChar(bool stopAtNewline);	//Processes the next char, calls processChar()/parseEscapeSequence() respectively and returns true if there are still chars left to dispatch. 
+												//stopAtNewline forces a full stop if a newline character is encountered (also clears the link stack).
+												//When a null character is encountered, onStringDispatched() is invoked and false is returned.
+
+};
+
+
+
 /*
-The escape sequence table consists of the following entries:
-0: PSID=1, SSID=0, linkGarbageBoss
-1: PSID=1, SSID=1, linkGarbageMaster
-2: PSID=1, SSID=2, linkLastGarbage1
-3: PSID=1, SSID=3, linkLastGarbage2
-4: PSID=1, SSID=4, linkLastGarbage3
-5: PSID=1, SSID=5, linkLastGarbage4
+	Base class for all string storage objects
+	'Special font caches' refer to all caches not being a StringCache.
+	When subclassing, ensure alignment on a 4-byte boundary
 */
-	static EscapeSequenceEntry escapeSequenceTable[7]; //0203c184
+class FontCache : public FontBase 
+{
+public:
+
+	u32 copy;						//Copy flag (if 1, the next processed string can be copied into the cache)
+	u16* srcPtr;					//UTF-16 string source pointer
+	bool success;					//True if process finished successfully (always true, probably intended to be modifiable in processNextChar() to set an error status).
+
+	FontCache();
+	virtual ~FontCache();
+
+	virtual void onStringDispatched() override;			//If copy is 1, the cache is cleared and the string ranging from srcPtr to charPtr is copied into the cache???
+	virtual u32 getCacheSize() = 0;
+	virtual u16* getCachePtr() = 0;
+
+	bool processString(u16* string);					//Processes string and copies it into the caller's cache. Returns success.
+	bool processString(FontCache* cache);				//Processes cache's cached string and copies the string into the caller's cache. Returns success.
+	void processString(u32 doCopy, u16* string);		//Clears all links, copies doCopy and string to copy and srcPtr respectively and processes every char in the string
+
+};
+
+
+
+/*
+	Cache holding main strings
+*/
+class StringCache : public FontCache 
+{
+public:
+
+	alignas(4)
+	u16 stringCache[128];			//String cache for up to 64 2 byte UTF-16 characters
+
+	StringCache();
+	virtual ~StringCache();
+
+	virtual u32 getCacheSize() override;				//Returns 256
+	virtual u16* getCachePtr() override;				//Returns a pointer to stringCache
+
+};
+
+
+
+/*
+	Cache holding a player's nickname
+*/
+class NicknameCache : public FontCache 
+{
+public:
+
+	alignas(4)
+	u16 nicknameCache[11];			//String cache for the nickname
+
+	NicknameCache();
+	virtual ~NicknameCache();
+
+	virtual u32 getCacheSize() override;				//Returns 22
+	virtual u16* getCachePtr() override;				//Returns a pointer to nicknameCache
+
+	void stringifyNickname();							//Copies the owner's nickname string into the nicknameCache
+	void stringifyOtherName(u16* name, u32 length);		//Copies name with length length (capped at 10) into the nicknameCache (used for the other player's name)
+
+};
+
+
+
+
+/*
+	Cache holding numbers
+*/
+class NumberCache : public FontCache
+{
+public:
+
+	alignas(4)
+	u16 numberCache[11];			//String cache for 4-byte u32 numbers
+
+	static u16 numberTable[10];							//Lookup table to convert between numbers and UTF-16 characters
+
+	NumberCache();
+	virtual ~NumberCache();
+
+	virtual u32 getCacheSize() override;				//Returns 22
+	virtual u16* getCachePtr() override;				//Returns a pointer to numberCache
+
+	void stringifyNumber(u32 number);					//Converts number to a string and stores it into the numberCache
+
+};
+
+
+
+
+/*
+	Cache holding generic strings
+*/
+class GenericCache : public FontCache 
+{
+public:
+
+	alignas(4)
+	u16 genericCache[32];			//String cache for generic strings
+
+	GenericCache();
+	virtual ~GenericCache();
+
+	virtual u32 getCacheSize() override;				//Returns 64
+	virtual u16* getCachePtr() override;				//Returns a pointer to genericCache
 
 };
 
@@ -286,59 +261,90 @@ The escape sequence table consists of the following entries:
 
 
 
-
-
-//@WeirdGarbage + 0x18
-//There are ten times 0x15c bytes after each other
-//vtable at 0x0203C03C
-//ctor at 02016104
-//dtor at 020160dc
-//dtor_free at 020160ac
+class FontRenderer;
 /*
-020161d8: void setFontTileList(FontTile* tiles, unsigned count); //Sets font tile list pointer and font tile count
-020161b0: ???
-02016170: ???
-02016000: void setup(void* vramTarget, unsigned xTiles, unsigned yTiles, NNSG2dFont* fontPtr); //Sets up GarbageFrame to defaults with the given parameters
-02015f8c: bool AllocateFontBuffers(); //Allocates buffers, sets unk08 accordingly and returns 1 if successful, otherwise 0
-02015f48: void FreeFontBuffers(); //Deletes both buffers from heap and sets size to 0
-02015fe8: void DeleteValues(); //Frees buffers and sets the vram dest address to 0
-02015f08: void FillBuffers(); //Fills both buffers with unk14f | ((unk14f & 0xF) << 4)
-
+	Object used to calculate the font's bounds
+	There are 4 operation modes:
+		CountMode::NextLineWidth: The current line's width is accumulated until a newline or null character is encountered
+		CountMode::IndexedLineWidth: Same as NextLineWidth, but calculates the width of the line at a given index where the current line is denoted with index 0
+		CountMode::LineCount: Counts the number of lines
+		CountMode::Done: Finished calculation
 */
-class GarbageFrame{
+class FontBounds : public FontBase 
+{
+public:
 
-	GarbageThing* unk04; //May also be GarbageBase* (tho unlikely)
-	unsigned unk08; //Bitmap buffer ptr
-	unsigned unk0c; //Tile buffer ptr
-	unsigned unk10; //Buffer size
-	unsigned unk14; //Destination VRAM address
-	unsigned unk18; //Tiles in x direction (in 8x8 tile units)
-	unsigned unk1c; //Tiles in y direction (in 8x8 tile units)
-	YetAnotherGarbage unk20;
-	NNSG2dFont* unk144; //Font ptr
-	unsigned unk148; //Alignment (left=0, centered=1, right=2)
-	u8 unk14c; //Font base palette index 1 (glyph pixel with value one takes this index, value two index + 1 and so on)
-	u8 unk14d; //Font base palette index 2
-	u8 unk14e; //Font base palette index 3
-	u8 unk14f; //Buffer fill value
-	u8 unk150; //x char margin in px
-	u8 unk151; //y char margin in px
-	u8 unk152; //y offset from top in px
-	u8 unk153; //If true, the default WeirdGarbage palette offset is used instead of greyscale value offsets
-	FontTile* unk154; //Pointer to the font tiles
-	unsigned unk158; //Number of font tiles
+	typedef void(*EscapeSequenceCallback)(FontBounds*, EscapeSequence*);
+
+	enum CountMode : u32 {
+		NextLineWidth = 0,
+		IndexedLineWidth,
+		LineCount,
+		Done
+	};
+
+	FontRenderer* renderer;			//Pointer to the FontRenderer
+	u32 count;						//Current element count, depending on mode
+	NNSG2dFont* font;				//Pointer to the used font
+	u8 xMargin;						//x char margin between characters
+	u32 lineIndex;					//Line index, used in IndexedLineWidth mode only
+	u32 newlineCount;				//Number of newline characters, used in IndexedLineWidth mode only
+	CountMode mode;					//Determines the count mode of the current operation
+
+	static u32 sequenceTableInitialized;									//1 if the escape sequence table has been initialized, 0 otherwise
+	/*
+		The escape sequence table consists of the following entries:
+			0: PSID=1, SSID=0, linkNicknameCache()
+			1: PSID=1, SSID=1, linkNumberCache()
+			2: PSID=1, SSID=2, linkGenericCache0()
+			3: PSID=1, SSID=3, linkGenericCache1()
+			4: PSID=1, SSID=4, linkGenericCache2()
+			5: PSID=1, SSID=5, linkGenericCache3()
+	*/
+	static EscapeSequenceEntry escapeSequenceTable[6];						//Table containing escape sequence entries
+
+	/*
+		Callback read addresses (when table is not initialized yet, this is where the function pointers reside)
+	*/
+	static EscapeSequenceCallback linkNicknameCB;
+	static EscapeSequenceCallback linkNumberCB;
+	static EscapeSequenceCallback linkGeneric0CB;
+	static EscapeSequenceCallback linkGeneric1CB;
+	static EscapeSequenceCallback linkGeneric2CB;
+	static EscapeSequenceCallback linkGeneric3CB;
+
+
+	FontBounds(FontRenderer* renderer);										//Initializes the object with renderer
+	virtual ~FontBounds();
+
+	virtual void processChar(UTF16Character* c) override;												//Main mode execution, increments count accordingly
+	virtual void parseEscapeSequence(EscapeSequence* sequence) override;								//Parses the given escape sequence to also account for dynamic characters
+
+	u32 getNextLineWidth(FontBase* src, NNSG2dFont* font, u8 margin);									//Returns the width in px from src's string pointer to the next newline / null character (including linked string caches) with the given font and margin
+	u32 getIndexedLineWidth(u16* charPtr, NNSG2dFont* font, u8 margin, u32 line);						//Returns the width in px from charPtr of the line indexed by line (including linked string caches) with the given font and margin. In case lineIndex is out of bounds, -1 is returned.
+	u32 getLineCount(u16* charPtr);																		//Returns the number of lines from charPtr to the next null character
+	s32 getCharacterWidth(u16 character);																//Returns the char width of character including x advancement
+
+	void linkNicknameCache(EscapeSequence* sequence);						//Links to the next character in the string and sets charPtr to the nickname cache's cache ptr
+	void linkNumberCache(EscapeSequence* sequence);							//Links to the next character in the string and sets charPtr to the number cache's cache ptr
+	void linkGenericCache0(EscapeSequence* sequence);						//Links to the next character in the string and sets charPtr to the first generic cache's cache ptr
+	void linkGenericCache1(EscapeSequence* sequence);						//Links to the next character in the string and sets charPtr to the second generic cache's cache ptr
+	void linkGenericCache2(EscapeSequence* sequence);						//Links to the next character in the string and sets charPtr to the third generic cache's cache ptr
+	void linkGenericCache3(EscapeSequence* sequence);						//Links to the next character in the string and sets charPtr to the fourth generic cache's cache ptr
 
 };
 
 
 
+/*
+	Stores a 2D tile's parameters
+*/
 struct FontTile {
 
-	u16 xPosition; //X position in 8x8 tile units
-	u16 yPosition; //Y position in 8x8 tile units
-	u16 tileOffset; //Offset from starting font tile in 8x8 tile units
-	u16 padding;
-	u32 tileShape; //Encoded tile shape
+	u16 xPosition;			//X position in 8x8 tile units
+	u16 yPosition;			//Y position in 8x8 tile units
+	u16 tileOffset;			//Offset from starting font tile in 8x8 tile units
+	u32 tileShape;			//Encoded tile shape
 
 /*
 	Tile encodings:
@@ -356,155 +362,278 @@ struct FontTile {
 		0xC0008000: x=4; y=8
 */
 
-	static void decode(unsigned* x, unsigned* y, unsigned shape); //02014dbc: Converts from shape to separate x and y 8x8 tile counts
-
-};
-
-
-struct CharLink {
-	u16* stringPointer;
-	u16 character;
-};
-
-
-
-//@0x02089594
-//vtable at 0203c064
-/*
-02015624 dtor
-02015590 dtor_free
-02015438 virtual void prepare(); //Resets the x/y-offsets and adjusts the x-offset to proper alignment
-020153ec virtual void setFontString(); //??? Better name, renders into tile buffer lmao
-020153e0 virtual void render(const CharLink* c);
-02015294 virtual void parseEscapeSequence(EscapeSequence* sequence); //Sets up the EscapeSequenceTable and calls the respective sequence callback. If no matching entry can be found, the function returns prematurely.
-*/
-//ctor: 020156b0
-/*
-0201596c: ???
-020158e4: ???
-020158a0: ???
-02015874: ???
-020157b0: void ClearLastGarbage(unsigned index); //Index < 4 -> clear LastGarbage[index], Index >= 4 -> clear all
-02015524: ???
-020154dc: ???
-02015474: void UploadAndDeleteBuffer(); //Copies for each GarbageFrame (if a vram dest address is set) the tile buffer to dest and deletes both bitmap and tile buffers
-02015258: GarbageFrame* getNextFreeFrame(); //Returns a pointer to the next GarbageFrame with the condition (unk08.unk0c == 0) [Nothing linked]
-0201518c: void renderChar(const CharLink* c); //Renders character belonging to c
-02014fe8: void renderGlyph(const NNSG2dGlyph* glyph); //Renders glyph into the bitmap buffer
-02014ec8: void renderTile(FontTile* tile); //Copies the bitmap buffer's contents containing tile into the tile buffer
-02014d24: void calculateAlignment(); //Sets unk15dc to account for font alignment
-02014c08: ???
-02014bd8: void linkGarbageBoss();
-02014ba8: void linkGarbageMaster();
-02014b78: void linkLastGarbage1();
-02014b48: void linkLastGarbage2();
-02014b18: void linkLastGarbage3();
-02014ae8: void linkLastGarbage4();
-02014acc: void setColorSelector(EscapeSequence* sequence); //Sets the font color selector to the escape sequence parameter
-
-*/
-
-
-
-class WeirdGarbage : public GarbageBase {
-
-	GarbageFrame unk18[16];
-	GarbageFrame* unk15d8;
-	unsigned unk15dc; //Current font x offset in px
-	unsigned unk15e0; //Current font y offset in px
-	u8 unk15e4; //x start offset (from left alignment boundary)
-	u8 unk15e5; //y start offset
-	u8 unk15e6; //Default palette offset
-	u8 unk15e7;	//Unused?
-	unsigned unk15e8; //Font color selector offset
-	GarbageBoss unk15ec;
-	GarbageMaster unk1628;
-	LastGarbage unk1664[4];
-	GarbageThing unk17f4;
-
-	WeirdGarbage();
-	virtual ~WeirdGarbage();
-
-
-//02089510: 
-	static unsigned sequenceTableInitialized; //1 if the escape sequence table has been initialized.
-/*
-The escape sequence table consists of the following entries:
-0: PSID=1, SSID=0, linkGarbageBoss
-1: PSID=1, SSID=1, linkGarbageMaster
-2: PSID=1, SSID=2, linkLastGarbage1
-3: PSID=1, SSID=3, linkLastGarbage2
-4: PSID=1, SSID=4, linkLastGarbage3
-5: PSID=1, SSID=5, linkLastGarbage4
-6: PSID=255, SSID=0, setColorSelector
-*/
-	static EscapeSequenceEntry escapeSequenceTable[7]; //0203c244
+	static void decode(u32* x, u32* y, u32 shape);			//Converts from shape to separate x and y 8x8 tile counts
 
 };
 
 
 
-//statics
-//02014a9c: WeirdGarbage* GetWeirdGarbage();
-//02014aa8: UpperGarbage* GetUpperGarbage();
-//02014ac0: ??? current nftr?
-//02014ab4: ??? another nftr?
-//02017190: u16 GetScriptFileID(unsigned index); //Returns the script file ID corresponding to index index
-//027e37d0: ???
-//027e37d4: ???
-//020161e4: ???
-//02014dbc: ???
+/*
+	Object storing a renderable string including its parameters
+	It contains two buffers:
+		1) Bitmap buffer: Font rendered as bitmap
+		2) Tile buffer: Font rendered in tiled order
+	Before the font is displayed on screen, the (filled) bitmap buffer is converted and copied to the tile buffer.
+*/
+class FontString 
+{
+public:
 
+	enum Alignment : u32 {
+		Left = 0,
+		Centered,
+		Right
+	};
 
-//vtable at 0203c02c
-//ctor at 020170ac
-//0201709c: dtor
-//0201707c: dtor_free
-struct UpperGarbage {
+	FontBounds* bounds;			//Pointer to font bounds
+	u8* bmpBufferPtr;			//Bitmap buffer ptr
+	u8* tileBufferPtr;			//Tile buffer ptr
+	u32 bufferSize;				//Buffer size
+	u8* vramTarget;				//Destination VRAM address
+	u32 xTiles;					//Tiles in x direction (in 8x8 tile units)
+	u32 yTiles;					//Tiles in y direction (in 8x8 tile units)
+	StringCache stringCache;	//String cache
+	NNSG2dFont* font;			//Pointer to the font
+	Alignment align;			//Alignment (left=0, centered=1, right=2)
+	u8 paletteIndex0;			//Font base palette index 0 (glyph pixel with value one takes this index, value two index + 1 and so on; if shadow is enabled, the default palette offset is added -1)
+	u8 paletteIndex1;			//Font base palette index 1
+	u8 paletteIndex2;			//Font base palette index 2
+	u8 bufferFill;				//Buffer fill value (only lower half-byte)
+	u8 xMargin;					//x char margin in px
+	u8 yMargin;					//y char margin in px
+	u8 yOffset;					//y offset from top in px
+	bool shadow;				//Shadow enable
+	FontTile* tileList;			//Pointer to the font tiles
+	u32 tileCount;				//Number of font tiles
 
-	unsigned unk04; //BMG string info section index
-	unsigned unk08; //Filled in ctor
-	unsigned unk0c; //BMG string data offset
-	unsigned unk10; //BMG string length
-	u8 bmgHeader[32];
-	u8 infHeader[20];
-	u8 datHeader[12];
-	void* unk54; //BMG file ptr
+	FontString();				//Enables shadows by default
+	virtual ~FontString();
+
+	void setup(u8* vramTarget, u32 xTiles, u32 yTiles, NNSG2dFont* fontPtr);				//Sets up the object to defaults with the given parameters
+	void setFontTileList(FontTile* tiles, u32 count);										//Sets font tile list pointer and font tile count
+	u32 getLineCount();																		//Returns the line count of the stringCache's string
+	u32 getIndexedLineWidth(u32 index);														//Returns the width of the index'th line of stringCache's string
+	bool allocateBuffers();																	//Allocates both buffers, sets buffer properties accordingly and returns true if successful
+	void freeBuffers();																		//Deletes both buffers from heap and sets size to 0
+	void clearBuffers();																	//Clears both buffers with bufferFill's lower half-byte every half-byte ((bufferFill & 0xF) << 4 | bufferFill)
+	void deleteTarget();																	//Deletes buffers and sets the VRAM target address to null
 
 };
 
 
-//02017134: Reverse u32
-//02016e98: Copy and check BMG header
-//02016dc8: Copy and check BMG INF chunk header (info)
-//02016d70: Copy and check BMG DAT chunk header (info)
 
-//BMG files:
+
 /*
-
-Header: 
-0x00: "MESGbmg1"
-0x08: u32 bmgSize; //Total file size
-0x0c: u32 chunks; //Number of chunks
-0x10: u8 encoding; //Encoding (2=UTF-16) [1=CP1252, 2=UTF-16, 3=Shift-JIS, 4=UTF-8]
-
-align(16)
-Info chunk:
-0x00: "INF1"
-0x04: u32 infSize; //Size of INF chunk
-0x08: u16 numSections; //Number of strings/sections in file
-0x0A: u16 sectionSize; //Section size
-0x0C: u16 bmgFileID; //BMG file ID
-0x0E: u8 unk;
-0x10+: u32 stringOffset[]; //Info entry numStrings times
-
-align(16)
-Data chunk [0x20 + infSize]:
-0x00: "DAT1"
-0x04: u32 datSize; //Size of DAT chunk
-0x08+: u8 stringData[]; //String pool [at offset]
-
+	Main font class
+	Renders fonts into a FontString object and contains all other special font caches. Also holds global font parameters.
+	Fonts are rendered differently depending on currentString's shadow:
+		Shadow enabled: All greyscale anti-aliasing information is ignored and every non-zero glyph pixel obtains the palette index value n = currentString->paletteIndex<colorSelector> + shadowIndexOffset - 1
+		Shadow disabled: Greyscale values are added to the palette index, so every non-zero glyph pixel obtains the palette index value n = currentString->paletteIndex<colorSelector> + greyscaleValue - 1
+	This font engine only supports 4bpp fonts. This is a hardcoded limitation in several functions.
+	Shadowed strings are rendered three times: Twice at startY = 1 (startX 0 and 1), once with a different color selector at startX and startY = 0.
 */
+class FontRenderer : public FontBase 
+{
+public:
+
+	typedef void(*EscapeSequenceCallback)(FontBounds*, EscapeSequence*);
+
+	FontString fontStrings[16];		//Font string objects containing the renderable text
+	FontString* currentString;		//Current font string
+	u32 currentX;					//Current font x offset in px
+	u32 currentY;					//Current font y offset in px
+	u8 startX;						//x start offset from left
+	u8 startY;						//y start offset from top
+	u8 shadowIndexOffset;			//Shadowed font palette offset
+	u32 colorSelector;				//Font color selector
+	NicknameCache nicknameCache;	//Nickname cache
+	NumberCache numberCache;		//Number cache
+	GenericCache genericCache[4];	//4 generic caches
+	FontBounds bounds;				//Font bounds
+
+	static u32 sequenceTableInitialized;									//1 if the escape sequence table has been initialized, 0 otherwise
+	/*
+		The escape sequence table consists of the following entries:
+			0: PSID=1, SSID=0, linkNicknameCache()
+			1: PSID=1, SSID=1, linkNumberCache()
+			2: PSID=1, SSID=2, linkGenericCache0()
+			3: PSID=1, SSID=3, linkGenericCache1()
+			4: PSID=1, SSID=4, linkGenericCache2()
+			5: PSID=1, SSID=5, linkGenericCache3()
+			6: PSID=255, SSID=0, setColorSelector()
+	*/
+	static EscapeSequenceEntry escapeSequenceTable[7];						//Table containing escape sequence entries
+
+	/*
+		Callback read addresses (when table is not initialized yet, this is where the function pointers reside)
+	*/
+	static EscapeSequenceCallback linkNicknameCB;
+	static EscapeSequenceCallback linkNumberCB;
+	static EscapeSequenceCallback linkGeneric0CB;
+	static EscapeSequenceCallback linkGeneric1CB;
+	static EscapeSequenceCallback linkGeneric2CB;
+	static EscapeSequenceCallback linkGeneric3CB;
+	static EscapeSequenceCallback colorSelectCB;
+
+
+	FontRenderer();
+	virtual ~FontRenderer();
+
+	virtual void prepare() override;										//Calculates alignment and sets start offsets appropriately
+	virtual void onStringDispatched() override;								//Checks the font tile table and converts the bitmap buffer to the tile buffer
+	virtual void processChar(UTF16Character* c) override;					//Immediately calls renderChar()
+	virtual void parseEscapeSequence(EscapeSequence* sequence) override;	//Parses the given escape sequence and invokes the respective function
+
+	bool setupAndRender(u8* vramTarget, u32 xTiles, u32 yTiles, void* bmg, u32 index);							//Renders string with the main font to vramTarget with xTiles tiles in x direction and yTiles tiles in y direction (and allocates buffers accordingly). The string is fetched from file and if successful, true is returned. Buffers are deallocated upon failure and false is returned in this case.
+	bool setupAndRender(u8* vramTarget, u32 xTiles, u32 yTiles, FontCache* stringCache, NNSG2dFont* fontPtr);	//Renders the string into the next free FontString (and allocates buffers accordingly). The string is fetched from stringCache's cache, copied into FontString's cache and if successful, 1 is returned. Buffers are deallocated upon failure and false is returned in this case.
+	
+	void loadAndRenderGenericCache(u32 index, void* bmg, u32 stringIndex);	//Loads the string from file and renders it into genericCache[index]
+	void renderGenericCache(u32 index, FontCache* cache);					//Renders cache's string and copies it into genericCache[index]'s cache
+	void clearGenericCache(u32 index);										//If index is smaller than 4, genericCache[index] is cleared; if index >= 4, all generic caches are cleared
+	
+	void resetSpecialCaches();												//Loads the owner's nickname into its respective cache and clears all other special font caches
+	void uploadBuffer();													//Copies for each GarbageFrame (if a VRAM target address is set) the tile buffer to the destination and deletes both bitmap and tile buffers	
+	FontString* getNextFreeFontString();									//Returns a pointer to the next FontString without other linked caches or null if none could be found
+	void convertBuffer(FontTile* tile);										//Copies the bitmap buffer's contents containing tile into the tile buffer
+	void calculateAlignment();												//Calculates alignment on the x axis and adds startX to the left alignment border. 
+	
+	void renderChar(UTF16Character* c);										//Renders the character's glyph and increments currentX accordingly. In case c is a newline character, currentY is incremented by yMargin + 16 and alignment is recalculated.
+	void renderGlyph(NNSG2dGlyph* glyph);									//Renders glyph into the bitmap buffer
+	void renderFontString(FontString* string);								//Renders string's contents. If shadows are enabled, it's rendered two additional times offset.
+	void renderFontStrings();												//Calls renderString() on every FontString having a non-null VRAM target pointer
+	
+	void linkNicknameCache(EscapeSequence* sequence);						//Links to the next character in the string and sets charPtr to the nickname cache's cache ptr
+	void linkNumberCache(EscapeSequence* sequence);							//Links to the next character in the string and sets charPtr to the number cache's cache ptr
+	void linkGenericCache0(EscapeSequence* sequence);						//Links to the next character in the string and sets charPtr to the first generic cache's cache ptr
+	void linkGenericCache1(EscapeSequence* sequence);						//Links to the next character in the string and sets charPtr to the second generic cache's cache ptr
+	void linkGenericCache2(EscapeSequence* sequence);						//Links to the next character in the string and sets charPtr to the third generic cache's cache ptr
+	void linkGenericCache3(EscapeSequence* sequence);						//Links to the next character in the string and sets charPtr to the fourth generic cache's cache ptr
+	void setColorSelector(EscapeSequence* sequence);						//Sets the font color selector to the escape sequence parameter
+
+};
+
+
+
+/*
+	Reads BMG files and renders strings into caches
+	BMG file reference:
+		Header:
+			0x00: "MESGbmg1"			//BMG magic
+			0x08: u32 bmgSize;			//Total file size
+			0x0c: u32 chunks;			//Number of chunks
+			0x10: u8 encoding;			//Encoding (2=UTF-16) [1=CP1252, 2=UTF-16, 3=Shift-JIS, 4=UTF-8]
+
+		align(16)
+		Info chunk:
+			0x00: "INF1"				//Info chunk magic
+			0x04: u32 infSize;			//Size of INF chunk
+			0x08: u16 numSections;		//Number of strings/sections in file
+			0x0A: u16 sectionSize;		//Section size
+			0x0C: u16 bmgFileID;		//BMG file ID (not NitroFS file ID), unused
+			0x0E: u8 unk;
+			0x10+: u32 stringOffset[];	//Info entry numStrings times
+
+		align(16)
+		Data chunk [0x20 + infSize]:
+			0x00: "DAT1"				//Data chunk magic
+			0x04: u32 datSize;			//Size of DAT chunk
+			0x08+: u8 stringData[];		//String pool [at offset]
+	renderParsed() and renderCleared() are functions that can be used to render strings easily.
+*/
+class BMGReader
+{
+public:
+
+	u32 infIndex;			//BMG string info section index (INF chunk offset / 4)
+	u32 currentDatOffset;	//Always in sync with datOffset
+	u32 datOffset;			//BMG string data offset (u32 read from INF chunk)
+	u32 stringLength;		//BMG string length in bytes
+	u8 bmgHeader[32];		//Copy of the parsed BMG header
+	u8 infHeader[20];		//Copy of the parsed INF header
+	u8 datHeader[12];		//Copy of the parsed DAT header
+	void* bmgFile;			//BMG file pointer
+
+	BMGReader();
+	virtual ~BMGReader();
+
+	bool parseBMGHeader();								//Copy and check BMG header, returns true if successful
+	bool parseBMGInfo();								//Copy and check BMG INF chunk header (info), returns true if successful
+	bool parseBMGData();								//Copy and check BMG DAT chunk header (data), returns true if successful
+	void reset(void* bmg, u32 stringIndex);				//Resets all fields to 0 and assigns file and stringIndex to their respective fields.
+	bool parseBMGString();								//Parses the string from the BMG file with the index given by infIndex and sets the pointer to datOffset. Does not check if index is out of bounds. Always returns true (successful).
+	u8 processBMGString(FontCache* cache);				//Calls cache->processString() with copy = 1 and a pointer to the string in the BMG file. Returns cache->succesful.
+
+	bool render(FontCache* cache, void* bmg, u32 index);			//Parses bmg and renders the string indexed by index into cache's buffer. Returns true if successful, false otherwise.
+	bool renderCleared(FontCache* cache, void* bmg, u32 index);		//Clears cache's string buffer and renders a new string into it by calling renderParsed. Returns true if successful, false otherwise.
+
+};
+
+
+
+/*
+	Font namespace
+*/
+namespace Font {
+
+	/*
+		Global font related objects
+	*/
+	extern NNSG2dFont mainFont;			//Main font for everything
+	extern NNSG2dFont loadingFont;		//Loading 'fireball' font
+	extern BMGReader bmgReader;			//Used to read BMG files
+	extern FontRenderer fontRenderer;	//Renders font strings
+	extern u32 scriptFileIDList[5];		//Script file IDs [0=course.bmg, 1=data.bmg, 2=error.bmg, 3=game.bmg, 4=vs.bmg]
+
+	/*
+		Font tile tables
+	*/
+	extern FontTile* selectFileTiles;		//4 tiles
+	extern FontTile* gameTextboxTiles;		//8 tiles
+	extern FontTile* yesNoOptionTiles;		//2 tiles
+	extern FontTile* mvslModeMenuTiles;		//4 tiles
+	extern FontTile* mvslSelectMenuTiles;	//12 tiles
+	extern FontTile* mvslLoadingTiles;		//1 tile
+	extern FontTile* mvslResultScreenTiles;	//5 tiles
+
+	/*
+		Getters for font related objects
+	*/
+	NNSG2dFont* getMainFont();			//Returns a pointer to the main font
+	NNSG2dFont* getLoadingFont();		//Returns a pointer to the loading font
+	BMGReader* getBMGReader();			//Returns a pointer to the BMG reader
+	FontRenderer* getFontRenderer();	//Returns a pointer to the font renderer
+	u16 getScriptFileID(u32 index);		//Returns scriptFileIDList[index]
+
+	/*
+		Font loading functions
+	*/
+	void initMainFonts();									//Loads the main and loading icon font and resets special font caches
+	void loadFont(NNSG2dFont* font, u32 fileID);			//Calls loadFontInternal()
+	void loadFontInternal(NNSG2dFont* font, u32 fileID);	//Loads the font in memory and creates the corresponding NNSG2dFont object
+
+	/*
+		Game loop functions
+	*/
+	void renderBuffer();				//Uploads the font buffer to VRAM and deallocates it from heap
+	void updateFont();					//Updates the font buffer by rendering the font into it
+
+};
+
+
+
+/*
+	Namespace for generic functions
+*/
+namespace Util {
+
+	u32 reverse(u32* value);					//Reverses the u32 pointed to by value and returns it
+	
+	u32 dereference(u32* ptr);					//Returns *ptr as u32
+	u16 dereference(u16* ptr);					//Returns *ptr as u16
+	u8 dereference(u8* ptr);					//Returns *ptr as u8
+	u8 dereference(u8* ptr, u32 offset);		//Returns *(ptr + offset) as u8
+
+}
 
 
 
