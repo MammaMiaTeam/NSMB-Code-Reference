@@ -1,4 +1,4 @@
-﻿#ifndef NSMB_FONT_INCLUDED
+#ifndef NSMB_FONT_INCLUDED
 #define NSMB_FONT_INCLUDED
 
 #include "nitro_if.h"
