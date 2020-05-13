@@ -1,4 +1,5 @@
 # Coding Guidelines
+
 ### Casing
 The reference uses lowercase starting camelCase. That means, all variables, arguments, functions start with a lowercase word and every other word starts uppercase.
 ```cpp
@@ -9,6 +10,7 @@ Classes, structs, namespaces (all structures creating a new scope) take uppercas
 class MyClassBeingEpic : public OldBaseClass {};
 ```
 Underscores are strictly forbidden outside of internal, compiler/runtime library emitted symbols.
+
 ### Indentation
 You should **always** use tabs when indenting comments, members, other scopes. **No spaces are allowed.** This is necessary to ensure proper formatting.
 
@@ -52,6 +54,7 @@ Headers always take
 #endif  //NSMB_x_INCLUDED
 ```
 as an include guard. It is good practice to comment the defined preprocessor symbol after endif when closing a scope.
+
 ### Storage Objects
 Structs are to be used when the object purely consists of variables or has only a constructor with a few accompanying members / functions.
 
@@ -76,11 +79,12 @@ In storage objects, members are packed as follows:
 - Static functions
 
 Between each category there is at least one newline. You can add more newlines in a category to subdivide them further.
+Virtual functions must be in vtable order to allow correct virtual dispatch.
+
 ### Commenting
 Comments are crucial for documentation. Single-line comments are used as follows:
 ```cpp
-void callMe();					//Enter text here
-void thisIsABigLongFunction();	//LMAO		
+void callMe();		//Enter text here
 ```
 Single-line comments should be grouped with tabs wherever possible.
 They may also appear above function definitions.
@@ -94,6 +98,7 @@ Multi-line comments are almost always above the documenting object and are used 
 void doStuff();
 ```
 There are cases where a member variable requires more explanation (e.g. masked fields). The multi-line comment should then start in the same line as the definition and be properly indented to match the above style.
+
 ### Documentation
 All classes/functions and related variables are to be documented. If there are functions/variables without a properly defined context, end the file with a comment to indicate unknown functions.
 
@@ -139,6 +144,22 @@ public:
 ```
 yields a dangerous situation. The compiler will pad c immediately after b. 
 B therefore has a size of 12 bytes instead of the expected 16. To avoid this, add `alignas(4)` above the first member of all subclasses.
+
+### Abbreviations
+Abbreviations are context-dependent. The casing depends on the general usage, so everything is fine as long as they're consistently used. Exception: ID is always spelled uppercase.
+
+### Symbols
+Symbol generation is one of the hardest task. Every fully documented section requires symbol generation. Symbols need to be properly mangled after the Itanium ABI. For symbol generation, contact one of the contributors to help you.
+Symbols that **must** be generated include
+- Functions
+- Static variables
+- Extern variables
+- All constructors / destructors
+- Vtables
+
+Deleting destructors take D0. Standard destructors called from outside take D1. Class inheritance destructors take D2.
+Standard constructors take C1. Class inheritance constructors take C2.
+If you don't know what any of this means, let a contributor generate them for `symbols.x`. Always group symbols together.
 
 ###  Other
 If you are unsure about a rare case, make a pull request and it will be reviewed.
