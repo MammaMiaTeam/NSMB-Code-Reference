@@ -272,10 +272,10 @@ namespace Sound {
 
 		/*
 			Stops a music sequence while also fading out volume.
-			frames = Frame count over which to change volume.
-			fadeFrame = Frame count over which to stop the sequence.
+			sfx_frames = Frame count over which to fade sound effects.
+			seq_frames = Frame count over which to fade the music sequence.
 		*/
-		bool stopSeqWithVolumeFrames(s32 frames, s32 fadeFrame);
+		bool stopSfxAndSeq(s32 sfx_frames, s32 seq_frames);
 
 		/*
 			Child of the Sound::loop function.
