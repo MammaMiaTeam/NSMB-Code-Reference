@@ -65,7 +65,10 @@ namespace Sound {
 	//	Resets the heap state and loads a single music sequence.
 	void clearAndLoadSingleSeq(s32 seqID);
 
-	//	Resets the heap state and loads a single music sequence.
+	/*
+		Resets the heap state, loads the Mario Vs Luigi sound
+		effect set and sets the playble sequence count to 2.
+	*/
 	void loadMvsLSfxSetAndSetSeqCount();
 
 	/*
