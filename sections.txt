@@ -1,0 +1,42 @@
+# Section documentation
+
+This file records all sections of NSMB.
+U = Not decoded, not documented, unknown, misc
+K = Known but not documented
+R = In review
+A = Approved, finished
+S = Special, no documentation necessary
+D = Decoded, no documentation necessary
+
+
+ITCM [0x01FF8000 - 0x01FFFFA0], autoload section 1:
+[U]                 [0x01FF8000 - 0x01FFFFA0]
+
+ARM9 [0x02000800 - 0x02080224]:
+Standard section:
+[U]                 [0x02000800 - 0x02008588]
+[K] File            [0x02008588 - 0x0200A2B0]
+[A] Sound frontend  [0x02011988 - 0x02012744] TheGameratorT
+[U]                 [0x02012744 - 0x02014A30]
+[A] Font            [0x02014A30 - 0x02017274] Overblade
+[U]                 [0x02017274 - 0x02044A50]
+[A] Heap frontend   [0x02044A50 - 0x02045690] Overblade
+[U]                 [0x02045690 - 0x02045760]
+[K] Vector          [0x02045760 - 0x02046030]
+[U]                 [0x02046030 - 0x0204CA80]
+[K] Base            [0x0204CA80 - 0x0204D428]
+[U]                 [0x0204D428 - 0x0204D98C]
+[A] Sound backend   [0x0204D98C - 0x0204F324] TheGameratorT
+[U]                 [0x0204F324 - 0x02055ADC]
+[S] Library         [0x02055ADC - 0x0207CECC]
+[D] Builtins        [0x0207CECC - 0x02080224]
+
+DATA [0x02080224 - 0x02085880]
+BSS [0x02085880 - 0x020986E0]
+
+ARM9 Overlays: Consult for more information
+ARM7: Consult for more information
+
+In progress:
+- Models [0x02018B68 - 0x02019C18] by Overblade
+- ARM7
