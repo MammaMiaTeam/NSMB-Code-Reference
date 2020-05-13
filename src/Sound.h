@@ -47,11 +47,11 @@ namespace Sound {
 	void loadLevelThemeSeq();
 
 	//	Resets the heap state and loads sound effect set 1.
-	void clearAndLoadSfxSet1();
+	void clearAndLoadSFXSet1();
 
 	/*
 		Calls loadLevelThemeSeq if regular music loading is enabled and
-		calls and Internal::loadSfxSet with the sound effect set specified
+		calls and Internal::loadSFXSet with the sound effect set specified
 		for the current area.
 	*/
 	void loadLevelSounds();
@@ -69,7 +69,7 @@ namespace Sound {
 		Resets the heap state, loads the Mario Vs Luigi sound
 		effect set and sets the playble sequence count to 2.
 	*/
-	void loadMvsLSfxSetAndSetSeqCount();
+	void loadMvsLSFXSetAndSetSeqCount();
 
 	/*
 		Resets the heap state and loads multiple sequences from an array
@@ -77,13 +77,13 @@ namespace Sound {
 		It also loads multiple sound effect sets from an array until it
 		reaches an index which value is 57.
 	*/
-	void clearAndLoadSeqsAndSfxSets(s32* seqIDs, s32* sfxSetIDs);
+	void clearAndLoadSeqsAndSFXSets(s32* seqIDs, s32* sfxSetIDs);
 
 	//	Resets the heap state and loads one sequence and one sound effect set.
-	void clearAndLoadSingleSeqAndSfxSet(s32 seqID, s32 sfxSetID);
+	void clearAndLoadSingleSeqAndSFXSet(s32 seqID, s32 sfxSetID);
 
 	//	Resets the heap state and loads one sound effect set.
-	void clearAndLoadSingleSfxSet(s32 sfxSetID);
+	void clearAndLoadSingleSFXSet(s32 sfxSetID);
 
 	//	Stops all the sounds currently playing.
 	void stopAllSounds();
@@ -200,10 +200,13 @@ namespace Sound {
 		*/
 		bool allocBossSndHeapState();
 
-		void setCurrentSoundArc();
+		//	Sets the current sound archive to use. 
+		void setCurrentSoundArc(int arcID);
 
+		//	Sets if game is supposed to use Luigi sound effect set.
 		void setUseLuigiSounds(bool value);
 
+		//	Sets how many sequences can play at once.
 		void setPlayableSeqCount(int seqCount);
 
 		/*
@@ -275,7 +278,7 @@ namespace Sound {
 			sfx_frames = Frame count over which to fade sound effects.
 			seq_frames = Frame count over which to fade the music sequence.
 		*/
-		bool stopSfxAndSeq(s32 sfx_frames, s32 seq_frames);
+		bool stopSFXAndSeq(s32 sfx_frames, s32 seq_frames);
 
 		/*
 			Child of the Sound::loop function.
@@ -284,10 +287,10 @@ namespace Sound {
 		bool updateSounds();
 
 		//	Loads an archive for a sound effect set.
-		bool loadArcForSfxSet(s32 sfxSetId);
+		bool loadArcForSFXSet(s32 sfxSetId);
 
 		//	Loads a sound effect set.
-		bool loadSfxSet(s32 sfxSetId);
+		bool loadSFXSet(s32 sfxSetId);
 
 		//	Loads the heap state.
 		void loadHeapState();
