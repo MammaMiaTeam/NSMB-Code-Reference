@@ -16,12 +16,13 @@ typedef void* NITRO_TYPE_REPLACEMENT;
 	typedef NITRO_TYPE_REPLACEMENT NNSSndHandle;
 	typedef NITRO_TYPE_REPLACEMENT NNSSndSeqPlayer;
 
-	enum NNSSndCaptureOutputEffectType
-	{
+	enum NNSSndCaptureOutputEffectType {
+		
 		NNS_SND_CAPTURE_OUTPUT_EFFECT_NORMAL = 0x0,
 		NNS_SND_CAPTURE_OUTPUT_EFFECT_SURROUND = 0x1,
 		NNS_SND_CAPTURE_OUTPUT_EFFECT_HEADPHONE = 0x2,
-		NNS_SND_CAPTURE_OUTPUT_EFFECT_MONO = 0x3,
+		NNS_SND_CAPTURE_OUTPUT_EFFECT_MONO = 0x3
+		
 	};
 
 	void MI_CpuFillFast(const void*, int, int);
@@ -47,16 +48,13 @@ typedef void* NITRO_TYPE_REPLACEMENT;
 	struct VecFx32 {
 		fx32 x, y, z;
 	};
+
 	struct VecFx16 {
 		fx16 x, y, z;
 	};
 
 	fx32 FX_Div(fx32, fx32);
 	fx32 FX_MulInline(fx32, fx32);
-
-#define TRUE 1
-#define FALSE 0
-	typedef u32 BOOL;
 
 #else
 	#include "nitro.h"
