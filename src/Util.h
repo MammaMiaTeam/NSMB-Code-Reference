@@ -93,7 +93,7 @@ FORCEINLINE void memset(void* ptr, u8 value, u32 num) {
 	} else {
 
 		MI_CpuFillFast(ptr, value << 24 | value << 16 | value << 8 | value, num & ~3);
-		MI_CpuFill8(reinterpret_cast<void*>(reinterpret_cast<u8*>(ptr) + num & ~3), value, num & 3);
+		MI_CpuFill8(reinterpret_cast<void*>(reinterpret_cast<u8*>(ptr) + (num & ~3)), value, num & 3);
 
 	}
 

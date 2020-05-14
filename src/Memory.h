@@ -218,7 +218,7 @@ namespace Memory {
 	extern bool rootHeapCreated;											//True if the root heap has been created (only indicates Memory::SetupRootHeap has been called at least once)
 	extern u32 rootHeapInitialSize;											//Initial root heap size. If 0, the whole root heap arena is used. Currently always set to 0.
 	extern Heap* gameHeapPtr;												//Pointer to game heap
-	extern OSArenaID rootHeapArenaID;										//Arena ID the root heap resides in (always set to 0)
+	extern OSArenaId rootHeapArenaID;										//Arena ID the root heap resides in (always set to 0)
 	extern Heap* currentHeapPtr;											//Pointer to current (default) heap
 	extern Heap* rootHeapPtr;												//Pointer to root heap
 	extern Heap::OnDeallocate heapDeallocationFunction;						//Function to be called in Heap::Deallocate before deallocation

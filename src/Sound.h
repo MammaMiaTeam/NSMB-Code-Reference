@@ -2,15 +2,7 @@
 #define NSMB_SOUND_INCLUDED
 
 #include "nitro_if.h"
-
-#warning("Remove Vec3 structure from Sound.h after vectors are added.")
-struct Vec3
-{
-	void* vTable;
-	s32 x;
-	s32 y;
-	s32 z;
-};
+#include "Vectors.h"
 
 /*
 	REGION 1 (Sound):
@@ -131,7 +123,7 @@ namespace Sound {
 	*/
 	bool playArcSFXAtPosIfInPosRange(s32 seqArcNo, s32 seqArcIndex, Vec3* pos, s32 volume, s32 channel);
 
-	//	Plays a sound effect normally through the sound effect able without being affected by position.
+	//	Plays a sound effect normally through the sound effect table without being affected by position.
 	void playSFX(s32 sfxID);
 
 	//	Plays an entrance sound effect at a position.
