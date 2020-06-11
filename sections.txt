@@ -5,7 +5,6 @@ U = Not decoded, not documented, unknown, misc
 K = Known but not documented
 R = In review
 A = Approved, finished
-S = Special, no documentation necessary
 D = Decoded, no documentation necessary
 
 
@@ -14,7 +13,7 @@ ITCM [0x01FF8000 - 0x01FFFFA0], autoload section 1:
 
 ARM9 [0x02000800 - 0x02080224]:
 Standard section:
-[S] CRT0                [0x02000800 - 0x02000B44]
+[D] CRT0                [0x02000800 - 0x02000B44]
 [U]                     [0x02000B44 - 0x02007620]
 [K] HUD 1               [0x02007620 - 0x02008588]
 [K] File                [0x02008588 - 0x0200A3D0]
@@ -48,15 +47,21 @@ Standard section:
 [U]                     [0x0204D428 - 0x0204D98C]
 [A] Sound backend       [0x0204D98C - 0x0204F324] TheGameratorT
 [U]                     [0x0204F324 - 0x02055ADC]
-[S] Library             [0x02055ADC - 0x0207CECC]
+[D] Library             [0x02055ADC - 0x0207CECC]
 [D] Builtins            [0x0207CECC - 0x02080224]
 
 DATA [0x02080224 - 0x02085880]
 BSS [0x02085880 - 0x020986E0]
 
 ARM9 Overlays: Consult for more information
-ARM7: Consult for more information
+
+ARM7 [0x02380000 - 0x0380BAA8]                    Ed_IT & Overblade
+[D] CRT0                [0x02380000 - 0x023801BF]
+[D] BSS0                [0x023CE118 - 0x023801C0]
+[D] Wifi / Backend      [0x027E0000 - 0x027F82A4]
+[D] BSS1                [0x027F82A4 - 0x027F9C0C]
+[D] Frontend            [0x037F8000 - 0x03808234]
+[D] BSS2                [0x03808234 - 0x0380BAA8]
 
 In progress:
 - Models [0x02018B68 - 0x02019C18] by Overblade
-- ARM7
