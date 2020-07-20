@@ -2,7 +2,7 @@
 #define NSMB_SOUND_INCLUDED
 
 #include "nitro_if.h"
-#include "Vector.h"
+#include "Vectors.h"
 
 /*
 	REGION 1 (Sound):

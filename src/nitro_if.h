@@ -2,7 +2,6 @@
 #define NITRO_IF_H
 
 typedef void* NITRO_TYPE_REPLACEMENT;
-typedef void* NSMB_TYPE_REPLACEMENT;
 
 #ifdef NITRO_NO_SDK
 
@@ -61,14 +60,5 @@ typedef void* NSMB_TYPE_REPLACEMENT;
 	#include "nitro.h"
 	#include "nnsys.h"
 #endif
-
-// nsmb prototypes
-
-class EnemyActor;
-class Actor;
-
-#define USED	__attribute__((used))
-#define NIN		__attribute__((noinline))
-#define FIN		__attribute__((always_inline)) inline
 
 #endif	// NITRO_IF_H
