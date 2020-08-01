@@ -570,29 +570,71 @@ public:
 
 
 
-class Camera : public Class2123d10
+
+class WorldCamera : public Class2123d10
 {
 public:
 
 	Function unk108;
 	Vec3 unk110;
 
-	//C2: 020ce658
+	//C3:020ce658
 	Camera();
 
 	//020ce540
-	virtual s32 onCreate();
+	virtual s32 onCreate() override;
 
 	//020ce42c
-	virtual s32 onUpdate();
+	virtual s32 onUpdate() override;
 
 	//020ce46c
-	virtual s32 onRender();
+	virtual s32 onRender() override;
 
 
 
 };
 
+
+
+class Class21bf91c : public Class20c6eb4
+{
+public:
+
+	Vec3 unkcc;//Target
+	Vec3 unkdc;//Position
+	Vec3 unkec;//Up
+	S16Vec3 unkfc;
+
+	//D0:021b8c2c
+	//D1:021b8bd4
+	virtual ~Class21bf91c();
+
+};
+
+
+
+class TitleScreenCamera : public Class21bf91c
+{
+public:
+
+	//C3:021b8b54
+	TitleScreenCamera();
+
+	//D0:021b8718
+	//D1:021b86b4
+	virtual ~TitleScreenCamera();
+
+	//021b8948
+	virtual s32 onCreate() override;
+
+	//021b8830
+	virtual s32 onUpdate() override;
+
+	//021b8874
+	virtual s32 onRender() override;
+
+
+};
 
 
 
