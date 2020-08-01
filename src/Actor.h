@@ -535,7 +535,7 @@ public:
 
 
 
-class Class20c6eb4 : public Object
+class Camera : public Object
 {
 public:
 
@@ -547,7 +547,7 @@ public:
 
 	//D0:020a3a88
 	//D1:020a3a5c
-	virtual ~Class20c6eb4();
+	virtual ~Camera();
 
 
 };
@@ -571,7 +571,7 @@ public:
 
 
 
-class WorldCamera : public Class2123d10
+class StageCamera : public Class2123d10
 {
 public:
 
@@ -579,7 +579,7 @@ public:
 	Vec3 unk110;
 
 	//C3:020ce658
-	Camera();
+	StageCamera();
 
 	//020ce540
 	virtual s32 onCreate() override;
@@ -635,6 +635,49 @@ public:
 
 
 };
+
+
+
+class Class21a5300 : public Camera
+{
+public:
+
+	Vec3 unkcc;
+	Vec3 unkdc;
+	Vec3 unkec;
+	S16Vec3 unkfc;
+
+	//D0:0218cd58
+	//D1:0218cd00
+	virtual ~Class21a5300();
+
+};
+
+
+
+class WorldCamera : public Class21a5300
+{
+public:
+
+	//C3:0218cc80
+	WorldCamera();
+
+	//D0:0218c628
+	//D1:0218c5c4
+	virtual ~WorldCamera();
+
+	//0218ca00
+	virtual s32 onCreate() override;
+
+	//0218c73c
+	virtual s32 onUpdate() override;
+
+	//0218c92c
+	virtual s32 onRender() override;
+
+
+};
+
 
 
 
