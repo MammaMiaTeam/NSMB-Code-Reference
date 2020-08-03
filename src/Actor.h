@@ -575,8 +575,14 @@ class StageCamera : public Class2123d10
 {
 public:
 
-	Function unk108;
+	Function unk108;//State function
 	Vec3 unk110;
+	u32 unk120;//Current state index
+	u32 unk124;//Execute pre-state bool
+	u32 unk128;
+	u32 unk12c;
+	u32 unk130;
+	u32 unk134;//Unused
 
 	//C3:020ce658
 	StageCamera();
@@ -595,7 +601,7 @@ public:
 };
 
 
-
+//ov9
 class Class21bf91c : public Class20c6eb4
 {
 public:
@@ -605,46 +611,48 @@ public:
 	Vec3 unkec;//Up
 	S16Vec3 unkfc;
 
-	//D0:021b8c2c
-	//D1:021b8bd4
+	//D0:0x020D3E4C
+	//D1:0x020D3DF4
 	virtual ~Class21bf91c();
 
 };
 
 
-
+//ov9
 class TitleScreenCamera : public Class21bf91c
 {
 public:
 
-	//C3:021b8b54
+	//C3:0x020D3D74
 	TitleScreenCamera();
 
-	//D0:021b8718
-	//D1:021b86b4
+	//D0:0x020D3938
+	//D1:0x020D38D4
 	virtual ~TitleScreenCamera();
 
-	//021b8948
+	//0x020D3B68
 	virtual s32 onCreate() override;
 
-	//021b8830
+	//0x020D3A50
 	virtual s32 onUpdate() override;
 
-	//021b8874
+	//0x020D3A94
 	virtual s32 onRender() override;
 
+	//0x020D39A4
+	void setOrtho(fx32 r, fx32 t, fx32 b, fx32 l);
 
 };
 
 
-
+//ov8
 class Class21a5300 : public Camera
 {
 public:
 
-	Vec3 unkcc;
-	Vec3 unkdc;
-	Vec3 unkec;
+	Vec3 unkcc;//Target
+	Vec3 unkdc;//Position
+	Vec3 unkec;//Up
 	S16Vec3 unkfc;
 
 	//D0:0218cd58
@@ -658,6 +666,13 @@ public:
 class WorldCamera : public Class21a5300
 {
 public:
+
+	Function unk108;
+	u32 unk110;
+	u32 unk114;
+	u32 unk118;
+	u32 unk11c;
+
 
 	//C3:0218cc80
 	WorldCamera();
@@ -678,6 +693,92 @@ public:
 
 };
 
+
+
+
+class WorldMapCamera : public Class21a5300
+{
+public:
+
+	Function unk108;//State function
+	u32 unk110;//State
+	u32 unk114;//Setup state bool
+	Vec3 unk118;
+	Vec3 unk128;//Light Position
+	Vec3 unk138;//Physical camera position
+	u32 unk148;//Zoom state (0 = in, 1 = out)
+	fx32 unk14c;//FovY (in degrees / 2)
+	fx32 unk150;//Left camera view x clamp
+	fx32 unk154;//Right camera view x clamp
+	u32 unk158;
+	u32 unk15c;
+	u32 unk160;
+	u32 unk164;
+
+	static fx32 fovySineTable[450];//I don't wanna say anything to this.
+
+	//021a48cc
+	static void initStates();
+
+
+	//C3:02191958
+	WorldMapCamera();
+
+	//D0:02190f74
+	//D1:02190f04
+	virtual ~WorldMapCamera();
+
+	//0219168c
+	virtual s32 onCreate() override;
+
+	//02191244
+	virtual s32 onUpdate() override;
+
+	//021915b8
+	virtual s32 onRender() override;
+
+	//02191060
+	void setState(u32 state);
+
+	//02190fec
+	void runState();
+
+};
+
+
+
+
+class EndingCamera : public Class21a5300
+{
+public:
+
+	Function unk108;
+	Vec3 unk110;
+	u32 unk120;
+	u32 unk124;
+	u32 unk128;
+	u32 unk12c;
+	u32 unk130;
+	u32 unk134;
+
+	//C3:0219e068
+	EndingCamera();
+
+	//D0:0219db2c
+	//D1:0219dac4
+	virtual ~EndingCamera();
+
+	//0219deb8
+	virtual s32 onCreate() override;
+
+	//0219ddc8
+	virtual s32 onUpdate() override;
+
+	//0219dde4
+	virtual s32 onRender() override;
+
+
+};
 
 
 
