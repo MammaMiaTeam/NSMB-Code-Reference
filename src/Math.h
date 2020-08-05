@@ -21,8 +21,10 @@ namespace Math {
 	//020435a8
 
 	//lerp:02043604
+	void lerp(s16& start, s16 end, s16 ratio, s16 maxStep);
 
 	//02043674
+	s16 lerp(s16& start, s16 end, s16 ratio, s16 maxStep, s16 minStep);
 
 	//02043750
 	bool inRange(s32 x, s32 a, s32 b);
@@ -39,10 +41,44 @@ namespace Math {
 	//02043b6c
 	fx16 atan2(fx32 y, fx32 x);
 
-	//02043d10 (global counter)
+	//0208b668
+	u32 frameCounter;
+
+	//0208b66c
+	u32 unusedCounter;
+
+	//02043d10
+	void resetFrameCounters();
 
 	//02043d30
 	fx16 angle(const Vec3& a, const Vec3& b);//X and Z
+
+	//2D:02043d5c
+	bool lerp(Vec2& start, const Vec2& end, fx32 step);
+
+	//3D:02043e30
+	bool lerp(Vec3& start, const Vec3& end, fx32 step);
+
+	//02043f10
+	void lerp(Vec2& start, const Vec2& end, fx32 scale, fx32 maxStep);
+
+	//02043fe0
+	void lerp(Vec2& start, const Vec2& end, fx32 scale, fx32 maxStep, fx32 minStep);
+
+	//02044120
+	void lerp(Vec3& start, const Vec3& end, fx32 scale, fx32 maxStep, fx32 minStep);
+
+	//02044280 (sub?)
+	//void subtract();
+
+	//020442b0
+	u32 nextRandom(u32& value);
+
+	//020442dc
+	u32 generateSeed();
+
+
+	//02044308 wtf
 
 
 }
