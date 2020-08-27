@@ -15,7 +15,7 @@ ARM9 [0x02000800 - 0x02080224]:
 Standard section:
 [D] CRT0                [0x02000800 - 0x02000B44]
 [U]                     [0x02000B44 - 0x02007620]
-[K] HUD 1               [0x02007620 - 0x02008588]
+[R] Fader               [0x02007620 - 0x02008588]
 [K] File                [0x02008588 - 0x0200A3D0]
 [K] Input               [0x0200A3D0 - 0x0200AB24]
 [K] OAM                 [0x0200B358 - 0x0200DEE0]
@@ -24,7 +24,7 @@ Standard section:
 [A] Sound frontend      [0x02011988 - 0x02012744] TheGameratorT
 [U]                     [0x02012744 - 0x0201289C]
 [K] Savedata            [0x0201289C - 0x0201311C]
-[K] HUD 2               [0x02013B98 - 0x020141B8]
+[R] Fade Masks          [0x02013B98 - 0x020141B8]
 [K] Textbox             [0x020141B8 - 0x02014A30]
 [A] Font                [0x02014A30 - 0x02017274] Overblade
 [U]                     [0x02017274 - 0x02018B68]
