@@ -358,8 +358,25 @@ class Scene : public Object
 {
 public:
 
-	u32 unk5c;
-	u32 unk60;
+	constexpr u16 noScene = 0x181;
+
+	u32 wifiIconOBJIndex;
+	u32 wifiIconOBJPalette;
+
+	//0203bd28
+	static bool isSceneActive;
+
+	//0203bd2c
+	static u16 previousSceneID;
+
+	//0203bd30
+	static u16 nextSceneID;
+
+	//0203bd34
+	static u16 currentSceneID;
+
+	//02088f38
+	static u32 nextSceneSettings;
 
 	//02013b2c
 	Scene();
@@ -374,26 +391,37 @@ public:
 	virtual bool preCreate() override;
 
 	//02013718
-	virtual void postCreate(ReturnState state);
+	virtual void postCreate(ReturnState state) override;
 
 	//020136e8
-	virtual bool preDestroy();
+	virtual bool preDestroy() override;
 
 	//020136c8
-	virtual void postDestroy(ReturnState state);
+	virtual void postDestroy(ReturnState state) override;
 
 	//02013500
-	virtual bool preUpdate();
+	virtual bool preUpdate() override;
 
 	//020134f4
-	virtual void postUpdate(ReturnState state);
+	virtual void postUpdate(ReturnState state) override;
 
 	//020134c4
-	virtual bool preRender();
+	virtual bool preRender() override;
 
 	//020134b8
-	virtual void postRender(ReturnState state);
+	virtual void postRender(ReturnState state) override;
 
+	//020133a4
+	static void prepareFirstScene();
+
+	//020132a0
+	static u16 tryChangeScene();
+
+	//020131fc
+	static void switchScene(u16 sceneID, u32 settings);
+
+	//020131d8
+	static void switchToFileCorruptedScene(u32 settings);
 
 };
 
@@ -566,6 +594,9 @@ public:
 	//02026634
 	static u32 modelIDs[10];
 
+	//0203bd88
+	static FadeMask::Shape characterFadeMaskIDs[2];
+
 	//02014170
 	FadeMask();
 
@@ -587,6 +618,9 @@ public:
 
 	//02013ba8
 	bool update(Shape shape, VecFx32* scale, GXRgb diffuse, s32 alpha, Mode mode);
+
+	//02013b98
+	static u8 getCharacterFadeMaskID(u8 character);
 
 };
 
@@ -1014,6 +1048,9 @@ namespace Game {
 
 	//02088f48
 	Fader fader;
+
+	//02085b14
+	Fader* activeFader;
 
 	//020852a8
 	u32 currentExecutingProcessList;
