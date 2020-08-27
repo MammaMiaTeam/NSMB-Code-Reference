@@ -243,7 +243,7 @@ public:
 	Base();
 
 	//0204d23c (D2, D1 is pure??)
-	//~Base();
+	~Base();
 
 	//0204cba0
 	ReturnState processCreate();
@@ -328,6 +328,7 @@ public:
 	//0204d174
 	//0204d0e0
 };
+
 
 
 
@@ -534,6 +535,184 @@ public:
 
 
 
+class FadeMask
+{
+public:
+
+	Model models[10];
+
+	enum class Shape : u8 {
+		Circle = 0,
+		FadeCircle,
+		Bowser,
+		Mario,
+		Luigi,
+		Wario,
+		Yoshi,
+		Star,
+		SlideDown,
+		SlideUp
+	};
+
+	enum class Mode : u8 {
+		??? = 0,
+		Center,
+		Invalid,
+		???,
+		???,
+		???
+	};
+
+	//02026634
+	static u32 modelIDs[10];
+
+	//02014170
+	FadeMask();
+
+	//D0:02014100
+	//D1:0201413c
+	virtual ~FadeMask();
+
+	//020140a0
+	bool loadModels();
+
+	//02013c00
+	void updateTransition(Shape shape, VecFx32* scale, GXRgb diffuse, s32 alpha, Mode mode);
+
+	//02013bdc
+	static bool loadMaskModelFile();
+
+	//02013bd0
+	bool loadMaskModels();
+
+	//02013ba8
+	bool update(Shape shape, VecFx32* scale, GXRgb diffuse, s32 alpha, Mode mode);
+
+};
+
+
+
+
+class Fader
+{
+public:
+
+	enum class FadingType : u8 {
+		FadeOnly = 0,
+		StaticMask,
+		FadeMask
+	};
+
+	enum class StaticMask : u8 {
+		Rectangle,
+		Rhombus,
+		Circle
+	};
+
+	//02085c38
+	static u8 staticMask[0xC0];
+
+	//02039f80
+	static fx32 staticCircleBounds[0xC0];//Used to generate the static circle mask
+
+	//02085a28
+	static u32 activeFadeMasks;//Bit0&1
+
+	//02085c28
+	static u32 fadeFrames;//Custom fade frames for scenes taking other than 0x20
+
+	//02085c24
+	static u32 alphaBlendingPlane1;
+
+	//02085c34
+	static u32 alphaBlendingPlane2;
+
+	//02085c30
+	static u32 alphaBlendingEVA;
+
+	//02085c2c
+	static u32 alphaBlendingEVB;
+
+	FadeMask mask;
+	s32 unk5a4;//Target blend brightness
+	FadeMask::Mode unk5a8;//Fading mode
+	fx32 unk5ac[2];//Blend brightness factor 0-1
+	fx32 unk5b4[2];//Blend brightness factor increment
+	u8 unk5bc[2];//Flag targets:1=fade mainscreen;2=fade subscreen
+	u8 unk5be[2];//Ugh fade flags:
+				/*
+					0x01: Fading in
+					0x02: Started fade-in
+					0x04: Initiated fade-in
+					0x08: Fading out
+					0x10: Started fade-out
+					0x20: Initiated fade-out
+					0x40: Faded out (scale reached 0x1000)
+				*/
+	u8 unk5c0[2];//Fading mask transition shape
+	FadingType unk5c2;//Fading type
+	u8 unk5c3;//Screen enable delay
+	u8 unk5c4;//Unknown
+	bool unk5c5;//Fading stopped
+
+	//02008558
+	Fader();
+
+	//02003090
+	~Fader();
+
+	//020083cc
+	void setupSceneFading(FadingType type, bool fadeBright, bool staticBlend);
+
+	//02007f70
+	void fade();
+
+	//02007e34
+	bool startFadeIn(u32 steps, u8 target);
+
+	//02007df0
+	bool tryFadeOut();//True if faded out or no fading was pending
+
+	//02007cf8
+	bool startFadeOut(u32 steps, u8 target);
+
+	//02007cb0
+	bool fadedIn();
+
+	//02007c68
+	bool fadedOut();
+
+	//02007c44
+	void enableMainScreenFading();
+
+	//02007c20
+	void disableMainScreenFading();
+
+	//02007bfc
+	void enableSubScreenFading();
+
+	//02007bd8
+	void disableSubScreenFading();
+
+	//02007bb4
+	void prepareFadeIn();
+
+	//02007b90
+	void prepareFadeOut();
+
+	//02007af8
+	static void hBlankIrqHandler();//Only used by non-rectangular masks
+
+	//02007970
+	void setupStaticMask(u8 flags, u8 target);
+
+	//020076ac
+	void updateStaticMask(u8 target);
+
+};
+
+
+
 
 class Camera : public Object
 {
@@ -715,6 +894,13 @@ public:
 	u32 unk160;
 	u32 unk164;
 
+	//021a65b0
+	static VecFx32 worldLightPositions[8];
+
+	//021a60d4
+	static fx32 worldBoundaries[8][2];
+
+	//021a864c
 	static fx32 fovySineTable[450];//I don't wanna say anything to this.
 
 	//021a48cc
@@ -825,6 +1011,9 @@ struct ProcessManager {
 
 
 namespace Game {
+
+	//02088f48
+	Fader fader;
 
 	//020852a8
 	u32 currentExecutingProcessList;
