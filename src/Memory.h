@@ -83,7 +83,7 @@ public:
 										//0x0800: If set and Memory::onDeallocate is non-null, the function pointed to by it is called.
 										//0x2000: If set, OS_Panic is called if a mutex is locked in non-system modes
 										//0x4000: If set, OS_Panic is called on fatal exceptions (ResizeToFit / Allocate)
-										//0x8000: Not a real flag. It's never set and only used in Heap::GetFlags to indicate a flags change when 0.
+										//0x8000: Not a real flag. It's never set and only used in Heap::SetFlags to indicate a flags change when 0.
 
 	Heap(void* start, u32 size, Heap* parent);
 	virtual ~Heap();
@@ -125,7 +125,7 @@ public:
 	u16 SetGroupID(u16 id);													//Calls VSetGroupID
 	u32 Sizeof(void* ptr);													//Calls VSizeof
 	void Test();															//Calls VTest. Called by the debug screen handler in stage 6, requires special key combinations to trigger on different heaps. Probably to check if heaps are intact, since if the objects are corrupted, the call fails and the game may finally crash.
-	u32 GetFlags(u32 newFlags);												//Returns the current heap flags and sets flags (if newFlags & 0x8000 == 0) to newFlags
+	u32 SetFlags(u32 newFlags);												//Returns the current heap flags and sets flags (if newFlags & 0x8000 == 0) to newFlags
 	void UnlockMutex();														//Calls VUnlockMutex
 
 	static Heap* SetCurrent(Heap* currentHeap);								//Sets Memory::currentHeapPtr to currentHeap and returns a pointer to the previous heap
