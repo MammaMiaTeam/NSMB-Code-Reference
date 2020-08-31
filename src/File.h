@@ -359,7 +359,7 @@ namespace FS {
 			void* loadData(u32 size, CacheEntry* cache, u32 entries);
 
 			//02009dec
-			bool setup3DFile(void* file, bool ? ? ? );
+			bool setup3DFile(void* file, bool unloadTextures);
 
 			//02009e7c
 			void* loadBoss3DFile(u32 extFileID, CacheEntry* cache, u32 entries, bool compressed);
