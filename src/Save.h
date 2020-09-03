@@ -36,13 +36,6 @@ struct MinigameSave {
 
 struct LevelFlags {
 
-	enum class ToadHouseType : u8 {
-		Item = 0,
-		OneUp,
-		Mega,
-		Trunk
-	};
-
 	enum class LevelFlags : u8 {
 		StarCoin1 = 0x1,
 		StarCoin2 = 0x2,
@@ -62,13 +55,52 @@ struct MainSave {
 		BowserJRTower = 0x4,					//Triggered in tower
 		BowserJRFortress = 0x8,					//Triggered in fortress
 		BowserJRTower2 = 0x10,					//Set after world finish
-		Reserved = 0x20,						//Set after world finish
+		MarioExit = 0x20,						//Set after world finish
 		Unlocked = 0x40,
 		WorldFinished = 0x80,
 		TowerFinished = 0x100,					//Triggers the save screen
 		FortressFinished = 0x200,				//Triggers the save screen
 		Tower2Finished = 0x400,					//Triggers the save screen
 		ToadHouse = 0x1000
+	};
+
+	enum class LevelFlags : u8 {
+		StarCoin1 = 0x1,
+		StarCoin2 = 0x2,
+		StarCoin3 = 0x4,
+		StandardExit = 0x10,					//Set when the level was exited normally
+		ToadHouseDone = 0x20,					//Set when the level was a toad house
+		LevelDone = 0x40,						//Set when the level was completed in any way and returned to the current world
+		Completed = 0x80,						//Set when the level was finished
+	};
+
+	//Level flags used by the arrow sign node
+	enum class StartFlags : u8 {
+		Item = 0,
+		OneUp,
+		Mega,
+		Trunk
+	};
+
+	enum class PathFlags : u8 {
+		Start = 0x10,							//Set for start paths
+		Unlocking = 0x20,						//Set during unlocking
+		Unlocked = 0x40,						//Set when a new level is unlocked
+		Activated = 0x80						//Pipes only get this flag set (since they aren't levels)
+	};
+
+	struct WorldmapActors {
+
+		enum class Type : u8 {
+			HammerBro = 0,
+			FlyingBlock
+		};
+
+		u8 node0;
+		Type type0;
+		u8 node1;
+		Type type1;
+
 	};
 
 	char magic[4];								//'7000' in ASCII
@@ -99,7 +131,9 @@ struct MainSave {
 	u8 unk5e;
 	u8 unk5f;
 	WorldFlags worldFlags[8];
-	u8 levelFlags[25 * 8];
+	LevelFlags levelFlags[25 * 8];
+	PathFlags pathFlags[30 * 8];
+	WorldmapActors wmActors[8];
 
 };
 
