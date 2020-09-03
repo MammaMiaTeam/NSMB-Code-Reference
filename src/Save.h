@@ -3,15 +3,6 @@
 
 
 
-union SaveHeader {
-
-	char ascii[4];
-	u32 value;
-
-};
-
-
-
 struct MinigameHighscore {
 
 	u32 record0 : 20;
@@ -29,19 +20,6 @@ struct MinigameSave {
 	char magic[4];								//'9000' in ASCII
 	u32 flags;									//0x80000000 : Started save file
 	MinigameHighscore minigameHighscores[18];
-
-};
-
-
-
-struct LevelFlags {
-
-	enum class LevelFlags : u8 {
-		StarCoin1 = 0x1,
-		StarCoin2 = 0x2,
-		StarCoin3 = 0x4,
-
-	};
 
 };
 
