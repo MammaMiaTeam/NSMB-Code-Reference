@@ -81,8 +81,23 @@ struct MainSave {
 
 	};
 
+	enum class CompletionFlags : u32{
+		TriggerAllStarCoinsSpent = 0x10,
+		StoryCompleted = 0x20,
+		AllStarCoinsSpent = 0x80,
+		WorldPath12 = 0x800000,
+		WorldPath23 = 0x1000000,
+		WorldPath24 = 0x2000000,
+		WorldPath35 = 0x4000000,
+		WorldPath45 = 0x8000000,
+		WorldPath56 = 0x10000000,
+		WorldPath57 = 0x20000000,
+		WorldPath68 = 0x40000000,
+		WorldPath78 = 0x80000000,
+	};
+
 	char magic[4];								//'7000' in ASCII
-	u32 unk04;
+	u32 flags;									//Only 0x1 for saved
 	u32 unk08;
 	u32 lives;
 	u32 coins;
