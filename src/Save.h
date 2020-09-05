@@ -69,6 +69,7 @@ struct MainSave {
 
 	struct WorldmapActors {
 
+		//Might not render correctly, but the correct actor is always spawned in the level
 		enum class Type : u8 {
 			HammerBro = 0,
 			FlyingBlock
@@ -81,10 +82,19 @@ struct MainSave {
 
 	};
 
-	enum class CompletionFlags : u32{
+	enum class CompletionFlags : u32 {
+		StandardLevelsCompleted = 0x1,			//Excludes e.g. cannons
+		AllPathsUnlocked = 0x2,
+		AllStarSignsRemoved = 0x4,
+		AllStarCoinsCollected = 0x8,
 		TriggerAllStarCoinsSpent = 0x10,
 		StoryCompleted = 0x20,
 		AllStarCoinsSpent = 0x80,
+		AllLevelsCompleted = 0x100,
+		UnlockedBG1 = 0x80000,
+		UnlockedBG2 = 0x100000,
+		UnlockedBG3 = 0x200000,
+		UnlockedBG4 = 0x400000,
 		WorldPath12 = 0x800000,
 		WorldPath23 = 0x1000000,
 		WorldPath24 = 0x2000000,
@@ -98,31 +108,23 @@ struct MainSave {
 
 	char magic[4];								//'7000' in ASCII
 	u32 flags;									//Only 0x1 for saved
-	u32 unk08;
+	CompletionFlags completion;
 	u32 lives;
 	u32 coins;
 	u32 score;
 	u32 starCoinsCollected;
 	u32 starCoinsSpent;
 	u32 currentWorld;
-	u32 unk24;
+	u32 savedWorld;
 	u32 currentWorldmapNode;
 	u32 savedWorldmapNode;
 	u32 powerup;
 	u32 tempScore;								//Score mod 50000
 	u32 bottomScreenTheme;
-	u32 unk3c;
-	u32 unk40;
-	u32 unk44;
-	u32 unk48;
-	u32 unk4c;
-	u32 unk50;
-	u32 unk54;
-	u32 unk58;
+	bool miniMushroomUnlocked;					//True if a mini mushroom was used at least once. Enables flying ?-blocks to drop it.
+	u32 actorRespawnWorld;						//World in which the worldmap actors get respawned (for each 50000 score points)
+	u32 seenLevelImages[6];						//Each bit represents an image seen on the ending screen. If set and the level was beaten, it will not appear as 'new'.
 	u8 inventoryPowerup;
-	u8 unk5d;
-	u8 unk5e;
-	u8 unk5f;
 	WorldFlags worldFlags[8];
 	LevelFlags levelFlags[25 * 8];
 	PathFlags pathFlags[30 * 8];
