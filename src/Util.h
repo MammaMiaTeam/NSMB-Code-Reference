@@ -8,12 +8,16 @@
 
 
 // Allows all enum classes to be used as bitfields
-template<typename E>
-E operator|(E lhs, E rhs) {
+template<typename E> static inline E operator|(E lhs, E rhs) {
 	return static_cast<E>(static_cast<int>(lhs) | static_cast<int>(rhs));
 }
-template<typename E>
-E operator&(E lhs, E rhs) {
+template<typename E> static inline E operator|=(E lhs, E rhs) {
+	return static_cast<E>(static_cast<int>(lhs) | static_cast<int>(rhs));
+}
+template<typename E> static inline E operator&(E lhs, E rhs) {
+	return static_cast<E>(static_cast<int>(lhs) & static_cast<int>(rhs));
+}
+template<typename E> static inline E operator&=(E lhs, E rhs) {
 	return static_cast<E>(static_cast<int>(lhs) & static_cast<int>(rhs));
 }
 
