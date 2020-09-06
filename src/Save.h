@@ -4,13 +4,11 @@
 
 
 struct MinigameHighscore {
-
 	u32 record0 : 20;
 	u32 record1 : 20;
 	u32 record2 : 20;
 	u32 record3 : 20;
 	u32 record4 : 20;
-
 };
 
 
@@ -32,8 +30,8 @@ struct MainSave {
 		BowserJRStart = 0x2,					//Triggered in any level
 		BowserJRTower = 0x4,					//Triggered in tower
 		BowserJRFortress = 0x8,					//Triggered in fortress
-		BowserJRTower2 = 0x10,					//Set after world finish
-		MarioExit = 0x20,						//Set after world finish
+		BowserJRTower2 = 0x10,					//Triggered in tower 2
+		MarioExit = 0x20,						//Triggered in final castle
 		Unlocked = 0x40,
 		WorldFinished = 0x80,
 		TowerFinished = 0x100,					//Triggers the save screen
@@ -176,6 +174,7 @@ namespace Save {
 	//02088f18
 	OptionSave optionSave;
 
+
 	//0204c7f4
 	ReturnCode setupBackup(CARDBackupType type, const char* signature);
 
@@ -185,6 +184,13 @@ namespace Save {
 	//0204c568
 	ReturnCode writeBackup(void* data, u32 size, u32 slot);//Returns true on failure. Slot determines the save slot. Data is written 0xA bytes after the slot start.
 
+
+	//02012788
+	void writeMGScore(u32 minigameID, u32 rank, u32 score);
+
+	//02012824
+	u32 readMGScore(u32 minigameID, u32 rank);
+
 	//0201289c
 	bool writeMGSave(SaveHeader* header);
 
@@ -192,28 +198,87 @@ namespace Save {
 	ReturnCode readMGSave(SaveHeader* header);
 
 	//020128d8
-	void newMGSave(SaveHeader* header);
+	void clearMGSave(SaveHeader* header);
 
 	//020128fc
-	bool writeNewMGSave();
+	bool createMGSave();
 
 	//02012934
+	u16 getWorldmapSceneID();
 
 	//0201293c
+	void disableWorldmapActor(MainSave::WorldmapActors::Type type);
 
 	//020129b0
+	bool animationPlayed();
 
-	//02012f64
-	ReturnCode readMainSave(u32 slot, MainSave* save);
+	//02012a20
+	u32 getStarCoinAmount();
+
+	//02012a3c
+	bool isStarCoinCollected(u32 starCoinID);
+
+	//02012a58
+	u8 getCurrentLevelStarCoins();
+
+	//02012a78
+	u8 getLevelStarCoins(u32 world, u8 levelID);
+
+	//02012a98
+	void setLevelStarCoins(u32 world, u8 levelID, u8 starCoins);
+
+	//02012abc
+
+	//02012d6c
+	bool onGameOver(u32 slot, MainSave* save);//Does nothing
+
+	//02012d70
+	bool onStoryFinished(u32 slot, MainSave* save);
+
+	//02012d98
+	bool writeSave(u32 slot, MainSave* save);
+
+	//02012da4
+	void loadPlayerData();
+
+	//02012e08
+	bool loadMainSave(u32 slot, u32 liveCount, MainSave* save);
+
+	//02012ee0
+	bool createMainSave(u32 slot, MainSave* save);
 
 	//02012f24
 	bool writeMainSave(u32 slot, MainSave* save);
 
-	//02013050
-	ReturnCode readOptionSave(OptionSave* save);
+	//02012f64
+	ReturnCode readMainSave(u32 slot, MainSave* save);
+
+	//02012f9c
+	void clearMainSave(MainSave* save);
+
+	//02012ff0
+	bool createOptionSave(OptionSave* save);
 
 	//0201301c
 	bool writeOptionSave(OptionSave* save);
+
+	//02013050
+	ReturnCode readOptionSave(OptionSave* save);
+
+	//02013064
+	void clearOptionSave(OptionsSave* save);
+
+	//02013090
+	bool createOptionSave();
+
+	//020130b4
+	bool generateOptionSave();
+
+	//020130b4
+	bool resetSaves();
+
+	//02013100
+	void clearLoadedSaves();
 
 }
 
