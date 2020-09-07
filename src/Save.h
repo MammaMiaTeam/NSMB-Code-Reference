@@ -192,13 +192,13 @@ namespace Save {
 	u32 readMGScore(u32 minigameID, u32 rank);
 
 	//0201289c
-	bool writeMGSave(SaveHeader* header);
+	bool writeMGSave(MinigameSave* header);
 
 	//020128c4
-	ReturnCode readMGSave(SaveHeader* header);
+	ReturnCode readMGSave(MinigameSave* header);
 
 	//020128d8
-	void clearMGSave(SaveHeader* header);
+	void clearMGSave(MinigameSave* header);
 
 	//020128fc
 	bool createMGSave();
@@ -266,7 +266,7 @@ namespace Save {
 	ReturnCode readOptionSave(OptionSave* save);
 
 	//02013064
-	void clearOptionSave(OptionsSave* save);
+	void clearOptionSave(OptionSave* save);
 
 	//02013090
 	bool createOptionSave();
