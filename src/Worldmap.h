@@ -92,32 +92,34 @@ public:
 		Save::CompletionFlags flags;
 	};
 
-	//021ade5c
-	static LOL lol;
-
-	class LOL {
+	class IconAnimator
+	{
 	public:
 
 		enum class Mode : u32 {
 			WorldExit,
-			WorldEnter,
 			SameWorld
+			WorldEnter,
 		};
 
-		u32 unk00;
+		fx32 unk00;//Current scale
 		u32 unk04;//Amplitude
-		u32 unk08;//Angle << 4
-		u32 unk0c;
-		u32 unk10;
+		u32 unk08;//Angle
+		u32 unk0c;//Countdown
+		u32 unk10;//Enter stop delay (at 0x15 the oscillation stops if scale == 1.0)
 		Mode unk14;//Mode
 
 		//02190e38
-		LOL();
+		IconAnimator(Mode mode);
+
+		//02190c6c
+		void update();
 
 
 	};
 
-
+	//021ade5c
+	static IconAnimator worldmapIconAnimator;
 
 	//021a67f8
 	WorldPath worldPaths[9];
