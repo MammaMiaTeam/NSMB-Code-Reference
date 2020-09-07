@@ -206,7 +206,7 @@ namespace Save {
 	u16 getWorldmapSceneID();
 
 	//0201293c
-	void disableWorldmapActor(MainSave::WorldmapActors::Type type);
+	void disableCurrentWorldmapActor(MainSave::WorldmapActor::Type type);
 
 	//020129b0
 	bool animationPlayed();
