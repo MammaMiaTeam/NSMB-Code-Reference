@@ -266,7 +266,7 @@ namespace Save {
 	ReturnCode readOptionSave(OptionSave* save);
 
 	//02013064
-	void clearOptionSave(OptionsSave* save);
+	void clearOptionSave(OptionSave* save);
 
 	//02013090
 	bool createOptionSave();
