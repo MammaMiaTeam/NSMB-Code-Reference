@@ -165,13 +165,13 @@ namespace Save {
 	};
 
 	//02088bdc
-	MainSave mainSave;
+	extern MainSave mainSave;
 
 	//02088e24
-	MinigameSave minigameSave;
+	extern MinigameSave minigameSave;
 
 	//02088f18
-	OptionSave optionSave;
+	extern OptionSave optionSave;
 
 
 	//0204c7f4
