@@ -37,16 +37,49 @@ class WorldmapScene : public Scene
 {
 public:
 
+	enum class PauseMenuState : u8 {
+		Opening = 0,
+		Open,
+		OnClosing,
+		Closing
+	};
+
+	enum class SaveDialogState : u8 {
+		Opening = 0,
+		Open,
+		Saving,
+		Saved,
+		Closing
+	};
+
+	enum class UpdateState : u32 {
+		WorldEnter = 0,
+		Worldmap,
+		PauseMenu,
+		SaveDialog,
+		WorldTransition
+	};
+
+	enum class UpdateSubstate : u8 {
+
+	};
+
 	Particle::Handler unk64;
 	Vec2 unk858;
-	u32 unk864;
+	u32 unk864;//Pending pause menu close
 	u32 unk868;
-	u32 unk86c;
-	u32 unk870;
+	u32 unk86c;//starCoinCounter
+	u32 unk870;//starCoinDecSoundRemaining
 	u32 unk874;
 	u32 unk878;
-	u32 unk87c;
-	u32 unk880;
+	u8 unk87c;//Menu option
+	u8 unk87d;//Max menu option
+	u8 unk87e;//Faded in?
+	SaveDialogState unk87f;//Save Dialog state
+	PauseMenuState unk880;//Pause Menu state
+	u8 unk881;
+	u8 unk882;
+	u8 unk883;
 	u32 unk884;
 
 	struct PathStruct {
@@ -194,6 +227,53 @@ public:
 	//021a53ec
 	s8 nextWorld;//-1 if none pressed, else pressed icon = world
 
+
+	//021ade74
+	static Function updateStates[5];
+
+	//021addb0
+	static UpdateState currentUpdateState;
+
+	//021ade9c
+	static Function updateSubstates[11];
+
+	//020cc2c0
+	static UpdateSubstate currentUpdateSubstate;
+
+	//021add8c
+	static u32 substateFlags;//0x1: Initialized
+
+	//02085a10
+	static bool challengeModeEnabled;
+
+	typedef bool(*ChallengeModeStateFunction)();
+
+	struct ChallengeModeState {
+		ChallengeModeStateFunction function;
+		const char* buttonName;
+	};
+
+	//021a53f4
+	const char challengeModeButtonNameX[2];
+
+	//021a53f8
+	const char challengeModeButtonNameL[2];
+
+	//021a53fc
+	const char challengeModeButtonNameY[2];
+
+	//021a5400
+	const char challengeModeButtonNameR[2];
+
+	//021a27bc
+	ChallengeModeState challengeModeStates[8];
+
+	//021add94
+	u32 currentChallengeModeState;
+
+	//021adda0
+	static fx32 textBoxScale;
+
 	//02190eb8
 	WorldmapScene();
 
@@ -204,10 +284,14 @@ public:
 	//0218f154
 	virtual s32 onDestroy() override;
 
+	//0218e9f4
+	virtual s32 onUpdate() override;
 
-	virtual s32 onUpdate();
-	virtual void postUpdate(ReturnState state);
-	virtual s32 onRender();
+	//0218eaec
+	virtual void postUpdate(ReturnState state) override;
+
+	//0218eb1c
+	virtual s32 onRender() override;
 
 	//0218f150
 	virtual void pendingDestroy() override;
@@ -256,6 +340,48 @@ public:
 
 	//0201ec88
 	//Bitch do I look like I care? NO
+
+	//0218e994
+	void onUpdateWorldEnter();//State 0
+
+	//0218e750
+	void onUpdateWorldmap();//State 1
+
+	//0218e034
+	void onUpdatePauseMenu();//State 2
+
+	//0218dcf0
+	void onUpdateSaveDialog();//State 3
+
+	//0218dbe8
+	void onUpdateWorldTransition();//State 4, does nothing
+
+	//0219029c
+	void updateSubstate();
+
+	//0218ff08
+	static bool updateChallengeModeState(u32* currentState);
+
+	//0218ffd4
+	static void resetChallengeModeState(u32* currentState);
+
+	//0218fef4
+	static void resetChallengeModeState();
+
+	//0218febc
+	static bool isChallengeModeTriggered();
+
+	//0218ffe0
+	static bool isLPressed();
+
+	//02190004
+	static bool isRPressed();
+
+	//02190028
+	static bool isXPressed();
+
+	//0219004c
+	static bool isYPressed();
 
 
 };
