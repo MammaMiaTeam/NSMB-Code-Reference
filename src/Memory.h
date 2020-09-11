@@ -93,7 +93,7 @@ public:
 	virtual bool VTryLockMutex();											//Tries to lock mutex. If successful, it returns true, false otherwise. Always returns 1 if heap requires/uses no mutex mechanism.
 	virtual void VDestroy() = 0;											//Destroys the heap and removes the allocator
 	virtual void* VAllocate(u32 size, int align) = 0;						//Allocates size bytes with an alignment/allocation direction of align
-	virtual bool VDeallocate(void* ptr) = 0;								//Deallocates ptr from the heap.
+	virtual void VDeallocate(void* ptr) = 0;								//Deallocates ptr from the heap.
 	virtual void VDeallocateAll() = 0;										//Deallocates everything from the heap.
 	virtual bool VIntact() = 0;												//Returns 1 if the heap represents a valid object. Not very reliable to check if the heap is broken...
 	virtual void VTest() = 0;												//Does nothing.
@@ -116,7 +116,7 @@ public:
 	void* Allocate(u32 size);												//Calls Allocate with align = 4
 	void Deallocate(void* ptr);												//Calls VDeallocate. Skips null pointers.
 	void Destroy();															//Calls VDestroy
-	int ForcePo2Alignment(int minAlign, u32 po2Align);						//Returns po2Align if it's not smaller than minAlign. If it is, it finds the next greater po2 of minAlign. Sign is retained.
+	static int ForcePo2Alignment(int minAlign, u32 po2Align);				//Returns po2Align if it's not smaller than minAlign. If it is, it finds the next greater po2 of minAlign. Sign is retained.
 	void LockMutex();														//Calls VLockMutex. If we're in a non-system mode (e.g. IRQ) and flag 0x2000 is set, OS_Panic is called.
 	u32 MaxAllocatableSize(int align);										//Calls VMaxAllocatableSize
 	u32 MaxAllocationUnitSize();											//Calls VMaxAllocationUnitSize
@@ -142,7 +142,7 @@ public:
 	NNSFndHeapHandle allocator;			//Allocator
 	OSMutex mutex;						//Mutex to ensure atomic heap access
 
-	ExpandedHeap(void* start, u32 size, Heap* root, NNSFndHeapHandle allocator);	//Also inits mutex with OS_InitMutex
+	ExpandedHeap(void* start, u32 size, Heap* parent, NNSFndHeapHandle allocator);	//Also inits mutex with OS_InitMutex
 	virtual ~ExpandedHeap();
 
 	virtual void VLockMutex() override;
@@ -150,7 +150,7 @@ public:
 	virtual bool VTryLockMutex() override;
 	virtual void VDestroy() override;
 	virtual void* VAllocate(u32 size, int align) override;
-	virtual bool VDeallocate(void* ptr) override;							//Returns immediately if ptr == null
+	virtual void VDeallocate(void* ptr) override;							//Returns immediately if ptr == null
 	virtual void VDeallocateAll() override;									//Calls NNS_FndVisitAllocatedForExpHeap with NNSFndHeapVisitor = InvokeDeallocate
 	virtual bool VIntact() override;
 	virtual void VTest() override;
@@ -180,7 +180,7 @@ public:
 	NNSFndHeapHandle allocator;			//Allocator
 	OSMutex mutex;						//Mutex, never used
 
-	FrameHeap(void* start, u32 size, Heap* root, NNSFndHeapHandle allocator);
+	FrameHeap(void* start, u32 size, Heap* parent, NNSFndHeapHandle allocator);
 	virtual ~FrameHeap();
 
 	virtual void VLockMutex();
@@ -188,7 +188,7 @@ public:
 	virtual bool VTryLockMutex();
 	virtual void VDestroy() override;
 	virtual void* VAllocate(u32 size, int align) override;
-	virtual bool VDeallocate(void* ptr) override;							//Calls OS_Panic if ptr is non-null. If not, it has no effect.
+	virtual void VDeallocate(void* ptr) override;							//Calls OS_Panic if ptr is non-null. If not, it has no effect.
 	virtual void VDeallocateAll() override;									//Calls NNS_FndFreeToFrmHeap with mode = 3
 	virtual bool VIntact() override;
 	virtual void VTest() override;
