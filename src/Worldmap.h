@@ -497,4 +497,14 @@ public:
 };
 
 
+//vtable: 021a9040
+class WorldmapActor : public Actor
+{
+public:
+
+	//02199d58
+	WorldmapActor();
+};
+
+
 #endif  // NSMB_WORLDMAP_INCLUDED
