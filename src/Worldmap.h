@@ -60,8 +60,25 @@ public:
 		WorldTransition
 	};
 
-	enum class UpdateSubstate : u8 {
+	enum class SubscreenState : u8 {
+		Main = 0,
+		SwipeMainOut,
+		LoadOptions,
+		SwipeOptionsIn,
+		Open,
+		OkPressed,
+		OkReleased,
+		OkUnfocused,
+		SwipeOptionsOut,
+		LoadWorldmapIcons,
+		SwipeMainIn
+	};
 
+	enum class TextBoxType : u8 {
+		PauseMenu = 0,
+		SaveDialog,
+		SaveDialog??,
+		QuitDialog
 	};
 
 	Particle::Handler unk64;
@@ -234,14 +251,20 @@ public:
 	//021addb0
 	static UpdateState currentUpdateState;
 
-	//021ade9c
-	static Function updateSubstates[11];
-
 	//020cc2c0
-	static UpdateSubstate currentUpdateSubstate;
+	static SubscreenState currentSubscreenState;
+
+	//021ade9c
+	static Function subscreenUpdateStates[11];
 
 	//021add8c
-	static u32 substateFlags;//0x1: Initialized
+	static u32 subscreenUpdateStateFlags;//0x1: Initialized
+
+	//021adef4
+	static Function subscreenRenderStates[11];
+
+	//021addb8
+	static u32 subscreenRenderStateFlags;//0x1: Initialized
 
 	//02085a10
 	static bool challengeModeEnabled;
@@ -274,9 +297,37 @@ public:
 	//021adda0
 	static fx32 textBoxScale;
 
+	//021addb4
+	static void* textFile;
+
+	//021adf4c
+	static TextBox textBox;
+
+	//021add78
+	static u32 currentTextIndex;
+
+	//021add34
+	static TextBoxType textBoxType;
+
+	//021add40
+	static bool isGameCompleted;
+
+	//021a5eac
+	static u32 textIndices[2 * 4];
+
+	//021a65b0
+	static VecFx32 lightDirections[8];
+
+	//021a5ecc
+	static u32 worldmapMusicIDs[10];
+
+
 	//02190eb8
 	WorldmapScene();
 
+	//D0:0218d3a4
+	//D1:0218d36c
+	virtual ~WorldmapScene() override;
 
 	//0218f188
 	virtual s32 onCreate() override;
@@ -357,7 +408,34 @@ public:
 	void onUpdateWorldTransition();//State 4, does nothing
 
 	//0219029c
-	void updateSubstate();
+	void updateSubscreen();
+
+	//02190148
+	void updateWorldmapSubscreen();//State 0
+
+	//021900c8
+	void swipeMenuOut();//State 1 & 5-8
+
+	//021900bc
+	void loadOptionsMenu();//State 2
+
+	//02190088
+	void swipeMenuIn();//State 3 & 10
+
+	//0219007c
+	void updateOptionsMenu();//State 4
+
+	//02190070
+	void loadWorldmapIcons();//State 9
+
+	//02190afc
+	void renderSubscreen();
+
+	//0219040c
+	void renderOptionsMenu();
+
+	//02190418
+	void renderWorldmapSubscreen();
 
 	//0218ff08
 	static bool updateChallengeModeState(u32* currentState);
@@ -383,6 +461,38 @@ public:
 	//0219004c
 	static bool isYPressed();
 
+	//0218d5f0
+	static FontString* setTextBox(u32 stringIndex, TextBox::Type type, void* bmg);
+
+	//0218e6e0
+	static void showPauseMenu();
+
+	//0218dfac
+	static void showSaveDialog();
+
+	//0218dbec
+	static void transitionToNextWorld();
+
+	//0218dc58
+	static u32 getNextWorldID(u32 currentWorld);
+
+	//0218db2c
+	static fx32 getLightDirectionX(u32 world);
+
+	//0218db2c
+	static fx32 getLightDirectionY(u32 world);
+
+	//0218db2c
+	static fx32 getLightDirectionZ(u32 world);
+
+	//0218daec
+	static u32 getWorldmapMusicID(u32 world);
+
+	//0218d504
+	static void fadeWorldmap(u16 sceneID, u32 settings);
+
+	//0218d43c
+	static u16 getWorldmapNodeCount(u32 world);
 
 };
 
