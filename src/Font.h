@@ -1,7 +1,113 @@
-#ifndef NSMB_FONT_INCLUDED
+﻿#ifndef NSMB_FONT_INCLUDED
 #define NSMB_FONT_INCLUDED
 
 #include "nitro_if.h"
+
+
+
+
+class TextBox
+{
+public:
+
+	enum class TextVisibility : u8{
+		Visible = 0,
+		Created,
+		Hidden
+	};
+
+	enum class Type : u8 {
+		Standard = 0,
+		Dialog
+	};
+
+	GXOamAttr tileOAMAttributes[0xC];
+	u32 optionCount;
+	u8 leftSelectArrow[6];//Left select arrow
+	u8 rightSelectArrow[6];//Right select arrow
+	u8 leftDialogArrow[2];//Left dialog arrow
+	u8 rightDialogArrow[2];//Right dialog arrow
+	u8 yOffset;
+	Type type;
+	TextVisibility visibility;
+
+	//020148b4
+	static void loadOAMAttributes(FontTile* tiles, u32 count, GXOamAttr* tileAttributes, u16 tileBase, u8 palette, u8 priority);
+
+	//0201486c
+	static void renderOpaqueBox(s32 x, s32 y, const Vec2& scale);
+
+	//02014824
+	static void renderAButton(s32 x, s32 y);
+
+	//02014820
+	TextBox();
+
+	//0201481c
+	~TextBox();
+
+	//020146e4
+	FontString* loadText(void* bmg, u32* stringIndex, u32 vramOffset);
+
+	//020146d0
+	FontString* loadText(void* bmg, u32* stringIndex);
+
+	//020145f8
+	void renderText(s32 x, s32 y);
+
+	//020144bc
+	void renderArrows(u8 option, s32 x, s32 y);
+
+	//02014220
+	u32 getArrowSelectY(u8 option);
+
+	//02014214
+	u32 getArrowSelectLeft(u8 option);
+
+	//02014208
+	u32 getArrowSelectRight(u8 option);
+
+	//0201424c
+	static u32 getArrowDialogY();
+
+	//02014240
+	u32 getArrowDialogLeft(u8 option);
+
+	//02014234
+	u32 getArrowDialogRight(u8 option);
+
+	//020141b8
+	u32 getOptionCount();
+
+	//02014368
+	void loadLeftDialogOption(void* bmg, u32* stringIndex, u32 vramOffset);
+
+	//02014300
+	void loadRightDialogOption(void* bmg, u32* stringIndex, u32 vramOffset);
+
+	//0201427c
+	FontString* loadDialogOption(void* bmg, u32* stringIndex, u32 vramOffset, GXOamAttr* tileAttributes);
+
+	//020143d0
+	void loadMultiplayerDialogOptions();
+
+	//0201443c
+	void loadSingleplayerDialogOptions();
+
+	//02014268
+	void setStandardBox();
+
+	//02014254
+	void setDialogBox();
+
+	//020144a8
+	void setDefaultBox();
+
+	//020141c0
+	void calculateYOffset(u32 lines);
+
+};
+
 
 
 /*
@@ -321,7 +427,7 @@ public:
 	virtual void parseEscapeSequence(EscapeSequence* sequence) override;								//Parses the given escape sequence to also account for dynamic characters
 
 	u32 getNextLineWidth(FontBase* src, NNSG2dFont* font, u8 margin);									//Returns the width in px from src's string pointer to the next newline / null character (including linked string caches) with the given font and margin
-	u32 getIndexedLineWidth(u16* charPtr, NNSG2dFont* font, u8 margin, u32 line);						//Returns the width in px from charPtr of the line indexed by line (including linked string caches) with the given font and margin. In case lineIndex is out of bounds, -1 is returned.
+	s32 getIndexedLineWidth(u16* charPtr, NNSG2dFont* font, u8 margin, u32 line);						//Returns the width in px from charPtr of the line indexed by line (including linked string caches) with the given font and margin. In case lineIndex is out of bounds, -1 is returned.
 	u32 getLineCount(u16* charPtr);																		//Returns the number of lines from charPtr to the next null character
 	s32 getCharacterWidth(u16 character);																//Returns the char width of character including x advancement
 
@@ -412,7 +518,7 @@ public:
 	void setup(u8* vramTarget, u32 xTiles, u32 yTiles, NNSG2dFont* fontPtr);				//Sets up the object to defaults with the given parameters
 	void setFontTileList(FontTile* tiles, u32 count);										//Sets font tile list pointer and font tile count
 	u32 getLineCount();																		//Returns the line count of the stringCache's string
-	u32 getIndexedLineWidth(u32 index);														//Returns the width of the index'th line of stringCache's string
+	s32 getIndexedLineWidth(u32 index);														//Returns the width of the index'th line of stringCache's string or -1 upon failure
 	bool allocateBuffers();																	//Allocates both buffers, sets buffer properties accordingly and returns true if successful
 	void freeBuffers();																		//Deletes both buffers from heap and sets size to 0
 	void clearBuffers();																	//Clears both buffers with bufferFill's lower half-byte every half-byte ((bufferFill & 0xF) << 4 | bufferFill)
@@ -429,7 +535,7 @@ public:
 	Fonts are rendered differently depending on currentString's shadow:
 		Shadow enabled: All greyscale anti-aliasing information is ignored and every non-zero glyph pixel obtains the palette index value n = currentString->paletteIndex<colorSelector> + shadowIndexOffset - 1
 		Shadow disabled: Greyscale values are added to the palette index, so every non-zero glyph pixel obtains the palette index value n = currentString->paletteIndex<colorSelector> + greyscaleValue - 1
-	This font engine only supports 4bpp fonts. This is a hardcoded limitation in several functions.
+	This font engine only supports 2bpp fonts. This is a hardcoded limitation in several functions.
 	Shadowed strings are rendered three times: Twice at startY = 1 (startX 0 and 1), once with a different color selector at startX and startY = 0.
 */
 class FontRenderer : public FontBase 
@@ -484,8 +590,8 @@ public:
 	virtual void processChar(UTF16Character* c) override;					//Immediately calls renderChar()
 	virtual void parseEscapeSequence(EscapeSequence* sequence) override;	//Parses the given escape sequence and invokes the respective function
 
-	bool setupAndRender(u8* vramTarget, u32 xTiles, u32 yTiles, void* bmg, u32 index);							//Renders string with the main font to vramTarget with xTiles tiles in x direction and yTiles tiles in y direction (and allocates buffers accordingly). The string is fetched from file and if successful, true is returned. Buffers are deallocated upon failure and false is returned in this case.
-	bool setupAndRender(u8* vramTarget, u32 xTiles, u32 yTiles, FontCache* stringCache, NNSG2dFont* fontPtr);	//Renders the string into the next free FontString (and allocates buffers accordingly). The string is fetched from stringCache's cache, copied into FontString's cache and if successful, 1 is returned. Buffers are deallocated upon failure and false is returned in this case.
+	FontString* setupAndRender(u8* vramTarget, u32 xTiles, u32 yTiles, void* bmg, u32* index);							//Renders string with the main font to vramTarget with xTiles tiles in x direction and yTiles tiles in y direction (and allocates buffers accordingly). The string is fetched from file and a pointer to it is returned if successful. Buffers are deallocated upon failure and false is returned in this case.
+	FontString* setupAndRender(u8* vramTarget, u32 xTiles, u32 yTiles, FontCache* stringCache, NNSG2dFont* fontPtr);	//Renders the string into the next free FontString (and allocates buffers accordingly). The string is fetched from stringCache's cache, copied into FontString's cache and a pointer to it is returned if successful. Buffers are deallocated upon failure and false is returned in this case.
 	
 	void loadAndRenderGenericCache(u32 index, void* bmg, u32 stringIndex);	//Loads the string from file and renders it into genericCache[index]
 	void renderGenericCache(u32 index, FontCache* cache);					//Renders cache's string and copies it into genericCache[index]'s cache
@@ -559,12 +665,12 @@ public:
 	bool parseBMGHeader();								//Copy and check BMG header, returns true if successful
 	bool parseBMGInfo();								//Copy and check BMG INF chunk header (info), returns true if successful
 	bool parseBMGData();								//Copy and check BMG DAT chunk header (data), returns true if successful
-	void reset(void* bmg, u32 stringIndex);				//Resets all fields to 0 and assigns file and stringIndex to their respective fields.
+	void reset(void* bmg, u32* stringIndex);			//Resets all fields to 0 and assigns file and *stringIndex to their respective fields.
 	bool parseBMGString();								//Parses the string from the BMG file with the index given by infIndex and sets the pointer to datOffset. Does not check if index is out of bounds. Always returns true (successful).
 	u8 processBMGString(FontCache* cache);				//Calls cache->processString() with copy = 1 and a pointer to the string in the BMG file. Returns cache->succesful.
 
-	bool render(FontCache* cache, void* bmg, u32 index);			//Parses bmg and renders the string indexed by index into cache's buffer. Returns true if successful, false otherwise.
-	bool renderCleared(FontCache* cache, void* bmg, u32 index);		//Clears cache's string buffer and renders a new string into it by calling renderParsed. Returns true if successful, false otherwise.
+	bool render(FontCache* cache, void* bmg, u32* index);			//Parses bmg and renders the string indexed by index into cache's buffer. Returns true if successful, false otherwise.
+	bool renderCleared(FontCache* cache, void* bmg, u32* index);	//Clears cache's string buffer and renders a new string into it by calling renderParsed. Returns true if successful, false otherwise.
 
 };
 
