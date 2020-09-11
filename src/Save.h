@@ -40,7 +40,7 @@ struct MainSave {
 		ToadHouse = 0x1000
 	};
 
-	enum class LevelFlags : u8 {
+	enum class NodeFlags : u8 {
 		StarCoin1 = 0x1,
 		StarCoin2 = 0x2,
 		StarCoin3 = 0x4,
@@ -50,7 +50,7 @@ struct MainSave {
 		Completed = 0x80,						//Set when the level was finished
 	};
 
-	//Level flags used by the arrow sign node
+	//Node flags used by the arrow sign node
 	enum class StartFlags : u8 {
 		Item = 0,
 		OneUp,
@@ -65,30 +65,28 @@ struct MainSave {
 		Activated = 0x80						//Pipes only get this flag set (since they aren't levels)
 	};
 
-	struct WorldmapActors {
+	struct WorldmapActor {
 
-		//Might not render correctly, but the correct actor is always spawned in the level
+		//Only work for those levels where the given type is enabled
 		enum class Type : u8 {
 			HammerBro = 0,
 			FlyingBlock
 		};
 
-		u8 node0;
-		Type type0;
-		u8 node1;
-		Type type1;
+		u8 node;
+		Type type;
 
 	};
 
 	enum class CompletionFlags : u32 {
-		StandardLevelsCompleted = 0x1,			//Excludes e.g. cannons
+		StandardLevelsCompleted = 0x1,			//Excludes cannons
 		AllPathsUnlocked = 0x2,
 		AllStarSignsRemoved = 0x4,
 		AllStarCoinsCollected = 0x8,
 		TriggerAllStarCoinsSpent = 0x10,
 		StoryCompleted = 0x20,
 		AllStarCoinsSpent = 0x80,
-		AllLevelsCompleted = 0x100,
+		AllLevelsCompleted = 0x100,				//Includes cannons
 		UnlockedBG1 = 0x80000,
 		UnlockedBG2 = 0x100000,
 		UnlockedBG3 = 0x200000,
@@ -123,10 +121,11 @@ struct MainSave {
 	u32 actorRespawnWorld;						//World in which the worldmap actors get respawned (for each 50000 score points)
 	u32 seenLevelImages[6];						//Each bit represents an image seen on the ending screen. If set and the level was beaten, it will not appear as 'new'.
 	u8 inventoryPowerup;
+	u8 reserved[3];								//Unused in the final game, but most likely there to store additional powerups
 	WorldFlags worldFlags[8];
-	LevelFlags levelFlags[25 * 8];
+	NodeFlags nodeFlags[25 * 8];
 	PathFlags pathFlags[30 * 8];
-	WorldmapActors wmActors[8];
+	WorldmapActor wmActors[2 * 8];				//Two types per world
 
 };
 
@@ -147,7 +146,7 @@ struct OptionSave {
 	};
 
 	char magic[4];			//'3000' in ASCII
-	u32 flags;				//None
+	u32 flags;				//Only 0x1 for saved
 	Sound soundMode;
 	Controls controls;
 	u32 activeSlot;
@@ -166,13 +165,13 @@ namespace Save {
 	};
 
 	//02088bdc
-	MainSave mainSave;
+	extern MainSave mainSave;
 
 	//02088e24
-	MinigameSave minigameSave;
+	extern MinigameSave minigameSave;
 
 	//02088f18
-	OptionSave optionSave;
+	extern OptionSave optionSave;
 
 
 	//0204c7f4
@@ -192,13 +191,13 @@ namespace Save {
 	u32 readMGScore(u32 minigameID, u32 rank);
 
 	//0201289c
-	bool writeMGSave(SaveHeader* header);
+	bool writeMGSave(MinigameSave* header);
 
 	//020128c4
-	ReturnCode readMGSave(SaveHeader* header);
+	ReturnCode readMGSave(MinigameSave* header);
 
 	//020128d8
-	void clearMGSave(SaveHeader* header);
+	void clearMGSave(MinigameSave* header);
 
 	//020128fc
 	bool createMGSave();
@@ -207,7 +206,7 @@ namespace Save {
 	u16 getWorldmapSceneID();
 
 	//0201293c
-	void disableWorldmapActor(MainSave::WorldmapActors::Type type);
+	void disableCurrentWorldmapActor(MainSave::WorldmapActor::Type type);
 
 	//020129b0
 	bool animationPlayed();
@@ -222,10 +221,10 @@ namespace Save {
 	u8 getCurrentLevelStarCoins();
 
 	//02012a78
-	u8 getLevelStarCoins(u32 world, u8 levelID);
+	u8 getLevelStarCoins(u32 world, u8 nodeID);
 
 	//02012a98
-	void setLevelStarCoins(u32 world, u8 levelID, u8 starCoins);
+	void setLevelStarCoins(u32 world, u8 nodeID, u8 starCoins);
 
 	//02012abc
 
@@ -266,7 +265,7 @@ namespace Save {
 	ReturnCode readOptionSave(OptionSave* save);
 
 	//02013064
-	void clearOptionSave(OptionsSave* save);
+	void clearOptionSave(OptionSave* save);
 
 	//02013090
 	bool createOptionSave();
