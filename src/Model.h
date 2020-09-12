@@ -332,7 +332,7 @@ public:
 
 	//D0:02018d40
 	//D1:02018d68
-	virtual ~TextureAnmCtrl();
+	virtual ~TextureAnmCtrl() override;
 
 	//02018cf4
 	bool create(NNSG3dRenderObj* model, void* animFile, u32 animID, NNSG3dResTex* texture); //Creates the texture SRT animation and sets up the frame controller with the given parameters. Returns true if successful, false otherwise.
