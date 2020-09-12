@@ -8,10 +8,6 @@
 
 
 //vtable 0203c4bc
-/*
-02019bf8: dtor
-02019bd8: dtor_free
-*/
 class ModelBase 
 {
 public:
@@ -21,8 +17,9 @@ public:
 	//02019c08
 	ModelBase();
 
-	//02019bc8: dtor1
-
+	//D0:02019bd8
+	//D1:02019bf8
+	//D2:02019bc8
 	virtual ~ModelBase();
 
 	//02019b7c
@@ -33,44 +30,47 @@ public:
 
 
 //vtable 0203c51c
-/*
-02019a10: dtor
-020199e8: dtor_free
-02019944:
-020198c4: render //scale
-02019864: render //transform
-02019858: render
-*/
 class Model : public ModelBase
 {
 public:
 
 	NNSG3dResMdl* modelInfo;
-	NNSG3dResTex* textureInfo;
+	NNSG3dResTex* texture;
 
 	union {
 		struct {
-			MtxFx33 unk60;
-			VecFx32 unk84;
+			MtxFx33 baseTransform;
+			VecFx32 translation;
 		};
-		MtxFx43 unk60;
+		MtxFx43 modelMatrix;
 	};
 
-	//02019a30
+	//C1:02019a30
+	//C2:02019a5c
 	Model();
 
-	//02019a5c
-	Model(); //Ctor used by subclasses
+	//D0:020199e8
+	//D1:02019a10
+	//D2:020199c8
+	virtual ~Model() override;
+	
+	//02019944
+	virtual void null();
 
-	virtual ~Model();
+	//020198c4
+	virtual void render(const VecFx32* scale);
 
-	//020199c8: dtor1
+	//02019864
+	virtual void render(const MtxFx43* transform, const VecFx32* scale);
+
+	//02019858
+	virtual void render();
 
 	//02019948
 	bool create(void* bmd, u32 modelID, u32 polygonID); //Loads the model with ID modelID from the bmd, assigns texture and model, sets the polygon ID and disables ambient/emission components. Returns true if successful, false otherwise.
 
 	//02019934
-	//void draw();
+	void renderModel();
 
 	//02019838
 	void setCommandCallback(NNSG3dSbcCallBackFunc* cb, u8* address, u8 cmd, NNSG3dSbcCallBackTiming timing); //Sets the SBC command callback with the given timing (address is eliminated and only left for backwards compatibility)
@@ -112,7 +112,7 @@ public:
 
 
 
-class FrameControl
+class FrameCtrl
 {
 public:
 
@@ -136,13 +136,13 @@ public:
 	void update(); //Updates currentFrame by speed. If it's looping, currentFrame is wrapped around. If not, currentFrame is incremented until it reaches frames - 1. When timer becomes negative due to negative speeds, it's kept at 0.
 
 	//0201fe9c
-	void init(u16 frames, FrameControl::Type type, fx32 speed, u16 startFrame); //Initializes the controller with the given parameters
+	void init(u16 frames, FrameCtrl::Type type, fx32 speed, u16 startFrame); //Initializes the controller with the given parameters
 
 	//0201fe88
 	u16 getFrameCount(); //Returns the frame count (truncated integer)
 
 	//0201fe74
-	void setAnimationType(FrameControl::Type type); //Sets the animation type
+	void setAnimationType(FrameCtrl::Type type); //Sets the animation type
 
 	//0201fe34
 	bool finished(); //If speed is positive, it returns true if current frame exceeds frames - 1. If speed is negative, it returns true if currentFrame equals 0 or less.
@@ -154,43 +154,48 @@ public:
 
 
 
-struct BlendAnimation {
-	NNSG3dAnmObj* unka0;
-	bool unka4;
-};
-
 
 //vtable 0203c4dc
-/*
-020193c0: dtor
-02019398: dtor_free
-02019944:
-02019214:
-020191cc:
-0201918c:
-*/
-class ModelAnm : public Model
+class BlendModelAnm : public Model
 {
 public:
 
-	FrameControl unk90;
-	void* unk9c; //Anim file ptr
-	BlendAnimation unka0[2];
-	u32 unkb0; //Current animation ID
-	u32 unkb4; //Last animation ID
-	fx32 unkb8; //Blend ratio
-	fx32 unkbc; //Blend increment
-	s8 unkc0; //Selector 1 (start interpolation)
-	s8 unkc1; //Selector 2 (end interpolation) [c1->c0]
+	struct BlendAnimation {
+		NNSG3dAnmObj* animation;
+		bool attached;//True if the animation object is attached to the render object
+	};
+
+	FrameCtrl frameController;
+	void* animFile; //Anim file ptr
+	BlendAnimation blendAnims[2];
+	u32 currentAnimID; //Current animation ID
+	u32 lastAnimID; //Last animation ID
+	fx32 blendRatio; //Blend ratio
+	fx32 blendStep; //Blend increment
+	s8 selector1; //Selector 1 (start interpolation)
+	s8 selector2; //Selector 2 (end interpolation) [c1->c0]
 
 	//020193e0
-	ModelAnm();
+	BlendModelAnm();
+
+	//D0:020193c0
+	//D1:020193c0
+	virtual ~BlendModelAnm() override;
+
+	//02019214
+	virtual void render(const VecFx32* scale) override;
+
+	//020191cc
+	virtual void render(const MtxFx43* transform, const VecFx32* scale) override;
+
+	//0201918c
+	virtual void render() override;
 
 	//020192a8
 	bool create(void* bmd, void* bca, u32 modelID, u32 animID, u32 polygonID); //Loads the model with the given params from the bmd. Allocates memory for both BlendAnimations, initializes the frame controller and registers the first animation. Returns true if successful, false otherwise.
 
 	//02018fb8
-	void pushAnimation(u32 animID, u32 steps, FrameControl::Type type, fx32 speed, u16 startFrame);
+	void pushAnimation(u32 animID, u32 steps, FrameCtrl::Type type, fx32 speed, u16 startFrame);
 	/*
 		Pushes a new animation to blend to.
 		If animID equals the current animation's ID, frame controller settings are applied only.
@@ -201,10 +206,10 @@ public:
 	//02019138
 	void update(); //Updates the frame controller and increments the blend ratio. If the ratio exceeds 1.0 after update, it is capped at 1.0 and unregisters the animation.
 
-	//0201925c
+	//02019288
 	void attachAnimation(BlendAnimation* anim); //If it's active, unregister it from the model and deactivate it
 
-	//02019288
+	//0201925c
 	void detachAnimation(BlendAnimation* anim); //Register anim for the model and activate it
 
 };
@@ -212,33 +217,36 @@ public:
 
 
 //vtable 0203c4fc
-/*
-02019624: dtor
-020195fc: dtor_free
-02019944:
-02019518:
-020194f8:
-020194e0:
-*/
-class ModelCA : public Model
+class ModelAnm : public Model
 {
 public:
 
-	FrameControl unk90;
-	void* unk9c; //Animation file ptr
-	NNSG3dAnmObj* unka0;
-	u32 unka4; //Anim ID; type???
+	FrameCtrl frameController;
+	void* animFile; //Animation file ptr
+	NNSG3dAnmObj* animation;
+	u32 animID; //Anim ID
 
 	//02019644
-	ModelCA();
+	ModelAnm();
+
+	//D0:020195fc
+	//D1:02019624
+	virtual ~ModelAnm() override;
+
+	//02019518
+	virtual void render(const VecFx32* scale) override;
+
+	//020194f8
+	virtual void render(const MtxFx43* transform, const VecFx32* scale) override;
+
+	//020194e0
+	virtual void render() override;
 
 	//02019530
 	bool create(void* bmd, void* bca, u32 modelID, u32 animID, u32 polygonID); //Loads the model from bmd and the animation from bca. Also allocates unka0 on heap. Default initializes the frame animation. Attaches the animation to the render object. Returns true if successful, false otherwise.
 
 	//02019440
-	void init(u32 animID, FrameControl::Type type, fx32 speed, u16 startFrame); //If animID equals the current animation ID, type and speed are applied to unk90. If not, the animation object is reset and is initialized with the given parameters.
-
-	//Render updates frame controller
+	void init(u32 animID, FrameCtrl::Type type, fx32 speed, u16 startFrame); //If animID equals the current animation ID, type and speed are applied to the frame controller. If not, the animation object is reset and is initialized with the given parameters.
 
 };
 
@@ -246,18 +254,18 @@ public:
 
 
 //vtable 0203c49c
-/*
-02018c1c: dtor
-02018bfc: dtor_free
-*/
-class ComplexTexture
+class Texture
 {
 public:
 
-	NNSG3dResTex* unk04;
+	NNSG3dResTex* texture;
 
 	//02018c2c
-	ComplexTexture();
+	Texture();
+
+	//D0:02018bfc
+	//D1:02018c1c
+	virtual ~Texture();
 
 	//02018bc8
 	bool load(void* texFile); //Loads the texture from the file. Returns true if successful, false otherwise.
@@ -272,32 +280,29 @@ public:
 
 
 //vtable 0203c4ac
-/*
-02018f58: dtor
-02018f38: dtor_free
-*/
-class TPModel
+class TextureAnm
 {
 public:
 
-	NNSG3dRenderObj* unk04;
-	NNSG3dResMdl* unk08;
-	NNSG3dResTex* unk0c;
-	void* unk10; //Anim file
-	NNSG3dAnmObj* unk14;
-	u32 unk18; //Anim ID
-	u16 unk1c; //Frames
+	NNSG3dRenderObj* renderModel;
+	NNSG3dResMdl* modelInfo;
+	NNSG3dResTex* texture;
+	void* animFile; //Anim file
+	NNSG3dAnmObj* animation;
+	u32 animID; //Anim ID
+	u16 frameCount; //Total animation frames
 
-	//02018f28: dtor1
+	//C1:02018f68
+	//C2:02018f90
+	TextureAnm();
 
-	//02018f68
-	TPModel();
-
-	//02018f90
-	TPModel(); //Used by subclasses
+	//D0:02018f38
+	//D1:02018f58
+	//D2:02018f28
+	virtual ~TextureAnm();
 
 	//02018e74
-	bool create(NNSG3dRenderObj* renderObject, void* animFile, u32 animID, NNSG3dResTex* texture); //Creates the texture SRT animation with the given parameters. Returns true if successful, false otherwise.
+	bool create(NNSG3dRenderObj* renderObject, void* animFile, u32 animID, NNSG3dResTex* texture); //Creates the texture animation with the given parameters. Returns true if successful, false otherwise.
 
 	//02018e28
 	void setAnimation(u32 animID, u16 startFrame); //If animID doesn't equal the current animation ID, the new animation is loaded and attached if successful. The startFrame is set in both cases.
@@ -316,24 +321,24 @@ public:
 
 
 //vtable 0203c4cc
-/*
-02018d68: dtor
-02018d40: dtor_free
-*/
-class MultiTexModel : public TPModel
+class TextureAnmCtrl : public TextureAnm
 {
 public:
 
-	FrameControl unk20;
+	FrameCtrl frameController;
 
 	//02018d88
-	MultiTexModel();
+	TextureAnmCtrl();
+
+	//D0:02018d40
+	//D1:02018d68
+	virtual ~TextureAnmCtrl();
 
 	//02018cf4
 	bool create(NNSG3dRenderObj* model, void* animFile, u32 animID, NNSG3dResTex* texture); //Creates the texture SRT animation and sets up the frame controller with the given parameters. Returns true if successful, false otherwise.
 
 	//02018c74
-	void setAnimation(u32 animID, FrameControl::Type type, fx32 speed, u16 startFrame); //If animID doesn't equal the current animation ID, the new animation is loaded and attached if successful. In both cases the frame controller is reinitialized with type and spedd, startFrame is only set when the animation ID changed.
+	void setAnimation(u32 animID, FrameCtrl::Type type, fx32 speed, u16 startFrame); //If animID doesn't equal the current animation ID, the new animation is loaded and attached if successful. In both cases the frame controller is reinitialized with type and speed, startFrame is only set when the animation ID changed.
 
 	//02018c54
 	void update(); //Steps the frame controller and updates the animation accordingly
@@ -346,9 +351,6 @@ public:
 
 
 namespace GFX {
-
-	//027e00c8
-	extern NNS_G3dGlb global3DState; //Global 3D data uploaded to the GPU
 
 	//02019b6c
 	void initialize();			//Initializes the graphics engine
