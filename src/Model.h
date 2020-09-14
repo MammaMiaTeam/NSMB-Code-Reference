@@ -280,7 +280,7 @@ public:
 
 
 //vtable 0203c4ac
-class TextureAnm
+class Animation
 {
 public:
 
@@ -294,51 +294,51 @@ public:
 
 	//C1:02018f68
 	//C2:02018f90
-	TextureAnm();
+	Animation();
 
 	//D0:02018f38
 	//D1:02018f58
 	//D2:02018f28
-	virtual ~TextureAnm();
+	virtual ~Animation();
 
 	//02018e74
-	bool create(NNSG3dRenderObj* renderObject, void* animFile, u32 animID, NNSG3dResTex* texture); //Creates the texture animation with the given parameters. Returns true if successful, false otherwise.
+	bool create(NNSG3dRenderObj* model, void* animFile, u32 animID, NNSG3dResTex* texture); //Creates the animation with the given parameters. Returns true if successful, false otherwise.
 
 	//02018e28
-	void setAnimation(u32 animID, u16 startFrame); //If animID doesn't equal the current animation ID, the new animation is loaded and attached if successful. The startFrame is set in both cases.
+	void start(u32 animID, u16 startFrame); //If animID doesn't equal the current animation ID, the new animation is loaded and attached if successful. The startFrame is set in both cases.
 
 	//02018dd8
-	bool initializeAnimation(u32 animID); //Sets the current animation to animID and initializes the animation object. Returns true if successful, false otherwise.
+	bool reset(u32 animID); //Sets the current animation to animID and initializes the animation object. Returns true if successful, false otherwise.
 
 	//02018dc0
-	void attachAnimation(); //Links the animation to the render object
+	void attach(); //Links the animation to the render object
 
 	//02018da8
-	void detachAnimation(); //Unlinks the animation from the render object
+	void detach(); //Unlinks the animation from the render object
 
 };
 
 
 
 //vtable 0203c4cc
-class TextureAnmCtrl : public TextureAnm
+class AnimationCtrl : public Animation
 {
 public:
 
 	FrameCtrl frameController;
 
 	//02018d88
-	TextureAnmCtrl();
+	AnimationCtrl();
 
 	//D0:02018d40
 	//D1:02018d68
-	virtual ~TextureAnmCtrl() override;
+	virtual ~AnimationCtrl();
 
 	//02018cf4
-	bool create(NNSG3dRenderObj* model, void* animFile, u32 animID, NNSG3dResTex* texture); //Creates the texture SRT animation and sets up the frame controller with the given parameters. Returns true if successful, false otherwise.
+	bool createCtrl(NNSG3dRenderObj* model, void* animFile, u32 animID, NNSG3dResTex* texture); //Creates the animation and sets up the frame controller with the given parameters. Returns true if successful, false otherwise.
 
 	//02018c74
-	void setAnimation(u32 animID, FrameCtrl::Type type, fx32 speed, u16 startFrame); //If animID doesn't equal the current animation ID, the new animation is loaded and attached if successful. In both cases the frame controller is reinitialized with type and speed, startFrame is only set when the animation ID changed.
+	void start(u32 animID, FrameCtrl::Type type, fx32 speed, u16 startFrame); //If animID doesn't equal the current animation ID, the new animation is loaded and attached if successful. In both cases the frame controller is reinitialized with type and speed, startFrame is only set when the animation ID changed.
 
 	//02018c54
 	void update(); //Steps the frame controller and updates the animation accordingly
