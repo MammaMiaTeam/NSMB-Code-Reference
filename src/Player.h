@@ -19,6 +19,17 @@ struct PlayerCapAnimation {
 
 
 
+
+struct PlayerHeadAnimation {
+
+	u32 animID;
+	FrameCtrl::Type type;
+	fx32 speed;
+	u16 startFrame;
+
+};
+
+
 //vtable 0212f8b8
 class PlayerCap
 {
@@ -62,7 +73,7 @@ public:
 	void setAnimation(u8 animType, bool smallPlayer);
 
 	//0212df4c
-	static bool loadTextureSettings();
+	static bool loadFiles();
 
 };
 
@@ -95,7 +106,7 @@ public:
 	bool render(bool skip, s8 texPalette, GXRgb diffuse, GXRgb ambient, bool toon);
 
 	//0212e1a4
-	static bool loadTextureSettings();
+	static bool loadFiles();
 
 };
 
@@ -213,7 +224,7 @@ public:
 	void setDeathTexImageParams();
 
 	//0212ce50
-	void setBodyAnimation(void* anmResource, u32 steps, FrameCtrl::Type type, fx32 speed, u16 startFrame);
+	void setBodyAnimation(void* anmResource, u32 blendSteps, FrameCtrl::Type type, fx32 speed, u16 startFrame);
 
 	//0212ce00
 	void switchBodyAnimations(s8 srcIndex, s8 destIndex);
@@ -222,7 +233,7 @@ public:
 	void setHeadAnimation(void* anmResource, FrameCtrl::Type type, fx32 speed, u16 startFrame);
 
 	//0212ccf0
-	void updateAnimations();
+	void update();
 
 	//0212cce0
 	bool animationFinished();
