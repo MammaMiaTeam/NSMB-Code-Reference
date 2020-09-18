@@ -98,7 +98,7 @@ public:
 	s32 getNodeIndex(const NNSG3dResName* name); //Returns an index to the node given by name or -1 if no matching entry could be found
 
 	//02019740
-	static bool getNodeMatrixInternal(NNSG3dResNodeInfo* nodeInfo, u32 nodeIndex, MtxFx43* mtx); //If the model's matrix is on the stack, it calculates the node matrix and stores it in mtx. Returns true after operation, false if the matrix wasn't on stack.
+	static bool getNodeMatrixInternal(NNSG3dResNodeInfo* nodeInfo, u32 nodeIndex, MtxFx43* mtx); //If the model's matrix is on the stack, it back-calculates the node's model matrix and stores it in mtx. Returns true after operation, false if the matrix wasn't on stack.
 
 	//0201972c
 	bool getNodeMatrix(u32 nodeIndex, MtxFx43* mtx); //Calls getNodeMatrixInternal on the model's node info with index nodeIndex. The resulting matrix is stored in mtx and true is returned; on failure, false is returned.
@@ -305,7 +305,7 @@ public:
 	bool create(NNSG3dRenderObj* model, void* animFile, u32 animID, NNSG3dResTex* texture); //Creates the animation with the given parameters. Returns true if successful, false otherwise.
 
 	//02018e28
-	void start(u32 animID, u16 startFrame); //If animID doesn't equal the current animation ID, the new animation is loaded and attached if successful. The startFrame is set in both cases.
+	void init(u32 animID, u16 startFrame); //If animID doesn't equal the current animation ID, the new animation is loaded and attached if successful. The startFrame is set in both cases.
 
 	//02018dd8
 	bool reset(u32 animID); //Sets the current animation to animID and initializes the animation object. Returns true if successful, false otherwise.
@@ -338,7 +338,7 @@ public:
 	bool createCtrl(NNSG3dRenderObj* model, void* animFile, u32 animID, NNSG3dResTex* texture); //Creates the animation and sets up the frame controller with the given parameters. Returns true if successful, false otherwise.
 
 	//02018c74
-	void start(u32 animID, FrameCtrl::Type type, fx32 speed, u16 startFrame); //If animID doesn't equal the current animation ID, the new animation is loaded and attached if successful. In both cases the frame controller is reinitialized with type and speed, startFrame is only set when the animation ID changed.
+	void init(u32 animID, FrameCtrl::Type type, fx32 speed, u16 startFrame); //If animID doesn't equal the current animation ID, the new animation is loaded and attached if successful. In both cases the frame controller is reinitialized with type and speed, startFrame is only set when the animation ID changed.
 
 	//02018c54
 	void update(); //Steps the frame controller and updates the animation accordingly
@@ -360,6 +360,43 @@ namespace GFX {
 
 	//02019a88
 	bool getTexturePaletteDestination(NNSG3dResTex* texture, u32 palID, u32* palDest); //Calculates the texture's VRAM slot destination address and stores it in palDest. Returns whether address calculation was successful.
+
+	//020446b4
+	void setRotationZ(MtxFx43* mtx, fx16 angle);
+
+	//020446f4
+	void setRotationY(MtxFx43* mtx, fx16 angle);
+
+	//02044734
+	void setRotationX(MtxFx43* mtx, fx16 angle);
+
+	//02044774
+	void setRotation(MtxFx43* mtx, fx16 angleX, fx16 angleY, fx16 angleZ);
+
+	//02044814
+	void setTranslation(MtxFx43* mtx, fx32 x, fx32 y, fx32 z);
+
+	//0204485c
+	void rotateZ(MtxFx43* mtx, fx16 angle);
+
+	//02044888
+	void rotateY(MtxFx43* mtx, fx16 angle);
+
+	//020448b4
+	void rotateX(MtxFx43* mtx, fx16 angle);
+
+	//020448e0
+	void rotate(MtxFx43* mtx, fx16 angleX, fx16 angleY, fx16 angleZ);
+
+	//0204496c
+	void rotateReversed(MtxFx43* mtx, fx16 angleX, fx16 angleY, fx16 angleZ);
+
+	//020449f8
+	void scale(MtxFx43* mtx, fx32 scaleX, fx32 scaleY, fx32 scaleZ);
+
+	//02044a24
+	void translate(MtxFx43* mtx, fx32 transX, fx32 transY, fx32 transZ);
+
 
 }
 
