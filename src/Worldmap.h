@@ -32,6 +32,21 @@ enum class WorldmapNodeType : u8 {
 };
 
 
+struct WorldmapEntity {
+
+	//Only work for those levels where the given type is enabled
+	enum class Type : u8 {
+		HammerBro = 0,
+		FlyingBlock
+	};
+
+	u8 node;
+	Type type;
+
+};
+
+
+
 //vtable: 021a61ac
 class WorldmapScene : public Scene
 {
@@ -99,6 +114,12 @@ public:
 	u8 unk883;
 	u32 unk884;
 
+	struct LmaoStruct {
+		u8 unk00;
+		u8 unk01;//Target path
+		u16 unk02;//Flags? 0x10=pipe?,0x3->index into button mapping
+	};
+
 	struct PathStruct {
 		u8 unk00;
 		u8 unk01;//Star coin count
@@ -106,8 +127,8 @@ public:
 		u8 unk03;
 	};
 
-	struct LevelStruct {
-		void* unk00;
+	struct NodeStruct {
+		LmaoStruct* unk00;
 		u16 unk04;
 		u8 unk06;
 		WorldmapNodeType unk07;//Node type
@@ -115,12 +136,25 @@ public:
 		u16 unk0a;
 	};
 
+	struct EntitySpawnSettings {
+		WorldmapEntity entitySpawns[2];
+	};
+
+	struct MapPointStruct {
+		u32 unk00;
+		u32 unk04;
+		u32 unk08;
+		s32 x;
+		s32 y;
+		s32 z;
+	};
+
 	struct WorldStruct {
 
-		LevelStruct* unk00;//Levels
+		NodeStruct* unk00;//Levels
 		PathStruct* unk04;//Paths
-		void* unk08;
-		void* unk0c;
+		EntitySpawnSettings* unk08;//Entity spawns
+		MapPointStruct* unk0c;//Map points
 		void* unk10;
 		void* unk14;
 		void* unk18;
@@ -321,6 +355,9 @@ public:
 	//021a5ecc
 	static u32 worldmapMusicIDs[10];
 
+	//021a60d4
+	static fx32 cameraLimits[8][2];//0=Left,1=Right
+
 
 	//02190eb8
 	WorldmapScene();
@@ -494,6 +531,12 @@ public:
 	//0218d43c
 	static u16 getWorldmapNodeCount(u32 world);
 
+	//0218db74
+	static fx32 getLeftCameraLimit(u32 world);
+
+	//0218db44
+	static fx32 getRightCameraLimit(u32 world);
+
 };
 
 
@@ -526,9 +569,18 @@ public:
 		Unused1		//Identical to Super
 	};
 
+	enum class AnimationType : u32 {
+		Idle = 0,
+		Walk,
+		Run,
+		Pipe,
+		CourseEnter,
+		CoinCompleted
+	};
+
 	PlayerModel model;				//Player model
 	ModelConfig* config;			//Configuration for the model depending on powerup state
-	u32 animID;						//Current main animation ID
+	AnimationType animID;			//Current main animation ID
 	u32 headAnimID;					//Current head animation ID
 	u8 playerID;					//Player ID
 	s8 sizeState;					//Size: 0=standard,1=small
@@ -568,7 +620,7 @@ public:
 	void update(bool skip);
 
 	//0219d440
-	void setAnimation(u32 animID, bool continueAnimation);
+	void setAnimation(AnimationType animID, bool continueAnimation);
 
 	//0219d3b8
 	void setHeadAnimation(u32 headAnimID);
@@ -580,10 +632,88 @@ public:
 
 
 
+
+class WorldmapEntityModel
+{
+public:
+
+	enum class Type : u32 {
+		HammerBro = 0,
+		FlyingBlock
+	};
+
+
+	ModelAnm entityModel;				//Model of the given entity
+	AnimationCtrl patternAnimation;		//Pattern animation for FlyingBlock
+	Model linkModel;					//Model for Hammer/Map Shadow
+	AnimationCtrl shadowAnimation;		//Shadow animation for FlyingBlock
+	Type type;							//Type of the entity
+
+
+	//021ae1a0
+	static u32 shadowAnimations[2];
+
+	//021ae1a8
+	static u32 entityAnimations[2][2];//Type & ID
+
+	//021ae19c
+	static u16 texPaletteBase;
+
+	//021a2814
+	static u16 texPaletteOffset[2];
+
+	//021a9300
+	static u32 resourceFileIDs[2][2];//Type & Model/Animation
+
+
+	//0219bb7c
+	WorldmapEntityModel();
+
+	//D0:0219bafc
+	//D1:0219bb40
+	virtual ~WorldmapEntityModel();
+
+	//0219b9a0
+	bool create(Type type);
+
+	//0219b7b8
+	void render(MtxFx43* modelMatrix, Vec3* scale, Vec3* relPos);//relPos only used by Flying Block (and even there only Y)
+
+	//0219b790
+	void update();
+
+	//0219b720
+	void setAnimation(u32 animID);
+
+	//0219b648
+	static bool loadFiles();
+
+};
+
+
+
 //vtable: 021a9040
 class WorldmapActor : public Actor
 {
 public:
+
+	enum class UpdateStates : u32 {
+		Idle = 0,
+		a,
+		Walking,
+		...
+		//6
+		LevelEnter,
+		EntityMoving,
+		//9
+		LevelUnlocking,
+		//C
+		CameraScroll,
+		CameraRevert,
+		//10
+		StarcoinSignRemoved,
+		StarcoinSignWaiting,
+	};
 
 	//C1:02199d58
 	//C3:0219ab98
