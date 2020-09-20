@@ -28,23 +28,23 @@ Main autoload section   [0x02000800 - 0x02026247] [0x02026248 - 0x0204337F]     
 ------------------------------------------------------------------------------------------------------
 [D] CRT0                [0x02000800 - 0x02000B43]
 [U]                     [0x02000B44 - 0x0200761F]
-[R] Fader               [0x02007620 - 0x02008587] Overblade			(In progress)
-[R] File                [0x02008588 - 0x0200A3CF] Overblade			(In progress)
+[R] Fader               [0x02007620 - 0x02008587] Overblade				(In progress)
+[R] File                [0x02008588 - 0x0200A3CF] Overblade				(In progress)
 [K] Input               [0x0200A3D0 - 0x0200AB23]
-[K] OAM                 [0x0200B358 - 0x0200DEDF] Ed_IT				(In progress)
-[R] Overlay             [0x0200DEE0 - 0x0200E507] Overblade			(In progress)
-[K] Wifi                [0x0200E7D0 - 0x0201095F] TheGameratorT		(In progress)
+[K] OAM                 [0x0200B358 - 0x0200DEDF] TheGameratorT & Ed_IT	(In progress)
+[R] Overlay             [0x0200DEE0 - 0x0200E507] Overblade				(In progress)
+[K] Wifi                [0x0200E7D0 - 0x0201095F] TheGameratorT			(In progress)
 [A] Sound frontend      [0x02011988 - 0x02012743] TheGameratorT
 [U]                     [0x02012744 - 0x0201289B]
-[R] Savedata            [0x0201289C - 0x0201311B] Overblade			(In progress)
-[R] Fade Masks          [0x02013B98 - 0x020141B7] Overblade			(In progress)
-[K] Textbox             [0x020141B8 - 0x02014A2F] Overblade			(In progress)
+[R] Savedata            [0x0201289C - 0x0201311B] Overblade				(In progress)
+[R] Fade Masks          [0x02013B98 - 0x020141B7] Overblade				(In progress)
+[K] Textbox             [0x020141B8 - 0x02014A2F] Overblade				(In progress)
 [A] Font                [0x02014A30 - 0x02017273] Overblade
 [U]                     [0x02017274 - 0x02018B67]
-[R] Models              [0x02018B68 - 0x02019C17] Overblade			(In progress)
+[R] Models              [0x02018B68 - 0x02019C17] Overblade				(In progress)
 [U]						[0x02019C18 - 0x0201AF7F]
 [K] Platforms           [0x0201AF80 - 0x0201DC03]
-[R] Particles           [0x020218E0 - 0x02023327] Ed_IT				(In progress)
+[R] Particles           [0x020218E0 - 0x02023327] Ed_IT					(In progress)
 [K] Minigames main      [0x02023328 - 0x02025877]
 [K] Builtin tables      [0x02025878 - 0x02025A43]
 [K] Static Initializers [0x02025A44 - 0x02026247]

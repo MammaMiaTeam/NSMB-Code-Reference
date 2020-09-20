@@ -1617,6 +1617,22 @@ SVC_WaitByLoop = 0x02000738;
 FSi_CloseFileCommand = 0x02068e30;
 FSi_ReadDummyCallback = 0x0206a9c8;
 
+_ZN3OAM13updateCounterEP9GXOamAttrPS1_iiNS_12CounterFlagsE = 0x0200B580;
+_ZN3OAM7copyMtxEP7MtxFx22S1_ = 0x0200B8A4;
+_ZN3OAM4drawEP9GXOamAttriiNS_5FlagsEhhNS_8SettingsE = 0x0200D2A4;
+_ZN3OAM4drawEP9GXOamAttriiNS_5FlagsEhhP4Vec2sPA2_sNS_8SettingsE = 0x0200D87C;
+_ZN3OAM7drawMtxEP9GXOamAttriiNS_5FlagsEhhP7MtxFx22iNS_8SettingsE = 0x0200CE10;
+_ZN3OAM7drawMtxEP9GXOamAttriiNS_5FlagsEhhP7MtxFx22isPA2_sNS_8SettingsE = 0x0200C7D4;
+_ZN3OAM10drawSpriteEP9GXOamAttriiNS_5FlagsEhhP4Vec2sPA2_sNS_8SettingsE = 0x0200D578;
+_ZN3OAM7drawSubEP9GXOamAttriiNS_5FlagsEhhNS_8SettingsE = 0x0200C32C;
+_ZN3OAM7drawSubEP9GXOamAttriiNS_5FlagsEhhP4Vec2sPA2_sNS_8SettingsE = 0x0200C600;
+_ZN3OAM10drawMtxSubEP9GXOamAttriiNS_5FlagsEhhP7MtxFx22NS_8SettingsE = 0x0200BED4;
+_ZN3OAM10drawMtxSubEP9GXOamAttriiNS_5FlagsEhhP7MtxFx22sPA2_sNS_8SettingsE = 0x0200B8C8;
+_ZN3OAM4Anim4initEPNS0_10FrameEntryEjhit = 0x0200B510;
+_ZN3OAM4Anim6updateEv = 0x0200B44C;
+_ZN3OAM4Anim10drawSpriteEiiNS_5FlagsEhhP4Vec2sPA2_sNS_8SettingsE = 0x0200B3F4;
+_ZN3OAM4Anim7drawSubEiiNS_5FlagsEhhP4Vec2sPA2_sNS_8SettingsE = 0x0200B39C;
+
 _ZN14ParticleSystem4initEP22ParticleSystemResourcePK7VecFx32					= 0x20507b4;
 
 _ZN15ParticleHandler12updateSystemEP14ParticleSystem							= 0x204ff64;
