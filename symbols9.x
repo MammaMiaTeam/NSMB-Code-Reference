@@ -1618,7 +1618,14 @@ FSi_CloseFileCommand = 0x02068e30;
 FSi_ReadDummyCallback = 0x0206a9c8;
 
 _ZN3OAM13updateCounterEP9GXOamAttrPS1_iiNS_12CounterFlagsE = 0x0200B580;
+_ZN3OAM9loadFilesEPNS_4FileE = 0x0200B708;
+_ZN3OAM9loadFilesEj = 0x0200B740;
+_ZN3OAM9setupFileEPNS_4FileEj = 0x0200B758;
+_ZN3OAM15loadFilesToVRAMEPNS_4FileE = 0x0200B7D0;
+_ZN3OAM15loadFilesToVRAMEj = 0x0200B83C;
+_ZN3OAM16setFilesUnloadedEv = 0x0200B87C;
 _ZN3OAM7copyMtxEP7MtxFx22S1_ = 0x0200B8A4;
+_ZN3OAM8fillDataEttP9GXOamAttrj = 0x0200B358;
 _ZN3OAM4drawEP9GXOamAttriiNS_5FlagsEhhNS_8SettingsE = 0x0200D2A4;
 _ZN3OAM4drawEP9GXOamAttriiNS_5FlagsEhhP4Vec2sPA2_sNS_8SettingsE = 0x0200D87C;
 _ZN3OAM7drawMtxEP9GXOamAttriiNS_5FlagsEhhP7MtxFx22iNS_8SettingsE = 0x0200CE10;

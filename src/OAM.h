@@ -24,7 +24,7 @@ namespace OAM
 		BitmapMode = 0xC0 // Renders the objects in bitmap mode.
 	};
 
-	constexpr Flags operator|(Flags lhs, Flags rhs) {
+	inline Flags operator|(Flags lhs, Flags rhs) {
 		return static_cast<Flags>(static_cast<s32>(lhs) | static_cast<s32>(rhs));
 	}
 
@@ -35,7 +35,7 @@ namespace OAM
 		NoWrap = 2 // Does not wrap the objects when wrap around is enabled in the level.
 	};
 
-	constexpr Settings operator|(Settings lhs, Settings rhs) {
+	inline Settings operator|(Settings lhs, Settings rhs) {
 		return static_cast<Settings>(static_cast<s32>(lhs) | static_cast<s32>(rhs));
 	}
 
@@ -46,9 +46,23 @@ namespace OAM
 		Unk2h = 2 // Ignores the oam counter attribute table???
 	};
 
-	constexpr CounterFlags operator|(CounterFlags lhs, CounterFlags rhs) {
+	inline CounterFlags operator|(CounterFlags lhs, CounterFlags rhs) {
 		return static_cast<CounterFlags>(static_cast<s32>(lhs) | static_cast<s32>(rhs));
 	}
+
+	struct File
+	{
+		u32 fileID;
+		GXOamAttr** pOamAttrs;
+		u32 oamAttrCount;
+		u32 ncgOffsetShifted;
+	};
+
+	struct FileEntry
+	{
+	  File* files;
+	  BOOL loaded;
+	};
 
 	/* ======== HELPERS ======== */
 
@@ -104,9 +118,108 @@ namespace OAM
 
 	/* ======== COMMON ======== */
 
-	bool updateCounter(GXOamAttr* oamAttrs, GXOamAttr **oamCounterAttrTable, s32 value, s32 digitCount, CounterFlags flags);
+	// OAM::__init__ | 0x0200DEBC
+	/**
+	 * \brief The OAM static initializer.
+	 * */
+	void __init__();
 
-	void copyMtx(MtxFx22 *pSrc, MtxFx22 *pDst);
+	// OAM::reset | 0x0200DD94
+	/**
+	 * \brief Clears the OAM render list to prepare the next frame.
+	 * */
+	void reset();
+
+	// OAM::loadAffineSets | 0x0200DC48
+	/**
+	 * \brief Sets up the OAM affine sets.
+	 * */
+	void loadAffineSets();
+
+	// OAM::load | 0x0200DA60
+	/**
+	 * \brief Pushes the render list OAM objects into the screen.
+	 * */
+	void load();
+
+	// OAM::updateCounter | 0x0200B580
+	/**
+	 * \brief Updates the digit values of an OAM counter.
+	 * 
+	 * \param oamAttrs The oam objects.
+	 * \param oamCounterAttrTable The oam object list.
+	 * \param value The value to set in the counter.
+	 * \param digitCount The number of digits the counter has.
+	 * \param flags The flags for updating the counter.
+	 * */
+	void updateCounter(GXOamAttr* oamAttrs, GXOamAttr** oamCounterAttrTable, s32 value, s32 digitCount, CounterFlags flags);
+
+	// OAM::loadFiles | 0x0200B708
+	/**
+	 * \brief Loads the files to memory.
+	 * 
+	 * \param files The file array.
+	 * */
+	void loadFiles(File* files);
+
+	// OAM::loadFilesByEntryID | 0x0200B740
+	/**
+	 * \brief Loads the files of an entry by ID to memory.
+	 * 
+	 * \param entryID The file array entry ID.
+	 * */
+	void loadFiles(u32 entryID);
+
+	// OAM::setupFile | 0x0200B758
+	/**
+	 * \brief Calculates the tile addresses (attr2) to prevent conflicts with other sprites. (This function is used internally)
+	 * 
+	 * \param file The file.
+	 * \param lastAttrOffset The last offset.
+	 * */
+	void setupFile(File* file, u32 lastAttrOffset);
+
+	// OAM::loadFilesToVRAM | 0x0200B7D0
+	/**
+	 * \brief Loads the files to the video RAM.
+	 * 
+	 * \param files The file array.
+	 * */
+	void loadFilesToVRAM(File *files);
+
+	// OAM::loadFilesByEntryIDToVRAM | 0x0200B83C
+	/**
+	 * \brief Loads the files of an entry by ID to the video RAM.
+	 * 
+	 * \param entryID The file array entry ID.
+	 * */
+	void loadFilesToVRAM(u32 entryID);
+
+	// OAM::setFilesUnloaded | 0x0200B87C
+	/**
+	 * \brief Sets all file array entries as unloaded.
+	 * */
+	void setFilesUnloaded();
+
+	// OAM::copyMtx | 0x0200B8A4
+	/**
+	 * \brief Copies an affine matrix to another affine matrix.
+	 * 
+	 * \param pSrc The pointer to the source matrix.
+	 * \param pDst The pointer to the destination matrix.
+	 * */
+	void copyMtx(MtxFx22* pSrc, MtxFx22* pDst);
+
+	// OAM::fillData | 0x0200B358
+	/**
+	 * \brief Fills OAM attributes of an array.
+	 * 
+	 * \param attr01 The attributes 0 and 1.
+	 * \param attr23 The attributes 2 and 3.
+	 * \param oamAttrs The OAM objects to be filled.
+	 * \param size The size in bytes of the object array.
+	 * */
+	void fillData(u16 attr01, u16 attr23, GXOamAttr *oamAttrs, u32 size);
 
 	/* ======== TOP SCREEN ======== */
 
@@ -294,11 +407,32 @@ namespace OAM
 			u32 frameCount;
 		};
 
+		// OAM::Anim::init | 0x0200B510
+		/**
+		 * \brief Initializes the animation class. (Can be called multiple times)
+		 * 
+		 * \param frameTable The table containing the information about the frames.
+		 * \param frameTableID The table ID to use from the frame table.
+		 * \param flags The updater flags.
+		 * \param updateSpeed The frame update speed.
+		 * \param curFrameID The current frame.
+		 * */
 		void init(FrameEntry* frameTable, u32 frameTableID, u8 flags, fx32 updateSpeed, u16 curFrameID);
 
+		// OAM::Anim::update | 0x0200B44C
+		/**
+		 * \brief Updates the animation.
+		 * 
+		 * \return True if updated properly, false otherwise.
+		 * */
 		bool update();
 
 		__attribute__((noinline))
+		/**
+		 * \brief Sets the update speed.
+		 * 
+		 * \param updateSpeed The frame update speed.
+		 * */
 		void setUpdateSpeed(fx32 updateSpeed)
 		{
 			if ( updateSpeed < 0 )
@@ -314,12 +448,15 @@ namespace OAM
 		}
 
 		__attribute__((noinline))
+		// Refer to OAM::draw (Extended version)
 		bool draw(s32 x, s32 y, Flags flags, u8 palette, u8 affineSet, Vec2* scale, fx16 rot, s16(*rotCenter)[2], Settings settings) {
 			return OAM::draw(this->frames[this->curFrameID].oamAttrs, x, y, flags, palette, affineSet, scale, rot, rotCenter, settings);
 		}
 
+		// Refer to OAM::drawSprite
 		bool drawSprite(fx32 x, fx32 y, Flags flags, u8 palette, u8 affineSet, Vec2* scale, fx16 rot, s16(*rotCenter)[2], Settings settings);
 
+		// Refer to OAM::drawSub (Extended version)
 		bool drawSub(s32 x, s32 y, Flags flags, u8 palette, u8 affineSet, Vec2* scale, fx16 rot, s16(*rotCenter)[2], Settings settings);
 		
 	private:
