@@ -64,6 +64,8 @@ namespace OAM
 	  BOOL loaded;
 	};
 
+	struct Affine { s16 PA, PB, PC, PD; };
+
 	/* ======== HELPERS ======== */
 
 	/**
@@ -115,6 +117,32 @@ namespace OAM
 
 		return oam;
 	}
+
+	/* ======== VARIABLES ======== */
+
+	extern u32 unused_2087708; // Gets set at 0x0200DE4C and never used.
+
+	extern u32 _2087710; // Unknown 0x02087710.
+	extern u32 _208770C; // Unknown 0x02087710.
+	extern u32 _20876FC; // Unknown 0x02087710.
+
+	extern u32 curTileOffset; // The current tile offset being used for OAM file loading.
+
+	extern GXOamAttr objBuffer1[128]; // The first object buffer. (Top screen)
+	extern GXOamAttr objBuffer2[128]; // The second object buffer. (Top screen)
+	extern Affine affineBuffer[8]; // The affine parameter buffer. (Top screen)
+	extern u16 objsFromHead; // The amount of objects to render normally. (Top screen)
+	extern u16 objsFromTail; // The amount of objects to render in reverse. (Top screen)
+	extern u16 objSlotsLeft; // The amount of objects slots left. (Top screen)
+	extern u32 affineSetSlot; // The affine set slot to use in multiples of 4. (Top screen)
+
+	extern GXOamAttr objBuffer1Sub[128]; // The first object buffer. (Bottom screen)
+	extern GXOamAttr objBuffer2Sub[128]; // The second object buffer. (Bottom screen)
+	extern Affine affineBufferSub[8]; // The affine parameter buffer. (Bottom screen)
+	extern u16 objsFromHeadSub; // The amount of objects to render normally. (Bottom screen)
+	extern u16 objsFromTailSub; // The amount of objects to render in reverse. (Bottom screen)
+	extern u16 objSlotsLeftSub; // The amount of objects slots left. (Bottom screen)
+	extern u32 affineSetSlotSub; // The affine set slot to use in multiples of 4. (Bottom screen)
 
 	/* ======== COMMON ======== */
 
