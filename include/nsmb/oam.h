@@ -1,5 +1,5 @@
-#ifndef NSMB_OAM_INCLUDED
-#define NSMB_OAM_INCLUDED
+#ifndef NSMB_OAM_H_
+#define NSMB_OAM_H_
 
 #include "nitro.h"
 #include "nsmb/vector.h"
@@ -501,4 +501,4 @@ namespace OAM
 
 }
 
-#endif //!NSMB_OAM_INCLUDED
+#endif // !NSMB_OAM_H_

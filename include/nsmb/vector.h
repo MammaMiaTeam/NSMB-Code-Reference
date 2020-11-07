@@ -1,5 +1,5 @@
-#ifndef NSMB_VECTOR_INCLUDED
-#define NSMB_VECTOR_INCLUDED
+#ifndef NSMB_VECTOR_H_
+#define NSMB_VECTOR_H_
 
 #include "nitro_if.h"
 
@@ -356,4 +356,4 @@ public:
 
 };
 
-#endif	// NSMB_VECTOR_INCLUDED
+#endif // !NSMB_VECTOR_H_

@@ -1,7 +1,8 @@
-#ifndef NSMB_PLAYER_INCLUDED
-#define NSMB_PLAYER_INCLUDED
+#ifndef NSMB_PLAYER_H_
+#define NSMB_PLAYER_H_
 
-#include "Actor.h"
+#include "nitro_if.h"
+#include "nsmb/actor.h"
 
 
 
@@ -279,4 +280,4 @@ public:
 
 
 
-#endif  // NSMB_PLAYER_INCLUDED
+#endif // !NSMB_PLAYER_H_

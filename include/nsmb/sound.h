@@ -1,8 +1,8 @@
-#ifndef NSMB_SOUND_INCLUDED
-#define NSMB_SOUND_INCLUDED
+#ifndef NSMB_SOUND_H_
+#define NSMB_SOUND_H_
 
 #include "nitro_if.h"
-#include "Vectors.h"
+#include "nsmb/vector.h"
 
 /*
 	REGION 1 (Sound):
@@ -323,4 +323,4 @@ namespace Sound {
 	*/
 };
 
-#endif	// NSMB_SOUND_INCLUDED
+#endif // !NSMB_SOUND_H_

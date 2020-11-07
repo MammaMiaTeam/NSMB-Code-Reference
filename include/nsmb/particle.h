@@ -1,9 +1,8 @@
-#ifndef NSMB_PARTICLE_INCLUDED
-#define NSMB_PARTICLE_INCLUDED
+#ifndef NSMB_PARTICLE_H_
+#define NSMB_PARTICLE_H_
 
 #include "nitro_if.h"
-
-#include "Vector.h"
+#include "nsmb/vector.h"
 
 // should probably be in another file
 struct BossFileInfo {
@@ -398,4 +397,4 @@ namespace Particle {
 
 }
 
-#endif	// NSMB_PARTICLE_INCLUDED
+#endif // !NSMB_PARTICLE_H_
