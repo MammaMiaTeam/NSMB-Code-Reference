@@ -1,5 +1,5 @@
-﻿#ifndef NSMB_MATH_INCLUDED
-#define NSMB_MATH_INCLUDED
+﻿#ifndef NSMB_MATH_H_
+#define NSMB_MATH_H_
 
 #include "nitro_if.h"
 
@@ -86,4 +86,4 @@ namespace Math {
 
 
 
-#endif	// NSMB_MATH_INCLUDED
+#endif // !NSMB_MATH_H_

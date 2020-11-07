@@ -1,8 +1,8 @@
-#ifndef NSMB_COLLIDER_INCLUDED
-#define NSMB_COLLIDER_INCLUDED
+#ifndef NSMB_COLLIDER_H_
+#define NSMB_COLLIDER_H_
 
 #include "nitro_if.h"
-#include "Vector.h"
+#include "nsmb/vector.h"
 
 /*
 	Collider class
@@ -167,4 +167,4 @@ namespace Physics {
 
 }
 
-#endif	// NSMB_COLLIDER_INCLUDED
+#endif // !NSMB_COLLIDER_H_
