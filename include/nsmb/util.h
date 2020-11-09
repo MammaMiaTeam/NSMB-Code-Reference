@@ -9,7 +9,7 @@
 
 
 FORCEINLINE constexpr bool is_aligned(u32 x) {
-	return !(x % 4);
+	return (x & 3) == 0;
 }
 
 

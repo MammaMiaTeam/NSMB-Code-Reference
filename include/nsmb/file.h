@@ -2,25 +2,26 @@
 #define NSMB_FILE_H_
 
 #include "nitro_if.h"
+#include "nsmb/memory.h"
 
 namespace FS {
 
 	namespace Nitro {
 
 		//02085cf8
-		const char* crashReason;
+		extern const char* crashReason;
 
 		//0203a280
-		const char openFileCrash[0xD];
+		extern const char openFileCrash[0xD];
 
 		//0203a290
-		const char readFileCrash[0xD];
+		extern const char readFileCrash[0xD];
 
 		//0203a2a0
-		const char readFileFastCrash[0x11];
+		extern const char readFileFastCrash[0x11];
 
 		//0203a2b4
-		const char convertPathToFileIDCrash[0x18];
+		extern const char convertPathToFileIDCrash[0x18];
 
 		//02008588
 		bool unloadOverlay(MIProcessor target, u32 overlayID);
@@ -29,7 +30,7 @@ namespace FS {
 		bool loadOverlay(MIProcessor target, u32 overlayID);
 
 		//020085a0
-		bool loadOverlayInfo(FSOverlayInfo* info, ProcTarget target, u32 overlayID);
+		bool loadOverlayInfo(FSOverlayInfo* info, MIProcessor target, u32 overlayID);
 
 		//020085ac
 		s32 readFile(FSFile* file, void* dest, s32 length);
@@ -52,23 +53,23 @@ namespace FS {
 	}
 
 	//02085d04
-	u16 fileIDOffset;
+	extern u16 fileIDOffset;
 
 	//02085d00
-	u16 fileCount;
+	extern u16 fileCount;
 
 	enum class ReadMode : u8 {
 		Safe = 0,
 		Fast
 	};
 
-	typedef s32(*ReadFileFunction)(FSFile*, bool);
+	typedef void*(*ReadFileFunction)(FSFile*, bool);
 
 	//0203a390
-	ReadFileFunction readFunctionTable[2];
+	extern ReadFileFunction readFunctionTable[2];
 
 	//02085cfc
-	ReadMode readMode;
+	extern ReadMode readMode;
 
 	//02008e54
 	bool openFile(FSFile* file, u16 fileID);
@@ -134,7 +135,7 @@ namespace FS {
 	bool hasLZ77Header(void* data);
 
 	//02009424
-	void initialize();
+	void init();
 
 	//02009478
 	u32 getLZ77DecompressedSize(u32* header);
@@ -152,11 +153,11 @@ namespace FS {
 		};
 
 		//02085d0c
-		Entry loadedOverlays[16];
+		extern Entry loadedOverlays[16];
 
 
 		//02009484
-		void initializeLoadedOverlayTable();
+		void initLoadedOverlayTable();
 
 		//020094b8
 		void untrack(u32 overlayID);
@@ -191,19 +192,19 @@ namespace FS {
 		typedef u32 ArchiveID;
 
 		//0203a6c0
-		Entry archives[48];
+		extern Entry archives[48];
 
 		//02085d08
-		FSArchive* romArchivePtr;
+		extern FSArchive* romArchivePtr;
 
 		//0203a2cc
-		s8 currentArchiveID;
+		extern s8 currentArchiveID;
 
 		//020262d0
-		ArchiveID mainGameArchives[3];
+		extern ArchiveID mainGameArchives[3];
 
 		//020262dc
-		ArchiveID minigameArchives[4];
+		extern ArchiveID minigameArchives[4];
 
 		//02008f50
 		void* getFile(u16 fileID);
@@ -248,7 +249,7 @@ namespace FS {
 		void unloadMinigameArchives();
 
 		//02009800
-		void loadMinigameArchives();
+		bool loadMinigameArchives();
 
 
 	}
@@ -257,13 +258,13 @@ namespace FS {
 	u16 getFileID(const char* path);
 
 	//02009394
-	u16 calculateFileID(u32 extFileID);
+	u16 calcFileID(u32 extFileID);
 
 	//020093f8
 	void setFileIDOffset(bool set, u16 firstFileID);
 
 	//02009410
-	bool setFileCount(u16 files);
+	bool setFileCount(u16 fileCount);
 
 	//02009af0
 	u32 getFileSize(u32 extFileID);
@@ -302,17 +303,7 @@ namespace FS {
 
 
 	namespace Cache {
-
-		//02086a30
-		extern Cache::CacheEntry fileCache0[0x80];
-
-		//02085e30
-		extern Cache::CacheEntry fileCache1[0x80];
-
-		//02085e0c
-		u32 activeFileCache;
-
-
+		
 		class CacheEntry {
 
 			s16 entryID;
@@ -343,6 +334,15 @@ namespace FS {
 			virtual ~CacheEntry();
 
 		};
+
+		//02086a30
+		extern CacheEntry fileCache0[0x80];
+
+		//02085e30
+		extern CacheEntry fileCache1[0x80];
+
+		//02085e0c
+		extern u32 activeFileCache;
 
 		namespace Internal {
 
@@ -403,8 +403,5 @@ namespace FS {
 	}
 
 }
-
-
-
 
 #endif // !NSMB_FILE_H_
