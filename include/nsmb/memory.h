@@ -88,47 +88,47 @@ public:
 	Heap(void* start, u32 size, Heap* parent);
 	virtual ~Heap();
 
-	virtual void VLockMutex();												//Locks mutex if it exists.
-	virtual void VUnlockMutex();											//Unlocks mutex if it exists.
-	virtual bool VTryLockMutex();											//Tries to lock mutex. If successful, it returns true, false otherwise. Always returns 1 if heap requires/uses no mutex mechanism.
-	virtual void VDestroy() = 0;											//Destroys the heap and removes the allocator
-	virtual void* VAllocate(u32 size, int align) = 0;						//Allocates size bytes with an alignment/allocation direction of align
-	virtual void VDeallocate(void* ptr) = 0;								//Deallocates ptr from the heap.
-	virtual void VDeallocateAll() = 0;										//Deallocates everything from the heap.
-	virtual bool VIntact() = 0;												//Returns 1 if the heap represents a valid object. Not very reliable to check if the heap is broken...
-	virtual void VTest() = 0;												//Does nothing.
-	virtual u32 VReallocate(void* ptr, u32 newSize) = 0;					//Reallocates the memory given by ptr with the size of newSize. Returns 0 in case the reallocation failed.
-	virtual u32 VSizeof(void* ptr) = 0;										//Returns the size of an allocated block
-	virtual u32 VMaxAllocationUnitSize() = 0;								//Returns the maximum size that is allocatable at once
-	virtual u32 VMaxAllocatableSize() = 0;									//Returns the size of the largest contiguous free memory block, aligned on a 4-byte boundary
-	virtual u32 VMaxAllocatableSize(int align) = 0;							//Returns the size of the largest contiguous free memory block, aligned with align
-	virtual u32 VMemoryLeft() = 0;											//Returns the number of unallocated bytes
-	virtual u16 VSetGroupID(u16 id) = 0;									//Sets the assignable group ID for subsequent nodes. Returns the previous group ID.
-	virtual u16 VGetGroupID() = 0;											//Returns the current group ID.
-	virtual u32 VResizeToFit() = 0;											//Resizes the heap to fit (e.g. deallocates all unused memory). Returns the new size or 0 if it failed.
+	virtual void vLockMutex();												//Locks mutex if it exists.
+	virtual void vUnlockMutex();											//Unlocks mutex if it exists.
+	virtual bool vTryLockMutex();											//Tries to lock mutex. If successful, it returns true, false otherwise. Always returns 1 if heap requires/uses no mutex mechanism.
+	virtual void vDestroy() = 0;											//Destroys the heap and removes the allocator
+	virtual void* vAllocate(u32 size, int align) = 0;						//Allocates size bytes with an alignment/allocation direction of align
+	virtual void vDeallocate(void* ptr) = 0;								//Deallocates ptr from the heap.
+	virtual void vDeallocateAll() = 0;										//Deallocates everything from the heap.
+	virtual bool vIntact() = 0;												//Returns 1 if the heap represents a valid object. Not very reliable to check if the heap is broken...
+	virtual void vTest() = 0;												//Does nothing.
+	virtual u32 vReallocate(void* ptr, u32 newSize) = 0;					//Reallocates the memory given by ptr with the size of newSize. Returns 0 in case the reallocation failed.
+	virtual u32 vSizeOf(void* ptr) = 0;										//Returns the size of an allocated block
+	virtual u32 vMaxAllocationUnitSize() = 0;								//Returns the maximum size that is allocatable at once
+	virtual u32 vMaxAllocatableSize() = 0;									//Returns the size of the largest contiguous free memory block, aligned on a 4-byte boundary
+	virtual u32 vMaxAllocatableSize(int align) = 0;							//Returns the size of the largest contiguous free memory block, aligned with align
+	virtual u32 vMemoryLeft() = 0;											//Returns the number of unallocated bytes
+	virtual u16 vSetGroupID(u16 id) = 0;									//Sets the assignable group ID for subsequent nodes. Returns the previous group ID.
+	virtual u16 vGetGroupID() = 0;											//Returns the current group ID.
+	virtual u32 vResizeToFit() = 0;											//Resizes the heap to fit (e.g. deallocates all unused memory). Returns the new size or 0 if it failed.
 
-	void* _Allocate(u32 size, int align);									//Calls Allocate
-	void _Deallocate(void* ptr);											//Calls Deallocate
-	void _Destroy();														//Calls Destroy
-	u32 _Sizeof(void* ptr);													//Calls Sizeof
+	void* _allocate(u32 size, int align);									//Calls Allocate
+	void _deallocate(void* ptr);											//Calls Deallocate
+	void _destroy();														//Calls Destroy
+	u32 _sizeOf(void* ptr);													//Calls Sizeof
 
-	void* Allocate(u32 size, int align);									//Calls VAllocate. If size == -1, then all available heap space is allocated.
-	void* Allocate(u32 size);												//Calls Allocate with align = 4
-	void Deallocate(void* ptr);												//Calls VDeallocate. Skips null pointers.
-	void Destroy();															//Calls VDestroy
-	static int ForcePo2Alignment(int minAlign, u32 po2Align);				//Returns po2Align if it's not smaller than minAlign. If it is, it finds the next greater po2 of minAlign. Sign is retained.
-	void LockMutex();														//Calls VLockMutex. If we're in a non-system mode (e.g. IRQ) and flag 0x2000 is set, OS_Panic is called.
-	u32 MaxAllocatableSize(int align);										//Calls VMaxAllocatableSize
-	u32 MaxAllocationUnitSize();											//Calls VMaxAllocationUnitSize
-	u32 Reallocate(void* ptr, u32 newSize);									//Calls VReallocate
-	u32 ResizeToFit();														//Calls VResizeToFit
-	u16 SetGroupID(u16 id);													//Calls VSetGroupID
-	u32 Sizeof(void* ptr);													//Calls VSizeof
-	void Test();															//Calls VTest. Called by the debug screen handler in stage 6, requires special key combinations to trigger on different heaps. Probably to check if heaps are intact, since if the objects are corrupted, the call fails and the game may finally crash.
-	u32 SetFlags(u32 newFlags);												//Returns the current heap flags and sets flags (if newFlags & 0x8000 == 0) to newFlags
-	void UnlockMutex();														//Calls VUnlockMutex
+	void* allocate(u32 size, int align);									//Calls vAllocate. If size == -1, then all available heap space is allocated.
+	void* allocate(u32 size);												//Calls allocate with align = 4
+	void deallocate(void* ptr);												//Calls vDeallocate. Skips null pointers.
+	void destroy();															//Calls vDestroy
+	static int forcePo2Alignment(int minAlign, u32 po2Align);				//Returns po2Align if it's not smaller than minAlign. If it is, it finds the next greater po2 of minAlign. Sign is retained.
+	void lockMutex();														//Calls vLockMutex. If we're in a non-system mode (e.g. IRQ) and flag 0x2000 is set, OS_Panic is called.
+	u32 maxAllocatableSize(int align);										//Calls vMaxAllocatableSize
+	u32 maxAllocationUnitSize();											//Calls vMaxAllocationUnitSize
+	u32 reallocate(void* ptr, u32 newSize);									//Calls vReallocate
+	u32 resizeToFit();														//Calls vResizeToFit
+	u16 setGroupID(u16 id);													//Calls vSetGroupID
+	u32 sizeOf(void* ptr);													//Calls vSizeOf
+	void test();															//Calls vTest. Called by the debug screen handler in stage 6, requires special key combinations to trigger on different heaps. Probably to check if heaps are intact, since if the objects are corrupted, the call fails and the game may finally crash.
+	u32 setFlags(u32 newFlags);												//Returns the current heap flags and sets flags (if newFlags & 0x8000 == 0) to newFlags
+	void unlockMutex();														//Calls vUnlockMutex
 
-	static Heap* SetCurrent(Heap* currentHeap);								//Sets Memory::currentHeapPtr to currentHeap and returns a pointer to the previous heap
+	static Heap* setCurrent(Heap* currentHeap);								//Sets Memory::currentHeapPtr to currentHeap and returns a pointer to the previous heap
 
 };
 
@@ -145,28 +145,28 @@ public:
 	ExpandedHeap(void* start, u32 size, Heap* parent, NNSFndHeapHandle allocator);	//Also inits mutex with OS_InitMutex
 	virtual ~ExpandedHeap();
 
-	virtual void VLockMutex() override;
-	virtual void VUnlockMutex() override;
-	virtual bool VTryLockMutex() override;
-	virtual void VDestroy() override;
-	virtual void* VAllocate(u32 size, int align) override;
-	virtual void VDeallocate(void* ptr) override;							//Returns immediately if ptr == null
-	virtual void VDeallocateAll() override;									//Calls NNS_FndVisitAllocatedForExpHeap with NNSFndHeapVisitor = InvokeDeallocate
-	virtual bool VIntact() override;
-	virtual void VTest() override;
-	virtual u32 VReallocate(void* ptr, u32 newSize) override;
-	virtual u32 VSizeof(void* ptr) override;
-	virtual u32 VMaxAllocationUnitSize() override;							//Calls NNS_FndGetAllocatableSizeForExpHeapEx with align = 4
-	virtual u32 VMaxAllocatableSize() override;								//Calls NNS_FndGetAllocatableSizeForExpHeapEx with align = 4
-	virtual u32 VMaxAllocatableSize(int align) override;					//Calls NNS_FndGetAllocatableSizeForExpHeapEx
-	virtual u32 VMemoryLeft() override;										//Calls NNS_FndGetTotalFreeSizeForExpHeap
-	virtual u16 VSetGroupID(u16 id) override;
-	virtual u16 VGetGroupID() override;
-	virtual u32 VResizeToFit() override;									//Returns 0 (failure) immediately
+	virtual void vLockMutex() override;
+	virtual void vUnlockMutex() override;
+	virtual bool vTryLockMutex() override;
+	virtual void vDestroy() override;
+	virtual void* vAllocate(u32 size, int align) override;
+	virtual void vDeallocate(void* ptr) override;							//Returns immediately if ptr == null
+	virtual void vDeallocateAll() override;									//Calls NNS_FndVisitAllocatedForExpHeap with NNSFndHeapVisitor = InvokeDeallocate
+	virtual bool vIntact() override;
+	virtual void vTest() override;
+	virtual u32 vReallocate(void* ptr, u32 newSize) override;
+	virtual u32 vSizeOf(void* ptr) override;
+	virtual u32 vMaxAllocationUnitSize() override;							//Calls NNS_FndGetAllocatableSizeForExpHeapEx with align = 4
+	virtual u32 vMaxAllocatableSize() override;								//Calls NNS_FndGetAllocatableSizeForExpHeapEx with align = 4
+	virtual u32 vMaxAllocatableSize(int align) override;					//Calls NNS_FndGetAllocatableSizeForExpHeapEx
+	virtual u32 vMemoryLeft() override;										//Calls NNS_FndGetTotalFreeSizeForExpHeap
+	virtual u16 vSetGroupID(u16 id) override;
+	virtual u16 vGetGroupID() override;
+	virtual u32 vResizeToFit() override;									//Returns 0 (failure) immediately
 
-	static ExpandedHeap* Create(u32 size, Heap* parent);					//Creates a heap with size size on parent. If size == -1, the whole memory of parent is allocated for the new heap.
+	static ExpandedHeap* create(u32 size, Heap* parent);					//Creates a heap with size size on parent. If size == -1, the whole memory of parent is allocated for the new heap.
 
-	static void InvokeDeallocate(void* memBlock, NNSFndHeapHandle heap, u32 userParam);
+	static void invokeDeallocate(void* memBlock, NNSFndHeapHandle heap, u32 userParam);
 
 };
 
@@ -183,27 +183,27 @@ public:
 	FrameHeap(void* start, u32 size, Heap* parent, NNSFndHeapHandle allocator);
 	virtual ~FrameHeap();
 
-	virtual void VLockMutex();
-	virtual void VUnlockMutex();
-	virtual bool VTryLockMutex();
-	virtual void VDestroy() override;
-	virtual void* VAllocate(u32 size, int align) override;
-	virtual void VDeallocate(void* ptr) override;							//Calls OS_Panic if ptr is non-null. If not, it has no effect.
-	virtual void VDeallocateAll() override;									//Calls NNS_FndFreeToFrmHeap with mode = 3
-	virtual bool VIntact() override;
-	virtual void VTest() override;
-	virtual u32 VReallocate(void* ptr, u32 newSize) override;
-	virtual u32 VSizeof(void* ptr) override;								//Returns -1 immediately
-	virtual u32 VMaxAllocationUnitSize() override;							//Calls NNS_FndGetAllocatableSizeForFrmHeapEx with align = 4
-	virtual u32 VMaxAllocatableSize() override;								//Calls NNS_FndGetAllocatableSizeForFrmHeapEx with align = 4
-	virtual u32 VMaxAllocatableSize(int align) override;					//Calls NNS_FndGetAllocatableSizeForFrmHeapEx
-	virtual u32 VMemoryLeft() override;										//Calls NNS_FndGetAllocatableSizeForFrmHeapEx with align = 4
-	virtual u16 VSetGroupID(u16 id) override;								//Returns 0 immediately
-	virtual u16 VGetGroupID() override;										//Returns 0 immediately
-	virtual u32 VResizeToFit() override;
+	virtual void vLockMutex();
+	virtual void vUnlockMutex();
+	virtual bool vTryLockMutex();
+	virtual void vDestroy() override;
+	virtual void* vAllocate(u32 size, int align) override;
+	virtual void vDeallocate(void* ptr) override;							//Calls OS_Panic if ptr is non-null. If not, it has no effect.
+	virtual void vDeallocateAll() override;									//Calls NNS_FndFreeToFrmHeap with mode = 3
+	virtual bool vIntact() override;
+	virtual void vTest() override;
+	virtual u32 vReallocate(void* ptr, u32 newSize) override;
+	virtual u32 vSizeOf(void* ptr) override;								//Returns -1 immediately
+	virtual u32 vMaxAllocationUnitSize() override;							//Calls NNS_FndGetAllocatableSizeForFrmHeapEx with align = 4
+	virtual u32 vMaxAllocatableSize() override;								//Calls NNS_FndGetAllocatableSizeForFrmHeapEx with align = 4
+	virtual u32 vMaxAllocatableSize(int align) override;					//Calls NNS_FndGetAllocatableSizeForFrmHeapEx
+	virtual u32 vMemoryLeft() override;										//Calls NNS_FndGetAllocatableSizeForFrmHeapEx with align = 4
+	virtual u16 vSetGroupID(u16 id) override;								//Returns 0 immediately
+	virtual u16 vGetGroupID() override;										//Returns 0 immediately
+	virtual u32 vResizeToFit() override;
 
-	static FrameHeap* Create(u32 size, Heap* parent);						//Calls Create with align = 4
-	static FrameHeap* Create(u32 size, Heap* parent, int align);			//Creates a heap with size size on parent. If size == -1, the whole memory of parent is allocated for the new heap. If parent is null, currentHeapPtr is used (therefore do not create the root heap with this function). Align is replaced with its abolute value immediately and its minimum value is 4. Returns a pointer to the new heap or null if allocation failed.
+	static FrameHeap* create(u32 size, Heap* parent);						//Calls create with align = 4
+	static FrameHeap* create(u32 size, Heap* parent, int align);			//Creates a heap with size size on parent. If size == -1, the whole memory of parent is allocated for the new heap. If parent is null, currentHeapPtr is used (therefore do not create the root heap with this function). Align is replaced with its abolute value immediately and its minimum value is 4. Returns a pointer to the new heap or null if allocation failed.
 
 };
 
@@ -225,22 +225,28 @@ namespace Memory {
 	extern Heap::OnAllocate heapAllocationFunction;							//Function to be called in Heap::Allocate after allocation
 	extern bool isHeapListHeadInitialized;									//True if the heap list's head has already been created
 	extern NNSFndList* heapList;											//Pointer to the top level heap list
+	extern OSSwitchThreadCallback prevSwitchThreadCallback;
 
-	ExpandedHeap* SetupRootHeap(void* startAddress, u32 size);				//Creates the root heap and sets both rootHeapPtr and currentHeapPtr to the resulting pointer. Also sets rootHeapCreated to true and returns a pointer to the newly created heap instance.
-	ExpandedHeap* SetupGameHeap(void* startAddress, u32 size);				//Calls ExpandedHeap::Create with startAddress and size and sets Memory::gameHeapPtr to the resulting pointer. Returns a pointer to the newly created heap.
-	ExpandedHeap* TryCreateExpandedHeap(void* start, u32 size);				//Creates an expanded heap. Free allocatable space is determined by size - 0x30 since the allocator needs to be fitted, too. Returns null upon failure.
+	void initRootHeap();
+	ExpandedHeap* setupRootHeap(void* startAddress, u32 size);				//Creates the root heap and sets both rootHeapPtr and currentHeapPtr to the resulting pointer. Also sets rootHeapCreated to true and returns a pointer to the newly created heap instance.
+	ExpandedHeap* setupGameHeap(void* startAddress, u32 size);				//Calls ExpandedHeap::Create with startAddress and size and sets Memory::gameHeapPtr to the resulting pointer. Returns a pointer to the newly created heap.
+	ExpandedHeap* tryCreateExpandedHeap(void* start, u32 size);				//Creates an expanded heap. Free allocatable space is determined by size - 0x30 since the allocator needs to be fitted, too. Returns null upon failure.
+
+	void heapSwitchThreadCallback(OSThread* from, OSThread* to);
+	void setThreadHeap(OSThread* thread, Heap* heap);
+	void setHeapSwitchThreadCallback();
 
 	//Calls to Heap::Allocate
-	void* Allocate(u32 size, int align);									//Calls on currentHeapPtr
+	void* allocate(u32 size, int align);									//Calls on currentHeapPtr
 
 	//Calls to Heap::Deallocate
-	void Deallocate(void* ptr, Heap* heap);									//If heap is null, currentHeapPtr is used
+	void deallocate(void* ptr, Heap* heap);									//If heap is null, currentHeapPtr is used
 
 	//Calls to Heap::_Deallocate
-	void Deallocate(void* ptr);												//Calls on currentHeapPtr
+	void deallocate(void* ptr);												//Calls on currentHeapPtr
 
 	//Calls to Heap::Reallocate
-	void* Reallocate(Heap* heap, void* ptr, u32 newSize);					//Returns ptr if the reallocation was successfull, else null
+	void* reallocate(Heap* heap, void* ptr, u32 newSize);					//Returns ptr if the reallocation was successfull, else null
 
 }
 
