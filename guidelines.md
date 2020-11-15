@@ -48,10 +48,10 @@ public:
 ### Includes
 Headers always take
 ```cpp
-#ifndef NSMB_x_INCLUDED
-#define NSMB_x_INCLUDED
+#ifndef NSMB_x_H_
+#define NSMB_x_H_
 
-#endif  //NSMB_x_INCLUDED
+#endif // !NSMB_x_H_
 ```
 as an include guard. It is good practice to comment the defined preprocessor symbol after endif when closing a scope.
 

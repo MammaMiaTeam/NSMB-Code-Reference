@@ -5,7 +5,7 @@
 #include "nsmb/vector.h"
 
 /**
- * \brief The %Object Attribute Memory namespace.
+ * \brief The <b>O</b>bject <b>A</b>ttribute <b>M</b>emory namespace.
  * 
  * This namespace is used to draw the 2-dimensional sprites you see in the game.
  * \n Examples of things that use %OAM: HUD, Goombas, Koopas, and so on...
@@ -15,42 +15,36 @@ namespace OAM
 
 	/* ======== TYPES ======== */
 
-	/**
-	 * \brief The %OAM drawing flags.
-	 * */
+	/// \brief The %OAM drawing flags.
 	enum class Flags
 	{
-		None = 0, /**< No flags. */
-		FlipX = 1, /**< Flips the object horizontally. */
-		FlipY = 2, /**< Flips the object vertically. */
-		Unk4h = 4, /**< Unknown 0x4. */
-		FromLast = 8, /**< Starts rendering the objects from the last entry to the first. */
-		Prio1 = 0x10, /**< Draws with layer priority 1. */
-		Prio2 = 0x20, /**< Draws with layer priority 2. */
-		Prio3 = 0x30, /**< Draws with layer priority 3. */
-		TranslucentMode = 0x40, /**< Renders the objects in translucent mode. */
-		WindowMode = 0x80, /**< Renders the objects in window mode. */
-		BitmapMode = 0xC0 /**< Renders the objects in bitmap mode. */
+		None = 0,				/**< \brief No flags. */
+		FlipX = 1, 				/**< \brief Flips the object horizontally. */
+		FlipY = 2, 				/**< \brief Flips the object vertically. */
+		Unk4h = 4, 				/**< \brief Unknown 0x4. */
+		FromLast = 8, 			/**< \brief Starts rendering the objects from the last entry to the first. */
+		Prio1 = 0x10, 			/**< \brief Draws with layer priority 1. */
+		Prio2 = 0x20, 			/**< \brief Draws with layer priority 2. */
+		Prio3 = 0x30, 			/**< \brief Draws with layer priority 3. */
+		TranslucentMode = 0x40,	/**< \brief Renders the objects in translucent mode. */
+		WindowMode = 0x80,		/**< \brief Renders the objects in window mode. */
+		BitmapMode = 0xC0		/**< \brief Renders the objects in bitmap mode. */
 	};
 
-	/**
-	 * \brief The %OAM drawing settings.
-	 * */
+	/// \brief The %OAM drawing settings.
 	enum class Settings
 	{
-		None = 0, /**< No settings. */
-		Single = 1, /**< Only draws the first %OAM entry. */
-		NoWrap = 2 /**< Does not wrap the objects when wrap around is enabled in the level. */
+		None = 0,	/**< \brief No settings. */
+		Single = 1,	/**< \brief Only draws the first %OAM entry. */
+		NoWrap = 2	/**< \brief Does not wrap the objects when wrap around is enabled in the level. */
 	};
 
-	/**
-	 * \brief The %OAM counter updater flags.
-	 * */
+	/// \brief The %OAM counter updater flags.
 	enum class CounterFlags
 	{
-		None = 0, /**< No flags. */
-		UpdateShadow = 1, /**< Updates double the digit count in the array to account for the shadow. */
-		Unk2h = 2 /**< Ignores the %oam counter attribute table??? */
+		None = 0,			/**< \brief No flags. */
+		UpdateShadow = 1,	/**< \brief Updates double the digit count in the array to account for the shadow. */
+		Unk2h = 2			/**< \brief Ignores the %oam counter attribute table??? */
 	};
 
 	inline Flags operator|(Flags lhs, Flags rhs) {
@@ -135,29 +129,29 @@ namespace OAM
 
 	/* ======== VARIABLES ======== */
 
-	extern u32 unused_2087708; /**< Gets set at 0x0200DE4C and never used. */
+	extern u32 unused_2087708;				/**< \brief Gets set at 0x0200DE4C and never used. */
 
-	extern u32 _2087710; /**< Unknown 0x02087710. */
-	extern u32 _208770C; /**< Unknown 0x02087710. */
-	extern u32 _20876FC; /**< Unknown 0x02087710. */
+	extern u32 _2087710;					/**< \brief Unknown 0x02087710. */
+	extern u32 _208770C;					/**< \brief Unknown 0x02087710. */
+	extern u32 _20876FC;					/**< \brief Unknown 0x02087710. */
 
-	extern u32 curTileOffset; /**< The current tile offset being used for %OAM file loading. */
+	extern u32 curTileOffset;				/**< \brief The current tile offset being used for %OAM file loading. */
 
-	extern GXOamAttr objBuffer1[128]; /**< The first object buffer. (Top screen) */
-	extern GXOamAttr objBuffer2[128]; /**< The second object buffer. (Top screen) */
-	extern Affine affineBuffer[8]; /**< The affine parameter buffer. (Top screen) */
-	extern u16 objsFromHead; /**< The amount of objects to render normally. (Top screen) */
-	extern u16 objsFromTail; /**< The amount of objects to render in reverse. (Top screen) */
-	extern u16 objSlotsLeft; /**< The amount of objects slots left. (Top screen) */
-	extern u32 affineSetSlot; /**< The affine set slot to use in multiples of 4. (Top screen) */
+	extern GXOamAttr objBuffer1[128];		/**< \brief The first object buffer. (Top screen) */
+	extern GXOamAttr objBuffer2[128];		/**< \brief The second object buffer. (Top screen) */
+	extern Affine affineBuffer[8];			/**< \brief The affine parameter buffer. (Top screen) */
+	extern u16 objsFromHead;				/**< \brief The amount of objects to render normally. (Top screen) */
+	extern u16 objsFromTail;				/**< \brief The amount of objects to render in reverse. (Top screen) */
+	extern u16 objSlotsLeft;				/**< \brief The amount of objects slots left. (Top screen) */
+	extern u32 affineSetSlot;				/**< \brief The affine set slot to use in multiples of 4. (Top screen) */
 
-	extern GXOamAttr objBuffer1Sub[128]; /**< The first object buffer. (Bottom screen) */
-	extern GXOamAttr objBuffer2Sub[128]; /**< The second object buffer. (Bottom screen) */
-	extern Affine affineBufferSub[8]; /**< The affine parameter buffer. (Bottom screen) */
-	extern u16 objsFromHeadSub; /**< The amount of objects to render normally. (Bottom screen) */
-	extern u16 objsFromTailSub; /**< The amount of objects to render in reverse. (Bottom screen) */
-	extern u16 objSlotsLeftSub; /**< The amount of objects slots left. (Bottom screen) */
-	extern u32 affineSetSlotSub; /**< The affine set slot to use in multiples of 4. (Bottom screen) */
+	extern GXOamAttr objBuffer1Sub[128];	/**< \brief The first object buffer. (Bottom screen) */
+	extern GXOamAttr objBuffer2Sub[128];	/**< \brief The second object buffer. (Bottom screen) */
+	extern Affine affineBufferSub[8];		/**< \brief The affine parameter buffer. (Bottom screen) */
+	extern u16 objsFromHeadSub;				/**< \brief The amount of objects to render normally. (Bottom screen) */
+	extern u16 objsFromTailSub;				/**< \brief The amount of objects to render in reverse. (Bottom screen) */
+	extern u16 objSlotsLeftSub;				/**< \brief The amount of objects slots left. (Bottom screen) */
+	extern u32 affineSetSlotSub;			/**< \brief The affine set slot to use in multiples of 4. (Bottom screen) */
 
 	/* ======== COMMON ======== */
 
@@ -433,6 +427,7 @@ namespace OAM
 
 	/* ======== ANIMATION CLASS ======== */
 
+	/// \brief The animated %OAM class.
 	class Anim
 	{
 	public:
@@ -546,13 +541,13 @@ namespace OAM
 		
 	private:
 
-		Frame* frames; /**< The pointer to the frames. */
-		u32 frameTableID; /**< The ID of the current frame table. */
-		fx32 curFrameDur; /**< The duration of the current frame. */
-		fx32 updateSpeed; /**< The frame update speed. */
-		u16 curFrameID; /**< The ID of the current frame. */
-		u16 frameCount; /**< The frame count. */
-		u8 flags; /**< The animation flags. */
+		Frame* frames;		/**< \brief The pointer to the frames. */
+		u32 frameTableID;	/**< \brief The ID of the current frame table. */
+		fx32 curFrameDur;	/**< \brief The duration of the current frame. */
+		fx32 updateSpeed;	/**< \brief The frame update speed. */
+		u16 curFrameID;		/**< \brief The ID of the current frame. */
+		u16 frameCount;		/**< \brief The frame count. */
+		u8 flags;			/**< \brief The animation flags. */
 
 	};
 
