@@ -500,9 +500,10 @@ namespace FS {
 	}
 
 
-
+	/// \brief The archive namespace.
 	namespace Archive {
 
+		/// \brief The archive entry structure.
 		struct Entry {
 
 			NNSFndArchive* archive;
@@ -822,7 +823,10 @@ namespace FS {
 	 * */
 	namespace Cache {
 		
+		/// \brief The cache entry class.
 		class CacheEntry {
+		
+		private:
 
 			s16 entryID;
 			u16 refCount;
@@ -831,6 +835,8 @@ namespace FS {
 			u32 size;
 			Heap* heap;
 			void* data;
+
+		public:
 
 			// 0x0200A10C
 			/**
@@ -889,11 +895,11 @@ namespace FS {
 		};
 
 		// 0x02086A30
-		/// \brief Cache entry table 0.
+		/// \brief %Cache entry table 0.
 		extern CacheEntry fileCache0[0x80];
 
 		// 0x02085E30
-		/// \brief Cache entry table 1.
+		/// \brief %Cache entry table 1.
 		extern CacheEntry fileCache1[0x80];
 
 		// 0x02085E0C
@@ -901,7 +907,7 @@ namespace FS {
 		extern u32 activeFileCache;
 
 		// 0x02085E10
-		/// \brief The overlay block address reserved for cached file storage.
+		/// \brief The address of the overlay block reserved for cached file storage.
 		extern void* overlayFileDest;
 
 		// 0x02085E14
@@ -969,6 +975,9 @@ namespace FS {
 			// 0x02009E7C
 			/**
 			 * \brief Loads a file to an overlay and adds it to a cache table.
+			 * 
+			 * The destination address of the data is in FS::Cache::overlayFileDest
+			 * and the remaining size in FS::Cache::overlayFileSize.
 			 * 
 			 * When loading, if the file is 3D it gets automatically setup.
 			 * 
@@ -1055,6 +1064,9 @@ namespace FS {
 		// 0x02009C14
 		/**
 		 * \brief Loads a file to an overlay and adds it to the active cache table.
+		 * 
+		 * The destination address of the data is in FS::Cache::overlayFileDest
+		 * and the remaining size in FS::Cache::overlayFileSize.
 		 * 
 		 * When loading, if the file is 3D it gets automatically setup.
 		 * 
