@@ -17,25 +17,37 @@
 //	Contains the functions used to play sounds in the game.
 namespace Sound {
 
-	//	Loads the music sequences for toad house levels.
+	// 0x02011988
+	/**
+	 * @brief Resets the heap state and loads the toad house level sequences.
+	 * 
+	 * Sequences:
+	 *    5 - BGM_DOWN
+	 *    2 - BGM_MUTEKI
+	 *    3 - BGM_HUGE
+	 *   29 - BGM_FANFARE_KINO
+	 */
 	void loadToadHouseLevelSeqs();
 
-	/*
-		Resets the heap state and loads the following music sequences.
-
-		 4 - BGM_COURSE_CLEAR  (Course Clear)
-		28 - BGM_GOAL_FANFARE2 (Course Clear Bonus)
-		 5 - BGM_DOWN          (Player Death)
-		 2 - BGM_MUTEKI        (Starman)
-		 3 - BGM_HUGE          (Mega Mushroom)
-		18 - BGM_SWITCH        (Switch Timer)
-	*/
+	// 0x020119E8
+	/**
+	 * @brief Resets the heap state and loads the level sequences.
+	 * 
+	 * Sequences:
+	 *    4 - BGM_COURSE_CLEAR
+	 *   28 - BGM_GOAL_FANFARE2
+	 *    5 - BGM_DOWN
+	 *    2 - BGM_MUTEKI
+	 *    3 - BGM_HUGE
+	 *   18 - BGM_SWITCH
+	 */
 	void clearAndLoadLevelSeqs();
 
-	/*
-		Loads the level main theme.
-		The sequence ID to load is retrieved from the view the player is in.
-	*/
+	// 0x02011ACC
+	/**
+	 * @brief Loads the level main theme from the view music ID field.
+	 * The sequence ID to load is retrieved from the view the player is in.
+	 */
 	void loadLevelThemeSeq();
 
 	//	Resets the heap state and loads sound effect set 1.

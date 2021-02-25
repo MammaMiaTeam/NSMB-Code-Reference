@@ -3,16 +3,14 @@
 
 #include "nitro_if.h"
 
-
-struct MinigameHighscore {
+struct __attribute__((packed))
+MinigameHighscore {
 	u32 record0 : 20;
 	u32 record1 : 20;
 	u32 record2 : 20;
 	u32 record3 : 20;
 	u32 record4 : 20;
 };
-
-
 
 struct MinigameSave {
 
@@ -22,11 +20,10 @@ struct MinigameSave {
 
 };
 
-
-
 struct MainSave {
 
 	enum class WorldFlags : u16 {
+		None = 0x0,
 		Started = 0x1,
 		BowserJRStart = 0x2,					//Triggered in any level
 		BowserJRTower = 0x4,					//Triggered in tower
@@ -42,6 +39,7 @@ struct MainSave {
 	};
 
 	enum class NodeFlags : u8 {
+		None = 0x0,
 		StarCoin1 = 0x1,
 		StarCoin2 = 0x2,
 		StarCoin3 = 0x4,
@@ -80,6 +78,7 @@ struct MainSave {
 	};
 
 	enum class CompletionFlags : u32 {
+		None = 0x0,
 		StandardLevelsCompleted = 0x1,			//Excludes cannons
 		AllPathsUnlocked = 0x2,
 		AllStarSignsRemoved = 0x4,
@@ -130,9 +129,6 @@ struct MainSave {
 
 };
 
-
-
-
 struct OptionSave {
 
 	enum class Sound : u32 {
@@ -154,8 +150,6 @@ struct OptionSave {
 
 };
 
-
-
 namespace Save {
 
 	enum class ReturnCode {
@@ -174,7 +168,6 @@ namespace Save {
 	//02088f18
 	extern OptionSave optionSave;
 
-
 	//0204c7f4
 	ReturnCode setupBackup(CARDBackupType type, const char* signature);
 
@@ -183,7 +176,6 @@ namespace Save {
 
 	//0204c568
 	ReturnCode writeBackup(void* data, u32 size, u32 slot);//Returns true on failure. Slot determines the save slot. Data is written 0xA bytes after the slot start.
-
 
 	//02012788
 	void writeMGScore(u32 minigameID, u32 rank, u32 score);
@@ -230,7 +222,7 @@ namespace Save {
 	//02012abc
 
 	//02012d6c
-	bool onGameOver(u32 slot, MainSave* save);//Does nothing
+	void onGameOver(u32 slot, MainSave* save);//Does nothing
 
 	//02012d70
 	bool onStoryFinished(u32 slot, MainSave* save);
@@ -269,20 +261,14 @@ namespace Save {
 	void clearOptionSave(OptionSave* save);
 
 	//02013090
-	bool createOptionSave();
-
-	//020130b4
 	bool generateOptionSave();
 
 	//020130b4
 	bool resetSaves();
 
 	//02013100
-	void clearLoadedSaves();
+	void clearLoadedSave();
 
 }
-
-
-
 
 #endif // !NSMB_SAVE_H_
