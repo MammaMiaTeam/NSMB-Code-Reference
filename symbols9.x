@@ -1887,16 +1887,16 @@ _ZN11ParticleMgr12pParticleMgrE													= 0x208b520;
 _ZN11ParticleMgr13pParticleFileE												= 0x208b524;
 
 
-_ZN7Physics8Collider11DoSomethingEv												= 0x020AB18C;
-_ZN7Physics8Collider14UpdatePositionEv											= 0x020AB2CC;
-_ZN7Physics8Collider10UnregisterEv												= 0x020AB350;
-_ZN7Physics8Collider8RegisterEv													= 0x020AB3B4;
-_ZN7Physics8Collider8InitRectEPNS_12ColliderInfoEP4Vec3							= 0x020AB40C;
-_ZN7Physics8Collider8InitRectEP4Vec2S2_P4Vec3									= 0x020AB560;
-_ZN7Physics8Collider10InitRectExEllllP4Vec3										= 0x020AB6BC;
-_ZN7Physics8Collider4InitEP5ActorPNS_12ColliderInfoEmhP4Vec3					= 0x020AB7B8;
-_ZN7Physics8Collider6InitExEP5ActorllllPFvS2_S2_ES4_S4_mhP4Vec3					= 0x020AB81C;
-_ZN7Physics8Collider5ResetEv													= 0x020AB898;
+_ZN7Physics8Collider11doSomethingEv												= 0x020AB18C;
+_ZN7Physics8Collider14updatePositionEv											= 0x020AB2CC;
+_ZN7Physics8Collider6unlinkEv													= 0x020AB350;
+_ZN7Physics8Collider4linkEv														= 0x020AB3B4;
+_ZN7Physics8Collider8initRectEPNS_12ColliderInfoEP4Vec3							= 0x020AB40C;
+_ZN7Physics8Collider8initRectEP4Vec2S2_P4Vec3									= 0x020AB560;
+_ZN7Physics8Collider10initRectExEllllP4Vec3										= 0x020AB6BC;
+_ZN7Physics8Collider4initEP5ActorPNS_12ColliderInfoEmhP4Vec3					= 0x020AB7B8;
+_ZN7Physics8Collider6initExEP5ActorllllPFvS2_S2_ES4_S4_mhP4Vec3					= 0x020AB81C;
+_ZN7Physics8Collider5resetEv													= 0x020AB898;
 _ZN7Physics8ColliderD1Ev														= 0x020AB8B8;
 _ZN7Physics8ColliderC1Ev														= 0x020AB8E8;
 
