@@ -30,7 +30,6 @@ namespace Physics {
 			ColliderCallback side;
 		} callbacks;
 
-		u16 unk1, unk2, unk3;
 	};
 
 	/*
@@ -108,60 +107,60 @@ namespace Physics {
 			Doesn't unregister the Collider from the execution list nor does it
 			reset the collision rectangle points, callbacks, behavior and flags.
 		*/
-		void Reset();
+		void reset();
 
 		/*
 			Initializes the Collider with collision rectangle parameters and collision callbacks.
 			A scale vector may also be specified.
 		*/
-		void InitEx(Actor* owner, fx32 left, fx32 top, fx32 right, fx32 bottom, ColliderCallback topCallback, ColliderCallback bottomCallback, ColliderCallback sideCallback, u32 behavior, u8 colliderRelated, Vec3* scale);
+		void initEx(Actor* owner, fx32 left, fx32 top, fx32 right, fx32 bottom, ColliderCallback topCallback, ColliderCallback bottomCallback, ColliderCallback sideCallback, u32 behavior, u8 colliderRelated, Vec3* scale);
 
 		/*
 			Initializes the Collider through a settings structure.
 			A scale vector may also be specified.
 		*/
-		void Init(Actor* owner, ColliderInfo* info, u32 behavior, u8 colliderRelated, Vec3* scale);
+		void init(Actor* owner, ColliderInfo* info, u32 behavior, u8 colliderRelated, Vec3* scale);
 
 		/*
 			Initializes the collision rectangle with parameters.
 			A scale vector may also be specified.
 			optionFlag can be used to calculate the origin point's delta from the old origin point.
 		*/
-		void InitRectEx(fx32 left, fx32 top, fx32 right, fx32 bottom, Vec3* scale);
+		void initRectEx(fx32 left, fx32 top, fx32 right, fx32 bottom, Vec3* scale);
 
 		/*
 			Initializes the collision rectangle using origin and end points vectors.
 			A scale vector may also be specified.
 			optionFlag can be used to calculate the origin point's delta from the old origin point.
 		*/
-		void InitRect(Vec2* originPoint, Vec2* endPoint, Vec3* scale);
+		void initRect(Vec2* originPoint, Vec2* endPoint, Vec3* scale);
 
 		/*
 			Initializes the collision rectangle through a settings structure.
 			A scale vector may also be specified.
 			optionFlag can be used to calculate the origin point's delta from the old origin point.
 		*/
-		void InitRect(ColliderInfo* info, Vec3* scale);
+		void initRect(ColliderInfo* info, Vec3* scale);
 
 		/*
-			Registers the Collider to the execution list.
+			Links the Collider to the execution list.
 		*/
-		void Register();
+		void link();
 
 		/*
-			Unregisters the Collider from the execution list.
+			Unlinks the Collider from the execution list.
 		*/
-		void Unregister();
+		void unlink();
 
 		/*
 			Updates the collision rectangle based on the position of the owner.
 		*/
-		void UpdatePosition();
+		void updatePosition();
 
 		/*
 			I honestly don't know (it uses unk3, which I've never seen being set).
 		*/
-		void DoSomething();
+		void doSomething();
 
 	};
 
