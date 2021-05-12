@@ -97,6 +97,7 @@ VEC_DotProduct = 0x1FFCE30;
 VEC_Subtract = 0x1FFCE74;
 VEC_Add = 0x1FFCEA8;
 FX_Atan2Idx = 0x1FFCEDC;
+FX_Init = 0x1FFD0B0;
 OS_IrqHandler = 0x1FFD5E4;
 OS_IrqHandler_ThreadSwitch = 0x1FFD63C;
 OSi_DoBoot = 0x1FFD798;
@@ -107,25 +108,14 @@ OSi_DoResetSystem = 0x1FFDA6C;
 MIi_DmaSetParams_wait_noInt = 0x1FFDAAC;
 MIi_DmaSetParams_noInt = 0x1FFDB0C;
 MIi_DmaSetParams_wait = 0x1FFDB44;
-SVC_CpuClear = 0x2000436;
-_start								= 0x02000800;
-MIi_CpuClear32 = 0x2000920;
+SVC_CpuClear = 0x02000436;
+SVC_WaitByLoop = 0x02000738;
+_start = 0x02000800;
+INITi_CpuClear32 = 0x2000920;
 MIi_UncompressBackward = 0x2000934;
 NitroMain = 0x2003000;
-OS_Panic_1 = 0x2004598;
-OS_Panic = 0x20045EC;
+OS_Terminate = 0x20045EC;
 NitroStartUp = 0x2004C24;
-MIi_CpuClearFast2 = 0x2005EA8;
-DC_StoreRangeOrAll = 0x200765C;
-DC_FlushRangeOrAll = 0x2007684;
-FS_UnloadOverlay_0 = 0x2008588;
-FS_LoadOverlay_0 = 0x2008594;
-FS_LoadOverlayInfo_0 = 0x20085A0;
-OSi_UnsetTimerReserved = 0x2010E40;
-OS_Init_1 = 0x201325C;
-MIi_ReadByteStreamFromMemory = 0x201711C;
-MIi_ReadShortStreamFromMemory = 0x2017124;
-OS_Init_2 = 0x2017274;
 NNS_FndGetPrevListObject = 0x2055ADC;
 NNS_FndGetNextListObject = 0x2055AF0;
 NNS_FndRemoveListObject = 0x2055B08;
@@ -356,7 +346,7 @@ G2S_GetBG0ScrPtr = 0x2062298;
 G2_GetBG0ScrPtr = 0x20622B8;
 G2x_SetBlendBrightness_ = 0x20622EC;
 G2x_SetBlendAlpha_ = 0x2062310;
-G2x_SetBGyAffine = 0x206232C;
+G2x_SetBGyAffine_ = 0x206232C;
 G3_MultMtx33 = 0x20623E0;
 G3_MultMtx43 = 0x20623FC;
 G3_LoadMtx43 = 0x2062418;
@@ -686,7 +676,7 @@ TP_CheckError = 0x206BA8C;
 TP_WaitBusy = 0x206BAA0;
 TP_GetCalibratedPoint = 0x206BAB8;
 TP_CalcCalibrateParam = 0x206BBE8;
-GX_GetBankForClearImage = 0x206BE58;
+TP_GetLatestIndexInAuto = 0x206BE58;
 TP_RequestAutoSamplingStartAsync = 0x206BE68;
 TP_SetCalibrateParam = 0x206BF7C;
 TP_GetUserInfo = 0x206C0C4;
@@ -1055,115 +1045,99 @@ OS_IsThreadAvailable_20 = 0x238DF40;
 CTRDGi_UnlockByProcessor_0 = 0x238EDC0;
 CTRDGi_ChangeLatestAccessCycle_0 = 0x238EE8C;
 
-_ZN2FS10unloadFileEPv = 0x020087C0;
-_ZN2FS11getFileSizeEm = 0x02009AF0;
-_ZN2FS17getDecompFileSizeEm = 0x02009ACC;
-_ZN2FS11loadExtFileEm = 0x020087F0;
-_ZN2FS11loadExtFileEmPv = 0x02008934;
-_ZN2FS11loadExtFileEmPvl = 0x020088FC;
-_ZN2FS11loadExtFileEmb = 0x02008810;
-_ZN2FS11setReadModeENS_8ReadModeE = 0x02008990;
-_ZN2FS12fileIDOffsetE = 0x02085D04;
-_ZN2FS12loadFileLZ77Em = 0x0200869C;
-_ZN2FS12loadFileLZ77EmPv = 0x02008784;
-_ZN2FS12readFileFastEP6FSFileb = 0x020089A0;
-_ZN2FS12readFileSafeEP6FSFileb = 0x02008A6C;
-_ZN2FS12setFileCountEt = 0x02009410;
-_ZN2FS13hasLZ77HeaderEPv = 0x02008E00;
-_ZN2FS13loadBGPaletteEmmb = 0x02009918;
-_ZN2FS14loadOBJPaletteEmmb = 0x02009A30;
-_ZN2FS15setFileIDOffsetEbt = 0x020093F8;
-_ZN2FS15setReadModeFastEv = 0x02008970;
-_ZN2FS15setReadModeSafeEv = 0x02008980;
-_ZN2FS16loadBGSubPaletteEmm = 0x02009878;
-_ZN2FS17loadOBJExtPaletteEmmb = 0x020099C8;
-_ZN2FS17readFunctionTableE = 0x0203A390;
-_ZN2FS18loadFileToOBJVramAEmm = 0x02009A98;
-_ZN2FS20loadExtFileUnflushedEm = 0x02008800;
-_ZN2FS22loadBGExtPaletteCachedEmm = 0x020098CC;
-_ZN2FS23getLZ77DecompressedSizeEPm = 0x02009478;
-_ZN2FS23loadOBJExtPaletteCachedEmm = 0x02009980;
-_ZN2FS4initEv = 0x02009424;
-_ZN2FS5Cache10CacheEntry17loadFileToOverlayEmb = 0x0200A194;
-_ZN2FS5Cache10CacheEntry6unloadEv = 0x0200A10C;
-_ZN2FS5Cache10CacheEntry8loadDataEm = 0x0200A138;
-_ZN2FS5Cache10CacheEntry8loadFileEmb = 0x0200A234;
-_ZN2FS5Cache10CacheEntryC1Ev = 0x0200A358;
-_ZN2FS5Cache10CacheEntryC2Ev = 0x0200A358;
-_ZN2FS5Cache10CacheEntryD0Ev = 0x0200A2B0;
-_ZN2FS5Cache10CacheEntryD1Ev = 0x0200A308;
-_ZN2FS5Cache10CacheEntryD2Ev = 0x0200A308;
-_ZN2FS5Cache10unloadFileEm = 0x02009B94;
-_ZN2FS5Cache15activeFileCacheE = 0x02085E0C;
-_ZN2FS5Cache15overlayFileDestE = 0x02085E10;
-_ZN2FS5Cache15overlayFileSizeE = 0x02085E14;
-_ZN2FS5Cache17loadFileToOverlayEmb = 0x02009C14;
-_ZN2FS5Cache17setupCacheEntriesEv = 0x0200A0B4;
-_ZN2FS5Cache5clearEv = 0x02009B64;
-_ZN2FS5Cache7getFileEm = 0x02009CB4;
-_ZN2FS5Cache8Internal10unloadFileEmPNS0_10CacheEntryEm = 0x02009D6C;
-_ZN2FS5Cache8Internal11setup3DFileEPvb = 0x02009DEC;
-_ZN2FS5Cache8Internal16getFileInOverlayEmPNS0_10CacheEntryEmbb = 0x02009F8C;
-_ZN2FS5Cache8Internal17loadFileToOverlayEmPNS0_10CacheEntryEmb = 0x02009E7C;
-_ZN2FS5Cache8Internal5clearEPNS0_10CacheEntryEm = 0x02009D30;
-_ZN2FS5Cache8Internal7getDataEmPNS0_10CacheEntryEm = 0x02009F2C;
-_ZN2FS5Cache8Internal7getFileEmPNS0_10CacheEntryEmbb = 0x0200A020;
-_ZN2FS5Cache8Internal8findFileEm = 0x02009CD4;
-_ZN2FS5Cache8Internal8loadDataEmPNS0_10CacheEntryEm = 0x02009DC0;
-_ZN2FS5Cache8Internal8loadFileEmPNS0_10CacheEntryEmb = 0x02009ED4;
-_ZN2FS5Cache8loadDataEm = 0x02009BC8;
-_ZN2FS5Cache8loadFileEmb = 0x02009C64;
-_ZN2FS5Nitro11crashReasonE = 0x02085CF8;
-_ZN2FS5Nitro11loadOverlayE11MIProcessorm = 0x02008594;
-_ZN2FS5Nitro12pathToFileIDEP8FSFileIDPKc = 0x02008648;
-_ZN2FS5Nitro13unloadOverlayE11MIProcessorm = 0x02008588;
-_ZN2FS5Nitro14setCrashReasonEPKc = 0x02008670;
-_ZN2FS5Nitro15loadOverlayInfoEP13FSOverlayInfo11MIProcessorm = 0x020085A0;
-_ZN2FS5Nitro8openFileEP6FSFile8FSFileID = 0x0200860C;
-_ZN2FS5Nitro8openFileEP6FSFilePKc = 0x020085E4;
-_ZN2FS5Nitro8readFileEP6FSFilePvl = 0x020085AC;
-_ZN2FS5Nitro9getFileIDEP8FSFileIDm = 0x02008E2C;
-_ZN2FS5NitroL13openFileCrashE = 0x0203A280;
-_ZN2FS5NitroL13readFileCrashE = 0x0203A290;
-_ZN2FS5NitroL17readFileFastCrashE = 0x0203A2A0;
-_ZN2FS5NitroL24convertPathToFileIDCrashE = 0x0203A2B4;
-_ZN2FS7Archive10mountFrontEmP4Heap = 0x0200917C;
-_ZN2FS7Archive10unmountAllEv = 0x02009084;
-_ZN2FS7Archive11unmountListEPm = 0x020090D0;
-_ZN2FS7Archive13romArchivePtrE = 0x02085D08;
-_ZN2FS7Archive14unmountCurrentEv = 0x02008FF4;
-_ZN2FS7Archive16currentArchiveIDE = 0x0203A2CC;
-_ZN2FS7Archive16mainGameArchivesE = 0x020262D0;
-_ZN2FS7Archive16minigameArchivesE = 0x020262DC;
-_ZN2FS7Archive20loadMainGameArchivesEv = 0x020097D0;
-_ZN2FS7Archive20loadMinigameArchivesEv = 0x02009800;
-_ZN2FS7Archive20unmountAndMountListsEPmS1_bP4Heap = 0x0200902C;
-_ZN2FS7Archive22unloadMinigameArchivesEv = 0x020097EC;
-_ZN2FS7Archive5mountEPKcS2_P4Heapl = 0x020092B0;
-_ZN2FS7Archive5mountEmbP4Heap = 0x020091A4;
-_ZN2FS7Archive7getFileEt = 0x02008F50;
-_ZN2FS7Archive7unmountEP13NNSFndArchiveP4Heap = 0x02009288;
-_ZN2FS7Archive7unmountEm = 0x020090F8;
-_ZN2FS7Archive8archivesE = 0x0203A6C0;
-_ZN2FS7Archive9mountBackEmP4Heap = 0x02009190;
-_ZN2FS7Archive9mountListEPmbP4Heap = 0x02009134;
-_ZN2FS7Overlay12trackAndLoadEm = 0x02009560;
-_ZN2FS7Overlay14loadedOverlaysE = 0x02085D0C;
-_ZN2FS7Overlay22initLoadedOverlayTableEv = 0x02009484;
-_ZN2FS7Overlay4loadEm = 0x02009510;
-_ZN2FS7Overlay5flushEP13FSOverlayInfo = 0x02009798;
-_ZN2FS7Overlay7untrackEm = 0x020094B8;
-_ZN2FS8loadFileE8FSFileIDPvl = 0x02008D14;
-_ZN2FS8loadFileEPKcPvl = 0x02008CD8;
-_ZN2FS8loadFileEt = 0x020087E0;
-_ZN2FS8loadFileEtb = 0x02008828;
-_ZN2FS8openFileEP6FSFilet = 0x02008E54;
-_ZN2FS8readFileEP6FSFilePvl = 0x02008D80;
-_ZN2FS8readFileEP6FSFileb = 0x02008944;
-_ZN2FS8readModeE = 0x02085CFC;
-_ZN2FS8toFileIDEm = 0x02009394;
-_ZN2FS9fileCountE = 0x02085D00;
-_ZN2FS9getFileIDEPKc = 0x0200936C;
+NNS_G3dGlbFlush = 0x02019928;
+NNS_G3dGlbSetBaseTrans = 0x02058120;
+NNS_G3dGlbSetBaseScale = 0x020580F8;
+NNS_G3dGlbLightVector = 0x020580C4;
+NNS_G3dGlbLightColor = 0x020580B0;
+NNS_G3dGlbMaterialColorDiffAmb = 0x0205808C;
+NNS_G3dGlbMaterialColorSpecEmi = 0x02058068;
+NNS_G3dGlbPolygonAttr = 0x0205803C;
+NNS_G3dAnmObjCalcSizeRequired = 0x02057EC0;
+NNSi_G3dSendJointSRTBasic = 0x0205BF08;
+NNS_G3dGetAnmByIdx = 0x0205A70C;
+NNSi_G3dGetTexPatAnmTexNameByIdx = 0x0205A6FC;
+NNSi_G3dGetTexPatAnmPlttNameByIdx = 0x0205A6EC;
+NNSi_G3dGetTexPatAnmFV = 0x0205A670;
+NNSi_G3dGetTexPatAnmDataByIdx = 0x0205A654;
+NNS_G3dAnmObjInit = 0x02057E20;
+addLink_ = 0x02057D08;
+NNS_G3dRenderObjRemoveAnmObj = 0x02057BA8;
+removeLink_ = 0x02057C08;
+NNS_SndPlayerSetTrackPan_0 = 0x0205DC74;
+NNSi_G3dGetJointScaleBasic = 0x0205BECC;
+NNSi_G3dSendTexSRTXsi = 0x0205CB10;
+NNSi_G3dSendTexSRT3dsMax = 0x0205C4A0;
+texmtxCalc_flagTRS_ = 0x0205C5E8;
+texmtxCalc_flagTR_ = 0x0205C60C;
+texmtxCalc_flagTS_ = 0x0205C65C;
+texmtxCalc_flagT_ = 0x0205C73C;
+texmtxCalc_flagRS_ = 0x0205C83C;
+texmtxCalc_flagR_ = 0x0205C884;
+texmtxCalc_flagS_ = 0x0205C908;
+texmtxCalc_flag_ = 0x0205C9FC;
+NNSi_G3dSendJointSRTSi3d = 0x0205C370;
+NNSi_G3dGetJointScaleSi3d = 0x0205C148;
+NNSi_G3dSendTexSRTSi3d = 0x0205BF84;
+NNSi_G3dModifyPolygonAttrMask = 0x0205A270;
+NNSi_G3dModifyMatFlag = 0x0205a2d8;
+NNS_G3dMdlSetMdlDiff = 0x0205A22C;
+NNS_G3dMdlSetMdlAmb = 0x0205A1E8;
+NNS_G3dMdlSetMdlEmi = 0x0205A1A4;
+NNS_G3dMdlSetMdlLightEnableFlag = 0x0205A160;
+NNS_G3dMdlSetMdlPolygonMode = 0x0205A11C;
+NNS_G3dMdlSetMdlPolygonID = 0x0205A0D8;
+NNS_G3dMdlSetMdlAlpha = 0x0205A094;
+NNS_G3dMdlSetMdlAmbAll = 0x02059FD0;
+NNS_G3dMdlSetMdlDiffAll = 0x0205A010;
+NNS_G3dMdlSetMdlLightEnableFlagAll = 0x02059F90;
+NNS_G3dMdlSetMdlPolygonModeAll = 0x02059F50;
+NNS_G3dMdlSetMdlAlphaAll = 0x02059ED0;
+NNSi_G3dFuncSbc_NODEMIX = 0x02058BB4;
+NNSi_G3dFuncSbc_CALLDL = 0x02058AD4;
+NNSi_G3dFuncSbc_ENVMAP = 0x020587B4;
+NNSi_G3dFuncSbc_PRJMAP = 0x02058424;
+
+FreeCommandBuffer = 0x2060330;
+RemoveCommandByPlayer = 0x2060364;
+FreeChannel = 0x20603D4;
+ShutdownPlayer = 0x2060410;
+ForceStopStrm = 0x2060474;
+FreePlayer = 0x2060510;
+
+PushCommand_impl = 0x2067510;
+
+NNS_GfdInitFrmTexVramManager = 0x2056f40;
+NNS_GfdResetFrmTexVramState = 0x2056ec4;
+NNS_GfdSetFrmTexVramState = 0x2056c9c;
+NNS_GfdGetFrmTexVramState = 0x2056ce8;
+NNS_GfdAllocTexVram = 0x2056d3c;
+
+NNS_GfdInitFrmPlttVramManager = 0x20571c4;
+NNS_GfdResetFrmPlttVramState = 0x2057030;
+NNS_GfdSetFrmPlttVramState = 0x205704c;
+NNS_GfdGetFrmPlttVramState = 0x2057068;
+NNS_GfdAllocPlttVram = 0x205708c;
+
+NNSi_GfdSetTextNrmSearchArray = 0x2056fe0;
+
+NNS_G3dRenderObjAddAnmObj = 0x02057C7C;
+updateHintVec_ = 0x01FF8BE0;
+NNS_G3dGeUseFastDma = 0x02059B58;
+NNSi_G2dSplitCharUTF16 = 0x02057678;
+MBi_StartParentCore = 0x020788C8;
+MBi_GetTgid = 0x0207845C;
+CARD_IsEnabled = 0x0206E074;
+CARD_Enable = 0x0206E038;
+NNSi_SndSeqArcGetSeqInfo = 0x02060C40;
+GXS_BeginLoadBGExtPltt = 0x0206320C;
+NNS_G3dRenderObjSetInitFunc = 0x02057B8C;
+OSi_DoLockByWord = 0x02064290;
+SVC_WaitByLoop = 0x02000738;
+FSi_CloseFileCommand = 0x02068E30;
+FSi_ReadDummyCallback = 0x0206A9C8;
+
+FX_SinCosTable_ = 0x2080304;
 
 NNSr_FndFindListContainHeap = 0x02055DB0;
 NNSr_FndFindContainHeap = 0x02055D88;
@@ -1185,324 +1159,6 @@ NNSr_FndSetupHeap = 0x02055CFC;
 NNSr_FndExpHeapCreateMBlockTarget = 0x02056668;
 NNSr_FndFinalizeHeap = 0x02055CE4;
 
-_ZN4HeapC1EPvjPS_ = 0x020455A0;
-_ZN4HeapD1Ev = 0x02045538;
-_ZN4HeapD2Ev = 0x02045508;
-_ZN4HeapD0Ev = 0x02045518;
-_ZN4Heap10vLockMutexEv = 0x020451D8;
-_ZN4Heap12vUnlockMutexEv = 0x020451D4;
-_ZN4Heap13vTryLockMutexEv = 0x020451CC;
-_ZN4Heap9_allocateEji = 0x02044B3C;
-_ZN4Heap11_deallocateEPv = 0x02044B20;
-_ZN4Heap8_destroyEv = 0x02045128;
-_ZN4Heap7_sizeOfEPv = 0x02044B14;
-_ZN4Heap8allocateEji = 0x02045040;
-_ZN4Heap8allocateEj = 0x02044B2C;
-_ZN4Heap10deallocateEPv = 0x02044D94;
-_ZN4Heap7destroyEv = 0x02045134;
-_ZN4Heap17forcePo2AlignmentEij = 0x02045014;
-_ZN4Heap9lockMutexEv = 0x020451F8;
-_ZN4Heap18maxAllocatableSizeEi = 0x02044EA4;
-_ZN4Heap21maxAllocationUnitSizeEv = 0x02044F34;
-_ZN4Heap10reallocateEPvj = 0x02044E20;
-_ZN4Heap11resizeToFitEv = 0x02044BF4;
-_ZN4Heap10setGroupIDEt = 0x02044C70;
-_ZN4Heap6sizeOfEPv = 0x02044CC8;
-_ZN4Heap4testEv = 0x02044F74;
-_ZN4Heap8setFlagsEj = 0x02044B78;
-_ZN4Heap11unlockMutexEv = 0x020451DC;
-_ZN4Heap10setCurrentEPS_ = 0x02044B48;
-_ZN12ExpandedHeapC1EPvjP4HeapS0_ = 0x02045570;
-_ZN12ExpandedHeapD1Ev = 0x020454E8;
-_ZN12ExpandedHeapD0Ev = 0x020454C0;
-_ZN12ExpandedHeap10vLockMutexEv = 0x020451BC;
-_ZN12ExpandedHeap12vUnlockMutexEv = 0x020451AC;
-_ZN12ExpandedHeap13vTryLockMutexEv = 0x0204519C;
-_ZN12ExpandedHeap8vDestroyEv = 0x0204510C;
-_ZN12ExpandedHeap9vAllocateEji = 0x02044FE0;
-_ZN12ExpandedHeap11vDeallocateEPv = 0x02044D70;
-_ZN12ExpandedHeap14vDeallocateAllEv = 0x02044D1C;
-_ZN12ExpandedHeap7vIntactEv = 0x02044FA4;
-_ZN12ExpandedHeap5vTestEv = 0x02044F70;
-_ZN12ExpandedHeap11vReallocateEPvj = 0x02044E10;
-_ZN12ExpandedHeap7vSizeOfEPv = 0x02044CB8;
-_ZN12ExpandedHeap22vMaxAllocationUnitSizeEv = 0x02044F20;
-_ZN12ExpandedHeap19vMaxAllocatableSizeEv = 0x02044EF8;
-_ZN12ExpandedHeap19vMaxAllocatableSizeEi = 0x02044E94;
-_ZN12ExpandedHeap11vMemoryLeftEv = 0x02044E74;
-_ZN12ExpandedHeap11vSetGroupIDEt = 0x02044C60;
-_ZN12ExpandedHeap11vGetGroupIDEv = 0x02044C48;
-_ZN12ExpandedHeap12vResizeToFitEv = 0x02044BEC;
-_ZN12ExpandedHeap6createEjP4Heap = 0x02045338;
-_ZN12ExpandedHeap16invokeDeallocateEPvS0_j = 0x02044D38;
-_ZN9FrameHeapC1EPvjP4HeapS0_ = 0x02045548;
-_ZN9FrameHeapD1Ev = 0x020454A0;
-_ZN9FrameHeapD0Ev = 0x02045478;
-_ZN9FrameHeap8vDestroyEv = 0x020450F0;
-_ZN9FrameHeap9vAllocateEji = 0x02044FAC;
-_ZN9FrameHeap11vDeallocateEPv = 0x02044D50;
-_ZN9FrameHeap14vDeallocateAllEv = 0x02044D08;
-_ZN9FrameHeap7vIntactEv = 0x02044F9C;
-_ZN9FrameHeap5vTestEv = 0x02044F6C;
-_ZN9FrameHeap11vReallocateEPvj = 0x02044E00;
-_ZN9FrameHeap7vSizeOfEPv = 0x02044CB0;
-_ZN9FrameHeap22vMaxAllocationUnitSizeEv = 0x02044F0C;
-_ZN9FrameHeap19vMaxAllocatableSizeEv = 0x02044EE4;
-_ZN9FrameHeap19vMaxAllocatableSizeEi = 0x02044E84;
-_ZN9FrameHeap11vMemoryLeftEv = 0x02044E60;
-_ZN9FrameHeap11vSetGroupIDEt = 0x02044C58;
-_ZN9FrameHeap11vGetGroupIDEv = 0x02044C40;
-_ZN9FrameHeap12vResizeToFitEv = 0x02044BA0;
-_ZN9FrameHeap6createEjP4Heap = 0x02045230;
-_ZN9FrameHeap6createEjP4Heapi = 0x02045240;
-_ZN6Memory25defaultHeapAllocatorFlagsE = 0x020850E8;
-_ZN6Memory15rootHeapCreatedE = 0x0208B718;
-_ZN6Memory19rootHeapInitialSizeE = 0x0208B71C;
-_ZN6Memory11gameHeapPtrE = 0x0208B720;
-_ZN6Memory15rootHeapArenaIDE = 0x0208B724;
-_ZN6Memory14currentHeapPtrE = 0x0208B72C;
-_ZN6Memory11rootHeapPtrE = 0x0208B730;
-_ZN6Memory24heapDeallocationFunctionE = 0x0208B734;
-_ZN6Memory22heapAllocationFunctionE = 0x0208B738;
-_ZN6Memory25isHeapListHeadInitializedE = 0x0208FE8C;
-_ZN6Memory8heapListE = 0x0208FE90;
-_ZN6Memory24prevSwitchThreadCallbackE = 0x0208B728;
-_ZN6Memory12initRootHeapEv = 0x020455D8;
-_ZN6Memory13setupRootHeapEPvj = 0x02045650;
-_ZN6Memory13setupGameHeapEPvj = 0x02044AD8;
-_ZN6Memory21tryCreateExpandedHeapEPvj = 0x0204540C;
-_ZN6Memory24heapSwitchThreadCallbackEP9_OSThreadS1_ = 0x020456F8;
-_ZN6Memory13setThreadHeapEP9_OSThreadP4Heap = 0x020456C0;
-_ZN6Memory27setHeapSwitchThreadCallbackEv = 0x02045690;
-_ZN6Memory8allocateEji = 0x02044A8C;
-_ZN6Memory10deallocateEPvP4Heap = 0x02044AB0;
-_ZN6Memory10deallocateEPv = 0x0204C0DC;
-_ZN6Memory10reallocateEP4HeapPvj = 0x02044AF8;
-_Z6mallocj = 0x0204C0F8;
-_Z6mallocm = 0x0204C0F8;
-_Z7_mallocj = 0x0204C0C4;
-_Z7_mallocm = 0x0204C0C4;
-_Z4freePv = 0x0204C0AC;
-_Z10_dtor_freePv = 0x0204C0B8;
-_Znwj = 0x02044A6C;
-_Znwm = 0x02044A6C;
-_Znaj = 0x02044A6C;
-_Znam = 0x02044A6C;
-_ZdlPv = 0x02044A50;
-_ZdlPvj = 0x02044A50;
-_ZdlPvm = 0x02044A50;
-_ZdaPv = 0x02044A50;
-
-_ZTV9FrameHeap = 0x0208514C;
-_ZTV12ExpandedHeap = 0x020850F4;
-_ZTV4Heap = 0x020851A4;
-
-_ZN13FontLinkStackC1Ev = 0x020171A0;
-_ZN13FontLinkStackD1Ev = 0x020171C0;
-_ZN13FontLinkStack5emptyEv = 0x020171C4;
-_ZN13FontLinkStack4pushEPPt = 0x020171D8;
-_ZN13FontLinkStack4peekEv = 0x020171F4;
-_ZN13FontLinkStack3popEv = 0x02017204;
-_ZN13FontLinkStack5clearEv = 0x02017224;
-_ZN14UTF16CharacterC1EPt = 0x02016C7C;
-_ZN14UTF16Character6decodeEv = 0x02016BA0;
-_ZN14EscapeSequenceC1EPh = 0x02016B34;
-_ZN14EscapeSequence5parseEPh = 0x02016AC8;
-_ZN14EscapeSequence12getParameterEv = 0x02016A90;
-_ZN14EscapeSequence13readParameterEPt = 0x02016AAC;
-_ZN14EscapeSequence8buildU16EPhm = 0x02016B6C;
-_ZN8FontBaseC1Ev = 0x02016A4C;
-_ZN8FontBaseD1Ev = 0x02016A24;
-_ZN8FontBaseD2Ev = 0x020169CC;
-_ZN8FontBaseD0Ev = 0x020169F4;
-_ZN8FontBase7prepareEv = 0x020169C8;
-_ZN8FontBase18onStringDispatchedEv = 0x020169C4;
-_ZN8FontBase11processCharEP14UTF16Character = 0x020169C0;
-_ZN8FontBase19parseEscapeSequenceEP14EscapeSequence = 0x020169BC;
-_ZN8FontBase5resetEv = 0x02016A78;
-_ZN8FontBase7addLinkEPt = 0x02016818;
-_ZN8FontBase11restoreLinkEv = 0x020167F4;
-_ZN8FontBase4copyEPS_ = 0x02016848;
-_ZN8FontBase10setCharPtrEPt = 0x02016890;
-_ZN8FontBase15processNextCharEb = 0x020168B0;
-_ZN9FontCacheC1Ev = 0x020167C8;
-_ZN9FontCacheD1Ev = 0x020167A8;
-_ZN9FontCacheD2Ev = 0x02016760;
-_ZN9FontCacheD0Ev = 0x02016780;
-_ZN9FontCache18onStringDispatchedEv = 0x02016614;
-_ZN9FontCache13processStringEPt = 0x02016744;
-_ZN9FontCache13processStringEPS_ = 0x02016714;
-_ZN9FontCache13processStringEmPt = 0x020166BC;
-_ZN11StringCacheC1Ev = 0x020165F4;
-_ZN11StringCacheD1Ev = 0x020165D4;
-_ZN11StringCacheD0Ev = 0x020165AC;
-_ZN11StringCache12getCacheSizeEv = 0x020165A4;
-_ZN11StringCache11getCachePtrEv = 0x0201659C;
-_ZN13NicknameCacheC1Ev = 0x0201657C;
-_ZN13NicknameCacheD1Ev = 0x0201655C;
-_ZN13NicknameCacheD0Ev = 0x02016534;
-_ZN13NicknameCache12getCacheSizeEv = 0x02016430;
-_ZN13NicknameCache11getCachePtrEv = 0x02016428;
-_ZN13NicknameCache17stringifyNicknameEv = 0x020164B4;
-_ZN13NicknameCache18stringifyOtherNameEPtm = 0x02016438;
-_ZN11NumberCacheC1Ev = 0x02016390;
-_ZN11NumberCacheD1Ev = 0x02016370;
-_ZN11NumberCacheD0Ev = 0x02016348;
-_ZN11NumberCache12getCacheSizeEv = 0x02016260;
-_ZN11NumberCache11getCachePtrEv = 0x02016258;
-_ZN11NumberCache15stringifyNumberEm = 0x02016268;
-_ZN11NumberCache11numberTableE = 0x02026670;
-_ZN12GenericCacheC1Ev = 0x02016408;
-_ZN12GenericCacheD1Ev = 0x020163E8;
-_ZN12GenericCacheD0Ev = 0x020163C0;
-_ZN12GenericCache12getCacheSizeEv = 0x020163B8;
-_ZN12GenericCache11getCachePtrEv = 0x020163B0;
-_ZN10FontBoundsC1EP12FontRenderer = 0x02015EC0;
-_ZN10FontBoundsD1Ev = 0x02015EA0;
-_ZN10FontBoundsD0Ev = 0x02015E78;
-_ZN10FontBounds11processCharEP14UTF16Character = 0x02015C6C;
-_ZN10FontBounds19parseEscapeSequenceEP14EscapeSequence = 0x02015B38;
-_ZN10FontBounds16getNextLineWidthEP8FontBaseP10NNSG2dFonth = 0x02015E18;
-_ZN10FontBounds19getIndexedLineWidthEPtP10NNSG2dFonthm = 0x02015DA4;
-_ZN10FontBounds12getLineCountEPt = 0x02015D48;
-_ZN10FontBounds17getCharacterWidthEt = 0x02015CF4;
-_ZN10FontBounds17linkNicknameCacheEP14EscapeSequence = 0x02015B04;
-_ZN10FontBounds15linkNumberCacheEP14EscapeSequence = 0x02015AD0;
-_ZN10FontBounds17linkGenericCache0EP14EscapeSequence = 0x02015A9C;
-_ZN10FontBounds17linkGenericCache1EP14EscapeSequence = 0x02015A68;
-_ZN10FontBounds17linkGenericCache2EP14EscapeSequence = 0x02015A34;
-_ZN10FontBounds17linkGenericCache3EP14EscapeSequence = 0x02015A00;
-_ZN10FontBounds19escapeSequenceTableE = 0x0203C184;
-_ZN10FontBounds24sequenceTableInitializedE = 0x02089514;
-_ZN10FontBounds14linkNicknameCBE = 0x0203BFEC;
-_ZN10FontBounds12linkNumberCBE = 0x0203C014;
-_ZN10FontBounds14linkGeneric0CBE = 0x0203BFCC;
-_ZN10FontBounds14linkGeneric1CBE = 0x0203C00C;
-_ZN10FontBounds14linkGeneric2CBE = 0x0203BFF4;
-_ZN10FontBounds14linkGeneric3CBE = 0x0203BFE4;
-_ZN8FontTile6decodeEPmS0_m = 0x02014DBC;
-_ZN10FontStringC1Ev = 0x02016104;
-_ZN10FontStringD1Ev = 0x020160DC;
-_ZN10FontStringD0Ev = 0x020160AC;
-_ZN10FontString5setupEPhmmP10NNSG2dFont = 0x02016000;
-_ZN10FontString15setFontTileListEP8FontTilem = 0x020161D8;
-_ZN10FontString12getLineCountEv = 0x020161B0;
-_ZN10FontString19getIndexedLineWidthEm = 0x02016170;
-_ZN10FontString15allocateBuffersEv = 0x02015F8C;
-_ZN10FontString11freeBuffersEv = 0x02015F48;
-_ZN10FontString12clearBuffersEv = 0x02015F08;
-_ZN10FontString12deleteTargetEv = 0x02015FE8;
-_ZN12FontRendererC1Ev = 0x020156B0;
-_ZN12FontRendererD1Ev = 0x02015624;
-_ZN12FontRendererD0Ev = 0x02015590;
-_ZN12FontRenderer7prepareEv = 0x02015438;
-_ZN12FontRenderer18onStringDispatchedEv = 0x020153EC;
-_ZN12FontRenderer11processCharEP14UTF16Character = 0x020153E0;
-_ZN12FontRenderer19parseEscapeSequenceEP14EscapeSequence = 0x02015294;
-_ZN12FontRenderer14setupAndRenderEPhmmPvm = 0x0201596C;
-_ZN12FontRenderer14setupAndRenderEPhmmP9FontCacheP10NNSG2dFont = 0x020158E4;
-_ZN12FontRenderer25loadAndRenderGenericCacheEmPvPm = 0x020158A0;
-_ZN12FontRenderer18renderGenericCacheEmP9FontCache = 0x02015874;
-_ZN12FontRenderer17clearGenericCacheEm = 0x020157B0;
-_ZN12FontRenderer18resetSpecialCachesEv = 0x02015524;
-_ZN12FontRenderer12uploadBufferEv = 0x02015474;
-_ZN12FontRenderer21getNextFreeFontStringEv = 0x02015258;
-_ZN12FontRenderer13convertBufferEP8FontTile = 0x02014EC8;
-_ZN12FontRenderer18calculateAlignmentEv = 0x02014D24;
-_ZN12FontRenderer10renderCharEP14UTF16Character = 0x0201518C;
-_ZN12FontRenderer11renderGlyphEP11NNSG2dGlyph = 0x02014FE8;
-_ZN12FontRenderer16renderFontStringEP10FontString = 0x02014C08;
-_ZN12FontRenderer17renderFontStringsEv = 0x020154DC;
-_ZN12FontRenderer17linkNicknameCacheEP14EscapeSequence = 0x02014BD8;
-_ZN12FontRenderer15linkNumberCacheEP14EscapeSequence = 0x02014BA8;
-_ZN12FontRenderer17linkGenericCache0EP14EscapeSequence = 0x02014B78;
-_ZN12FontRenderer17linkGenericCache1EP14EscapeSequence = 0x02014B48;
-_ZN12FontRenderer17linkGenericCache2EP14EscapeSequence = 0x02014B18;
-_ZN12FontRenderer17linkGenericCache3EP14EscapeSequence = 0x02014AE8;
-_ZN12FontRenderer16setColorSelectorEP14EscapeSequence = 0x02014ACC;
-_ZN12FontRenderer19escapeSequenceTableE = 0x0203C244;
-_ZN12FontRenderer24sequenceTableInitializedE = 0x02089510;
-_ZN12FontRenderer14linkNicknameCBE = 0x0203BFDC;
-_ZN12FontRenderer12linkNumberCBE = 0x0203BFFC;
-_ZN12FontRenderer14linkGeneric0CBE = 0x0203BFC4;
-_ZN12FontRenderer14linkGeneric1CBE = 0x0203C01C;
-_ZN12FontRenderer14linkGeneric2CBE = 0x0203BFBC;
-_ZN12FontRenderer14linkGeneric3CBE = 0x0203BFD4;
-_ZN12FontRenderer13colorSelectCBE = 0x0203C004;
-_ZN9BMGReaderC1Ev = 0x020170AC;
-_ZN9BMGReaderD1Ev = 0x0201709C;
-_ZN9BMGReaderD0Ev = 0x0201707C;
-_ZN9BMGReader14parseBMGHeaderEv = 0x02016E98;
-_ZN9BMGReader12parseBMGInfoEv = 0x02016DC8;
-_ZN9BMGReader12parseBMGDataEv = 0x02016D70;
-_ZN9BMGReader5resetEPvm = 0x02016F68;
-_ZN9BMGReader14parseBMGStringEv = 0x02016CD0;
-_ZN9BMGReader16processBMGStringEP9FontCache = 0x02016CA4;
-_ZN9BMGReader6renderEP9FontCachePvm = 0x02016FD4;
-_ZN9BMGReader13renderClearedEP9FontCachePvm = 0x020161E4;
-_ZN4Font8mainFontE = 0x02089524;
-_ZN4Font11loadingFontE = 0x02089530;
-_ZN4Font9bmgReaderE = 0x0208953C;
-_ZN4Font12fontRendererE = 0x02089594;
-_ZN4Font16scriptFileIDListE = 0x0202665C;
-_ZN4Font15selectFileTilesE = 0x020266C8;
-_ZN4Font16gameTextboxTilesE = 0x0203C1E4;
-_ZN4Font16yesNoOptionTilesE = 0x0203C044;
-_ZN4Font17mvslModeMenuTilesE = 0x02026698;
-_ZN4Font19mvslSelectMenuTilesE = 0x02026734;
-_ZN4Font16mvslLoadingTilesE = 0x0202668C;
-_ZN4Font21mvslResultScreenTilesE = 0x020266F8;
-_ZN4Font11getMainFontEv = 0x02014AC0;
-_ZN4Font14getLoadingFontEv = 0x02014AB4;
-_ZN4Font12getBMGReaderEv = 0x02014AA8;
-_ZN4Font15getFontRendererEv = 0x02014A9C;
-_ZN4Font15getScriptFileIDEm = 0x02017190;
-_ZN4Font13initMainFontsEv = 0x02014A58;
-_ZN4Font8loadFontEP10NNSG2dFontm = 0x02017184;
-_ZN4Font16loadFontInternalEP10NNSG2dFontm = 0x02017164;
-_ZN4Font12renderBufferEv = 0x02014A30;
-_ZN4Font10updateFontEv = 0x02014A44;
-_ZN7TextBox17loadOAMAttributesEP8FontTilemP9GXOamAttrthh = 0x020148B4;
-_ZN7TextBox15renderOpaqueBoxEllRK4Vec2 = 0x0201486C;
-_ZN7TextBox13renderAButtonEll = 0x02014824;
-_ZN7TextBoxC1Ev = 0x02014820;
-_ZN7TextBoxD1Ev = 0x0201481C;
-_ZN7TextBox8loadTextEPvPmm = 0x020146E4;
-_ZN7TextBox8loadTextEPvPm = 0x020146D0;
-_ZN7TextBox10renderTextEll = 0x020145F8;
-_ZN7TextBox12renderArrowsEhll = 0x020144BC;
-_ZN7TextBox15getArrowSelectYEh = 0x02014220;
-_ZN7TextBox18getArrowSelectLeftEh = 0x02014214;
-_ZN7TextBox19getArrowSelectRightEh = 0x02014208;
-_ZN7TextBox15getArrowDialogYEv = 0x0201424C;
-_ZN7TextBox18getArrowDialogLeftEh = 0x02014240;
-_ZN7TextBox19getArrowDialogRightEh = 0x02014234;
-_ZN7TextBox14getOptionCountEv = 0x020141B8;
-_ZN7TextBox20loadLeftDialogOptionEPvPmm = 0x02014368;
-_ZN7TextBox21loadRightDialogOptionEPvPmm = 0x02014300;
-_ZN7TextBox16loadDialogOptionEPvPmmP9GXOamAttr = 0x0201427C;
-_ZN7TextBox28loadMultiplayerDialogOptionsEv = 0x020143D0;
-_ZN7TextBox29loadSingleplayerDialogOptionsEv = 0x0201443C;
-_ZN7TextBox14setStandardBoxEv = 0x02014268;
-_ZN7TextBox12setDialogBoxEv = 0x02014254;
-_ZN7TextBox13setDefaultBoxEv = 0x020144A8;
-_ZN7TextBox16calculateYOffsetEm = 0x020141C0;
-_ZN4Util7reverseEPm = 0x02017134;
-_ZN4Util11dereferenceEPm = 0x0201712C;
-_ZN4Util11dereferenceEPt = 0x02017124;
-_ZN4Util11dereferenceEPh = 0x0201711C;
-_ZN4Util11dereferenceEPhm = 0x02016B98;
-
-_ZTV9BMGReader = 0x0203C02C;
-_ZTV12FontRenderer = 0x0203C064;
-_ZTV10FontString = 0x0203C03C;
-_ZTV10FontBounds = 0x0203C084;
-_ZTV12GenericCache = 0x0203C0EC;
-_ZTV11NumberCache = 0x0203C0C4;
-_ZTV13NicknameCache = 0x0203C13C;
-_ZTV11StringCache = 0x0203C164;
-_ZTV9FontCache = 0x0203C114;
-_ZTV8FontBase = 0x0203C0A4;
 
 __destroy_global_chain = 0x0207FC54;
 __call_static_initializers = 0x207fca4;
@@ -1574,6 +1230,471 @@ _ZN18__global_info_fontE = 0x02089518;
 _ZN11__init_fontEv = 0x02025C2C;
 _ZN11__fini_fontEPv = 0x02017254;
 
+
+/*----------------------------------------------------------------*/
+/*------------------------- filesystem ---------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN2FS10unloadFileEPv = 0x020087C0;
+_ZN2FS11getFileSizeEm = 0x02009AF0;
+_ZN2FS11loadExtFileEm = 0x020087F0;
+_ZN2FS11loadExtFileEmPv = 0x02008934;
+_ZN2FS11loadExtFileEmPvl = 0x020088FC;
+_ZN2FS11loadExtFileEmb = 0x02008810;
+_ZN2FS11setReadModeENS_8ReadModeE = 0x02008990;
+_ZN2FS12fileIDOffsetE = 0x02085D04;
+_ZN2FS12loadFileLZ77Em = 0x0200869C;
+_ZN2FS12loadFileLZ77EmPv = 0x02008784;
+_ZN2FS12readFileFastEP6FSFileb = 0x020089A0;
+_ZN2FS12readFileSafeEP6FSFileb = 0x02008A6C;
+_ZN2FS12setFileCountEt = 0x02009410;
+_ZN2FS13hasLZ77HeaderEPv = 0x02008E00;
+_ZN2FS13loadBGPaletteEmmb = 0x02009918;
+_ZN2FS14loadOBJPaletteEmmb = 0x02009A30;
+_ZN2FS15setFileIDOffsetEbt = 0x020093F8;
+_ZN2FS15setReadModeFastEv = 0x02008970;
+_ZN2FS15setReadModeSafeEv = 0x02008980;
+_ZN2FS16loadBGSubPaletteEmm = 0x02009878;
+_ZN2FS17loadOBJExtPaletteEmmb = 0x020099C8;
+_ZN2FS17readFunctionTableE = 0x0203A390;
+_ZN2FS18loadFileToOBJVramAEmm = 0x02009A98;
+_ZN2FS20loadExtFileUnflushedEm = 0x02008800;
+_ZN2FS22loadBGExtPaletteCachedEmm = 0x020098CC;
+_ZN2FS23getLZ77DecompressedSizeEPm = 0x02009478;
+_ZN2FS23loadOBJExtPaletteCachedEmm = 0x02009980;
+_ZN2FS4initEv = 0x02009424;
+
+_ZN2FS5Cache10CacheEntry17loadFileToOverlayEmb = 0x0200A194;
+_ZN2FS5Cache10CacheEntry6unloadEv = 0x0200A10C;
+_ZN2FS5Cache10CacheEntry8loadDataEm = 0x0200A138;
+_ZN2FS5Cache10CacheEntry8loadFileEmb = 0x0200A234;
+
+_ZN2FS5Cache10CacheEntryC1Ev = 0x0200A358;
+_ZN2FS5Cache10CacheEntryC2Ev = 0x0200A358;
+_ZN2FS5Cache10CacheEntryD0Ev = 0x0200A2B0;
+_ZN2FS5Cache10CacheEntryD1Ev = 0x0200A308;
+_ZN2FS5Cache10CacheEntryD2Ev = 0x0200A308;
+
+_ZN2FS5Cache10unloadFileEm = 0x02009B94;
+_ZN2FS5Cache15activeFileCacheE = 0x02085E0C;
+_ZN2FS5Cache15overlayFileDestE = 0x02085E10;
+_ZN2FS5Cache15overlayFileSizeE = 0x02085E14;
+_ZN2FS5Cache17loadFileToOverlayEmb = 0x02009C14;
+_ZN2FS5Cache17setupCacheEntriesEv = 0x0200A0B4;
+_ZN2FS5Cache5clearEv = 0x02009B64;
+_ZN2FS5Cache7getFileEm = 0x02009CB4;
+_ZN2FS5Cache8Internal10unloadFileEmPNS0_10CacheEntryEm = 0x02009D6C;
+_ZN2FS5Cache8Internal11setup3DFileEPvb = 0x02009DEC;
+_ZN2FS5Cache8Internal16getFileInOverlayEmPNS0_10CacheEntryEmbb = 0x02009F8C;
+_ZN2FS5Cache8Internal17loadFileToOverlayEmPNS0_10CacheEntryEmb = 0x02009E7C;
+_ZN2FS5Cache8Internal5clearEPNS0_10CacheEntryEm = 0x02009D30;
+_ZN2FS5Cache8Internal7getDataEmPNS0_10CacheEntryEm = 0x02009F2C;
+_ZN2FS5Cache8Internal7getFileEmPNS0_10CacheEntryEmbb = 0x0200A020;
+_ZN2FS5Cache8Internal8findFileEm = 0x02009CD4;
+_ZN2FS5Cache8Internal8loadDataEmPNS0_10CacheEntryEm = 0x02009DC0;
+_ZN2FS5Cache8Internal8loadFileEmPNS0_10CacheEntryEmb = 0x02009ED4;
+_ZN2FS5Cache8loadDataEm = 0x02009BC8;
+_ZN2FS5Cache8loadFileEmb = 0x02009C64;
+
+_ZN2FS5Nitro11crashReasonE = 0x02085CF8;
+_ZN2FS5Nitro11loadOverlayE11MIProcessorm = 0x02008594;
+_ZN2FS5Nitro12pathToFileIDEP8FSFileIDPKc = 0x02008648;
+_ZN2FS5Nitro13unloadOverlayE11MIProcessorm = 0x02008588;
+_ZN2FS5Nitro14setCrashReasonEPKc = 0x02008670;
+_ZN2FS5Nitro15loadOverlayInfoEP13FSOverlayInfo11MIProcessorm = 0x020085A0;
+_ZN2FS5Nitro8openFileEP6FSFile8FSFileID = 0x0200860C;
+_ZN2FS5Nitro8openFileEP6FSFilePKc = 0x020085E4;
+_ZN2FS5Nitro8readFileEP6FSFilePvl = 0x020085AC;
+_ZN2FS5Nitro9getFileIDEP8FSFileIDm = 0x02008E2C;
+_ZN2FS5NitroL13openFileCrashE = 0x0203A280;
+_ZN2FS5NitroL13readFileCrashE = 0x0203A290;
+_ZN2FS5NitroL17readFileFastCrashE = 0x0203A2A0;
+_ZN2FS5NitroL24convertPathToFileIDCrashE = 0x0203A2B4;
+
+_ZN2FS7Archive10mountFrontEmP4Heap = 0x0200917C;
+_ZN2FS7Archive10unmountAllEv = 0x02009084;
+_ZN2FS7Archive11unmountListEPm = 0x020090D0;
+_ZN2FS7Archive13romArchivePtrE = 0x02085D08;
+_ZN2FS7Archive14unmountCurrentEv = 0x02008FF4;
+_ZN2FS7Archive16currentArchiveIDE = 0x0203A2CC;
+_ZN2FS7Archive16mainGameArchivesE = 0x020262D0;
+_ZN2FS7Archive16minigameArchivesE = 0x020262DC;
+_ZN2FS7Archive20loadMainGameArchivesEv = 0x020097D0;
+_ZN2FS7Archive20loadMinigameArchivesEv = 0x02009800;
+_ZN2FS7Archive20unmountAndMountListsEPmS1_bP4Heap = 0x0200902C;
+_ZN2FS7Archive22unloadMinigameArchivesEv = 0x020097EC;
+_ZN2FS7Archive5mountEPKcS2_P4Heapl = 0x020092B0;
+_ZN2FS7Archive5mountEmbP4Heap = 0x020091A4;
+_ZN2FS7Archive7getFileEt = 0x02008F50;
+_ZN2FS7Archive7unmountEP13NNSFndArchiveP4Heap = 0x02009288;
+_ZN2FS7Archive7unmountEm = 0x020090F8;
+_ZN2FS7Archive8archivesE = 0x0203A6C0;
+_ZN2FS7Archive9mountBackEmP4Heap = 0x02009190;
+_ZN2FS7Archive9mountListEPmbP4Heap = 0x02009134;
+
+_ZN2FS7Overlay12trackAndLoadEm = 0x02009560;
+_ZN2FS7Overlay14loadedOverlaysE = 0x02085D0C;
+_ZN2FS7Overlay22initLoadedOverlayTableEv = 0x02009484;
+_ZN2FS7Overlay4loadEm = 0x02009510;
+_ZN2FS7Overlay5flushEP13FSOverlayInfo = 0x02009798;
+_ZN2FS7Overlay7untrackEm = 0x020094B8;
+
+_ZN2FS8loadFileE8FSFileIDPvl = 0x02008D14;
+_ZN2FS8loadFileEPKcPvl = 0x02008CD8;
+_ZN2FS8loadFileEt = 0x020087E0;
+_ZN2FS8loadFileEtb = 0x02008828;
+_ZN2FS8openFileEP6FSFilet = 0x02008E54;
+_ZN2FS8readFileEP6FSFilePvl = 0x02008D80;
+_ZN2FS8readFileEP6FSFileb = 0x02008944;
+_ZN2FS8readModeE = 0x02085CFC;
+_ZN2FS8toFileIDEm = 0x02009394;
+_ZN2FS9fileCountE = 0x02085D00;
+_ZN2FS9getFileIDEPKc = 0x0200936C;
+
+
+/*----------------------------------------------------------------*/
+/*---------------------------- heap ------------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN4HeapC1EPvmPS_ = 0x020455A0;
+_ZN4HeapD1Ev = 0x02045538;
+_ZN4HeapD2Ev = 0x02045508;
+_ZN4HeapD0Ev = 0x02045518;
+
+_ZN4Heap10vLockMutexEv = 0x020451D8;
+_ZN4Heap12vUnlockMutexEv = 0x020451D4;
+_ZN4Heap13vTryLockMutexEv = 0x020451CC;
+_ZN4Heap9_allocateEml = 0x02044B3C;
+_ZN4Heap11_deallocateEPv = 0x02044B20;
+_ZN4Heap8_destroyEv = 0x02045128;
+_ZN4Heap7_sizeOfEPv = 0x02044B14;
+_ZN4Heap8allocateEml = 0x02045040;
+_ZN4Heap8allocateEm = 0x02044B2C;
+_ZN4Heap10deallocateEPv = 0x02044D94;
+_ZN4Heap7destroyEv = 0x02045134;
+_ZN4Heap17forcePo2AlignmentElm = 0x02045014;
+_ZN4Heap9lockMutexEv = 0x020451F8;
+_ZN4Heap18maxAllocatableSizeEl = 0x02044EA4;
+_ZN4Heap21maxAllocationUnitSizeEv = 0x02044F34;
+_ZN4Heap10reallocateEPvm = 0x02044E20;
+_ZN4Heap11resizeToFitEv = 0x02044BF4;
+_ZN4Heap10setGroupIDEt = 0x02044C70;
+_ZN4Heap6sizeOfEPv = 0x02044CC8;
+_ZN4Heap4testEv = 0x02044F74;
+_ZN4Heap8setFlagsEm = 0x02044B78;
+_ZN4Heap11unlockMutexEv = 0x020451DC;
+_ZN4Heap10setCurrentEPS_ = 0x02044B48;
+
+_ZN12ExpandedHeapC1EPvmP4HeapS0_ = 0x02045570;
+_ZN12ExpandedHeapD1Ev = 0x020454E8;
+_ZN12ExpandedHeapD0Ev = 0x020454C0;
+
+_ZN12ExpandedHeap10vLockMutexEv = 0x020451BC;
+_ZN12ExpandedHeap12vUnlockMutexEv = 0x020451AC;
+_ZN12ExpandedHeap13vTryLockMutexEv = 0x0204519C;
+_ZN12ExpandedHeap8vDestroyEv = 0x0204510C;
+_ZN12ExpandedHeap9vAllocateEml = 0x02044FE0;
+_ZN12ExpandedHeap11vDeallocateEPv = 0x02044D70;
+_ZN12ExpandedHeap14vDeallocateAllEv = 0x02044D1C;
+_ZN12ExpandedHeap7vIntactEv = 0x02044FA4;
+_ZN12ExpandedHeap5vTestEv = 0x02044F70;
+_ZN12ExpandedHeap11vReallocateEPvm = 0x02044E10;
+_ZN12ExpandedHeap7vSizeOfEPv = 0x02044CB8;
+_ZN12ExpandedHeap22vMaxAllocationUnitSizeEv = 0x02044F20;
+_ZN12ExpandedHeap19vMaxAllocatableSizeEv = 0x02044EF8;
+_ZN12ExpandedHeap19vMaxAllocatableSizeEl = 0x02044E94;
+_ZN12ExpandedHeap11vMemoryLeftEv = 0x02044E74;
+_ZN12ExpandedHeap11vSetGroupIDEt = 0x02044C60;
+_ZN12ExpandedHeap11vGetGroupIDEv = 0x02044C48;
+_ZN12ExpandedHeap12vResizeToFitEv = 0x02044BEC;
+_ZN12ExpandedHeap6createEmP4Heap = 0x02045338;
+_ZN12ExpandedHeap16invokeDeallocateEPvS0_m = 0x02044D38;
+
+_ZN9FrameHeapC1EPvmP4HeapS0_ = 0x02045548;
+_ZN9FrameHeapD1Ev = 0x020454A0;
+_ZN9FrameHeapD0Ev = 0x02045478;
+
+_ZN9FrameHeap8vDestroyEv = 0x020450F0;
+_ZN9FrameHeap9vAllocateEml = 0x02044FAC;
+_ZN9FrameHeap11vDeallocateEPv = 0x02044D50;
+_ZN9FrameHeap14vDeallocateAllEv = 0x02044D08;
+_ZN9FrameHeap7vIntactEv = 0x02044F9C;
+_ZN9FrameHeap5vTestEv = 0x02044F6C;
+_ZN9FrameHeap11vReallocateEPvm = 0x02044E00;
+_ZN9FrameHeap7vSizeOfEPv = 0x02044CB0;
+_ZN9FrameHeap22vMaxAllocationUnitSizeEv = 0x02044F0C;
+_ZN9FrameHeap19vMaxAllocatableSizeEv = 0x02044EE4;
+_ZN9FrameHeap19vMaxAllocatableSizeEl = 0x02044E84;
+_ZN9FrameHeap11vMemoryLeftEv = 0x02044E60;
+_ZN9FrameHeap11vSetGroupIDEt = 0x02044C58;
+_ZN9FrameHeap11vGetGroupIDEv = 0x02044C40;
+_ZN9FrameHeap12vResizeToFitEv = 0x02044BA0;
+_ZN9FrameHeap6createEmP4Heap = 0x02045230;
+_ZN9FrameHeap6createEmP4Heapl = 0x02045240;
+
+_ZN6Memory25defaultHeapAllocatorFlagsE = 0x020850E8;
+_ZN6Memory15rootHeapCreatedE = 0x0208B718;
+_ZN6Memory19rootHeapInitialSizeE = 0x0208B71C;
+_ZN6Memory11gameHeapPtrE = 0x0208B720;
+_ZN6Memory15rootHeapArenaIDE = 0x0208B724;
+_ZN6Memory14currentHeapPtrE = 0x0208B72C;
+_ZN6Memory11rootHeapPtrE = 0x0208B730;
+_ZN6Memory24heapDeallocationFunctionE = 0x0208B734;
+_ZN6Memory22heapAllocationFunctionE = 0x0208B738;
+_ZN6Memory25isHeapListHeadInitializedE = 0x0208FE8C;
+_ZN6Memory8heapListE = 0x0208FE90;
+_ZN6Memory24prevSwitchThreadCallbackE = 0x0208B728;
+_ZN6Memory12initRootHeapEv = 0x020455D8;
+_ZN6Memory13setupRootHeapEPvm = 0x02045650;
+_ZN6Memory13setupGameHeapEPvm = 0x02044AD8;
+_ZN6Memory21tryCreateExpandedHeapEPvm = 0x0204540C;
+_ZN6Memory24heapSwitchThreadCallbackEP9_OSThreadS1_ = 0x020456F8;
+_ZN6Memory13setThreadHeapEP9_OSThreadP4Heap = 0x020456C0;
+_ZN6Memory27setHeapSwitchThreadCallbackEv = 0x02045690;
+_ZN6Memory8allocateEml = 0x02044A8C;
+_ZN6Memory10deallocateEPvP4Heap = 0x02044AB0;
+_ZN6Memory10deallocateEPv = 0x0204C0DC;
+_ZN6Memory10reallocateEP4HeapPvm = 0x02044AF8;
+
+_Z6mallocj = 0x0204C0F8;
+_Z6mallocm = 0x0204C0F8;
+_Z7_mallocj = 0x0204C0C4;
+_Z7_mallocm = 0x0204C0C4;
+_Z4freePv = 0x0204C0AC;
+_Z10_dtor_freePv = 0x0204C0B8;
+_Znwj = 0x02044A6C;
+_Znwm = 0x02044A6C;
+_Znaj = 0x02044A6C;
+_Znam = 0x02044A6C;
+_ZdlPv = 0x02044A50;
+_ZdlPvj = 0x02044A50;
+_ZdlPvm = 0x02044A50;
+_ZdaPv = 0x02044A50;
+
+_ZTV9FrameHeap = 0x02085144;
+_ZTV12ExpandedHeap = 0x020850EC;
+_ZTV4Heap = 0x0208519C;
+
+
+/*----------------------------------------------------------------*/
+/*-------------------------- text/font ---------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN13FontLinkStackC1Ev = 0x020171A0;
+_ZN13FontLinkStackD1Ev = 0x020171C0;
+_ZN13FontLinkStack5emptyEv = 0x020171C4;
+_ZN13FontLinkStack4pushEPPt = 0x020171D8;
+_ZN13FontLinkStack4peekEv = 0x020171F4;
+_ZN13FontLinkStack3popEv = 0x02017204;
+_ZN13FontLinkStack5clearEv = 0x02017224;
+
+_ZN14UTF16CharacterC1EPt = 0x02016C7C;
+_ZN14UTF16Character6decodeEv = 0x02016BA0;
+
+_ZN14EscapeSequenceC1EPh = 0x02016B34;
+_ZN14EscapeSequence5parseEPh = 0x02016AC8;
+_ZN14EscapeSequence12getParameterEv = 0x02016A90;
+_ZN14EscapeSequence13readParameterEPt = 0x02016AAC;
+_ZN14EscapeSequence8buildU16EPhm = 0x02016B6C;
+
+_ZN8FontBaseC1Ev = 0x02016A4C;
+_ZN8FontBaseC2Ev = 0x02016A4C;
+_ZN8FontBaseD1Ev = 0x02016A24;
+_ZN8FontBaseD2Ev = 0x020169CC;
+_ZN8FontBaseD0Ev = 0x020169F4;
+
+_ZN8FontBase7prepareEv = 0x020169C8;
+_ZN8FontBase18onStringDispatchedEv = 0x020169C4;
+_ZN8FontBase11processCharEP14UTF16Character = 0x020169C0;
+_ZN8FontBase19parseEscapeSequenceEP14EscapeSequence = 0x020169BC;
+_ZN8FontBase5resetEv = 0x02016A78;
+_ZN8FontBase7addLinkEPt = 0x02016818;
+_ZN8FontBase11restoreLinkEv = 0x020167F4;
+_ZN8FontBase4copyEPS_ = 0x02016848;
+_ZN8FontBase10setCharPtrEPt = 0x02016890;
+_ZN8FontBase15processNextCharEb = 0x020168B0;
+
+_ZN9FontCacheC1Ev = 0x020167C8;
+_ZN9FontCacheD1Ev = 0x020167A8;
+_ZN9FontCacheD2Ev = 0x02016760;
+_ZN9FontCacheD0Ev = 0x02016780;
+
+_ZN9FontCache18onStringDispatchedEv = 0x02016614;
+_ZN9FontCache13processStringEPt = 0x02016744;
+_ZN9FontCache13processStringEPS_ = 0x02016714;
+_ZN9FontCache13processStringEmPt = 0x020166BC;
+
+_ZN11StringCacheC1Ev = 0x020165F4;
+_ZN11StringCacheD1Ev = 0x020165D4;
+_ZN11StringCacheD0Ev = 0x020165AC;
+
+_ZN11StringCache12getCacheSizeEv = 0x020165A4;
+_ZN11StringCache11getCachePtrEv = 0x0201659C;
+
+_ZN13NicknameCacheC1Ev = 0x0201657C;
+_ZN13NicknameCacheD1Ev = 0x0201655C;
+_ZN13NicknameCacheD0Ev = 0x02016534;
+
+_ZN13NicknameCache12getCacheSizeEv = 0x02016430;
+_ZN13NicknameCache11getCachePtrEv = 0x02016428;
+_ZN13NicknameCache17stringifyNicknameEv = 0x020164B4;
+_ZN13NicknameCache18stringifyOtherNameEPtm = 0x02016438;
+
+_ZN11NumberCacheC1Ev = 0x02016390;
+_ZN11NumberCacheD1Ev = 0x02016370;
+_ZN11NumberCacheD0Ev = 0x02016348;
+
+_ZN11NumberCache12getCacheSizeEv = 0x02016260;
+_ZN11NumberCache11getCachePtrEv = 0x02016258;
+_ZN11NumberCache15stringifyNumberEm = 0x02016268;
+_ZN11NumberCache11numberTableE = 0x02026670;
+
+_ZN12GenericCacheC1Ev = 0x02016408;
+_ZN12GenericCacheD1Ev = 0x020163E8;
+_ZN12GenericCacheD0Ev = 0x020163C0;
+
+_ZN12GenericCache12getCacheSizeEv = 0x020163B8;
+_ZN12GenericCache11getCachePtrEv = 0x020163B0;
+
+_ZN10FontBoundsC1EP12FontRenderer = 0x02015EC0;
+_ZN10FontBoundsD1Ev = 0x02015EA0;
+_ZN10FontBoundsD0Ev = 0x02015E78;
+
+_ZN10FontBounds11processCharEP14UTF16Character = 0x02015C6C;
+_ZN10FontBounds19parseEscapeSequenceEP14EscapeSequence = 0x02015B38;
+_ZN10FontBounds16getNextLineWidthEP8FontBaseP10NNSG2dFonth = 0x02015E18;
+_ZN10FontBounds19getIndexedLineWidthEPtP10NNSG2dFonthm = 0x02015DA4;
+_ZN10FontBounds12getLineCountEPt = 0x02015D48;
+_ZN10FontBounds17getCharacterWidthEt = 0x02015CF4;
+_ZN10FontBounds17linkNicknameCacheEP14EscapeSequence = 0x02015B04;
+_ZN10FontBounds15linkNumberCacheEP14EscapeSequence = 0x02015AD0;
+_ZN10FontBounds17linkGenericCache0EP14EscapeSequence = 0x02015A9C;
+_ZN10FontBounds17linkGenericCache1EP14EscapeSequence = 0x02015A68;
+_ZN10FontBounds17linkGenericCache2EP14EscapeSequence = 0x02015A34;
+_ZN10FontBounds17linkGenericCache3EP14EscapeSequence = 0x02015A00;
+_ZN10FontBounds19escapeSequenceTableE = 0x0203C184;
+_ZN10FontBounds24sequenceTableInitializedE = 0x02089514;
+_ZN10FontBounds14linkNicknameCBE = 0x0203BFEC;
+_ZN10FontBounds12linkNumberCBE = 0x0203C014;
+_ZN10FontBounds14linkGeneric0CBE = 0x0203BFCC;
+_ZN10FontBounds14linkGeneric1CBE = 0x0203C00C;
+_ZN10FontBounds14linkGeneric2CBE = 0x0203BFF4;
+_ZN10FontBounds14linkGeneric3CBE = 0x0203BFE4;
+
+_ZN8FontTile6decodeEPmS0_m = 0x02014DBC;
+
+_ZN10FontStringC1Ev = 0x02016104;
+_ZN10FontStringD1Ev = 0x020160DC;
+_ZN10FontStringD0Ev = 0x020160AC;
+
+_ZN10FontString5setupEPhmmP10NNSG2dFont = 0x02016000;
+_ZN10FontString15setFontTileListEP8FontTilem = 0x020161D8;
+_ZN10FontString12getLineCountEv = 0x020161B0;
+_ZN10FontString19getIndexedLineWidthEm = 0x02016170;
+_ZN10FontString15allocateBuffersEv = 0x02015F8C;
+_ZN10FontString11freeBuffersEv = 0x02015F48;
+_ZN10FontString12clearBuffersEv = 0x02015F08;
+_ZN10FontString12deleteTargetEv = 0x02015FE8;
+
+_ZN12FontRendererC1Ev = 0x020156B0;
+_ZN12FontRendererD1Ev = 0x02015624;
+_ZN12FontRendererD0Ev = 0x02015590;
+
+_ZN12FontRenderer7prepareEv = 0x02015438;
+_ZN12FontRenderer18onStringDispatchedEv = 0x020153EC;
+_ZN12FontRenderer11processCharEP14UTF16Character = 0x020153E0;
+_ZN12FontRenderer19parseEscapeSequenceEP14EscapeSequence = 0x02015294;
+_ZN12FontRenderer14setupAndRenderEPhmmPvm = 0x0201596C;
+_ZN12FontRenderer14setupAndRenderEPhmmP9FontCacheP10NNSG2dFont = 0x020158E4;
+_ZN12FontRenderer25loadAndRenderGenericCacheEmPvm = 0x020158A0;
+_ZN12FontRenderer18renderGenericCacheEmP9FontCache = 0x02015874;
+_ZN12FontRenderer17clearGenericCacheEm = 0x020157B0;
+_ZN12FontRenderer18resetSpecialCachesEv = 0x02015524;
+_ZN12FontRenderer12uploadBufferEv = 0x02015474;
+_ZN12FontRenderer21getNextFreeFontStringEv = 0x02015258;
+_ZN12FontRenderer13convertBufferEP8FontTile = 0x02014EC8;
+_ZN12FontRenderer18calculateAlignmentEv = 0x02014D24;
+_ZN12FontRenderer10renderCharEP14UTF16Character = 0x0201518C;
+_ZN12FontRenderer11renderGlyphEP11NNSG2dGlyph = 0x02014FE8;
+_ZN12FontRenderer16renderFontStringEP10FontString = 0x02014C08;
+_ZN12FontRenderer17renderFontStringsEv = 0x020154DC;
+_ZN12FontRenderer17linkNicknameCacheEP14EscapeSequence = 0x02014BD8;
+_ZN12FontRenderer15linkNumberCacheEP14EscapeSequence = 0x02014BA8;
+_ZN12FontRenderer17linkGenericCache0EP14EscapeSequence = 0x02014B78;
+_ZN12FontRenderer17linkGenericCache1EP14EscapeSequence = 0x02014B48;
+_ZN12FontRenderer17linkGenericCache2EP14EscapeSequence = 0x02014B18;
+_ZN12FontRenderer17linkGenericCache3EP14EscapeSequence = 0x02014AE8;
+_ZN12FontRenderer16setColorSelectorEP14EscapeSequence = 0x02014ACC;
+_ZN12FontRenderer19escapeSequenceTableE = 0x0203C244;
+_ZN12FontRenderer24sequenceTableInitializedE = 0x02089510;
+_ZN12FontRenderer14linkNicknameCBE = 0x0203BFDC;
+_ZN12FontRenderer12linkNumberCBE = 0x0203BFFC;
+_ZN12FontRenderer14linkGeneric0CBE = 0x0203BFC4;
+_ZN12FontRenderer14linkGeneric1CBE = 0x0203C01C;
+_ZN12FontRenderer14linkGeneric2CBE = 0x0203BFBC;
+_ZN12FontRenderer14linkGeneric3CBE = 0x0203BFD4;
+_ZN12FontRenderer13colorSelectCBE = 0x0203C004;
+
+_ZN9BMGReaderC1Ev = 0x020170AC;
+_ZN9BMGReaderD1Ev = 0x0201709C;
+_ZN9BMGReaderD0Ev = 0x0201707C;
+
+_ZN9BMGReader14parseBMGHeaderEv = 0x02016E98;
+_ZN9BMGReader12parseBMGInfoEv = 0x02016DC8;
+_ZN9BMGReader12parseBMGDataEv = 0x02016D70;
+_ZN9BMGReader5resetEPvm = 0x02016F68;
+_ZN9BMGReader14parseBMGStringEv = 0x02016CD0;
+_ZN9BMGReader16processBMGStringEP9FontCache = 0x02016CA4;
+_ZN9BMGReader6renderEP9FontCachePvm = 0x02016FD4;
+_ZN9BMGReader13renderClearedEP9FontCachePvm = 0x020161E4;
+
+_ZN4Font8mainFontE = 0x02089524;
+_ZN4Font11loadingFontE = 0x02089530;
+_ZN4Font9bmgReaderE = 0x0208953C;
+_ZN4Font12fontRendererE = 0x02089594;
+_ZN4Font16scriptFileIDListE = 0x0202665C;
+_ZN4Font15selectFileTilesE = 0x020266C8;
+_ZN4Font16gameTextboxTilesE = 0x0203C1E4;
+_ZN4Font16yesNoOptionTilesE = 0x0203C044;
+_ZN4Font17mvslModeMenuTilesE = 0x02026698;
+_ZN4Font19mvslSelectMenuTilesE = 0x02026734;
+_ZN4Font16mvslLoadingTilesE = 0x0202668C;
+_ZN4Font21mvslResultScreenTilesE = 0x020266F8;
+_ZN4Font11getMainFontEv = 0x02014AC0;
+_ZN4Font14getLoadingFontEv = 0x02014AB4;
+_ZN4Font12getBMGReaderEv = 0x02014AA8;
+_ZN4Font15getFontRendererEv = 0x02014A9C;
+_ZN4Font15getScriptFileIDEm = 0x02017190;
+_ZN4Font13initMainFontsEv = 0x02014A58;
+_ZN4Font8loadFontEP10NNSG2dFontm = 0x02017184;
+_ZN4Font16loadFontInternalEP10NNSG2dFontm = 0x02017164;
+_ZN4Font12renderBufferEv = 0x02014A30;
+_ZN4Font10updateFontEv = 0x02014A44;
+
+_ZN4Util7reverseEPm = 0x02017134;
+_ZN4Util11dereferenceEPm = 0x0201712C;
+_ZN4Util11dereferenceEPt = 0x02017124;
+_ZN4Util11dereferenceEPh = 0x0201711C;
+_ZN4Util11dereferenceEPhm = 0x02016B98;
+
+_ZTV9BMGReader = 0x0203C024;
+_ZTV12FontRenderer = 0x0203C05C;
+_ZTV10FontString = 0x0203C034;
+_ZTV10FontBounds = 0x0203C07C;
+_ZTV12GenericCache = 0x0203C0E4;
+_ZTV11NumberCache = 0x0203C0BC;
+_ZTV13NicknameCache = 0x0203C134;
+_ZTV11StringCache = 0x0203C15C;
+_ZTV9FontCache = 0x0203C10C;
+_ZTV8FontBase = 0x0203C09C;
+
+
+/*----------------------------------------------------------------*/
+/*---------------------------- sound -----------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN5Sound9stopFlagsE = 0x02088b54;
+
 _ZN5Sound22loadToadHouseLevelSeqsEv = 0x02011988;
 _ZN5Sound21clearAndLoadLevelSeqsEv = 0x020119E8;
 _ZN5Sound17loadLevelThemeSeqEv = 0x02011ACC;
@@ -1597,13 +1718,13 @@ _ZN5Sound18startLevelThemeSeqEl = 0x02011F04;
 _ZN5Sound14updateSFXRangeEv = 0x02011F5C;
 _ZN5Sound27playArcSFXAtPosIfInPosRangeEllP4Vec3ll = 0x02012038;
 _ZN5Sound7playSFXEl = 0x020121E4;
-_ZN5Sound15playEntranceSFXEiP4Vec3 = 0x0201220C;
-_ZN5Sound15playSFXChannel2EiP4Vec3l = 0x0201224C;
-_ZN5Sound15playSFXChannel2EiP4Vec3 = 0x02012290;
-_ZN5Sound15playSFXChannel1EiP4Vec3l = 0x020122D0;
-_ZN5Sound15playSFXChannel1EiP4Vec3 = 0x02012314;
-_ZN5Sound15playSFXChannel0EiP4Vec3l = 0x02012354;
-_ZN5Sound15playSFXChannel0EiP4Vec3 = 0x02012398;
+_ZN5Sound15playEntranceSFXElP4Vec3 = 0x0201220C;
+_ZN5Sound15playSFXChannel2ElP4Vec3l = 0x0201224C;
+_ZN5Sound15playSFXChannel2ElP4Vec3 = 0x02012290;
+_ZN5Sound15playSFXChannel1ElP4Vec3l = 0x020122D0;
+_ZN5Sound15playSFXChannel1ElP4Vec3 = 0x02012314;
+_ZN5Sound15playSFXChannel0ElP4Vec3l = 0x02012354;
+_ZN5Sound15playSFXChannel0ElP4Vec3 = 0x02012398;
 _ZN5Sound4loopEv = 0x020123D8;
 _ZN5Sound19setCurrentSoundArc0Ev = 0x020125C4;
 _ZN5Sound7initDLPEv = 0x020125D4;
@@ -1646,44 +1767,26 @@ _ZN5Sound8Internal17startOutputEffectEPvm = 0x0204F1DC;
 _ZN5Sound8Internal12initSDAT_DLPEPv = 0x0204F20C;
 _ZN5Sound8Internal5setupEPvl = 0x0204F2E0;
 
-_ZN4Save11setupBackupE14CARDBackupTypePKc = 0x0204C7F4;
-_ZN4Save10readBackupEPvmm = 0x0204C114;
-_ZN4Save11writeBackupEPvmm = 0x0204C568;
-_ZN4Save12writeMGScoreEmmm = 0x02012788;
-_ZN4Save11readMGScoreEmm = 0x02012824;
-_ZN4Save11writeMGSaveEP12MinigameSave = 0x0201289C;
-_ZN4Save10readMGSaveEP12MinigameSave = 0x020128C4;
-_ZN4Save11clearMGSaveEP12MinigameSave = 0x020128D8;
-_ZN4Save12createMGSaveEv = 0x020128FC;
-_ZN4Save18getWorldmapSceneIDEv = 0x02012934;
-_ZN4Save27disableCurrentWorldmapActorEN8MainSave13WorldmapActor4TypeE = 0x0201293C;
-_ZN4Save15animationPlayedEv = 0x020129B0;
-_ZN4Save17getStarCoinAmountEv = 0x02012A20;
-_ZN4Save19isStarCoinCollectedEm = 0x02012A3C;
-_ZN4Save24getCurrentLevelStarCoinsEv = 0x02012A58;
-_ZN4Save17getLevelStarCoinsEmh = 0x02012A78;
-_ZN4Save17setLevelStarCoinsEmhh = 0x02012A98;
-/*02012ABC*/
-_ZN4Save10onGameOverEmP8MainSave = 0x02012D6C;
-_ZN4Save15onStoryFinishedEmP8MainSave = 0x02012D70;
-_ZN4Save9writeSaveEmP8MainSave = 0x02012D98;
-_ZN4Save14loadPlayerDataEv = 0x02012DA4;
-_ZN4Save12loadMainSaveEmmP8MainSave = 0x02012E08;
-_ZN4Save14createMainSaveEmP8MainSave = 0x02012EE0;
-_ZN4Save13writeMainSaveEmP8MainSave = 0x02012F24;
-_ZN4Save12readMainSaveEmP8MainSave = 0x02012F64;
-_ZN4Save13clearMainSaveEP8MainSave = 0x02012F9C;
-_ZN4Save16createOptionSaveEP10OptionSave = 0x02012FF0;
-_ZN4Save15writeOptionSaveEP10OptionSave = 0x0201301C;
-_ZN4Save14readOptionSaveEP10OptionSave = 0x02013050;
-_ZN4Save15clearOptionSaveEP10OptionSave = 0x02013064;
-_ZN4Save18generateOptionSaveEv = 0x02013090;
-_ZN4Save10resetSavesEv = 0x020130B4;
-_ZN4Save15clearLoadedSaveEv = 0x02013100;
+
+/*----------------------------------------------------------------*/
+/*---------------------------- vector ----------------------------*/
+/*----------------------------------------------------------------*/
 
 _ZN4Vec3C1Ev = 0x02003180;
+_ZN4Vec3C2Ev = 0x02003180;
 _ZN4Vec3D1Ev = 0x02003080;
 _ZN4Vec3D0Ev = 0x02003190;
+
+_ZN4Vec2C1Ev = 0x02003160;
+_ZN4Vec2C2Ev = 0x02003160;
+_ZN4Vec2D1Ev = 0x020030D8;
+_ZN4Vec2D0Ev = 0x020031D0;
+
+_ZN5Vec3sC1Ev = 0x02003170;
+_ZN5Vec3sC2Ev = 0x02003170;
+_ZN5Vec3sD1Ev = 0x02003070;
+_ZN5Vec3sD0Ev = 0x020031B0;
+
 _ZN4Vec310applyRotXZEs = 0x02045760;
 _ZN4Vec310applyRotYZEs = 0x02045808;
 _ZN4Vec312tryNormalizeEv = 0x020458B0;
@@ -1693,14 +1796,12 @@ _ZN4Vec35crossERS_RKS_RK7VecFx32 = 0x020459AC;
 _ZN4Vec38distanceERKS_RK7VecFx32 = 0x020459FC;
 _ZN4Vec3neERK7VecFx32 = 0x02045A40;
 _ZN4Vec3eqERK7VecFx32 = 0x02045A80;
-_ZN4Vec3mLEi =	0x02045ABC;
-_ZN4Vec33mulERS_RKS_i = 0x02045B24;
+_ZN4Vec3mLEl =	0x02045ABC;
+_ZN4Vec33mulERS_RKS_l = 0x02045B24;
 _ZN4Vec33subERS_RKS_RK7VecFx32 = 0x02045B90;
 _ZN4Vec33addERS_RKS_RK7VecFx32 = 0x02045BDC;
 _ZN4Vec310applyRotXYEs = 0x02045C28;
-_ZN4Vec2C1Ev = 0x02003160;
-_ZN4Vec2D1Ev = 0x020030D8;
-_ZN4Vec2D0Ev = 0x020031D0;
+
 _ZN4Vec212tryNormalizeEv = 0x02045CD0;
 _ZN4Vec29normalizeERS_RKS_ = 0x02045D1C;
 _ZN4Vec211crossLengthERKS_RK7VecFx32 = 0x02045D74;
@@ -1709,88 +1810,47 @@ _ZN4Vec28distanceERKS_RK7VecFx32 = 0x02045DDC;
 _ZN4Vec26lengthEv = 0x02045E10;
 _ZN4Vec2neERK7VecFx32 = 0x02045E2C;
 _ZN4Vec2eqERK7VecFx32 = 0x02045E5C;
-_ZN4Vec23divER4Vec3RKS_i = 0x02045E88;
-_ZN4Vec2mLEi = 0x02045F14;
-_ZN4Vec23mulERS_RKS_i = 0x02045F60;
+_ZN4Vec23divERS_RKS_l = 0x02045E88;
+_ZN4Vec2mLEl = 0x02045F14;
+_ZN4Vec23mulERS_RKS_l = 0x02045F60;
 _ZN4Vec23subERS_RKS_RK7VecFx32 = 0x02045FB8;
 _ZN4Vec23addERS_RKS_RK7VecFx32 = 0x02045FF4;
-_ZN7S16Vec3C1Ev = 0x02003170;
-_ZN7S16Vec3D1Ev = 0x02003070;
-_ZN7S16Vec3D0Ev = 0x020031B0;
 
-_ZTV4Vec3 = 0x02039208;
-_ZTV4Vec2 = 0x020391E8;
-_ZTV7S16Vec3 = 0x020391F8;
+_ZTV4Vec3 = 0x02039200;
+_ZTV4Vec2 = 0x020391E0;
+_ZTV5Vec3s = 0x020391F0;
 
-_ZN4Math6sqrt64Ejj = 0x02046030;
 
-NNS_G3dGlbFlush = 0x02019928;
-NNS_G3dGlbSetBaseTrans = 0x02058120;
-NNS_G3dGlbSetBaseScale = 0x020580F8;
-NNS_G3dGlbLightVector = 0x020580C4;
-NNS_G3dGlbLightColor = 0x020580B0;
-NNS_G3dGlbMaterialColorDiffAmb = 0x0205808C;
-NNS_G3dGlbMaterialColorSpecEmi = 0x02058068;
-NNS_G3dGlbPolygonAttr = 0x0205803C;
-NNS_G3dAnmObjCalcSizeRequired = 0x02057EC0;
-NNSi_G3dSendJointSRTBasic = 0x0205BF08;
-NNS_G3dGetAnmByIdx = 0x0205A70C;
-NNSi_G3dGetTexPatAnmTexNameByIdx = 0x0205A6FC;
-NNSi_G3dGetTexPatAnmPlttNameByIdx = 0x0205A6EC;
-NNSi_G3dGetTexPatAnmFV = 0x0205A670;
-NNSi_G3dGetTexPatAnmDataByIdx = 0x0205A654;
-NNS_G3dAnmObjInit = 0x02057E20;
-addLink_ = 0x02057D08;
-NNS_G3dRenderObjRemoveAnmObj = 0x02057BA8;
-removeLink_ = 0x02057C08;
-NNS_SndPlayerSetTrackPan_0 = 0x0205DC74;
-NNSi_G3dGetJointScaleBasic = 0x0205BECC;
-NNSi_G3dSendTexSRTXsi = 0x0205CB10;
-NNSi_G3dSendTexSRT3dsMax = 0x0205C4A0;
-texmtxCalc_flagTRS_ = 0x0205C5E8;
-texmtxCalc_flagTR_ = 0x0205C60C;
-texmtxCalc_flagTS_ = 0x0205C65C;
-texmtxCalc_flagT_ = 0x0205C73C;
-texmtxCalc_flagRS_ = 0x0205C83C;
-texmtxCalc_flagR_ = 0x0205C884;
-texmtxCalc_flagS_ = 0x0205C908;
-texmtxCalc_flag_ = 0x0205C9FC;
-NNSi_G3dSendJointSRTSi3d = 0x0205C370;
-NNSi_G3dGetJointScaleSi3d = 0x0205C148;
-NNSi_G3dSendTexSRTSi3d = 0x0205BF84;
-NNSi_G3dModifyPolygonAttrMask = 0x0205A270;
-NNS_G3dMdlSetMdlDiff = 0x0205A22C;
-NNS_G3dMdlSetMdlAmb = 0x0205A1E8;
-NNS_G3dMdlSetMdlEmi = 0x0205A1A4;
-NNS_G3dMdlSetMdlLightEnableFlag = 0x0205A160;
-NNS_G3dMdlSetMdlPolygonMode = 0x0205A11C;
-NNS_G3dMdlSetMdlPolygonID = 0x0205A0D8;
-NNS_G3dMdlSetMdlAlpha = 0x0205A094;
-NNS_G3dMdlSetMdlAmbAll = 0x02059FD0;
-NNS_G3dMdlSetMdlDiffAll = 0x0205A010;
-NNS_G3dMdlSetMdlLightEnableFlagAll = 0x02059F90;
-NNS_G3dMdlSetMdlPolygonModeAll = 0x02059F50;
-NNS_G3dMdlSetMdlAlphaAll = 0x02059ED0;
-NNSi_G3dFuncSbc_NODEMIX = 0x02058BB4;
-NNSi_G3dFuncSbc_CALLDL = 0x02058AD4;
-NNSi_G3dFuncSbc_ENVMAP = 0x020587B4;
-NNSi_G3dFuncSbc_PRJMAP = 0x02058424;
+/*----------------------------------------------------------------*/
+/*---------------------------- math ------------------------------*/
+/*----------------------------------------------------------------*/
 
-NNS_G3dRenderObjAddAnmObj = 0x02057C7C;
-updateHintVec_ = 0x01FF8BE0;
-NNS_G3dGeUseFastDma = 0x02059B58;
-NNSi_G2dSplitCharUTF16 = 0x02057678;
-MBi_StartParentCore = 0x020788C8;
-MBi_GetTgid = 0x0207845C;
-CARD_IsEnabled = 0x0206E074;
-CARD_Enable = 0x0206E038;
-NNSi_SndSeqArcGetSeqInfo = 0x02060C40;
-GXS_BeginLoadBGExtPltt = 0x0206320C;
-NNS_G3dRenderObjSetInitFunc = 0x02057B8C;
-OSi_DoLockByWord = 0x02064290;
-SVC_WaitByLoop = 0x02000738;
-FSi_CloseFileCommand = 0x02068E30;
-FSi_ReadDummyCallback = 0x0206A9C8;
+_ZN4Math4lerpER4Vec3RKS0_l = 0x02043e30;
+_ZN4Math8lerpFx32ERllll = 0x020437a4;
+_ZN4Math8lerpFx32ERlllll = 0x020437f4;
+_ZN4Math6sqrt64Emm = 0x02046030;
+_ZN4Math10atan2TableE = 0x020848e4;
+_ZN4Math13unusedCounterE = 0x0208b66c;
+_ZN4Math12frameCounterE = 0x0208b668;
+
+_ZN4Math6Random11stageRandomEv = 0x0200e6f4;
+
+
+/*----------------------------------------------------------------*/
+/*---------------------------- save ------------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN4Save12loadMainSaveEmmP8MainSave = 0x02012e08;
+_ZN4Save12readMainSaveEmP8MainSave = 0x02012f64;
+_ZN4Save14readOptionSaveEP10OptionSave = 0x02013050;
+
+_ZN4Save10optionSaveE = 0x02088f18;
+_ZN4Save8mainSaveE = 0x02088bdc;
+
+
+/*----------------------------------------------------------------*/
+/*----------------------------- oam ------------------------------*/
+/*----------------------------------------------------------------*/
 
 _ZN3OAM14unused_2087708E = 0x02087708;
 _ZN3OAM8_2087710E = 0x02087710;
@@ -1834,141 +1894,872 @@ _ZN3OAM4Anim6updateEv = 0x0200B44C;
 _ZN3OAM4Anim10drawSpriteEllNS_5FlagsEhhP4Vec2sPA2_sNS_8SettingsE = 0x0200B3F4;
 _ZN3OAM4Anim7drawSubEllNS_5FlagsEhhP4Vec2sPA2_sNS_8SettingsE = 0x0200B39C;
 
-_ZN14ParticleSystem4initEP22ParticleSystemResourcePK7VecFx32					= 0x20507b4;
 
-_ZN15ParticleHandler12updateSystemEP14ParticleSystem							= 0x204ff64;
-_ZN15ParticleHandler21renderPrimaryClustersEv									= 0x204fe80;
-_ZN15ParticleHandler23renderSecondaryClustersEv									= 0x204fda4;
-_ZN15ParticleHandler19renderCurrentSystemEv										= 0x204fd34;
-_ZN15ParticleHandler12FUN_0204fd18EPS_P14ParticleSystemP18ParticleObjectList	= 0x204fd18;
-_ZN15ParticleHandler15allocateTextureEii										= 0x204fce4;
-_ZN15ParticleHandler15allocatePaletteEii										= 0x204fcb0;
-_ZN15ParticleHandler6createEPFPvmEttmmm											= 0x204fb24;
-_ZN15ParticleHandler12initFromFileEPv											= 0x204f7b4;
-_ZN15ParticleHandler14loadTexturesExEPFPvmiE									= 0x204f6ec;
-_ZN15ParticleHandler14loadPalettesExEPFPvmiE									= 0x204f63c;
-_ZN15ParticleHandler12loadTexturesEv											= 0x204f628;
-_ZN15ParticleHandler12loadPalettesEv											= 0x204f614;
-_ZN15ParticleHandler13updateSystemsEv											= 0x204f4e0;
-_ZN15ParticleHandler13renderSystemsEP7MtxFx43									= 0x204f428;
-_ZN15ParticleHandler12createSystemEmPK7VecFx32									= 0x204f3b8;
-_ZN15ParticleHandler14createSystemExEmPK7VecFx32PvPFvP14ParticleSystemzE		= 0x204f334;
-_ZN15ParticleHandler12FUN_0204f324EP14ParticleSystem							= 0x204f324;
+/*----------------------------------------------------------------*/
+/*--------------------------- particle ---------------------------*/
+/*----------------------------------------------------------------*/
 
-_ZN11ParticleMgrC1Ev															= 0x2023180;
-_ZN11ParticleMgrD2Ev															= 0x2023118;
-_ZN11ParticleMgrD1Ev															= 0x2023118;
-_ZN11ParticleMgrD0Ev															= 0x20230a8;
-_ZN11ParticleMgr8allocateEm														= 0x202308c;
-_ZN11ParticleMgr4initENS_13STDParticleIDE										= 0x2022dd0;
-_ZN11ParticleMgr19getBossParticleInfoEm											= 0x2022d98;
-_ZN11ParticleMgr21getBossParticleFileIDEm										= 0x2022d68;
-_ZN11ParticleMgr8initBossEv														= 0x2022cb4;
-_ZN11ParticleMgr15updateParticlesEv												= 0x2022c3c;
-_ZN11ParticleMgr15renderParticlesEv												= 0x2022be4;
-_ZN11ParticleMgr14createParticleEmPK4Vec3										= 0x2022b64;
-_ZN11ParticleMgr16createParticleExEmPK4Vec3PvPFvP14ParticleSystemzE				= 0x2022aac;
-_ZN11ParticleMgr12unkCallback1EP14ParticleSystemPK7VecFx16						= 0x2022a90;
-_ZN11ParticleMgr23createParticleCallback1EmPK4Vec3PK7VecFx16					= 0x2022a7c;
-_ZN11ParticleMgr12unkCallback2EP14ParticleSystemPKm								= 0x2022a70;
-_ZN11ParticleMgr12unkCallback3EP14ParticleSystemPKm								= 0x2022a64;
-_ZN11ParticleMgr23createParticleCallback3EmPK4Vec3PKm							= 0x2022a50;
-_ZN11ParticleMgr12unkCallback4EP14ParticleSystemPKt								= 0x2022a44;
-_ZN11ParticleMgr23createParticleCallback4EmPK4Vec3PKt							= 0x2022a30;
-_ZTV11ParticleMgr																= 0x203cf8c;
+_ZN8Particle7Emitter5startEmmPK7VecFx32PK7VecFx16PKlPKsPNS_14ControllerBaseE								= 0x02021c10;
+_ZN8Particle7Emitter3endEv																					= 0x02021bf0;
 
-_ZN11ParticleMgr19bParticleMgrEnabledE											= 0x203cf80;
-_ZN11ParticleMgr16pParticleHeapBegE												= 0x208b50C;
-_ZN11ParticleMgr16pParticleHeapCurE												= 0x208b510;
-_ZN11ParticleMgr16pParticleHeapEndE												= 0x208b514;
-_ZN11ParticleMgr22pParticleFileMinigamesE										= 0x208b518;
-_ZN11ParticleMgr19pCurParticleHandlerE											= 0x208b51c;
-_ZN11ParticleMgr12pParticleMgrE													= 0x208b520;
-_ZN11ParticleMgr13pParticleFileE												= 0x208b524;
+_ZN8Particle13EmitterSystemC2Ev																				= 0x02021bac;
+
+_ZN8Particle13EmitterSystem18destroyAllEmittersEv															= 0x02021ae8;
+_ZN8Particle13EmitterSystem21unregisterAllEmittersEv														= 0x02021a88;
+_ZN8Particle13EmitterSystem10getEmitterEm																	= 0x02021a48;
+_ZN8Particle13EmitterSystem16startFreeEmitterEmPK7VecFx32PK7VecFx16PKlPKsPNS_14ControllerBaseE				= 0x0202194c;
+_ZN8Particle13EmitterSystem15registerEmitterEPNS_7EmitterE													= 0x02021920;
+_ZN8Particle13EmitterSystem17unregisterEmitterEPNS_7EmitterE												= 0x020218e0;
+
+_ZN8Particle14ControllerBase5spawnEPv																		= 0x02021f08;
+_ZN8Particle14ControllerBase7destroyEPvl																	= 0x02021f00;
+
+_ZN8Particle10ControllerC2Ev																				= 0x02021eb8;
+_ZN8Particle10Controller5spawnEPv																			= 0x02021e8c;
+_ZN8Particle10Controller7destroyEPvl																		= 0x02021e7c;
+
+_ZN8Particle16ControllerLiquid7destroyEPvl																	= 0x02021e00;
+
+_ZN8Particle22ControllerManualLiquid7destroyEPvl															= 0x02021d78;
+
+_ZN8Particle16ControllerManual7destroyEPvl																	= 0x02021d20;
+_ZN8Particle16ControllerManual20getHandlerControllerEv														= 0x02021cfc;
+
+_ZN8Particle7HandlerC2Ev																					= 0x02023180;
+_ZN8Particle7HandlerD2Ev																					= 0x02023118;
+_ZN8Particle7HandlerD1Ev																					= 0x02023118;
+_ZN8Particle7HandlerD0Ev																					= 0x020230a8;
+
+_ZN8Particle7Handler8allocateEm																				= 0x0202308c;
+_ZN8Particle7Handler4initEm																					= 0x02022dd0;
+_ZN8Particle7Handler19getBossParticleInfoEm																	= 0x02022d98;
+_ZN8Particle7Handler21getBossParticleFileIDEm																= 0x02022d68;
+_ZN8Particle7Handler8initBossEv																				= 0x02022cb4;
+_ZN8Particle7Handler15updateParticlesEv																		= 0x02022c3c;
+_ZN8Particle7Handler15renderParticlesEv																		= 0x02022be4;
+_ZN8Particle7Handler14createParticleEmPK4Vec3																= 0x02022b64;
+_ZN8Particle7Handler16createParticleExEmPK4Vec3PvPFvPNS_10SPLEmitterEzE										= 0x02022aac;
+_ZN8Particle7Handler15setAxisCallbackEPNS_10SPLEmitterEPK7VecFx16											= 0x02022a90;
+_ZN8Particle7Handler18createParticleAxisEmPK4Vec3PK7VecFx16													= 0x02022a7c;
+_ZN8Particle7Handler27setSimpleCollisionYCallbackEPNS_10SPLEmitterEPKl										= 0x02022a70;
+_ZN8Particle7Handler17setRadiusCallbackEPNS_10SPLEmitterEPKl												= 0x02022a64;
+_ZN8Particle7Handler20createParticleRadiusEmPK4Vec3PKl														= 0x02022a50;
+_ZN8Particle7Handler23setParticleLifeCallbackEPNS_10SPLEmitterEPKt											= 0x02022a44;
+_ZN8Particle7Handler18createParticleLifeEmPK4Vec3PKt														= 0x02022a30;
+_ZN8Particle7Handler13getSPLEmitterEm																		= 0x02022a04;
+_ZN8Particle7Handler10runEmitterEmmPK4Vec3PK7VecFx16PKlPKsPNS_14ControllerBaseE								= 0x02022890;
+_ZN8Particle7Handler14runEmitterBossEmmPK4Vec3PK7VecFx16PKlPKsPNS_14ControllerBaseE							= 0x02022824;
+_ZN8Particle7Handler22runEmitterManualLiquidEmmlllPK7VecFx16												= 0x020227bc;
+_ZN8Particle7Handler16runEmitterManualEmmlllPK7VecFx16														= 0x02022754;
+_ZN8Particle7Handler15createSmokePuffElll																	= 0x020226e4;
+_ZN8Particle7Handler15createRockSmokeElll																	= 0x02022674;
+_ZN8Particle7Handler18createBigRockSmokeElll																= 0x020226fc;
+_ZN8Particle7Handler19createRockExplosionElll																= 0x02022528;
+_ZN8Particle7Handler22createBigRockExplosionElll															= 0x0202245c;
+_ZN8Particle7Handler17createLittleSmokeElll																	= 0x020223e4;
+_ZN8Particle7Handler22createLittleWhiteSmokeElll															= 0x02022364;
+_ZN8Particle7Handler18createGlitterStarsElll																= 0x020222ec;
+_ZN8Particle7Handler13createBubblesElll																		= 0x02022274;
+_ZN8Particle7Handler18createBigSmokePuffEPK4Vec3															= 0x02022244;
+_ZN8Particle7Handler15createSmokePuffEPK4Vec3																= 0x02022220;
+_ZN8Particle7Handler20createWaterParticlesEPK4Vec3															= 0x020221fc;
+_ZN8Particle7Handler19createLavaParticlesEPK4Vec3															= 0x020221d8;
+_ZN8Particle7Handler28createPoisonedWaterParticlesEPK4Vec3													= 0x020221b4;
+_ZN8Particle7Handler18createParticleBossEmPK4Vec3															= 0x02022134;
+_ZN8Particle7Handler34createParticleBossSimpleCollisionYEmPK4Vec3PKl										= 0x020220d8;
+_ZN8Particle7Handler17getSPLEmitterSafeEm																	= 0x020220a4;
+_ZN8Particle7Handler21stopEmitterGenerationEm																= 0x02022074;
+_ZN8Particle7Handler25stopEmitterGenerationBossEm															= 0x02022020;
+_ZN8Particle7Handler24setEmitterGenerationRateEmm															= 0x02022008;
+_ZN8Particle7Handler22setEmitterParticleLifeEmt																= 0x02021ff0;
+_ZN8Particle7Handler29runEmitterInitialVelocityAxisEmmPK4Vec3PK7VecFx16PKlPKsSA_PNS_14ControllerBaseE		= 0x02021f7c;
+_ZN8Particle7Handler23setPolygonAttributeBossEm																= 0x02021f58;
+_ZN8Particle7Handler25resetPolygonAttributeBossEm															= 0x02021f30;
+_ZN8Particle7Handler7disableEv																				= 0x02021f0c;
+
+_ZN8Particle7Handler17bParticlesEnabledE																	= 0x203cf80;
+
+_ZN8Particle7Handler16nMaxSPLParticlesE																		= 0x208b4f8;
+_ZN8Particle7Handler20nMaxSPLParticlesBossE																	= 0x208b4fc;
+_ZN8Particle7Handler15nMaxSPLEmittersE																		= 0x208b500;
+_ZN8Particle7Handler19nMaxSPLEmittersBossE																	= 0x208b504;
+_ZN8Particle7Handler18nMaxSystemEmittersE																	= 0x208b508;
+
+_ZN8Particle7Handler16pParticleHeapBegE																		= 0x208b50C;
+_ZN8Particle7Handler16pParticleHeapCurE																		= 0x208b510;
+_ZN8Particle7Handler16pParticleHeapEndE																		= 0x208b514;
+
+_ZN8Particle7Handler13pMiniGamesSPAE																		= 0x208b518;
+_ZN8Particle7Handler14pCurSPLManagerE																		= 0x208b51c;
+_ZN8Particle7Handler8pHandlerE																				= 0x208b520;
+_ZN8Particle7Handler12pMainGameSPAE																			= 0x208b524;
+
+_ZTVN8Particle14ControllerBaseE																				= 0x0203cfd4;
+_ZTVN8Particle10ControllerE																					= 0x0203cfb4;
+_ZTVN8Particle16ControllerLiquidE																			= 0x0203cfc4;
+_ZTVN8Particle22ControllerManualLiquidE																		= 0x0203cfa4;
+_ZTVN8Particle16ControllerManualE																			= 0x0203cf94;
+_ZTVN8Particle7HandlerE																						= 0x0203cf84;
 
 
-_ZN7Physics8Collider11doSomethingEv												= 0x020AB18C;
-_ZN7Physics8Collider14updatePositionEv											= 0x020AB2CC;
-_ZN7Physics8Collider6unlinkEv													= 0x020AB350;
-_ZN7Physics8Collider4linkEv														= 0x020AB3B4;
-_ZN7Physics8Collider8initRectEPNS_12ColliderInfoEP4Vec3							= 0x020AB40C;
-_ZN7Physics8Collider8initRectEP4Vec2S2_P4Vec3									= 0x020AB560;
-_ZN7Physics8Collider10initRectExEllllP4Vec3										= 0x020AB6BC;
-_ZN7Physics8Collider4initEP5ActorPNS_12ColliderInfoEmhP4Vec3					= 0x020AB7B8;
-_ZN7Physics8Collider6initExEP5ActorllllPFvS2_S2_ES4_S4_mhP4Vec3					= 0x020AB81C;
-_ZN7Physics8Collider5resetEv													= 0x020AB898;
-_ZN7Physics8ColliderD1Ev														= 0x020AB8B8;
-_ZN7Physics8ColliderC1Ev														= 0x020AB8E8;
+/*----------------------------------------------------------------*/
+/*----------------------------- list -----------------------------*/
+/*----------------------------------------------------------------*/
 
-_ZN7Physics8Collider5firstE														= 0x020CABE4;
-_ZN7Physics8Collider4lastE														= 0x020CABE8;
+_ZN11ProcessNode6unlinkEv																					= 0x0204d57c;
 
-__destroy_global_chain = 0x0207FC54;
-__call_static_initializers = 0x207fca4;
-__throw_catch_compare = 0x0207FCD4;
-__register_global_object = 0x0207FEC0;
-__cxa_vec_ctor = 0x02080050;
-__cxa_vec_cleanup = 0x0207FF4C;
-DestroyArrayRange = 0x020801C4;
-__cxa_vec_new = 0x02080104;
-FindExceptionHandler = 0x0207EA9C;
-CurrentAction = 0x0207FAC4;
-terminate = 0x0207FEE0;
-thandler = 0x02085864;
-dthandler = 0x0207FF00;
-exit = 0x0207CFFC;
-__exit = 0x0207CECC;
-__stdio_exit = 0x02098184;
-abort = 0x0207D04C;
-__aborting = 0x0209818C;
-raise = 0x0207D2E4;
-signal_funcs = 0x020986B0;
-IsInSpecification = 0x0207ECE0;
-__ThrowHandler = 0x0207E954;
-FindExceptionRecord = 0x0207FAE0;
-__FindExceptionTable = 0x0207E5F4;
-__exception_table_start__ = 0x02025924;
-__exception_table_end__ = 0x02025A44;
-BinarySearch = 0x0207FBF0;
-__SkipUnwindInfo = 0x0207E5C4;
-__DecodeUnsignedNumber = 0x0207E7E8;
-__throw = 0x0207E578;
-__SetupFrameInfo = 0x0207E614;
-FindMostRecentException = 0x0207ED64;
-__DecodeSignedNumber = 0x0207E880;
-NextAction = 0x0207F730;
-__PopStackFrame = 0x0207E6B4;
-UnwindStack = 0x0207EEB4;
-SetupCatchInfo = 0x0207EA34;
-__TransferControl = 0x0207E548;
-HandleUnexpected = 0x0207EC78;
-sys_readc = 0x0207E728;
-sys_exit = 0x0207E73C;
-sys_writec = 0x0207E714;
-__write_console = 0x0207E754;
-__read_console = 0x0207E788;
-__console_exit = 0x02098180;
-atexit_curr_func = 0x02098188;
-atexit_funcs = 0x02098190;
-fflush = 0x0207D1BC;
-__flush_all = 0x0207D078;
-__files = 0x02085780;
-__flush_buffer = 0x0207D0F0;
-__convert_from_newlines = 0x0207D1B8;
-__prep_buffer = 0x0207D184;
-_ExitProcess = 0x0207E53C;
-__cxa_vec_delete = 0x0207FF0C;
-__cxa_vec_dtor = 0x0207FFB4;
-__end__catch = 0x0207E918;
-__close_console = 0x0207E74C;
+_ZN12PriorityNode6unlinkEv																					= 0x0204d560;
 
-_s32_div_f = 0x0207E138;
-_u32_div_f = 0x0207E344;
-_u32_div_not_0_f = 0x0207E34C;
+_ZN10LinkedList6appendEP11ProcessNode																		= 0x020438e8;
+_ZN10LinkedList6removeEP11ProcessNode																		= 0x02043920;
+_ZN10LinkedList7prependEP11ProcessNode																		= 0x020438b0;
+_ZN10LinkedList6insertEP11ProcessNodeS1_																	= 0x02043990;
+_ZN10LinkedList11getNodeByIDEm																				= 0x0204d428;
 
-__sinit__ = 0x02039170;
-__global_destructor_chain = 0x020986CC;
+_ZN11ProcessList7executeEv																					= 0x0204d46c;
 
-_ZN18__global_info_fontE = 0x02089518;
-_ZN11__init_fontEv = 0x02025C2C;
-_ZN11__fini_fontEPv = 0x02017254;
+_ZN10ProcessSet3addEP12PriorityNode																			= 0x0204d4e4;
+
+_ZN9SceneNodeC2Ev																							= 0x02043b58;
+_ZN9SceneNode5resetEv																						= 0x02043b40;
+_ZN9SceneNode4nextEv																						= 0x02043a2c;
+_ZN9SceneNode10parentNextEv																					= 0x020439f0;
+
+_ZN10SceneGraph8addChildEP9SceneNodeS1_																		= 0x02043acc;
+_ZN10SceneGraph11removeChildEP9SceneNode																	= 0x02043a54;
+
+
+/*----------------------------------------------------------------*/
+/*----------------------------- base -----------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN4BaseC2Ev																								= 0x0204d2ac;
+
+_ZN4Base13processCreateEv																					= 0x0204cba0;
+_ZN4Base13processUpdateEv																					= 0x01ffd22c;
+_ZN4Base13processRenderEv																					= 0x01ffd1c8;
+_ZN4Base14processDestroyEv																					= 0x0204cb20;
+_ZN4Base7processEMS_FlvEMS_FbvEMS_FvNS_11ReturnStateEE														= 0x01ffd524;
+_ZN4Base8onCreateEv																							= 0x0204d234;
+_ZN4Base9preCreateEv																						= 0x0204d22c;
+_ZN4Base10postCreateENS_11ReturnStateE																		= 0x0204d1b8;
+_ZN4Base9onDestroyEv																						= 0x0204d1b0;
+_ZN4Base10preDestroyEv																						= 0x0204d174;
+_ZN4Base11postDestroyENS_11ReturnStateE																		= 0x0204d0e0;
+_ZN4Base8onUpdateEv																							= 0x01ffd51c;
+_ZN4Base9preUpdateEv																						= 0x01ffd4f4;
+_ZN4Base10postUpdateENS_11ReturnStateE																		= 0x01ffd4f0;
+_ZN4Base8onRenderEv																							= 0x01ffd4e8;
+_ZN4Base9preRenderEv																						= 0x01ffd4c0;
+_ZN4Base10postRenderENS_11ReturnStateE																		= 0x01ffd4bc;
+_ZN4Base14pendingDestroyEv																					= 0x0204d0dc;
+_ZN4Base8heapShitEmP4Heap																					= 0x0204cdbc;
+_ZN4Base12moreHeapShitEmP4Heap																				= 0x0204ccec;
+_ZN4Base13onHeapCreatedEv																					= 0x0204cce4;
+
+_ZN4Base6createEv																							= 0x0204cc04;
+_ZN4Base7destroyEv																							= 0x0204d08c;
+_ZN4Base18hasChildNotCreatedEv																				= 0x0204cac0;
+
+_ZN4BaseD2Ev																								= 0x0204d23c;
+_ZN4BaseD1Ev																								= 0x00000000; /* TODO */
+_ZN4BaseD0Ev																								= 0x0204d270;
+
+_ZN4Base9getParentEv																						= 0x0204d078;
+_ZN4BasenwEj																								= 0x0204cc98;
+_ZN4BasedlEPv																								= 0x0204cc7c;
+_ZN4Base14setSpawnParamsEtP9SceneNodemNS_10ObjectTypeE														= 0x0204ca80;
+_ZN4Base16loadSceneOverlayEt																				= 0x0204c974;
+_ZN4Base18unloadSceneOverlayEt																				= 0x0204c948;
+_ZN4Base5spawnEtP9SceneNodemNS_10ObjectTypeE																= 0x0204c9a4;
+_ZN4Base10spawnChildEtPS_mNS_10ObjectTypeE																	= 0x0204c920;
+_ZN4Base11spawnParentEtmNS_10ObjectTypeE																	= 0x0204c908;
+
+_ZN4Base16debugProfileStepE																					= 0x0208fae8;
+_ZN4Base15spawnObjectTypeE																					= 0x0208faec;
+_ZN4Base13debugObjectIDE																					= 0x0208faf0;
+_ZN4Base13spawnObjectIDE																					= 0x0208faf4;
+_ZN4Base15spawnParentNodeE																					= 0x0208faf8;
+_ZN4Base11loadOverlayE																						= 0x0208fafc;
+_ZN4Base13unloadOverlayE																					= 0x0208fb00;
+_ZN4Base13spawnSettingsE																					= 0x0208fb04;
+
+_ZN6Object10postCreateEN4Base11ReturnStateE																	= 0x020131a8;
+
+_ZN6ObjectD2Ev																								= 0x0201311c;
+_ZN6ObjectD1Ev																								= 0x0201311c;
+_ZN6ObjectD0Ev																								= 0x0201313c;
+
+_ZN6Object10spawnSceneEtmN4Base10ObjectTypeE																= 0x02013168;
+_ZN6Object11spawnObjectEtP4BasemNS0_10ObjectTypeE															= 0x02013188;
+
+_ZN5SceneC2Ev																								= 0x02013b2c;
+_ZN5SceneD2Ev																								= 0x020137b8;
+_ZN5SceneD1Ev																								= 0x02013a08;
+_ZN5SceneD0Ev																								= 0x020138dc;
+
+_ZN5Scene9preCreateEv																						= 0x02013764;
+_ZN5Scene10postCreateEN4Base11ReturnStateE																	= 0x02013718;
+_ZN5Scene10preDestroyEv																						= 0x020136e8;
+_ZN5Scene11postDestroyEN4Base11ReturnStateE																	= 0x020136c8;
+_ZN5Scene9preUpdateEv																						= 0x02013500;
+_ZN5Scene10postUpdateEN4Base11ReturnStateE																	= 0x020134f4;
+_ZN5Scene9preRenderEv																						= 0x020134c4;
+_ZN5Scene10postRenderEN4Base11ReturnStateE																	= 0x020134b8;
+_ZN5Scene17prepareFirstSceneEv																				= 0x020133a4;
+_ZN5Scene14tryChangeSceneEv																					= 0x020132a0;
+_ZN5Scene11switchSceneEtm																					= 0x020131fc;
+_ZN5Scene26switchToFileCorruptedSceneEm																		= 0x020131d8;
+
+_ZN5Scene13isSceneActiveE																					= 0x0203bd28;
+_ZN5Scene15previousSceneIDE																					= 0x0203bd2c;
+_ZN5Scene11nextSceneIDE																						= 0x0203bd30;
+_ZN5Scene14currentSceneIDE																					= 0x0203bd34;
+_ZN5Scene17nextSceneSettingsE																				= 0x02088f38;
+
+_ZN5ActorC2Ev																								= 0x020a0edc;
+_ZN5ActorD2Ev																								= 0x020a0d9c;
+_ZN5ActorD1Ev																								= 0x020a0e74;
+_ZN5ActorD0Ev																								= 0x020a0e04;
+
+_ZN5Actor9preCreateEv																						= 0x020a0d7c;
+_ZN5Actor10postCreateEN4Base11ReturnStateE																	= 0x020a0d70;
+_ZN5Actor10preDestroyEv																						= 0x020a0d50;
+_ZN5Actor11postDestroyEN4Base11ReturnStateE																	= 0x020a0d44;
+_ZN5Actor9preUpdateEv																						= 0x020a0cac;
+_ZN5Actor10postUpdateEN4Base11ReturnStateE																	= 0x020a0ca0;
+_ZN5Actor9preRenderEv																						= 0x020a0c48;
+_ZN5Actor10postRenderEN4Base11ReturnStateE																	= 0x020a0c3c;
+_ZN5Actor4setXEl																							= 0x0201ff68;
+_ZN5Actor5moveXEl																							= 0x0201ff70;
+_ZN5Actor13getActorCountEt																					= 0x020a0bf8;
+_ZN5Actor14setSpawnParamsEP4Vec3P5Vec3sPlPa																	= 0x020a0bb8;
+_ZN5Actor10spawnActorEtmP4Vec3P5Vec3sPlPa																	= 0x020a0b64;
+_ZN5Actor13setPlayerLinkEa																					= 0x020a0b5c;
+_ZN5Actor4moveEP4Vec3																						= 0x020a0aac;
+
+_ZN5Actor13spawnPositionE																					= 0x020ca85c;
+_ZN5Actor13spawnRotationE																					= 0x020ca860;
+_ZN5Actor15spawnPlayerLinkE																					= 0x020ca864;
+_ZN5Actor10spawnScaleE																						= 0x020ca868;
+
+_ZN10StageActorC2Ev																							= 0x020a127c;
+_ZN10StageActorD2Ev																							= 0x020a11a8;
+_ZN10StageActorD1Ev																							= 0x020a1238;
+_ZN10StageActorD0Ev																							= 0x020a11ec;
+
+_ZN10StageActor9preUpdateEv																					= 0x020a1154;
+_ZN10StageActor10postUpdateEN4Base11ReturnStateE															= 0x020a10f0;
+_ZN10StageActor22updateVerticalVelocityEv																	= 0x020a08a4;
+_ZN10StageActor24updateHorizontalVelocityEv                                                                 = 0x020a08c4;
+_ZN10StageActor12updateBounceElll																			= 0x020998e4;
+
+_ZN11StageEntityC2Ev																						= 0x0209dee0;
+_ZN11StageEntityD1Ev																						= 0x020986e0;
+_ZN11StageEntityD0Ev																						= 0x02098730;
+
+_ZN11StageEntity8setEventEmmbbb																				= 0x020995a4;
+_ZN11StageEntity13applyMovementEv																			= 0x0209C85C;
+_ZN11StageEntity19updateTileCollisionEv																		= 0x020991f8;
+_ZN11StageEntity13updateLiquidsEl																			= 0x0209c820;
+_ZN11StageEntity18deleteIfOutOfRangeEm																		= 0x0209adb0;
+
+_ZN11StageEntity8onUpdateEv																					= 0x0209ef98;
+_ZN11StageEntity9preUpdateEv																				= 0x0209dab8;
+_ZN11StageEntity10postUpdateEN4Base11ReturnStateE															= 0x0209da90;
+
+_ZN11StageEntity9preRenderEv																				= 0x0209da58;
+
+_ZN11StageEntity6virt20Ev																					= 0x020a03a4;
+_ZN11StageEntity6virt21Ev																					= 0x0209ad1c;
+_ZN11StageEntity6virt22Ev																					= 0x020a039c;
+_ZN11StageEntity6virt23Ev																					= 0x020a0304;
+_ZN11StageEntity6virt24Ev																					= 0x020a0274;
+_ZN11StageEntity6virt25Ev																					= 0x020a01ac;
+_ZN11StageEntity6virt26Ev																					= 0x0209fb3c;
+_ZN11StageEntity6virt27Ev																					= 0x0209fa8c;
+_ZN11StageEntity6virt28Ev																					= 0x0209f824;
+_ZN11StageEntity6virt29Ev																					= 0x0209f6c4;
+_ZN11StageEntity6virt30Ev																					= 0x0209f0e4;
+_ZN11StageEntity15updateAnimationEv																			= 0x0209d9fc;
+_ZN11StageEntity6virt32Ev																					= 0x0209faf4;
+_ZN11StageEntity6virt33Ev																					= 0x0209faac;
+_ZN11StageEntity6virt34Ev																					= 0x0209c974;
+_ZN11StageEntity6virt35Ev																					= 0x020a012c;
+_ZN11StageEntity6virt36Ev																					= 0x020a00ac;
+_ZN11StageEntity6virt37Ev																					= 0x0209f574;
+_ZN11StageEntity6virt38Ev																					= 0x0209f3d8;
+_ZN11StageEntity6virt39Ev																					= 0x0209f354;
+_ZN11StageEntity6virt40Ev																					= 0x020994f8;
+_ZN11StageEntity6virt41Ev																					= 0x0209d988;
+_ZN11StageEntity6virt42Ev																					= 0x0209d920;
+_ZN11StageEntity6virt43Ev																					= 0x0209d84c;
+_ZN11StageEntity6virt44Ev																					= 0x0209d568;
+_ZN11StageEntity6virt45Ev																					= 0x0209d43c;
+_ZN11StageEntity6virt46Ev																					= 0x0209d2a0;
+_ZN11StageEntity6virt47Ev																					= 0x0209d158;
+_ZN11StageEntity6virt48Ev																					= 0x0209d014;
+_ZN11StageEntity6virt49Ev																					= 0x0209cfc0;
+_ZN11StageEntity6virt50Ev																					= 0x0209ce08;
+_ZN11StageEntity6virt51Ev																					= 0x0209cbf8;
+_ZN11StageEntity6virt52Ev																					= 0x0209cad0;
+_ZN11StageEntity6virt53Ev																					= 0x02098f7c;
+_ZN11StageEntity6virt54Ev																					= 0x02098e7c;
+_ZN11StageEntity6virt55Ev																					= 0x0209cd3c;
+_ZN11StageEntity6virt56Ev																					= 0x0209cac4;
+_ZN11StageEntity6virt57Ev																					= 0x0209cac0;
+_ZN11StageEntity6virt58Ev																					= 0x02099168;
+_ZN11StageEntity6virt59Ev																					= 0x02098a94;
+_ZN11StageEntity6virt60Ev																					= 0x02098a90;
+_ZN11StageEntity6virt61Ev																					= 0x02098a10;
+_ZN11StageEntity6virt62Ev																					= 0x0209c9d0;
+_ZN11StageEntity6virt63Ev																					= 0x0209c994;
+_ZN11StageEntity6virt64Ev																					= 0x020a0268;
+_ZN11StageEntity6virt65Ev																					= 0x020a0240;
+_ZN11StageEntity6virt66Ev																					= 0x0209a6d4;
+
+_ZN14ProcessManager23getNextObjectByObjectIDEtP4Base														= 0x0204d66c;
+_ZN14ProcessManager13getObjectByIDEm																		= 0x0204d6a8;
+
+_ZTV4Base																									= 0x02085258;
+_ZTV6Object																									= 0x0203bcd8;
+_ZTV5Scene																									= 0x0203bd38;
+_ZTV5Actor																									= 0x020c6c2c;
+_ZTV10StageActor																							= 0x020c6c84;
+_ZTV11StageEntity																							= 0x020c4efc;
+
+
+/*----------------------------------------------------------------*/
+/*---------------------------- fader -----------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN5Fader12startFadeOutEmh																					= 0x02007c44;
+_ZN5Fader22enableMainScreenFadingEv																			= 0x02007c44;
+_ZN5Fader23disableMainScreenFadingEv																		= 0x02007c20;
+_ZN5Fader21enableSubScreenFadingEv																			= 0x02007bfc;
+_ZN5Fader22disableSubScreenFadingEv																			= 0x02007bd8;
+
+_ZN5Fader10fadeFramesE																						= 0x02085c28;
+_ZN5Fader16setupSceneFadingENS_10FadingTypeEbb																= 0x020083cc;
+
+_ZN4Game5faderE																								= 0x02088f48;
+
+/*----------------------------------------------------------------*/
+/*----------------------------- model ----------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN5ModelC1Ev																								= 0x02019a30;
+_ZN5ModelC2Ev																								= 0x02019a5c;
+_ZN5ModelD0Ev																								= 0x020199e8;
+_ZN5ModelD1Ev																								= 0x02019a10;
+_ZN5ModelD2Ev																								= 0x020199c8;
+_ZN5Model4nullEv																							= 0x02019944;
+_ZN5Model6renderEPK7VecFx32																					= 0x020198c4;
+_ZN5Model6renderEPK7MtxFx43PK7VecFx32																		= 0x02019864;
+_ZN5Model6renderEv																							= 0x02019858;
+_ZN5Model6createEPvmm																						= 0x02019948;
+_ZN5Model11renderModelEv																					= 0x02019934;
+_ZN5Model18setCommandCallbackEPPFvP9NNSG3dRS_EPhh23NNSG3dSbcCallBackTiming									= 0x02019838;
+_ZN5Model15getMaterialDataEm																				= 0x0201980c;
+_ZN5Model21getMaterialCollectionEv																			= 0x020197fc;
+_ZN5Model16getMaterialIndexEPK14NNSG3dResName_																= 0x020197e0;
+_ZN5Model11getNodeInfoEv																					= 0x020197d4;
+_ZN5Model12getNodeIndexEPK14NNSG3dResName_																	= 0x020197bc;
+_ZN5Model21getNodeMatrixInternalEP18NNSG3dResNodeInfo_mP7MtxFx43											= 0x02019740;
+_ZN5Model13getNodeMatrixEmP7MtxFx43																			= 0x0201972c;
+_ZN5Model15getNodePositionEmP4Vec3																			= 0x020196dc;
+_ZN5Model17restoreNodeMatrixEm																				= 0x0201967c;
+
+_ZTV5Model																									= 0x0203c514;
+
+
+/*----------------------------------------------------------------*/
+/*--------------------------- framectrl --------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN9FrameCtrl6updateEv																						= 0x0201feb8;
+_ZN9FrameCtrl4initEtNS_4TypeElt																				= 0x0201fe9c;
+_ZN9FrameCtrl13getFrameCountEv																				= 0x0201fe88;
+_ZN9FrameCtrl16setAnimationTypeENS_4TypeE																	= 0x0201fe74;
+_ZN9FrameCtrl8finishedEv																					= 0x0201fe34;
+_ZN9FrameCtrl7passingEt																						= 0x0201fd1c;
+
+
+/*----------------------------------------------------------------*/
+/*--------------------------- modelanm ---------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN8ModelAnmC1Ev																							= 0x02019644;
+_ZN8ModelAnmC2Ev																							= 0x02019644;
+_ZN8ModelAnmD2Ev																							= 0x02019624;
+_ZN8ModelAnmD1Ev																							= 0x02019624;
+_ZN8ModelAnmD0Ev																							= 0x020195fc;
+_ZN8ModelAnm6renderEPK7VecFx32																				= 0x02019518;
+_ZN8ModelAnm6renderEPK7MtxFx43PK7VecFx32																	= 0x020194f8;
+_ZN8ModelAnm6renderEv																						= 0x020194e0;
+_ZN8ModelAnm6createEPvS0_mmm																				= 0x02019530;
+_ZN8ModelAnm4initEmN9FrameCtrl4TypeElt																		= 0x02019440;
+
+_ZTV8ModelAnm																								= 0x0203c4f4;
+
+
+/*----------------------------------------------------------------*/
+/*---------------------------- texture ---------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN7TextureC1Ev																								= 0x02018c2c;
+_ZN7TextureC2Ev																								= 0x02018c2c;
+_ZN7TextureD2Ev																								= 0x02018c1c;
+_ZN7TextureD1Ev																								= 0x02018c1c;
+_ZN7TextureD0Ev																								= 0x02018bfc;
+_ZN7Texture4loadEPv																							= 0x02018bc8;
+_ZN7Texture16getTextureParamsEPmm																			= 0x02018b98;
+_ZN7Texture28getTexturePaletteDestinationEPmm																= 0x02018b68;
+
+_ZTV7Texture																								= 0x0203c494;
+
+
+/*----------------------------------------------------------------*/
+/*----------------------- misc 3D functions ----------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN3GFX10initializeEv																						= 0x02019b6c;
+_ZN3GFX16getTextureParamsEP13NNSG3dResTex_mPm																= 0x02019afc;
+_ZN3GFX28getTexturePaletteDestinationEP13NNSG3dResTex_mPm													= 0x02019a88;
+_ZN3GFX12setRotationZEP7MtxFx43s																			= 0x020446b4;
+_ZN3GFX12setRotationYEP7MtxFx43s																			= 0x020446f4;
+_ZN3GFX12setRotationXEP7MtxFx43s																			= 0x02044734;
+_ZN3GFX11setRotationEP7MtxFx43sss																			= 0x02044774;
+_ZN3GFX14setTranslationEP7MtxFx43lll																		= 0x02044814;
+_ZN3GFX7rotateZEP7MtxFx43s																					= 0x0204485c;
+_ZN3GFX7rotateYEP7MtxFx43s																					= 0x02044888;
+_ZN3GFX7rotateXEP7MtxFx43s																					= 0x020448b4;
+_ZN3GFX6rotateEP7MtxFx43sss																					= 0x020448e0;
+_ZN3GFX14rotateReversedEP7MtxFx43sss																		= 0x0204496c;
+_ZN3GFX5scaleEP7MtxFx43lll																					= 0x020449f8;
+_ZN3GFX9translateEP7MtxFx43lll																				= 0x02044a24;
+
+
+
+/*----------------------------------------------------------------*/
+/*------------------------ collision manager ---------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN12CollisionMgrC2Ev																						= 0x020ab13c;
+_ZN12CollisionMgrD2Ev																						= 0x020ab110;
+_ZN12CollisionMgrD1Ev																						= 0x020ab110;
+_ZN12CollisionMgrD0Ev																						= 0x020ab0d4;
+
+_ZN12CollisionMgr4initEP10StageActorP15CollisionSensorS3_S3_m												= 0x020ab010;
+
+_ZTV12CollisionMgr																							= 0x020c7000;
+
+
+/*----------------------------------------------------------------*/
+/*--------------------------- platform ---------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN11PlatformMgrC2Ev																						= 0x0201da00;
+_ZN11PlatformMgrC1Ev																						= 0x0201da00;
+_ZN11PlatformMgrD2Ev																						= 0x0201d9e4;
+_ZN11PlatformMgrD1Ev																						= 0x0201d9e4;
+_ZN11PlatformMgrD0Ev																						= 0x0201d9b8;
+
+_ZN12PlatformBaseC2Ev																						= 0x0201c1a4;
+_ZN12PlatformBaseC1Ev																						= 0x0201c1a4;
+_ZN12PlatformBaseD2Ev																						= 0x0201c0f4;
+_ZN12PlatformBaseD1Ev																						= 0x0201c16c;
+_ZN12PlatformBaseD0Ev																						= 0x0201c12c;
+
+_ZN12PlatformBase6updateEv																					= 0x0201c018;
+_ZN12PlatformBase16resolveCollisionEv																		= 0x0201be9c;
+_ZN12PlatformBase5func5Ev																					= 0x0201be98;
+_ZN12PlatformBase5resetEv																					= 0x0201c0d8;
+_ZN12PlatformBase4linkEv																					= 0x0201c080;
+_ZN12PlatformBase6unlinkEv																					= 0x0201c01c;
+
+_ZN15SegmentPlatformC2Ev																					= 0x0201b9e0;
+_ZN15SegmentPlatformC1Ev																					= 0x0201b9e0;
+_ZN15SegmentPlatformD1Ev																					= 0x020030a4;
+_ZN15SegmentPlatformD0Ev																					= 0x0201afb4;
+
+_ZN15SegmentPlatform4initEP10StageActorP4Vec2S3_															= 0x0201b964;
+_ZN15SegmentPlatform4initEP10StageActorllll																	= 0x0201b918;
+_ZN15SegmentPlatform9setPointsEP4Vec2S1_																	= 0x0201b8c0;
+_ZN15SegmentPlatform9setPointsEllll																			= 0x0201b88c;
+_ZN15SegmentPlatform6updateEv																				= 0x0201b7c0;
+
+_ZN16RotatingPlatformC2Ev																					= 0x0201be64;
+_ZN16RotatingPlatformC1Ev																					= 0x0201be64;
+_ZN16RotatingPlatformD1Ev																					= 0x020030e8;
+_ZN16RotatingPlatformD0Ev																					= 0x0201af80;
+_ZN16RotatingPlatform6updateEv																				= 0x0201ba18;
+
+_ZN16RotatingPlatform4initEP10StageActorlllllshP4Vec3														= 0x0201bd60;
+_ZN16RotatingPlatform4initEP10StageActorP20RotatingPlatformInfoP4Vec3										= 0x0201bc50;
+_ZN16RotatingPlatform9setHeightEll																			= 0x0201bc30;
+_ZN16RotatingPlatform8setRightEl																			= 0x0201bc18;
+_ZN16RotatingPlatform7setLeftEl																				= 0x0201bc00;
+_ZN16RotatingPlatform7setBaseEll																			= 0x0201bbe4;
+_ZN16RotatingPlatform6updateEv																				= 0x0201ba18;
+
+_ZN13RoundPlatformC2Ev																						= 0x0201b4dc;
+_ZN13RoundPlatformC1Ev																						= 0x0201b4dc;
+_ZN13RoundPlatformD1Ev																						= 0x0201b074;
+_ZN13RoundPlatformD0Ev																						= 0x0201b0a8;
+
+_ZN13RoundPlatform4initEP10StageActorlllllsllb																= 0x0201b420;
+_ZN13RoundPlatform6updateEv																					= 0x0201b22c;
+_ZN13RoundPlatform16resolveCollisionEv																		= 0x0201b0e8;
+_ZN13RoundPlatform5func5Ev																					= 0x0201b0e4;
+
+
+_ZTV11PlatformMgr																							= 0x0203C620;
+_ZTV12PlatformBase																							= 0x0203c6a0;
+_ZTV15SegmentPlatform																						= 0x0203c684;
+_ZTV16RotatingPlatform																						= 0x0203c64c;
+
+
+/*----------------------------------------------------------------*/
+/*----------------------- active collider ------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN14ActiveColliderC2Ev																						= 0x020a4868;
+_ZN14ActiveColliderD2Ev																						= 0x020a484c;
+_ZN14ActiveColliderD1Ev																						= 0x020a484c;
+_ZN14ActiveColliderD0Ev																						= 0x020a4820;
+
+_ZN14ActiveCollider5resetEv																					= 0x020a4808;
+_ZN14ActiveCollider4initEP10StageActorP18ActiveColliderInfob												= 0x020a47a0;
+_ZN14ActiveCollider22setPositionAroundPivotEtll																= 0x020a4758;
+_ZN14ActiveCollider19resetCollisionStateEv																	= 0x020a4714;
+_ZN14ActiveCollider4linkEv																					= 0x020a46bc;
+_ZN14ActiveCollider6unlinkEv																				= 0x020a4658;
+_ZN14ActiveCollider12unk_020a44b0Ev																			= 0x020a44b0;
+_ZN14ActiveCollider12unk_020a445cEP4Vec3P18ActiveColliderInfobm												= 0x020a445c;
+_ZN14ActiveCollider10initSystemEv																			= 0x020a4434;
+_ZN14ActiveCollider17testCollisionRectEPS_																	= 0x01ffdd88;
+_ZN14ActiveCollider18testCollisionRoundEPS_																	= 0x020a4344;
+_ZN14ActiveCollider25testCollisionOtherVsVTrpzEPS_															= 0x020a4264;
+_ZN14ActiveCollider25testCollisionVTrpzVsOtherEPS_															= 0x020a40a4;
+_ZN14ActiveCollider25testCollisionOtherVsHTrpzEPS_															= 0x020a3fc4;
+_ZN14ActiveCollider25testCollisionHTrpzVsOtherEPS_															= 0x020a3e04;
+
+_ZTV14ActiveCollider																						= 0x020c6f08;
+
+
+/*----------------------------------------------------------------*/
+/*--------------------------- collider ---------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN8Collider11doSomethingEv																					= 0x020ab18c;
+_ZN8Collider14updatePositionEv																				= 0x020ab2cc;
+_ZN8Collider6UnlinkEv																						= 0x020ab350;
+_ZN8Collider4linkEv																							= 0x020ab3b4;
+_ZN8Collider8initRectEPNS_12ColliderInfoEP4Vec3																= 0x020ab40c;
+_ZN8Collider8initRectEP4Vec2S2_P4Vec3																		= 0x020ab560;
+_ZN8Collider10initRectExEllllP4Vec3																			= 0x020ab6bc;
+_ZN8Collider4initEP10StageActorPNS_12ColliderInfoEmhP4Vec3													= 0x020ab7b8;
+_ZN8Collider6initExEP10StageActorllllPFvS2_S2_ES4_S4_mhP4Vec3												= 0x020ab81c;
+_ZN8Collider5resetEv																						= 0x020ab898;
+_ZN8ColliderD1Ev																							= 0x020ab8b8;
+_ZN8ColliderC1Ev																							= 0x020ab8e8;
+
+_ZN8Collider5firstE																							= 0x020cabe4;
+_ZN8Collider4lastE																							= 0x020cabe8;
+
+
+/*----------------------------------------------------------------*/
+/*---------------------------- whomp -----------------------------*/
+/*----------------------------------------------------------------*/
+
+/* DATA */
+
+directionalRotationY													= 0x20c4ec8;
+
+/* TEXT */
+
+_ZN5Whomp10stateBreakEv													= 0x21437f4;
+
+_ZN5Whomp15stillStateRaiseEv											= 0x21438b4;
+_ZN5Whomp14stillStateLandEv												= 0x21439a8;
+_ZN5Whomp14stillStateFallEv												= 0x2143ad0;
+_ZN5Whomp14stillStateJumpEv												= 0x2143c40;
+_ZN5Whomp14stillStateIdleEv												= 0x2143d08;
+
+_ZN5Whomp14walkStateRaiseEv												= 0x2143db0;
+_ZN5Whomp13walkStateLandEv												= 0x2143f0c;
+_ZN5Whomp13walkStateFallEv												= 0x2144030;
+_ZN5Whomp13walkStateJumpEv												= 0x21441b0;
+_ZN5Whomp12walkStateRunEv												= 0x2144278;
+_ZN5Whomp13walkStateTurnEv												= 0x21443b8;
+_ZN5Whomp16walkStateWalkingEv											= 0x21444b0;
+
+_ZN5Whomp9callStateERK8Function											= 0x2144e5c;
+
+
+/* BSS */
+
+whompWalkStateTurn														= 0x21454c4;
+whompStillStateLand														= 0x21454cc;
+whompStateBreak															= 0x21454d4;
+whompStillStateRaise													= 0x21454dc;
+whompStillStateFall														= 0x21454e4;
+whompStillStateJump														= 0x21454ec;
+whompStillStateIdle														= 0x21454f4;
+whompWalkStateRaise														= 0x21454fc;
+whompWalkStateLand														= 0x2145504;
+whompWalkStateWalking													= 0x214550c;
+whompWalkStateFall														= 0x2145514;
+whompWalkStateJump														= 0x214551c;
+whompWalkStateRun														= 0x2145524;
+
+
+/*----------------------------------------------------------------*/
+/*----------------------- climbing koopa -------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN13ClimbingKoopaC3Ev													= 0x2143038;
+_ZN13ClimbingKoopa9loadModelEv											= 0x2142FD0;
+_ZN13ClimbingKoopa9loadFilesEv											= 0x2142FA8;
+_ZN13ClimbingKoopa13onHeapCreatedEv										= 0x2142F50;
+_ZN13ClimbingKoopa9callStateE8Function									= 0x2142E5C;
+_ZN13ClimbingKoopa11updateStateEv										= 0x2142E20;
+_ZN13ClimbingKoopa20horizontalStateClimbEv								= 0x2142C54;
+_ZN13ClimbingKoopa18verticalStateClimbEv								= 0x2142AA0;
+_ZN13ClimbingKoopa23horizontalStateFlipSideEv							= 0x2142900;
+_ZN13ClimbingKoopa22verticalStateFlipSideAEv							= 0x21427F0;
+_ZN13ClimbingKoopa22verticalStateFlipSideBEv							= 0x2142660;
+_ZN13ClimbingKoopa8onCreateEv											= 0x21424FC;
+_ZN13ClimbingKoopa13executeState0Ev										= 0x21424A0;
+_ZN13ClimbingKoopa6doKillElllc											= 0x2142450;
+_ZN13ClimbingKoopa7onStompEv											= 0x2142408;
+
+/* TODO: uhh, change name? */
+_ZN13ClimbingKoopa21playerCollision_kindaER14ActiveColliderP6Player		= 0x2142374;
+
+_ZN13ClimbingKoopa8onRenderEv											= 0x2142220;
+_ZN13ClimbingKoopa14pendingDestroyEv									= 0x214221C;
+_ZN13ClimbingKoopa9onDestroyEv											= 0x2142214;
+_ZN13ClimbingKoopa10onBlockHitEv										= 0x21421A0;
+
+/* TODO: add CollisionMgr::Sensor* */
+_ZN13ClimbingKoopa13checkNextTileEv										= 0x2142138;
+
+_ZN13ClimbingKoopa13changePaletteER7ModelCAii							= 0x2142104;
+
+_ZN13ClimbingKoopa17collisionCallbackEP14ActiveColliderS1_				= 0x2141F58;
+
+_ZN13ClimbingKoopaD0Ev													= 0x2141EE8;
+_ZN13ClimbingKoopaD1Ev													= 0x2141E80;
+_ZN13ClimbingKoopaD2Ev													= 0x2141E80;
+
+
+/*----------------------------------------------------------------*/
+/*---------------------------- aeabi -----------------------------*/
+/*----------------------------------------------------------------*/
+
+__aeabi_uidiv		= 0x207e344;
+__aeabi_uidivmod	= 0x207e344;
+__aeabi_idiv		= 0x207e138;
+__aeabi_idivmod		= 0x207e138;
+
+
+/*----------------------------------------------------------------*/
+/*------------------------ PipeRenderer --------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN12PipeRenderer12loadTexturesEv										= 0x020f6640;
+_ZN12PipeRenderer5setupElmmmmm											= 0x020f6528;
+_ZN12PipeRenderer6renderERK4Vec3s										= 0x020f64ac;
+_ZN12PipeRenderer17loadPipesGraphicsEv									= 0x020f671c;
+_ZN12PipeRenderer16renderHorizontalERK4Vec3s							= 0x020f6798;
+_ZN12PipeRenderer14renderVerticalERK4Vec3s								= 0x020f6b7c;
+_ZN12PipeRenderer20renderHorizontalMiniERK4Vec3s						= 0x020f6d44;
+_ZN12PipeRenderer18renderVerticalMiniERK4Vec3s							= 0x020f6e80;
+_ZN12PipeRenderer10renderQuadERK4Vec2RK11TextureInfollS2_				= 0x020f6fb4;
+_ZN12PipeRenderer13setupTexturesEv										= 0x020f6528;
+
+_ZN12PipeRenderer20miniPipeExitTLTexIDsE								= 0x021225b8;
+_ZN12PipeRenderer20miniPipeExitBRTexIDsE								= 0x021225bc;
+_ZN12PipeRenderer18miniPipeBodyTexIDsE									= 0x021225c0;
+_ZN12PipeRenderer18brokenPipeTLTexIDsE									= 0x021225c4;
+_ZN12PipeRenderer18brokenPipeBRTexIDsE									= 0x021225cc;
+_ZN12PipeRenderer16pipeExitBRTexIDsE									= 0x021225d4;
+_ZN12PipeRenderer16pipeExitTLTexIDsE									= 0x021225e0;
+_ZN12PipeRenderer14pipeBodyTexIDsE										= 0x021225ec;
+
+
+/*----------------------------------------------------------------*/
+/*---------------------- nsmbu ds - misc. ------------------------*/
+/*----------------------------------------------------------------*/
+
+_Z14storeDataCachePKvm = 0x0200765c;
+_Z14flushDataCachePKvm = 0x02007684;
+_Z11taskCleanupv = 0x02004c30;
+_Z7runTaskPFvPvES_mS_m = 0x02004cb8;
+
+_ZN4Game11resetSystemEm = 0x0200514c;
+_ZN4Game14drawBNCLSpriteEhP9GXOamAttrmhhP4Vec2sPA2_smll = 0x0200421c;
+_ZN4Game17drawBNCLSpriteSubEhP9GXOamAttrmhhP4Vec2sPA2_smll = 0x0200419c;
+_ZN4Game15initExtendedIDsEv = 0x02004dfc;
+_ZN4Game14waitVBlankIntrEv = 0x020058c0;
+_ZN4Game16disableVRAMBanksEv = 0x02004be0;
+_ZN4Game20resetCheckpointStageEv = 0x020066f8;
+_ZN4Game18setCheckpointStageEv = 0x02006740;
+_ZN4Game18getCheckpointStageEv = 0x02006790;
+_ZN4Game9loadLevelEtmhhhhhhhhhhhhhhm = 0x0200696c;
+_ZN4Game12getBootSceneEv = 0x0200563c;
+_ZN4Game12setBootSceneEt = 0x0200564c;
+_ZN4Game14getPlayerCountEv = 0x020202a0;
+_ZN4Game14setPlayerCountEm = 0x020202b0;
+_ZN4Game16getCurrentPlayerEv = 0x020205ec;
+_ZN4Game9getPlayerEl = 0x02020608;
+_ZN4Game9setPlayerElP6Player = 0x02020618;
+_ZN4Game21spriteBankOverlayProcEPvb = 0x0200dee0;
+_ZN4Game18getPlayerCharacterEl = 0x02020260;
+_ZN4Game18setPlayerCharacterElh = 0x02020270;
+_ZN4Game14getPlayerLivesEl = 0x02020570;
+_ZN4Game14setPlayerLivesEll = 0x02020580;
+_ZN4Game20adjustModelTransformEP4Vec3P5Vec3sm = 0x020a04c0;
+
+_ZN4Game15fireballHandlerE = 0x02129484;
+_ZN4Game16visiblePlaneMainE = 0x02085a88;
+_ZN4Game7cameraYE = 0x020CA2E4;
+_ZN4Game7cameraXE = 0x020CA2EC;
+_ZN4Game6vsModeE = 0x02085A84;
+_ZN4Game6eventsE = 0x0208af3c;
+_ZN4Game9luigiModeE = 0x02085A50;
+_ZN4Game19checkpointCollectedE = 0x02085a1c;
+_ZN4Game19currentWorldmapNodeE = 0x02085a9c;
+_ZN4Game11modelMatrixE = 0x0208b6e8;
+_ZN4Game10viewMatrixE = 0x02085B20;
+_ZN4Game11stageBlocksE = 0x0208b168;
+
+createSpriteParticle = 0x020e653c;
+
+fsi_default_dma_no = 0x02096100;
+strlen = 0x0207d4f0;
+
+
+/*----------------------------------------------------------------*/
+/*---------------------------- input -----------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN5Input17initPlayerMappingEv																				= 0x0200a9d0;
+_ZN5Input17updatePlayerInputEv																				= 0x0200a814;
+_ZN5Input16setPlayerMappingEbi																				= 0x0200a784;
+_ZN5Input24updateVirtualPlayerInputEi																		= 0x0200a6e4;
+_ZN5Input6updateEv																							= 0x0200a594;
+_ZN5Input18updateConsoleInputEv																				= 0x0200a508;
+_ZN5Input26getFirstConsoleKeysPressedEPit																	= 0x0200a4c8;
+_ZN5Input23getFirstConsoleKeysHeldEPit																		= 0x0200a488;
+_ZN5Input31updateVerticalSelectionIteratorEPii																= 0x0200a42c;
+_ZN5Input33updateHorizontalSelectionIteratorEPii															= 0x0200a3d0;
+
+_ZN5Input16consoleKeysTimerE																				= 0x02087638;
+_ZN5Input13consoleKeysUpE																					= 0x02087640;
+_ZN5Input19consoleKeysRepeatedE																				= 0x02087648;
+_ZN5Input11consoleKeysE																						= 0x02087650;
+_ZN5Input14playerKeysHeldE																					= 0x02087660;
+_ZN5Input17playerKeysPressedE																				= 0x02087664;
+_ZN5Input23virtualPlayerInputTimerE																			= 0x02087668;
+_ZN5Input31virtualPlayerInputPatternSourceE																	= 0x0208766c;
+_ZN5Input25virtualPlayerInputEnabledE																		= 0x02087670;
+_ZN5Input16playerKeyStackIDE																				= 0x02087674;
+_ZN5Input24virtualPlayerInputLengthE																		= 0x02087678;
+_ZN5Input22playerDirectionalFlagsE																			= 0x0208767c;
+_ZN5Input16playerRepeatRateE																				= 0x02087680;
+_ZN5Input17playerRepeatDelayE																				= 0x02087684;
+_ZN5Input17playerRepeatTimerE																				= 0x02087688;
+_ZN5Input18playerKeysRepeatedE																				= 0x0208768c;
+_ZN5Input22playerKeysPressedStackE																			= 0x02087690;
+_ZN5Input19playerKeysHeldStackE																				= 0x020876a0;
+_ZN5Input13playerMappingE																					= 0x020876b0;
+
+_ZN5Input22unusedDirectionalFlagsE																			= 0x020262ec;
+
+/*----------------------------------------------------------------*/
+/*---------------------------- Item ------------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN4Item12checkConsumeEv = 0x020d475c;
+_ZN4Item14checkValidTileEv = 0x020d4664;
+_ZN4Item11switchStateEMS_FbvE = 0x020d4eb8;
+
+
+
+
+/*----------------------------------------------------------------*/
+/*--------------------------- Effect -----------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN6EffectD1Ev = 0x020e63a8;
+_ZN6EffectD0Ev = 0x020e6334;
+_ZN13EffectHandlerD0Ev = 0x020e683c;
+_ZN13EffectHandlerD1Ev = 0x020e6888;
+_ZN11ChildEffectC2Ev = 0x020e64dc;
+_ZN11ChildEffectD1Ev = 0x020e6320;
+_ZN6Effect18updateMeteorDebrisEv = 0x020e415c;
+_ZN6Effect18renderMeteorDebrisEv = 0x020e4280;
+_ZN6Effect16initMeteorDebrisEv = 0x020e4378;
+_ZN6Effect21decrementBrickCounterEv = 0x020e4510;
+_ZN6Effect21incrementBrickCounterEv = 0x020e4538;
+_ZN6Effect12updateBricksEv = 0x020e4550;
+_ZN6Effect12renderBricksEv = 0x020e4710;
+_ZN6Effect10initBricksEv = 0x020e481c;
+_ZN6Effect16updatePipeShardsEv = 0x020e4a6c;
+_ZN6Effect16renderPipeShardsEv = 0x020e4b6c;
+_ZN6Effect14initPipeShardsEv = 0x020e4c3c;
+_ZN6Effect10renderStarEv = 0x020e4d7c;
+_ZN6Effect8initStarEv = 0x020e4dcc;
+_ZN6Effect11updateShineEv = 0x020e4de8;
+_ZN6Effect11renderShineEv = 0x020e4e68;
+_ZN6Effect9initShineEv = 0x020e4eb8;
+_ZN6Effect19updateFireballTrailEv = 0x020e4ed4;
+_ZN6Effect19renderFireballTrailEv = 0x020e4ef8;
+_ZN6Effect17initFireballTrailEv = 0x020e4f74;
+_ZN6Effect17updateDroppedCardEv = 0x020e4fac;
+_ZN6Effect17updateFallingCardEv = 0x020e50b4;
+_ZN6Effect17updateCardCollectEv = 0x020e51c8;
+_ZN6Effect17updateDisplayCardEv = 0x020e5338;
+_ZN6Effect10renderCardEv = 0x020e53dc;
+_ZN6Effect8initCardEv = 0x020e5424;
+_ZN6Effect14updateSparklesEv = 0x020e5428;
+_ZN6Effect14renderSparklesEv = 0x020e54f0;
+_ZN6Effect12initSparklesEv = 0x020e553c;
+_ZN6Effect15updateRedNumberEv = 0x020e555c;
+_ZN6Effect15renderRedNumberEv = 0x020e573c;
+_ZN6Effect13initRedNumberEv = 0x020e57c0;
+_ZN6Effect12updatePointsEv = 0x020e57c4;
+_ZN6Effect12renderPointsEv = 0x020e588c;
+_ZN6Effect10initPointsEv = 0x020e58e0;
+_ZN6Effect12applyGravityEv = 0x020e58fc;
+_ZN6Effect13applyVelocityEP4Vec3 = 0x020e5920;
+_ZN6Effect13applyVelocityEv = 0x020e5940;
+_ZN6Effect6updateEv = 0x020e5964;
+_ZN6Effect6renderEv = 0x020e59a8;
+_ZN6Effect7disableEv = 0x020e59ec;
+_ZN6Effect12switchUpdateEMS_FvvE = 0x020e59f8;
+_ZN6Effect6createEcP4Vec3mtcm = 0x020e5ac4;
+_ZN6EffectC2Ev = 0x020e6414;
+_ZN13EffectHandlerC2Ev = 0x020e68cc;
+_ZN7Effects7destroyEc = 0x020e64f0;
+_ZN7Effects6updateEv = 0x020e650c;
+_ZN7Effects6renderEv = 0x020e6524;
+_ZN7Effects5spawnEcP4Vec3mtcm = 0x020e653c;
+_ZN7Effects5spawnEcP4Vec3c = 0x020e657c;
+_ZN7Effects5validEv = 0x020e65b4;
+_ZN13EffectHandler7destroyEc = 0x020e65cc;
+_ZN13EffectHandler6updateEv = 0x020e66bc;
+_ZN13EffectHandler6renderEv = 0x020e6710;
+_ZN13EffectHandler5spawnEcP4Vec3mtcm = 0x020e6764;
+_ZN13EffectHandler5validEv = 0x020e6834;
+
+_ZN7Effects12activeBricksE = 0x0212a41c;
+_ZN7Effects13effectHandlerE = 0x0212a420;
+_ZN6Effect22effectTableInitializedE = 0x0212a424;
+_ZN6Effect11effectTable = 0x0212a428;
+
+_ZTV6Effect = 0x02126a24;
+_ZTV13EffectHandler = 0x02126a04;
