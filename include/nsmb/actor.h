@@ -1,40 +1,18 @@
-﻿#ifndef NSMB_ACTOR_H_
+#ifndef NSMB_ACTOR_H_
 #define NSMB_ACTOR_H_
 
 #include "nitro_if.h"
+#include "nsmb/memory.h"
+#include "nsmb/vector.h"
+#include "nsmb/model.h"
+
+#include "nsmb/misc.h"
 
 
-
-
-
-struct Function {
-
-	u32 functionTarget;		//Callback address or virtual function offset
-	u32 callParams;			//Call parameters
-
-	/*
-
-		Call parameters are encoded as follows:
-			0x00000001: Virtual function call flag: If set, functionTarget is interpreted as the virtual function table offset
-			0xFFFFFFFE: Object offset: Determines the caller object by offsetting the object's current this pointer.
-
-		A function is thereby called like:
-
-			object = static_cast<u8*>(object) + (callParams >> 1); //Offset address by object offset
-
-			if (entry->callParams & 1) {
-				(**object + entry->functionTarget)(); //Call virtual function
-			} else {
-				entry->functionTarget(); //Call entry->functionTarget
-			}
-
-		WARNING: An object offset greater than 1GB leads to unpredictable results; The object offset is calculated with an arithmetic shift and any u32 values where the MSB is set are arithmetically shifted to the right, leading to faults.
-	
-	*/
-
-};
-
-
+class Object;
+class Base;
+class Actor;
+class StageActor;
 
 struct ProcessNode {
 
@@ -43,100 +21,45 @@ struct ProcessNode {
 	Base* base;
 
 	//0204d57c
-	void unlink();
+	GEN_FUNC(void unlink);
 
 };
 
 
 
-struct PriorityNode : public ProcessNode{
+struct PriorityNode : public ProcessNode {
 
 	u16 order;//Execute priority = class ID
 	u16 order2;//Draw priority
 
 	//0204d560
-	void unlink();
-
-};
-
-struct LinkedList {
-
-	ProcessNode* first;
-	ProcessNode* last;
-
-	//020438e8
-	bool append(ProcessNode* node);
-
-	//02043920
-	bool remove(ProcessNode* node);
-
-	//020438b0
-	bool prepend(ProcessNode* node);
-
-	//02043990
-	bool insert(ProcessNode* node, ProcessNode* previous);
-
-	//0204d428
-	ProcessNode* getNodeByID(u32 id);
-
-
-};
-
-struct ProcessList : public LinkedList{
-
-	Function executor;
-
-	//0204d46c
-	bool execute(); //Traverses the whole list and calls the executor on every node. Always returns true.
+	GEN_FUNC(void unlink);
 
 };
 
 
-struct ProcessSet : public ProcessList{
 
-	//0204d4e4
-	bool add(PriorityNode* node);
-
-};
-
-
-//SceneNode
 struct SceneNode {
 
 	SceneNode* parent;		// 0
 	SceneNode* firstChild;	// 4
 	SceneNode* previous;		// 8
-	SceneNode* next;			// C
+	SceneNode* next_;			// C
 	Base* obj;				// 10
 
 	//02043b58
-	SceneNode();
+	GEN_FUNC( SceneNode );
 
 	//02043b40
-	void reset();
+	GEN_FUNC( void reset );
 
 	//02043a2c
-	SceneNode* next(); //Returns the next tree's node or (if none could be found) the next parent's next node. May return null if no parent with siblings exists.
+	GEN_FUNC( SceneNode* next ); //Returns the next tree's node or (if none could be found) the next parent's next node. May return null if no parent with siblings exists.
 
 	//020439f0
-	SceneNode* parentNext(); //Traverses the tree upwards and returns the next parent's next node. If no parent has siblings anymore, null is returned.
+	GEN_FUNC( SceneNode* parentNext ); //Traverses the tree upwards and returns the next parent's next node. If no parent has siblings anymore, null is returned.
 
 };
-
-//SceneGraph
-struct SceneGraph {
-
-	SceneNode* root;
-	Function executor;
-
-	//02043acc
-	bool addChild(SceneNode* child, SceneNode* parent); //Adds child to the scene graph as a child of parent. Returns true if the node was added successfully, false if node is null or if parent is null (indicating the root node) but root is already set.
-
-	//02043a54
-	bool removeChild(SceneNode* child); //Removes the child from the scene graph. Returns true only if child has no children itself, false otherwise.
-
-};
-
 
 
 
@@ -148,7 +71,7 @@ struct ProcessLink {
 	PriorityNode linkDraw;		// 24
 	ProcessNode linkIdLookup;	// 34
 
-};
+};	
 
 
 
@@ -187,13 +110,13 @@ public:
 		Minus1	//WHEN???
 	};
 
-	enum class ObjectState : u32 {
+	enum class ObjectState : u8 {
 		NotCreated = 0,
 		Active,
 		Dead
 	};
 
-	enum class ObjectType : u32 {
+	enum class ObjectType : u8 {
 		Other = 0,//Effects???
 		Scene,
 		Actor
@@ -207,158 +130,180 @@ public:
 		Create
 	};
 
-	typedef u32(OverlayLoadFunction*)(u16);//u32 loadOverlay(u16 objectID)
-	typedef void(OverlayUnloadFunction*)(u16);//void unloadOverlay(u16 objectID)
+	typedef s32(Base::*ProcessFunction)();
+	typedef bool(Base::*PreFunction)();
+	typedef s32(Base::*OnFunction)();
+	typedef void(Base::*PostFunction)(ReturnState);
 
+	typedef u32(*OverlayLoadFunction)(u16);//u32 loadOverlay(u16 objectID)
+	typedef void (*OverlayUnloadFunction)(u16);//void unloadOverlay(u16 objectID)
+
+	// 0208fae8
 	static ProfileStep debugProfileStep;
+	// 0208faec
 	static ObjectType spawnObjectType;
-	static u16 debugProfileName;
+	// 0208faf0
+	static u16 debugObjectID;
+	// 0208faf4
 	static u16 spawnObjectID;
+	// 0208faf8
 	static SceneNode* spawnParentNode;
+	// 0208fafc
 	static OverlayLoadFunction loadOverlay;
+	// 0208fb00
 	static OverlayUnloadFunction unloadOverlay;
+	// 0208fb04
 	static u32 spawnSettings;
 
-	u32 unk04;//GUID
-	u32 unk08;//Data?Settings?
-	u16 unk0c;//Class ID
-	ObjectState unk0e;//Object state
-	bool destroy;//Destroy flag
+	u32 guid;//GUID
+	u32 settings;//Data?Settings?
+	u16 id;//Class ID
+	ObjectState state;//Object state
+	bool destroy_;//Destroy flag
 
 	bool unk10;//Pending update registry
 	bool unk11;//Pending create registry
-	ObjectType unk12;//Object type
-	u8 unk13;//Flags
+	ObjectType type;//Object type
+	u8 flags;//Flags
 	//0x01: Skip update children
 	//0x02: Skip update
 	//0x04: Skip render children
 	//0x08: Skip render
 
-	ProcessLink unk14;//Link
+	ProcessLink link;//Link
 
-	u32 unk54;
-	FrameHeap* unk58;
+	u32 unk54; // unused (debug leftover?)
+	FrameHeap* unk58; // internal heap (???)
 
 	//0204d2ac (C2, most likely protected)
-	Base();
+	GEN_FUNC( Base )
 
 	//0204d23c (D2, D1 is pure??)
-	~Base();
+	//~Base();
 
 	//0204cba0
-	ReturnState processCreate();
+	GEN_FUNC(ReturnState processCreate);
 
 	//01ffd22c
-	ReturnState processUpdate();
+	GEN_FUNC(ReturnState processUpdate);
 
 	//01ffd1c8
-	ReturnState processRender();
+	GEN_FUNC(ReturnState processRender);
 
 	//0204cb20
-	ReturnState processDestroy();
+	GEN_FUNC(ReturnState processDestroy);
 
 	//01ffd524
-	ReturnState process(Function callback, Function preCallback, Function postCallback);
+	GEN_FUNC(ReturnState process, OnFunction callback, PreFunction preCallback, PostFunction postCallback);
 
-	virtual s32 onCreate();
-	virtual bool preCreate();
-	virtual void postCreate(ReturnState state);
-	virtual s32 onDestroy();
-	virtual bool preDestroy();
-	virtual void postDestroy(ReturnState state);
-	virtual s32 onUpdate();
-	virtual bool preUpdate();
-	virtual void postUpdate(ReturnState state);
-	virtual s32 onRender();
-	virtual bool preRender();
-	virtual void postRender(ReturnState state);
+	GEN_FUNC( virtual s32 onCreate );
+	GEN_FUNC( virtual bool preCreate );
+	GEN_FUNC( virtual void postCreate, ReturnState state);
+	GEN_FUNC( virtual s32 onDestroy );
+	GEN_FUNC( virtual bool preDestroy );
+	GEN_FUNC( virtual void postDestroy, ReturnState state);
+	GEN_FUNC( virtual s32 onUpdate );
+	GEN_FUNC( virtual bool preUpdate );
+	GEN_FUNC( virtual void postUpdate, ReturnState state);
+	GEN_FUNC( virtual s32 onRender );
+	GEN_FUNC( virtual bool preRender );
+	GEN_FUNC( virtual void postRender, ReturnState state);
 	//0x30
-	virtual void pendingDestroy();//When the object is about to get destroyed
+	GEN_FUNC( virtual void pendingDestroy );//When the object is about to get destroyed
 	//0x34
 	//0x38
 	//0204ccec
-	virtual bool heapShit(u32 size, Heap* parent);//???
+	GEN_FUNC( virtual bool heapShit, u32 size, Heap* parent);//???
 	//0204cdbc
-	virtual bool moreHeapShit(u32 size, Heap* parent);//???
+	GEN_FUNC( virtual bool moreHeapShit, u32 size, Heap* parent);//???
 	//0204cce4
-	virtual bool onHeapCreated();//???
+	GEN_FUNC( virtual bool onHeapCreated );//???
 
 	//0204cc04
-	void create();
+	GEN_FUNC(void create);
 
 	//0204d08c
-	void destroy();
+	GEN_FUNC(void destroy)
 
 	//0204cac0
-	bool hasChildNotCreated();
+	GEN_FUNC(bool hasChildNotCreated);
 
 	//D1 is null
-	virtual ~Base();
+	GEN_FUNC( virtual ~Base )
 
 	//0204d078
-	Base* getParent(); //Null if root
+	GEN_FUNC( Base* getParent); //Null if root
 
 	//0204cc98
-	void* operator new(u32 size);
+	GEN_FUNC(void* operator new,size_t size);
 
 	//0204cc7c
-	void operator delete(void* ptr);
+	GEN_FUNC(void operator delete,void* ptr);
 
 	//0204ca80
-	static void setSpawnParams(u16 objectID, SceneNode* parent, u32 settings, ObjectType type);
-
-	//0204c9a4
-	static void spawn(u16 objectID, SceneNode* parent, u32 settings, ObjectType type);
+	GEN_FUNC(static void setSpawnParams,u16 objectID, SceneNode* parent, u32 settings, ObjectType type);
 
 	//0204c974
-	static u32 loadSceneOverlay(u16 objectID);
+	GEN_FUNC(static u32 loadSceneOverlay,u16 objectID);
 
 	//0204c948
-	static void unloadSceneOverlay(u16 objectID);
+	GEN_FUNC(static void unloadSceneOverlay,u16 objectID);
 
 	//0204c9a4
-	static Base* spawn(u16 objectID, SceneNode* parent, u32 settings, ObjectType type);
+	GEN_FUNC(static Base* spawn,u16 objectID, SceneNode* parent, u32 settings, ObjectType type);
 
 	//0204c920
-	static Base* spawnChild(u16 objectID, Base* parent, u32 settings, ObjectType type);
+	GEN_FUNC(static Base* spawnChild,u16 objectID, Base* parent, u32 settings, ObjectType type);
 
 	//0204c908
-	static Base* spawnParent(u16 objectID, u32 settings, ObjectType type);
+	GEN_FUNC(static Base* spawnParent,u16 objectID, u32 settings, ObjectType type);
 
-	//0204d174
-	//0204d0e0
 };
 
 
 
 
-
-class Object : public Base 
+class Object : public Base
 {
 public:
 
+	inline Object() {}
+
 	//020131a8
-	virtual void postCreate(ReturnState state) override;
+	GEN_FUNC( virtual void postCreate, ReturnState state) //override;
 
 	//D0:0201313c
 	//D1:0201311c
-	virtual ~Object() override;
+	GEN_FUNC( virtual ~Object ) //override;
 
 	//02013168
-	static Object* spawnScene(u16 objectID, u32 settings, ObjectType type);
+	GEN_FUNC( static Object* spawnScene, u16 objectID, u32 settings, ObjectType type);
 
 	//02013188
-	static Object* spawnObject(u16 objectID, Base* scene, u32 settings, ObjectType type);
+	GEN_FUNC( static Object* spawnObject, u16 objectID, Base* scene, u32 settings, ObjectType type);
+
+
+	template<class T>
+	static Object* constructObject() {
+		return new T();
+	}
 
 };
 
+struct ObjectProfile {
+	Object* (*constructor)();
+	u16 order1;
+	u16 order2;
+};
+
+struct ActorProfile : public ObjectProfile {
+	bool (*loadResources)();
+};
 
 
 class Scene : public Object
 {
 public:
-
-	constexpr u16 noScene = 0x181;
 
 	u32 wifiIconOBJIndex;
 	u32 wifiIconOBJPalette;
@@ -379,150 +324,209 @@ public:
 	static u32 nextSceneSettings;
 
 	//02013b2c
-	Scene();
+	GEN_FUNC(Scene);
 
 	//D2:020137b8
 
 	//D0:020138dc
 	//D1:02013a08
-	virtual ~Scene() override;
+	GEN_FUNC(virtual ~Scene ) ////override;
 
 	//02013764
-	virtual bool preCreate() override;
+	GEN_FUNC(virtual bool preCreate ) //override;
 
 	//02013718
-	virtual void postCreate(ReturnState state) override;
+	GEN_FUNC(virtual void postCreate, ReturnState state) //override;
 
 	//020136e8
-	virtual bool preDestroy() override;
+	GEN_FUNC(virtual bool preDestroy ) //override;
 
 	//020136c8
-	virtual void postDestroy(ReturnState state) override;
+	GEN_FUNC(virtual void postDestroy, ReturnState state) //override;
 
 	//02013500
-	virtual bool preUpdate() override;
+	GEN_FUNC(virtual bool preUpdate, ) //override;
 
 	//020134f4
-	virtual void postUpdate(ReturnState state) override;
+	GEN_FUNC(virtual void postUpdate, ReturnState state) //override;
 
 	//020134c4
-	virtual bool preRender() override;
+	GEN_FUNC(virtual bool preRender ) //override;
 
 	//020134b8
-	virtual void postRender(ReturnState state) override;
+	GEN_FUNC(virtual void postRender, ReturnState state) //override;
 
 	//020133a4
-	static void prepareFirstScene();
+	GEN_FUNC(static void prepareFirstScene );
 
 	//020132a0
-	static u16 tryChangeScene();
+	GEN_FUNC(static u16 tryChangeScene );
 
 	//020131fc
-	static void switchScene(u16 sceneID, u32 settings);
+	GEN_FUNC( static void switchScene, u16 sceneID, u32 settings)
 
 	//020131d8
-	static void switchToFileCorruptedScene(u32 settings);
+	GEN_FUNC( static void switchToFileCorruptedScene, u32 settings);
 
 };
 
 
+struct SceneID {
+	enum : u16 {
+		Boot,
+		Connect,
+		Debug,
+		Stage,
+		TitleScreen,
+		MvsLSetup,
+		MvsLMainMenu,
+		Save,
+		World,
+		Worldmap,
+		MvsLResults,
+		CorruptedSave,
+		Ending,
+		StageIntro,
+		GameOver,
+		MvsLStageIntro,
+		SoundTest,
+		Key,
+
+		Max,
+		Invalid = 0x0181,
+	};
+};
+
+
+enum ActorType : u8 {
+	ActorType_None,
+	ActorType_Player,
+	ActorType_Actor,
+	ActorType_Overlay,
+};
+
+enum StageUnitCategory : u8 {
+	StageUnitCategory_None				= (1 << 0),
+	StageUnitCategory_Player			= (1 << 1),
+	StageUnitCategory_Actor				= (1 << 2),
+	StageUnitCategory_Overlay			= (1 << 3),
+	StageUnitCategory_StageForeground	= (1 << 5),
+	StageUnitCategory_StageOverlay		= (1 << 6),
+	StageUnitCategory_StageEntity		= (1 << 7)
+};
 
 class Actor : public Object
 {
 public:
 
+	// 020ca85c
 	static Vec3* spawnPosition;
-	static S16Vec3* spawnRotation;
+	// 020ca860
+	static Vec3s* spawnRotation;
+	// 020ca864
 	static s8* spawnPlayerLink;
+	// 020ca868
 	static fx32* spawnScale;
 
-	Vec3 unk5c;//Position
-	Vec3 unk6c;//LastPosition
-	Vec3 unk7c;//LastStep
-	Vec3 unk8c;//CenterOffset from Position
-	S16Vec3 unk9c;//Rotation
-	S16Vec3 unka8;
-	u32 unkb4;
-	u32 unkb8;
-	u32 unkbc;
-	u32 unkc0;
-	u32 unkc4;//LeftoverVelocity
-	u32 unkc8;
-	Vec3 unkcc;//Velocity
-	Vec3 unkdc;//MaxVelocity
-	Vec3 unkec;//Render scale
-	Vec3 unkfc;
-	Vec3 unk10c;
-	u8 unk11c;
-	bool unk11d;//Visible
-	s8 unk11e;//Linked player ID
-	u8 unk11f;
+	Vec3 position;//Position
+	Vec3 lastPosition;//LastPosition
+	Vec3 lastStep;//LastStep
+	Vec3 centerOffset;//CenterOffset from Position
+	Vec3s rotation;//Rotation
+	Vec3s lastRotation;
+	fx32 velH;
+	fx32 velHMin;
+	fx32 velVStep;
+	fx32 velVMin;
+	fx32 velHStep;//LeftoverVelocity
+	u32 unkC4;
+	Vec3 velocity;//Velocity
+	Vec3 targetVelocity;//MaxVelocity
+	Vec3 scale;//Render scale
+	Vec3 accel;
+	Vec3 velocityLimit;
+	ActorType actorType;
+	bool visible;//Visible
+	s8 linkPlayerNo;//Linked player ID
+	StageUnitCategory actorCategory;
 
 	//020a0edc
-	Actor();
+	GEN_FUNC( Actor )
 
 	//D0:020a0e04
 	//D1:020a0e74
-	virtual ~Actor();
+	GEN_FUNC( virtual ~Actor )
 
 	//D2:020a0d9c
 
 	//020a0d7c
-	virtual bool preCreate() override;
+	GEN_FUNC( virtual bool preCreate ) //override;
 
 	//020a0d70
-	virtual void postCreate(ReturnState state) override;
+	GEN_FUNC( virtual void postCreate, ReturnState state) //override;
 
 	//020a0d50
-	virtual bool preDestroy() override;
+	GEN_FUNC( virtual bool preDestroy ) //override;
 
 	//020a0d44
-	virtual void postDestroy(ReturnState state) override;
+	GEN_FUNC( virtual void postDestroy, ReturnState state) //override;
 
 	//020a0cac
-	virtual bool preUpdate() override;
+	GEN_FUNC( virtual bool preUpdate ) //override;
 
 	//020a0ca0
-	virtual void postUpdate(ReturnState state) override;
+	GEN_FUNC( virtual void postUpdate, ReturnState state) //override;
 
 	//020a0c48
-	virtual bool preRender() override;
+	GEN_FUNC( virtual bool preRender ) //override;
 
 	//020a0c3c
-	virtual void postRender(ReturnState state) override;
+	GEN_FUNC( virtual void postRender, ReturnState state ) //override;
 
 	//0201ff68
-	virtual void setX(fx32 x);//U SURE???
+	GEN_FUNC( virtual void setX, fx32 x);//U SURE???
 
 	//0201ff70
-	virtual void moveX(fx32 offset);//U SURE???
+	GEN_FUNC( virtual void moveX, fx32 offset);//U SURE???
 
 	//020a0bf8
-	u32 getActorCount(u16 objectID);
+	GEN_FUNC(u32 getActorCount,u16 objectID);
 
 	//020a0bb8
-	static void setSpawnParams(Vec3* position, S16Vec3* rotation, fx32* scale, s8* playerLink);
+	GEN_FUNC(static void setSpawnParams,Vec3* position, Vec3s* rotation, fx32* scale, s8* playerLink);
 
 	//020a0b64
-	static Actor* spawnActor(u16 objectID, u32 settings, Vec3* position, S16Vec3* rotation, fx32* scale, s8* playerLink);
+	GEN_FUNC(static Actor* spawnActor, u16 objectID, u32 settings, Vec3* position, Vec3s* rotation = nullptr, fx32* scale = nullptr, s8* playerLink = nullptr)
 
 	//020a0b5c
-	void setPlayerLink(s8 playerLink);
+	GEN_FUNC( void setPlayerLink,s8 playerLink);
 
 
 
 	//020a0aac
-	void move(Vec3* velocity);//IN THIS CLASS???
+	GEN_FUNC( void move,Vec3* velocity);//IN THIS CLASS???
 
 
 };
 
 
+class ActiveCollider;
+class CollisionMgr;
+class PlatformMgr;
 
-
-class StageActor : public Actor 
+class StageActor : public Actor
 {
 public:
+
+	ActiveCollider activeCollider;
+	CollisionMgr collisionMgr;
+	PlatformMgr platformMgr;
+
+	u8 unk0;
+	u8 direction; // 0=right, 1=left
+	u8 viewID;
+	u8 unk3;
+	u32 preUpdatePassed;
 
 	//ActivePhysics unk120;
 	//Collider unk1d0;
@@ -530,37 +534,318 @@ public:
 	//LOL unk2bc;
 
 	//020a127c
-	StageActor();
+	GEN_FUNC( StageActor )
 
 	//D0:020a11ec
 	//D1:020a1238
-	virtual ~StageActor();
+	GEN_FUNC( virtual ~StageActor )
 
 	//D2:020a11a8
 
 	//020a1154
-	virtual bool preUpdate() override;
+	GEN_FUNC( virtual bool preUpdate ) // override
 
 	//020a10f0
-	virtual void postUpdate(ReturnState state) override;
+	GEN_FUNC( virtual void postUpdate, ReturnState state ) // override
 
 	//020a10a0
 	//???
 
+	// 020a08a4
+	void updateVerticalVelocity();
+
+	//020a08c4
+	void updateHorizontalVelocity();
+
+	// 020998e4
+	void updateBounce(fx32 min, fx32 amtX, fx32 amtY);
+
 };
 
 
 
 
-class Enemy : public StageActor
+class StageEntity : public StageActor
 {
 public:
 
+	u16 notAVector;
+	u16 stompedMaybe;
+	u16 spriteSettings;
+	u16 argh;
+	u8 hitCountdown;
+	u8 idk[3];
+	u32 dummyZ;
+	u32 unk5[6];
+	Vec3 unkV1;
+	u32 unk11[4];
+	Vec3 unkV2;
+	Vec3 movementStrength;
+	u32 unk12[2];
+	u32 eventHi; // 0xFFFFFFFF........
+	u32 eventLo; // 0x........FFFFFFFF
+
+	struct StageActorEventIDs {
+		u8 targetID;
+		u8 triggerID;
+	} eventIDs;
+
+	u16 padMaybe;
+	u32 vStateId;
+	u32 unk15;
+	u32 playerNum;
+	u32 defeatSFX;
+	u32 unk18;
+	u32 bitfield;
+	u32 used;
+
+	// scale for wiggling effect
+	Vec3 wiggleScale;
+
+	// actor range vectors
+	Vec2 existDist;
+	Vec2 drawDist;
+	Vec2 deleteDist;
+
+	// physics collision vectors
+	Vec2 collisionSelfPos;
+	Vec2 collisionActorPos;
+
+	u32 wiggleOscillator;
+
+	u32 unk21[2];
+	u32 defeatedBitfield; // 0x40 is set when a collision occurs
+
+	s32 velX_sum;
+	u16 wiggleTimer;
+	u16 divVelBy2;
+	u16 sizeMod;
+	u16 unk25_a;
+	u16 unkForPlayer[2];
+	u16 unk26;
+	u16 unk27;
+
+	u16* ptrToShort;
+
+	u8 defeatRelated;
+	u8 unk28;
+	u8 decrement;
+	u8 unk29;
+	u32 unk30;
+
+	u8* ptrToByte;
+
+	u8 playerDirection;
+	u8 unk33;
+
+	u8 scoreEnhancement;
+	u8 unk34;
+	bool spawnedByCreateActorMaybe; // bool
+	u8 unk35;
+
+	u8 directionForBlockCallback;
+
+	u8 killedRelated;
+	u8 permanentDelete;
+	u8 unk36;
+	u8 usedInLiquid;
+	u8 unk37;
+
+	bool disableDefeatRoll; // bool
+	bool invisible; // bool
+
+	u8 notMovableMaybe;
+	u8 unk39;
+	u8 oneIfOdd;
+	u8 unk40;
+
+	u8 defeatedDirection;
+	u8 freezeRelated;
+	u8 zLayer;
+	u8 unk42;
+	u8 unk43;
+	u8 facing; // 0 = down, 1 = up, 2 = left, 3 = right
 
 
+	GEN_FUNC( StageEntity )
+
+	virtual s32 onUpdate() override;
+	virtual bool preUpdate() override;
+	virtual void postUpdate(ReturnState state) override;
+	virtual bool preRender() override;
+
+	// D1: 020986e0
+	// D0: 02098730
+	inline virtual ~StageEntity() {}
+
+	virtual void virt20();
+	virtual bool virt21();
+	virtual void virt22();
+	virtual void virt23();
+	virtual void virt24();
+	virtual void virt25();
+	virtual void virt26();
+	virtual void virt27();
+	virtual void virt28();
+	virtual void virt29();
+	virtual void virt30();
+	virtual void updateAnimation();
+	virtual void virt32();
+	virtual void virt33();
+	virtual void virt34();
+	virtual void virt35();
+	virtual void virt36();
+	virtual void virt37();
+	virtual void virt38();
+	virtual void virt39();
+	virtual void virt40();
+	virtual void virt41();
+	virtual void virt42();
+	virtual void virt43();
+	virtual void virt44();
+	virtual void virt45();
+	virtual void virt46();
+	virtual void virt47();
+	virtual void virt48();
+	virtual void virt49();
+	virtual void virt50();
+	virtual void virt51();
+	virtual void virt52();
+	virtual void virt53();
+	virtual void virt54();
+	virtual void virt55();
+	virtual void virt56();
+	virtual void virt57();
+	virtual void virt58();
+	virtual void virt59();
+	virtual void virt60();
+	virtual void virt61();
+	virtual void virt62();
+	virtual void virt63();
+	virtual void virt64();
+	virtual void virt65();
+	virtual void virt66();
+
+	// 020995a4
+	GEN_FUNC( void setEvent, u32 id, u32 time, bool enable, bool reverse = false, bool timerSfx = false )
+
+	// 0209C85C
+	GEN_FUNC( void applyMovement )
+
+	// 020991f8
+	GEN_FUNC( u32 updateTileCollision )
+
+	// 0209c820
+	GEN_FUNC( u32 updateLiquids, fx32 defaultAccelY )
+
+	// 0209adb0
+	GEN_FUNC( bool deleteIfOutOfRange, u32 flags )
 
 };
 
+
+
+
+class StageEntity3D : public StageEntity
+{
+public:
+
+	inline StageEntity3D() {}
+
+	// 020ce92c
+	virtual s32 onRender() override;
+
+	// D0: 020ce83c
+	// D1: 020ce8b8
+	inline virtual ~StageEntity3D() override {}
+
+	// 020ceac4
+	virtual void preRender3D();
+
+	// 020ceac0
+	virtual void postRender3D();
+
+};
+
+
+class StageEntity3DAnm : public StageEntity
+{
+public:
+
+	// 020cee34
+	StageEntity3DAnm();
+
+	// 020ceae0
+	virtual s32 onRender() override;
+
+	// D0: 020ced44
+	// D1: 020cedc0
+	// D2: 020cecd0
+	virtual ~StageEntity3DAnm() override;
+
+	// 020ceac8
+	virtual void updateAnimation() override;
+
+	// 020ceccc
+	virtual void preRender3D();
+
+	// 020cecc8
+	virtual void postRender3D();
+
+};
+
+
+// totally doesn't belong here, but Function prevents me from putting this in other files
+class Fireball {
+
+public:
+
+	typedef bool(Fireball::*StateFunction)();
+
+	StateFunction state;
+
+	Vec3 position;
+	Vec3 spawnPosition;
+	Vec3 velocity;
+	Vec3 scale;
+	Vec3s unk4C;
+
+	OAM::Anim anim;
+	u32 unk70[4];
+
+	bool active;
+	u8 playerNo;
+	u8 unk82;
+	u8 stateID;
+	u8 unk84;
+	u8 unk85;
+	u8 id;
+	u8 unk87;
+	u8 viewID;
+
+	// 
+	Fireball();
+
+	// D0
+	// D1
+	virtual ~Fireball();
+
+};
+
+class FireballHandler {
+
+public:
+
+	Fireball fireballs[16];
+
+	// 
+	FireballHandler();
+
+	// D0
+	// D1
+	virtual ~FireballHandler();
+
+};
 
 
 class FadeMask
@@ -583,12 +868,12 @@ public:
 	};
 
 	enum class Mode : u8 {
-		??? = 0,
-		Center,
+		//??? = 0,
+		Center = 1,
 		Invalid,
-		???,
-		???,
-		???
+		//???,
+		//???,
+		//???
 	};
 
 	//02026634
@@ -723,10 +1008,10 @@ public:
 	void disableMainScreenFading();
 
 	//02007bfc
-	void enableSubScreenFading();
+	GEN_FUNC(void enableSubScreenFading);
 
 	//02007bd8
-	void disableSubScreenFading();
+	GEN_FUNC(void disableSubScreenFading);
 
 	//02007bb4
 	void prepareFadeIn();
@@ -748,7 +1033,7 @@ public:
 
 
 
-class Camera : public Object
+class View : public Object
 {
 public:
 
@@ -760,35 +1045,37 @@ public:
 
 	//D0:020a3a88
 	//D1:020a3a5c
-	virtual ~Camera();
+	virtual ~View();
 
 
 };
 
 
-class Class2123d10 : public Class20c6eb4
+class OrthoView : public View
 {
 public:
 
 	Vec3 unkcc;//Target
 	Vec3 unkdc;//Position
 	Vec3 unkec;//Up
-	S16Vec3 unkfc;
+	Vec3s unkfc;
 
 	//D0:020ce734
 	//D1:020ce6dc
-	virtual ~Class2123d10();
+	virtual ~OrthoView();
 
 };
 
 
 
 
-class StageCamera : public Class2123d10
+class StageCamera : public OrthoView
 {
 public:
 
-	Function unk108;//State function
+	typedef void(StageCamera::*StateFunction)();	
+
+	StateFunction unk108;//State function
 	Vec3 unk110;
 	u32 unk120;//Current state index
 	u32 unk124;//Execute pre-state bool
@@ -815,24 +1102,24 @@ public:
 
 
 //ov9
-class Class21bf91c : public Class20c6eb4
+class FixedOrthoView : public View
 {
 public:
 
 	Vec3 unkcc;//Target
 	Vec3 unkdc;//Position
 	Vec3 unkec;//Up
-	S16Vec3 unkfc;
+	Vec3s unkfc;
 
 	//D0:0x020D3E4C
 	//D1:0x020D3DF4
-	virtual ~Class21bf91c();
+	virtual ~FixedOrthoView();
 
 };
 
 
 //ov9
-class TitleScreenCamera : public Class21bf91c
+class TitleScreenCamera : public FixedOrthoView
 {
 public:
 
@@ -859,28 +1146,30 @@ public:
 
 
 //ov8
-class Class21a5300 : public Camera
+class PerspView : public View
 {
 public:
 
 	Vec3 unkcc;//Target
 	Vec3 unkdc;//Position
 	Vec3 unkec;//Up
-	S16Vec3 unkfc;
+	Vec3s unkfc;
 
 	//D0:0218cd58
 	//D1:0218cd00
-	virtual ~Class21a5300();
+	virtual ~PerspView();
 
 };
 
 
 
-class WorldCamera : public Class21a5300
+class WorldCamera : public PerspView
 {
 public:
 
-	Function unk108;
+	typedef void(WorldCamera::*StateFunction)();
+
+	StateFunction unk108;
 	u32 unk110;
 	u32 unk114;
 	u32 unk118;
@@ -909,11 +1198,13 @@ public:
 
 
 
-class WorldMapCamera : public Class21a5300
+class WorldMapCamera : public PerspView
 {
 public:
 
-	Function unk108;//State function
+	typedef void(WorldMapCamera::*StateFunction)();
+
+	StateFunction unk108;//State function
 	u32 unk110;//State
 	u32 unk114;//Setup state bool
 	Vec3 unk118;
@@ -968,11 +1259,13 @@ public:
 
 
 
-class EndingCamera : public Class21a5300
+class EndingCamera : public PerspView
 {
 public:
 
-	Function unk108;
+	typedef void(EndingCamera::*StateFunction)();
+
+	StateFunction unk108;
 	Vec3 unk110;
 	u32 unk120;
 	u32 unk124;
@@ -1002,6 +1295,67 @@ public:
 
 
 
+
+//Engine related structures
+struct LinkedList {
+
+	ProcessNode* first;
+	ProcessNode* last;
+
+	//020438e8
+	GEN_FUNC(bool append,ProcessNode* node);
+
+	//02043920
+	GEN_FUNC(bool remove,ProcessNode* node);
+
+	//020438b0
+	GEN_FUNC(bool prepend,ProcessNode* node);
+
+	//02043990
+	GEN_FUNC(bool insert,ProcessNode* node, ProcessNode* previous);
+
+	//0204d428
+	GEN_FUNC(ProcessNode* getNodeByID,u32 id);
+
+
+};
+
+
+
+struct ProcessList : public LinkedList {
+
+	Base::ProcessFunction executor;
+
+	//0204d46c
+	GEN_FUNC(bool execute ); //Traverses the whole list and calls the executor on every node. Always returns true.
+
+};
+
+
+struct ProcessSet : public ProcessList {
+
+	//0204d4e4
+	GEN_FUNC( bool add,PriorityNode* node);
+
+};
+
+
+struct SceneGraph {
+
+	SceneNode* root;
+	Base::ProcessFunction executor;
+
+	//02043acc
+	GEN_FUNC(bool addChild,SceneNode* child, SceneNode* parent); //Adds child to the scene graph as a child of parent. Returns true if the node was added successfully, false if node is null or if parent is null (indicating the root node) but root is already set.
+
+	//02043a54
+	GEN_FUNC(bool removeChild,SceneNode* child); //Removes the child from the scene graph. Returns true only if child has no children itself, false otherwise.
+
+};
+
+
+
+
 struct ProcessManager {
 
 	enum class ProcessListType : u32 {
@@ -1014,31 +1368,31 @@ struct ProcessManager {
 	};
 
 	//0204d598
-	void updateProcessLists();
+	static void updateProcessLists();
 
 	//0204d630
-	Base* getNextObjectByType(ObjectType type, Base* object);
+	static Base* getNextObjectByType(Object::ObjectType type, Base* object);
 
-	//0204d6fc
-	SceneNode* getNextNodeByType(SceneGraph* scene, ObjectType type, SceneNode* node);
-
-	//0204d630
-	Base* getNextObjectByObjectID(u16 objectID, Base* object);
-
-	//0204d6fc
-	SceneNode* getNextNodeByObjectID(SceneGraph* scene, u16 objectID, SceneNode* node);
+	//0204d66c
+	GEN_FUNC(static Base* getNextObjectByObjectID, u16 objectID, Base* object)
 
 	//0204d6a8
-	Base* getObjectByID(u32 id);
+	GEN_FUNC(static Base* getObjectByID, u32 id)
 
 	//0204d6dc
-	u32 getIDIndex(ProcessLink* link);
+	static u32 getIDIndex(ProcessLink* link);
 
 	//0204d6ec
-	const char* getProcessListName(ProcessListType type);
+	static const char* getProcessListName(ProcessListType type);
+
+	//0204d6fc
+	static SceneNode* getNextNodeByType(SceneGraph* scene, Object::ObjectType type, SceneNode* node);
+
+	//0204d758
+	static SceneNode* getNextNodeByObjectID(SceneGraph* scene, u16 objectID, SceneNode* node);
 
 	//0204d7b4 TODO FIX NAME BRUV
-	bool updateSceneGraph(SceneGraph* scene); //Traverses the graph and calls the executor on every node. Always returns true.
+	static bool updateSceneGraph(SceneGraph* scene); //Traverses the graph and calls the executor on every node. Always returns true.
 
 };
 
@@ -1047,109 +1401,112 @@ struct ProcessManager {
 namespace Game {
 
 	//02088f48
-	Fader fader;
+	extern Fader fader;
 
 	//02085b14
-	Fader* activeFader;
+	extern Fader* activeFader;
 
 	//020852a8
-	u32 currentExecutingProcessList;
+	extern u32 currentExecutingProcessList;
 
 	//0208fb08
-	ProcessNode* currentProcessNode;
+	extern ProcessNode* currentProcessNode;
 	//ALL IN BSS BRUH
 	//0208fb0c
-	SceneGraph actorTree;
+	extern SceneGraph actorTree;
 
 	//0208fb18
-	ProcessSet executeProcess;
+	extern ProcessSet executeProcess;
 
 	//0208fb28
-	ProcessList deleteProcess;
+	extern ProcessList deleteProcess;
 
 	//0208fb38
-	ProcessSet renderProcess;
+	extern ProcessSet renderProcess;
 
 	//0208fb48
-	ProcessList createProcess;
+	extern ProcessList createProcess;
 
 	//0208fb58
-	LinkedList idLookupProcesses[8];
+	extern LinkedList idLookupProcesses[8];
 
 	//02085224
-	u32 nextFreeID;
+	extern u32 nextFreeID;
 
 	//0202614c
 	void initProcessLists(); //STATIC CTOR
 
 	//0208027c
-	const char* processListNames[6];
+	extern const char* processListNames[6];
 
 	//020852b4
-	const char processListNameNull[5];
+	extern const char processListNameNull[5];
 
 	//020852ec
-	const char processListNameConnect[8];
+	extern const char processListNameConnect[8];
 
 	//020852c4
-	const char processListNameCreate[7];
+	extern const char processListNameCreate[7];
 
 	//020852f4
-	const char processListNameExecute[8];
+	extern const char processListNameExecute[8];
 
 	//020852bc
-	const char processListNameDelete[7];
+	extern const char processListNameDelete[7];
 
 	//020852ac
-	const char processListNameDraw[5];
+	extern const char processListNameDraw[5];
 
 	//020852cc
-	Function renderProcessFunction;//TO
+	extern Base::ProcessFunction renderProcessFunction;//TO
 
 	//020852d4
-	Function sceneProcessFunction; //NAME???TO
+	extern Base::ProcessFunction sceneProcessFunction; //NAME???TO
 
 	//020852dc
-	Function createProcessFunction;//TO
+	extern Base::ProcessFunction createProcessFunction;//TO
 
 	//020852e4
-	Function deleteProcessFunction;//TO
+	extern Base::ProcessFunction deleteProcessFunction;//TO
+
+	//020852fc
+	extern Base::ProcessFunction updateProcessFunction;
 
 	//02085238
-	Function preCreateFunction;
+	extern Base::PreFunction preCreateFunction;
 
 	//02085240
-	Function onCreateFunction;
+	extern Base::OnFunction onCreateFunction;
 
 	//02085228
-	Function postCreateFunction;
+	extern Base::PostFunction postCreateFunction;
 
 	//01ffd1b8
-	Function preUpdateFunction;
+	extern Base::PreFunction preUpdateFunction;
 
 	//01ffd1b0
-	Function onUpdateFunction;
+	extern Base::OnFunction onUpdateFunction;
 
 	//01ffd198
-	Function postUpdateFunction;
+	extern Base::PostFunction postUpdateFunction;
 
 	//01ffd1a8
-	Function preRenderFunction;
+	extern Base::PreFunction preRenderFunction;
 
 	//01ffd1a0
-	Function onRenderFunction;
+	extern Base::OnFunction onRenderFunction;
 
 	//01ffd1c0
-	Function postRenderFunction;
+	extern Base::PostFunction postRenderFunction;
 
 	//02085248
-	Function preDestroyFunction;
+	extern Base::PreFunction preDestroyFunction;
 
 	//02085230
-	Function onDestroyFunction;
+	extern Base::OnFunction onDestroyFunction;
 
 	//02085250
-	Function postDestroyFunction;
+	extern Base::PostFunction postDestroyFunction;
 
 }
 

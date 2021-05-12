@@ -1,4 +1,4 @@
-﻿#ifndef NSMB_MODEL_H_
+#ifndef NSMB_MODEL_H_
 #define NSMB_MODEL_H_
 
 #include "nitro_if.h"
@@ -149,6 +149,16 @@ public:
 	//0201fd1c
 	bool passing(u16 targetFrame); //Returns true if the next update passes targetFrame, false otherwise
 
+
+	inline void setFrame(u16 frame) {
+		currentFrame = frame << 12;
+	}
+
+	inline void setFrameCount(u16 count) {
+		settings &= typeMask;
+		settings |= (count << 12) & lastFrameMask;
+	}
+
 };
 
 
@@ -247,6 +257,31 @@ public:
 	//02019440
 	void init(u32 animID, FrameCtrl::Type type, fx32 speed, u16 startFrame); //If animID equals the current animation ID, type and speed are applied to the frame controller. If not, the animation object is reset and is initialized with the given parameters.
 
+
+	inline void update() {
+		frameController.update();
+	}
+
+	inline bool finished() {
+		return frameController.finished();
+	}
+
+	inline void setFrame(u16 frame) {
+		frameController.setFrame(frame);
+	}
+
+	inline u16 getFrame() {
+		return frameController.currentFrame;
+	}
+
+	inline void setFrameCount(u16 count) {
+		frameController.setFrameCount(count);
+	}
+
+	inline u16 getFrameCount() {
+		return frameController.getFrameCount();
+	}
+
 };
 
 
@@ -260,23 +295,27 @@ public:
 	NNSG3dResTex* texture;
 
 	//02018c2c
-	Texture();
+	GEN_FUNC( Texture );
 
 	//D0:02018bfc
 	//D1:02018c1c
-	virtual ~Texture();
+	GEN_FUNC(virtual ~Texture );
 
 	//02018bc8
-	bool load(void* texFile); //Loads the texture from the file. Returns true if successful, false otherwise.
+	GEN_FUNC( bool load,void* texFile); //Loads the texture from the file. Returns true if successful, false otherwise.
 
 	//02018b98
-	bool getTextureParams(u32* texParams, u32 texID); //Calls GFX::getTextureParams and returns whether parameter fetching was successful.
+	GEN_FUNC( bool getTextureParams,u32* texParams, u32 texID); //Calls GFX::getTextureParams and returns whether parameter fetching was successful.
 	
 	//02018b68
-	bool getTexturePaletteDestination(u32* palDest, u32 palID); //Calls GFX::getTexturePaletteDestination and returns whether address calculation was successful.
+	GEN_FUNC( bool getTexturePaletteDestination,u32* palDest, u32 palID); //Calls GFX::getTexturePaletteDestination and returns whether address calculation was successful.
 
 };
 
+struct TextureInfo {
+	u32 texImageParam;
+	u32 texPlttBase;
+};
 
 //vtable 0203c4ac
 class Animation
@@ -361,34 +400,34 @@ namespace GFX {
 	bool getTexturePaletteDestination(NNSG3dResTex* texture, u32 palID, u32* palDest); //Calculates the texture's VRAM slot destination address and stores it in palDest. Returns whether address calculation was successful.
 
 	//020446b4
-	void setRotationZ(MtxFx43* mtx, fx16 angle);
+	void setRotationZ(MtxFx43* mtx, s16 angle);
 
 	//020446f4
-	void setRotationY(MtxFx43* mtx, fx16 angle);
+	void setRotationY(MtxFx43* mtx, s16 angle);
 
 	//02044734
-	void setRotationX(MtxFx43* mtx, fx16 angle);
+	void setRotationX(MtxFx43* mtx, s16 angle);
 
 	//02044774
-	void setRotation(MtxFx43* mtx, fx16 angleX, fx16 angleY, fx16 angleZ);
+	void setRotation(MtxFx43* mtx, s16 angleX, s16 angleY, s16 angleZ);
 
 	//02044814
 	void setTranslation(MtxFx43* mtx, fx32 x, fx32 y, fx32 z);
 
 	//0204485c
-	void rotateZ(MtxFx43* mtx, fx16 angle);
+	void rotateZ(MtxFx43* mtx, s16 angle);
 
 	//02044888
-	void rotateY(MtxFx43* mtx, fx16 angle);
+	void rotateY(MtxFx43* mtx, s16 angle);
 
 	//020448b4
-	void rotateX(MtxFx43* mtx, fx16 angle);
+	void rotateX(MtxFx43* mtx, s16 angle);
 
 	//020448e0
-	void rotate(MtxFx43* mtx, fx16 angleX, fx16 angleY, fx16 angleZ);
+	void rotate(MtxFx43* mtx, s16 angleX, s16 angleY, s16 angleZ);
 
 	//0204496c
-	void rotateReversed(MtxFx43* mtx, fx16 angleX, fx16 angleY, fx16 angleZ);
+	void rotateReversed(MtxFx43* mtx, s16 angleX, s16 angleY, s16 angleZ);
 
 	//020449f8
 	void scale(MtxFx43* mtx, fx32 scaleX, fx32 scaleY, fx32 scaleZ);
@@ -396,6 +435,9 @@ namespace GFX {
 	//02044a24
 	void translate(MtxFx43* mtx, fx32 transX, fx32 transY, fx32 transZ);
 
+	inline void identity(MtxFx43* mtx) {
+		MTX_Identity43(mtx);
+	}
 
 }
 

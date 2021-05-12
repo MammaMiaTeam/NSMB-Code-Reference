@@ -36,7 +36,7 @@ Called by expanded heap functions internally to manage memory block heads
 	NNSiFndExpHeapMBlockHead* NNSr_FndLinkMBlockHeadExpHeap(NNSiFndExpMBlockList* list, NNSiFndExpHeapMBlockHead* newNode, NNSiFndExpHeapMBlockHead* prevNode);
 	NNSiFndExpHeapMBlockHead* NNSr_FndUnlinkMBlockHeadExpHeap(NNSiFndExpMBlockList* list, NNSiFndExpHeapMBlockHead* target);
 	NNSiFndExpHeapMBlockHead* NNSr_FndCreateMBlockHeadExpHeap(NNSiFndExpMBlockList* target, u16 type);
-	void* NNSr_FndAllocMBlockHeadExpHeap(NNSiFndExpMBlockList* list, NNSiFndExpHeapMBlockHead* freeNode, void* address, u32 size, int direction);
+	void* NNSr_FndAllocMBlockHeadExpHeap(NNSiFndExpMBlockList* list, NNSiFndExpHeapMBlockHead* freeNode, void* address, u32 size, s32 direction);
 	bool NNSr_FndFreeMBlockHeadExpHeap(NNSiFndExpMBlockList* list, NNSrFndExpHeapMBlockTarget* target);
 
 Called by NNS_FndCreateExpHeapEx to setup internal allocator management
@@ -72,7 +72,7 @@ class Heap								//original name: mHeap::Heap_t
 {
 public:
 
-	typedef void(*OnAllocate)(Heap*, void*, u32, int);		//void OnAllocate(Heap* heap, void* allocatedPtr, u32 size, int align);
+	typedef void(*OnAllocate)(Heap*, void*, u32, int);		//void OnAllocate(Heap* heap, void* allocatedPtr, u32 size, s32 align);
 	typedef void(*OnDeallocate)(Heap*, void*);				//void OnDeallocate(Heap* heap, void* ptrToDeallocate);
 
 	void* heapStart;					//Pointer to the heap's start
@@ -92,7 +92,7 @@ public:
 	virtual void vUnlockMutex();											//Unlocks mutex if it exists.
 	virtual bool vTryLockMutex();											//Tries to lock mutex. If successful, it returns true, false otherwise. Always returns 1 if heap requires/uses no mutex mechanism.
 	virtual void vDestroy() = 0;											//Destroys the heap and removes the allocator
-	virtual void* vAllocate(u32 size, int align) = 0;						//Allocates size bytes with an alignment/allocation direction of align
+	virtual void* vAllocate(u32 size, s32 align) = 0;						//Allocates size bytes with an alignment/allocation direction of align
 	virtual void vDeallocate(void* ptr) = 0;								//Deallocates ptr from the heap.
 	virtual void vDeallocateAll() = 0;										//Deallocates everything from the heap.
 	virtual bool vIntact() = 0;												//Returns 1 if the heap represents a valid object. Not very reliable to check if the heap is broken...
@@ -101,24 +101,24 @@ public:
 	virtual u32 vSizeOf(void* ptr) = 0;										//Returns the size of an allocated block
 	virtual u32 vMaxAllocationUnitSize() = 0;								//Returns the maximum size that is allocatable at once
 	virtual u32 vMaxAllocatableSize() = 0;									//Returns the size of the largest contiguous free memory block, aligned on a 4-byte boundary
-	virtual u32 vMaxAllocatableSize(int align) = 0;							//Returns the size of the largest contiguous free memory block, aligned with align
+	virtual u32 vMaxAllocatableSize(s32 align) = 0;							//Returns the size of the largest contiguous free memory block, aligned with align
 	virtual u32 vMemoryLeft() = 0;											//Returns the number of unallocated bytes
 	virtual u16 vSetGroupID(u16 id) = 0;									//Sets the assignable group ID for subsequent nodes. Returns the previous group ID.
 	virtual u16 vGetGroupID() = 0;											//Returns the current group ID.
 	virtual u32 vResizeToFit() = 0;											//Resizes the heap to fit (e.g. deallocates all unused memory). Returns the new size or 0 if it failed.
 
-	void* _allocate(u32 size, int align);									//Calls Allocate
+	void* _allocate(u32 size, s32 align);									//Calls Allocate
 	void _deallocate(void* ptr);											//Calls Deallocate
 	void _destroy();														//Calls Destroy
 	u32 _sizeOf(void* ptr);													//Calls Sizeof
 
-	void* allocate(u32 size, int align);									//Calls vAllocate. If size == -1, then all available heap space is allocated.
+	void* allocate(u32 size, s32 align);									//Calls vAllocate. If size == -1, then all available heap space is allocated.
 	void* allocate(u32 size);												//Calls allocate with align = 4
 	void deallocate(void* ptr);												//Calls vDeallocate. Skips null pointers.
 	void destroy();															//Calls vDestroy
-	static int forcePo2Alignment(int minAlign, u32 po2Align);				//Returns po2Align if it's not smaller than minAlign. If it is, it finds the next greater po2 of minAlign. Sign is retained.
+	static s32 forcePo2Alignment(s32 minAlign, u32 po2Align);				//Returns po2Align if it's not smaller than minAlign. If it is, it finds the next greater po2 of minAlign. Sign is retained.
 	void lockMutex();														//Calls vLockMutex. If we're in a non-system mode (e.g. IRQ) and flag 0x2000 is set, OS_Panic is called.
-	u32 maxAllocatableSize(int align);										//Calls vMaxAllocatableSize
+	u32 maxAllocatableSize(s32 align);										//Calls vMaxAllocatableSize
 	u32 maxAllocationUnitSize();											//Calls vMaxAllocationUnitSize
 	u32 reallocate(void* ptr, u32 newSize);									//Calls vReallocate
 	u32 resizeToFit();														//Calls vResizeToFit
@@ -149,7 +149,7 @@ public:
 	virtual void vUnlockMutex() override;
 	virtual bool vTryLockMutex() override;
 	virtual void vDestroy() override;
-	virtual void* vAllocate(u32 size, int align) override;
+	virtual void* vAllocate(u32 size, s32 align) override;
 	virtual void vDeallocate(void* ptr) override;							//Returns immediately if ptr == null
 	virtual void vDeallocateAll() override;									//Calls NNS_FndVisitAllocatedForExpHeap with NNSFndHeapVisitor = InvokeDeallocate
 	virtual bool vIntact() override;
@@ -158,7 +158,7 @@ public:
 	virtual u32 vSizeOf(void* ptr) override;
 	virtual u32 vMaxAllocationUnitSize() override;							//Calls NNS_FndGetAllocatableSizeForExpHeapEx with align = 4
 	virtual u32 vMaxAllocatableSize() override;								//Calls NNS_FndGetAllocatableSizeForExpHeapEx with align = 4
-	virtual u32 vMaxAllocatableSize(int align) override;					//Calls NNS_FndGetAllocatableSizeForExpHeapEx
+	virtual u32 vMaxAllocatableSize(s32 align) override;					//Calls NNS_FndGetAllocatableSizeForExpHeapEx
 	virtual u32 vMemoryLeft() override;										//Calls NNS_FndGetTotalFreeSizeForExpHeap
 	virtual u16 vSetGroupID(u16 id) override;
 	virtual u16 vGetGroupID() override;
@@ -187,7 +187,7 @@ public:
 	virtual void vUnlockMutex();
 	virtual bool vTryLockMutex();
 	virtual void vDestroy() override;
-	virtual void* vAllocate(u32 size, int align) override;
+	virtual void* vAllocate(u32 size, s32 align) override;
 	virtual void vDeallocate(void* ptr) override;							//Calls OS_Panic if ptr is non-null. If not, it has no effect.
 	virtual void vDeallocateAll() override;									//Calls NNS_FndFreeToFrmHeap with mode = 3
 	virtual bool vIntact() override;
@@ -196,14 +196,14 @@ public:
 	virtual u32 vSizeOf(void* ptr) override;								//Returns -1 immediately
 	virtual u32 vMaxAllocationUnitSize() override;							//Calls NNS_FndGetAllocatableSizeForFrmHeapEx with align = 4
 	virtual u32 vMaxAllocatableSize() override;								//Calls NNS_FndGetAllocatableSizeForFrmHeapEx with align = 4
-	virtual u32 vMaxAllocatableSize(int align) override;					//Calls NNS_FndGetAllocatableSizeForFrmHeapEx
+	virtual u32 vMaxAllocatableSize(s32 align) override;					//Calls NNS_FndGetAllocatableSizeForFrmHeapEx
 	virtual u32 vMemoryLeft() override;										//Calls NNS_FndGetAllocatableSizeForFrmHeapEx with align = 4
 	virtual u16 vSetGroupID(u16 id) override;								//Returns 0 immediately
 	virtual u16 vGetGroupID() override;										//Returns 0 immediately
 	virtual u32 vResizeToFit() override;
 
 	static FrameHeap* create(u32 size, Heap* parent);						//Calls create with align = 4
-	static FrameHeap* create(u32 size, Heap* parent, int align);			//Creates a heap with size size on parent. If size == -1, the whole memory of parent is allocated for the new heap. If parent is null, currentHeapPtr is used (therefore do not create the root heap with this function). Align is replaced with its abolute value immediately and its minimum value is 4. Returns a pointer to the new heap or null if allocation failed.
+	static FrameHeap* create(u32 size, Heap* parent, s32 align);			//Creates a heap with size size on parent. If size == -1, the whole memory of parent is allocated for the new heap. If parent is null, currentHeapPtr is used (therefore do not create the root heap with this function). Align is replaced with its abolute value immediately and its minimum value is 4. Returns a pointer to the new heap or null if allocation failed.
 
 };
 
@@ -237,7 +237,7 @@ namespace Memory {
 	void setHeapSwitchThreadCallback();
 
 	//Calls to Heap::Allocate
-	void* allocate(u32 size, int align);									//Calls on currentHeapPtr
+	void* allocate(u32 size, s32 align);									//Calls on currentHeapPtr
 
 	//Calls to Heap::Deallocate
 	void deallocate(void* ptr, Heap* heap);									//If heap is null, currentHeapPtr is used

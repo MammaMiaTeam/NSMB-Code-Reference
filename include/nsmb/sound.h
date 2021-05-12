@@ -4,6 +4,10 @@
 #include "nitro_if.h"
 #include "nsmb/vector.h"
 
+
+extern "C" void PushCommand_impl(SNDCommandID command, u32 arg0, u32 arg1, u32 arg2, u32 arg3);
+
+
 /*
 	REGION 1 (Sound):
 		Start: 0x02011988
@@ -17,37 +21,68 @@
 //	Contains the functions used to play sounds in the game.
 namespace Sound {
 
-	// 0x02011988
-	/**
-	 * @brief Resets the heap state and loads the toad house level sequences.
-	 * 
-	 * Sequences:
-	 *    5 - BGM_DOWN
-	 *    2 - BGM_MUTEKI
-	 *    3 - BGM_HUGE
-	 *   29 - BGM_FANFARE_KINO
-	 */
+	struct StopFlags {
+		enum : u32 {
+			Sound,
+			Requests,
+		};
+	};
+
+	// 02088b54
+	extern u32 stopFlags;
+
+	inline void soundOff() {
+		stopFlags |= StopFlags::Sound;
+	}
+
+	inline void soundOn() {
+		stopFlags &= ~StopFlags::Sound;
+	}
+
+	inline void requestsOff() {
+		stopFlags |= StopFlags::Requests;
+	}
+
+	inline void requestsOn() {
+		stopFlags &= ~StopFlags::Requests;
+	}
+
+	template<class T0, class T1 = u32, class T2 = u32, class T3 = u32>
+	inline void pushCommand(SNDCommandID c, T0 a0, T1 a1 = T1(), T2 a2 = T2(), T3 a3 = T3()) {
+		PushCommand_impl(c, u32(a0), u32(a1), u32(a2), u32(a3));
+	}
+
+	inline void setMasterVolume(int volume) {
+		Sound::pushCommand(SND_COMMAND_MASTER_VOLUME, volume);
+	}
+
+	inline void setMasterPan(int pan) {
+		Sound::pushCommand(SND_COMMAND_MASTER_PAN, pan);
+	}
+
+	inline void resetMasterPan() {
+		setMasterPan(-1);
+	}
+
+	//	Loads the music sequences for toad house levels.
 	void loadToadHouseLevelSeqs();
 
-	// 0x020119E8
-	/**
-	 * @brief Resets the heap state and loads the level sequences.
-	 * 
-	 * Sequences:
-	 *    4 - BGM_COURSE_CLEAR
-	 *   28 - BGM_GOAL_FANFARE2
-	 *    5 - BGM_DOWN
-	 *    2 - BGM_MUTEKI
-	 *    3 - BGM_HUGE
-	 *   18 - BGM_SWITCH
-	 */
+	/*
+		Resets the heap state and loads the following music sequences.
+
+		 4 - BGM_COURSE_CLEAR  (Course Clear)
+		28 - BGM_GOAL_FANFARE2 (Course Clear Bonus)
+		 5 - BGM_DOWN          (Player Death)
+		 2 - BGM_MUTEKI        (Starman)
+		 3 - BGM_HUGE          (Mega Mushroom)
+		18 - BGM_SWITCH        (Switch Timer)
+	*/
 	void clearAndLoadLevelSeqs();
 
-	// 0x02011ACC
-	/**
-	 * @brief Loads the level main theme from the view music ID field.
-	 * The sequence ID to load is retrieved from the view the player is in.
-	 */
+	/*
+		Loads the level main theme.
+		The sequence ID to load is retrieved from the view the player is in.
+	*/
 	void loadLevelThemeSeq();
 
 	//	Resets the heap state and loads sound effect set 1.
@@ -139,25 +174,25 @@ namespace Sound {
 	void playSFX(s32 sfxID);
 
 	//	Plays an entrance sound effect at a position.
-	bool playEntranceSFX(s32 sfxID, Vec3* pos);
+	bool playEntranceSFX(s32 sfxID, Vec3* pos = nullptr);
 
 	//	Plays a sound effect at position with volume through channel 2.
 	bool playSFXChannel2(s32 sfxID, Vec3* pos, s32 volume);
 
 	//	Plays a sound effect at position through channel 2.
-	bool playSFXChannel2(s32 sfxID, Vec3* pos);
+	bool playSFXChannel2(s32 sfxID, Vec3* pos = nullptr);
 
 	//	Plays a sound effect at position with volume through channel 1.
 	bool playSFXChannel1(s32 sfxID, Vec3* pos, s32 volume);
 
 	//	Plays a sound effect at position through channel 1.
-	bool playSFXChannel1(s32 sfxID, Vec3* pos);
+	bool playSFXChannel1(s32 sfxID, Vec3* pos = nullptr);
 
 	//	Plays a sound effect at position with volume through channel 0.
 	bool playSFXChannel0(s32 sfxID, Vec3* pos, s32 volume);
 
 	//	Plays a sound effect at position through channel 0.
-	bool playSFXChannel0(s32 sfxID, Vec3* pos);
+	bool playSFXChannel0(s32 sfxID, Vec3* pos = nullptr);
 
 	//	The main loop function that is called in the game main loop.
 	void loop();
@@ -318,7 +353,7 @@ namespace Sound {
 		void initSDAT_DLP(void* sdat);
 
 		//	Sets up NNS for working with the sound heap.
-		void setup(void* heap, int size);
+		void reset(void* heap, int size);
 
 	};
 

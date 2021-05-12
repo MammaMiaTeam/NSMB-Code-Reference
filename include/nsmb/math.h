@@ -1,4 +1,4 @@
-﻿#ifndef NSMB_MATH_H_
+#ifndef NSMB_MATH_H_
 #define NSMB_MATH_H_
 
 #include "nitro_if.h"
@@ -11,8 +11,11 @@ namespace Math {
 	//s16:020433b0
 	//u8:020433c8
 	//s8:020433e0
-	extern template<typename T>
-	T timerTick(T* timer);
+	u32 timerTick(u32* timer);
+	u16 timerTick(u16* timer);
+	s16 timerTick(s16* timer);
+	u8  timerTick(u8* timer);
+	s8  timerTick(s8* timer);
 
 	//020433f8
 	//02043464
@@ -36,16 +39,16 @@ namespace Math {
 	//020437f4
 
 	//020848e4
-	fx16 atan2Table[1025];
+	extern fx16 atan2Table[1025];
 
 	//02043b6c
 	fx16 atan2(fx32 y, fx32 x);
 
 	//0208b668
-	u32 frameCounter;
+	extern u32 frameCounter;
 
 	//0208b66c
-	u32 unusedCounter;
+	extern u32 unusedCounter;
 
 	//02043d10
 	void resetFrameCounters();
@@ -78,7 +81,62 @@ namespace Math {
 	u32 generateSeed();
 
 
+	constexpr inline int fromRadians(fx32 r) {
+		return (r * FX32_CONST(0x10000)) / FX64C_TWOPI;
+	}
+	constexpr inline int fromDegrees(int d) {
+		return (d * 0x10000) / 360;
+	}
+
+	template<typename T>
+	constexpr inline void swap(T& a, T& b) {
+		T tmp = a;
+		a = b;
+		b = tmp;
+	}
+
+
+#define ToFx16(x)		FX16_CONST(x)
+#define ToFx32(x)		FX32_CONST(x)
+#define ToFx64(x)		FX64_CONST(x)
+#define ToFx64c(x)		FX64C_CONST(x)
+
+#define IntToFx32(x)	((x) << 12)
+
+#define Fx32ToF32(x)	((x) / (float)FX32_ONE)
+#define Fx32ToInt(x)	FX_Whole(x)
+
+#define ToAngle(x)		(((x) * 0x10000) / 360)
+
+
+	static inline fx16 sin(int idx) {
+		return FX_SinIdx(u32(idx) & 0xFFFF);
+	}
+	static inline fx16 cos(int idx) {
+		return FX_CosIdx(u32(idx) & 0xFFFF);
+	}
+	static inline fx32 mul(fx32 a, fx32 b) {
+		return FX_Mul(a, b);
+	}
+	static inline fx32 div(fx32 n, fx32 d) {
+		return FX_Div(n, d);
+	}
+	static inline fx32 inv(fx32 d) {
+		return FX_Inv(d);
+	}
+	static inline fx32 sqrt(fx32 p) {
+		return FX_Sqrt(p);
+	}
+
+
 	//02044308 wtf
+
+	namespace Random {
+
+		// 0200e6f4
+		GEN_SFUNC( u32 stageRandom ) // used in stage related operations (actors, spawns, tile randomization)
+
+	}
 
 
 }
