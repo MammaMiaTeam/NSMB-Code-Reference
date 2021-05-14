@@ -1498,7 +1498,6 @@ _ZN14EscapeSequence13readParameterEPt = 0x02016AAC;
 _ZN14EscapeSequence8buildU16EPhm = 0x02016B6C;
 
 _ZN8FontBaseC1Ev = 0x02016A4C;
-_ZN8FontBaseC2Ev = 0x02016A4C;
 _ZN8FontBaseD1Ev = 0x02016A24;
 _ZN8FontBaseD2Ev = 0x020169CC;
 _ZN8FontBaseD0Ev = 0x020169F4;
@@ -1677,16 +1676,16 @@ _ZN4Util11dereferenceEPt = 0x02017124;
 _ZN4Util11dereferenceEPh = 0x0201711C;
 _ZN4Util11dereferenceEPhm = 0x02016B98;
 
-_ZTV9BMGReader = 0x0203C024;
-_ZTV12FontRenderer = 0x0203C05C;
-_ZTV10FontString = 0x0203C034;
-_ZTV10FontBounds = 0x0203C07C;
-_ZTV12GenericCache = 0x0203C0E4;
-_ZTV11NumberCache = 0x0203C0BC;
-_ZTV13NicknameCache = 0x0203C134;
-_ZTV11StringCache = 0x0203C15C;
-_ZTV9FontCache = 0x0203C10C;
-_ZTV8FontBase = 0x0203C09C;
+_ZTV9BMGReader = 0x0203C02C;
+_ZTV12FontRenderer = 0x0203C064;
+_ZTV10FontString = 0x0203C03C;
+_ZTV10FontBounds = 0x0203C084;
+_ZTV12GenericCache = 0x0203C0EC;
+_ZTV11NumberCache = 0x0203C0C4;
+_ZTV13NicknameCache = 0x0203C13C;
+_ZTV11StringCache = 0x0203C164;
+_ZTV9FontCache = 0x0203C114;
+_ZTV8FontBase = 0x0203C0A4;
 
 
 /*----------------------------------------------------------------*/
@@ -1871,6 +1870,7 @@ _ZN3OAM15objsFromHeadSubE = 0x020876F0;
 _ZN3OAM15objsFromTailSubE = 0x020876E0;
 _ZN3OAM15objSlotsLeftSubE = 0x020876EC;
 _ZN3OAM16affineSetSlotSubE = 0x020876F8;
+
 _ZN3OAM13updateCounterEP9GXOamAttrPS1_llNS_12CounterFlagsE = 0x0200B580;
 _ZN3OAM9loadFilesEPNS_4FileE = 0x0200B708;
 _ZN3OAM9loadFilesEm = 0x0200B740;
@@ -1880,19 +1880,19 @@ _ZN3OAM15loadFilesToVRAMEm = 0x0200B83C;
 _ZN3OAM16setFilesUnloadedEv = 0x0200B87C;
 _ZN3OAM7copyMtxEP7MtxFx22S1_ = 0x0200B8A4;
 _ZN3OAM8fillDataEttP9GXOamAttrm = 0x0200B358;
-_ZN3OAM4drawEP9GXOamAttrllNS_5FlagsEhhNS_8SettingsE = 0x0200D2A4;
-_ZN3OAM4drawEP9GXOamAttrllNS_5FlagsEhhP4Vec2sPA2_sNS_8SettingsE = 0x0200D87C;
-_ZN3OAM7drawMtxEP9GXOamAttrllNS_5FlagsEhhP7MtxFx22lNS_8SettingsE = 0x0200CE10;
-_ZN3OAM7drawMtxEP9GXOamAttrllNS_5FlagsEhhP7MtxFx22lsPA2_sNS_8SettingsE = 0x0200C7D4;
-_ZN3OAM10drawSpriteEP9GXOamAttrllNS_5FlagsEhhP4Vec2sPA2_sNS_8SettingsE = 0x0200D578;
-_ZN3OAM7drawSubEP9GXOamAttrllNS_5FlagsEhhNS_8SettingsE = 0x0200C32C;
-_ZN3OAM7drawSubEP9GXOamAttrllNS_5FlagsEhhP4Vec2sPA2_sNS_8SettingsE = 0x0200C600;
-_ZN3OAM10drawMtxSubEP9GXOamAttrllNS_5FlagsEhhP7MtxFx22NS_8SettingsE = 0x0200BED4;
-_ZN3OAM10drawMtxSubEP9GXOamAttrllNS_5FlagsEhhP7MtxFx22sPA2_sNS_8SettingsE = 0x0200B8C8;
+_ZN3OAM4drawEP9GXOamAttrllmhhm = 0x0200D2A4;
+_ZN3OAM4drawEP9GXOamAttrllmhhP4Vec2sPsm = 0x0200D87C;
+_ZN3OAM7drawMtxEP9GXOamAttrllmhhP7MtxFx22lm = 0x0200CE10;
+_ZN3OAM7drawMtxEP9GXOamAttrllmhhP7MtxFx22lsPsm = 0x0200C7D4;
+_ZN3OAM10drawSpriteEP9GXOamAttrllmhhP4Vec2sPsm = 0x0200D578;
+_ZN3OAM7drawSubEP9GXOamAttrllmhhm = 0x0200C32C;
+_ZN3OAM7drawSubEP9GXOamAttrllmhhP4Vec2sPsm = 0x0200C600;
+_ZN3OAM10drawMtxSubEP9GXOamAttrllmhhP7MtxFx22m = 0x0200BED4;
+_ZN3OAM10drawMtxSubEP9GXOamAttrllmhhP7MtxFx22sPsm = 0x0200B8C8;
 _ZN3OAM4Anim4initEPNS0_10FrameEntryEmhlt = 0x0200B510;
 _ZN3OAM4Anim6updateEv = 0x0200B44C;
-_ZN3OAM4Anim10drawSpriteEllNS_5FlagsEhhP4Vec2sPA2_sNS_8SettingsE = 0x0200B3F4;
-_ZN3OAM4Anim7drawSubEllNS_5FlagsEhhP4Vec2sPA2_sNS_8SettingsE = 0x0200B39C;
+_ZN3OAM4Anim10drawSpriteEllmhhP4Vec2sPsm = 0x0200B3F4;
+_ZN3OAM4Anim7drawSubEllmhhP4Vec2sPsm = 0x0200B39C;
 
 
 /*----------------------------------------------------------------*/

@@ -232,6 +232,10 @@ namespace Game {
 	// 020a04c0
 	void adjustModelTransform(Vec3* pos, Vec3s* rot, u32 mode);
 
+	inline void setVisiblePlane(u32 plane) {
+		visiblePlaneMain = plane;
+	}
+
 }
 
 class Base;

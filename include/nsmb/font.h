@@ -2,128 +2,7 @@
 #define NSMB_FONT_H_
 
 #include "nitro_if.h"
-
-struct FontLinkStack;
-struct UTF16Character;
-struct EscapeSequence;
-struct EscapeSequenceEntry;
-
-class FontBase;
-class FontCache;
-class StringCache;
-class NicknameCache;
-class NumberCache;
-class GenericCache;
-
-class FontRenderer;
-class FontBounds;
-struct FontTile;
-class FontString;
-
-class BMGReader;
-
-
-class TextBox
-{
-public:
-
-	enum class TextVisibility : u8{
-		Visible = 0,
-		Created,
-		Hidden
-	};
-
-	enum class Type : u8 {
-		Standard = 0,
-		Dialog
-	};
-
-	GXOamAttr tileOAMAttributes[0xC];
-	u32 optionCount;
-	u8 leftSelectArrow[6];//Left select arrow
-	u8 rightSelectArrow[6];//Right select arrow
-	u8 leftDialogArrow[2];//Left dialog arrow
-	u8 rightDialogArrow[2];//Right dialog arrow
-	u8 yOffset;
-	Type type;
-	TextVisibility visibility;
-
-	//020148b4
-	static void loadOAMAttributes(FontTile* tiles, u32 count, GXOamAttr* tileAttributes, u16 tileBase, u8 palette, u8 priority);
-
-	//0201486c
-	static void renderOpaqueBox(s32 x, s32 y, const Vec2& scale);
-
-	//02014824
-	static void renderAButton(s32 x, s32 y);
-
-	//02014820
-	TextBox();
-
-	//0201481c
-	~TextBox();
-
-	//020146e4
-	FontString* loadText(void* bmg, u32* stringIndex, u32 vramOffset);
-
-	//020146d0
-	FontString* loadText(void* bmg, u32* stringIndex);
-
-	//020145f8
-	void renderText(s32 x, s32 y);
-
-	//020144bc
-	void renderArrows(u8 option, s32 x, s32 y);
-
-	//02014220
-	u32 getArrowSelectY(u8 option);
-
-	//02014214
-	u32 getArrowSelectLeft(u8 option);
-
-	//02014208
-	u32 getArrowSelectRight(u8 option);
-
-	//0201424c
-	static u32 getArrowDialogY();
-
-	//02014240
-	u32 getArrowDialogLeft(u8 option);
-
-	//02014234
-	u32 getArrowDialogRight(u8 option);
-
-	//020141b8
-	u32 getOptionCount();
-
-	//02014368
-	void loadLeftDialogOption(void* bmg, u32* stringIndex, u32 vramOffset);
-
-	//02014300
-	void loadRightDialogOption(void* bmg, u32* stringIndex, u32 vramOffset);
-
-	//0201427c
-	FontString* loadDialogOption(void* bmg, u32* stringIndex, u32 vramOffset, GXOamAttr* tileAttributes);
-
-	//020143d0
-	void loadMultiplayerDialogOptions();
-
-	//0201443c
-	void loadSingleplayerDialogOptions();
-
-	//02014268
-	void setStandardBox();
-
-	//02014254
-	void setDialogBox();
-
-	//020144a8
-	void setDefaultBox();
-
-	//020141c0
-	void calculateYOffset(u32 lines);
-
-};
+#include "nsmb/vector.h"
 
 
 
@@ -189,17 +68,17 @@ struct EscapeSequence {
 	u8* params;				//Parameter pointer
 	u8* sequence;			//Sequence pointer (start of sequence)
 
-	EscapeSequence(u8* sequencePtr);			//Sets both ids to -1 and calls parse() when sequencePtr is non-null
-	void parse(u8* sequencePtr);				//Parses the sequence and updates the object's data accordingly
-	u16 getParameter();							//Returns the first parameter of the given sequence
-	void readParameter(u16* parameter);			//Writes the first parameter from params into parameter
-	u16 buildU16(u8* sequencePtr, u32 offset);	//Build a u16 from two consecutive bytes pointed to by sequencePtr + offset
+	EscapeSequence(u8* sequencePtr);					//Sets both ids to -1 and calls parse() when sequencePtr is non-null
+	void parse(u8* sequencePtr);						//Parses the sequence and updates the object's data accordingly
+	u16 getParameter();									//Returns the first parameter of the given sequence
+	void readParameter(u16* parameter);					//Writes the first parameter from params into parameter
+	static u16 buildU16(u8* sequencePtr, u32 offset);	//Build a u16 from two consecutive bytes pointed to by sequencePtr + offset
 
 }; 
 
 
 
-class FontBase;
+
 
 /*
 	Escape sequence table entry
@@ -207,12 +86,28 @@ class FontBase;
 */
 struct EscapeSequenceEntry {
 
-	typedef void(FontBase::*Callback)(EscapeSequence*);
-
 	u32 psid;				//Primary sequence ID
 	u32 ssid;				//Secondary sequence ID
-	Callback callback;		//Callback
+	u32 functionTarget;		//Callback address or virtual function offset, see unk0c
+	u32 callParams;			//Call parameters
 
+	/*
+		Call parameters are encoded as follows:
+			0x00000001: Virtual function call flag: If set, functionTarget is interpreted as the virtual function table offset
+			0xFFFFFFFE: Object offset: Determines the caller object by offsetting the object's current this pointer.
+
+		An escape sequence function is thereby called like:
+
+			object = reinterpret_cast<u8*>(object) + (entry->callParams >> 1); //Offset address by object offset
+
+			if(entry->callParams & 1){
+				(**object + entry->functionTarget)(object, escapeSequence); //Call virtual function
+			}else{
+				entry->functionTarget(object, escapeSequence); //Call entry->functionTarget
+			}
+
+		WARNING: An object offset greater than 1GB leads to unpredictable results; The object offset is calculated at 0x02015380 with [add r0,r0,r2, asr #0x1] and any u32 values where the MSB is set are arithmetically shifted to the right, leading to faults.
+	*/
 };
 
 
@@ -285,7 +180,7 @@ class StringCache : public FontCache
 public:
 
 	alignas(4)
-	u16 stringCache[128];			//String cache for up to 128 2 byte UTF-16 characters
+	u16 stringCache[128];			//String cache for up to 64 2 byte UTF-16 characters
 
 	StringCache();
 	virtual ~StringCache();
@@ -381,6 +276,8 @@ class FontBounds : public FontBase
 {
 public:
 
+	typedef void(*EscapeSequenceCallback)(FontBounds*, EscapeSequence*);
+
 	enum CountMode : u32 {
 		NextLineWidth = 0,
 		IndexedLineWidth,
@@ -411,12 +308,12 @@ public:
 	/*
 		Callback read addresses (when table is not initialized yet, this is where the function pointers reside)
 	*/
-	static EscapeSequenceEntry::Callback linkNicknameCB;
-	static EscapeSequenceEntry::Callback linkNumberCB;
-	static EscapeSequenceEntry::Callback linkGeneric0CB;
-	static EscapeSequenceEntry::Callback linkGeneric1CB;
-	static EscapeSequenceEntry::Callback linkGeneric2CB;
-	static EscapeSequenceEntry::Callback linkGeneric3CB;
+	static EscapeSequenceCallback linkNicknameCB;
+	static EscapeSequenceCallback linkNumberCB;
+	static EscapeSequenceCallback linkGeneric0CB;
+	static EscapeSequenceCallback linkGeneric1CB;
+	static EscapeSequenceCallback linkGeneric2CB;
+	static EscapeSequenceCallback linkGeneric3CB;
 
 
 	FontBounds(FontRenderer* renderer);										//Initializes the object with renderer
@@ -541,6 +438,8 @@ class FontRenderer : public FontBase
 {
 public:
 
+	typedef void(*EscapeSequenceCallback)(FontBounds*, EscapeSequence*);
+
 	FontString fontStrings[16];		//Font string objects containing the renderable text
 	FontString* currentString;		//Current font string
 	u32 currentX;					//Current font x offset in px
@@ -570,13 +469,13 @@ public:
 	/*
 		Callback read addresses (when table is not initialized yet, this is where the function pointers reside)
 	*/
-	static EscapeSequenceEntry::Callback linkNicknameCB;
-	static EscapeSequenceEntry::Callback linkNumberCB;
-	static EscapeSequenceEntry::Callback linkGeneric0CB;
-	static EscapeSequenceEntry::Callback linkGeneric1CB;
-	static EscapeSequenceEntry::Callback linkGeneric2CB;
-	static EscapeSequenceEntry::Callback linkGeneric3CB;
-	static EscapeSequenceEntry::Callback colorSelectCB;
+	static EscapeSequenceCallback linkNicknameCB;
+	static EscapeSequenceCallback linkNumberCB;
+	static EscapeSequenceCallback linkGeneric0CB;
+	static EscapeSequenceCallback linkGeneric1CB;
+	static EscapeSequenceCallback linkGeneric2CB;
+	static EscapeSequenceCallback linkGeneric3CB;
+	static EscapeSequenceCallback colorSelectCB;
 
 
 	FontRenderer();
@@ -590,7 +489,7 @@ public:
 	FontString* setupAndRender(u8* vramTarget, u32 xTiles, u32 yTiles, void* bmg, u32* index);							//Renders string with the main font to vramTarget with xTiles tiles in x direction and yTiles tiles in y direction (and allocates buffers accordingly). The string is fetched from file and a pointer to it is returned if successful. Buffers are deallocated upon failure and false is returned in this case.
 	FontString* setupAndRender(u8* vramTarget, u32 xTiles, u32 yTiles, FontCache* stringCache, NNSG2dFont* fontPtr);	//Renders the string into the next free FontString (and allocates buffers accordingly). The string is fetched from stringCache's cache, copied into FontString's cache and a pointer to it is returned if successful. Buffers are deallocated upon failure and false is returned in this case.
 	
-	void loadAndRenderGenericCache(u32 index, void* bmg, u32 stringIndex);	//Loads the string from file and renders it into genericCache[index]
+	void loadAndRenderGenericCache(u32 index, void* bmg, u32* stringIndex);	//Loads the string from file and renders it into genericCache[index]
 	void renderGenericCache(u32 index, FontCache* cache);					//Renders cache's string and copies it into genericCache[index]'s cache
 	void clearGenericCache(u32 index);										//If index is smaller than 4, genericCache[index] is cleared; if index >= 4, all generic caches are cleared
 	
@@ -672,6 +571,109 @@ public:
 };
 
 
+class TextBox
+{
+public:
+
+	enum class TextVisibility : u8{
+		Visible = 0,
+		Created,
+		Hidden
+	};
+
+	enum class Type : u8 {
+		Standard = 0,
+		Dialog
+	};
+
+	GXOamAttr tileOAMAttributes[0xC];
+	u32 optionCount;
+	u8 leftSelectArrow[6];  //Left select arrow
+	u8 rightSelectArrow[6]; //Right select arrow
+	u8 leftDialogArrow[2];  //Left dialog arrow
+	u8 rightDialogArrow[2]; //Right dialog arrow
+	u8 yOffset;
+	Type type;
+	TextVisibility visibility;
+
+	//020148b4
+	static void loadOAMAttributes(FontTile* tiles, u32 count, GXOamAttr* tileAttributes, u16 tileBase, u8 palette, u8 priority);
+
+	//0201486c
+	static void renderOpaqueBox(s32 x, s32 y, const Vec2& scale);
+
+	//02014824
+	static void renderAButton(s32 x, s32 y);
+
+	//02014820
+	TextBox();
+
+	//0201481c
+	~TextBox();
+
+	//020146e4
+	FontString* loadText(void* bmg, u32* stringIndex, u32 vramOffset);
+
+	//020146d0
+	FontString* loadText(void* bmg, u32* stringIndex);
+
+	//020145f8
+	void renderText(s32 x, s32 y);
+
+	//020144bc
+	void renderArrows(u8 option, s32 x, s32 y);
+
+	//02014220
+	u32 getArrowSelectY(u8 option);
+
+	//02014214
+	u32 getArrowSelectLeft(u8 option);
+
+	//02014208
+	u32 getArrowSelectRight(u8 option);
+
+	//0201424c
+	static u32 getArrowDialogY();
+
+	//02014240
+	u32 getArrowDialogLeft(u8 option);
+
+	//02014234
+	u32 getArrowDialogRight(u8 option);
+
+	//020141b8
+	u32 getOptionCount();
+
+	//02014368
+	void loadLeftDialogOption(void* bmg, u32* stringIndex, u32 vramOffset);
+
+	//02014300
+	void loadRightDialogOption(void* bmg, u32* stringIndex, u32 vramOffset);
+
+	//0201427c
+	FontString* loadDialogOption(void* bmg, u32* stringIndex, u32 vramOffset, GXOamAttr* tileAttributes);
+
+	//020143d0
+	void loadMultiplayerDialogOptions();
+
+	//0201443c
+	void loadSingleplayerDialogOptions();
+
+	//02014268
+	void setStandardBox();
+
+	//02014254
+	void setDialogBox();
+
+	//020144a8
+	void setDefaultBox();
+
+	//020141c0
+	void calculateYOffset(u32 lines);
+
+};
+
+
 
 /*
 	Font namespace
@@ -690,13 +692,13 @@ namespace Font {
 	/*
 		Font tile tables
 	*/
-	extern FontTile* selectFileTiles;		//4 tiles
-	extern FontTile* gameTextboxTiles;		//8 tiles
-	extern FontTile* yesNoOptionTiles;		//2 tiles
-	extern FontTile* mvslModeMenuTiles;		//4 tiles
-	extern FontTile* mvslSelectMenuTiles;	//12 tiles
-	extern FontTile* mvslLoadingTiles;		//1 tile
-	extern FontTile* mvslResultScreenTiles;	//5 tiles
+	extern FontTile selectFileTiles[4];       //4 tiles
+	extern FontTile gameTextboxTiles[8];      //8 tiles
+	extern FontTile yesNoOptionTiles[2];      //2 tiles
+	extern FontTile mvslModeMenuTiles[4];     //4 tiles
+	extern FontTile mvslSelectMenuTiles[12];  //12 tiles
+	extern FontTile mvslLoadingTiles[1];      //1 tile
+	extern FontTile mvslResultScreenTiles[5]; //5 tiles
 
 	/*
 		Getters for font related objects
