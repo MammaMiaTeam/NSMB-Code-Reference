@@ -15,6 +15,16 @@ namespace Particle {
 	struct SPLEmitter;
 	struct SPLManager;
 
+	class Emitter;
+	class EmitterSystem;
+	class ControllerBase;
+	class Controller;
+	class ControllerLiquid;
+	class ControllerManualLiquid;
+	class ControllerManual;
+	class Handler;
+
+
 	typedef void (ParticleSystemCallback)(SPLEmitter* system, ...);
 
 
@@ -35,14 +45,14 @@ namespace Particle {
 		inline Emitter() {}
 
 		// 0x2021c10
-		void start(u32 emitterID, u32 particleID, const VecFx32* position, const VecFx16* axis, const fx32* collY, const fx16* baseScale, ControllerBase* pController);
+		GEN_FUNC(void start,u32 emitterID, u32 particleID, const VecFx32* position, const VecFx16* axis, const fx32* collY, const fx16* baseScale, ControllerBase* pController);
 
 		// 0x2021bf0
-		void end();
+		GEN_FUNC(void end);
 
 	};
 
-	class StaticSystem {
+	class EmitterSystem {
 	public:
 
 		u32 numActiveEmitters;
@@ -52,29 +62,29 @@ namespace Particle {
 		Emitter* activeEmitters[16];
 
 		// 0x2021bac
-		StaticSystem();
+		GEN_FUNC(EmitterSystem);
 
-		inline ~StaticSystem() {
+		inline ~EmitterSystem() {
 			unregisterAllEmitters();
 		}
 
 		// 0x2021ae8
-		void destroyAllEmitters();
+		GEN_FUNC(void destroyAllEmitters);
 
 		// 0x2021a88
-		void unregisterAllEmitters();
+		GEN_FUNC(void unregisterAllEmitters);
 
 		// 0x2021a48
-		Emitter* getEmitter(u32 emitterID);
+		GEN_FUNC(Emitter* getEmitter,u32 emitterID);
 
 		// 0x202194c
-		u32 startFreeEmitter(u32 particleID, const VecFx32* position, const VecFx16* axis, const fx32* collY, const fx16* baseScale, ControllerBase* pController);
+		GEN_FUNC(u32 startFreeEmitter,u32 particleID, const VecFx32* position, const VecFx16* axis, const fx32* collY, const fx16* baseScale, ControllerBase* pController);
 
 		// 0x2021920
-		void registerEmitter(Emitter* pEmitter);
+		GEN_FUNC(void registerEmitter,Emitter* pEmitter);
 
 		// 0x20218e0
-		void unregisterEmitter(Emitter* pEmitter);
+		GEN_FUNC(void unregisterEmitter,Emitter* pEmitter);
 	};
 
 	class ControllerBase {
@@ -83,10 +93,10 @@ namespace Particle {
 		inline ControllerBase() {}
 
 		// 0x2021f08
-		virtual void spawn(void* pEmitter);
+		GEN_FUNC(virtual void spawn,void* pEmitter);
 
 		// 0x2021f00
-		virtual BOOL destroy(void* pEmitter, BOOL generate);
+		GEN_FUNC(virtual BOOL destroy,void* pEmitter, BOOL generate);
 
 	};
 
@@ -96,13 +106,13 @@ namespace Particle {
 		fx16 spawnRateDec; // ???
 
 		// 0x2021eb8
-		Controller();
+		GEN_FUNC(Controller);
 
 		// 0x2021e8c
-		void spawn(void* pEmitter) override;
+		GEN_FUNC(virtual void spawn,void* pEmitter)// override;
 
 		// 0x2021e7c
-		void destroy(void* pEmitter, BOOL generate) override;
+		GEN_FUNC(virtual BOOL destroy,void* pEmitter, BOOL generate)// override;
 
 	};
 
@@ -112,7 +122,7 @@ namespace Particle {
 		inline ControllerLiquid() {} // the one at 0x2021edc doesn't set the vtable, there could even be another class between this one and Controller
 
 		// 0x2021e00
-		void destroy(void* pEmitter, BOOL generate) override;
+		GEN_FUNC(virtual BOOL destroy,void* pEmitter, BOOL generate)// override;
 
 	};
 
@@ -122,7 +132,7 @@ namespace Particle {
 		inline ControllerManualLiquid() {}
 
 		// 0x2021d78
-		void destroy(void* pEmitter, BOOL generate) override;
+		GEN_FUNC(virtual BOOL destroy,void* pEmitter, BOOL generate) //override;
 
 	};
 
@@ -132,10 +142,10 @@ namespace Particle {
 		inline ControllerManual() {}
 
 		// 0x2021d20
-		void destroy(void* pEmitter, BOOL generate) override;
+		GEN_FUNC(virtual BOOL destroy,void* pEmitter, BOOL generate) //override;
 
 		// 0x2021cfc
-		static ControllerManual* getHandlerController();
+		GEN_FUNC(static ControllerManual* getHandlerController);
 
 	};
 
@@ -146,10 +156,10 @@ namespace Particle {
 	class Handler {
 	public:
 
-		enum STDParticleID {
-			PCL_COURSE,
-			PCL_WORLDMAP,
-			PCL_CUTSCENE
+		enum class STDParticleID {
+			Course,
+			WorldMap,
+			Cutscene
 		};
 
 		void* pSPA;				// SPLArcHdr*
@@ -158,7 +168,7 @@ namespace Particle {
 		void* pSPLManager;		// SPLManager*
 		void* pBossSPLManager;	// SPLManager*
 
-		StaticSystem sSystem;
+		EmitterSystem emitterSystem;
 
 		u32			smokePuffEmitterID;
 		Controller	smokePuffController;
@@ -210,19 +220,19 @@ namespace Particle {
 
 
 		// 0x208b4f8
-		static u16 nMaxParticles;
+		static u16 nMaxSPLParticles;
 
 		// 0x208b4fc
-		static u16 nMaxParticlesBoss;
+		static u16 nMaxSPLParticlesBoss;
 
 		// 0x208b500
-		static u16 nMaxEmitters;
+		static u16 nMaxSPLEmitters;
 
 		// 0x208b504
-		static u16 nMaxEmittersBoss;
+		static u16 nMaxSPLEmittersBoss;
 
 		// 0x208b508
-		static u16 nMaxEmittersBoss;
+		static u16 nMaxSystemEmitters;
 
 
 		// 0x208b50C
@@ -236,7 +246,7 @@ namespace Particle {
 
 
 		// 0x208b518
-		static void* pMinigamesSPA;
+		static void* pMiniGamesSPA;
 
 		// 0x208b51c
 		static SPLManager* pCurSPLManager;
@@ -245,154 +255,154 @@ namespace Particle {
 		static Handler* pHandler;
 
 		// 0x208b524
-		static void* pSPA;
+		static void* pMainGameSPA;
 
 
 		// 0x2023180
-		Handler();
+		GEN_FUNC(Handler);
 
 		// 0x2023118
 		// 0x20230a8
-		virtual ~Handler();
+		GEN_FUNC(virtual ~Handler);
 
 
 		// 0x202308c
-		static void* allocate(u32 size);
+		GEN_FUNC(static void* allocate,u32 size);
 
 		// 0x2022dd0
-		void init(STDParticleID id);
+		GEN_FUNC(void init,u32 id);
 
 		// 0x2022d98
-		static BossFileInfo* getBossParticleInfo(u32 area);
+		GEN_FUNC(static BossFileInfo* getBossParticleInfo,u32 area);
 
 		// 0x2022d68
-		static u32 getBossParticleFileID(u32 area);
+		GEN_FUNC(static u32 getBossParticleFileID,u32 area);
 
 		// 0x2022cb4
-		void initBoss();
+		GEN_FUNC(void initBoss);
 
 		// 0x2022c3c
-		void updateParticles();
+		GEN_FUNC(void updateParticles);
 
 		// 0x2022be4
-		static void renderParticles();
+		GEN_FUNC(static void renderParticles);
 
 		// 0x2022b64
-		static void createParticle(u32 particleID, const Vec3* position);
+		GEN_FUNC(static void createParticle,u32 particleID, const Vec3* position);
 
 		// 0x2022aac
-		static void createParticleEx(u32 particleID, const Vec3* position, void* pArg, ParticleSystemCallback* pFunc);
+		GEN_FUNC(static void createParticleEx,u32 particleID, const Vec3* position, void* pArg, ParticleSystemCallback* pFunc);
 
 		// 0x2022a90
-		static void setAxisCallback(SPLEmitter* pEmitter, const VecFx16* axis);
+		GEN_FUNC(static void setAxisCallback,SPLEmitter* pEmitter, const VecFx16* axis);
 
 		// 0x2022a7c
-		static void createParticle_axis(u32 particleID, const Vec3* position, const VecFx16* axis);
+		GEN_FUNC(static void createParticleAxis,u32 particleID, const Vec3* position, const VecFx16* axis);
 
 		// 0x2022a70
-		static void setSimpleCollisionYCallback(SPLEmitter* pEmitter, const fx32* collY);
+		GEN_FUNC(static void setSimpleCollisionYCallback,SPLEmitter* pEmitter, const fx32* collY);
 
 		// 0x2022a64
-		static void setRadiusCallback(SPLEmitter* pEmitter, const fx32* radius);
+		GEN_FUNC(static void setRadiusCallback,SPLEmitter* pEmitter, const fx32* radius);
 
 		// 0x2022a50
-		static void createParticle_radius(u32 particleID, const Vec3* position, const fx32* radius);
+		GEN_FUNC(static void createParticleRadius,u32 particleID, const Vec3* position, const fx32* radius);
 
 		// 0x2022a44
-		static void setParticleLifeCallback(SPLEmitter* pEmitter, const u16* life);
+		GEN_FUNC(static void setParticleLifeCallback,SPLEmitter* pEmitter, const u16* life);
 
 		// 0x2022a30
-		static void createParticle_life(u32 particleID, const Vec3* position, const u16* life);
+		GEN_FUNC(static void createParticleLife,u32 particleID, const Vec3* position, const u16* life);
 
 		// 0x2022a04
-		static SPLEmitter* getSPLEmitter(u32 emitterID);
+		GEN_FUNC(static SPLEmitter* getSPLEmitter,u32 emitterID);
 
 		// 0x2022890
-		static u32 createStaticParticle(u32 emitterID, u32 particleID, const Vec3* position, const VecFx16* axis, const fx32* collY, const fx16* baseScale, ControllerBase* pController);
+		GEN_FUNC(static u32 runEmitter,u32 emitterID, u32 particleID, const Vec3* position, const VecFx16* axis, const fx32* collY, const fx16* baseScale, ControllerBase* pController);
 
 		// 0x2022824
-		static u32 createStaticParticle_boss(u32 emitterID, u32 particleID, const Vec3* position, const VecFx16* axis, const fx32* collY, const fx16* baseScale, ControllerBase* pController);
+		GEN_FUNC(static u32 runEmitterBoss,u32 emitterID, u32 particleID, const Vec3* position, const VecFx16* axis, const fx32* collY, const fx16* baseScale, ControllerBase* pController);
 
 		// 0x20227bc
-		static u32 createStaticParticle_manualLiquid(u32 emitterID, u32 pclID, fx32 x, fx32 y, fx32 z, const VecFx16* axis);
+		GEN_FUNC(static u32 runEmitterManualLiquid,u32 emitterID, u32 pclID, fx32 x, fx32 y, fx32 z, const VecFx16* axis);
 
 		// 0x2022754
-		static u32 createStaticParticle_manual(u32 emitterID, u32 pclID, fx32 x, fx32 y, fx32 z, const VecFx16* axis);
+		GEN_FUNC(static u32 runEmitterManual,u32 emitterID, u32 pclID, fx32 x, fx32 y, fx32 z, const VecFx16* axis);
 
 		// 0x20226e4
-		static u32 createSmokePuff(fx32 x, fx32 y, fx32 z);
+		GEN_FUNC(static u32 createSmokePuff,fx32 x, fx32 y, fx32 z);
 
 		// 0x2022674
-		static u32 createRockSmoke(fx32 x, fx32 y, fx32 z);
+		GEN_FUNC(static u32 createRockSmoke,fx32 x, fx32 y, fx32 z);
 
 		// 0x20226fc
-		static u32 createBigRockSmoke(fx32 x, fx32 y, fx32 z);
+		GEN_FUNC(static u32 createBigRockSmoke,fx32 x, fx32 y, fx32 z);
 
 		// 0x2022528
-		static u32 createRockExplosion(fx32 x, fx32 y, fx32 z);
+		GEN_FUNC(static u32 createRockExplosion,fx32 x, fx32 y, fx32 z);
 
 		// 0x202245c
-		static u32 createBigRockExplosion(fx32 x, fx32 y, fx32 z);
+		GEN_FUNC(static u32 createBigRockExplosion,fx32 x, fx32 y, fx32 z);
 
 		// 0x20223e4
-		static u32 createLittleSmoke(fx32 x, fx32 y, fx32 z);
+		GEN_FUNC(static u32 createLittleSmoke,fx32 x, fx32 y, fx32 z);
 
 		// 0x2022364
-		static u32 createLittleWhiteSmoke(fx32 x, fx32 y, fx32 z);
+		GEN_FUNC(static u32 createLittleWhiteSmoke,fx32 x, fx32 y, fx32 z);
 
 		// 0x20222ec
-		static u32 createGlitterStars(fx32 x, fx32 y, fx32 z);
+		GEN_FUNC(static u32 createGlitterStars,fx32 x, fx32 y, fx32 z);
 
 		// 0x2022274
-		static u32 createBubbles(fx32 x, fx32 y, fx32 z);
+		GEN_FUNC(static u32 createBubbles,fx32 x, fx32 y, fx32 z);
 
 		// 0x2022244
-		static void createBigSmokePuff(const Vec3* position);
+		GEN_FUNC(static void createBigSmokePuff,const Vec3* position);
 
 		// 0x2022220
-		static void createSmokePuff(const Vec3* position);
+		GEN_FUNC(static void createSmokePuff,const Vec3* position);
 
 		// 0x20221fc
-		static void createWaterParticles(const Vec3* position);
+		GEN_FUNC(static void createWaterParticles,const Vec3* position);
 
 		// 0x20221d8
-		static void createLavaParticles(const Vec3* position);
+		GEN_FUNC(static void createLavaParticles,const Vec3* position);
 
 		// 0x20221b4
-		static void createPoisonedWaterParticles(const Vec3* position);
+		GEN_FUNC(static void createPoisonedWaterParticles,const Vec3* position);
 
 		// 0x2022134
-		static void createParticle_boss(u32 particleID, const Vec3* position);
+		GEN_FUNC(static void createParticleBoss,u32 particleID, const Vec3* position);
 
 		// 0x20220d8
-		static void createParticleBoss_simpleCollisionY(u32 particleID, const Vec3* position, const fx32* collY);
+		GEN_FUNC(static void createParticleBossSimpleCollisionY,u32 particleID, const Vec3* position, const fx32* collY);
 
 		// 0x20220a4
-		static SPLEmitter* getSPLEmitter_safe(u32 emitterID); // checks if Emitter is nullptr before accessing SPLEmitter.
+		GEN_FUNC(static SPLEmitter* getSPLEmitterSafe,u32 emitterID); // checks if Emitter is nullptr before accessing SPLEmitter.
 
 		// 0x2022074
-		static void stopEmitterGeneration(u32 emitterID);
+		GEN_FUNC(static void stopEmitterGeneration,u32 emitterID);
 
 		// 0x2022020
-		static void stopEmitterGeneration_boss(u32 emitterID); // swaps SPLEmitter and calls stopEmitterGeneration, despite it not using SPLEmitter directly at all
+		GEN_FUNC(static void stopEmitterGenerationBoss,u32 emitterID); // swaps SPLEmitter and calls stopEmitterGeneration, despite it not using SPLEmitter directly at all
 
 		// 0x2022008
-		static void setEmitterGenerationRate(u32 emitterID, u32 rate);
+		GEN_FUNC(static void setEmitterGenerationRate,u32 emitterID, u32 rate);
 
 		// 0x2021ff0
-		static void setEmitterParticleLife(u32 emitterID, u16 life);
+		GEN_FUNC(static void setEmitterParticleLife,u32 emitterID, u16 life);
 
 		// 0x2021f7c
-		static u32 createStaticParticle_initialVelocityAxis(u32 emitterID, u32 particleID, const Vec3* position, const VecFx16* axis, const fx32* collY, const fx16* baseScale, const fx16* initVelocityAxis, ControllerBase* pController);
+		GEN_FUNC(static u32 runEmitterInitialVelocityAxis,u32 emitterID, u32 particleID, const Vec3* position, const VecFx16* axis, const fx32* collY, const fx16* baseScale, const fx16* initVelocityAxis, ControllerBase* pController);
 
 		// 0x2021f58
-		static void setPolygonAttribute_boss(u32 attribute);
+		GEN_FUNC(static void setPolygonAttributeBoss,u32 attribute);
 
 		// 0x2021f30
-		static void resetPolygonAttribute_boss(u32 attribute);
+		GEN_FUNC(static void resetPolygonAttributeBoss,u32 attribute);
 
 		// 0x2021f0c
-		static void disable();
+		GEN_FUNC(static void disable);
 	};
 
 }

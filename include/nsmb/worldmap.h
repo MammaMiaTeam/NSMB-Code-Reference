@@ -3,7 +3,7 @@
 
 #include "nitro_if.h"
 #include "nsmb/actor.h"
-
+#include "nsmb/save.h"
 
 enum class WorldmapNodeType : u8 {
 	Arrow = 0,
@@ -93,8 +93,8 @@ public:
 	enum class TextBoxType : u8 {
 		PauseMenu = 0,
 		SaveDialog,
-		SaveDialog??,
-		QuitDialog
+		//SaveDialog??,
+		QuitDialog = 2
 	};
 
 	Particle::Handler unk64;
@@ -166,6 +166,10 @@ public:
 
 	};
 
+	struct LevelStruct {
+#pragma warning LevelStruct not defined!!!
+	};
+
 	struct ShitStruct {
 		u32 unk00;
 		u32 unk04;
@@ -174,7 +178,7 @@ public:
 	struct WorldPath {
 		u32 world0;
 		u32 world1;
-		Save::CompletionFlags flags;
+		MainSave::CompletionFlags flags;
 	};
 
 	class IconAnimator
@@ -183,7 +187,7 @@ public:
 
 		enum class Mode : u32 {
 			WorldExit,
-			SameWorld
+			SameWorld,
 			WorldEnter,
 		};
 
@@ -279,7 +283,8 @@ public:
 	//021a53ec
 	s8 nextWorld;//-1 if none pressed, else pressed icon = world
 
-
+//Don't really belong here
+/*
 	//021ade74
 	static Function updateStates[5];
 
@@ -300,6 +305,7 @@ public:
 
 	//021addb8
 	static u32 subscreenRenderStateFlags;//0x1: Initialized
+*/
 
 	//02085a10
 	static bool challengeModeEnabled;
@@ -702,17 +708,17 @@ public:
 		Idle = 0,
 		a,
 		Walking,
-		...
+		//...
 		//6
-		LevelEnter,
+		LevelEnter = 6,
 		EntityMoving,
 		//9
-		LevelUnlocking,
+		LevelUnlocking = 9,
 		//C
-		CameraScroll,
+		CameraScroll = 12,
 		CameraRevert,
 		//10
-		StarcoinSignRemoved,
+		StarcoinSignRemoved = 16,
 		StarcoinSignWaiting,
 	};
 
