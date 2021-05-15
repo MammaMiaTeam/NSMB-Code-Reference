@@ -793,10 +793,10 @@ namespace FS {
 
 	// 0x02009918
 	/**
-	 * \brief Loads a file to the background extended palette video memory.
+	 * \brief Loads a file to the background palette video memory.
 	 * 
 	 * \param extFileID The extended file ID of the file.
-	 * \param offset The offset in bytes relative to the background extended palette video memory.
+	 * \param offset The offset in bytes relative to the background palette video memory.
 	 * \param compressed If the file is an LZ77 file without identifier.
 	 * */
 	void loadBGPalette(u32 extFileID, u32 offset, bool compressed);
