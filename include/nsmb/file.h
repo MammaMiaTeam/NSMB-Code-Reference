@@ -758,7 +758,7 @@ namespace FS {
 	 * \brief Loads a cached file to the object bank A video memory.
 	 * 
 	 * \param extFileID The extended file ID of the file.
-	 * \param offset The byte offset relative to the object bank A video memory.
+	 * \param offset The offset in bytes relative to the object bank A video memory.
 	 * */
 	void loadFileToOBJVramA(u32 extFileID, u32 offset);
 
@@ -767,7 +767,7 @@ namespace FS {
 	 * \brief Loads a file to the object palette video memory.
 	 * 
 	 * \param extFileID The extended file ID of the file.
-	 * \param offset The byte offset relative to the object palette video memory.
+	 * \param offset The offset in bytes relative to the object palette video memory.
 	 * \param compressed If the file is an LZ77 file without identifier.
 	 * */
 	void loadOBJPalette(u32 extFileID, u32 offset, bool compressed);
@@ -777,7 +777,7 @@ namespace FS {
 	 * \brief Loads a file to the object extended palette video memory.
 	 * 
 	 * \param extFileID The extended file ID of the file.
-	 * \param offset The byte offset relative to the object extended palette video memory.
+	 * \param offset The offset in bytes relative to the object extended palette video memory.
 	 * \param compressed If the file is an LZ77 file without identifier.
 	 * */
 	void loadOBJExtPalette(u32 extFileID, u32 offset, bool compressed);
@@ -787,16 +787,16 @@ namespace FS {
 	 * \brief Loads a cached file to the object extended palette video memory.
 	 * 
 	 * \param extFileID The extended file ID of the file.
-	 * \param offset The byte offset relative to the object extended palette video memory.
+	 * \param offset The offset in bytes relative to the object extended palette video memory.
 	 * */
 	void loadOBJExtPaletteCached(u32 extFileID, u32 offset);
 
 	// 0x02009918
 	/**
-	 * \brief Loads a file to the background palette video memory.
+	 * \brief Loads a file to the background extended palette video memory.
 	 * 
 	 * \param extFileID The extended file ID of the file.
-	 * \param offset The byte offset relative to the background palette video memory.
+	 * \param offset The offset in bytes relative to the background extended palette video memory.
 	 * \param compressed If the file is an LZ77 file without identifier.
 	 * */
 	void loadBGPalette(u32 extFileID, u32 offset, bool compressed);
@@ -806,7 +806,7 @@ namespace FS {
 	 * \brief Loads a cached file to the background extended palette video memory.
 	 * 
 	 * \param extFileID The extended file ID of the file.
-	 * \param offset The byte offset relative to the background extended palette video memory.
+	 * \param offset The offset in bytes relative to the background extended palette video memory.
 	 * */
 	void loadBGExtPaletteCached(u32 extFileID, u32 offset);
 
@@ -815,7 +815,7 @@ namespace FS {
 	 * \brief Loads a file to the background palette video memory. (bottom screen)
 	 * 
 	 * \param extFileID The extended file ID of the file.
-	 * \param offset The byte offset relative to the background palette video memory.
+	 * \param offset The offset in bytes relative to the background palette video memory.
 	 * */
 	void loadBGSubPalette(u32 extFileID, u32 offset);
 
