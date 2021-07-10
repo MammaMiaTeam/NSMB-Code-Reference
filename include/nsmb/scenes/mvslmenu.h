@@ -35,14 +35,14 @@ public:
         virtual void update(); // 0x0215734C
         virtual void render(); // 0x021572F0
 
-        void create(s32 bnblRectID, s32 x, s32 y, s32 oamAttrID); // 0x021572C8
+        void create(s32 bnclRectID, s32 x, s32 y, s32 oamAttrID); // 0x021572C8
         void move(s32 x, s32 y); // 0x021572B4
         void setup(s32 x, s32 y); // 0x02157298
         void click(); // 0x0215727C
 
         Vec2 position;
         Vec2 endPosition; // Used by AnimType::Lerp
-        s32 bnblRectID;
+        s32 bnclRectID;
         s32 oamAttrID;
         u8 animFrame; // Used by AnimType::SlightMove
         u8 palette;
