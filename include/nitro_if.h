@@ -1,24 +1,40 @@
 #ifndef NITRO_IF_H
 #define NITRO_IF_H
 
-#ifdef __INTELLISENSE__
-#define SDK_ARM9
-#define SDK_CODE_ARM
-#define __attribute__(x)
-#define BOOL int
-#endif
-
 #define GEN_SYM 0
 
-#define sym __attribute__((noinline, used))
+
+#define __ret return {};
 
 #if GEN_SYM
+#define sym __attribute__((noinline, used))
+#define ssym __attribute__((noinline, used)) static
 #define GEN_FUNC(x, ...) sym x (__VA_ARGS__) {}
 #define GEN_SFUNC(x, ...) sym static x (__VA_ARGS__) {}
+#define __body {}
+#define __rbody { __ret }
 #else
+#define sym
+#define ssym
 #define GEN_FUNC(x, ...) x (__VA_ARGS__) ;
 #define GEN_SFUNC(x, ...) x (__VA_ARGS__) ;
+#define __body ;
+#define __rbody ;
 #endif
+
+#define USED	__attribute__((used))
+#define NIN		__attribute__((noinline))
+#define FIN		__attribute__((always_inline)) inline
+
+#ifdef __INTELLISENSE__
+#include "intellisense.h"
+#else
+#define __inline	FIN
+#define if_consteval if (std::is_constant_evaluated())
+#define __weak		__attribute__((weak))
+#endif
+
+#define NTR_DEBUG 1
 
 typedef void* NITRO_TYPE_REPLACEMENT;
 
@@ -50,13 +66,13 @@ typedef void* NITRO_TYPE_REPLACEMENT;
 	void MI_CpuCopy8(const void*, void*, int);
 
 	typedef unsigned char u8;
-	typedef unsigned short int u16;
-	typedef unsigned long u32;
+	typedef unsigned short u16;
+	typedef unsigned int u32;
 	typedef unsigned long long int u64;
 
 	typedef signed char s8;
-	typedef signed short int s16;
-	typedef signed long s32;
+	typedef signed short s16;
+	typedef signed int s32;
 	typedef signed long long int s64;
 
 	typedef s16 fx16;
@@ -77,16 +93,20 @@ typedef void* NITRO_TYPE_REPLACEMENT;
 
 #else
 
-#ifndef SDK_CODE_ARM
-#define SDK_CODE_ARM
+#	ifndef SDK_CODE_ARM
+#	define SDK_CODE_ARM
+#	endif
+
+#	include "nitro.h"
+#	include "nnsys.h"
+
 #endif
 
-	#include "nitro.h"
-	#include "nnsys.h"
-#endif
+#include "extra/ostream.hpp"
 
-#define USED	__attribute__((used))
-#define NIN		__attribute__((noinline))
-#define FIN		__attribute__((always_inline)) inline
+#define __ntr_message(s)	do { cout << s; } while (false)
+#define __ntr_terminate()	OS_Terminate()
+
+#include "assert.h"
 
 #endif	// NITRO_IF_H
