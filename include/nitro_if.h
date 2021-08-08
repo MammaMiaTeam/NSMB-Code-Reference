@@ -1,8 +1,7 @@
-#ifndef NITRO_IF_H
-#define NITRO_IF_H
+#pragma once
 
+// Set to 1 when generating symbols
 #define GEN_SYM 0
-
 
 #define __ret return {};
 
@@ -34,7 +33,10 @@
 #define __weak		__attribute__((weak))
 #endif
 
+
+// Set to 1 when compiling in Debug mode
 #define NTR_DEBUG 1
+
 
 typedef void* NITRO_TYPE_REPLACEMENT;
 
@@ -108,5 +110,3 @@ typedef void* NITRO_TYPE_REPLACEMENT;
 #define __ntr_terminate()	OS_Terminate()
 
 #include "assert.h"
-
-#endif	// NITRO_IF_H

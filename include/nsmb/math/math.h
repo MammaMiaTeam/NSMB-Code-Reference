@@ -165,6 +165,20 @@ namespace Math {
         return mul(end, step) + mul(start, (1.0fx - step));
 	}
 
+	template<class Ret>
+	__inline s32 getRangedValue(s32 max, Ret(*function)()) {
+		return (function)() % max;
+	}
+
+	template<class Ret>
+	__inline s32 getRangedValue(s32 min, s32 max, Ret(*function)()) {
+		return ((function)() % (max - min)) + min;
+	}
+
+#define IMPL_RANDOM(function) \
+	__inline s32 getRandom(s32 max) { return Math::getRangedValue(max, (function) ); } \
+	__inline s32 getRandom(s32 min, s32 max) { return Math::getRangedValue(min, max, (function) ); }
+
 	//02044308 wtf
 
 }

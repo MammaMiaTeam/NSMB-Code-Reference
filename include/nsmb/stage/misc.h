@@ -40,12 +40,10 @@ namespace Stage
 	}
 
 
-	// 020facfc
-	void setZoom(fx32 zoom, u32 delay, u8 playerID, u8 unk);
-
-
 	// 0200e6f4
 	// used in stage related operations (actors, spawns, tile randomization)
 	ssym u32 getRandom() __rbody
+
+	IMPL_RANDOM(Stage::getRandom);
 
 }

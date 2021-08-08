@@ -88,7 +88,7 @@ struct ObjectInfo
 };
 
 
-class StageEntity : public StageActor
+class alignas(4) StageEntity : public StageActor
 {
 public:
 
@@ -126,12 +126,12 @@ public:
 	Vec3 unkV2;
 	Vec3 movementStrength;
 	u32 unk12[2];
-	u32 eventHi; // 0xFFFFFFFF........
-	u32 eventLo; // 0x........FFFFFFFF
 
-	struct StageActorEventIDs {
-		u8 targetID;
-		u8 triggerID;
+	u32 eventMask[2];
+
+	struct EventIDs {
+		u8 target;
+		u8 trigger;
 	} eventIDs;
 
 	u16 padMaybe;
@@ -146,7 +146,7 @@ public:
 	// scale for wiggling effect
 	Vec3 wiggleScale;
 
-	// actor range vectors
+	// render/despawn box vectors
 	Vec2 existSize;
 	Vec2 renderSize;
 	Vec2 viewOffset;
