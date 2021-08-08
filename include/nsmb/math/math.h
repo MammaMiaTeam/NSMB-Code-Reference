@@ -148,14 +148,21 @@ namespace Math {
 		return FX_Sqrt(p);
 	}
 
-	constexpr fx32 clamp01(fx32 a) {
-		return a < 0 ? 0 : (a > 1.0fx ? 1.0fx : a);
-	}
+	constexpr fx32 clamp(fx32 a, fx32 min, fx32 max)
+    {
+        if (a < min)
+            return min;
+        else if (a > max)
+            return max;
+        else
+            return a;
+    }
 
-	constexpr fx32 smoothstep(fx32 start, fx32 end, fx32 step) {
-		step = clamp01(step);
-		step = mul(mul(mul(-2.0fx, step), step), step) + mul(mul(3.0fx, step), step);
-		return mul(end, step) + mul(start, (1.0fx - step));
+	constexpr fx32 smoothstep(fx32 start, fx32 end, fx32 step)
+	{
+		step = clamp(step, 0, 1.0fx);
+        step = mul(mul(mul(-2.0fx, step), step), step) + mul(mul(3.0fx, step), step);
+        return mul(end, step) + mul(start, (1.0fx - step));
 	}
 
 	//02044308 wtf

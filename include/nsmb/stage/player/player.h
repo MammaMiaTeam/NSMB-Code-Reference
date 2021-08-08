@@ -171,6 +171,9 @@ public:
 
 	void removeHeldActor();
 
+	void freeze(bool lookAtBoss);
+	void unfreeze();
+
 	//
 	Player();
 
