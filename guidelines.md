@@ -48,12 +48,9 @@ public:
 ### Includes
 Headers always take
 ```cpp
-#ifndef NSMB_x_H_
-#define NSMB_x_H_
-
-#endif // !NSMB_x_H_
+#pragma once
 ```
-as an include guard. It is good practice to comment the defined preprocessor symbol after endif when closing a scope.
+as an include guard.
 
 ### Storage Objects
 Structs are to be used when the object purely consists of variables or has only a constructor with a few accompanying members / functions.
