@@ -105,52 +105,52 @@ public:
 		Doesn't unregister the Collider from the execution list nor does it
 		reset the collision rectangle points, callbacks, behavior and flags.
 	*/
-	sym void reset() {}
+	sym void reset() __body
 
 	/*
 		Initializes the Collider with collision rectangle parameters and collision callbacks.
 		A scale vector may also be specified.
 	*/
-	sym void initEx(StageActor* owner, fx32 left, fx32 top, fx32 right, fx32 bottom, ColliderCallback topCallback, ColliderCallback bottomCallback, ColliderCallback sideCallback, u32 behavior, u8 colliderRelated, const Vec3* scale = nullptr) {}
+	sym void initEx(StageActor* owner, fx32 left, fx32 top, fx32 right, fx32 bottom, ColliderCallback topCallback, ColliderCallback bottomCallback, ColliderCallback sideCallback, u32 behavior, u8 colliderRelated, const Vec3* scale = nullptr) __body
 
 	/*
 		Initializes the Collider through a settings structure.
 		A scale vector may also be specified.
 	*/
-	sym void init(StageActor* owner, const ColliderInfo& info, u32 behavior, u8 colliderRelated, const Vec3* scale = nullptr) {}
+	sym void init(StageActor* owner, const ColliderInfo& info, u32 behavior, u8 colliderRelated, const Vec3* scale = nullptr) __body
 
 	/*
 		Initializes the collision rectangle with parameters.
 		A scale vector may also be specified.
 		optionFlag can be used to calculate the origin point's delta from the old origin point.
 	*/
-	sym void initRectEx(fx32 left, fx32 top, fx32 right, fx32 bottom, const Vec3* scale = nullptr) {}
+	sym void initRectEx(fx32 left, fx32 top, fx32 right, fx32 bottom, const Vec3* scale = nullptr) __body
 
 	/*
 		Initializes the collision rectangle using origin and end points vectors.
 		A scale vector may also be specified.
 		optionFlag can be used to calculate the origin point's delta from the old origin point.
 	*/
-	sym void initRect(const Vec2& originPoint, const Vec2& endPoint, const Vec3* scale = nullptr) {}
+	sym void initRect(const Vec2& originPoint, const Vec2& endPoint, const Vec3* scale = nullptr) __body
 
 	/*
 		Initializes the collision rectangle through a settings structure.
 		A scale vector may also be specified.
 		optionFlag can be used to calculate the origin point's delta from the old origin point.
 	*/
-	sym void initRect(const ColliderInfo& info, const Vec3* scale = nullptr) {}
+	sym void initRect(const ColliderInfo& info, const Vec3* scale = nullptr) __body
 
 	// Links the Collider to the execution list.
-	sym void link() {}
+	sym void link() __body
 
 	// Unlinks the Collider from the execution list.
-	sym void unlink() {}
+	sym void unlink() __body
 
 	// Updates the collision rectangle based on the position of the owner.
-	sym void updatePosition() {}
+	sym void updatePosition() __body
 
 	// I honestly don't know (it uses unk3, which I've never seen being set).
-	sym void doSomething() {}
+	sym void doSomething() __body
 
 };
 

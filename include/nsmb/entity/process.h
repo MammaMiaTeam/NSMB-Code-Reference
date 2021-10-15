@@ -2,6 +2,8 @@
 #include "common.h"
 #include "list.h"
 
+struct ObjectProfile;
+
 
 struct ProcessLink {
 
@@ -56,6 +58,12 @@ namespace ProcessManager {
 namespace Game {
 
 	// DATA
+
+	//0203997c
+	extern ObjectProfile* mainProcessTable[385];
+
+	//0208fb98
+	extern ObjectProfile** currentProcessTable;
 
 	//020852a8
 	extern u32 currentExecutingProcessList;

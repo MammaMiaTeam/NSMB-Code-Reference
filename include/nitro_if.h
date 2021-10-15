@@ -25,7 +25,7 @@
 #define NIN		__attribute__((noinline))
 #define FIN		__attribute__((always_inline)) inline
 
-#ifdef __INTELLISENSE__
+#ifdef _MSC_VER // VSCode doesn't need it
 #include "intellisense.h"
 #else
 #define __inline	FIN
@@ -54,12 +54,12 @@ typedef void* NITRO_TYPE_REPLACEMENT;
 	typedef NITRO_TYPE_REPLACEMENT NNSSndSeqPlayer;
 
 	enum NNSSndCaptureOutputEffectType {
-		
+
 		NNS_SND_CAPTURE_OUTPUT_EFFECT_NORMAL = 0x0,
 		NNS_SND_CAPTURE_OUTPUT_EFFECT_SURROUND = 0x1,
 		NNS_SND_CAPTURE_OUTPUT_EFFECT_HEADPHONE = 0x2,
 		NNS_SND_CAPTURE_OUTPUT_EFFECT_MONO = 0x3
-		
+
 	};
 
 	void MI_CpuFillFast(const void*, int, int);

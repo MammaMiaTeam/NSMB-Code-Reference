@@ -30,7 +30,7 @@ namespace Game
 
 	// 0x0200696c
 	ssym void loadLevel(u16 scene, u32 vs, u8 group, u8 stage, u8 act, u8 playerID, u8 playerMask, u8 character1, u8 character2, u8 powerup, u8 entrance, u8 flag, u8 unused1, u8 controlOptions, u8 unused2, u8 challengeMode, u32 rngSeed) __body
-	
+
 	__inline void loadLevel(SceneID scene, u32 vs, u8 group, u8 stage, u8 act, u8 playerID, u8 playerMask, u8 character1, u8 character2, u8 powerup, u8 entrance, u8 flag, u8 unused1, u8 controlOptions, u8 unused2, u8 challengeMode, u32 rngSeed) {
 		loadLevel(static_cast<u16>(scene), vs, group, stage, act, playerID, playerMask, character1, character2, powerup, entrance, flag, unused1, controlOptions, unused2, challengeMode, rngSeed);
 	}

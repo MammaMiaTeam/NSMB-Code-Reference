@@ -1,5 +1,6 @@
 #pragma once
 #include "nitro_if.h"
+#include "math.h"
 
 
 /*
@@ -47,8 +48,12 @@ public:
 	}
 
 	__inline static Vec3& div(Vec3& out, const VecFx32& lhs, fx32 rhs) {
-		out = Vec3(FX_Div(lhs.x, rhs), FX_Div(lhs.y, rhs), FX_Div(lhs.z, rhs));
+		out = Vec3(Math::div(lhs.x, rhs), Math::div(lhs.y, rhs), Math::div(lhs.z, rhs));
 		return out;
+	}
+
+	__inline static Vec3& lerp(const VecFx32& start, const VecFx32& end, fx32 step) {
+		return Vec3(Math::lerpFx32(start.x, end.x, step), Math::lerpFx32(start.y, end.y, step), Math::lerpFx32(start.z, end.z, step))
 	}
 
 
@@ -123,6 +128,14 @@ public:
 
 	__inline void div(fx32 rhs) {
 		Vec3::div(*this, *this, rhs);
+	}
+
+	__inline void clamp(const VecFx32& min, const VecFx32& max) {
+		return Vec3(Math::clamp(x, min.x, max.x), Math::clamp(x, min.x, max.x), Math::clamp(x, min.x, max.x));
+	}
+
+	__inline void clamp(fx32 min, fx32 max) {
+		return Vec3(Math::clamp(x, min, max), Math::clamp(y, min, max), Math::clamp(z, min, max));
 	}
 };
 
@@ -267,6 +280,14 @@ public:
 	__inline void div(fx32 rhs) {
 		Vec2::div(*this, *this, rhs);
 	}
+
+	__inline void clamp(const Vec2& min, const Vec2& max) {
+		return Vec2(Math::clamp(x, min.x, max.x), Math::clamp(x, min.x, max.x));
+	}
+
+	__inline void clamp(fx32 min, fx32 max) {
+		return Vec2(Math::clamp(x, min, max), Math::clamp(y, min, max));
+	}
 };
 
 
@@ -304,12 +325,12 @@ public:
 	}
 
 	__inline static Vec3s& mul(Vec3s& out, const VecFx16& lhs, fx32 rhs) {
-		out = Vec3s(FX_MulInline(lhs.x, rhs), FX_MulInline(lhs.y, rhs), FX_MulInline(lhs.z, rhs));
+		out = Vec3s(Math::mul(lhs.x, rhs), Math::mul(lhs.y, rhs), Math::mul(lhs.z, rhs));
 		return out;
 	}
 
 	__inline static Vec3s& div(Vec3s& out, const VecFx16& lhs, fx32 rhs) {
-		out = Vec3s(FX_Div(lhs.x, rhs), FX_Div(lhs.y, rhs), FX_Div(lhs.z, rhs));
+		out = Vec3s(Math::div(lhs.x, rhs), Math::div(lhs.y, rhs), Math::div(lhs.z, rhs));
 		return out;
 	}
 
@@ -379,4 +400,11 @@ public:
 		return false;
 	}
 
+	__inline void clamp(const VecFx16& min, const VecFx16& max) {
+		return Vec2(Math::clamp(x, min.x, max.x), Math::clamp(x, min.x, max.x));
+	}
+
+	__inline void clamp(fx32 min, fx32 max) {
+		return Vec2(Math::clamp(x, min, max), Math::clamp(y, min, max));
+	}
 };
