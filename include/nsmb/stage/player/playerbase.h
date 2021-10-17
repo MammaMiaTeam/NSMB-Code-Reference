@@ -79,7 +79,7 @@ public:
 			u32 action10			: 1;	// 0x00000010 
 			u32 wallJump			: 1;	// 0x00000020 set when wall-jumping
 			u32 wallClip			: 1;	// 0x00000040 set when clipping with a solid object
-			u32 throwItem			: 1;	// 0x00000080 set when throwing an item
+			u32 throwActor			: 1;	// 0x00000080 set when throwing an actor
 			u32 action100			: 1;	// 0x00000100
 			u32 action200			: 1;	// 0x00000200
 			u32 action400			: 1;	// 0x00000400
@@ -110,7 +110,7 @@ public:
 	union {
 		u32 all;
 		struct {
-			u32 holdingItem			: 1;	// 0x00000001 set when holding an item (shell/trampoline/etc)
+			u32 holdingActor		: 1;	// 0x00000001 set when holding an actor (shell/trampoline/etc)
 			u32 subAction2			: 1;	// 0x00000002 set when on a rope/in a pipe/hit by a falling snow object
 			u32 pipeCannon			: 1;	// 0x00000004 set when launching from a pipe cannon
 			u32 inEntrance			: 1;	// 0x00000008 set when using an entrance/warp
@@ -400,6 +400,12 @@ public:
 
 	// 0212c200
 	void saveCurrentPowerup();
+
+	// 0212B26C
+	void linkActor(StageActor& actor); // link actor
+
+	// 0212BDE0
+	void unlinkActorIfLinked(StageActor& actor); // unlink given actor if already linked
 
 	// 0212c1b8
 	//void checkIfSecondPlayerExists(); 

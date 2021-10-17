@@ -182,7 +182,7 @@ public:
 	sym void unlink() __body
 
 	// 020a44b0
-	sym void unk_020a44b0() __body
+	sym void manualUpdate() __body
 
 	// 020a445c
 	sym void unk_020a445c(const Vec3& position, const ActiveColliderInfo& info, bool backLayer, u32 unk) __body

@@ -1405,20 +1405,20 @@ _ZN2FS5Cache8Internal8loadFileEmPNS0_10CacheEntryEmb = 0x02009ED4;
 _ZN2FS5Cache8loadDataEm = 0x02009BC8;
 _ZN2FS5Cache8loadFileEmb = 0x02009C64;
 
-_ZN2FS5Nitro11crashReasonE = 0x02085CF8;
-_ZN2FS5Nitro11loadOverlayE11MIProcessorm = 0x02008594;
-_ZN2FS5Nitro12pathToFileIDEP8FSFileIDPKc = 0x02008648;
-_ZN2FS5Nitro13unloadOverlayE11MIProcessorm = 0x02008588;
-_ZN2FS5Nitro14setCrashReasonEPKc = 0x02008670;
-_ZN2FS5Nitro15loadOverlayInfoEP13FSOverlayInfo11MIProcessorm = 0x020085A0;
-_ZN2FS5Nitro8openFileEP6FSFile8FSFileID = 0x0200860C;
-_ZN2FS5Nitro8openFileEP6FSFilePKc = 0x020085E4;
-_ZN2FS5Nitro8readFileEP6FSFilePvl = 0x020085AC;
-_ZN2FS5Nitro9getFileIDEP8FSFileIDm = 0x02008E2C;
-_ZN2FS5NitroL13openFileCrashE = 0x0203A280;
-_ZN2FS5NitroL13readFileCrashE = 0x0203A290;
-_ZN2FS5NitroL17readFileFastCrashE = 0x0203A2A0;
-_ZN2FS5NitroL24convertPathToFileIDCrashE = 0x0203A2B4;
+_ZN2FS8Internal11crashReasonE = 0x02085CF8;
+_ZN2FS8Internal11loadOverlayE11MIProcessorm = 0x02008594;
+_ZN2FS8Internal12pathToFileIDEP8FSFileIDPKc = 0x02008648;
+_ZN2FS8Internal13unloadOverlayE11MIProcessorm = 0x02008588;
+_ZN2FS8Internal14setCrashReasonEPKc = 0x02008670;
+_ZN2FS8Internal15loadOverlayInfoEP13FSOverlayInfo11MIProcessorm = 0x020085A0;
+_ZN2FS8Internal8openFileEP6FSFile8FSFileID = 0x0200860C;
+_ZN2FS8Internal8openFileEP6FSFilePKc = 0x020085E4;
+_ZN2FS8Internal8readFileEP6FSFilePvl = 0x020085AC;
+_ZN2FS8Internal9getFileIDEP8FSFileIDm = 0x02008E2C;
+_ZN2FS8InternalL13openFileCrashE = 0x0203A280;
+_ZN2FS8InternalL13readFileCrashE = 0x0203A290;
+_ZN2FS8InternalL17readFileFastCrashE = 0x0203A2A0;
+_ZN2FS8InternalL24convertPathToFileIDCrashE = 0x0203A2B4;
 
 _ZN2FS7Archive10mountFrontEmP4Heap = 0x0200917C;
 _ZN2FS7Archive10unmountAllEv = 0x02009084;
@@ -1606,7 +1606,7 @@ _ZN14EscapeSequence12getParameterEv = 0x02016A90;
 _ZN14EscapeSequence13readParameterEPt = 0x02016AAC;
 _ZN14EscapeSequence8buildU16EPhm = 0x02016B6C;
 
-_ZN8FontBaseC1Ev = 0x02016A4C;
+_ZN8FontBaseC2Ev = 0x02016A4C;
 _ZN8FontBaseD1Ev = 0x02016A24;
 _ZN8FontBaseD2Ev = 0x020169CC;
 _ZN8FontBaseD0Ev = 0x020169F4;
@@ -1924,9 +1924,9 @@ _ZN4Vec23mulERS_RKS_l = 0x02045F60;
 _ZN4Vec23subERS_RKS_RK7VecFx32 = 0x02045FB8;
 _ZN4Vec23addERS_RKS_RK7VecFx32 = 0x02045FF4;
 
-_ZTV4Vec3 = 0x02039200;
-_ZTV4Vec2 = 0x020391E0;
-_ZTV5Vec3s = 0x020391F0;
+_ZTV4Vec3 = 0x02039208;
+_ZTV4Vec2 = 0x020391E8;
+_ZTV5Vec3s = 0x020391F8;
 
 
 /*----------------------------------------------------------------*/
@@ -1941,6 +1941,9 @@ _ZN4Math6sqrt64Emm = 0x02046030;
 _ZN4Math10atan2TableE = 0x020848e4;
 _ZN4Math13unusedCounterE = 0x0208b66c;
 _ZN4Math12frameCounterE = 0x0208b668;
+_ZN4Math5atan2Ell = 0x02043b6c;
+_ZN4Math7inRangeElll = 0x02043750;
+_ZN4Math8distanceEss = 0x02043790;
 
 
 /*----------------------------------------------------------------*/
@@ -2133,12 +2136,12 @@ _ZN8Particle7Handler14pCurSPLManagerE																		= 0x208b51c;
 _ZN8Particle7Handler8pHandlerE																				= 0x208b520;
 _ZN8Particle7Handler12pMainGameSPAE																			= 0x208b524;
 
-_ZTVN8Particle14ControllerBaseE																				= 0x0203cfd4;
-_ZTVN8Particle10ControllerE																					= 0x0203cfb4;
-_ZTVN8Particle16ControllerLiquidE																			= 0x0203cfc4;
-_ZTVN8Particle22ControllerManualLiquidE																		= 0x0203cfa4;
-_ZTVN8Particle16ControllerManualE																			= 0x0203cf94;
-_ZTVN8Particle7HandlerE																						= 0x0203cf84;
+_ZTVN8Particle14ControllerBaseE																				= 0x0203cfdc;
+_ZTVN8Particle10ControllerE																					= 0x0203cfbc;
+_ZTVN8Particle16ControllerLiquidE																			= 0x0203cfcc;
+_ZTVN8Particle22ControllerManualLiquidE																		= 0x0203cfac;
+_ZTVN8Particle16ControllerManualE																			= 0x0203cf9c;
+_ZTVN8Particle7HandlerE																						= 0x0203cf8c;
 
 
 /*----------------------------------------------------------------*/
@@ -2640,6 +2643,8 @@ _ZN8FadeMaskD0Ev								= 0x02014100;
 _ZN8FadeMaskD1Ev								= 0x0201413c;
 _ZN8FadeMaskD2Ev								= 0x0201413c;
 
+_ZN8FadeMask17loadMaskModelFileEv               = 0x02013bdc;
+
 _ZN8FadeMask									= 0x0203bd8c;
 
 
@@ -2727,7 +2732,7 @@ _ZN5Model11getNodeInfoEv													= 0x020197d4;
 _ZN5Model12getNodeIndexEPK14NNSG3dResName_									= 0x020197bc;
 _ZN5Model21getNodeMatrixInternalEP18NNSG3dResNodeInfo_mP7MtxFx43			= 0x02019740;
 _ZN5Model13getNodeMatrixEmP7MtxFx43											= 0x0201972c;
-_ZN5Model15getNodePositionEmP4Vec3											= 0x020196dc;
+_ZN5Model15getNodePositionEmR4Vec3											= 0x020196dc;
 _ZN5Model17restoreNodeMatrixEm												= 0x0201967c;
 
 _ZTV5Model																	= 0x0203c514;
@@ -2972,7 +2977,7 @@ _ZN14ActiveCollider22setPositionAroundPivotEtll						= 0x020a4758;
 _ZN14ActiveCollider19resetCollisionStateEv							= 0x020a4714;
 _ZN14ActiveCollider4linkEv											= 0x020a46bc;
 _ZN14ActiveCollider6unlinkEv										= 0x020a4658;
-_ZN14ActiveCollider12unk_020a44b0Ev									= 0x020a44b0;
+_ZN14ActiveCollider12manualUpdateEv									= 0x020a44b0;
 _ZN14ActiveCollider12unk_020a445cERK4Vec3RK18ActiveColliderInfobm	= 0x020a445c;
 _ZN14ActiveCollider10initSystemEv									= 0x020a4434;
 _ZN14ActiveCollider17testCollisionRectEPS_							= 0x01ffdd88;
@@ -3018,6 +3023,7 @@ _ZN4Game15fireballHandlerE = 0x02129484;
 /*-------------------------- stage misc --------------------------*/
 /*----------------------------------------------------------------*/
 
+_ZN5Stage7setZoomElmhh          = 0x020facfc;
 _ZN5Stage9getRandomEv			= 0x0200e6f4;
 
 _ZN5Stage14liquidPositionE		= 0x020cae0c; 
@@ -3027,6 +3033,9 @@ _ZN5Stage7playerXE				= 0x020cae1c;
 _ZN5Stage7playerYE				= 0x020cad94;
 _ZN5Stage7cameraXE				= 0x020cada4;
 _ZN5Stage7cameraYE				= 0x020cad8c;
+_ZN5Stage18questionBlockFrameE  = 0x0212944c;
+_ZN5Stage15brickBlockFrameE     = 0x0212943c;
+_ZN5Stage11stageLayoutE         = 0x020cad40;
 
 
 /*----------------------------------------------------------------*/
@@ -3052,6 +3061,9 @@ _ZN4Game14waitVBlankIntrEv															= 0x020058c0;
 _ZN4Game16disableVRAMBanksEv														= 0x02004be0;
 _ZN4Game12getBootSceneEv															= 0x0200563c;
 _ZN4Game12setBootSceneEt															= 0x0200564c;
+
+_ZN4Game16mainProcessTableE                                                         = 0x0203997c;
+_ZN4Game19currentProcessTableE                                                      = 0x0208fb98;
 
 _ZN4Game16visiblePlaneMainE															= 0x02085a88;
 
@@ -3225,21 +3237,27 @@ _ZN5Stage9getRandomEv = 0x0200e6f4;
 /*------------------------- player base --------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN10PlayerBase13getRunKeyHeldEv = 0x0212C7A4;
-_ZN10PlayerBase14getLeftKeyHeldEv = 0x0212C8CC;
-_ZN10PlayerBase15getRightKeyHeldEv = 0x0212C8BC;
+_ZN10PlayerBase13getRunKeyHeldEv						= 0x0212C7A4;
+_ZN10PlayerBase14getLeftKeyHeldEv                       = 0x0212C8CC;
+_ZN10PlayerBase15getRightKeyHeldEv                      = 0x0212C8BC;
+_ZN10PlayerBase17getJumpKeyPressedEv                    = 0x0212C63C;
 
+_ZN10PlayerBase9linkActorER10StageActor                 = 0x0212B26C;
+_ZN10PlayerBase19unlinkActorIfLinkedER10StageActor      = 0x0212BDE0;
 
 /*----------------------------------------------------------------*/
 /*---------------------------- player ----------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN6Player12setAnimationEiiiii = 0x02120BB8;
-_ZN6Player17setAnimationSpeedEi = 0x021209E0;
-_ZN6Player16setMovementStateEMS_FbvE = 0x021006AC;
-_ZN6Player15updateAnimationEv = 0x02120A24;
-_ZN6Player15removeHeldActorEv = 0x02104C9C;
+_ZN6Player12setAnimationEmtmlt      					= 0x02120BB8;
+_ZN6Player17setAnimationSpeedEl     					= 0x021209E0;
+_ZN6Player16setMovementStateEMS_FblEl					= 0x021006AC;
+_ZN6Player15updateAnimationEv       					= 0x02120A24;
+_ZN6Player6freezeEb                 					= 0x0211F34C;
+_ZN6Player8unfreezeEv               					= 0x0211F2EC;
 
+_ZN6Player14tryUnlinkActorEv                            = 0x02104C9C;
+_ZN6Plater11unlinkActorEv                               = 0x02104CCC;
 
 /*----------------------------------------------------------------*/
 /*---------------------------- input -----------------------------*/
@@ -3335,11 +3353,11 @@ _ZN6Effect12switchUpdateEMS_FvvE = 0x020e59f8;
 _ZN6Effect6createEcP4Vec3mtcm = 0x020e5ac4;
 _ZN6EffectC2Ev = 0x020e6414;
 _ZN13EffectHandlerC2Ev = 0x020e68cc;
-_ZN7Effects7destroyEc = 0x020e64f0;
+_ZN7Effects7destroyEa = 0x020e64f0;
 _ZN7Effects6updateEv = 0x020e650c;
 _ZN7Effects6renderEv = 0x020e6524;
-_ZN7Effects5spawnEcP4Vec3mtcm = 0x020e653c;
-_ZN7Effects5spawnEcP4Vec3c = 0x020e657c;
+_ZN7Effects5spawnEaP4Vec3mmam = 0x020e653c;
+_ZN7Effects5spawnEaP4Vec3a = 0x020e657c;
 _ZN7Effects5validEv = 0x020e65b4;
 _ZN13EffectHandler7destroyEc = 0x020e65cc;
 _ZN13EffectHandler6updateEv = 0x020e66bc;
@@ -3357,26 +3375,30 @@ _ZTV13EffectHandler = 0x02126a04;
 
 
 /*----------------------------------------------------------------*/
-/*--------------------------- unsorted ---------------------------*/
+/*----------------------------- bnbl -----------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN4BNBL22GetYPosFromAnchoredPosEti = 0x020558E8;
-_ZN4BNBL22GetXPosFromAnchoredPosEti = 0x02055930;
-_Z27BNBL_GetRectangleAtPositionP8BNBLFileii = 0x02055A0C;
-_Z22BNBL_GetRectangleCountP8BNBLFile = 0x02055AD4;
+_ZN4BNBL19getYFromAnchoredPosEtm = 0x020558e8;
+_ZN4BNBL19getXFromAnchoredPosEtm = 0x02055930;
+_ZN4BNBL19getRectangleIDAtPosEPvll = 0x02055a0c;
+_ZN4BNBL17getRectangleCountEPv = 0x02055aD4;
 
-BNBL_GetYPosFromAnchoredPos = 0x020558E8;
-BNBL_GetXPosFromAnchoredPos = 0x02055930;
-BNBL_GetRectangleAtPosition = 0x02055A0C;
-BNBL_GetRectangleCount = 0x02055AD4;
 
-BNBLFilePtr = 0x02085888;
+/*----------------------------------------------------------------*/
+/*----------------------------- bnbl -----------------------------*/
+/*----------------------------------------------------------------*/
 
-BNCLFilePtr = 0x0208588C;
-BNCLFilePtrSub = 0x02085890;
+_ZN11StageLayout10changeTileEmmm = 0x020af30c;
+_ZN11StageLayout15getTileBehaviorEmml = 0x020af8f0;
+_ZN11StageLayout10getChunkIDEmm = 0x020b0308;
+_ZN11StageLayout17readTileBehaviourEt = 0x020afa30;
 
-BNXX_InitSub = 0x02004564;
+
+/*----------------------------------------------------------------*/
+/*--------------------------- unsorted ---------------------------*/
+/*----------------------------------------------------------------*/
 
 Liquid_doWaves = 0x021646E0;
 setPlayerStateForWaterBubbles = 0x02102BC4;
 IncrementMegaMushroomDestructionCounter = 0x020200D4;
+

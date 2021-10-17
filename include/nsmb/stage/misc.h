@@ -28,6 +28,12 @@ namespace Stage
 	// 020cad8c
 	extern fx32 cameraY[2];
 
+	// 0212944c
+	extern u8 questionBlockFrame;
+
+	// 0212943c
+	extern u8 brickBlockFrame;
+
 
 	__inline bool getEvent(u8 id) {
 		return events & (1ULL << id);

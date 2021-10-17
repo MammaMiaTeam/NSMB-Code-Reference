@@ -15,6 +15,7 @@
 #include "nsmb/stage.h"
 #include "nsmb/system.h"
 #include "nsmb/titlescreen.h"
+#include "nsmb/ui.h"
 #include "nsmb/util.h"
 #include "nsmb/world.h"
 #include "nsmb/worldmap.h"

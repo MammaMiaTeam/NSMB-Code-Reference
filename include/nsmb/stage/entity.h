@@ -596,7 +596,6 @@ public:
 	virtual void removeCallback();					// virt 64 (?)
 	virtual void changeDirection();					// virt 65
 	virtual void makePlayerJump();					// virt 66 (?)
-	// up to 70 missing
 	*/
 
 	//// 0209C85C
