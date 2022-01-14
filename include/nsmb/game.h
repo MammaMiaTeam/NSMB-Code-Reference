@@ -98,7 +98,7 @@ namespace Game
 
 		u8 stage = mapping[group][node];
 
-		return stage == 0xFF ? -1 : stage;
+		return stage == none ? -1 : stage;
 
 	}
 
