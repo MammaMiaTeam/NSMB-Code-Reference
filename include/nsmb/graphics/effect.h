@@ -37,14 +37,14 @@ public:
 	sym Effect() __body
 	sym virtual ~Effect() __body
 
-	bool create(s8 id, Vec3* pos, u32 settingA, u32 settingB, s8 playerID, u32 type);
+	bool create(s8 id, const Vec3& pos, u32 settingA, u32 settingB, s8 playerID, u32 type);
 	void update();
 	void render();
 	void disable();
 	void switchUpdate(EffectFunction updateFunction);
 
 	void applyGravity();
-	void applyVelocity(Vec3* velocity);
+	void applyVelocity(const Vec3& velocity);
 	void applyVelocity();
 
 	void initPoints();
@@ -129,7 +129,7 @@ public:
 	bool valid() const;
 	void update();
 	void render();
-	bool spawn(s8 id, Vec3* pos, u32 settingA, u16 settingB, s8 playerID, u32 type);
+	bool spawn(s8 id, const Vec3& pos, u32 settingA, u16 settingB, s8 playerID, u32 type);
 	void destroy(s8 slot);
 
 	Effect effects[32];
@@ -142,8 +142,8 @@ public:
 namespace Effects {
 
 	bool valid();
-	bool spawn(s8 id, Vec3* pos, s8 playerID);
-	bool spawn(s8 id, Vec3* pos, u32 settingA, u32 settingB, s8 playerID, u32 type);
+	bool spawn(s8 id, const Vec3& pos, s8 playerID);
+	bool spawn(s8 id, const Vec3& pos, u32 settingA, u16 settingB, s8 playerID, u32 type);
 	void update();
 	void render();
 	void destroy(s8 slot);

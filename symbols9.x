@@ -1939,12 +1939,13 @@ _ZN4Math8lerpFx32ERllll = 0x020437a4;
 _ZN4Math8lerpFx32ERlllll = 0x020437f4;
 _ZN4Math4lerpER4Vec2RKS0_l = 0x02043d5c;
 _ZN4Math6sqrt64Emm = 0x02046030;
-_ZN4Math10atan2TableE = 0x020848e4;
-_ZN4Math13unusedCounterE = 0x0208b66c;
-_ZN4Math12frameCounterE = 0x0208b668;
 _ZN4Math5atan2Ell = 0x02043b6c;
 _ZN4Math7inRangeElll = 0x02043750;
 _ZN4Math8distanceEss = 0x02043790;
+
+_ZN4Math10atan2TableE = 0x020848e4;
+_ZN4Math13unusedCounterE = 0x0208b66c;
+_ZN4Math12frameCounterE = 0x0208b668;
 
 
 /*----------------------------------------------------------------*/
@@ -3362,25 +3363,25 @@ _ZN6Effect12updatePointsEv = 0x020e57c4;
 _ZN6Effect12renderPointsEv = 0x020e588c;
 _ZN6Effect10initPointsEv = 0x020e58e0;
 _ZN6Effect12applyGravityEv = 0x020e58fc;
-_ZN6Effect13applyVelocityEP4Vec3 = 0x020e5920;
+_ZN6Effect13applyVelocityERK4Vec3 = 0x020e5920;
 _ZN6Effect13applyVelocityEv = 0x020e5940;
 _ZN6Effect6updateEv = 0x020e5964;
 _ZN6Effect6renderEv = 0x020e59a8;
 _ZN6Effect7disableEv = 0x020e59ec;
 _ZN6Effect12switchUpdateEMS_FvvE = 0x020e59f8;
-_ZN6Effect6createEcP4Vec3mtcm = 0x020e5ac4;
+_ZN6Effect6createEaRK4Vec3mtam = 0x020e5ac4;
 _ZN6EffectC2Ev = 0x020e6414;
 _ZN13EffectHandlerC2Ev = 0x020e68cc;
 _ZN7Effects7destroyEa = 0x020e64f0;
 _ZN7Effects6updateEv = 0x020e650c;
 _ZN7Effects6renderEv = 0x020e6524;
-_ZN7Effects5spawnEaP4Vec3mmam = 0x020e653c;
-_ZN7Effects5spawnEaP4Vec3a = 0x020e657c;
+_ZN7Effects5spawnEaRK4Vec3mtam = 0x020e653c;
+_ZN7Effects5spawnEaRK4Vec3a = 0x020e657c;
 _ZN7Effects5validEv = 0x020e65b4;
-_ZN13EffectHandler7destroyEc = 0x020e65cc;
+_ZN13EffectHandler7destroyEa = 0x020e65cc;
 _ZN13EffectHandler6updateEv = 0x020e66bc;
 _ZN13EffectHandler6renderEv = 0x020e6710;
-_ZN13EffectHandler5spawnEcP4Vec3mtcm = 0x020e6764;
+_ZN13EffectHandler5spawnEaRK4Vec3mtam = 0x020e6764;
 _ZN13EffectHandler5validEv = 0x020e6834;
 
 _ZN7Effects12activeBricksE = 0x0212a41c;
@@ -3403,7 +3404,7 @@ _ZN4BNBL17getRectangleCountEPv = 0x02055aD4;
 
 
 /*----------------------------------------------------------------*/
-/*----------------------------- bnbl -----------------------------*/
+/*------------------------- stage layout -------------------------*/
 /*----------------------------------------------------------------*/
 
 _ZN11StageLayout10changeTileEmmm = 0x020af30c;
@@ -3419,4 +3420,3 @@ _ZN11StageLayout17readTileBehaviourEt = 0x020afa30;
 Liquid_doWaves = 0x021646E0;
 setPlayerStateForWaterBubbles = 0x02102BC4;
 IncrementMegaMushroomDestructionCounter = 0x020200D4;
-
