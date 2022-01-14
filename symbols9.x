@@ -1897,13 +1897,13 @@ _ZN5Vec3sD0Ev = 0x020031B0;
 
 _ZN4Vec310applyRotXZEs = 0x02045760;
 _ZN4Vec310applyRotYZEs = 0x02045808;
-_ZN4Vec312tryNormalizeEv = 0x020458B0;
+_ZN4Vec39normalizeEv = 0x020458B0;
 _ZN4Vec39normalizeERS_S0_ = 0x02045908;
 _ZN4Vec35crossERS_S0_RK7VecFx32S3_ = 0x02045958;
 _ZN4Vec35crossERS_RKS_RK7VecFx32 = 0x020459AC;
 _ZN4Vec38distanceERKS_RK7VecFx32 = 0x020459FC;
-_ZN4Vec3neERK7VecFx32 = 0x02045A40;
-_ZN4Vec3eqERK7VecFx32 = 0x02045A80;
+_ZNK4Vec3neERK7VecFx32 = 0x02045A40;
+_ZNK4Vec3eqERK7VecFx32 = 0x02045A80;
 _ZN4Vec3mLEl =	0x02045ABC;
 _ZN4Vec33mulERS_RKS_l = 0x02045B24;
 _ZN4Vec33subERS_RKS_RK7VecFx32 = 0x02045B90;
@@ -1913,11 +1913,11 @@ _ZN4Vec310applyRotXYEs = 0x02045C28;
 _ZN4Vec212tryNormalizeEv = 0x02045CD0;
 _ZN4Vec29normalizeERS_RKS_ = 0x02045D1C;
 _ZN4Vec211crossLengthERKS_RK7VecFx32 = 0x02045D74;
-_ZN4Vec216magnitudeSquaredEv = 0x02045DBC;
+_ZNK4Vec216magnitudeSquaredEv = 0x02045DBC;
 _ZN4Vec28distanceERKS_RK7VecFx32 = 0x02045DDC;
-_ZN4Vec26lengthEv = 0x02045E10;
-_ZN4Vec2neERK7VecFx32 = 0x02045E2C;
-_ZN4Vec2eqERK7VecFx32 = 0x02045E5C;
+_ZNK4Vec26lengthEv = 0x02045E10;
+_ZNK4Vec2neERK7VecFx32 = 0x02045E2C;
+_ZNK4Vec2eqERK7VecFx32 = 0x02045E5C;
 _ZN4Vec23divERS_RKS_l = 0x02045E88;
 _ZN4Vec2mLEl = 0x02045F14;
 _ZN4Vec23mulERS_RKS_l = 0x02045F60;
@@ -2013,7 +2013,7 @@ _ZN3OAM15objsFromTailSubE = 0x020876E0;
 _ZN3OAM15objSlotsLeftSubE = 0x020876EC;
 _ZN3OAM16affineSetSlotSubE = 0x020876F8;
 
-_ZN3OAM13updateCounterEP9GXOamAttrPS1_llNS_12CounterFlagsE = 0x0200B580;
+_ZN3OAM13updateCounterEPK9GXOamAttrPPS0_llNS_12CounterFlagsE = 0x0200B580;
 _ZN3OAM9loadFilesEPNS_4FileE = 0x0200B708;
 _ZN3OAM9loadFilesEm = 0x0200B740;
 _ZN3OAM9setupFileEPNS_4FileEm = 0x0200B758;
@@ -2022,16 +2022,16 @@ _ZN3OAM15loadFilesToVRAMEm = 0x0200B83C;
 _ZN3OAM16setFilesUnloadedEv = 0x0200B87C;
 _ZN3OAM7copyMtxEP7MtxFx22S1_ = 0x0200B8A4;
 _ZN3OAM8fillDataEttP9GXOamAttrm = 0x0200B358;
-_ZN3OAM4drawEP9GXOamAttrllNS_5FlagsEhhNS_8SettingsE = 0x0200D2A4;
-_ZN3OAM4drawEP9GXOamAttrllNS_5FlagsEhhPK4Vec2sPKsNS_8SettingsE = 0x0200D87C;
-_ZN3OAM7drawMtxEP9GXOamAttrllNS_5FlagsEhhPK7MtxFx22lNS_8SettingsE = 0x0200CE10;
-_ZN3OAM7drawMtxEP9GXOamAttrllNS_5FlagsEhhPK7MtxFx22lsPKsNS_8SettingsE = 0x0200C7D4;
-_ZN3OAM10drawSpriteEP9GXOamAttrllNS_5FlagsEhhPK4Vec2sPKsNS_8SettingsE = 0x0200D578;
-_ZN3OAM7drawSubEP9GXOamAttrllNS_5FlagsEhhNS_8SettingsE = 0x0200C32C;
-_ZN3OAM7drawSubEP9GXOamAttrllNS_5FlagsEhhPK4Vec2sPKsNS_8SettingsE = 0x0200C600;
-_ZN3OAM10drawMtxSubEP9GXOamAttrllNS_5FlagsEhhPK7MtxFx22NS_8SettingsE = 0x0200BED4;
-_ZN3OAM10drawMtxSubEP9GXOamAttrllNS_5FlagsEhhPK7MtxFx22sPKsNS_8SettingsE = 0x0200B8C8;
-_ZN3OAM4Anim4initEPNS0_10FrameEntryEmhlt = 0x0200B510;
+_ZN3OAM4drawEPK9GXOamAttrllNS_5FlagsEhhNS_8SettingsE = 0x0200D2A4;
+_ZN3OAM4drawEPK9GXOamAttrllNS_5FlagsEhhPK4Vec2sPKsNS_8SettingsE = 0x0200D87C;
+_ZN3OAM7drawMtxEPK9GXOamAttrllNS_5FlagsEhhPK7MtxFx22lNS_8SettingsE = 0x0200CE10;
+_ZN3OAM7drawMtxEPK9GXOamAttrllNS_5FlagsEhhPK7MtxFx22lsPKsNS_8SettingsE = 0x0200C7D4;
+_ZN3OAM10drawSpriteEPK9GXOamAttrllNS_5FlagsEhhPK4Vec2sPKsNS_8SettingsE = 0x0200D578;
+_ZN3OAM7drawSubEPK9GXOamAttrllNS_5FlagsEhhNS_8SettingsE = 0x0200C32C;
+_ZN3OAM7drawSubEPK9GXOamAttrllNS_5FlagsEhhPK4Vec2sPKsNS_8SettingsE = 0x0200C600;
+_ZN3OAM10drawMtxSubEPK9GXOamAttrllNS_5FlagsEhhPK7MtxFx22NS_8SettingsE = 0x0200BED4;
+_ZN3OAM10drawMtxSubEPK9GXOamAttrllNS_5FlagsEhhPK7MtxFx22sPKsNS_8SettingsE = 0x0200B8C8;
+_ZN3OAM4Anim4initEPKNS0_10FrameEntryEmhlt = 0x0200B510;
 _ZN3OAM4Anim6updateEv = 0x0200B44C;
 _ZN3OAM4Anim10drawSpriteEllmhhP4Vec2sPsm = 0x0200B3F4;
 _ZN3OAM4Anim7drawSubEllmhhP4Vec2sPsm = 0x0200B39C;
@@ -2261,8 +2261,8 @@ _ZN6ObjectD1Ev										= 0x0201311c;
 _ZN6ObjectD2Ev										= 0x0201311c;
 _ZN6Object10postCreateE15BaseReturnState			= 0x020131a8;
 
-_ZN6Object10spawnSceneEtmN4Base10ObjectTypeE		= 0x02013168;
-_ZN6Object11spawnObjectEtP4BasemNS0_10ObjectTypeE	= 0x02013188;
+_ZN6Object10spawnSceneEtm10ObjectType				= 0x02013168;
+_ZN6Object11spawnObjectEtP4Basem10ObjectType		= 0x02013188;
 
 _ZTV6Object											= 0x0203bcd8;
 
@@ -2517,6 +2517,7 @@ _ZTV16StageEntity3DAnm						= 0x02123ed8;
 
 _ZN4ViewD0Ev		= 0x020a3a88;
 _ZN4ViewD1Ev		= 0x020a3a5c;
+_ZN4ViewD2Ev		= 0x020a3a5c;
 _ZN4View8onRenderEv	= 0x020a3abc;
 
 _ZTV4View			= 0x020c6eac;
@@ -2528,6 +2529,7 @@ _ZTV4View			= 0x020c6eac;
 
 _ZN9OrthoViewD0Ev		= 0x020ce734;
 _ZN9OrthoViewD1Ev		= 0x020ce6dc;
+_ZN9OrthoViewD2Ev		= 0x020ce6dc;
 
 _ZTV9OrthoView			= 0x02123d08;
 
@@ -2537,6 +2539,7 @@ _ZTV9OrthoView			= 0x02123d08;
 
 _ZN9PerspViewD0Ev		= 0x020CD398;
 _ZN9PerspViewD1Ev		= 0x020CD340;
+_ZN9PerspViewD2Ev		= 0x020CD340;
 
 _ZTV9PerspView			= 0x020E5938;
 
@@ -2547,6 +2550,7 @@ _ZTV9PerspView			= 0x020E5938;
 
 _ZN12EndingCameraD0Ev			= 0x020DE16C;
 _ZN12EndingCameraD1Ev			= 0x020DE104;
+_ZN12EndingCameraD2Ev			= 0x020DE104;
 _ZN12EndingCamera8onCreateEv	= 0x020DE4F8;
 _ZN12EndingCamera8onUpdateEv	= 0x020DE408;
 _ZN12EndingCamera8onRenderEv	= 0x020DE424;
@@ -2577,6 +2581,7 @@ _ZTV11StageCamera			= 0x02123cb8;
 
 _ZN11WorldCameraD0Ev			= 0x020CCC68;
 _ZN11WorldCameraD1Ev			= 0x020CCC04;
+_ZN11WorldCameraD2Ev			= 0x020CCC04;
 _ZN11WorldCamera8onCreateEv		= 0x020CD040;
 _ZN11WorldCamera8onUpdateEv		= 0x020CCD7C;
 _ZN11WorldCamera8onRenderEv		= 0x020CCF6C;
@@ -2596,6 +2601,7 @@ _ZTV11WorldCamera				= 0x020E58E8;
 
 _ZN14WorldMapCameraD0Ev				= 0x020D15B4;
 _ZN14WorldMapCameraD1Ev				= 0x020D1544;
+_ZN14WorldMapCameraD2Ev				= 0x020D1544;
 _ZN14WorldMapCamera8onCreateEv		= 0x020D1CCC;
 _ZN14WorldMapCamera8onUpdateEv		= 0x001575CC;
 _ZN14WorldMapCamera8onRenderEv		= 0x020D1BF8;
@@ -2613,6 +2619,7 @@ _ZTV14WorldMapCamera				= 0x020E8C3C;
 
 _ZN14FixedOrthoViewD0Ev	= 0x020D3E4C;
 _ZN14FixedOrthoViewD1Ev	= 0x020D3DF4;
+_ZN14FixedOrthoViewD2Ev	= 0x020D3DF4;
 
 _ZTV14FixedOrthoView	= 0x020DAB34;
 
@@ -2623,6 +2630,7 @@ _ZTV14FixedOrthoView	= 0x020DAB34;
 
 _ZN17TitleScreenCameraD0Ev				= 0x020D3938;
 _ZN17TitleScreenCameraD1Ev				= 0x020D38D4;
+_ZN17TitleScreenCameraD2Ev				= 0x020D38D4;
 _ZN17TitleScreenCamera8onCreateEv		= 0x020D3B68;
 _ZN17TitleScreenCamera8onUpdateEv		= 0x020D3A50;
 _ZN17TitleScreenCamera8onRenderEv		= 0x020D3A94;
@@ -3188,10 +3196,20 @@ _ZTV13ClimbingKoopa											= 0x0214520C;
 /*---------------------------- aeabi -----------------------------*/
 /*----------------------------------------------------------------*/
 
-__aeabi_uidiv		= 0x207e344;
-__aeabi_uidivmod	= 0x207e344;
-__aeabi_idiv		= 0x207e138;
-__aeabi_idivmod		= 0x207e138;
+__aeabi_uidiv		= 0x0207e344;
+__aeabi_uidivmod	= 0x0207e344;
+__aeabi_idiv		= 0x0207e138;
+__aeabi_idivmod		= 0x0207e138;
+
+/* __aeabi_uldiv		= 0x0207df30; */
+/* __aeabi_uldivmod		= 0x0207df3c; */
+/* __aeabi_ldiv			= 0x0207df88; */
+/* __aeabi_ldivmod		= 0x0207df78; */
+
+_ull_div = 0x0207df30;
+_ull_mod = 0x0207df3c;
+_ll_div  = 0x0207df88;
+_ll_mod  = 0x0207df78;
 
 
 /*----------------------------------------------------------------*/
@@ -3353,11 +3371,11 @@ _ZN6Effect12switchUpdateEMS_FvvE = 0x020e59f8;
 _ZN6Effect6createEcP4Vec3mtcm = 0x020e5ac4;
 _ZN6EffectC2Ev = 0x020e6414;
 _ZN13EffectHandlerC2Ev = 0x020e68cc;
-_ZN7Effects7destroyEa = 0x020e64f0;
+_ZN7Effects7destroyEc = 0x020e64f0;
 _ZN7Effects6updateEv = 0x020e650c;
 _ZN7Effects6renderEv = 0x020e6524;
-_ZN7Effects5spawnEaP4Vec3mmam = 0x020e653c;
-_ZN7Effects5spawnEaP4Vec3a = 0x020e657c;
+_ZN7Effects5spawnEcP4Vec3mtcm = 0x020e653c;
+_ZN7Effects5spawnEcP4Vec3c = 0x020e657c;
 _ZN7Effects5validEv = 0x020e65b4;
 _ZN13EffectHandler7destroyEc = 0x020e65cc;
 _ZN13EffectHandler6updateEv = 0x020e66bc;
