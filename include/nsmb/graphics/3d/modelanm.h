@@ -61,4 +61,12 @@ public:
 		return frameController.getFrameCount();
 	}
 
+	constexpr void setSpeed(fx32 speed) {
+		frameController.speed = speed;
+	}
+
+	constexpr fx32 getSpeed() {
+		return frameController.speed;
+	}
+	
 };

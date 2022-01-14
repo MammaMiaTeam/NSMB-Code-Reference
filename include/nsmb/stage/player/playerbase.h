@@ -402,12 +402,11 @@ public:
 	void saveCurrentPowerup();
 
 	// 0212B26C
-	void linkActor(StageActor& actor); // link actor
+	void setLinkedActor(StageActor& actor); // link actor
 
 	// 0212BDE0
-	void unlinkActorIfLinked(StageActor& actor); // unlink given actor if already linked
-
-	// 0212c1b8
+	void removeLinkedActor(StageActor& actor); // unlink given actor if already linked	// 0212c1b8
+	
 	//void checkIfSecondPlayerExists(); 
 
 };

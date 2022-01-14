@@ -14,3 +14,6 @@
 
 #include "stage/player/misc.h"
 #include "stage/player/player.h"
+
+#include "stage/actors/item.h"
+#include "stage/actors/toadsworth.h"
