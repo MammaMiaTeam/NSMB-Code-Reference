@@ -424,6 +424,7 @@ OSi_DoUnlockByWord = 0x20641F0;
 OS_TryLockByWord = 0x2064280;
 OS_InitLock = 0x20642E4;
 OS_VSNPrintf = 0x20643D4;
+OS_SNPrintf = 0x20643D4;
 OS_VSPrintf = 0x2064C9C;
 OS_SPrintf = 0x2064CB4;
 OS_GetThreadParameter = 0x2064DD8;
@@ -3255,27 +3256,26 @@ _ZN5Stage9getRandomEv = 0x0200e6f4;
 /*------------------------- player base --------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN10PlayerBase13getRunKeyHeldEv						= 0x0212C7A4;
-_ZN10PlayerBase14getLeftKeyHeldEv                       = 0x0212C8CC;
-_ZN10PlayerBase15getRightKeyHeldEv                      = 0x0212C8BC;
-_ZN10PlayerBase17getJumpKeyPressedEv                    = 0x0212C63C;
-
-_ZN10PlayerBase9linkActorER10StageActor                 = 0x0212B26C;
-_ZN10PlayerBase19unlinkActorIfLinkedER10StageActor      = 0x0212BDE0;
+_ZN10PlayerBase13getRunKeyHeldEv							= 0x0212C7A4;
+_ZN10PlayerBase14getLeftKeyHeldEv							= 0x0212C8CC;
+_ZN10PlayerBase15getRightKeyHeldEv							= 0x0212C8BC;
+_ZN10PlayerBase17getJumpKeyPressedEv						= 0x0212C63C;
+_ZN10PlayerBase14setLinkedActorER10StageActor				= 0x0212B26C;
+_ZN10PlayerBase17removeLinkedActorIfLinkedER10StageActor	= 0x0212BDE0;
 
 /*----------------------------------------------------------------*/
 /*---------------------------- player ----------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN6Player12setAnimationEmtmlt      					= 0x02120BB8;
-_ZN6Player17setAnimationSpeedEl     					= 0x021209E0;
+_ZN6Player12setAnimationEmtmlt							= 0x02120BB8;
+_ZN6Player17setAnimationSpeedEl							= 0x021209E0;
 _ZN6Player16setMovementStateEMS_FblEl					= 0x021006AC;
-_ZN6Player15updateAnimationEv       					= 0x02120A24;
-_ZN6Player6freezeEb                 					= 0x0211F34C;
-_ZN6Player8unfreezeEv               					= 0x0211F2EC;
+_ZN6Player15updateAnimationEv							= 0x02120A24;
+_ZN6Player6freezeEb										= 0x0211F34C;
+_ZN6Player8unfreezeEv									= 0x0211F2EC;
 
-_ZN6Player14tryUnlinkActorEv                            = 0x02104C9C;
-_ZN6Plater11unlinkActorEv                               = 0x02104CCC;
+_ZN6Player14tryUnlinkActorEv							= 0x02104C9C;
+_ZN6Plater11unlinkActorEv								= 0x02104CCC;
 
 /*----------------------------------------------------------------*/
 /*---------------------------- input -----------------------------*/
@@ -3371,11 +3371,11 @@ _ZN6Effect12switchUpdateEMS_FvvE = 0x020e59f8;
 _ZN6Effect6createEcP4Vec3mtcm = 0x020e5ac4;
 _ZN6EffectC2Ev = 0x020e6414;
 _ZN13EffectHandlerC2Ev = 0x020e68cc;
-_ZN7Effects7destroyEc = 0x020e64f0;
+_ZN7Effects7destroyEa = 0x020e64f0;
 _ZN7Effects6updateEv = 0x020e650c;
 _ZN7Effects6renderEv = 0x020e6524;
-_ZN7Effects5spawnEcP4Vec3mtcm = 0x020e653c;
-_ZN7Effects5spawnEcP4Vec3c = 0x020e657c;
+_ZN7Effects5spawnEaP4Vec3mmam = 0x020e653c;
+_ZN7Effects5spawnEaP4Vec3a = 0x020e657c;
 _ZN7Effects5validEv = 0x020e65b4;
 _ZN13EffectHandler7destroyEc = 0x020e65cc;
 _ZN13EffectHandler6updateEv = 0x020e66bc;
