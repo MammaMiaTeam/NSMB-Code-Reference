@@ -1924,9 +1924,9 @@ _ZN4Vec23mulERS_RKS_l = 0x02045F60;
 _ZN4Vec23subERS_RKS_RK7VecFx32 = 0x02045FB8;
 _ZN4Vec23addERS_RKS_RK7VecFx32 = 0x02045FF4;
 
-_ZTV4Vec3 = 0x02039208;
-_ZTV4Vec2 = 0x020391E8;
-_ZTV5Vec3s = 0x020391F8;
+_ZTV4Vec3 = 0x02039200;
+_ZTV4Vec2 = 0x020391E0;
+_ZTV5Vec3s = 0x020391F0;
 
 
 /*----------------------------------------------------------------*/
