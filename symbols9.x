@@ -2136,12 +2136,12 @@ _ZN8Particle7Handler14pCurSPLManagerE																		= 0x208b51c;
 _ZN8Particle7Handler8pHandlerE																				= 0x208b520;
 _ZN8Particle7Handler12pMainGameSPAE																			= 0x208b524;
 
-_ZTVN8Particle14ControllerBaseE																				= 0x0203cfdc;
-_ZTVN8Particle10ControllerE																					= 0x0203cfbc;
-_ZTVN8Particle16ControllerLiquidE																			= 0x0203cfcc;
-_ZTVN8Particle22ControllerManualLiquidE																		= 0x0203cfac;
-_ZTVN8Particle16ControllerManualE																			= 0x0203cf9c;
-_ZTVN8Particle7HandlerE																						= 0x0203cf8c;
+_ZTVN8Particle14ControllerBaseE																				= 0x0203cfd4;
+_ZTVN8Particle10ControllerE																					= 0x0203cfb4;
+_ZTVN8Particle16ControllerLiquidE																			= 0x0203cfc4;
+_ZTVN8Particle22ControllerManualLiquidE																		= 0x0203cfa4;
+_ZTVN8Particle16ControllerManualE																			= 0x0203cf94;
+_ZTVN8Particle7HandlerE																						= 0x0203cf84;
 
 
 /*----------------------------------------------------------------*/
@@ -2872,7 +2872,7 @@ _ZN11PlatformMgrD2Ev	= 0x0201d9e4;
 _ZN11PlatformMgrD1Ev	= 0x0201d9e4;
 _ZN11PlatformMgrD0Ev	= 0x0201d9b8;
 
-_ZTV11PlatformMgr		= 0x0203C628;
+_ZTV11PlatformMgr		= 0x0203C620;
 
 
 /*----------------------------------------------------------------*/
@@ -2928,7 +2928,7 @@ _ZN16RotatingPlatform7setLeftEl											= 0x0201bc00;
 _ZN16RotatingPlatform7setBaseEll										= 0x0201bbe4;
 _ZN16RotatingPlatform6updateEv											= 0x0201ba18;
 
-_ZTV16RotatingPlatform													= 0x0203c64C;
+	_ZTV16RotatingPlatform													= 0x0203c64C;
 
 
 /*----------------------------------------------------------------*/
