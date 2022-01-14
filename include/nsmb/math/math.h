@@ -10,6 +10,9 @@ struct FxRect {
 	fx32 halfHeight;
 };
 
+class Vec3;
+class Vec2;
+
 
 namespace Math {
 
@@ -78,7 +81,7 @@ namespace Math {
 	//02044120
 	void lerp(Vec3& start, const Vec3& end, fx32 scale, fx32 maxStep, fx32 minStep);
 
-	//020437a4
+	//020437a4 this is *not* a lerp
 	void lerpFx32(fx32& start, fx32 end, fx32 ratio, fx32 maxStep);
 
 	//02044280 (sub?)
@@ -122,12 +125,15 @@ namespace Math {
 	__inline fx16 sin(int idx) {
 		return FX_SinIdx(u32(idx) & 0xFFFF);
 	}
+
 	__inline fx16 cos(int idx) {
 		return FX_CosIdx(u32(idx) & 0xFFFF);
 	}
+
 	constexpr fx32 mul(fx32 a, fx32 b) {
 		return ((fx32)(((s64)(a)*b + 0x800LL) >> FX32_SHIFT));
 	}
+
 	constexpr fx32 div(fx32 n, fx32 d) {
 		if_consteval {
 			return (s32)(((s64)(n << 12)) / (d));
@@ -136,6 +142,7 @@ namespace Math {
 			return FX_Div(n, d);
 		}
 	}
+
 	constexpr fx32 inv(fx32 d) {
 		if_consteval {
 			return div(FX32_ONE, d);
@@ -144,18 +151,21 @@ namespace Math {
 			return FX_Inv(d);
 		}
 	}
+
 	__inline fx32 sqrt(fx32 p) {
 		return FX_Sqrt(p);
 	}
 
-	constexpr fx32 clamp(fx32 a, fx32 min, fx32 max)
-    {
-        if (a < min)
-            return min;
-        else if (a > max)
-            return max;
-        else
-            return a;
+	constexpr fx32 lerpFx(fx32 start, fx32 end, fx32 step) {
+		return mul(end - start, step) + start;
+	}
+
+	constexpr fx32 abs(fx32 a) {
+		return (a < 0) ? -a : a;
+	}
+
+	constexpr fx32 clamp(fx32 a, fx32 min, fx32 max) {
+        return a < min ? min : (a > max ? max : a);
     }
 
 	constexpr fx32 smoothstep(fx32 start, fx32 end, fx32 step)

@@ -1,5 +1,6 @@
 #pragma once
 #include "nitro_if.h"
+#include "math.h"
 
 
 /*
@@ -47,8 +48,12 @@ public:
 	}
 
 	__inline static Vec3& div(Vec3& out, const VecFx32& lhs, fx32 rhs) {
-		out = Vec3(FX_Div(lhs.x, rhs), FX_Div(lhs.y, rhs), FX_Div(lhs.z, rhs));
+		out = Vec3(Math::div(lhs.x, rhs), Math::div(lhs.y, rhs), Math::div(lhs.z, rhs));
 		return out;
+	}
+
+	__inline static Vec3 lerp(const VecFx32& start, const VecFx32& end, fx32 step) {
+		return Vec3(Math::lerpFx(start.x, end.x, step), Math::lerpFx(start.y, end.y, step), Math::lerpFx(start.z, end.z, step));
 	}
 
 
@@ -304,12 +309,12 @@ public:
 	}
 
 	__inline static Vec3s& mul(Vec3s& out, const VecFx16& lhs, fx32 rhs) {
-		out = Vec3s(FX_MulInline(lhs.x, rhs), FX_MulInline(lhs.y, rhs), FX_MulInline(lhs.z, rhs));
+		out = Vec3s(Math::mul(lhs.x, rhs), Math::mul(lhs.y, rhs), Math::mul(lhs.z, rhs));
 		return out;
 	}
 
 	__inline static Vec3s& div(Vec3s& out, const VecFx16& lhs, fx32 rhs) {
-		out = Vec3s(FX_Div(lhs.x, rhs), FX_Div(lhs.y, rhs), FX_Div(lhs.z, rhs));
+		out = Vec3s(Math::div(lhs.x, rhs), Math::div(lhs.y, rhs), Math::div(lhs.z, rhs));
 		return out;
 	}
 

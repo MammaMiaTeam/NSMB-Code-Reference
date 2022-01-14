@@ -8,7 +8,7 @@ class ostream
 {
 	static constexpr unsigned buffer_size = 120;
 	static char buffer[buffer_size];
-	
+
 public:
 	static void set_buffer(const char* char_ptr);
 	static void flush();
@@ -57,7 +57,14 @@ public:
 	inline ostream& operator<<(long int val)           { return *this << static_cast<uint32_t>(val); }
 	inline ostream& operator<<(int64_t val)            { return *this << static_cast<uint64_t>(val); }
 	inline ostream& operator<<(bool b)                 { return *this << (b ? "true" : "false"); }
-	
+
+	template<typename Ret, class Class, class... Args> // pointer to member function
+	inline ostream& operator<<(Ret(Class::*func)(Args...))
+	{
+		struct PTMF { void* func; u32 adj; };
+		return *this << reinterpret_cast<PTMF*>(&func)->func;
+	}
+
 #ifdef FXTYPE_INCLUDED
 
 	ostream& operator<<(const Fx16& fx);
@@ -122,7 +129,7 @@ public:
 
 		return *this;
 	}
-	
+
 #endif
 };
 

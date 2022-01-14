@@ -1,5 +1,5 @@
 #pragma once
-#ifdef __INTELLISENSE__
+#ifdef _MSC_VER
 
 #define __asm__(x)
 #define __extension__(x)

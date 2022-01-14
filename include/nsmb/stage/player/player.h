@@ -163,16 +163,31 @@ public:
 	u8 unkBCA;
 	bool lookAtInProgress; // set to true when "LookingAtTarget" is enabled and the player's head rotation is being calculated
 
-	void setMovementState(bool (Player::*func)());
+	
+	// 021006AC
+	void setMovementState(bool (Player::*func)(s32), s32 args = 0);
 
-	void setAnimation(int animId, int startFrame, int unk1, int updateSpeed, int unk2);
-	void setAnimationSpeed(int updateSpeed);
+	// 02120BB8
+	void setAnimation(u32 id, u16 startFrame, u32 unk1, fx32 speed, u16 unk2);
+
+	// 021209E0
+	void setAnimationSpeed(fx32 speed);
+
+	// 02120A24
 	void updateAnimation();
 
-	void removeHeldActor();
+	// 02104C9C
+	void tryUnlinkActor(); // unlink actor if something is already linked
 
+	// 02104CCC
+	void unlinkActor(); // unlink actor with no checks
+
+	// 0211F34C
 	void freeze(bool lookAtBoss);
+
+	// 0211F2EC
 	void unfreeze();
+
 
 	//
 	Player();
