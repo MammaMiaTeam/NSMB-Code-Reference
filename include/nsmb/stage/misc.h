@@ -36,13 +36,13 @@ namespace Stage
 
 
 	__inline bool getEvent(u8 id) {
-		return events & (1ULL << id);
+		return events & (1ULL << (id - 1));
 	}
 	__inline void setEvent(u8 id) {
-		events &= ~(1ULL << id);
+		events &= ~(1ULL << (id - 1));
 	}
 	__inline void clearEvent(u8 id) {
-		events &= ~(1ULL << id);
+		events &= ~(1ULL << (id - 1));
 	}
 
 

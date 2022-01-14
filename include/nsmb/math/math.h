@@ -94,15 +94,17 @@ namespace Math {
 	u32 generateSeed();
 
 
-	constexpr inline int fromRadians(fx32 r) {
+	constexpr s16 fromRadians(fx32 r) {
 		return (r * FX32_CONST(0x10000)) / FX64C_TWOPI;
 	}
-	constexpr inline int fromDegrees(int d) {
-		return (d * 0x10000) / 360;
+	constexpr s16 fromDegrees(int d) {
+		while (d >= 360) d -= 360;
+		while (d < 0) d += 360;
+		return static_cast<s16>((d * 0x10000) / 360);
 	}
 
 	template<typename T>
-	constexpr inline void swap(T& a, T& b) {
+	constexpr void swap(T& a, T& b) {
 		T tmp = a;
 		a = b;
 		b = tmp;
@@ -125,15 +127,12 @@ namespace Math {
 	__inline fx16 sin(int idx) {
 		return FX_SinIdx(u32(idx) & 0xFFFF);
 	}
-
 	__inline fx16 cos(int idx) {
 		return FX_CosIdx(u32(idx) & 0xFFFF);
 	}
-
 	constexpr fx32 mul(fx32 a, fx32 b) {
-		return ((fx32)(((s64)(a)*b + 0x800LL) >> FX32_SHIFT));
+		return ((fx32)(((s64)(a)*b + FX32_HALF) >> FX32_SHIFT));
 	}
-
 	constexpr fx32 div(fx32 n, fx32 d) {
 		if_consteval {
 			return (s32)(((s64)(n << 12)) / (d));
@@ -142,7 +141,6 @@ namespace Math {
 			return FX_Div(n, d);
 		}
 	}
-
 	constexpr fx32 inv(fx32 d) {
 		if_consteval {
 			return div(FX32_ONE, d);
@@ -151,19 +149,24 @@ namespace Math {
 			return FX_Inv(d);
 		}
 	}
-
 	__inline fx32 sqrt(fx32 p) {
 		return FX_Sqrt(p);
 	}
 
-	constexpr fx32 lerpFx(fx32 start, fx32 end, fx32 step) {
-		return mul(end - start, step) + start;
+	constexpr fx32 lerpFx(fx32 start, fx32 end, fx32 factor) {
+		return mul(end - start, factor) + start;
 	}
-
+	template<class A, class B>
+	constexpr auto lerpInt(A start, B end, fx32 factor) {
+		fx32 a = start * FX32_ONE;
+		fx32 b = end * FX32_ONE;
+		return FX_Whole(lerpFx(a, b, factor));
+	}
+	
 	constexpr fx32 abs(fx32 a) {
 		return (a < 0) ? -a : a;
 	}
-
+	
 	constexpr fx32 clamp(fx32 a, fx32 min, fx32 max) {
         return a < min ? min : (a > max ? max : a);
     }
@@ -175,19 +178,17 @@ namespace Math {
         return mul(end, step) + mul(start, (1.0fx - step));
 	}
 
-	template<class Ret>
-	__inline s32 getRangedValue(s32 max, Ret(*function)()) {
-		return (function)() % max;
+	__inline s32 getRangedValue(s32 value, s32 max) {
+		return value % max;
 	}
 
-	template<class Ret>
-	__inline s32 getRangedValue(s32 min, s32 max, Ret(*function)()) {
-		return ((function)() % (max - min)) + min;
+	__inline s32 getRangedValue(s32 value, s32 min, s32 max) {
+		return (value % (max - min)) + min;
 	}
 
 #define IMPL_RANDOM(function) \
-	__inline s32 getRandom(s32 max) { return Math::getRangedValue(max, (function) ); } \
-	__inline s32 getRandom(s32 min, s32 max) { return Math::getRangedValue(min, max, (function) ); }
+	__inline s32 getRandom(s32 max) { return Math::getRangedValue((function)(), max); } \
+	__inline s32 getRandom(s32 min, s32 max) { return Math::getRangedValue((function)(), min, max); }
 
 	//02044308 wtf
 

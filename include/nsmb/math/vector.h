@@ -17,11 +17,11 @@ public:
 	void applyRotXZ(fx16 angle);				// Rotates the vector around the y-axis
 	void applyRotXY(fx16 angle);				// Rotates the vector around the z-axis
 	bool normalize();							// If x, y and z are not zero, the vector is normalized and returns true.
-	bool operator!=(const VecFx32& in);			// returns true if vectors are not equal
-	bool operator==(const VecFx32& in);			// returns true if vectors are equal
-	void operator*=(fx32 in);					// Scalar multiplication
+	bool operator!=(const VecFx32& in) const;	// returns true if vectors are not equal
+	bool operator==(const VecFx32& in) const;	// returns true if vectors are equal
+	void operator*=(fx32 in) ;					// Scalar multiplication
 
-	static void normalize(Vec3& out, Vec3& in);											// Normalizes in and out
+	static void normalize(Vec3& out, Vec3& in);									// Normalizes in and out
 	static void cross(Vec3& out, Vec3& out2, const VecFx32& a, const VecFx32& b);		// Performs a x b and stores the result in out and out2
 	static void cross(Vec3& out, const Vec3& a, const VecFx32& b);						// Performs a x b and stores the result in out
 	static fx32 distance(const Vec3& a, const VecFx32& b);								// Calculates the distance between a and b
@@ -57,25 +57,25 @@ public:
 	}
 
 
-	__inline Vec3 operator+(const VecFx32& rhs) {
+	__inline Vec3 operator+(const VecFx32& rhs) const {
 		Vec3 out;
 		Vec3::add(out, *this, rhs);
 		return out;
 	}
 
-	__inline Vec3 operator-(const VecFx32& rhs) {
+	__inline Vec3 operator-(const VecFx32& rhs) const {
 		Vec3 out;
 		Vec3::sub(out, *this, rhs);
 		return out;
 	}
 
-	__inline Vec3 operator*(fx32 rhs) {
+	__inline Vec3 operator*(fx32 rhs) const {
 		Vec3 out;
 		Vec3::mul(out, *this, rhs);
 		return out;
 	}
 
-	__inline Vec3 operator/(fx32 rhs) {
+	__inline Vec3 operator/(fx32 rhs) const {
 		Vec3 out;
 		Vec3::div(out, *this, rhs);
 		return out;
@@ -102,15 +102,23 @@ public:
 		return v;
 	}
 
-	__inline fx32 length() {
+	__inline Vec3 normalized() const {
+		Vec3 out = *this;
+		out.normalize();
+		return out;
+	}
+
+	__inline fx32 length() const {
 		return VEC_Mag(this);
 	}
 
-	__inline void cross(const VecFx32& rhs) {
-		Vec3::cross(*this, *this, rhs);
+	__inline Vec3 cross(const Vec3& rhs) const {
+		Vec3 out;
+		Vec3::cross(out, *this, rhs);
+		return out;
 	}
 
-	__inline fx32 distance(const VecFx32& rhs) {
+	__inline fx32 distance(const VecFx32& rhs) const {
 		return Vec3::distance(*this, rhs);
 	}
 
@@ -146,10 +154,10 @@ public:
 	virtual ~Vec2();
 
 	bool normalize();							// If x, and y are not zero, the vector is normalized and returns true.
-	fx64 magnitudeSquared();					// Returns the squared magnitude (length^2).
-	fx32 length();								// Returns the vector's length (magnitude).
-	bool operator!=(const VecFx32& in);			// Returns true if vectors are not equal.
-	bool operator==(const VecFx32& in);			// Returns true if vectors are equal.
+	fx64 magnitudeSquared() const;				// Returns the squared magnitude (length^2).
+	fx32 length() const;						// Returns the vector's length (magnitude).
+	bool operator!=(const VecFx32& in) const;	// Returns true if vectors are not equal.
+	bool operator==(const VecFx32& in) const;	// Returns true if vectors are equal.
 	void operator*=(fx32 in);					// Scalar multiplication.
 
 	static void normalize(Vec2& out, const Vec2& in);						// Normalizes in and stores the result in out.
@@ -191,27 +199,27 @@ public:
 
 
 
-	__inline Vec2 operator+(const Vec2& rhs) {
+	__inline Vec2 operator+(const Vec2& rhs) const {
 		VecFx32 tmp = { rhs.x, rhs.y, 0 };
 		Vec2 out;
 		Vec2::add(out, *this, tmp);
 		return out;
 	}
 
-	__inline Vec2 operator-(const Vec2& rhs) {
+	__inline Vec2 operator-(const Vec2& rhs) const {
 		VecFx32 tmp = { rhs.x, rhs.y, 0 };
 		Vec2 out;
 		Vec2::sub(out, *this, tmp);
 		return out;
 	}
 
-	__inline Vec2 operator*(fx32 rhs) {
+	__inline Vec2 operator*(fx32 rhs) const {
 		Vec2 out;
 		Vec2::mul(out, *this, rhs);
 		return out;
 	}
 
-	__inline Vec2 operator/(fx32 rhs) {
+	__inline Vec2 operator/(fx32 rhs) const {
 		Vec2 out;
 		Vec2::div(out, *this, rhs);
 		return out;
@@ -245,12 +253,12 @@ public:
 		return v;
 	}
 
-	__inline s32 crossLength(const Vec2& rhs) {
+	__inline s32 crossLength(const Vec2& rhs) const {
 		VecFx32 tmp = { rhs.x, rhs.y, 0 };
 		return Vec2::crossLength(*this, tmp);
 	}
 
-	__inline fx32 distance(const Vec2& rhs) {
+	__inline fx32 distance(const Vec2& rhs) const {
 		VecFx32 tmp = { rhs.x, rhs.y, 0 };
 		return Vec2::distance(*this, tmp);
 	}
@@ -319,25 +327,25 @@ public:
 	}
 
 
-	__inline Vec3s operator+(const VecFx16& rhs) {
+	__inline Vec3s operator+(const VecFx16& rhs) const {
 		Vec3s out;
 		Vec3s::add(out, *this, rhs);
 		return out;
 	}
 
-	__inline Vec3s operator-(const VecFx16& rhs) {
+	__inline Vec3s operator-(const VecFx16& rhs) const {
 		Vec3s out;
 		Vec3s::sub(out, *this, rhs);
 		return out;
 	}
 
-	__inline Vec3s operator*(fx32 rhs) {
+	__inline Vec3s operator*(fx32 rhs) const {
 		Vec3s out;
 		Vec3s::mul(out, *this, rhs);
 		return out;
 	}
 
-	__inline Vec3s operator/(fx32 rhs) {
+	__inline Vec3s operator/(fx32 rhs) const {
 		Vec3s out;
 		Vec3s::div(out, *this, rhs);
 		return out;
@@ -368,7 +376,7 @@ public:
 		return v;
 	}
 
-	__inline bool operator==(const Vec3s& rhs) {
+	__inline bool operator==(const Vec3s& rhs) const {
 		if (x == rhs.x && y == rhs.y && z == rhs.x) {
 			return true;
 		}
@@ -376,7 +384,7 @@ public:
 		return false;
 	}
 
-	__inline bool operator!=(const Vec3s& rhs) {
+	__inline bool operator!=(const Vec3s& rhs) const {
 		if (x != rhs.x || y != rhs.y || z != rhs.x) {
 			return true;
 		}

@@ -96,6 +96,10 @@ public:
 	//020131fc
 	sym static void switchScene(u16 sceneID, u32 settings) __body
 
+	__inline static void switchScene(SceneID sceneID, u32 settings) {
+		switchScene(u16(sceneID), settings);
+	}
+
 	//020131d8
 	sym static void switchToFileCorruptedScene(u32 settings) __body
 

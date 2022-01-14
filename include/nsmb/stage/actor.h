@@ -5,6 +5,9 @@
 #include "nsmb/physics/platformmgr.h"
 
 
+class Player;
+
+
 class StageActor : public Actor
 {
 public:

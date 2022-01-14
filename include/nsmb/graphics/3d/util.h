@@ -35,6 +35,10 @@ namespace GFX {
 	//02044814
 	ssym void setTranslation(MtxFx43& mtx, fx32 x, fx32 y, fx32 z) __body
 
+	__inline void setTranslation(MtxFx43& mtx, const VecFx32& vec) {
+		GFX::setTranslation(mtx, vec.x, vec.y, vec.z);
+	}
+
 	//0204485c
 	ssym void rotateZ(MtxFx43& mtx, s16 angle) __body
 
@@ -53,8 +57,20 @@ namespace GFX {
 	//020449f8
 	ssym void scale(MtxFx43& mtx, fx32 scaleX, fx32 scaleY, fx32 scaleZ) __body
 
+	__inline void scale(MtxFx43& mtx, fx32 scale) {
+		GFX::scale(mtx, scale, scale, scale);
+	}
+
+	__inline void scale(MtxFx43& mtx, const VecFx32& vec) {
+		GFX::scale(mtx, vec.x, vec.y, vec.z);
+	}
+
 	//02044a24
 	ssym void translate(MtxFx43& mtx, fx32 transX, fx32 transY, fx32 transZ) __body
+
+	__inline void translate(MtxFx43& mtx, const VecFx32& vec) {
+		GFX::translate(mtx, vec.x, vec.y, vec.z);
+	}
 
 	constexpr void identity(MtxFx43& mtx) {
 		if_consteval{
@@ -67,6 +83,10 @@ namespace GFX {
 		else {
 			MTX_Identity43(&mtx);
 		}
+	}
+
+	__inline void multiply(const MtxFx43& a, const MtxFx43& b, MtxFx43& ab) {
+		MTX_Concat43(&a, &b, &ab);
 	}
 
 }

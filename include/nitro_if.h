@@ -95,6 +95,10 @@ typedef void* NITRO_TYPE_REPLACEMENT;
 
 #else
 
+#	ifndef SDK_TS
+#	define SDK_TS
+#	endif
+
 #	ifndef SDK_CODE_ARM
 #	define SDK_CODE_ARM
 #	endif
@@ -106,7 +110,7 @@ typedef void* NITRO_TYPE_REPLACEMENT;
 
 #include "extra/ostream.hpp"
 
-#define __ntr_message(s)	do { cout << s; } while (false)
+#define __ntr_message(s)	do { log::cout << s; } while (false)
 #define __ntr_terminate()	OS_Terminate()
 
 #include "assert.h"

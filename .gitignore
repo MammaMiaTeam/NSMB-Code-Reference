@@ -1,0 +1,11 @@
+
+# visual studio
+/.vs/
+/.vscode/
+
+# nitro
+/include/nitro/
+/include/nitro_wl/
+/include/nnsys/
+/include/nitro.h
+/include/nnsys.h
