@@ -3046,6 +3046,7 @@ _ZN5Stage7cameraYE				= 0x020cad8c;
 _ZN5Stage18questionBlockFrameE  = 0x0212944c;
 _ZN5Stage15brickBlockFrameE     = 0x0212943c;
 _ZN5Stage11stageLayoutE         = 0x020cad40;
+_ZN5Stage16anmTilesOamTableE	= 0x0212f180;
 
 
 /*----------------------------------------------------------------*/
