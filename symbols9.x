@@ -3423,6 +3423,34 @@ _ZN4Item12checkConsumeEv = 0x020d475c;
 
 
 /*----------------------------------------------------------------*/
+/*--------------------------- manhole ----------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN7ManholeD2Ev										= 0x02188920;
+_ZN7ManholeD1Ev										= 0x02188920;
+_ZN7ManholeD0Ev										= 0x021889AC;
+_ZN7Manhole14activeCallbackER14ActiveColliderS1_	= 0x02188A40;
+_ZN7Manhole9onDestroyEv								= 0x02188A7C;
+_ZN7Manhole8onRenderEv								= 0x02188AA0;
+_ZN7Manhole10updateMainEv							= 0x02188B10;
+_ZN7Manhole8onCreateEv								= 0x02188B4C;
+_ZN7Manhole12rollBackwardEm							= 0x02188C88;
+_ZN7Manhole11rollForwardEm							= 0x02188DC4;
+_ZN7Manhole9solidIdleEm								= 0x02188F0C;
+_ZN7Manhole18updateRollingSoundEv					= 0x021890D8;
+_ZN7Manhole20getPlatformCollisionEv					= 0x02189150;
+_ZN7Manhole11updateStateEm							= 0x02189198;
+_ZN7Manhole9callStateEMS_FbmEm						= 0x021891CC;
+_ZN7Manhole17onUserHeapCreatedEv					= 0x021892A0;
+_ZN7Manhole13loadResourcesEv						= 0x021892D8;
+
+_ZN7Manhole18activeColliderInfoE					= 0x02189358;
+_ZN7Manhole7profileE								= 0x02189870;
+
+_ZTV7Manhole										= 0x0218987C;
+
+
+/*----------------------------------------------------------------*/
 /*--------------------------- unsorted ---------------------------*/
 /*----------------------------------------------------------------*/
 

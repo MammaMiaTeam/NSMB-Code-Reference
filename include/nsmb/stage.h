@@ -17,3 +17,6 @@
 
 #include "stage/actors/item.h"
 #include "stage/actors/toadsworth.h"
+
+// Overlay 98 - Manhole
+#include "stage/actors/ov98/manhole.h"

@@ -20,6 +20,7 @@ enum class ImmuneFlag : u16
 	Sliding			= (1U << 9),
 	BlueShell		= (1U << 10),
 	BlueShell2		= (1U << 12), // ???
+	// 1U << 13 - used in Manhole
 	Fireball		= (1U << 14),
 };
 IMPL_ENUMCLASS_OPERATORS(ImmuneFlag);
@@ -34,6 +35,39 @@ enum class SpawnSettings : u16
 	IgnoreView			= (1U << 3),
 };
 IMPL_ENUMCLASS_OPERATORS(SpawnSettings);
+
+
+enum class CollisionType : u32
+{
+	None = 0,
+	Collisionless		= (1U << 0),
+
+	// Mega Ground-Pound by player 0 while the entity is on the ground
+	MGPGroundP0			= (1U << 1),
+
+	// Mega Ground-Pound by player 1 while the entity is on the ground
+	MGPGroundP1			= (1U << 2),
+
+	// Mega Ground-Pound by player 0 while the entity is in midair
+	MGPAirP0			= (1U << 3),
+
+	// Mega Ground-Pound by player 1 while the entity is in midair
+	MGPAirP1			= (1U << 4),
+
+	Fireball			= (1U << 5),
+	Entity				= (1U << 6),
+	Block				= (1U << 7),
+	StageBeaten			= (1U << 8),
+	Starman				= (1U << 9),
+	MegaMushroom		= (1U << 10),
+	BlueShell2			= (1U << 11),
+	Sliding				= (1U << 12),
+	Stomp				= (1U << 13),
+	GroundPound			= (1U << 14),
+	BlueShell			= (1U << 15),
+
+};
+IMPL_ENUMCLASS_OPERATORS(CollisionType);
 
 
 struct ObjectInfo
@@ -158,7 +192,7 @@ public:
 	fx32 wiggleOscillator;
 
 	u32 unk21[2];
-	u32 defeatedBitfield; // 0x40 is set when a collision occurs
+	CollisionType collisionType;
 
 	s32 velX_sum;
 	u16 wiggleTimer;
@@ -426,7 +460,7 @@ public:
 
 
 	// 020a03a4
-	sym virtual void updateMain() __body
+	sym virtual bool updateMain() __body
 
 	// 0209ad1c
 	// returns true if rendering should be skipped
@@ -434,24 +468,24 @@ public:
 
 
 	// 020a039c
-	sym virtual void updateState1() __body
+	sym virtual bool updateState1() __body
 	// 020a0304
-	sym virtual void updateDefeated() __body
+	sym virtual bool updateDefeated() __body
 	// 020a0274
-	sym virtual void updateDefeatedMega() __body
+	sym virtual bool updateDefeatedMega() __body
 	// 020a01ac
-	sym virtual void updateState4() __body
+	sym virtual bool updateState4() __body
 	// 0209fb3c
 	// Tries to attach the entity to the linked player's hands (if any) and handles released/thrown behavior. Has hardcoded code for bob-ombs lmao
-	sym virtual void updateGrabbed() __body
+	sym virtual bool updateGrabbed() __body
 	// 0209fa8c
-	sym virtual void updateState6() __body
+	sym virtual bool updateState6() __body
 	// 0209f824
-	sym virtual void updateState7() __body
+	sym virtual bool updateState7() __body
 	// 0209f6c4
-	sym virtual void updateState8() __body
+	sym virtual bool updateState8() __body
 	// 0209f0e4
-	sym virtual void updateState9() __body
+	sym virtual bool updateState9() __body
 
 
 	// 0209d9fc
