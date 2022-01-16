@@ -73,7 +73,7 @@ public:
 		u32 all;
 		struct {
 			u32 action1				: 1;	// 0x00000001 
-			u32 action2				: 1;	// 0x00000002 
+			u32 starmanJump			: 1;	// 0x00000002 
 			u32 wallSlide			: 1;	// 0x00000004 set when sliding on a wall
 			u32 action8				: 1;	// 0x00000008 
 			u32 action10			: 1;	// 0x00000010 

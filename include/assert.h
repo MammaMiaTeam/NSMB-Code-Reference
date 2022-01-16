@@ -1,6 +1,11 @@
 #pragma once
 #include <stdarg.h>
 
+#include "extra/ostream.hpp"
+
+#define __ntr_message(s)	do { log::cout << s; } while (false)
+#define __ntr_terminate()	OS_Terminate()
+
 
 /*
 * Define __ntr_message and __ntr_terminate before including this file.

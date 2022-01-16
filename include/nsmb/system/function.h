@@ -2,9 +2,9 @@
 #include "nitro_if.h"
 
 
-#define FUNC_INIT			static_cast<u8>(0x00)
-#define FUNC_MODE(x)		static_cast<u8>((x)+1)
-#define FUNC_EXIT			static_cast<u8>(0xFF)
+#define FUNC_INIT			static_cast<s8>(0)
+#define FUNC_STEP(x)		static_cast<s8>((x)+1)
+#define FUNC_EXIT			static_cast<s8>(-1)
 
 
 template<class Ret, class Class, class... Args>

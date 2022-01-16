@@ -16,7 +16,7 @@
 //typedef int BOOL;
 #define BOOL int
 
-#define consteval (true)
+#define consteval
 #define if_consteval if (true)
 
 //#undef __cplusplus
@@ -42,9 +42,13 @@
 #define va_arg(v, l) __builtin_va_arg(v, l)
 #define va_end(v) __builtin_va_end(v)
 
-#define hook(...)
-#define rlnk(...)
-#define safe(...)
-#define over(...)
+#define hook(...) ;
+#define rlnk(...) ;
+#define safe(...) ;
+#define over(...) ;
+#define asm_func __attribute__((naked))
+#define thumb
+#define nodisc
+
 
 #endif

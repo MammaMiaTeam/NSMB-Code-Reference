@@ -32,6 +32,10 @@ namespace GFX {
 	//02044774
 	ssym void setRotation(MtxFx43& mtx, s16 angleX, s16 angleY, s16 angleZ) __body
 
+	__inline void setRotation(MtxFx43& mtx, const VecFx16& vec) {
+		setRotation(mtx, vec.x, vec.y, vec.z);
+	}
+
 	//02044814
 	ssym void setTranslation(MtxFx43& mtx, fx32 x, fx32 y, fx32 z) __body
 
@@ -51,8 +55,16 @@ namespace GFX {
 	//020448e0
 	ssym void rotate(MtxFx43& mtx, s16 angleX, s16 angleY, s16 angleZ) __body
 
+	__inline void rotate(MtxFx43& mtx, const VecFx16& vec) {
+		rotate(mtx, vec.x, vec.y, vec.z);
+	}
+
 	//0204496c
 	ssym void rotateReversed(MtxFx43& mtx, s16 angleX, s16 angleY, s16 angleZ) __body
+
+	__inline void rotateReversed(MtxFx43& mtx, const VecFx16& vec) {
+		rotateReversed(mtx, vec.x, vec.y, vec.z);
+	}
 
 	//020449f8
 	ssym void scale(MtxFx43& mtx, fx32 scaleX, fx32 scaleY, fx32 scaleZ) __body

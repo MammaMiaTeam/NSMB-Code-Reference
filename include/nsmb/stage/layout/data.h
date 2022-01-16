@@ -1,5 +1,6 @@
 #pragma once
-#include "nitro_if.h"
+#include "nsmb.h"
+#include "assert.h"
 
 
 enum class StageBlockID : u32 {

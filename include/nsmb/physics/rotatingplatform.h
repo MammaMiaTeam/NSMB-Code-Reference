@@ -26,7 +26,7 @@ public:
 	fx32 left;
 
 	RotatingPlatform();
-	inline virtual ~RotatingPlatform();
+	inline virtual ~RotatingPlatform() {}
 
 	void init(StageActor* owner, fx32 x, fx32 y, fx32 height, fx32 right, fx32 left, s16 angle, u8 unk, const Vec3* scale = nullptr);
 	void init(StageActor* owner, const RotatingPlatformInfo& info, const Vec3* scale = nullptr);

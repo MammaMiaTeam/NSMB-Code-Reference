@@ -2,6 +2,8 @@
 
 #include "nitro_if.h"
 
+#include "assert.h"
+
 #include "nsmb/boot.h"
 #include "nsmb/ending.h"
 #include "nsmb/entity.h"

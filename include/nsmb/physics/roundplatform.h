@@ -20,7 +20,7 @@ public:
 	u8 unk8b;
 
 	RoundPlatform();
-	inline virtual ~RoundPlatform();
+	inline virtual ~RoundPlatform() {}
 
 	void init(StageActor* actor, fx32 radius, fx32 centerX, fx32 centerY, fx32 uX, fx32 uY, s16 angle, s32 unk1, s32 unk2, bool externalCollision);
 
