@@ -291,10 +291,10 @@ public:
 	sym static void damagePlayerCallback(ActiveCollider& self, ActiveCollider& other) __body
 
 	// 02098dd8
-	sym static bool isBelowPlayer(fx32 positionY, ActiveCollider& collider, u8 playerID) __rbody
+	sym static bool isBelowCamera(fx32 positionY, ActiveCollider& collider, u8 playerID) __rbody
 
-	__inline static bool isAbovePlayer(fx32 positionY, ActiveCollider& collider, u8 playerID) {
-		return -(positionY + collider.rect.y + collider.rect.halfHeight) > Stage::playerY[playerID];
+	__inline static bool isAboveCamera(fx32 positionY, ActiveCollider& collider, u8 playerID) {
+		return -(positionY + collider.rect.y + collider.rect.halfHeight) > Stage::cameraY[playerID];
 	}
 
 	// 02098e08

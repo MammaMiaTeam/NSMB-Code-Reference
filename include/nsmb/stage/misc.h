@@ -17,16 +17,16 @@ namespace Stage
 	extern u64 events;
 
 	// 020cae1c
-	extern fx32 playerX[2];
-
-	// 020cad94
-	extern fx32 playerY[2];
-	
-	// 020cada4
 	extern fx32 cameraX[2];
 
-	// 020cad8c
+	// 020cad94
 	extern fx32 cameraY[2];
+	
+	// 020cada4
+	extern fx32 cameraZoomX[2];
+
+	// 020cad8c
+	extern fx32 cameraZoomY[2];
 
 	// 0212944c
 	extern u8 questionBlockFrame;
