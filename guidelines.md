@@ -55,7 +55,7 @@ as an include guard.
 ### Storage Objects
 Structs are to be used when the object purely consists of variables or has only a constructor with a few accompanying members / functions.
 
-Classes are used for inheritance, when a vtable exists or are simply larger. They always take public as their visibility specifier (members and inheritance), eexceptions may exist.
+Classes are used for inheritance, when a vtable exists or are simply larger. They always take public as their visibility specifier (members and inheritance), exceptions may exist.
 
 Both classes and structs can *only* have static functions if the following conditions are met:
 - The static is used in a class-related context
