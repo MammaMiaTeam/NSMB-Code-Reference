@@ -3294,14 +3294,14 @@ _ZN6Plater11unlinkActorEv								= 0x02104CCC;
 
 _ZN5Input17initPlayerMappingEv						= 0x0200a9d0;
 _ZN5Input17updatePlayerInputEv						= 0x0200a814;
-_ZN5Input16setPlayerMappingEbi						= 0x0200a784;
-_ZN5Input24updateVirtualPlayerInputEi				= 0x0200a6e4;
+_ZN5Input16setPlayerMappingEbm						= 0x0200a784;
+_ZN5Input24updateVirtualPlayerInputEm				= 0x0200a6e4;
 _ZN5Input6updateEv									= 0x0200a594;
-_ZN5Input18updateConsoleInputEv						= 0x0200a508;
-_ZN5Input26getFirstConsoleKeysPressedEPit			= 0x0200a4c8;
-_ZN5Input23getFirstConsoleKeysHeldEPit				= 0x0200a488;
-_ZN5Input31updateVerticalSelectionIteratorEPii		= 0x0200a42c;
-_ZN5Input33updateHorizontalSelectionIteratorEPii	= 0x0200a3d0;
+_ZN5Input18updateConsoleInputEmt					= 0x0200a508;
+_ZN5Input26getFirstConsoleKeysPressedEPmt			= 0x0200a4c8;
+_ZN5Input23getFirstConsoleKeysHeldEPmt				= 0x0200a488;
+_ZN5Input31updateVerticalSelectionIteratorEPll		= 0x0200a42c;
+_ZN5Input33updateHorizontalSelectionIteratorEPll	= 0x0200a3d0;
 
 _ZN5Input16consoleKeysTimerE						= 0x02087638;
 _ZN5Input13consoleKeysUpE							= 0x02087640;

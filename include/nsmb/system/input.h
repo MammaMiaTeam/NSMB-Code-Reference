@@ -68,10 +68,10 @@ namespace Input {
 	bool updatePlayerInput();
 
 	// 0200a784
-	void setPlayerMapping(bool normal, int playerID);
+	void setPlayerMapping(bool normal, u32 playerID);
 
 	// 0200a6e4
-	void updateVirtualPlayerInput(int playerID);
+	u16 updateVirtualPlayerInput(u32 playerID);
 
 
 	// 0200a594
@@ -79,19 +79,19 @@ namespace Input {
 
 
 	// 0200a508
-	void updateConsoleInput();
+	void updateConsoleInput(u32 consoleAID, u16 keys);
 
 	// 0200a4c8
-	bool getFirstConsoleKeysPressed(int* consoleID, u16 keys);
+	bool getFirstConsoleKeysPressed(u32* consoleID, u16 keys);
 
 	// 0200a488
-	bool getFirstConsoleKeysHeld(int* consoleID, u16 keys);
+	bool getFirstConsoleKeysHeld(u32* consoleID, u16 keys);
 
 	// 0200a42c
-	void updateVerticalSelectionIterator(int* iterator, int max);
+	void updateVerticalSelectionIterator(s32* iterator, s32 max);
 
 	// 0200a3d0
-	void updateHorizontalSelectionIterator(int* iterator, int max);
+	void updateHorizontalSelectionIterator(s32* iterator, s32 max);
 
 
 
