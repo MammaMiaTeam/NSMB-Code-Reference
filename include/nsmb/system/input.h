@@ -163,6 +163,12 @@ namespace Input {
 	// 02087638
 	extern u16 consoleKeysTimer[4];
 
+	// 02087634
+	extern u8 localConsoleID;
+
+	// 02087630
+	extern bool triggerSoftReset;
+
 
 
 	__inline u16 getPressedKeys(u8 console = 0) {

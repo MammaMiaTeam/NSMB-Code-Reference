@@ -3303,6 +3303,8 @@ _ZN5Input23getFirstConsoleKeysHeldEPmt				= 0x0200a488;
 _ZN5Input31updateVerticalSelectionIteratorEPll		= 0x0200a42c;
 _ZN5Input33updateHorizontalSelectionIteratorEPll	= 0x0200a3d0;
 
+_ZN5Input16triggerSoftResetE						= 0x02087630;
+_ZN5Input14localConsoleIDE							= 0x02087634;
 _ZN5Input16consoleKeysTimerE						= 0x02087638;
 _ZN5Input13consoleKeysUpE							= 0x02087640;
 _ZN5Input19consoleKeysRepeatedE						= 0x02087648;
