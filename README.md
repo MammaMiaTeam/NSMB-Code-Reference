@@ -1,2 +1,2 @@
-# NSMB-ASMReference
-Public ASM reference for New Super Mario Bros DS (US)
+# NSMB-Code-Reference
+Public reference for patching code on New Super Mario Bros DS (US)
