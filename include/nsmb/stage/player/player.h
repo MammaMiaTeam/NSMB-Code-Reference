@@ -6,6 +6,17 @@
 class Door;
 
 
+enum class PlayerDamageType
+{
+	Hit,
+	Hit2,
+	Lava,
+	Electrocute,
+	Poison,
+	Death,
+	Pit
+};
+
 
 class Player : public PlayerBase
 {

@@ -147,6 +147,27 @@ public:
 		Sides	= (1 << 2),
 	};
 
+	// 020c4ec0
+	static u8 layerFlag[2];
+
+	// 020c4ec4
+	static s8 unitDirection[2];
+
+	// 020c4ec8
+	static s16 directionalRotationY[2];
+
+	// 020c4ecc
+	// static s16 unkRotationY[2];
+
+	// 020c4ed0
+	static s16 directionalRotationYVelocity[2];
+
+	// 020c4ed4
+	static s16 directionalDefeatedHVelocity[2];
+
+	// 020c4ed8
+	static fx32 layerPosition[2];
+
 	u16 notAVector;
 	ImmuneFlag immuneFlag;
 	SpawnSettings spawnSettings;
@@ -239,7 +260,7 @@ public:
 
 	u8 defeatedDirection;
 	u8 freezeRelated;
-	u8 zLayer;
+	bool backLayer;
 	u8 unk42;
 	u8 unk43;
 	u8 facing; // 0 = down, 1 = up, 2 = left, 3 = right
@@ -293,7 +314,7 @@ public:
 	// 02098dd8
 	sym static bool isBelowCamera(fx32 positionY, ActiveCollider& collider, u8 playerID) __rbody
 
-	__inline static bool isAboveCamera(fx32 positionY, ActiveCollider& collider, u8 playerID) {
+	inline static bool isAboveCamera(fx32 positionY, ActiveCollider& collider, u8 playerID) {
 		return -(positionY + collider.rect.y + collider.rect.halfHeight) > Stage::cameraY[playerID];
 	}
 

@@ -39,4 +39,8 @@ public:
 	//02018da8
 	sym void detach() __body //Unlinks the animation from the render object
 
+	inline void setFrame(fx32 frame) {
+		NNS_G3dAnmObjSetFrame(animation, frame);
+	}
+
 };
