@@ -4,7 +4,7 @@
 
 // vtable at 0217942C (ov68)
 class Amp : public StageEntity
-{s
+{
 public:
 
 	// The argument is unused
