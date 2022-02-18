@@ -28,10 +28,6 @@ namespace FS {
 		/// \brief The archive table.
 		extern Entry archives[48];
 
-		// 0x02085D08
-		/// \brief The pointer to the ROM archive.
-		extern FSArchive* romArchivePtr;
-
 		// 0x0203A2CC
 		/// \brief The ID of the current archive.
 		extern s8 currentArchiveID;

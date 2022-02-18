@@ -5,6 +5,10 @@
 
 namespace FS {
 
+	// 0x02085D08
+	/// \brief A pointer to the ROM archive.
+	extern FSArchive* romArchive;
+
 	// 0x02085D04
 	/// \brief The file ID offset. (131 by default, mustn't be changed)
 	extern u16 fileIDOffset;
@@ -267,7 +271,7 @@ namespace FS {
 	 *
 	 * \return The size of the LZ77 file decompressed.
 	 * */
-	u32 getLZ77DecompressedSize(u32* header);
+	u32 getLZ77DecompressedSize(void* header);
 
 
 	constexpr u32 makeExtFileID(u16 fileID, u16 vsFileID) {
@@ -347,6 +351,14 @@ namespace FS {
 	u32 getFileSize(u32 extFileID);
 
 	// 0x02009ACC
+	/**
+	 * \brief Gets the decompressed size of a compressed file. Only compatible with headerless LZ files.
+	 *
+	 * \param extFileID The extended file ID of the file.
+	 *
+	 * \return The decompressed size of the file.
+	 * */
+	u32 getDecompressedFileSize(u32 extFileID);
 
 	// 0x02009A98
 	/**

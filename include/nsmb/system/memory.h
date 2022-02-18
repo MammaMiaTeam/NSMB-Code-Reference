@@ -14,7 +14,7 @@ class Heap								//original name: mHeap::Heap_t
 {
 public:
 
-	typedef void(*OnAllocate)(Heap*, void*, u32, int);		//void OnAllocate(Heap* heap, void* allocatedPtr, u32 size, s32 align);
+	typedef void(*OnAllocate)(Heap*, void*, u32, s32);		//void OnAllocate(Heap* heap, void* allocatedPtr, u32 size, s32 align);
 	typedef void(*OnDeallocate)(Heap*, void*);				//void OnDeallocate(Heap* heap, void* ptrToDeallocate);
 
 	void* heapStart;					//Pointer to the heap's start
@@ -50,15 +50,10 @@ public:
 	virtual u16 vGetGroupID() = 0;											//returns the current group ID.
 	virtual u32 vResizeToFit() = 0;											//Resizes the heap to fit (e.g. deallocates all unused memory). returns the new size or 0 if it failed.
 
-	void* _allocate(u32 size, s32 align);									//Calls Allocate
-	void _deallocate(void* ptr);											//Calls Deallocate
-	void _destroy();														//Calls Destroy
-	u32 _sizeOf(void* ptr);													//Calls Sizeof
-
 	void* allocate(u32 size, s32 align);									//Calls vAllocate. If size == -1, then all available heap space is allocated.
-	void* allocate(u32 size);												//Calls allocate with align = 4
 	void deallocate(void* ptr);												//Calls vDeallocate. Skips null pointers.
 	void destroy();															//Calls vDestroy
+	void dispose();															//Calls Destroy
 	static s32 forcePo2Alignment(s32 minAlign, u32 po2Align);				//returns po2Align if it's not smaller than minAlign. If it is, it finds the next greater po2 of minAlign. Sign is __retained.
 	void lockMutex();														//Calls vLockMutex. If we're in a non-system mode (e.g. IRQ) and flag 0x2000 is set, OS_Panic is called.
 	u32 maxAllocatableSize(s32 align);										//Calls vMaxAllocatableSize
@@ -181,17 +176,32 @@ namespace Memory {
 	void setThreadHeap(OSThread* thread, Heap* heap);
 	void setHeapSwitchThreadCallback();
 
-	//Calls to Heap::Allocate
-	void* allocate(u32 size, s32 align);									//Calls on currentHeapPtr
+	//Calls Heap::allocate
+	void* allocate(Heap* heap, u32 size, s32 align);
 
-	//Calls to Heap::Deallocate
-	void deallocate(void* ptr, Heap* heap);									//If heap is null, currentHeapPtr is used
+	//Calls Heap::allocate with align = 4
+	void* allocate(Heap* heap, u32 size);
 
-	//Calls to Heap::_Deallocate
-	void deallocate(void* ptr);												//Calls on currentHeapPtr
+	//Calls Heap::deallocate
+	void deallocate(Heap* heap, void* ptr);
 
-	//Calls to Heap::Reallocate
-	void* reallocate(Heap* heap, void* ptr, u32 newSize);					//returns ptr if the reallocation was successfull, else null
+	//Calls Heap::sizeOf
+	u32 sizeOf(Heap* heap, void* ptr);
+
+	//Calls Heap::reallocate
+	void* reallocate(Heap* heap, void* ptr, u32 newSize);
+
+	//Calls heap->deallocate (pCurrentHeap if it's null)
+	void deallocate(void* ptr, Heap* heap);
+
+	//Calls pCurrentHeap->allocate
+	void* allocate(u32 size, s32 align);
+
+	//Calls pCurrentHeap->allocate with align = 4
+	void* allocate(u32 size);
+
+	//Calls pCurrentHeap->deallocate
+	void deallocate(void* ptr);
 
 }
 

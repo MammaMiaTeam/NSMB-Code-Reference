@@ -108,7 +108,7 @@ namespace FS {
 		 *
 		 * \param reason The pointer to the crash reason message.
 		 * */
-		void setCrashReason(const char* reason);
+		void terminate(const char* reason);
 
 		// 0x02008E2C
 		/**
@@ -117,7 +117,7 @@ namespace FS {
 		 * \param fsFileID The pointer to filesystem file ID structure.
 		 * \param fileID The file identifier of a file in the rom archive.
 		 * */
-		void getFileID(FSFileID* fsFileID, u32 fileID);
+		FSFileID getFileID(u32 fileID);
 
 	}
 }
