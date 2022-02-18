@@ -1346,6 +1346,7 @@ __global_destructor_chain = 0x020986CC;
 /*----------------------------------------------------------------*/
 
 _ZN2FS10unloadFileEPv = 0x020087C0;
+_ZN2FS23getDecompressedFileSizeEm = 0x02009ACC;
 _ZN2FS11getFileSizeEm = 0x02009AF0;
 _ZN2FS11loadExtFileEm = 0x020087F0;
 _ZN2FS11loadExtFileEmPv = 0x02008934;
@@ -1353,6 +1354,7 @@ _ZN2FS11loadExtFileEmPvl = 0x020088FC;
 _ZN2FS11loadExtFileEmb = 0x02008810;
 _ZN2FS11setReadModeENS_8ReadModeE = 0x02008990;
 _ZN2FS12fileIDOffsetE = 0x02085D04;
+_ZN2FS10romArchiveE = 0x02085D08;
 _ZN2FS12loadFileLZ77Em = 0x0200869C;
 _ZN2FS12loadFileLZ77EmPv = 0x02008784;
 _ZN2FS12readFileFastEP6FSFileb = 0x020089A0;
@@ -1370,7 +1372,7 @@ _ZN2FS17readFunctionTableE = 0x0203A390;
 _ZN2FS18loadFileToOBJVramAEmm = 0x02009A98;
 _ZN2FS20loadExtFileUnflushedEm = 0x02008800;
 _ZN2FS22loadBGExtPaletteCachedEmm = 0x020098CC;
-_ZN2FS23getLZ77DecompressedSizeEPm = 0x02009478;
+_ZN2FS23getLZ77DecompressedSizeEPv = 0x02009478;
 _ZN2FS23loadOBJExtPaletteCachedEmm = 0x02009980;
 _ZN2FS4initEv = 0x02009424;
 
@@ -1410,12 +1412,12 @@ _ZN2FS8Internal11crashReasonE = 0x02085CF8;
 _ZN2FS8Internal11loadOverlayE11MIProcessorm = 0x02008594;
 _ZN2FS8Internal12pathToFileIDEP8FSFileIDPKc = 0x02008648;
 _ZN2FS8Internal13unloadOverlayE11MIProcessorm = 0x02008588;
-_ZN2FS8Internal14setCrashReasonEPKc = 0x02008670;
+_ZN2FS8Internal9terminateEPKc = 0x02008670;
 _ZN2FS8Internal15loadOverlayInfoEP13FSOverlayInfo11MIProcessorm = 0x020085A0;
 _ZN2FS8Internal8openFileEP6FSFile8FSFileID = 0x0200860C;
 _ZN2FS8Internal8openFileEP6FSFilePKc = 0x020085E4;
 _ZN2FS8Internal8readFileEP6FSFilePvl = 0x020085AC;
-_ZN2FS8Internal9getFileIDEP8FSFileIDm = 0x02008E2C;
+_ZN2FS8Internal9getFileIDEm = 0x02008E2C;
 _ZN2FS8InternalL13openFileCrashE = 0x0203A280;
 _ZN2FS8InternalL13readFileCrashE = 0x0203A290;
 _ZN2FS8InternalL17readFileFastCrashE = 0x0203A2A0;
@@ -1424,7 +1426,6 @@ _ZN2FS8InternalL24convertPathToFileIDCrashE = 0x0203A2B4;
 _ZN2FS7Archive10mountFrontEmP4Heap = 0x0200917C;
 _ZN2FS7Archive10unmountAllEv = 0x02009084;
 _ZN2FS7Archive11unmountListEPm = 0x020090D0;
-_ZN2FS7Archive13romArchivePtrE = 0x02085D08;
 _ZN2FS7Archive14unmountCurrentEv = 0x02008FF4;
 _ZN2FS7Archive16currentArchiveIDE = 0x0203A2CC;
 _ZN2FS7Archive16mainGameArchivesE = 0x020262D0;
@@ -1474,13 +1475,9 @@ _ZN4HeapD0Ev = 0x02045518;
 _ZN4Heap10vLockMutexEv = 0x020451D8;
 _ZN4Heap12vUnlockMutexEv = 0x020451D4;
 _ZN4Heap13vTryLockMutexEv = 0x020451CC;
-_ZN4Heap9_allocateEml = 0x02044B3C;
-_ZN4Heap11_deallocateEPv = 0x02044B20;
-_ZN4Heap8_destroyEv = 0x02045128;
-_ZN4Heap7_sizeOfEPv = 0x02044B14;
 _ZN4Heap8allocateEml = 0x02045040;
-_ZN4Heap8allocateEm = 0x02044B2C;
 _ZN4Heap10deallocateEPv = 0x02044D94;
+_ZN4Heap7disposeEv = 0x02045128;
 _ZN4Heap7destroyEv = 0x02045134;
 _ZN4Heap17forcePo2AlignmentElm = 0x02045014;
 _ZN4Heap9lockMutexEv = 0x020451F8;
@@ -1561,25 +1558,28 @@ _ZN6Memory21tryCreateExpandedHeapEPvm = 0x0204540C;
 _ZN6Memory24heapSwitchThreadCallbackEP9_OSThreadS1_ = 0x020456F8;
 _ZN6Memory13setThreadHeapEP9_OSThreadP4Heap = 0x020456C0;
 _ZN6Memory27setHeapSwitchThreadCallbackEv = 0x02045690;
-_ZN6Memory8allocateEml = 0x02044A8C;
-_ZN6Memory10deallocateEPvP4Heap = 0x02044AB0;
-_ZN6Memory10deallocateEPv = 0x0204C0DC;
-_ZN6Memory10reallocateEP4HeapPvm = 0x02044AF8;
 
-_Z6mallocj = 0x0204C0F8;
-_Z6mallocm = 0x0204C0F8;
-_Z7_mallocj = 0x0204C0C4;
-_Z7_mallocm = 0x0204C0C4;
-_Z4freePv = 0x0204C0AC;
-_Z10_dtor_freePv = 0x0204C0B8;
-_Znwj = 0x02044A6C;
-_Znwm = 0x02044A6C;
-_Znaj = 0x02044A6C;
-_Znam = 0x02044A6C;
-_ZdlPv = 0x02044A50;
-_ZdlPvj = 0x02044A50;
-_ZdlPvm = 0x02044A50;
-_ZdaPv = 0x02044A50;
+_ZN6Memory8allocateEP4Heapml		= 0x02044B3C;
+_ZN6Memory8allocateEP4Heapm			= 0x02044B2C;
+_ZN6Memory10deallocateEP4HeapPv		= 0x02044B20;
+_ZN6Memory6sizeOfEP4HeapPv			= 0x02044B14;
+_ZN6Memory10reallocateEP4HeapPvm	= 0x02044AF8;
+_ZN6Memory10deallocateEPvP4Heap		= 0x02044AB0;
+_ZN6Memory8allocateEml				= 0x02044A8C;
+_ZN6Memory8allocateEm				= 0x02044A6C;
+_ZN6Memory10deallocateEPv			= 0x02044A50;
+
+_Z6mallocj	= 0x0204C0F8;
+_Z6mallocm	= 0x0204C0F8;
+_Z4freePv	= 0x0204C0DC;
+_Znwj		= 0x0204C0D0;
+_Znwm		= 0x0204C0D0;
+_Znaj		= 0x0204C0C4;
+_Znam		= 0x0204C0C4;
+_ZdlPv		= 0x0204C0B8;
+_ZdlPvj		= 0x0204C0B8;
+_ZdlPvm		= 0x0204C0B8;
+_ZdaPv		= 0x0204C0AC;
 
 _ZTV9FrameHeap = 0x02085144;
 _ZTV12ExpandedHeap = 0x020850EC;
@@ -2489,6 +2489,13 @@ _ZN11StageEntity10defeatMegaElll									= 0x0209c994;
 _ZN11StageEntity21fenceDisableCollisionEv							= 0x020a0268;
 _ZN11StageEntity20fenceSwitchDirectionEv							= 0x020a0240;
 _ZN11StageEntity12doPlayerJumpER6Playerl							= 0x0209a6d4;
+
+_ZN11StageEntity9layerFlagE											= 0x020c4ec0;
+_ZN11StageEntity13unitDirectionE									= 0x020c4ec4;
+_ZN11StageEntity20directionalRotationYE								= 0x020c4ec8;
+_ZN11StageEntity28directionalRotationYVelocityE						= 0x020c4ed0;
+_ZN11StageEntity28directionalDefeatedHVelocityE						= 0x020c4ed4;
+_ZN11StageEntity13layerPositionE									= 0x020c4ed8;
 
 _ZTV11StageEntity													= 0x020c4efc;
 
@@ -3445,13 +3452,13 @@ _ZN7Manhole9onDestroyEv								= 0x02188A7C;
 _ZN7Manhole8onRenderEv								= 0x02188AA0;
 _ZN7Manhole10updateMainEv							= 0x02188B10;
 _ZN7Manhole8onCreateEv								= 0x02188B4C;
-_ZN7Manhole12rollBackwardEm							= 0x02188C88;
-_ZN7Manhole11rollForwardEm							= 0x02188DC4;
-_ZN7Manhole9solidIdleEm								= 0x02188F0C;
+_ZN7Manhole12rollBackwardEPv						= 0x02188C88;
+_ZN7Manhole11rollForwardEPv							= 0x02188DC4;
+_ZN7Manhole9solidIdleEPv							= 0x02188F0C;
 _ZN7Manhole18updateRollingSoundEv					= 0x021890D8;
 _ZN7Manhole20getPlatformCollisionEv					= 0x02189150;
-_ZN7Manhole11updateStateEm							= 0x02189198;
-_ZN7Manhole9callStateEMS_FbmEm						= 0x021891CC;
+_ZN7Manhole11updateStateEPv							= 0x02189198;
+_ZN7Manhole11switchStateEMS_FbPvEPv					= 0x021891CC;
 _ZN7Manhole17onUserHeapCreatedEv					= 0x021892A0;
 _ZN7Manhole13loadResourcesEv						= 0x021892D8;
 
@@ -3459,6 +3466,32 @@ _ZN7Manhole18activeColliderInfoE					= 0x02189358;
 _ZN7Manhole7profileE								= 0x02189870;
 
 _ZTV7Manhole										= 0x0218987C;
+
+
+/*----------------------------------------------------------------*/
+/*----------------------------- amp ------------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN3AmpD2Ev											= 0x0217853C;
+_ZN3AmpD1Ev											= 0x0217853C;
+_ZN3AmpD0Ev											= 0x021785D4;
+_ZN3Amp9onDestroyEv									= 0x02178674;
+_ZN3Amp14pendingDestroyEv							= 0x0217867C;
+_ZN3Amp8onRenderEv									= 0x02178680;
+_ZN3Amp12damagePlayerER14ActiveColliderR6Player		= 0x0217882C;
+_ZN3Amp10updateMainEv								= 0x021788F4;
+_ZN3Amp8onCreateEv									= 0x02178918;
+_ZN3Amp17onUserHeapCreatedEv						= 0x02178A94;
+_ZN3Amp11electrocuteEPv								= 0x02178B9C;
+_ZN3Amp4idleEPv										= 0x02178C78;
+_ZN3Amp13updateBobbingEv							= 0x02178D24;
+_ZN3Amp11updateStateEPv								= 0x02178D5C;
+_ZN3Amp11switchStateEMS_FbPvEPv						= 0x02178DC4;
+_ZN3Amp13loadResourcesEv							= 0x02178EA8;
+
+_ZN3Amp7profileE									= 0x02179420;
+
+_ZTV3Amp											= 0x0217942C;
 
 
 /*----------------------------------------------------------------*/

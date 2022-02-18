@@ -2,9 +2,9 @@
 #include "nsmb.h"
 
 
-// vtable at 0218987C (ov89)
-class Manhole : public StageEntity {
-
+// vtable at 0218987C (ov98)
+class Manhole : public StageEntity
+{
 public:
 
 	enum class CollisionType
@@ -15,7 +15,7 @@ public:
 	};
 
 	// The argument is unused
-	using StateFunction = bool(Manhole::*)(u32);
+	using StateFunction = bool(Manhole::*)(void*);
 
 	// D0: 021889AC
 	// D1: 02188920
@@ -34,16 +34,16 @@ public:
 	bool updateMain() override;
 
 	// 021891CC
-	bool callState(StateFunction function, u32 arg);
+	bool switchState(StateFunction function, void* arg);
 	// 02189198
-	void updateState(u32 arg);
+	void updateState(void* arg);
 
 	// 02188F0C
-	bool solidIdle(u32 arg);
+	bool solidIdle(void* arg);
 	// 02188DC4
-	bool rollForward(u32 arg);
+	bool rollForward(void* arg);
 	// 02188C88
-	bool rollBackward(u32 arg);
+	bool rollBackward(void* arg);
 
 
 	// 021890D8
