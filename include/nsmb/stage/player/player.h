@@ -9,7 +9,7 @@ class Door;
 enum class PlayerDamageType
 {
 	Hit,
-	Hit2,
+	Bumped,
 	Lava,
 	Electrocute,
 	Poison,
@@ -51,11 +51,11 @@ public:
 	Vec2 unk968;
 	Vec2 unk974;
 
-	StateFunction moveState; // TODO: better name
-	StateFunction unk988;
-	StateFunction deathState; // TODO: better name
-	StateFunction unk998; // TODO: better name
-	StateFunction metaState; // TODO: better name
+	StateFunction mainState;
+	StateFunction prevMainState;
+	StateFunction transitionState;
+	StateFunction movementState;
+	StateFunction metaState;
 
 	u32 modelFrameOrigin;
 	u32 modelBlendFlag;
@@ -74,16 +74,25 @@ public:
 
 	u32 unkAA4[7];
 
-	u32 unkAC0[3];
-	u32 unkACC[3];
+	u32 oneUpStarsEmittersID[3];
+	u32 oneUpStarsSmallEmittersID[3];
 
 	fx32 modelAnimSpeed;
 	u32 powerupScaleStep;
 	fx32 modelScale;
-	u32 unkAE4[4];
-	u32 unkAF4[7];
+	u32 cannonDepthScale;
+	u32 unkAE8;
+	u32 unkAEC;
+	u32 unkAF0;
+	u32 unkAF4;
+	u32 unkAF8;
+	u32 unkAFC;
+	u32 unkB00;
+	fx32 cannonDepth;
+	u32 unkB08;
+	u32 unkB0C;
 	u32 unkB10; // collider speed X
-	u32 unkB14; // chunk position X
+	fx32 pendulumClimbVelocity;
 	u32 unkB18;
 	u32 unkB1C;
 	u32 unkB20;
@@ -96,19 +105,20 @@ public:
 	u32 unkB3C;
 	u32 unkB40;
 	u32 unkB44;
-	u32 unkB48;
+	u32 pendulumClimbFlags;
 	u32 unkB4C;
 
-	u16 animEndTrigger; // when the current animation frame reaches this value, an action is triggered
-	u16 prevDirection; // jump keys pressed
-	u16 unkB54; // rope related
-	u16 unkB56; // padding?
+	u16 animDuration; // when the current animation frame reaches this value, an action is triggered
+	u16 pendulumFlags;
+	u16 pendulumUnk25;
+	u16 pendulumUnk1E;
 
-	u32 unkB58[2];
+	u32 unkB58;
+	u32 unkB5C;
 	s16 cannonTimer;
 	s16 unkB62;
 	u32 unkB64;
-	s16 deathTimer;
+	s16 transitionTimer;
 	u16 unkB6A;
 	u32 unkB6C;
 	u16 unkB70;
@@ -118,15 +128,19 @@ public:
 	u16 modelAngle; // "spriteCollisionAngle"
 	u16 unkB7C[2];
 	u16 unkB80; // "groundPoundRotateTimer"
-	u16 unkB82[9];
-	u32 unkB94;
-
+	u16 jumpDuration;
+	u32 unkB84;
+	u32 unkB88;
+	u32 unkB8C;
+	s16 unkB90;
+	s16 oneUpSparkleTimer[3];
+	
 	s16 lookAtRotation;
 	u16 prevAnimFrame;
 
 	u8 unkB9C;
 	u8 modelID;
-	u8 unkB9E; // "moveStateMode"
+	s8 mainStateStep;
 	u8 unkB9F; // "notInPipeCannon"
 
 	u8 consecutiveJumps;
@@ -143,11 +157,16 @@ public:
 	u8 unkBAA;
 	u8 unkBAB;
 	u8 unkBAC;
-	u8 deathStateMode;
+	s8 transitionStateStep;
 	u8 holdingItemFlag;
 	u8 currentModel;
 
-	u8 unkBB0[6];
+	u8 unkBB0;
+	u8 unkBB1;
+	u8 unkBB2;
+	u8 unkBB3;
+	u8 unkBB4;
+	u8 unkBB5;
 
 	u8 textureID;
 
@@ -159,12 +178,12 @@ public:
 	u8 unkBBB; // "walkRight"
 	u8 unkBBC; // "walkRight"
 	u8 unkBBD;
-	u8 unkBBE;
+	u8 jumpLockHorizontalTimer;
 	u8 unkBBF;
 	u8 megaParticlesTimer;
 	u8 unkBC1;
 	u8 unkBC2;
-	u8 unkBC3; // "slowLedgeJumpMaybe"
+	bool jumpFromLedge;
 	u8 unkBC4; // "groundpoundRelated"
 	u8 unkBC5; // "walkLeftCounter"
 	u8 unkBC6; // "walkRightCounter"

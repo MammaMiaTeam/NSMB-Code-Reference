@@ -80,7 +80,7 @@ public:
 			u32 wallJump			: 1;	// 0x00000020 set when wall-jumping
 			u32 wallClip			: 1;	// 0x00000040 set when clipping with a solid object
 			u32 throwActor			: 1;	// 0x00000080 set when throwing an actor
-			u32 action100			: 1;	// 0x00000100
+			u32 lockCarriedActor	: 1;	// 0x00000100
 			u32 action200			: 1;	// 0x00000200
 			u32 action400			: 1;	// 0x00000400
 			u32 action800			: 1;	// 0x00000800
@@ -110,38 +110,38 @@ public:
 	union {
 		u32 all;
 		struct {
-			u32 holdingActor		: 1;	// 0x00000001 set when holding an actor (shell/trampoline/etc)
-			u32 subAction2			: 1;	// 0x00000002 set when on a rope/in a pipe/hit by a falling snow object
-			u32 pipeCannon			: 1;	// 0x00000004 set when launching from a pipe cannon
-			u32 inEntrance			: 1;	// 0x00000008 set when using an entrance/warp
-			u32 sliding				: 1;	// 0x00000010 
-			u32 subAction20			: 1;	// 0x00000020 
-			u32 airborne			: 1;	// 0x00000040 set when in air
-			u32 releaseKeys			: 1;	// 0x00000080 set when standing on a ground
-			u32 subAction100		: 1;	// 0x00000100 
-			u32 subAction200		: 1;	// 0x00000200 
-			u32 subAction400		: 1;	// 0x00000400 set when hit by a falling snow object/on a vine/rope
-			u32 running				: 1;	// 0x00000800 set when on rope/in pipe/walljumping/running
-			u32 disableCap			: 1;	// 0x00001000 set when the cap shouldn't be rendered
-			u32 drillSpin			: 1;	// 0x00002000 set when performing drill spin
-			u32 onSpinBlock			: 1;	// 0x00004000 set when standing on a spin block
-			u32 subAction8000		: 1;	// 0x00008000 
-			u32 subAction10000		: 1;	// 0x00010000 
-			u32 subAction20000		: 1;	// 0x00020000 set when groundpounding/climbing/in pipe/walljumping/hit by a falling snow object/on a vine/rope/pole
-			u32 subAction40000		: 1;	// 0x00040000 set when climbing vine/pole (not a swinging rope/vine)/in pipe (no horizontal movement)
-			u32 subAction80000		: 1;	// 0x00080000 
-			u32 onPipe				: 1;	// 0x00100000 set when standing on a pipe (maybe enabled near all valid pipes or even all valid entrances?)
-			u32 inPipe				: 1;	// 0x00200000 set when in pipe (maybe other entrances?)
-			u32 subAction400000		: 1;	// 0x00400000 
-			u32 invincible			: 1;	// 0x00800000 set when invincible
-			u32 subAction1000000	: 1;	// 0x01000000 set when hit by a falling snow object/on a pole (no horizontal movement)
-			u32 subAction2000000	: 1;	// 0x02000000 set when shooting from a pipe cannon (1)
-			u32 subAction4000000	: 1;	// 0x04000000 
-			u32 subAction8000000	: 1;	// 0x08000000 
-			u32 subAction10000000	: 1;	// 0x10000000 
-			u32 subAction20000000	: 1;	// 0x20000000 set when shooting from a pipe cannon (2)
-			u32 megaJump			: 1;	// 0x40000000 set when doing a mega mushroom jump
-			u32 subAction80000000	: 1;	// 0x80000000 
+			u32 carrying				: 1;	// 0x00000001 set when holding an actor (shell/trampoline/etc)
+			u32 lockHorizontalMovement	: 1;	// 0x00000002 set when on a rope/in a pipe/hit by a falling snow object
+			u32 pipeCannon				: 1;	// 0x00000004 set when launching from a pipe cannon
+			u32 invisible				: 1;	// 0x00000008 set when using an entrance/warp/dying in a pit
+			u32 sliding					: 1;	// 0x00000010 
+			u32 slideJump				: 1;	// 0x00000020 
+			u32 airborne				: 1;	// 0x00000040 set when in air
+			u32 releaseKeys				: 1;	// 0x00000080 set when standing on a ground
+			u32 subAction100			: 1;	// 0x00000100 
+			u32 subAction200			: 1;	// 0x00000200 
+			u32 fixDirection			: 1;	// 0x00000400 set when hit by a falling snow object/on a vine/rope/pipe cannon, cannot switch direction when walking/running
+			u32 running					: 1;	// 0x00000800 set when on rope/in pipe/walljumping/running
+			u32 disableCap				: 1;	// 0x00001000 set when the cap shouldn't be rendered
+			u32 drillSpin				: 1;	// 0x00002000 set when performing drill spin
+			u32 onSpinBlock				: 1;	// 0x00004000 set when standing on a spin block
+			u32 subAction8000			: 1;	// 0x00008000 
+			u32 subAction10000			: 1;	// 0x00010000 
+			u32 groundPounding			: 1;	// 0x00020000 set when groundpounding/climbing/in pipe/walljumping/hit by a falling snow object/on a vine/rope/pole, jump height is reduced
+			u32 subAction40000			: 1;	// 0x00040000 set when climbing vine/pole (not a swinging rope/vine)/in pipe (no horizontal movement)
+			u32 subAction80000			: 1;	// 0x00080000 
+			u32 onPipe					: 1;	// 0x00100000 set when standing on a pipe (maybe enabled near all valid pipes or even all valid entrances?)
+			u32 inPipe					: 1;	// 0x00200000 set when in pipe (maybe other entrances?)
+			u32 subAction400000			: 1;	// 0x00400000 
+			u32 invincible				: 1;	// 0x00800000 set when invincible
+			u32 subAction1000000		: 1;	// 0x01000000 set when hit by a falling snow object/on a pole (no horizontal movement)
+			u32 subAction2000000		: 1;	// 0x02000000 set when shooting from a pipe cannon (1)
+			u32 subAction4000000		: 1;	// 0x04000000 
+			u32 subAction8000000		: 1;	// 0x08000000 
+			u32 subAction10000000		: 1;	// 0x10000000 
+			u32 subAction20000000		: 1;	// 0x20000000 set when shooting from a pipe cannon (2)
+			u32 megaJump				: 1;	// 0x40000000 set when doing a mega mushroom jump
+			u32 subAction80000000		: 1;	// 0x80000000 
 		};
 	} subAction;
 
@@ -252,7 +252,7 @@ public:
 	u8 unk7B3;
 
 	u8 playerID;
-	u8 visibleFlag;
+	bool visibleFlag;
 	u8 unk7B6;
 	u8 scoreComboType;
 
@@ -264,7 +264,7 @@ public:
 	u8 scoreComboSfx;
 	u8 unk7BD;
 	u8 unk7BE;
-	u8 unk7BF; // "tripleJumpRelated2"
+	bool higherJumpFlag;
 
 	u8 unk7C0;
 	u8 unk7C1; // "timer2"
