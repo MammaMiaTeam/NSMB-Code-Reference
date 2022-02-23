@@ -197,7 +197,26 @@ public:
 	sym virtual ~CollisionMgr() __body
 
 	// 020ab010
+	// TODO: const CollisionSensor*?
 	sym void init(StageActor* owner, CollisionSensor* botSensor, CollisionSensor* topSensor, CollisionSensor* sideSensor, u32 unk) __body
+
+	// 01FFF93C
+	CollisionResult updateBottomSensor(u32 unk);
+
+	// 01FFE778
+	CollisionResult updateSideSensors(fx32* velocityX, u32 sensorFlags);
+
+	// 01FFE730
+	CollisionResult updateSidePointSensor(PointSensor* sensor, u32 direction, u32 sensorFlags);
+
+	// 01FFE660
+	CollisionResult updateSideLineSensor(LineSensorV* sensor, u32 direction, u32 sensorFlags);
+
+	// 020A917C
+	CollisionResult updateGroundCollision();
+
+	// 020A915C
+	CollisionResult updateWallCollision();
 
 };
 

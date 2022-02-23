@@ -64,7 +64,7 @@ public:
 
 	StateFunction updateFunction;
 
-	ActiveColliderInfo acInfo;
+	ActiveColliderInfo activeColliderInfo;
 
 	s16 bobPosition;
 	u8 bobTimer;

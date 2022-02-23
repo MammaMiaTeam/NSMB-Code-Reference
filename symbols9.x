@@ -2884,6 +2884,13 @@ _ZN12CollisionMgrD1Ev											= 0x020ab110;
 _ZN12CollisionMgrD2Ev											= 0x020ab110;
 
 _ZN12CollisionMgr4initEP10StageActorP15CollisionSensorS3_S3_m	= 0x020ab010;
+_ZN12CollisionMgr18updateBottomSensorEm							= 0x01FFF93C;
+_ZN12CollisionMgr17updateSideSensorsEPlm						= 0x01FFE778;
+_ZN12CollisionMgr21updateSidePointSensorEP11PointSensormm		= 0x01FFE730;
+_ZN12CollisionMgr20updateSideLineSensorEP11LineSensorVmm		= 0x01FFE660;
+_ZN12CollisionMgr21updateGroundCollisionEv						= 0x020A917C;
+_ZN12CollisionMgr19updateWallCollisionEv						= 0x020A915C;
+
 
 _ZTV12CollisionMgr												= 0x020c7000;
 
@@ -3280,6 +3287,7 @@ _ZN10PlayerBase15getRightKeyHeldEv							= 0x0212C8BC;
 _ZN10PlayerBase17getJumpKeyPressedEv						= 0x0212C63C;
 _ZN10PlayerBase14setLinkedActorER10StageActor				= 0x0212B26C;
 _ZN10PlayerBase17removeLinkedActorIfLinkedER10StageActor	= 0x0212BDE0;
+_ZNK10PlayerBase13getShellStateEv							= 0x0212BBA4;
 
 /*----------------------------------------------------------------*/
 /*---------------------------- player ----------------------------*/
