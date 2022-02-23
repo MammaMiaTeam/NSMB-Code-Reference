@@ -96,6 +96,8 @@ public:
 	constexpr FxType& operator*=(const FxType& rhs) { return (*this = *this * rhs); }
 	constexpr FxType& operator/=(const FxType& rhs) { return (*this = *this / rhs); }
 
+	constexpr FxType operator-() const { return FxType{ -m_value }; }
+
 	constexpr _Int whole() const { return m_value >> _Shift; }
 	constexpr _FxInt floor() const { return whole() << _Shift; }
 	constexpr _FxInt ceil() const { return floor() + one; }
