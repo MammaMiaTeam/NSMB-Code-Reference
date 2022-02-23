@@ -1,6 +1,5 @@
 #pragma once
 #include "playerbase.h"
-#include "misc.h"
 
 
 class Door;

@@ -13,7 +13,7 @@ enum class BaseReturnState : u32 {
 	PreFailed = 0,
 	Failed,
 	Success,
-	Minus1	//WHEN???
+	Minus1	//WHEN??? -> StageScene::onCreate
 };
 
 enum class ObjectState : u8 {

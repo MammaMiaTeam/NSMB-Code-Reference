@@ -1,8 +1,23 @@
 #pragma once
+#include "misc.h"
 #include "nsmb/player/model.h"
 #include "nsmb/stage/actor.h"
 #include "nsmb/graphics/util/blendcolor.h"
 
+
+enum class PlayerStompType : u32
+{
+	None,
+	Stomp,
+	MiniStomp
+};
+
+enum class PlayerShellState : u32
+{
+	None,
+	Idle,
+	Sliding
+};
 
 struct PlayerPhysics {
 
@@ -394,6 +409,9 @@ public:
 	// D2: 0212c2e4
 	virtual ~PlayerBase();
 
+
+	// 0212BBA4
+	PlayerShellState getShellState() const;
 
 	// 0212c27c
 	s16 getRotationFromDirection(u8 direction);

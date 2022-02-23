@@ -1,11 +1,10 @@
 #pragma once
 #include "actor.h"
 #include "misc.h"
+#include "player/player.h"
 
 
 struct ObjectBank;
-
-class Player;
 
 
 enum class ImmuneFlag : u16
@@ -390,7 +389,7 @@ public:
 	sym void onPlayerStomp(Player& player, fx32 jumpVelocity, bool noPoints) __body
 
 	// 0209a80c
-	sym u32 updatePlayerStomp(ActiveCollider& collider, fx32 jumpVelocity, u32 unk1, bool noPoints) __rbody
+	sym PlayerStompType updatePlayerStomp(ActiveCollider& collider, fx32 jumpVelocity, u32 unk1, bool noPoints) __rbody
 
 	// 0209a938
 	sym void getScorePointsSetB(u32 type, fx32 x, fx32 y, s32 playerID) const __body
