@@ -18,5 +18,12 @@
 #include "stage/actors/item.h"
 #include "stage/actors/toadsworth.h"
 
+// Overlay 34 - Whomp
+#include "stage/actors/ov34/whomp.h"
+
+// Overlay 68 - Amp
+#include "stage/actors/ov68/amp.h"
+
 // Overlay 98 - Manhole
 #include "stage/actors/ov98/manhole.h"
+

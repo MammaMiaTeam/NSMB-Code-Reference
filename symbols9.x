@@ -2410,7 +2410,7 @@ _ZN11StageEntity7destroyEb											= 0x02099884;
 _ZN11StageEntity12updateBounceElll									= 0x020998e4;
 _ZN11StageEntity20damageEntityCallbackER14ActiveColliderS1_			= 0x0209997c;
 _ZN11StageEntity13shellCallbackER14ActiveColliderS1_				= 0x02099b6c;
-_ZN11StageEntity14simpleCallbackER14ActiveColliderS1_				= 0x02099fb4;
+_ZN11StageEntity20simplePlayerCallbackER14ActiveColliderS1_			= 0x02099fb4;
 _ZN11StageEntity9getRandomEv										= 0x0209a0e8;
 _ZN11StageEntity22tryAttachToPlayerHandsElll						= 0x0209a0f4;
 _ZN11StageEntity19attachToPlayerHandsElll							= 0x0209a144;
@@ -2496,6 +2496,9 @@ _ZN11StageEntity20directionalRotationYE								= 0x020c4ec8;
 _ZN11StageEntity28directionalRotationYVelocityE						= 0x020c4ed0;
 _ZN11StageEntity28directionalDefeatedHVelocityE						= 0x020c4ed4;
 _ZN11StageEntity13layerPositionE									= 0x020c4ed8;
+_ZN11StageEntity33simplePlayerSlidingCollisionFlagsE				= 0x020c1f4c;
+_ZN11StageEntity26simplePlayerCollisionFlagsE						= 0x020c1f48;
+
 
 _ZTV11StageEntity													= 0x020c4efc;
 
@@ -2891,6 +2894,8 @@ _ZN12CollisionMgr20updateSideLineSensorEP11LineSensorVmm		= 0x01FFE660;
 _ZN12CollisionMgr21updateGroundCollisionEv						= 0x020A917C;
 _ZN12CollisionMgr19updateWallCollisionEv						= 0x020A915C;
 
+_ZN12CollisionMgr21getBottomTileBehaviorEll						= 0x020A6D18;
+
 
 _ZTV12CollisionMgr												= 0x020c7000;
 
@@ -3056,20 +3061,23 @@ _ZN4Game15fireballHandlerE = 0x02129484;
 /*-------------------------- stage misc --------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN5Stage7setZoomElmhh          = 0x020facfc;
-_ZN5Stage9getRandomEv			= 0x0200e6f4;
+_ZN5Stage23addMegaDestructionScoreEhs				= 0x020200d4;
+_ZN5Stage23getMegaDestructionScoreEh				= 0x02020114;
+_ZN5Stage23setMegaDestructionScoreEht				= 0x02020128;
+_ZN5Stage7setZoomElmhh								= 0x020facfc;
+_ZN5Stage9getRandomEv								= 0x0200e6f4;
 
-_ZN5Stage14liquidPositionE		= 0x020cae0c; 
-_ZN5Stage18lastLiquidPositionE	= 0x020cadac;
-_ZN5Stage6eventsE				= 0x0208af3c;
-_ZN5Stage7cameraXE				= 0x020cae1c;
-_ZN5Stage7cameraYE				= 0x020cad94;
-_ZN5Stage11cameraZoomXE			= 0x020cada4;
-_ZN5Stage11cameraZoomYE			= 0x020cad8c;
-_ZN5Stage18questionBlockFrameE  = 0x0212944c;
-_ZN5Stage15brickBlockFrameE     = 0x0212943c;
-_ZN5Stage11stageLayoutE         = 0x020cad40;
-_ZN5Stage16anmTilesOamTableE	= 0x0212f180;
+_ZN5Stage14liquidPositionE							= 0x020cae0c; 
+_ZN5Stage18lastLiquidPositionE						= 0x020cadac;
+_ZN5Stage6eventsE									= 0x0208af3c;
+_ZN5Stage7cameraXE									= 0x020cae1c;
+_ZN5Stage7cameraYE									= 0x020cad94;
+_ZN5Stage11cameraZoomXE								= 0x020cada4;
+_ZN5Stage11cameraZoomYE								= 0x020cad8c;
+_ZN5Stage18questionBlockFrameE						= 0x0212944c;
+_ZN5Stage15brickBlockFrameE							= 0x0212943c;
+_ZN5Stage11stageLayoutE								= 0x020cad40;
+_ZN5Stage16anmTilesOamTableE						= 0x0212f180;
 
 
 /*----------------------------------------------------------------*/
@@ -3134,53 +3142,6 @@ _ZN4Game19checkpointCollectedE				= 0x02085a1c;
 _ZN4Game19currentWorldmapNodeE				= 0x02085a9c;
 _ZN4Game11modelMatrixE						= 0x208b6e8;
 _ZN4Game10viewMatrixE						= 0x02085B20;
-
-
-/*----------------------------------------------------------------*/
-/*---------------------------- whomp -----------------------------*/
-/*----------------------------------------------------------------*/
-
-_ZN5WhompD0Ev					= 0x02143090;
-_ZN5WhompD1Ev					= 0x02143070;
-_ZN5Whomp8onCreateEv			= 0x02143268;
-_ZN5Whomp8onRenderEv			= 0x021430B8;
-_ZN5Whomp17onUserHeapCreatedEv	= 0x0214379C;
-_ZN5Whomp10updateMainEv			= 0x0214323C;
-_ZN5Whomp10onMegaWalkEv			= 0x0214497C;
-_ZN5Whomp13loadResourcesEv		= 0x02144EE8;
-
-_ZN5Whomp10stateBreakEv			= 0x021437F4;
-_ZN5Whomp15stillStateRaiseEv	= 0x021438B4;
-_ZN5Whomp14stillStateLandEv		= 0x021439A8;
-_ZN5Whomp14stillStateFallEv		= 0x02143AD0;
-_ZN5Whomp14stillStateJumpEv		= 0x02143C40;
-_ZN5Whomp14stillStateIdleEv		= 0x02143D08;
-_ZN5Whomp14walkStateRaiseEv		= 0x02143DB0;
-_ZN5Whomp13walkStateLandEv		= 0x02143F0C;
-_ZN5Whomp13walkStateFallEv		= 0x02144030;
-_ZN5Whomp13walkStateJumpEv		= 0x021441B0;
-_ZN5Whomp12walkStateRunEv		= 0x02144278;
-_ZN5Whomp13walkStateTurnEv		= 0x021443B8;
-_ZN5Whomp16walkStateWalkingEv	= 0x021444B0;
-_ZN5Whomp11switchStateEPMS_FvvE	= 0x02144E5C;
-
-_ZN5Whomp7profileE				= 0x02145388;
-
-_ZTV5Whomp						= 0x02145394;
-
-_ZN5Whomp14sWalkStateTurnE		= 0x021454C4;
-_ZN5Whomp15sStillStateLandE		= 0x021454CC;
-_ZN5Whomp11sStateBreakE			= 0x021454D4;
-_ZN5Whomp16sStillStateRaiseE	= 0x021454DC;
-_ZN5Whomp15sStillStateFallE		= 0x021454E4;
-_ZN5Whomp15sStillStateJumpE		= 0x021454EC;
-_ZN5Whomp15sStillStateIdleE		= 0x021454F4;
-_ZN5Whomp15sWalkStateRaiseE		= 0x021454FC;
-_ZN5Whomp14sWalkStateLandE		= 0x02145504;
-_ZN5Whomp17sWalkStateWalkingE	= 0x0214550C;
-_ZN5Whomp14sWalkStateFallE		= 0x02145514;
-_ZN5Whomp14sWalkStateJumpE		= 0x0214551C;
-_ZN5Whomp13sWalkStateRunE		= 0x02145524;
 
 
 /*----------------------------------------------------------------*/
@@ -3302,6 +3263,9 @@ _ZN6Player8unfreezeEv									= 0x0211F2EC;
 
 _ZN6Player14tryUnlinkActorEv							= 0x02104C9C;
 _ZN6Plater11unlinkActorEv								= 0x02104CCC;
+
+_ZN6Player12starmanTimerE								= 0x0208B350;
+
 
 /*----------------------------------------------------------------*/
 /*---------------------------- input -----------------------------*/
@@ -3500,6 +3464,74 @@ _ZN3Amp13loadResourcesEv							= 0x02178EA8;
 _ZN3Amp7profileE									= 0x02179420;
 
 _ZTV3Amp											= 0x0217942C;
+
+
+/*----------------------------------------------------------------*/
+/*---------------------------- whomp -----------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN5WhompD0Ev								= 0x02143090;
+_ZN5WhompD1Ev								= 0x02143070;
+_ZN5WhompD2Ev								= 0x02143070;
+_ZN5Whomp8onCreateEv						= 0x02143268;
+_ZN5Whomp8onRenderEv						= 0x021430B8;
+_ZN5Whomp17onUserHeapCreatedEv				= 0x0214379C;
+_ZN5Whomp10updateMainEv						= 0x0214323C;
+_ZN5Whomp10onMegaWalkEv						= 0x0214497C;
+_ZN5Whomp13loadResourcesEv					= 0x02144EE8;
+
+_ZN5Whomp11switchStateERKMS_FbvE			= 0x02144E5C;
+_ZN5Whomp11updateStateEv					= 0x02144E14;
+_ZN5Whomp19createLandParticlesEv			= 0x02144D6C;
+_ZN5Whomp7doBreakEh							= 0x02144C08;
+_ZN5Whomp14playerCollidedEh					= 0x02144A6C;
+_ZN5Whomp24walkCheckPlayerCollisionEv		= 0x021449C4;
+_ZN5Whomp25stillCheckPlayerCollisionEv		= 0x02144980;
+_ZN5Whomp20playerCollidedDamageEh			= 0x02144800;
+_ZN5Whomp26checkPlayerCollisionDamageEv		= 0x02144794;
+_ZN5Whomp18updateWalkingSoundEv				= 0x021446C4;
+_ZNK5Whomp11noTileBelowERK11PointSensor		= 0x0214467C;
+
+_ZN5Whomp10breakStateEv						= 0x021437F4;
+_ZN5Whomp15stillRaiseStateEv				= 0x021438B4;
+_ZN5Whomp14stillLandStateEv					= 0x021439A8;
+_ZN5Whomp14stillFallStateEv					= 0x02143AD0;
+_ZN5Whomp14stillJumpStateEv					= 0x02143C40;
+_ZN5Whomp14stillIdleStateEv					= 0x02143D08;
+_ZN5Whomp14walkRaiseStateEv					= 0x02143DB0;
+_ZN5Whomp13walkLandStateEv					= 0x02143F0C;
+_ZN5Whomp13walkFallStateEv					= 0x02144030;
+_ZN5Whomp13walkJumpStateEv					= 0x021441B0;
+_ZN5Whomp12walkRunStateEv					= 0x02144278;
+_ZN5Whomp13walkTurnStateEv					= 0x021443B8;
+_ZN5Whomp13walkIdleStateEv					= 0x021444B0;
+
+_ZN5Whomp15shakeVelocitiesE					= 0x02144F9C;
+_ZN5Whomp13runVelocitiesE					= 0x02144FA0;
+_ZN5Whomp14walkVelocitiesE					= 0x02144FA8;
+_ZN5Whomp11tileOffsetsE						= 0x02144FB0;
+_ZN5Whomp11coinOffsetsE						= 0x02144FB8;
+_ZN5Whomp12attackRangesE					= 0x02144FC0;
+_ZN5Whomp12bottomSensorE					= 0x02144FC8;
+_ZN5Whomp10sideSensorE						= 0x02144FD4;
+_ZN5Whomp18activeColliderInfoE				= 0x02144FE0;
+_ZN5Whomp7profileE							= 0x02145388;
+
+_ZN5Whomp9sWalkIdleE						= 0x0214550C;
+_ZN5Whomp9sWalkTurnE						= 0x021454C4;
+_ZN5Whomp8sWalkRunE							= 0x02145524;
+_ZN5Whomp9sWalkJumpE						= 0x0214551C;
+_ZN5Whomp9sWalkFallE						= 0x02145514;
+_ZN5Whomp9sWalkLandE						= 0x02145504;
+_ZN5Whomp10sWalkRaiseE						= 0x021454FC;
+_ZN5Whomp10sStillIdleE						= 0x021454F4;
+_ZN5Whomp10sStillJumpE						= 0x021454EC;
+_ZN5Whomp10sStillFallE						= 0x021454E4;
+_ZN5Whomp10sStillLandE						= 0x021454CC;
+_ZN5Whomp11sStillRaiseE						= 0x021454DC;
+_ZN5Whomp6sBreakE							= 0x021454D4;
+
+_ZTV5Whomp									= 0x02145394;
 
 
 /*----------------------------------------------------------------*/
