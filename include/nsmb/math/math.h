@@ -94,13 +94,32 @@ namespace Math {
 	u32 generateSeed();
 
 
-	constexpr s16 fromRadians(fx32 r) {
+	consteval s16 crad(fx32 r) {
 		return (r * FX32_CONST(0x10000)) / FX64C_TWOPI;
 	}
-	constexpr s16 fromDegrees(int d) {
-		while (d >= 360) d -= 360;
-		while (d < 0) d += 360;
-		return static_cast<s16>((d * 0x10000) / 360);
+	consteval s16 cdeg(long double d) {
+
+		if (d > 0)
+			while (d >= 360.0f) d -= 360.0f;
+		else
+			while (d < 0.0f) d += 360.0f;
+
+		return s16(s32((d * 0x10000) / 360));
+
+	}
+
+	constexpr s16 rad(fx32 r) {
+		return (r * FX32_CONST(0x10000)) / FX64C_TWOPI;
+	}
+	constexpr s16 deg(s32 d) {
+
+		if (d > 0)
+			while (d >= 360) d -= 360;
+		else
+			while (d < 0) d += 360;
+
+		return s16(s32((d * 0x10000) / 360));
+
 	}
 
 	template<typename T>
@@ -193,3 +212,44 @@ namespace Math {
 	//02044308 wtf
 
 }
+
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wliteral-suffix"
+
+consteval s16 operator""rad(long double r) {
+
+	constexpr long double twopi = 6.28318530718;
+
+	if (r > 0)
+		while (r >= twopi) r -= twopi;
+	else
+		while (r < 0.0f) r += twopi;
+
+	return s16(s32((r * 0x10000) / twopi));
+
+}
+
+consteval s16 operator""deg(long double d) {
+
+	if (d > 0)
+		while (d >= 360.0f) d -= 360.0f;
+	else
+		while (d < 0.0f) d += 360.0f;
+
+	return s16(s32((d * 0x10000) / 360));
+
+}
+
+consteval s16 operator""deg(unsigned long long d) {
+
+	if (d > 0)
+		while (d >= 360.0f) d -= 360.0f;
+	else
+		while (d < 0.0f) d += 360.0f;
+
+	return s16(s32((d * 0x10000) / 360));
+
+}
+
+#pragma GCC diagnostic pop
+

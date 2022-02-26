@@ -22,6 +22,9 @@ class Player : public PlayerBase
 
 public:
 
+	// 0208B350
+	static s16 starmanTimer[2];
+
 	typedef bool(Player::*StateFunction)();
 
 	Door* door;

@@ -45,6 +45,14 @@ namespace Stage
 		events &= ~(1ULL << (id - 1));
 	}
 
+	// 020200d4
+	void addMegaDestructionScore(u8 playerID, s16 amount);
+
+	// 02020114
+	u16 getMegaDestructionScore(u8 playerID);
+
+	// 02020128
+	void setMegaDestructionScore(u8 playerID, u16 score);
 
 	// 020facfc
 	void setZoom(fx32 zoom, u32 delay, u8 playerID, u8 unk);

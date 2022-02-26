@@ -121,18 +121,43 @@ struct ObjectInfo
 };
 
 
+enum class SimplePlayerCollisionFlags : u16
+{
+	None			= 0,
+	Player0			= 1 << 0,
+	Player1			= 1 << 1,
+	SlidingPlayer0	= 1 << 2,
+	SlidingPlayer1	= 1 << 3,
+};
+IMPL_ENUMCLASS_OPERATORS(SimplePlayerCollisionFlags);
+
+
+struct SimplePlayerCollision
+{
+	Player* player;
+	fx32 x, y;
+};
+
+struct SimplePlayerSlidingCollision
+{
+	Player* player;
+	fx32 x, y;
+	u16 flags;
+};
+
+
 class alignas(4) StageEntity : public StageActor
 {
 public:
 
 	enum class UpdateStateID : u32
 	{
-		MainUpdate,
+		Main,
 		SubState1,
 		Defeated,
 		DefeatedMega,
 		SubState4,
-		SubState5,
+		Grabbed,
 		SubState6,
 		SubState7,
 		SubState8,
@@ -141,9 +166,10 @@ public:
 
 	enum class CollisionResult
 	{
-		Bottom	= (1 << 0),
-		Top		= (1 << 1),
-		Sides	= (1 << 2),
+		Non				= 0,
+		Bottom			= 1 << 0,
+		Top				= 1 << 1,
+		Sides			= 1 << 2,
 	};
 
 	// 020c4ec0
@@ -167,6 +193,13 @@ public:
 	// 020c4ed8
 	static fx32 layerPosition[2];
 
+	// 020C1F4C
+	static SimplePlayerCollisionFlags simplePlayerSlidingCollisionFlags[2];
+
+	// 020C1F48
+	static SimplePlayerCollisionFlags simplePlayerCollisionFlags[2];
+
+
 	u16 notAVector;
 	ImmuneFlag immuneFlag;
 	SpawnSettings spawnSettings;
@@ -174,9 +207,8 @@ public:
 	u8 hitCountdown;
 	u8 idk[3];
 	u32 dummyZ;
-	u32 unk5[6];
-	Vec3 unkV1;
-	u32 unk11[4];
+	SimplePlayerCollision simplePlayerCollision[2];
+	SimplePlayerSlidingCollision simplePlayerSlidingCollision[2];
 	Vec3 unkV2;
 	Vec3 movementStrength;
 	u32 unk12[2];
@@ -219,9 +251,9 @@ public:
 	u16 divVelBy2;
 	u16 sizeMod;
 	u16 unk25_a;
-	u16 unkForPlayer[2];
 	u16 unk26;
-	u16 unk27;
+	u16 playerCollisionCooldown[2];
+	SimplePlayerCollisionFlags simplePlayerCollisionResult;
 
 	u16* ptrToShort; // respawn timer
 
@@ -366,7 +398,7 @@ public:
 	sym static void shellCallback(ActiveCollider& self, ActiveCollider& other) __body
 
 	// 02099fb4
-	sym static void simpleCallback(ActiveCollider& self, ActiveCollider& other) __body
+	sym static void simplePlayerCallback(ActiveCollider& self, ActiveCollider& other) __body
 
 	// 0209a070
 	// sym static void spawnBrokenPipe(u8 a, u8 b, u8 c) __body

@@ -218,6 +218,9 @@ public:
 	// 020A915C
 	CollisionResult updateWallCollision();
 
+	// 020A6D18
+	static u32 getBottomTileBehavior(fx32 x, fx32 y);
+
 };
 
 IMPL_ENUMCLASS_OPERATORS(CollisionMgr::CollisionResult);

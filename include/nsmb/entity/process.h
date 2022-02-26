@@ -31,10 +31,15 @@ namespace ProcessManager {
 	ssym void updateProcessLists() __body
 
 	//0204d630
-	ssym Base* getNextObjectByType(ObjectType type, Base* object) __rbody
+	ssym Base* getNextObjectByType(ObjectType type, Base* object = nullptr) __rbody
 
 	//0204d66c
-	ssym Base* getNextObjectByObjectID(u16 objectID, Base* object) __rbody
+	ssym Base* getNextObjectByObjectID(u16 objectID, Base* object = nullptr) __rbody
+
+	template<class T>
+	T* getNextObject(T* object = nullptr) {
+		return static_cast<T*>(getNextObjectByObjectID(T::objectID, object));
+	}
 
 	//0204d6a8
 	ssym Base* getObjectByID(u32 id) __rbody

@@ -50,7 +50,7 @@ public:
 	}
 
 	constexpr u16 getFrame() {
-		return frameController.currentFrame;
+		return frameController.currentFrame >> FX32_SHIFT;
 	}
 
 	constexpr void setFrameCount(u16 count) {
