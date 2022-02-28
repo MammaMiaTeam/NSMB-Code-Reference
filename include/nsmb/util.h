@@ -102,12 +102,6 @@ template<Integer T> constexpr T& operator >>= (T& lhs, type const& rhs) noexcept
 #define over_asm3(addr, ov, asm) over(addr, ov) asm_func void over_##addr##_ov##ov() { __asm__(asm); }
 
 
-template<class T>
-constexpr bool to_bool(const T& v) {
-	return !!static_cast<s64>(v);
-}
-
-
 extern "C"
 {
 	/*
@@ -118,7 +112,7 @@ extern "C"
 	void memcpy(void* destination, const void* source, u32 num);
 	void memmove(void* destination, const void* source, u32 num);
 	void memset(void* ptr, u8 value, u32 num);
-	
+
 	int strlen(const char* __s);
 
 }
