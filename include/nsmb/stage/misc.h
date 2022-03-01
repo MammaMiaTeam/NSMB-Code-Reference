@@ -21,7 +21,7 @@ namespace Stage
 
 	// 020cad94
 	extern fx32 cameraY[2];
-	
+
 	// 020cada4
 	extern fx32 cameraZoomX[2];
 
@@ -33,9 +33,18 @@ namespace Stage
 
 	// 0212944c
 	extern u8 questionBlockFrame;
+	
+	// 02085a18
+	extern u8 stageGroup;
 
-	// 0212943c
-	extern u8 brickBlockFrame;
+	// 02085a14
+	extern u8 stageID;
+
+	// 02085a4c
+	extern u8 actID;
+
+	// 020ca850
+	extern ActorCategory freezeFlag;
 
 
 	__inline bool getEvent(u8 id) {
@@ -59,6 +68,9 @@ namespace Stage
 
 	// 020facfc
 	void setZoom(fx32 zoom, u32 delay, u8 playerID, u8 unk);
+
+	// 0201f53c
+	u32 getAreaID(u8 group, u8 stage, u8 act);
 
 
 	// 0200e6f4

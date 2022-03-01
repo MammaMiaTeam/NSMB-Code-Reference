@@ -136,7 +136,7 @@ public:
 	u32 unkB8C;
 	s16 unkB90;
 	s16 oneUpSparkleTimer[3];
-	
+
 	s16 lookAtRotation;
 	u16 prevAnimFrame;
 
@@ -195,7 +195,7 @@ public:
 	u8 unkBCA;
 	bool lookAtInProgress; // set to true when "LookingAtTarget" is enabled and the player's head rotation is being calculated
 
-	
+
 	// 021006AC
 	void setMovementState(bool (Player::*func)(s32), s32 args = 0);
 
@@ -220,6 +220,8 @@ public:
 	// 0211F2EC
 	void unfreeze();
 
+	// 021195E8
+	void enterEntrance();
 
 	//
 	Player();

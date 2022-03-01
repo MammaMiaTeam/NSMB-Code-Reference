@@ -19,17 +19,14 @@ public:
 
 	// 020afa30
 	void readTileBehavior(u16 tileID);
+
+	// 020cac98
+	static bool doLayoutReset;
 };
 
 
 namespace Stage
 {
-	// 0212944c
-	extern u8 questionBlockFrame;
-
-	// 0212943c
-	extern u8 brickBlockFrame;
-
 	// 0212f180
 	extern GXOamAttr* anmTilesOamTable[23];
 

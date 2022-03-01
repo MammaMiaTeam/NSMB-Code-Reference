@@ -9,6 +9,8 @@
 #include "stage/misc.h"
 //#include "stage/scene.h"
 
+#include "stage/animatedtiles.h"
+
 #include "stage/layout/data.h"
 #include "stage/layout/stagelayout.h"
 

@@ -3214,6 +3214,196 @@ _ZN10PlayerBase14getLeftKeyHeldEv							= 0x0212C8CC;
 _ZN10PlayerBase15getRightKeyHeldEv							= 0x0212C8BC;
 _ZN10PlayerBase17getJumpKeyPressedEv						= 0x0212C63C;
 _ZN10PlayerBase14setLinkedActorER10StageActor				= 0x0212B26C;
+_ZN5Stage23setMegaDestructionScoreEht				= 0x02020128;
+_ZN5Stage7setZoomElmhh								= 0x020facfc;
+_ZN5Stage9getRandomEv								= 0x0200e6f4;
+_ZN5Stage9getAreaIDEhhh								= 0x0201f53c;
+
+_ZN5Stage14liquidPositionE							= 0x020cae0c;
+_ZN5Stage18lastLiquidPositionE						= 0x020cadac;
+_ZN5Stage6eventsE									= 0x0208af3c;
+_ZN5Stage7cameraXE									= 0x020cae1c;
+_ZN5Stage7cameraYE									= 0x020cad94;
+_ZN5Stage11cameraZoomXE								= 0x020cada4;
+_ZN5Stage11cameraZoomYE								= 0x020cad8c;
+_ZN5Stage18questionBlockFrameE						= 0x0212944c;
+_ZN5Stage15brickBlockFrameE							= 0x0212943c;
+_ZN5Stage11stageLayoutE								= 0x020cad40;
+_ZN5Stage16anmTilesOamTableE						= 0x0212f180;
+_ZN5Stage10freezeFlagE								= 0x020ca850;
+_ZN5Stage10stageGroupE								= 0x02085a18;
+_ZN5Stage7stageIDE									= 0x02085a14;
+_ZN5Stage5actIDE									= 0x02085a4c;
+
+
+/*----------------------------------------------------------------*/
+/*----------------------- stage layout misc ----------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN4Game11stageBlocksE = 0x0208b168;
+
+
+/*----------------------------------------------------------------*/
+/*-------------------------- system misc -------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN4Game14storeDataCacheEPKvm														= 0x0200765c;
+_ZN4Game14flushDataCacheEPKvm														= 0x02007684;
+_ZN4Game11taskCleanupEv																= 0x02004c30;
+_ZN4Game7runTaskEPFvPvES0_mS0_m														= 0x02004cb8;
+_ZN4Game11resetSystemEm																= 0x0200514c;
+_ZN4Game14drawBNCLSpriteEhP9GXOamAttrN3OAM5FlagsEhhPK4Vec2sPKsNS2_8SettingsEll		= 0x0200421c;
+_ZN4GameL17drawBNCLSpriteSubEhP9GXOamAttrN3OAM5FlagsEhhPK4Vec2sPKsNS2_8SettingsEll	= 0x0200419c;
+_ZN4Game15initExtendedIDsEv															= 0x02004dfc;
+_ZN4Game14waitVBlankIntrEv															= 0x020058c0;
+_ZN4Game16disableVRAMBanksEv														= 0x02004be0;
+_ZN4Game12getBootSceneEv															= 0x0200563c;
+_ZN4Game12setBootSceneEt															= 0x0200564c;
+
+_ZN4Game16mainProcessTableE                                                         = 0x0203997c;
+_ZN4Game19currentProcessTableE                                                      = 0x0208fb98;
+_ZN4Game9actorTreeE																	= 0x0208fb0c;
+
+_ZN4Game16visiblePlaneMainE															= 0x02085a88;
+
+
+/*----------------------------------------------------------------*/
+/*-------------------------- game misc ---------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN4Game9loadLevelEtmhhhhhhhhhhhhhhm		= 0x0200696C;
+_ZN4Game20resetStageCheckpointEv			= 0x020066F8;
+_ZN4Game18setStageCheckpointEv				= 0x02006740;
+_ZN4Game18getStageCheckpointEv				= 0x02006790;
+_ZN4Game14getPlayerCountEv					= 0x020202A0;
+_ZN4Game14setPlayerCountEm					= 0x020202B0;
+_ZN4Game16getCurrentPlayerEv				= 0x020205EC;
+_ZN4Game9getPlayerEl						= 0x02020608;
+_ZN4Game9setPlayerElP6Player				= 0x02020618;
+_ZN4Game26stageObjectBankOverlayProcEPvb	= 0x0200DEE0;
+_ZN4Game18getPlayerCharacterEl				= 0x02020260;
+_ZN4Game18setPlayerCharacterElh				= 0x02020270;
+_ZN4Game14getPlayerLivesEl					= 0x02020570;
+_ZN4Game14setPlayerLivesEll					= 0x02020580;
+_ZN4Game25getPlayerInventoryPowerupEl		= 0x02020240;
+_ZN4Game25setPlayerInventoryPowerupElh		= 0x02020250;
+_ZN4Game13getPlayerDeadEl					= 0x02020220;
+_ZN4Game13setPlayerDeadElb					= 0x02020230;
+_ZN4Game21getPlayerRespawnStateEl			= 0x020200B4;
+_ZN4Game21setPlayerRespawnStateEll			= 0x020200C4;
+
+_ZN4Game13localPlayerIDE					= 0x02085A7C;
+_ZN4Game6vsModeE							= 0x02085a84;
+_ZN4Game9luigiModeE							= 0x02085A50;
+_ZN4Game19checkpointCollectedE				= 0x02085a1c;
+_ZN4Game19currentWorldmapNodeE				= 0x02085a9c;
+_ZN4Game11modelMatrixE						= 0x208b6e8;
+_ZN4Game10viewMatrixE						= 0x02085B20;
+
+
+/*----------------------------------------------------------------*/
+/*----------------------- climbing koopa -------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN13ClimbingKoopaD0Ev										= 0x02141EE8;
+_ZN13ClimbingKoopaD1Ev										= 0x02141E80;
+_ZN13ClimbingKoopaD2Ev										= 0x02141E80;
+_ZN13ClimbingKoopa8onCreateEv								= 0x021424FC;
+_ZN13ClimbingKoopa9onDestroyEv								= 0x02142214;
+_ZN13ClimbingKoopa8onRenderEv								= 0x02142220;
+_ZN13ClimbingKoopa14pendingDestroyEv						= 0x0214221C;
+_ZN13ClimbingKoopa17onUserHeapCreatedEv						= 0x02142F50;
+_ZN13ClimbingKoopa10updateMainEv							= 0x021424A0;
+_ZN13ClimbingKoopa10onBlockHitEv							= 0x021421A0;
+_ZN13ClimbingKoopa9onStompedEv								= 0x02142408;
+_ZN13ClimbingKoopa12damagePlayerER14ActiveColliderR6Player	= 0x02142374;
+_ZN13ClimbingKoopa6defeatElllh								= 0x02142450;
+_ZN13ClimbingKoopa9loadModelEv								= 0x02142FD0;
+_ZN13ClimbingKoopa13loadResourcesEv							= 0x02142FA8;
+_ZN13ClimbingKoopa11switchStateEMS_FvvE						= 0x02142E5C;
+_ZN13ClimbingKoopa11updateStateEv							= 0x02142E20;
+_ZN13ClimbingKoopa20horizontalStateClimbEv					= 0x02142C54;
+_ZN13ClimbingKoopa18verticalStateClimbEv					= 0x02142AA0;
+_ZN13ClimbingKoopa23horizontalStateFlipSideEv				= 0x02142900;
+_ZN13ClimbingKoopa22verticalStateFlipSideAEv				= 0x021427F0;
+_ZN13ClimbingKoopa22verticalStateFlipSideBEv				= 0x02142660;
+_ZN13ClimbingKoopa13checkNextTileERK11PointSensor			= 0x02142138;
+_ZN13ClimbingKoopa13changePaletteER8ModelAnmmm				= 0x02142104;
+_ZN13ClimbingKoopa17colliderCallbackER14ActiveColliderS1_	= 0x02141F58;
+
+_ZN13ClimbingKoopa7profileE									= 0x02145200;
+
+_ZTV13ClimbingKoopa											= 0x0214520C;
+
+
+/*----------------------------------------------------------------*/
+/*---------------------------- aeabi -----------------------------*/
+/*----------------------------------------------------------------*/
+
+__aeabi_uidiv		= 0x0207e344;
+__aeabi_uidivmod	= 0x0207e344;
+__aeabi_idiv		= 0x0207e138;
+__aeabi_idivmod		= 0x0207e138;
+
+/* __aeabi_uldiv		= 0x0207df30; */
+/* __aeabi_uldivmod		= 0x0207df3c; */
+/* __aeabi_ldiv			= 0x0207df88; */
+/* __aeabi_ldivmod		= 0x0207df78; */
+
+_ull_div = 0x0207df30;
+_ull_mod = 0x0207df3c;
+_ll_div  = 0x0207df88;
+_ll_mod  = 0x0207df78;
+
+
+/*----------------------------------------------------------------*/
+/*------------------------ PipeRenderer --------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN12PipeRenderer12loadTexturesEv										= 0x020f6640;
+_ZN12PipeRenderer5setupElmmmmm											= 0x020f6528;
+_ZN12PipeRenderer6renderERK4Vec3s										= 0x020f64ac;
+_ZN12PipeRenderer17loadPipesGraphicsEv									= 0x020f671c;
+_ZN12PipeRenderer16renderHorizontalERK4Vec3s							= 0x020f6798;
+_ZN12PipeRenderer14renderVerticalERK4Vec3s								= 0x020f6b7c;
+_ZN12PipeRenderer20renderHorizontalMiniERK4Vec3s						= 0x020f6d44;
+_ZN12PipeRenderer18renderVerticalMiniERK4Vec3s							= 0x020f6e80;
+_ZN12PipeRenderer10renderQuadERK4Vec2RK11TextureInfollS2_				= 0x020f6fb4;
+_ZN12PipeRenderer13setupTexturesEv										= 0x020f6528;
+
+_ZN12PipeRenderer20miniPipeExitTLTexIDsE								= 0x021225b8;
+_ZN12PipeRenderer20miniPipeExitBRTexIDsE								= 0x021225bc;
+_ZN12PipeRenderer18miniPipeBodyTexIDsE									= 0x021225c0;
+_ZN12PipeRenderer18brokenPipeTLTexIDsE									= 0x021225c4;
+_ZN12PipeRenderer18brokenPipeBRTexIDsE									= 0x021225cc;
+_ZN12PipeRenderer16pipeExitBRTexIDsE									= 0x021225d4;
+_ZN12PipeRenderer16pipeExitTLTexIDsE									= 0x021225e0;
+_ZN12PipeRenderer14pipeBodyTexIDsE										= 0x021225ec;
+
+
+/*-----------------------------------------------------------------*/
+/*--------------------------- MvsL Menu ---------------------------*/
+/*-----------------------------------------------------------------*/
+
+_ZN8MvsLMenu18startConsoleSearchEv  = 0x021575A8;
+
+
+/*----------------------------------------------------------------*/
+/*------------------------ stage - misc. -------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN5Stage9getRandomEv = 0x0200e6f4;
+
+
+/*----------------------------------------------------------------*/
+/*------------------------- player base --------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN10PlayerBase13getRunKeyHeldEv							= 0x0212C7A4;
+_ZN10PlayerBase14getLeftKeyHeldEv							= 0x0212C8CC;
+_ZN10PlayerBase15getRightKeyHeldEv							= 0x0212C8BC;
+_ZN10PlayerBase17getJumpKeyPressedEv						= 0x0212C63C;
+_ZN10PlayerBase14setLinkedActorER10StageActor				= 0x0212B26C;
 _ZN10PlayerBase17removeLinkedActorIfLinkedER10StageActor	= 0x0212BDE0;
 _ZNK10PlayerBase13getShellStateEv							= 0x0212BBA4;
 
@@ -3227,6 +3417,7 @@ _ZN6Player16setMovementStateEMS_FblEl					= 0x021006AC;
 _ZN6Player15updateAnimationEv							= 0x02120A24;
 _ZN6Player6freezeEb										= 0x0211F34C;
 _ZN6Player8unfreezeEv									= 0x0211F2EC;
+_ZN6Player13enterEntranceEv								= 0x021195E8;
 
 _ZN6Player14tryUnlinkActorEv							= 0x02104C9C;
 _ZN6Plater11unlinkActorEv								= 0x02104CCC;
@@ -3365,10 +3556,11 @@ _ZN4BNBL17getRectangleCountEPv = 0x02055aD4;
 /*------------------------- stage layout -------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN11StageLayout10changeTileEmmm = 0x020af30c;
-_ZN11StageLayout15getTileBehaviorEmml = 0x020af8f0;
-_ZN11StageLayout10getChunkIDEmm = 0x020b0308;
-_ZN11StageLayout17readTileBehaviourEt = 0x020afa30;
+_ZN11StageLayout10changeTileEmmm		= 0x020af30c;
+_ZN11StageLayout15getTileBehaviorEmml	= 0x020af8f0;
+_ZN11StageLayout10getChunkIDEmm			= 0x020b0308;
+_ZN11StageLayout17readTileBehaviourEt	= 0x020afa30;
+_ZN11StageLayout13doLayoutResetE		= 0x020cac98;
 
 
 /*----------------------------------------------------------------*/
@@ -3545,6 +3737,22 @@ _ZN5Whomp11sStillRaiseE						= 0x021454DC;
 _ZN5Whomp6sBreakE							= 0x021454D4;
 
 _ZTV5Whomp									= 0x02145394;
+
+
+/*----------------------------------------------------------------*/
+/*------------------------ animated tiles ------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN13AnimatedTilesC2Ev								= 0x020e2978;
+_ZN13AnimatedTilesD0Ev								= 0x020e2948;
+_ZN13AnimatedTilesD1Ev								= 0x020e2968;
+_ZN13AnimatedTilesD2Ev								= 0x020e2968;
+_ZN13AnimatedTiles6updateEv							= 0x0212944c;
+_ZN13AnimatedTiles18questionBlockFrameE				= 0x0212944c;
+_ZN13AnimatedTiles9coinFrameE						= 0x02129438;
+_ZN13AnimatedTiles10brickFrameE						= 0x0212943c;
+
+_ZTV13AnimatedTiles									= 0x0212675c;
 
 
 /*----------------------------------------------------------------*/
