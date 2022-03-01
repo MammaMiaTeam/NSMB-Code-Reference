@@ -2496,7 +2496,7 @@ _ZN11StageEntity20directionalRotationYE								= 0x020c4ec8;
 _ZN11StageEntity28directionalRotationYVelocityE						= 0x020c4ed0;
 _ZN11StageEntity28directionalDefeatedHVelocityE						= 0x020c4ed4;
 _ZN11StageEntity13layerPositionE									= 0x020c4ed8;
-_ZN11StageEntity33simplePlayerSlidingCollisionFlagsE				= 0x020c1f4c;
+_ZN11StageEntity33simplePlayerSpecialCollisionFlagsE				= 0x020c1f4c;
 _ZN11StageEntity26simplePlayerCollisionFlagsE						= 0x020c1f48;
 
 
@@ -2893,6 +2893,7 @@ _ZN12CollisionMgr21updateSidePointSensorEP11PointSensormm		= 0x01FFE730;
 _ZN12CollisionMgr20updateSideLineSensorEP11LineSensorVmm		= 0x01FFE660;
 _ZN12CollisionMgr21updateGroundCollisionEv						= 0x020A917C;
 _ZN12CollisionMgr19updateWallCollisionEv						= 0x020A915C;
+_ZN12CollisionMgr15updateTopSensorEm							= 0x020AA990;
 
 _ZN12CollisionMgr21getBottomTileBehaviorEll						= 0x020A6D18;
 
@@ -3074,6 +3075,7 @@ _ZN5Stage7cameraXE									= 0x020cae1c;
 _ZN5Stage7cameraYE									= 0x020cad94;
 _ZN5Stage11cameraZoomXE								= 0x020cada4;
 _ZN5Stage11cameraZoomYE								= 0x020cad8c;
+_ZN5Stage15fenceFreezeFlagE							= 0x020ca29c;
 _ZN5Stage18questionBlockFrameE						= 0x0212944c;
 _ZN5Stage15brickBlockFrameE							= 0x0212943c;
 _ZN5Stage11stageLayoutE								= 0x020cad40;
@@ -3142,41 +3144,6 @@ _ZN4Game19checkpointCollectedE				= 0x02085a1c;
 _ZN4Game19currentWorldmapNodeE				= 0x02085a9c;
 _ZN4Game11modelMatrixE						= 0x208b6e8;
 _ZN4Game10viewMatrixE						= 0x02085B20;
-
-
-/*----------------------------------------------------------------*/
-/*----------------------- climbing koopa -------------------------*/
-/*----------------------------------------------------------------*/
-
-_ZN13ClimbingKoopaD0Ev										= 0x02141EE8;
-_ZN13ClimbingKoopaD1Ev										= 0x02141E80;
-_ZN13ClimbingKoopaD2Ev										= 0x02141E80;
-_ZN13ClimbingKoopa8onCreateEv								= 0x021424FC;
-_ZN13ClimbingKoopa9onDestroyEv								= 0x02142214;
-_ZN13ClimbingKoopa8onRenderEv								= 0x02142220;
-_ZN13ClimbingKoopa14pendingDestroyEv						= 0x0214221C;
-_ZN13ClimbingKoopa17onUserHeapCreatedEv						= 0x02142F50;
-_ZN13ClimbingKoopa10updateMainEv							= 0x021424A0;
-_ZN13ClimbingKoopa10onBlockHitEv							= 0x021421A0;
-_ZN13ClimbingKoopa9onStompedEv								= 0x02142408;
-_ZN13ClimbingKoopa12damagePlayerER14ActiveColliderR6Player	= 0x02142374;
-_ZN13ClimbingKoopa6defeatElllh								= 0x02142450;
-_ZN13ClimbingKoopa9loadModelEv								= 0x02142FD0;
-_ZN13ClimbingKoopa13loadResourcesEv							= 0x02142FA8;
-_ZN13ClimbingKoopa11switchStateEMS_FvvE						= 0x02142E5C;
-_ZN13ClimbingKoopa11updateStateEv							= 0x02142E20;
-_ZN13ClimbingKoopa20horizontalStateClimbEv					= 0x02142C54;
-_ZN13ClimbingKoopa18verticalStateClimbEv					= 0x02142AA0;
-_ZN13ClimbingKoopa23horizontalStateFlipSideEv				= 0x02142900;
-_ZN13ClimbingKoopa22verticalStateFlipSideAEv				= 0x021427F0;
-_ZN13ClimbingKoopa22verticalStateFlipSideBEv				= 0x02142660;
-_ZN13ClimbingKoopa13checkNextTileERK11PointSensor			= 0x02142138;
-_ZN13ClimbingKoopa13changePaletteER8ModelAnmmm				= 0x02142104;
-_ZN13ClimbingKoopa17colliderCallbackER14ActiveColliderS1_	= 0x02141F58;
-
-_ZN13ClimbingKoopa7profileE									= 0x02145200;
-
-_ZTV13ClimbingKoopa											= 0x0214520C;
 
 
 /*----------------------------------------------------------------*/
@@ -3464,6 +3431,52 @@ _ZN3Amp13loadResourcesEv							= 0x02178EA8;
 _ZN3Amp7profileE									= 0x02179420;
 
 _ZTV3Amp											= 0x0217942C;
+
+
+/*----------------------------------------------------------------*/
+/*------------------------- fence koopa --------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN10FenceKoopaD0Ev										= 0x02141EE8;
+_ZN10FenceKoopaD1Ev										= 0x02141E80;
+_ZN10FenceKoopaD2Ev										= 0x02141E80;
+_ZN10FenceKoopa8onCreateEv								= 0x021424FC;
+_ZN10FenceKoopa9onDestroyEv								= 0x02142214;
+_ZN10FenceKoopa8onRenderEv								= 0x02142220;
+_ZN10FenceKoopa14pendingDestroyEv						= 0x0214221C;
+_ZN10FenceKoopa17onUserHeapCreatedEv					= 0x02142F50;
+_ZN10FenceKoopa10updateMainEv							= 0x021424A0;
+_ZN10FenceKoopa10onBlockHitEv							= 0x021421A0;
+_ZN10FenceKoopa9onStompedEv								= 0x02142408;
+_ZN10FenceKoopa12damagePlayerER14ActiveColliderR6Player	= 0x02142374;
+_ZN10FenceKoopa6defeatElllh								= 0x02142450;
+_ZN10FenceKoopa9loadModelEv								= 0x02142FD0;
+_ZN10FenceKoopa13loadResourcesEv						= 0x02142FA8;
+
+_ZN10FenceKoopa14activeCallbackER14ActiveColliderS1_	= 0x02141F58;
+_ZN10FenceKoopa18setMaterialPaletteER8ModelAnmmm		= 0x02142104;
+_ZNK10FenceKoopa17checkAdjacentTileERK11PointSensor		= 0x02142138;
+_ZN10FenceKoopa11switchStateEMS_FbvE					= 0x02142E5C;
+_ZN10FenceKoopa11updateStateEv							= 0x02142E20;
+
+_ZN10FenceKoopa20horizontalClimbStateEv					= 0x02142C54;
+_ZN10FenceKoopa18verticalClimbStateEv					= 0x02142AA0;
+_ZN10FenceKoopa23horizontalFlipSideStateEv				= 0x02142900;
+_ZN10FenceKoopa26verticalClimbOverGrabStateEv			= 0x021427F0;
+_ZN10FenceKoopa26verticalClimbOverJumpStateEv			= 0x02142660;
+
+_ZN10FenceKoopa11paletteBaseE							= 0x021454C0;
+_ZN10FenceKoopa14paletteOffsetsE						= 0x02144F4C;
+_ZN10FenceKoopa15climbVelocitiesE						= 0x02144F50;
+_ZN10FenceKoopa19climbFastVelocitiesE					= 0x02144F54;
+_ZN10FenceKoopa14layerRotationYE						= 0x02144F58;
+_ZN10FenceKoopa10sideSensorE							= 0x02144F5C;
+_ZN10FenceKoopa9topSensorE								= 0x02144F68;
+_ZN10FenceKoopa12bottomSensorE							= 0x02144F74;
+_ZN10FenceKoopa18activeColliderInfoE					= 0x02144F80;
+_ZN10FenceKoopa7profileE								= 0x02145200;
+
+_ZTV12FenceKoopa										= 0x0214520C;
 
 
 /*----------------------------------------------------------------*/
