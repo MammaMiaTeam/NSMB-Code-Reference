@@ -10,6 +10,7 @@ struct ObjectBank;
 enum class ImmuneFlag : u16
 {
 	None = 0,
+	// 1U << 0 - used in FenceKoopa
 	InactiveFocus	= (1U << 1),
 	LiquidParticles	= (1U << 2), // ??????????
 	LevelBeaten		= (1U << 4),
@@ -18,6 +19,7 @@ enum class ImmuneFlag : u16
 	Starman			= (1U << 8),
 	Sliding			= (1U << 9),
 	BlueShell		= (1U << 10),
+	// 1U << 11 - used in FenceKoopa
 	BlueShell2		= (1U << 12), // ???
 	// 1U << 13 - used in Manhole
 	Fireball		= (1U << 14),
@@ -126,8 +128,8 @@ enum class SimplePlayerCollisionFlags : u16
 	None			= 0,
 	Player0			= 1 << 0,
 	Player1			= 1 << 1,
-	SlidingPlayer0	= 1 << 2,
-	SlidingPlayer1	= 1 << 3,
+	SpecialPlayer0	= 1 << 2,
+	SpecialPlayer1	= 1 << 3,
 };
 IMPL_ENUMCLASS_OPERATORS(SimplePlayerCollisionFlags);
 
@@ -138,7 +140,7 @@ struct SimplePlayerCollision
 	fx32 x, y;
 };
 
-struct SimplePlayerSlidingCollision
+struct SimplePlayerSpecialCollision
 {
 	Player* player;
 	fx32 x, y;
@@ -166,7 +168,7 @@ public:
 
 	enum class CollisionResult
 	{
-		Non				= 0,
+		None			= 0,
 		Bottom			= 1 << 0,
 		Top				= 1 << 1,
 		Sides			= 1 << 2,
@@ -194,24 +196,27 @@ public:
 	static fx32 layerPosition[2];
 
 	// 020C1F4C
-	static SimplePlayerCollisionFlags simplePlayerSlidingCollisionFlags[2];
+	static SimplePlayerCollisionFlags simplePlayerSpecialCollisionFlags[2];
 
 	// 020C1F48
 	static SimplePlayerCollisionFlags simplePlayerCollisionFlags[2];
 
 
-	u16 notAVector;
+	u16 unk2C0;
 	ImmuneFlag immuneFlag;
 	SpawnSettings spawnSettings;
-	u16 argh;
+	u16 unk2C6;
 	u8 hitCountdown;
-	u8 idk[3];
-	u32 dummyZ;
+	u8 userCountdown;
+	u8 unk2CA;
+	u8 unk2CB;
+	u32 unk2CC;
 	SimplePlayerCollision simplePlayerCollision[2];
-	SimplePlayerSlidingCollision simplePlayerSlidingCollision[2];
-	Vec3 unkV2;
+	SimplePlayerSpecialCollision simplePlayerSpecialCollision[2];
+	Vec3 unk308;
 	Vec3 movementStrength;
-	u32 unk12[2];
+	u32 unk328;
+	u32 unk32C;
 
 	u32 eventMask[2];
 
@@ -220,14 +225,14 @@ public:
 		u8 trigger;
 	} eventIDs;
 
-	u16 padMaybe;
+	u16 unk33A;
 	UpdateStateID updateStateID;
-	u32 unk15;
+	u32 unk340;
 	u32 playerID;
 	u32 defeatSFX;
-	u32 unk18;
+	u32 liquidWaveHeight;
 	u32 bitfield;
-	u32 used;
+	u32 unk354;
 
 	// scale for wiggling effect
 	Vec3 wiggleScale;
@@ -243,57 +248,61 @@ public:
 
 	fx32 wiggleOscillator;
 
-	u32 unk21[2];
+	u32 unk3A8;
+	u32 unk3AC;
 	CollisionType collisionType;
 
-	s32 velX_sum;
+	fx32 unk3B4;
 	u16 wiggleTimer;
-	u16 divVelBy2;
-	u16 sizeMod;
-	u16 unk25_a;
-	u16 unk26;
+	u16 unk3BA;
+	u16 unk3BC;
+	u16 unk3BE;
+	u16 unk3C0;
 	u16 playerCollisionCooldown[2];
 	SimplePlayerCollisionFlags simplePlayerCollisionResult;
 
-	u16* ptrToShort; // respawn timer
+	u16* objectRespawnTimer;
 
 	u8 defeatRelated;
-	u8 unk28;
+	u8 unk3CD;
 	u8 decrement;
-	u8 unk29;
-	u32 unk30;
+	u8 unk3CF;
+	u8 unk3D0;
+	u8 unk3D1;
+	u8 unk3D2;
+	u8 unk3D3;
 
-	u8* ptrToByte; // (re)spawn flags: 1 = created/exists, 8 = permanently destroyed
+	u8* objectSpawnFlags; // (re)spawn flags: 1 = created/exists, 8 = permanently destroyed
 
 	u8 playerDirection;
 	u8 hitCombo;
 
 	u8 scoreEnhancement;
-	u8 unk34;
+	u8 unk3DB;
 	bool spawnedByCreateActorMaybe; // bool
-	u8 unk35;
+	u8 unk3DD;
 
-	u8 directionForBlockCallback;
+	u8 blockHitDirection;
 
 	u8 killedRelated;
 	bool permanentDelete;
-	u8 unk36;
+	u8 unk3E1;
 	u8 usedInLiquid;
-	u8 unk37;
+	u8 unk3E3;
 
 	bool disableDefeatRoll; // bool
 	bool invisible; // bool
 
 	bool ciroImmobile;
-	u8 unk39;
-	u8 oneIfOdd;
-	u8 unk40;
+	u8 unk3E7;
+	u8 unk3E8;
+	u8 unk3E9;
 
 	u8 defeatedDirection;
 	u8 freezeRelated;
 	bool backLayer;
-	u8 unk42;
-	u8 unk43;
+	u8 unk3ED;
+	s8 functionStep; // generic function step (where is it used??)
 	u8 facing; // 0 = down, 1 = up, 2 = left, 3 = right
 
 
@@ -346,7 +355,7 @@ public:
 	sym static bool isBelowCamera(fx32 positionY, ActiveCollider& collider, u8 playerID) __rbody
 
 	inline static bool isAboveCamera(fx32 positionY, ActiveCollider& collider, u8 playerID) {
-		return -(positionY + collider.rect.y + collider.rect.halfHeight) > Stage::cameraY[playerID];
+		return -(positionY + collider.hitbox.rect.y + collider.hitbox.rect.halfHeight) > Stage::cameraY[playerID];
 	}
 
 	// 02098e08

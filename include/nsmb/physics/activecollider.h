@@ -6,16 +6,16 @@
 
 enum class CollisionGroup : u8
 {
-	Player,		// player
-	Sliding,	// player (when sliding)
+	Player,			// player
+	PlayerSpecial,	// player sliding, slamming a fence, mega mushroom
 	Group2,
 	Group3,
-	Entity,		// koopa, goomba, trampoline, thwomp, bumper, etc...
-	Hostile,	// lakitu, (fire) piranha plant, spike bass, flame chomp, fire snake, big cheep cheep, cheep cheep, blooper (spawned?), chain chomp (no log), cheep skipper(?????) (spawnable enemies OR enemies that spawn something (what does the spike bass spawn though)) ... they do have something in common, they all try to attack the player (some follow the player (blooper, flame chomp, cheep cheep variations, fire snake), some attack him directly (lakitu, chain chomp, piranha plants, boss bass, cheep skipper))
-	Item,		// items, star coin, boss key, mvsl battle star, 'lakithunder effects'??
-	Fireball,	// fireball
-	Bullet,		// bullet bill/banzai bill
-	Debris,		// volcano debris
+	Entity,			// koopa, goomba, trampoline, thwomp, bumper, etc...
+	Hostile,		// lakitu, (fire) piranha plant, spike bass, flame chomp, fire snake, big cheep cheep, cheep cheep, blooper (spawned?), chain chomp (no log), cheep skipper(?????) (spawnable enemies OR enemies that spawn something (what does the spike bass spawn though)) ... they do have something in common, they all try to attack the player (some follow the player (blooper, flame chomp, cheep cheep variations, fire snake), some attack him directly (lakitu, chain chomp, piranha plants, boss bass, cheep skipper))
+	Item,			// items, star coin, boss key, mvsl battle star, 'lakithunder effects'??
+	Fireball,		// fireball
+	Bullet,			// bullet bill/banzai bill
+	Debris,			// volcano debris
 	Group10,
 	Group11,
 	Group12,
@@ -33,11 +33,11 @@ enum class CollisionFlag : u8
 	Flag2,
 	Flag3,
 	Flag4,
-	Sliding,		// player (when sliding)
+	Sliding,		// player sliding
 	Flag6,
 	Flag7,
 	Flag8,
-	Flag9,
+	SlamFence,		// player slamming a fence
 	DamageEntity,	// snowball, spiked ball
 	Flag11,
 	Flag12,
@@ -75,13 +75,10 @@ using ActiveColliderCallback = void(*)(ActiveCollider&, ActiveCollider&);
 
 struct ActiveColliderInfo
 {
-	fx32 offsetX;
-	fx32 offsetY;
-	fx32 sizeX;
-	fx32 sizeY;
+	FxRect rect;
 
-	CollisionGroup selfGroupID;
-	CollisionFlag selfFlagID;
+	CollisionGroup selfGroup;
+	CollisionFlag selfFlag;
 	u16 checkGroupMask;
 	u16 checkFlagMask;
 	u16 itemRelated;
@@ -109,18 +106,8 @@ public:
 		ActiveCollider* first;
 	} list;
 
-	// hitbox properties
-	FxRect rect;
-
-	// hitbox behaviors
-	CollisionGroup selfGroup;
-	CollisionFlag selfFlag;
-	u16 checkGroupMask;
-	u16 checkFlagMask;
-	u16 itemRelated;
-
-	// collision callback
-	void* callback;
+	// hitbox info
+	ActiveColliderInfo hitbox;
 
 	// position info
 	Vec2 position;

@@ -53,6 +53,14 @@ public:
 		return frameController.currentFrame >> FX32_SHIFT;
 	}
 
+	constexpr void setFullFrame(fx32 frame) {
+		frameController.currentFrame = frame;
+	}
+
+	constexpr fx32 getFullFrame() {
+		return frameController.currentFrame;
+	}
+
 	constexpr void setFrameCount(u16 count) {
 		frameController.setFrameCount(count);
 	}

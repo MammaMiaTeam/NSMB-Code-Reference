@@ -28,6 +28,9 @@ namespace Stage
 	// 020cad8c
 	extern fx32 cameraZoomY[2];
 
+	// 020ca29c
+	extern bool fenceFreezeFlag;
+
 	// 0212944c
 	extern u8 questionBlockFrame;
 

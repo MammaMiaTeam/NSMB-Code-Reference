@@ -7,7 +7,7 @@
 enum class ActorType : u8 {
 	None,
 	Player,
-	Actor,
+	Entity,
 	Overlay,
 };
 

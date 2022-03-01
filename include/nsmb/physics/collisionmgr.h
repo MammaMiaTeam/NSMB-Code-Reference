@@ -218,6 +218,9 @@ public:
 	// 020A915C
 	CollisionResult updateWallCollision();
 
+	// 020AA990
+	CollisionResult updateTopSensor(u32 unk);
+
 	// 020A6D18
 	static u32 getBottomTileBehavior(fx32 x, fx32 y);
 
