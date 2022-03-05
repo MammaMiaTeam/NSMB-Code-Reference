@@ -165,3 +165,11 @@ public:
 	sym Vec3 getCenteredPosition() const __rbody
 
 };
+
+namespace ProcessManager {
+
+	inline Actor* getNextActor(Actor* actor = nullptr) {
+		return static_cast<Actor*>(getNextObjectByType(ObjectType::Actor, actor));
+	}
+
+}

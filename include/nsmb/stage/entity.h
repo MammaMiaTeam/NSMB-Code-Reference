@@ -7,24 +7,24 @@
 struct ObjectBank;
 
 
-enum class ImmuneFlag : u16
+enum class CollisionSwitch : u16
 {
 	None = 0,
 	// 1U << 0 - used in FenceKoopa
-	InactiveFocus	= (1U << 1),
-	LiquidParticles	= (1U << 2), // ??????????
-	LevelBeaten		= (1U << 4),
-	GroundPound		= (1U << 5),
-	MegaMushroom	= (1U << 7),
-	Starman			= (1U << 8),
-	Sliding			= (1U << 9),
-	BlueShell		= (1U << 10),
-	// 1U << 11 - used in FenceKoopa
-	BlueShell2		= (1U << 12), // ???
+	InactiveFocus		= (1U << 1),
+	NoLiquidParticles	= (1U << 2), // ??????????
+	NoLevelBeaten		= (1U << 4),
+	NoGroundPound		= (1U << 5),
+	NoMegaMushroom		= (1U << 7),
+	NoStarman			= (1U << 8),
+	NoSliding			= (1U << 9),
+	NoBlueShell			= (1U << 10),
+	FenceSlam			= (1U << 11),
+	SpinDrill			= (1U << 12),
 	// 1U << 13 - used in Manhole
-	Fireball		= (1U << 14),
+	NoFireball			= (1U << 14),
 };
-IMPL_ENUMCLASS_OPERATORS(ImmuneFlag);
+IMPL_ENUMCLASS_OPERATORS(CollisionSwitch);
 
 
 enum class SpawnSettings : u16
@@ -61,11 +61,12 @@ enum class CollisionType : u32
 	StageBeaten			= (1U << 8),
 	Starman				= (1U << 9),
 	MegaMushroom		= (1U << 10),
-	BlueShell2			= (1U << 11),
+	SpinDrill			= (1U << 11),
 	Sliding				= (1U << 12),
 	Stomp				= (1U << 13),
 	GroundPound			= (1U << 14),
 	BlueShell			= (1U << 15),
+	FenceSlam			= (1U << 16),
 
 };
 IMPL_ENUMCLASS_OPERATORS(CollisionType);
@@ -87,8 +88,8 @@ struct ObjectInfo
 	// StageEntity::viewOffset
 	viewOffset;
 
-	// StageEntity::immuneFlag
-	ImmuneFlag immuneFlag;
+	// StageEntity::collisionSwitch
+	CollisionSwitch collisionSwitch;
 
 	// StageEntity::spawnSettings
 	SpawnSettings spawnSettings;
@@ -99,7 +100,7 @@ struct ObjectInfo
 		size{ 0, 0 },
 		spawnOffset{ 0, 0 },
 		viewOffset{ 0, 0 },
-		immuneFlag(ImmuneFlag::None),
+		collisionSwitch(CollisionSwitch::None),
 		spawnSettings(SpawnSettings::None)
 	{}
 
@@ -109,14 +110,14 @@ struct ObjectInfo
 		s16 renderSizeX = 0, s16 renderSizeY = 0,
 		s16 spawnOffsetX = 0, s16 spawnOffsetY = 0,
 		s16 viewOffsetX = 0, s16 viewOffsetY = 0,
-		ImmuneFlag immuneFlag = ImmuneFlag::None,
+		CollisionSwitch collisionSwitch = CollisionSwitch::None,
 		SpawnSettings spawnSettings = SpawnSettings::None
 	) :
 		position{ positionX, positionY },
 		size{ renderSizeX, renderSizeY },
 		spawnOffset{ spawnOffsetX, spawnOffsetY },
 		viewOffset{ viewOffsetX, viewOffsetY },
-		immuneFlag(immuneFlag),
+		collisionSwitch(collisionSwitch),
 		spawnSettings(spawnSettings)
 	{}
 
@@ -203,7 +204,7 @@ public:
 
 
 	u16 unk2C0;
-	ImmuneFlag immuneFlag;
+	CollisionSwitch collisionSwitch;
 	SpawnSettings spawnSettings;
 	u16 unk2C6;
 	u8 hitCountdown;
@@ -590,9 +591,10 @@ public:
 	// 0209d2a0
 	sym virtual void onMegaHit() __body
 	// 0209d158
-	sym virtual void virt47() __body
+	// Never called, apparently some mega kick leftover from the beta?
+	sym virtual void onMegaKicked() __body
 	// 0209d014
-	sym virtual void virt48() __body
+	sym virtual void onSpinDrillHit() __body
 	// 0209cfc0
 	sym virtual void onStomped() __body
 	// 0209ce08
@@ -600,17 +602,18 @@ public:
 	// 0209cbf8
 	sym virtual void onBlueShellHit() __body
 	// 0209cad0
-	sym virtual void virt52() __body
+	sym virtual void onFenceSlamHit() __body
 	// 02098f7c
-	sym virtual void virt53() __body
+	sym virtual void onMegaGroundPound() __body
 	// 02098e7c
 	sym virtual void onStageBeaten(Player& player) __body
 	// 0209cd3c
 	sym virtual void onFatalDamage() __body
 	// 0209cac4
-	sym virtual void onMegaWalk() __body
+	sym virtual void onMegaWalkShockwave() __body
 	// 0209cac0
-	sym virtual void onMegaGroundPound() __body
+	// Never triggered, use onMegaGroundPound instead
+	sym virtual void onMegaGroundPoundShockwave() __body
 	// 02099168
 	sym virtual void stopMovement() __body
 

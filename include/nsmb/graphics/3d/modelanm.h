@@ -45,8 +45,9 @@ public:
 		return frameController.finished();
 	}
 
-	constexpr void setFrame(u16 frame) {
+	__inline void setFrame(u16 frame) {
 		frameController.setFrame(frame);
+		NNS_G3dAnmObjSetFrame(animation, frame << FX32_SHIFT);
 	}
 
 	constexpr u16 getFrame() {

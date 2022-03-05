@@ -29,5 +29,37 @@ public:
 
 	//02018c3c
 	sym void setFrame(u16 frame) __body //Sets the animation's frame and updates it accordingly
+	
+	__inline bool finished() {
+		return frameController.finished();
+	}
+
+	constexpr u16 getFrame() {
+		return frameController.currentFrame >> FX32_SHIFT;
+	}
+
+	constexpr void setFullFrame(fx32 frame) {
+		frameController.currentFrame = frame;
+	}
+
+	constexpr fx32 getFullFrame() {
+		return frameController.currentFrame;
+	}
+
+	constexpr void setFrameCount(u16 count) {
+		frameController.setFrameCount(count);
+	}
+
+	__inline u16 getFrameCount() {
+		return frameController.getFrameCount();
+	}
+
+	constexpr void setSpeed(fx32 speed) {
+		frameController.speed = speed;
+	}
+
+	constexpr fx32 getSpeed() {
+		return frameController.speed;
+	}
 
 };

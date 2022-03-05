@@ -24,7 +24,7 @@ public:
 	bool updateMain() override;
 
 	// 0214497C
-	void onMegaWalk() override;
+	void onMegaWalkShockwave() override;
 
 	// 02144E5C
 	bool switchState(const StateFunction& function);

@@ -4,6 +4,8 @@
 #include "layout/data.h"
 
 
+enum class CollisionType : u32;
+
 namespace Stage
 {
 
@@ -28,12 +30,24 @@ namespace Stage
 	// 020cad8c
 	extern fx32 cameraZoomY[2];
 
+	// 020ca284
+	extern u8 megaInteractionFlags;
+
+	// 020ca28c
+	extern bool freezeFlag;
+
 	// 020ca29c
 	extern bool fenceFreezeFlag;
 
-	// 0212944c
-	extern u8 questionBlockFrame;
-	
+	// 020ca2bc
+	extern u32 megaInteractionViews;
+
+	// 020ca2c0
+	extern CollisionType globalCollisionTrigger;
+
+	// 020ca2c4
+	extern u32 megaGroundPoundViews[2];
+
 	// 02085a18
 	extern u8 stageGroup;
 
@@ -44,7 +58,7 @@ namespace Stage
 	extern u8 actID;
 
 	// 020ca850
-	extern ActorCategory freezeFlag;
+	extern ActorCategory actorFreezeFlag;
 
 
 	__inline bool getEvent(u8 id) {

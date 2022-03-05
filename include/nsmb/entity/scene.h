@@ -104,3 +104,11 @@ public:
 	sym static void switchToFileCorruptedScene(u32 settings) __body
 
 };
+
+namespace ProcessManager {
+
+	inline Scene* getNextScene(Scene* scene = nullptr) {
+		return static_cast<Scene*>(getNextObjectByType(ObjectType::Scene, scene));
+	}
+
+}

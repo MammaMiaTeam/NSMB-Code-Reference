@@ -25,7 +25,7 @@ public:
 	// 0208B350
 	static s16 starmanTimer[2];
 
-	typedef bool(Player::*StateFunction)();
+	using StateFunction = bool (Player::*)(void*);
 
 	Door* door;
 	Door* bossDoor;
@@ -197,13 +197,16 @@ public:
 
 
 	// 021006AC
-	void setMovementState(bool (Player::*func)(s32), s32 args = 0);
+	void setMovementState(StateFunction function, void* arg = nullptr);
 
 	// 02120BB8
-	void setAnimation(u32 id, u16 startFrame, u32 unk1, fx32 speed, u16 unk2);
+	void setAnimation(u32 id, bool doBlend, u32 frameOrigin, fx32 speed, u16 frame);
 
 	// 021209E0
 	void setAnimationSpeed(fx32 speed);
+
+	// 02120A14
+	bool isAnimationCompleted() const;
 
 	// 02120A24
 	void updateAnimation();

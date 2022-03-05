@@ -30,7 +30,7 @@ enum class CollisionFlag : u8
 {
 	None,			// none
 	Fireball,		// fireball
-	Flag2,
+	Flag2,			// used in Thwomp
 	Flag3,
 	Flag4,
 	Sliding,		// player sliding
@@ -62,8 +62,9 @@ namespace
 }
 
 
-#define MAKE_GROUP_MASK(...) static_cast<u16>(__mask_or(__VA_ARGS__))
-#define MAKE_FLAG_MASK(...) static_cast<u16>(~__mask_or(CollisionFlag::None, __VA_ARGS__))
+#define MAKE_GROUP_MASK(...)	static_cast<u16>(__mask_or(__VA_ARGS__))
+#define MAKE_FLAG_MASK(...)		static_cast<u16>(__mask_or(__VA_ARGS__))
+#define MAKE_FLAG_MASK_EX(...)	static_cast<u16>(~__mask_or(CollisionFlag::None, __VA_ARGS__))
 
 
 class StageActor;
