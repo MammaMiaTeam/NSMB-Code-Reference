@@ -3,6 +3,36 @@
 #include "nsmb/graphics/2d/oam.h"
 
 
+namespace EffectType
+{
+	constexpr s8 Score100			= 0;
+	constexpr s8 Score200			= 1;
+	constexpr s8 Score400			= 2;
+	constexpr s8 Score800			= 3;
+	constexpr s8 Score1000			= 4;
+	constexpr s8 Score2000			= 5;
+	constexpr s8 Score4000			= 6;
+	constexpr s8 Score8000			= 7;
+	constexpr s8 Score1UP			= 8;
+	constexpr s8 Score10			= 9;
+	constexpr s8 MegaMushroomStars1 = 10;
+	constexpr s8 MegaMushroomStars2 = 11;
+	constexpr s8 MegaMushroomStars3 = 12;
+	constexpr s8 MegaMushroomStars4 = 13;
+	//constexpr s8 Unknown14			= 14;
+	//constexpr s8 Unknown15			= 15;
+	//constexpr s8 Unknown16			= 16;
+	//constexpr s8 Unknown17			= 17;
+	constexpr s8 FireballTrail		= 18;
+	constexpr s8 Shine				= 19;
+	constexpr s8 Star				= 20;
+	constexpr s8 PipeShards			= 21;
+	constexpr s8 BrickShards		= 22;
+	//constexpr s8 Unknown23			= 23;
+	constexpr s8 RedNumber			= 24;
+}
+
+
 class Effect;
 typedef void(Effect::* EffectFunction)();
 
