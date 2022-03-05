@@ -5,11 +5,12 @@
 #include "stage/entity.h"
 #include "stage/entity3d.h"
 #include "stage/entity3danm.h"
-#include "stage/fireball.h"
 #include "stage/misc.h"
 //#include "stage/scene.h"
 
 #include "stage/animatedtiles.h"
+#include "stage/fireball.h"
+#include "stage/viewshaker.h"
 
 #include "stage/layout/data.h"
 #include "stage/layout/stagelayout.h"
@@ -19,6 +20,9 @@
 
 #include "stage/actors/item.h"
 #include "stage/actors/toadsworth.h"
+
+// Overlay 24 - Thwomp
+#include "stage/actors/ov24/thwomp.h"
 
 // Overlay 34 - Whomp
 #include "stage/actors/ov34/whomp.h"
