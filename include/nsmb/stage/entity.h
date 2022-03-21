@@ -11,18 +11,18 @@ enum class CollisionSwitch : u16
 {
 	None = 0,
 	// 1U << 0 - used in FenceKoopa
-	InactiveFocus		= (1U << 1),
-	NoLiquidParticles	= (1U << 2), // ??????????
-	NoLevelBeaten		= (1U << 4),
-	NoGroundPound		= (1U << 5),
-	NoMegaMushroom		= (1U << 7),
-	NoStarman			= (1U << 8),
-	NoSliding			= (1U << 9),
-	NoBlueShell			= (1U << 10),
-	FenceSlam			= (1U << 11),
-	SpinDrill			= (1U << 12),
+	InactiveFocus		= (1U << 1),	// Permanently destroy the object if inactive
+	LiquidParticles		= (1U << 2),	// Spawn particles and play SFX on liquid collision
+	NoLevelBeaten		= (1U << 4),	// Ignore defeat on level beaten
+	NoGroundPound		= (1U << 5),	// Ignore groundpound collision
+	NoMegaMushroom		= (1U << 7),	// Ignore mega player collision
+	NoStarman			= (1U << 8),	// Ignore starman collision
+	NoSliding			= (1U << 9),	// Ignore sliding player collision
+	NoBlueShell			= (1U << 10),	// Ignore shell player collision
+	FenceSlam			= (1U << 11),	// Enable fence slam collision
+	SpinDrill			= (1U << 12),	// Enable spin drill collision
 	// 1U << 13 - used in Manhole
-	NoFireball			= (1U << 14),
+	NoFireball			= (1U << 14),	// Ignore fireball collision
 };
 IMPL_ENUMCLASS_OPERATORS(CollisionSwitch);
 
@@ -167,12 +167,14 @@ public:
 		SubState9,
 	};
 
-	enum class CollisionResult
+	enum class CollisionResponse
 	{
 		None			= 0,
 		Bottom			= 1 << 0,
 		Top				= 1 << 1,
 		Sides			= 1 << 2,
+
+		Any				= Bottom | Top | Sides
 	};
 
 	// 020c4ec0
@@ -215,7 +217,7 @@ public:
 	SimplePlayerCollision simplePlayerCollision[2];
 	SimplePlayerSpecialCollision simplePlayerSpecialCollision[2];
 	Vec3 unk308;
-	Vec3 movementStrength;
+	Vec3 externalForce;
 	u32 unk328;
 	u32 unk32C;
 
@@ -294,8 +296,8 @@ public:
 	bool disableDefeatRoll; // bool
 	bool invisible; // bool
 
-	bool ciroImmobile;
-	u8 unk3E7;
+	bool quicksandFlag;
+	bool slipperyFlag;
 	u8 unk3E8;
 	u8 unk3E9;
 
@@ -366,16 +368,16 @@ public:
 	sym bool checkSquished() const __rbody
 
 	// 02099040
-	sym CollisionMgr::CollisionResult updateSideSensors() __rbody
+	sym CollisionMgrResult updateSideSensors() __rbody
 
 	// 020990d4
-	sym CollisionMgr::CollisionResult updateBottomSensor() __rbody
+	sym CollisionMgrResult updateBottomSensor() __rbody
 
 	// 0209917c
 	sym bool checkLavaCollision() const __rbody
 
 	// 020991f8
-	sym CollisionResult updateCollisionSensors() __rbody
+	sym CollisionResponse updateCollisionSensors() __rbody
 	
 	// 02099250
 	sym bool checkPlayersInOffset(fx32 x, fx32 y) const __rbody
@@ -714,4 +716,4 @@ public:
 };
 static_assert(sizeof(StageEntity) == 0x3F4, "");
 
-IMPL_ENUMCLASS_OPERATORS(StageEntity::CollisionResult);
+IMPL_ENUMCLASS_OPERATORS(StageEntity::CollisionResponse);

@@ -41,8 +41,8 @@ public:
 
 	enum class CollisionResult : u32
 	{
-		WallOverlapRight		= (1U << 0),
-		WallOverlapLeft			= (1U << 1),
+		WallClipRight			= (1U << 0),
+		WallClipLeft			= (1U << 1),
 		WallRight				= (1U << 2),
 		WallLeft				= (1U << 3),
 		WallFullRight			= (1U << 4),
@@ -57,14 +57,14 @@ public:
 		GroundCollider			= (1U << 12),
 
 		Ceiling					= (1U << 13),
-		Ceiling4000				= (1U << 14), // ???
-		Ceiling8000				= (1U << 15), // ???
+		CeilingSlope			= (1U << 14),
+		CeilingPartial			= (1U << 15),
 
 		Unk10000				= (1U << 16),
 		Unk20000				= (1U << 17),
 		Unk40000				= (1U << 18),
 		Unk80000				= (1U << 19),
-		Unk100000				= (1U << 20), // ???????
+		CeilingBlockDestroyed	= (1U << 20),
 		Unk200000				= (1U << 21),
 		Collectable				= (1U << 22),
 		Unk800000				= (1U << 23),
@@ -72,20 +72,23 @@ public:
 		Unk2000000				= (1U << 25),
 		Unk4000000				= (1U << 26),
 		Unk8000000				= (1U << 27),
-		Unk10000000				= (1U << 28),
+		GroundBlockDestroyed	= (1U << 28),
 		Breakable				= (1U << 29),
-		Unk40000000				= (1U << 30),
-		Unk80000000				= (1U << 31),
+		NotifySolidOnTop		= (1U << 30),
+		CeilingBlockActivated	= (1U << 31),
 
 
-		WallRightAny			= WallOverlapRight	| WallRight	| WallFullRight,
-		WallLeftAny				= WallOverlapLeft	| WallLeft	| WallFullLeft,
+		WallRightAny			= WallClipRight	| WallRight	| WallFullRight,
+		WallLeftAny				= WallClipLeft	| WallLeft	| WallFullLeft,
+		WallAny					= WallRightAny | WallLeftAny,
 
-		ActorGroundAny			= Ground40 | GroundPlatform | Ground800 | GroundCollider,
 		TileGroundAny			= Ground40 | GroundTile | GroundSlope | GroundCollider,
+		ActorGroundAny			= Ground40 | GroundPlatform | Ground800 | GroundCollider,
 		GroundAny				= ActorGroundAny | TileGroundAny,
 
-		CeilingAny				= Ceiling | Ceiling4000 | Ceiling8000,
+		CeilingAny				= Ceiling | CeilingSlope | CeilingPartial,
+
+		SolidAny				= WallAny | GroundAny | CeilingAny
 
 	};
 
@@ -113,79 +116,69 @@ public:
 	};
 
 
-	// reference to parent
 	StageActor* owner;
 
-	// references to collision sensors
-	CollisionSensor* botSensor;
+	CollisionSensor* bottomSensor;
 	CollisionSensor* topSensor;
 	CollisionSensor* sideSensor;
 
 	u32 unk14;
 
-	// references to parent properties 
-	Vec3* ownerPosition;
-	Vec3* ownerVelocity;
-	u8* ownerPlayerID;
+	Vec3* linkedPosition;
+	Vec3* linkedVelocity;
+	u8* linkedPlayerID;
+	PlatformMgr* linkedPlatformMgr;
 
-	// reference to PlatformMgr
-	PlatformMgr* pPlatformMgr;
+	CollisionMgr* next[3];
 
-	u32 unk28;
-	u32 unk2C;
-	u32 xDeltaMaybe;
-	u32 yDeltaMaybe;
-	u32 unk38;
-	u32 unk3C;
-	void* unk40; // anonSolidTop?
-	Collider* anonSolidBottom;
-	Collider* anonSolidSide;
+	Collider* head[3];
+	Collider* colliders[3];
+
 	u32 unk4C;
 	u32 unk50;
 
-	// physics
-	Vec3 gravityParent;
-	Vec2 parentPOS;
-	Vec2 unkV3;
+	Vec3 appliedForce;
+	Vec2 lastPosition;
+	Vec2 positionStep;
 
-	// physics behaviors
 	CollisionResult collisionResult;
-	u32 unk2_2;
-	u32 botTileBehavior;
-
-	// position of tile below actor
+	u32 unk80;
+	u32 bottomTileBehavior;
 	u32 tileBelowY;
-
-	// physics calculations
-	u16 someOtherBits;
+	u16 surfaceAngle;
 	u8 playerID;
 	u8 unk8F;
-	u8 unk90;
-	u8 unk91;
-	u8 unk92;
-	u8 unk93;
 
-	s16 tileX;
-	s16 tileY;
+	u16 tileX;
+	u16 tileY;
 
-	u16 unk98;
-	u8 smth;
-	u8 oldSmth;
-	u32 unk9C;
-	u32 unkA0;
-	u8 unkA4[2];
-	u8 oldUnkA4[2];
-	u8 velXMaybe;
-	SlopeType slopeType;
-	u8 solidTileBehavior;
+	u16 tileX2;
+	u16 tileY2;
+
+	u16 bottomModifierFlags;
+	u8 bottomModifier;
+	u8 lastBottomModifier;
+
+	u16 topModifierFlags;
+	u8 topModifier;
+	u8 lastTopModifier;
+
+	u16 sideModifierFlags[2];
+	u8 sideModifier[2];
+	u8 lastSideModifier[2];
+
+	u8 unkA8;
+	SlopeType groundSlopeType;
+	SlopeType ceilingSlopeType;
+
 	u8 parentDirection;
 	u8 moreBits;
-	u8 unk2_17;
-	u8 unk2_18;
-	u8 unk2_19;
-	u8 someBits;
-	u8 someDirectionMaybe;
-	u8 unk2_22;
+	u8 surfaceDirection;
+	u8 moveDirection;
+	u8 unkAF;
+	u8 someBits;	// harmfulFlags
+	u8 harmfulTileType;
+	u8 unkB2;
 	u8 slopeDirectionMaybe;
 	u8 slowMovementMaybe;
 	u8 lastSlowMovementMaybe;
@@ -216,7 +209,7 @@ public:
 	CollisionResult updateGroundCollision();
 
 	// 020A915C
-	CollisionResult updateWallCollision();
+	CollisionResult updateWallCollision(fx32* velocityX, u32 flags);
 
 	// 020AA990
 	CollisionResult updateTopSensor(u32 unk);
@@ -226,4 +219,6 @@ public:
 
 };
 
-IMPL_ENUMCLASS_OPERATORS(CollisionMgr::CollisionResult);
+using CollisionMgrResult = CollisionMgr::CollisionResult;
+
+IMPL_ENUMCLASS_OPERATORS(CollisionMgrResult);

@@ -109,7 +109,7 @@ namespace SND {
 		Plays a sound effect from one of the loaded sound archives.
 		The position is how far away relative to the camera the sound will play.
 	*/
-	bool playArcSFXAtPosIfInPosRange(s32 seqArcNo, s32 seqArcIndex, Vec3* pos, s32 volume, s32 channel);
+	bool playArcSFXAtPosIfInPosRange(s32 seqArcNo, s32 seqArcIndex, const Vec3* pos, s32 volume, s32 channel);
 
 	//	Plays a sound effect normally through the sound effect table without being affected by position.
 	void playSFX(s32 sfxID);

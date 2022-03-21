@@ -1828,7 +1828,7 @@ _ZN3SND7stopSeqEl = 0x02011E3C;
 _ZN3SND8startSeqEll = 0x02011E7C;
 _ZN3SND18startLevelThemeSeqEl = 0x02011F04;
 _ZN3SND14updateSFXRangeEv = 0x02011F5C;
-_ZN3SND27playArcSFXAtPosIfInPosRangeEllP4Vec3ll = 0x02012038;
+_ZN3SND27playArcSFXAtPosIfInPosRangeEllPK4Vec3ll = 0x02012038;
 _ZN3SND7playSFXEl = 0x020121E4;
 _ZN3SND15playEntranceSFXElPK4Vec3 = 0x0201220C;
 _ZN3SND15playSFXChannel2ElPK4Vec3l = 0x0201224C;
@@ -1923,7 +1923,7 @@ _ZN4Vec33subERS_RKS_RK7VecFx32 = 0x02045B90;
 _ZN4Vec33addERS_RKS_RK7VecFx32 = 0x02045BDC;
 _ZN4Vec310applyRotXYEs = 0x02045C28;
 
-_ZN4Vec212tryNormalizeEv = 0x02045CD0;
+_ZN4Vec29normalizeEv = 0x02045CD0;
 _ZN4Vec29normalizeERS_RKS_ = 0x02045D1C;
 _ZN4Vec211crossLengthERKS_RK7VecFx32 = 0x02045D74;
 _ZNK4Vec216magnitudeSquaredEv = 0x02045DBC;
@@ -2895,7 +2895,7 @@ _ZN12CollisionMgr17updateSideSensorsEPlm						= 0x01FFE778;
 _ZN12CollisionMgr21updateSidePointSensorEP11PointSensormm		= 0x01FFE730;
 _ZN12CollisionMgr20updateSideLineSensorEP11LineSensorVmm		= 0x01FFE660;
 _ZN12CollisionMgr21updateGroundCollisionEv						= 0x020A917C;
-_ZN12CollisionMgr19updateWallCollisionEv						= 0x020A915C;
+_ZN12CollisionMgr19updateWallCollisionEPlm						= 0x020A915C;
 _ZN12CollisionMgr15updateTopSensorEm							= 0x020AA990;
 
 _ZN12CollisionMgr21getBottomTileBehaviorEll						= 0x020A6D18;

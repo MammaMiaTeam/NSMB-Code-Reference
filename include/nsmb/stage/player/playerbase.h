@@ -269,9 +269,9 @@ public:
 	u8 playerID;
 	bool visibleFlag;
 	u8 unk7B6;
-	u8 scoreComboType;
+	s8 scoreComboType;
 
-	u8 scoreCombo;
+	s8 scoreCombo;
 	u8 scoreCombo2;
 	u8 unk7BA;
 	u8 unk7BB;
