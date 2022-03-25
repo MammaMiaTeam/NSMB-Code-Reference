@@ -5,6 +5,7 @@
 #include "stage/entity.h"
 #include "stage/entity3d.h"
 #include "stage/entity3danm.h"
+#include "stage/controller.h"
 #include "stage/misc.h"
 //#include "stage/scene.h"
 
@@ -18,8 +19,9 @@
 #include "stage/player/misc.h"
 #include "stage/player/player.h"
 
-#include "stage/actors/item.h"
-#include "stage/actors/toadsworth.h"
+// Overlay 10 - Item, StageFX
+#include "stage/actors/ov10/item.h"
+#include "stage/actors/ov10/stagefx.h"
 
 // Overlay 24 - Thwomp
 #include "stage/actors/ov24/thwomp.h"
@@ -32,4 +34,7 @@
 
 // Overlay 98 - Manhole
 #include "stage/actors/ov98/manhole.h"
+
+// Overlay 123 - Toadsworth
+#include "stage/actors/ov123/toadsworth.h"
 

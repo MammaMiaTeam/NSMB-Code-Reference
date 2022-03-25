@@ -80,7 +80,7 @@ struct ObjectInfo
 	position,
 
 	// StageEntity::renderSize, StageEntity::existSize
-	size,		
+	size,
 
 	// Only used when assigning the view, does not affect the object's position
 	spawnOffset,
@@ -106,7 +106,7 @@ struct ObjectInfo
 
 
 	constexpr ObjectInfo(
-		s16 positionX, s16 positionY, 
+		s16 positionX, s16 positionY,
 		s16 renderSizeX = 0, s16 renderSizeY = 0,
 		s16 spawnOffsetX = 0, s16 spawnOffsetY = 0,
 		s16 viewOffsetX = 0, s16 viewOffsetY = 0,
@@ -333,7 +333,7 @@ public:
 
 	// 02098798
 	// sym u32 getSpritePriority - ???
-	// 
+	//
 	// 02098814
 	// sym Vec3 tryNormalizeVec3(const Vec3& v) const __rbody
 
@@ -376,7 +376,7 @@ public:
 
 	// 020991f8
 	sym CollisionResult updateCollisionSensors() __rbody
-	
+
 	// 02099250
 	sym bool checkPlayersInOffset(fx32 x, fx32 y) const __rbody
 
@@ -420,7 +420,7 @@ public:
 	sym u32 tryAttachToPlayerHands(fx32 z, fx32 y, fx32 x) __rbody
 
 	// 0209a144
-	sym void attachToPlayerHands(fx32 z, fx32 y, fx32 x) __body	  
+	sym void attachToPlayerHands(fx32 z, fx32 y, fx32 x) __body
 
 	// 0209a23c (TODO)
 	sym u32 updateSolidActiveCollider(u32 unk1, u32 flags, u8 playerID) __rbody
@@ -522,7 +522,7 @@ public:
 
 
 	// 020a03a4
-	sym virtual bool updateMain() __body
+	sym virtual bool updateMain() __rbody
 
 	// 0209ad1c
 	// returns true if rendering should be skipped
@@ -530,24 +530,24 @@ public:
 
 
 	// 020a039c
-	sym virtual bool updateState1() __body
+	sym virtual bool updateState1() __rbody
 	// 020a0304
-	sym virtual bool updateDefeated() __body
+	sym virtual bool updateDefeated() __rbody
 	// 020a0274
-	sym virtual bool updateDefeatedMega() __body
+	sym virtual bool updateDefeatedMega() __rbody
 	// 020a01ac
-	sym virtual bool updateState4() __body
+	sym virtual bool updateState4() __rbody
 	// 0209fb3c
 	// Tries to attach the entity to the linked player's hands (if any) and handles released/thrown behavior. Has hardcoded code for bob-ombs lmao
-	sym virtual bool updateGrabbed() __body
+	sym virtual bool updateGrabbed() __rbody
 	// 0209fa8c
-	sym virtual bool updateState6() __body
+	sym virtual bool updateState6() __rbody
 	// 0209f824
-	sym virtual bool updateState7() __body
+	sym virtual bool updateState7() __rbody
 	// 0209f6c4
-	sym virtual bool updateState8() __body
+	sym virtual bool updateState8() __rbody
 	// 0209f0e4
-	sym virtual bool updateState9() __body
+	sym virtual bool updateState9() __rbody
 
 
 	// 0209d9fc
