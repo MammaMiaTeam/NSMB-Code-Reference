@@ -12,14 +12,21 @@ class StageActor : public Actor
 {
 public:
 
+	enum class ReleaseMode : u8
+	{
+		None,
+		Drop,
+		Throw
+	};
+
 	ActiveCollider activeCollider;
 	CollisionMgr collisionMgr;
 	PlatformMgr platformMgr;
 
-	u8 unk0;
-	u8 direction; // 0=right, 1=left
+	ReleaseMode releaseMode;
+	u8 direction;
 	u8 viewID;
-	u8 unk3;
+	u8 unk2BB;
 	BOOL preUpdatePassed;
 
 	//020a127c

@@ -10,7 +10,7 @@ struct ObjectBank;
 enum class CollisionSwitch : u16
 {
 	None = 0,
-	// 1U << 0 - used in FenceKoopa
+	Immune				= (1U << 0),	// Immune to all collisions?
 	InactiveFocus		= (1U << 1),	// Permanently destroy the object if inactive
 	LiquidParticles		= (1U << 2),	// Spawn particles and play SFX on liquid collision
 	NoLevelBeaten		= (1U << 4),	// Ignore defeat on level beaten
@@ -159,12 +159,19 @@ public:
 		SubState1,
 		Defeated,
 		DefeatedMega,
-		SubState4,
-		Grabbed,
-		SubState6,
-		SubState7,
-		SubState8,
-		SubState9,
+		FenceTurning,
+		Carried,
+		Released,
+		Dropped,
+		Thrown,
+		ShellRolling,
+	};
+
+	enum class ThrowBehavior : u16
+	{
+		None,
+		Drop,
+		Throw
 	};
 
 	enum class CollisionResponse
@@ -258,8 +265,8 @@ public:
 	fx32 unk3B4;
 	u16 wiggleTimer;
 	u16 unk3BA;
-	u16 unk3BC;
-	u16 unk3BE;
+	ThrowBehavior throwBehavior;
+	u16 thrownFlag;
 	u16 unk3C0;
 	u16 playerCollisionCooldown[2];
 	SimplePlayerCollisionFlags simplePlayerCollisionResult;
@@ -293,7 +300,7 @@ public:
 	u8 usedInLiquid;
 	u8 unk3E3;
 
-	bool disableDefeatRoll; // bool
+	bool defeatRollRelative; // bool
 	bool invisible; // bool
 
 	bool quicksandFlag;
@@ -310,17 +317,17 @@ public:
 
 
 	// 0209dee0
-	sym StageEntity() __body
+	StageEntity();
 
 
 
-	sym virtual s32 onUpdate() override __rbody
+	virtual s32 onUpdate() override;
 	// 0209dab8
-	sym virtual bool preUpdate() override __rbody
+	virtual bool preUpdate() override;
 	// 0209da90
-	sym virtual void postUpdate(BaseReturnState state) override __body
+	virtual void postUpdate(BaseReturnState state) override;
 	// 0209da58
-	sym virtual bool preRender() override __rbody
+	virtual bool preRender() override;
 
 
 
@@ -331,387 +338,321 @@ public:
 
 
 	// 02098788
-	// sym static ObjectBank* getObjectBank(u32 objectID) __rbody
+	// static ObjectBank* getObjectBank(u32 objectID) ;
 
 	// 02098798
-	// sym u32 getSpritePriority - ???
-	//
+	// u32 getSpritePriority - ???
+	// 
 	// 02098814
-	// sym Vec3 tryNormalizeVec3(const Vec3& v) const __rbody
+	// Vec3 tryNormalizeVec3(const Vec3& v) const ;
 
 	// 020988ac clear bit at 020ca2b8 (const)
 	// 020988d0 set bit at 020ca2b8 (const)
 
 	// 020988f0
-	sym void assignView(const Vec3& position) __body
+	void assignView(const Vec3& position);
 
 	// 02098908
-	sym bool isPlayerInZone(const Player& player, u32 zoneID) const __rbody
+	bool isPlayerInZone(const Player& player, u32 zoneID) const;
 
 	// 02098998
-	// sym u32 stopPlayerInShell(const ActiveCollider& collider, Player& player) const; - ???
+	// u32 stopPlayerInShell(const ActiveCollider& collider, Player& player) const; - ???
 
 	// 02098c78
-	sym static void damagePlayerCallback(ActiveCollider& self, ActiveCollider& other) __body
+	static void damagePlayerCallback(ActiveCollider& self, ActiveCollider& other);
 
 	// 02098dd8
-	sym static bool isBelowCamera(fx32 positionY, ActiveCollider& collider, u8 playerID) __rbody
+	static bool isBelowCamera(fx32 positionY, ActiveCollider& collider, u8 playerID);
 
 	inline static bool isAboveCamera(fx32 positionY, ActiveCollider& collider, u8 playerID) {
 		return -(positionY + collider.hitbox.rect.y + collider.hitbox.rect.halfHeight) > Stage::cameraY[playerID];
 	}
 
 	// 02098e08
-	sym bool setGroundPoundCollision(const Player& player) __rbody
+	bool setGroundPoundCollision(const Player& player);
 
 	// 02098fbc
-	sym bool checkSquished() const __rbody
+	bool checkSquished() const;
+
+	inline CollisionMgrResult updateTopSensor() {
+		return collisionMgr.updateTopSensor(collisionMgr.collisionResult);
+	}
+
+	inline CollisionMgrResult updateTopSensor(CollisionMgrResult bottomResult) {
+		return collisionMgr.updateTopSensor(bottomResult);
+	}
 
 	// 02099040
-	sym CollisionMgrResult updateSideSensors() __rbody
+	CollisionMgrResult updateSideSensors();
 
 	// 020990d4
-	sym CollisionMgrResult updateBottomSensor() __rbody
+	CollisionMgrResult updateBottomSensor();
 
 	// 0209917c
-	sym bool checkLavaCollision() const __rbody
+	bool checkLavaCollision() const;
 
 	// 020991f8
-	sym CollisionResponse updateCollisionSensors() __rbody
-	
+	CollisionResponse updateCollisionSensors();
+
 	// 02099250
-	sym bool checkPlayersInOffset(fx32 x, fx32 y) const __rbody
+	bool checkPlayersInOffset(fx32 x, fx32 y) const;
 
 	// 02099354
-	sym bool checkPlayersInOffset(fx32 x) const __rbody
+	bool checkPlayersInOffset(fx32 x) const;
 
 	// 020993ec
-	sym bool rotateToTarget(s16 target[2], s16 step[2]) __rbody
+	bool rotateToTarget(s16 target[2], s16 step[2]);
 
 	// 02099440
-	sym void applyFireballWiggle() __body
+	void applyFireballWiggle();
 
 	// 02099590
-	sym static u16 getActorID(u16 objectID) __rbody
+	static u16 getActorID(u16 objectID);
 
 	// 020995a4
-	sym void setTimedEvent(u32 eventID, s32 time, bool enable, bool switchEvent = false, bool playSFX = false) __body
+	void setTimedEvent(u32 eventID, s32 time, bool enable, bool switchEvent = false, bool playSFX = false);
 
 	// 02099884
-	sym void destroy(bool permanent) __body
+	void destroy(bool permanent);
 
 	// 020998e4
-	sym void updateBounce(fx32 velocityStopY, fx32 amountX, fx32 amountY) __body
+	void updateBounce(fx32 velocityStopY, fx32 amountX, fx32 amountY);
 
 	// 0209997c
-	sym static void damageEntityCallback(ActiveCollider& self, ActiveCollider& other) __body
+	static void damageEntityCallback(ActiveCollider& self, ActiveCollider& other);
 
 	// 02099b6c
-	sym static void shellCallback(ActiveCollider& self, ActiveCollider& other) __body
+	static void shellCallback(ActiveCollider& self, ActiveCollider& other);
 
 	// 02099fb4
-	sym static void simplePlayerCallback(ActiveCollider& self, ActiveCollider& other) __body
+	static void simplePlayerCallback(ActiveCollider& self, ActiveCollider& other);
 
 	// 0209a070
-	// sym static void spawnBrokenPipe(u8 a, u8 b, u8 c) __body
+	// static void spawnBrokenPipe(u8 a, u8 b, u8 c) ;
 
 	// 0209a0e8
-	sym static u32 getRandom() __rbody
+	static u32 getRandom();
 
 	// 0209a0f4
-	sym u32 tryAttachToPlayerHands(fx32 z, fx32 y, fx32 x) __rbody
+	u32 tryAttachToPlayerHands(fx32 z, fx32 y, fx32 x);
 
 	// 0209a144
-	sym void attachToPlayerHands(fx32 z, fx32 y, fx32 x) __body
+	void attachToPlayerHands(fx32 z, fx32 y, fx32 x);
 
 	// 0209a23c (TODO)
-	sym u32 updateSolidActiveCollider(u32 unk1, u32 flags, u8 playerID) __rbody
+	u32 updateSolidActiveCollider(u32 unk1, u32 flags, u8 playerID);
 
 	// 0209a4f0
 
 	// 0209a5bc
-	sym void onPlayerStomp(Player& player, fx32 jumpVelocity, bool noPoints) __body
+	void onPlayerStomp(Player& player, fx32 jumpVelocity, bool noPoints);
 
 	// 0209a80c
-	sym PlayerStompType updatePlayerStomp(ActiveCollider& collider, fx32 jumpVelocity, u32 unk1, bool noPoints) __rbody
+	PlayerStompType updatePlayerStomp(ActiveCollider& collider, fx32 jumpVelocity, u32 unk1, bool noPoints);
 
 	// 0209a938
-	sym void getScorePointsSetB(u32 type, fx32 x, fx32 y, s32 playerID) const __body
+	void getScorePointsSetB(u32 type, fx32 x, fx32 y, s32 playerID) const;
 
 	// 0209a990
-	sym static void getScorePointsSetB(const Vec3& position, u32 type, s32 playerID) __body
+	static void getScorePointsSetB(const Vec3& position, u32 type, s32 playerID);
 
 	// 0209aa04
-	sym void getScorePointsSetC(u32 type, fx32 x, fx32 y, s32 playerID) const __body
+	void getScorePointsSetC(u32 type, fx32 x, fx32 y, s32 playerID) const;
 
 	// 0209aa5c
-	sym static void getScorePointsSetC(const Vec3& position, u32 type, s32 playerID) __body
+	static void getScorePointsSetC(const Vec3& position, u32 type, s32 playerID);
 
 	// 0209aad0
-	sym static void spawnRedCoinNumber(const Vec3& position, u32 coins, s32 playerID) __body
+	static void spawnRedCoinNumber(const Vec3& position, u32 coins, s32 playerID);
 
 	// 0209ab04
-	sym static void getCollectablePoints(u32 type, s32 playerID) __body
+	static void getCollectablePoints(u32 type, s32 playerID);
 
 	// 0209ab90
-	sym void getScorePointsSetA(u32 type, fx32 x, fx32 y, s32 playerID) const __body
+	void getScorePointsSetA(u32 type, fx32 x, fx32 y, s32 playerID) const;
 
 	// 0209ac0c
-	sym static void getScorePointsSetA(const Vec3& position, u32 type, s32 playerID) __body
+	static void getScorePointsSetA(const Vec3& position, u32 type, s32 playerID);
 
 	// 0209ac8c
-	sym u8 getVerticalDirectionToPlayer(const Vec3& position) const __rbody
+	u8 getVerticalDirectionToPlayer(const Vec3& position) const;
 
 	// 0209acd4
-	sym u8 getHorizontalDirectionToPlayer(const Vec3& position) const __rbody
+	u8 getHorizontalDirectionToPlayer(const Vec3& position) const;
 
 	// 0209adb0
-	sym bool destroyInactive(u32 flags) __rbody
+	bool destroyInactive(u32 flags);
 
 	// 0209ae88
-	sym static bool isOutOfView(const Vec3& position, const FxRect& rect, u8 viewID) __rbody
+	static bool isOutOfView(const Vec3& position, const FxRect& rect, u8 viewID);
 
 	/*--- small break here (Stage/StageScene functions) ---*/
 
 	// 0209c590
-	sym static u32 checkLiquidCollision(const Vec3& position, const Vec3& lastPosition, fx32 waveHeight, bool playSFX = true) __rbody
+	static u32 checkLiquidCollision(const Vec3& position, const Vec3& lastPosition, fx32 waveHeight, bool playSFX = true);
 
 	// 0209c6d4
-	sym bool updateLiquidPhysics(const Vec3& position, fx32 defaultAccelY) __rbody
+	bool updateLiquidPhysics(const Vec3& position, fx32 defaultAccelY);
 
 	// 0209c7a0
-	sym void updateLiquidCollision(const Vec3& position, fx32 defaultAccelY) __body
+	void updateLiquidCollision(const Vec3& position, fx32 defaultAccelY);
 
 	// 0209c820
-	sym u32 updateLiquids(fx32 defaultAccelY) __rbody
+	u32 updateLiquids(fx32 defaultAccelY);
 
 	// 0209c85c
-	sym void applyMovement() __body
+	void applyMovement();
 
 	// 0209ccd0
-	sym bool setBlueShellCollision(const Player& player) __rbody
+	bool setBlueShellCollision(const Player& player);
 
 	// 0209cfc4
-	sym void setStompCollision(const Player& player) __body
+	void setStompCollision(const Player& player);
 
-	// 0209d0ec (-> virt48)
-	// 0209d240 (-> virt47, missing the trigger)
+	// 0209d0ec
+	bool setSpinDrillCollision(const Player& player);
+
+	// 0209d240
+	bool setMegaKickCollision(const Player& player);
 
 	// 0209d3d0
-	sym bool setMegaCollision(const Player& player) __rbody
+	bool setMegaCollision(const Player& player);
 
 	// 0209d694
-	sym void spawnCoin() __body
+	void spawnCoin();
 
-	// 0209d708 (-> virt52)
+	// 0209d708
+	bool setFenceSlamCollision(const Player& player);
 
 	// 0209d774
-	sym bool setSlidingCollision(const Player& player) __rbody
+	bool setSlidingCollision(const Player& player);
 
 	// 0209d7e0
-	sym bool setStarmanCollision(const Player& player) __rbody
+	bool setStarmanCollision(const Player& player);
 
 	// 0209ff98
+	bool updateCarriedCollision();
 
 	// 020a0048
-	sym bool tryGrab(Player& player) __rbody
+	bool tryGrab(Player& player);
 
 	// 020a01b4
-	sym void fenceTurning() __body
+	void switchFenceLayer();
 
-	// 020a020c (-> fenceDisableCollision + updateState4)
+	// 020a020c
+	void fenceTurning();
 
 
 
 	// 020a03a4
-	sym virtual bool updateMain() __rbody
+	virtual bool updateMain();
 
 	// 0209ad1c
-	// returns true if rendering should be skipped
-	sym virtual bool skipRender() __rbody
-
+	// Returns true if rendering should be skipped
+	virtual bool skipRender();
 
 	// 020a039c
-	sym virtual bool updateState1() __rbody
+	virtual bool updateState1();
 	// 020a0304
-	sym virtual bool updateDefeated() __rbody
+	virtual bool updateDefeated();
 	// 020a0274
-	sym virtual bool updateDefeatedMega() __rbody
+	virtual bool updateDefeatedMega();
 	// 020a01ac
-	sym virtual bool updateState4() __rbody
+	virtual bool updateFenceTurning();
 	// 0209fb3c
 	// Tries to attach the entity to the linked player's hands (if any) and handles released/thrown behavior. Has hardcoded code for bob-ombs lmao
-	sym virtual bool updateGrabbed() __rbody
+	virtual bool updateCarried();
 	// 0209fa8c
-	sym virtual bool updateState6() __rbody
+	virtual bool updateReleased();
 	// 0209f824
-	sym virtual bool updateState7() __rbody
+	virtual bool updateDropped();
 	// 0209f6c4
-	sym virtual bool updateState8() __rbody
+	virtual bool updateThrown();
 	// 0209f0e4
-	sym virtual bool updateState9() __rbody
-
+	virtual bool updateShellRolling();
 
 	// 0209d9fc
-	sym virtual void updateAnimation() __body
-
-
+	virtual void updateAnimation();
 
 	// 0209faf4
-	sym virtual void thrown() __body // on shell kicked?
+	virtual void thrown();
 	// 0209faac
-	sym virtual void stopped() __body
+	virtual void thrownStop();
 	// 0209c974
-	sym virtual void virt34() __body
+	virtual void virt34();
 	// 020a012c
-	sym virtual void grabbed() __body
+	virtual void grabbed();
 	// 020a00ac
-	sym virtual void release() __body
+	virtual void released();
 	// 0209f574
-	sym virtual void virt37(Player& player) __body // 'do fast speed'
+	virtual void shellHit(Player& player);
 	// 0209f3d8
-	sym virtual void virt38() __body
+	virtual void shellKicked();
 	// 0209f354
-	sym virtual void virt39() __body
-
+	virtual void shellStopped();
 
 	// 020994f8
-	sym virtual void updateFireballWiggle() __body
-
-
+	virtual void updateFireballWiggle();
 
 	// 0209d988
-	sym virtual void onBlockHit() __body
+	virtual void onBlockHit();
 	// 0209d920
-	sym virtual void onEntityHit() __body
+	virtual void onEntityHit();
 	// 0209d84c
-	sym virtual void onFireballHit() __body
+	virtual void onFireballHit();
 	// 0209d568
-	sym virtual void onStarmanHit() __body
+	virtual void onStarmanHit();
 	// 0209d43c
-	sym virtual void onSlidingHit() __body
+	virtual void onSlidingHit();
 	// 0209d2a0
-	sym virtual void onMegaHit() __body
+	virtual void onMegaHit();
 	// 0209d158
 	// Never called, apparently some mega kick leftover from the beta?
-	sym virtual void onMegaKicked() __body
+	virtual void onMegaKicked();
 	// 0209d014
-	sym virtual void onSpinDrillHit() __body
+	virtual void onSpinDrillHit();
 	// 0209cfc0
-	sym virtual void onStomped() __body
+	virtual void onStomped();
 	// 0209ce08
-	sym virtual void onGroundPound() __body
+	virtual void onGroundPound();
 	// 0209cbf8
-	sym virtual void onBlueShellHit() __body
+	virtual void onBlueShellHit();
 	// 0209cad0
-	sym virtual void onFenceSlamHit() __body
+	virtual void onFenceSlamHit();
 	// 02098f7c
-	sym virtual void onMegaGroundPound() __body
+	virtual void onMegaGroundPound();
 	// 02098e7c
-	sym virtual void onStageBeaten(Player& player) __body
+	virtual void onStageBeaten(Player& player);
 	// 0209cd3c
-	sym virtual void onFatalDamage() __body
+	virtual void onFatalDamage();
 	// 0209cac4
-	sym virtual void onMegaWalkShockwave() __body
+	virtual void onMegaWalkShockwave();
 	// 0209cac0
 	// Never triggered, use onMegaGroundPound instead
-	sym virtual void onMegaGroundPoundShockwave() __body
+	virtual void onMegaGroundPoundShockwave();
 	// 02099168
-	sym virtual void stopMovement() __body
-
-
+	virtual void stopMovement();
 
 	// 02098a94
-	sym virtual bool playerCollision(ActiveCollider& self, ActiveCollider& other) __rbody
+	virtual bool playerCollision(ActiveCollider& self, ActiveCollider& other);
 	// 02098a90
-	sym virtual void entityCollision(ActiveCollider& self, StageActor& actor) __body
+	virtual void entityCollision(ActiveCollider& self, StageActor& actor);
 	// 02098a10
-	sym virtual void damagePlayer(ActiveCollider& self, Player& player) __body
-
-
+	virtual void damagePlayer(ActiveCollider& self, Player& player);
 
 	// 0209c9d0
-	sym virtual void defeat(fx32 velX, fx32 velY, fx32 accelY, u8 unk) __body
+	virtual void defeat(fx32 velX, fx32 velY, fx32 accelY, u8 unk);
 	// 0209c994
-	sym virtual void defeatMega(fx32 velX, fx32 velY, fx32 accelY) __body
-
-
+	virtual void defeatMega(fx32 velX, fx32 velY, fx32 accelY);
 
 	// 020a0268
-	sym virtual void fenceDisableCollision() __body // removes the AC callback
+	virtual void fenceDisableCollision();
 	// 020a0240
-	sym virtual void fenceSwitchDirection() __body // changes the AC callback to 'damagePlayerCallback'
+	virtual void fenceSwitchDirection();
 
 
 	// 0209a6d4
-	sym virtual void doPlayerJump(Player& player, fx32 jumpVelocity) __body
-
-
-
-	/*
-	virtual void executeState0();					// -
-	virtual bool shouldNotRender();					// -
-	virtual void executeState1();					// -
-	virtual void afterDeath();						// -
-	virtual void deathRollState();					// -
-	virtual void executeState4();					// -
-	virtual void executeState5();					// -
-	virtual void executeState6();					// -
-	virtual void executeState7();					// -
-	virtual void executeState8();					// -
-	virtual void executeState9();					// -
-	virtual void updateAnimation();					// virt 31
-	virtual void virt32();							// -
-	virtual void virt33();							// -
-	virtual void virt34();							// -
-	virtual void onlyEnemyGetHurtCallback();		// virt 35 (?)
-	virtual void virt36();							// actors remove themselves from the player linked actor
-	virtual void virt37();							// actors remove themselves from the player linked actor
-	virtual void virt38();							// collisionMgr (bottom ones i think) related
-	virtual void virt39();							// collisionMgr related
-	virtual void updateWiggleScale();				// virt 40
-	virtual void blockCallback();					// virt 41
-	virtual void stageEntityCallback();				// virt 42
-	virtual void onFireballHit();					// virt 43
-	virtual void virt44();							// hit from slope sliding maybe - starCallback in Ed_ITs db but not sure
-	virtual void virt45();							// slidingCallback in Ed_ITs db but not sure
-	virtual void onMegaHit();						// virt 46
-	virtual void onStarmanHit();					// virt 47
-	virtual void virt48();							// -
-	virtual void onStomped();						// virt 49
-	virtual void onGroundpound();					// virt 50
-	virtual void onPlayerShellHit();				// virt 51
-	virtual void virt52();							// -
-	virtual void onMegaGroundpound();				// virt 53
-	virtual void onLevelBeaten();					// virt 54
-	virtual void lavaCallback();					// virt 55
-	virtual void virt56();							// -
-	virtual void onBossDefeated();					// virt 57
-	virtual void stopMovement();					// virt 58 (?)
-	virtual void virt59();							// -
-	virtual void virt60();							// -
-	virtual void onPlayerCollision();				// virt 61
-	virtual void onKilled();						// virt 62
-	virtual void onKilledByMega();					// virt 63
-	virtual void removeCallback();					// virt 64 (?)
-	virtual void changeDirection();					// virt 65
-	virtual void makePlayerJump();					// virt 66 (?)
-	*/
-
-	//// 0209C85C
-	//GEN_FUNC( void applyMovement )
-
-	//// 020991f8
-	//GEN_FUNC( u32 updateTileCollision )
-
-	//// 0209c820
-	//GEN_FUNC( u32 updateLiquids, fx32 defaultAccelY )
-
-	//// 0209adb0
-	//GEN_FUNC( bool deleteIfOutOfRange, u32 flags )
-
-	//bool isPlayerInOffset(fx32 xOff, fx32 yOff);
-	//void dropCoins();
+	virtual void doPlayerJump(Player& player, fx32 jumpVelocity);
 
 };
 static_assert(sizeof(StageEntity) == 0x3F4, "");
