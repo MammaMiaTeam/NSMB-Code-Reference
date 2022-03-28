@@ -10,14 +10,14 @@ enum class StageBlockID : u32 {
 	Tileset,
 	Foreground,
 	Entrances,
-	Sprites,
+	StageObjs,
 	Views,
 	Zones,
 	ProgressPaths,
 	Paths,
 	PathNodes,
 	ProgressPathNodes,
-	SpriteBanks,
+	ObjectBanks,
 
 	Max
 };
@@ -31,14 +31,14 @@ struct StageBlocks {
 	void* tileset;
 	void* foreground;
 	void* entrances;
-	void* sprites;
+	void* stageObjs;
 	void* views;
 	void* zones;
 	void* progressPaths;
 	void* paths;
 	void* pathNodes;
 	void* progressPathNodes;
-	void* spriteBanks;
+	void* objectBanks;
 
 	__inline void* operator[] (u32 blockID) {
 		ntr_assert(blockID < u32(StageBlockID::Max), "Block ID must be between 0 and 13");
@@ -52,7 +52,7 @@ namespace Stage
 {
 
 	// DATA
-	
+
 	// 0203C8C8
 	extern u32 stageBlockUnitSize[14];
 

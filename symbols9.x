@@ -3262,6 +3262,12 @@ _ZN5Stage15actorFreezeFlagE							= 0x020ca850;
 
 /* arm9_ov11 */
 _ZN5Stage16anmTilesOamTableE						= 0x0212f180;
+_ZN5Stage10stageGroupE								= 0x02085a18;
+_ZN5Stage7stageIDE									= 0x02085a14;
+_ZN5Stage5actIDE									= 0x02085a4c;
+_ZN5Stage10playerDeadE								= 0x0208b328;
+_ZN5Stage14initialPowerupE							= 0x0208b324;
+_ZN5Stage13storedPowerupE							= 0x02085a4c;
 
 
 /* arm9 */
@@ -3277,7 +3283,7 @@ _ZN4Game11stageBlocksE = 0x0208b168;
 /*-------------------------- system misc -------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN4Game14storeDataCacheEPKvm														= 0x0200765c; 
+_ZN4Game14storeDataCacheEPKvm														= 0x0200765c;
 _ZN4Game14flushDataCacheEPKvm														= 0x02007684;
 _ZN4Game11taskCleanupEv																= 0x02004c30;
 _ZN4Game7runTaskEPFvPvES0_mS0_m														= 0x02004cb8;
@@ -3302,7 +3308,7 @@ _ZN4Game16visiblePlaneMainE															= 0x02085a88;
 /*-------------------------- game misc ---------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN4Game9loadLevelEtmhhhhhhhhhhhhhhm		= 0x0200696C;   
+_ZN4Game9loadLevelEtmhhhhhhhhhhhhhhm		= 0x0200696C;
 _ZN4Game20resetStageCheckpointEv			= 0x020066F8;
 _ZN4Game18setStageCheckpointEv				= 0x02006740;
 _ZN4Game18getStageCheckpointEv				= 0x02006790;
@@ -3655,6 +3661,20 @@ _ZN10ViewShaker5startEhhhb							= 0x020f96a0;
 
 
 /*----------------------------------------------------------------*/
+/*----------------------- stagecontroller ------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN15StageControllerC1Ev			= 0x0201FFC4;
+_ZN15StageControllerC2Ev			= 0x0201FFC4;
+_ZN15StageControllerD2Ev			= 0x0201FF20;
+_ZN15StageControllerD1Ev			= 0x0201FF20;
+_ZN15StageControllerD0Ev			= 0x0201FF40;
+_ZN15StageController9preUpdateEv	= 0x0201FF80;
+
+_ZTV15StageController				= 0x0203CF30;
+
+
+/*----------------------------------------------------------------*/
 /*--------------------------- unsorted ---------------------------*/
 /*----------------------------------------------------------------*/
 
@@ -3899,3 +3919,52 @@ _ZN7Manhole18activeColliderInfoE					= 0x02189358;
 _ZN7Manhole7profileE								= 0x02189870;
 
 _ZTV7Manhole										= 0x0218987C;
+
+
+/* arm9_ov10 */
+
+/*----------------------------------------------------------------*/
+/*--------------------------- stagefx ----------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN7StageFXD2Ev							= 0x020FB57C;
+_ZN7StageFXD1Ev							= 0x020FB57C;
+_ZN7StageFXD0Ev							= 0x020FB5A8;
+_ZN7StageFX8onCreateEv					= 0x020FC7CC;
+_ZN7StageFX8onUpdateEv					= 0x020FC578;
+_ZN7StageFX8onRenderEv					= 0x020FC684;
+_ZN7StageFX9onDestroyEv					= 0x020FC794;
+_ZN7StageFX14pendingDestroyEv			= 0x020FC790;
+
+_ZN7StageFX14initStageStartEv			= 0x020FC54C;
+_ZN7StageFX11initVictoryEv				= 0x020FC214;
+_ZN7StageFX10initVsLoseEv				= 0x020FBFDC;
+_ZN7StageFX11initTimesUpEv				= 0x020FBCF8;
+_ZN7StageFX13initVsTimesUpEv			= 0x020FBC2C;
+_ZN7StageFX18initDelayedVictoryEv		= 0x020FBA00;
+_ZN7StageFX17initDelayedVsLoseEv		= 0x020FB9E0;
+
+_ZN7StageFX16updateStageStartEv			= 0x020FC2B4;
+_ZN7StageFX13updateVictoryEv			= 0x020FC050;
+_ZN7StageFX12updateVsLoseEv				= 0x020FBD30;
+_ZN7StageFX13updateTimesUpEv			= 0x020FBC5C;
+_ZN7StageFX15updateVsTimesUpEv			= 0x020FBA20;
+_ZN7StageFX20updateDelayedVictoryEv		= 0x020FB998;
+_ZN7StageFX19updateDelayedVsLoseEv		= 0x020FB948;
+
+_ZN7StageFX16renderStageStartEv			= 0x020FC548;
+_ZN7StageFX13renderVictoryEv			= 0x020FC1C0;
+_ZN7StageFX12renderVsLoseEv				= 0x020FBF60;
+_ZN7StageFX13renderTimesUpEv			= 0x020FBCB4;
+_ZN7StageFX15renderVsTimesUpEv			= 0x020FBBE0;
+
+_ZN7StageFX15renderLostLivesEv			= 0x020FB5F4;
+_ZN7StageFX18updateScalePaletteEPlPh	= 0x020FB900;
+_ZN7StageFX11getSettingsENS_4TypeEhh	= 0x020FB5DC;
+
+_ZN7StageFX7profileE					= 0x021277D4;
+_ZN7StageFX9initFuncsE					= 0x0212AEB0;
+_ZN7StageFX11updateFuncsE				= 0x0212AEE8;
+_ZN7StageFX11renderFuncsE				= 0x0212AF20;
+
+_ZTV7StageFX							= 0x02127840;

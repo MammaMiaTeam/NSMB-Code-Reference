@@ -1,5 +1,5 @@
 #pragma once
-#include "toadsworth.h"
+#include "nsmb.h"
 
 
 enum class SpawnItem : u32
@@ -77,6 +77,9 @@ enum class ItemSpawnBehaviour : u32
     UpDownDash,
     FallingStairs
 };
+
+
+class Toadsworth;
 
 
 class Item : public StageEntity

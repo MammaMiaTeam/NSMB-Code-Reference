@@ -6,6 +6,8 @@
 
 enum class CollisionType : u32;
 
+enum class PowerupState : u8;
+
 namespace Stage
 {
 
@@ -59,6 +61,15 @@ namespace Stage
 
 	// 020ca850
 	extern ActorCategory actorFreezeFlag;
+
+	// 0208b328
+	extern bool playerDead[2];
+
+	// 0208b324
+	extern PowerupState initialPowerup[2];
+
+	// 0208b32c
+	extern PowerupState storedPowerup[2];
 
 
 	__inline bool getEvent(u8 id) {
