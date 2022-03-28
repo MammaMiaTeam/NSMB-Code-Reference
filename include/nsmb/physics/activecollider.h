@@ -16,12 +16,6 @@ enum class CollisionGroup : u8
 	Fireball,		// fireball
 	Bullet,			// bullet bill/banzai bill
 	Debris,			// volcano debris
-	Group10,
-	Group11,
-	Group12,
-	Group13,
-	Group14,
-	Group15,
 };
 IMPL_ENUMCLASS_OPERATORS(CollisionGroup);
 
@@ -68,6 +62,7 @@ namespace
 
 
 class StageActor;
+class Player;
 class ActiveCollider;
 
 
@@ -76,13 +71,16 @@ using ActiveColliderCallback = void(*)(ActiveCollider&, ActiveCollider&);
 
 struct ActiveColliderInfo
 {
+	// Options
+	static constexpr u16 NoIntersection = 1 << 0;
+
 	FxRect rect;
 
 	CollisionGroup selfGroup;
 	CollisionFlag selfFlag;
 	u16 checkGroupMask;
 	u16 checkFlagMask;
-	u16 itemRelated;
+	u16 options;
 
 	ActiveColliderCallback callback;
 };
@@ -91,7 +89,10 @@ struct ActiveColliderInfo
 class ActiveCollider {
 public:
 
-	enum class Shape : u8 {
+	static constexpr u32 GroupCount = 10;
+
+	enum class Shape : u8
+	{
 		Rectangle,
 		Round,
 		TrapezoidV,
@@ -101,20 +102,15 @@ public:
 	StageActor* owner;
 	u32 unk0;
 
-	// list
-	struct {
-		ActiveCollider* prev;
-		ActiveCollider* first;
-	} list;
+	ActiveCollider* prev;
+	ActiveCollider* first;
 
 	// hitbox info
 	ActiveColliderInfo hitbox;
 
-	// position info
-	Vec2 position;
-
-	fx32 XcontactPos[10];
-	fx32 YcontactPos[10];
+	Vec2 collisionCenter;
+	fx32 collisionPointX[GroupCount];
+	fx32 collisionPointY[GroupCount];
 
 	// trapezoid properties
 	struct {
@@ -125,11 +121,11 @@ public:
 	} trapezoid;
 
 	// physics calculations
-	u32 to_info_used;
+	u32 toUnk354;
 	u16 collidedGroups;
 	u16 collidedFlags;
 
-	bool backLayer;				// if set, the collider will only interact with other colliders that are behind the main layer
+	s8 backLayer;				// -1=ignored, 0=interact with front layer, 1=interact with back layer
 
 	u8 defaultCollisionFlags;
 	u8 collisionResult;			// 0x2 is set when a collision occurs, 0x3 = stop updating
@@ -141,7 +137,7 @@ public:
 	u8 unk9;
 	Shape shape;
 	u8 unk10;
-	u16 prevCollidedGroups;
+	u16 lastCollidedGroups;
 	u16 unk12;
 
 	// 020a4868
@@ -177,6 +173,9 @@ public:
 
 	// 020a4434
 	sym static void initSystem() __body
+		
+	// 020A3D68
+	Player* getPlayer() const;
 
 protected:
 

@@ -10,8 +10,8 @@ class Vec3 : public VecFx32
 {
 public:
 
-	__inline Vec3() {}
-	virtual ~Vec3();
+	inline Vec3() {}
+	inline virtual ~Vec3() {}
 
 	void applyRotYZ(fx16 angle);				// Rotates the vector around the x-axis
 	void applyRotXZ(fx16 angle);				// Rotates the vector around the y-axis
@@ -29,72 +29,72 @@ public:
 	static Vec3& sub(Vec3& out, const Vec3& a, const VecFx32& b);						// Calculates a - b
 	static Vec3& add(Vec3& out, const Vec3& a, const VecFx32& b);						// Calculates a + b
 
-	// __inline method re-creations.
+	// inline method re-creations.
 
-	__inline Vec3(fx32 val) {
+	inline Vec3(fx32 val) {
 		x = y = z = val;
 	}
 
-	__inline Vec3(fx32 x, fx32 y, fx32 z) {
+	inline Vec3(fx32 x, fx32 y, fx32 z) {
 		this->x = x;
 		this->y = y;
 		this->z = z;
 	}
 
-	__inline Vec3(const VecFx32& vec) {
+	inline Vec3(const VecFx32& vec) {
 		x = vec.x;
 		y = vec.y;
 		z = vec.z;
 	}
 
-	__inline static Vec3& div(Vec3& out, const VecFx32& lhs, fx32 rhs) {
+	inline static Vec3& div(Vec3& out, const VecFx32& lhs, fx32 rhs) {
 		out = Vec3(Math::div(lhs.x, rhs), Math::div(lhs.y, rhs), Math::div(lhs.z, rhs));
 		return out;
 	}
 
-	__inline static Vec3 lerp(const VecFx32& start, const VecFx32& end, fx32 step) {
+	inline static Vec3 lerp(const VecFx32& start, const VecFx32& end, fx32 step) {
 		return Vec3(Math::lerpFx(start.x, end.x, step), Math::lerpFx(start.y, end.y, step), Math::lerpFx(start.z, end.z, step));
 	}
 
 
-	__inline Vec3 operator+(const VecFx32& rhs) const {
+	inline Vec3 operator+(const VecFx32& rhs) const {
 		Vec3 out;
 		Vec3::add(out, *this, rhs);
 		return out;
 	}
 
-	__inline Vec3 operator-(const VecFx32& rhs) const {
+	inline Vec3 operator-(const VecFx32& rhs) const {
 		Vec3 out;
 		Vec3::sub(out, *this, rhs);
 		return out;
 	}
 
-	__inline Vec3 operator*(fx32 rhs) const {
+	inline Vec3 operator*(fx32 rhs) const {
 		Vec3 out;
 		Vec3::mul(out, *this, rhs);
 		return out;
 	}
 
-	__inline Vec3 operator/(fx32 rhs) const {
+	inline Vec3 operator/(fx32 rhs) const {
 		Vec3 out;
 		Vec3::div(out, *this, rhs);
 		return out;
 	}
 
 
-	__inline void operator+=(const VecFx32& rhs) {
+	inline void operator+=(const VecFx32& rhs) {
 		*this = *this + rhs;
 	}
 
-	__inline void operator-=(const VecFx32& rhs) {
+	inline void operator-=(const VecFx32& rhs) {
 		*this = *this - rhs;
 	}
 
-	__inline void operator/=(fx32 rhs) {
+	inline void operator/=(fx32 rhs) {
 		*this = *this / rhs;
 	}
 
-	__inline Vec3 operator-() const {
+	inline Vec3 operator-() const {
 		Vec3 v;
 		v.x = -x;
 		v.y = -y;
@@ -102,39 +102,39 @@ public:
 		return v;
 	}
 
-	__inline Vec3 normalized() const {
+	inline Vec3 normalized() const {
 		Vec3 out = *this;
 		out.normalize();
 		return out;
 	}
 
-	__inline fx32 length() const {
+	inline fx32 length() const {
 		return VEC_Mag(this);
 	}
 
-	__inline Vec3 cross(const Vec3& rhs) const {
+	inline Vec3 cross(const Vec3& rhs) const {
 		Vec3 out;
 		Vec3::cross(out, *this, rhs);
 		return out;
 	}
 
-	__inline fx32 distance(const VecFx32& rhs) const {
+	inline fx32 distance(const VecFx32& rhs) const {
 		return Vec3::distance(*this, rhs);
 	}
 
-	__inline void add(const VecFx32& rhs) {
+	inline void add(const VecFx32& rhs) {
 		Vec3::add(*this, *this, rhs);
 	}
 
-	__inline void sub(const VecFx32& rhs) {
+	inline void sub(const VecFx32& rhs) {
 		Vec3::sub(*this, *this, rhs);
 	}
 
-	__inline void mul(fx32 rhs) {
+	inline void mul(fx32 rhs) {
 		Vec3::mul(*this, *this, rhs);
 	}
 
-	__inline void div(fx32 rhs) {
+	inline void div(fx32 rhs) {
 		Vec3::div(*this, *this, rhs);
 	}
 };
@@ -150,8 +150,8 @@ public:
 
 	fx32 x, y;
 
-	__inline Vec2() {}
-	virtual ~Vec2();
+	inline Vec2() {}
+	inline virtual ~Vec2() {}
 
 	bool normalize();							// If x, and y are not zero, the vector is normalized and returns true.
 	fx64 magnitudeSquared() const;				// Returns the squared magnitude (length^2).
@@ -170,114 +170,114 @@ public:
 
 
 
-	// __inline methods re-creations.
+	// inline methods re-creations.
 
-	__inline Vec2(fx32 val) {
+	inline Vec2(fx32 val) {
 		x = y = val;
 	}
 
-	__inline Vec2(fx32 x, fx32 y) {
+	inline Vec2(fx32 x, fx32 y) {
 		this->x = x;
 		this->y = y;
 	}
 
-	__inline Vec2(const Vec2& vec) {
+	inline Vec2(const Vec2& vec) {
 		x = vec.x;
 		y = vec.y;
 	}
 
 
 
-	__inline VecFx32 vecfx() const {
+	inline VecFx32 vecfx() const {
 		return { x, y, 0 };
 	}
 
 	// !!! NOT SAFE !!!
-	__inline const VecFx32& vecfx_cr() const {
+	inline const VecFx32& vecfx_cr() const {
 		return *reinterpret_cast<const VecFx32*>(this);
 	}
 
 
 
-	__inline Vec2 operator+(const Vec2& rhs) const {
+	inline Vec2 operator+(const Vec2& rhs) const {
 		VecFx32 tmp = { rhs.x, rhs.y, 0 };
 		Vec2 out;
 		Vec2::add(out, *this, tmp);
 		return out;
 	}
 
-	__inline Vec2 operator-(const Vec2& rhs) const {
+	inline Vec2 operator-(const Vec2& rhs) const {
 		VecFx32 tmp = { rhs.x, rhs.y, 0 };
 		Vec2 out;
 		Vec2::sub(out, *this, tmp);
 		return out;
 	}
 
-	__inline Vec2 operator*(fx32 rhs) const {
+	inline Vec2 operator*(fx32 rhs) const {
 		Vec2 out;
 		Vec2::mul(out, *this, rhs);
 		return out;
 	}
 
-	__inline Vec2 operator/(fx32 rhs) const {
+	inline Vec2 operator/(fx32 rhs) const {
 		Vec2 out;
 		Vec2::div(out, *this, rhs);
 		return out;
 	}
 
 
-	__inline bool operator!=(const Vec2& in) {
+	inline bool operator!=(const Vec2& in) {
 		return *this != in.vecfx_cr();
 	}
 
-	__inline bool operator==(const Vec2& in) {
+	inline bool operator==(const Vec2& in) {
 		return *this == in.vecfx_cr();
 	}
 
-	__inline void operator+=(const Vec2& rhs) {
+	inline void operator+=(const Vec2& rhs) {
 		*this = *this + rhs;
 	}
 
-	__inline void operator-=(const Vec2& rhs) {
+	inline void operator-=(const Vec2& rhs) {
 		*this = *this - rhs;
 	}
 
-	__inline void operator/=(fx32 rhs) {
+	inline void operator/=(fx32 rhs) {
 		*this = *this / rhs;
 	}
 
-	__inline Vec2 operator-() const {
+	inline Vec2 operator-() const {
 		Vec2 v;
 		v.x = -x;
 		v.y = -y;
 		return v;
 	}
 
-	__inline s32 crossLength(const Vec2& rhs) const {
+	inline s32 crossLength(const Vec2& rhs) const {
 		VecFx32 tmp = { rhs.x, rhs.y, 0 };
 		return Vec2::crossLength(*this, tmp);
 	}
 
-	__inline fx32 distance(const Vec2& rhs) const {
+	inline fx32 distance(const Vec2& rhs) const {
 		VecFx32 tmp = { rhs.x, rhs.y, 0 };
 		return Vec2::distance(*this, tmp);
 	}
 
-	__inline void add(const Vec2& rhs) {
+	inline void add(const Vec2& rhs) {
 		VecFx32 tmp = { rhs.x, rhs.y, 0 };
 		Vec2::add(*this, *this, tmp);
 	}
 
-	__inline void sub(const Vec2& rhs) {
+	inline void sub(const Vec2& rhs) {
 		VecFx32 tmp = { rhs.x, rhs.y, 0 };
 		Vec2::sub(*this, *this, tmp);
 	}
 
-	__inline void mul(fx32 rhs) {
+	inline void mul(fx32 rhs) {
 		Vec2::mul(*this, *this, rhs);
 	}
 
-	__inline void div(fx32 rhs) {
+	inline void div(fx32 rhs) {
 		Vec2::div(*this, *this, rhs);
 	}
 };
@@ -291,84 +291,84 @@ class Vec3s : public VecFx16
 {
 public:
 
-	__inline Vec3s() {}
-	virtual ~Vec3s();
+	inline Vec3s() {}
+	inline virtual ~Vec3s() {}
 
-	// __inline methods re-creations.
+	// inline methods re-creations.
 
-	__inline Vec3s(fx16 val) {
+	inline Vec3s(fx16 val) {
 		x = y = z = val;
 	}
 
-	__inline Vec3s(fx16 x, fx16 y, fx16 z) {
+	inline Vec3s(fx16 x, fx16 y, fx16 z) {
 		this->x = x;
 		this->y = y;
 		this->z = z;
 	}
 
-	__inline static Vec3s& add(Vec3s& out, const VecFx16& lhs, const VecFx16& rhs) {
+	inline static Vec3s& add(Vec3s& out, const VecFx16& lhs, const VecFx16& rhs) {
 		out = Vec3s(lhs.x + rhs.x, lhs.y + rhs.y, lhs.z + rhs.z);
 		return out;
 	}
 
-	__inline static Vec3s& sub(Vec3s& out, const VecFx16& lhs, const VecFx16& rhs) {
+	inline static Vec3s& sub(Vec3s& out, const VecFx16& lhs, const VecFx16& rhs) {
 		out = Vec3s(lhs.x - rhs.x, lhs.y - rhs.y, lhs.z - rhs.z);
 		return out;
 	}
 
-	__inline static Vec3s& mul(Vec3s& out, const VecFx16& lhs, fx32 rhs) {
+	inline static Vec3s& mul(Vec3s& out, const VecFx16& lhs, fx32 rhs) {
 		out = Vec3s(Math::mul(lhs.x, rhs), Math::mul(lhs.y, rhs), Math::mul(lhs.z, rhs));
 		return out;
 	}
 
-	__inline static Vec3s& div(Vec3s& out, const VecFx16& lhs, fx32 rhs) {
+	inline static Vec3s& div(Vec3s& out, const VecFx16& lhs, fx32 rhs) {
 		out = Vec3s(Math::div(lhs.x, rhs), Math::div(lhs.y, rhs), Math::div(lhs.z, rhs));
 		return out;
 	}
 
 
-	__inline Vec3s operator+(const VecFx16& rhs) const {
+	inline Vec3s operator+(const VecFx16& rhs) const {
 		Vec3s out;
 		Vec3s::add(out, *this, rhs);
 		return out;
 	}
 
-	__inline Vec3s operator-(const VecFx16& rhs) const {
+	inline Vec3s operator-(const VecFx16& rhs) const {
 		Vec3s out;
 		Vec3s::sub(out, *this, rhs);
 		return out;
 	}
 
-	__inline Vec3s operator*(fx32 rhs) const {
+	inline Vec3s operator*(fx32 rhs) const {
 		Vec3s out;
 		Vec3s::mul(out, *this, rhs);
 		return out;
 	}
 
-	__inline Vec3s operator/(fx32 rhs) const {
+	inline Vec3s operator/(fx32 rhs) const {
 		Vec3s out;
 		Vec3s::div(out, *this, rhs);
 		return out;
 	}
 
 
-	__inline void operator+=(const VecFx16& rhs) {
+	inline void operator+=(const VecFx16& rhs) {
 		*this = *this + rhs;
 	}
 
-	__inline void operator-=(const VecFx16& rhs) {
+	inline void operator-=(const VecFx16& rhs) {
 		*this = *this - rhs;
 	}
 
-	__inline void operator*=(fx32 rhs) {
+	inline void operator*=(fx32 rhs) {
 		*this = *this * rhs;
 	}
 
-	__inline void operator/=(fx32 rhs) {
+	inline void operator/=(fx32 rhs) {
 		*this = *this / rhs;
 	}
 
-	__inline Vec3s operator-() const {
+	inline Vec3s operator-() const {
 		Vec3s v;
 		v.x = -x;
 		v.y = -y;
@@ -376,7 +376,7 @@ public:
 		return v;
 	}
 
-	__inline bool operator==(const Vec3s& rhs) const {
+	inline bool operator==(const Vec3s& rhs) const {
 		if (x == rhs.x && y == rhs.y && z == rhs.x) {
 			return true;
 		}
@@ -384,7 +384,7 @@ public:
 		return false;
 	}
 
-	__inline bool operator!=(const Vec3s& rhs) const {
+	inline bool operator!=(const Vec3s& rhs) const {
 		if (x != rhs.x || y != rhs.y || z != rhs.x) {
 			return true;
 		}

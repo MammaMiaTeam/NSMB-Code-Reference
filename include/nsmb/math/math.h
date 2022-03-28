@@ -143,15 +143,18 @@ namespace Math {
 #define ToAngle(x)		(((x) * 0x10000) / 360)
 
 
-	__inline fx16 sin(int idx) {
+	inline fx16 sin(int idx) {
 		return FX_SinIdx(u32(idx) & 0xFFFF);
 	}
-	__inline fx16 cos(int idx) {
+
+	inline fx16 cos(int idx) {
 		return FX_CosIdx(u32(idx) & 0xFFFF);
 	}
+
 	constexpr fx32 mul(fx32 a, fx32 b) {
 		return ((fx32)(((s64)(a)*b + FX32_HALF) >> FX32_SHIFT));
 	}
+
 	constexpr fx32 div(fx32 n, fx32 d) {
 		if_consteval {
 			return (s32)(((s64)(n << 12)) / (d));
@@ -160,6 +163,7 @@ namespace Math {
 			return FX_Div(n, d);
 		}
 	}
+
 	constexpr fx32 inv(fx32 d) {
 		if_consteval {
 			return div(FX32_ONE, d);
@@ -168,13 +172,15 @@ namespace Math {
 			return FX_Inv(d);
 		}
 	}
-	__inline fx32 sqrt(fx32 p) {
+
+	inline fx32 sqrt(fx32 p) {
 		return FX_Sqrt(p);
 	}
 
 	constexpr fx32 lerpFx(fx32 start, fx32 end, fx32 factor) {
 		return mul(end - start, factor) + start;
 	}
+
 	template<class A, class B>
 	constexpr auto lerpInt(A start, B end, fx32 factor) {
 		fx32 a = start * FX32_ONE;
@@ -187,27 +193,27 @@ namespace Math {
 	}
 	
 	constexpr fx32 clamp(fx32 a, fx32 min, fx32 max) {
-        return a < min ? min : (a > max ? max : a);
-    }
+		return a < min ? min : (a > max ? max : a);
+	}
 
 	constexpr fx32 smoothstep(fx32 start, fx32 end, fx32 step)
 	{
 		step = clamp(step, 0, 1.0fx);
-        step = mul(mul(mul(-2.0fx, step), step), step) + mul(mul(3.0fx, step), step);
-        return mul(end, step) + mul(start, (1.0fx - step));
+		step = mul(mul(mul(-2.0fx, step), step), step) + mul(mul(3.0fx, step), step);
+		return mul(end, step) + mul(start, (1.0fx - step));
 	}
 
-	__inline s32 getRangedValue(s32 value, s32 max) {
+	inline s32 getRangedValue(s32 value, s32 max) {
 		return value % max;
 	}
 
-	__inline s32 getRangedValue(s32 value, s32 min, s32 max) {
+	inline s32 getRangedValue(s32 value, s32 min, s32 max) {
 		return (value % (max - min)) + min;
 	}
 
 #define IMPL_RANDOM(function) \
-	__inline s32 getRandom(s32 max) { return Math::getRangedValue((function)(), max); } \
-	__inline s32 getRandom(s32 min, s32 max) { return Math::getRangedValue((function)(), min, max); }
+	inline s32 getRandom(s32 max) { return Math::getRangedValue((function)(), max); } \
+	inline s32 getRandom(s32 min, s32 max) { return Math::getRangedValue((function)(), min, max); }
 
 	//02044308 wtf
 

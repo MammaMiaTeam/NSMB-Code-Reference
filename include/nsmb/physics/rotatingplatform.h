@@ -1,5 +1,5 @@
 #pragma once
-#include "platformbase.h"
+#include "platform.h"
 
 
 class StageActor;
@@ -16,14 +16,9 @@ struct RotatingPlatformInfo {
 };
 
 
-class RotatingPlatform : public PlatformBase
+class RotatingPlatform : public Platform
 {
 public:
-
-	Vec2 center;
-	fx32 height;
-	fx32 right;
-	fx32 left;
 
 	RotatingPlatform();
 	inline virtual ~RotatingPlatform() {}
@@ -37,4 +32,10 @@ public:
 	void setBase(fx32 left, fx32 right);
 
 	virtual void update() override;
+
+	Vec2 center;
+	fx32 height;
+	fx32 right;
+	fx32 left;
+
 };

@@ -5,6 +5,7 @@
 
 
 class StageActor;
+class CollisionMgr;
 
 
 /*
@@ -59,15 +60,10 @@ public:
 	StageActor* owner;					// Reference to the owner of this Collider.
 
 	// Linked list
-	struct {
-		Collider* prev;					// Pointer to the previous registered Collider.
-		Collider* first;				// Pointer to the first registered Collider.
-	} list;
+	Collider* prev;						// Pointer to the previous registered Collider.
+	Collider* head;						// Pointer to the first registered Collider.
 
-	// Pointer to some mysterious structure	(CollisionMgr maybe?)
-	u32* unk3;
-	u32 unk4;
-	u32 unk5;
+	CollisionMgr* managers[3];			// Pointers to linked CollisionMgrs
 
 	// Collision callbacks
 	struct {
@@ -92,8 +88,8 @@ public:
 	OptionFlag optionFlag;				// Specifies the settings that should be used when checking for collision and when updating.
 
 
-	static Collider* first;				// First registered Collider in the execution list.
-	static Collider* last;				// Last registered Collider in the execution list.
+	static Collider* listHead;			// First registered Collider in the execution list.
+	static Collider* listTail;			// Last registered Collider in the execution list.
 
 
 	Collider();
@@ -105,52 +101,51 @@ public:
 		Doesn't unregister the Collider from the execution list nor does it
 		reset the collision rectangle points, callbacks, behavior and flags.
 	*/
-	sym void reset() __body
+	void reset();
 
 	/*
 		Initializes the Collider with collision rectangle parameters and collision callbacks.
 		A scale vector may also be specified.
 	*/
-	sym void initEx(StageActor* owner, fx32 left, fx32 top, fx32 right, fx32 bottom, ColliderCallback topCallback, ColliderCallback bottomCallback, ColliderCallback sideCallback, u32 behavior, u8 colliderRelated, const Vec3* scale = nullptr) __body
+	void initEx(StageActor* owner, fx32 left, fx32 top, fx32 right, fx32 bottom, ColliderCallback topCallback, ColliderCallback bottomCallback, ColliderCallback sideCallback, u32 behavior, u8 colliderRelated, const Vec3* scale = nullptr);
 
 	/*
 		Initializes the Collider through a settings structure.
 		A scale vector may also be specified.
 	*/
-	sym void init(StageActor* owner, const ColliderInfo& info, u32 behavior, u8 colliderRelated, const Vec3* scale = nullptr) __body
+	void init(StageActor* owner, const ColliderInfo& info, u32 behavior, u8 colliderRelated, const Vec3* scale = nullptr);
 
 	/*
 		Initializes the collision rectangle with parameters.
 		A scale vector may also be specified.
 		optionFlag can be used to calculate the origin point's delta from the old origin point.
 	*/
-	sym void initRectEx(fx32 left, fx32 top, fx32 right, fx32 bottom, const Vec3* scale = nullptr) __body
+	void initRectEx(fx32 left, fx32 top, fx32 right, fx32 bottom, const Vec3* scale = nullptr);
 
 	/*
 		Initializes the collision rectangle using origin and end points vectors.
 		A scale vector may also be specified.
 		optionFlag can be used to calculate the origin point's delta from the old origin point.
 	*/
-	sym void initRect(const Vec2& originPoint, const Vec2& endPoint, const Vec3* scale = nullptr) __body
+	void initRect(const Vec2& originPoint, const Vec2& endPoint, const Vec3* scale = nullptr);
 
 	/*
 		Initializes the collision rectangle through a settings structure.
 		A scale vector may also be specified.
 		optionFlag can be used to calculate the origin point's delta from the old origin point.
 	*/
-	sym void initRect(const ColliderInfo& info, const Vec3* scale = nullptr) __body
+	void initRect(const ColliderInfo& info, const Vec3* scale = nullptr);
 
 	// Links the Collider to the execution list.
-	sym void link() __body
+	void link();
 
 	// Unlinks the Collider from the execution list.
-	sym void unlink() __body
+	void unlink();
 
 	// Updates the collision rectangle based on the position of the owner.
-	sym void updatePosition() __body
+	void updatePosition();
 
-	// I honestly don't know (it uses unk3, which I've never seen being set).
-	sym void doSomething() __body
+	void updatePlayerInteraction();
 
 };
 

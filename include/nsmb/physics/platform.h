@@ -20,21 +20,27 @@ enum class PlatformType : u8
 };
 
 
-class PlatformBase {
+class Platform {
 public:
-	// reference to parent
+
+	Platform();
+	virtual ~Platform();
+
+	virtual void update();
+	virtual void resolveCollision();
+	virtual void func5();
+
+	void reset();
+	void link();
+	void unlink();
+
+
 	StageActor* owner;
 
-	// list
-	struct {
-		PlatformBase* prev;
-		PlatformBase* first;
-	} list;
-
-	// reference to parent's PlatformMgr
+	Platform* prev;
+	Platform* first;
 	PlatformMgr* manager;
 
-	// physics calculations
 	Vec2 pointEnd;
 	Vec2 pointStart;
 	Vec2 pointStep;
@@ -53,14 +59,4 @@ public:
 
 	u8 unk54[4];
 
-	sym PlatformBase() __body
-	sym virtual ~PlatformBase() __body
-
-	sym virtual void update() __body
-	sym virtual void resolveCollision() __body
-	sym virtual void func5() __body
-
-	sym void reset() __body
-	sym void link() __body
-	sym void unlink() __body
 };

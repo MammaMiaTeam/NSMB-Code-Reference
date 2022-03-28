@@ -1,23 +1,13 @@
 #pragma once
-#include "platformbase.h"
+#include "platform.h"
 
 
 class StageActor;
 
 
-class RoundPlatform : public PlatformBase
+class RoundPlatform : public Platform
 {
 public:
-
-	Vec2 center;
-	Vec2 unk64;
-	Vec2 unk70;
-	fx32 radius;
-	fx32 unk80;
-	fx32 unk84;
-	s16 calcAngle;
-	u8 unk8a;
-	u8 unk8b;
 
 	RoundPlatform();
 	inline virtual ~RoundPlatform() {}
@@ -27,4 +17,15 @@ public:
 	virtual void update() override;
 	virtual void resolveCollision() override;
 	virtual void func5() override;
+
+	Vec2 center;
+	Vec2 offset;
+	Vec2 unk70;
+	fx32 radius;
+	fx32 unk80;
+	fx32 unk84;
+	s16 calcAngle;
+	bool external;
+	u8 unk8b;
+
 };
