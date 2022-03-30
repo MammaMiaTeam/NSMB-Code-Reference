@@ -18,7 +18,7 @@ public:
 	// 021430B8
 	s32 onRender() override;
 	// 0214379C
-	bool onUserHeapCreated() override;
+	bool onPrepareResources() override;
 
 	// 0214323C
 	bool updateMain() override;

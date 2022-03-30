@@ -54,7 +54,7 @@ public:
 	virtual s32 onDestroy() override;
 
 	//02186ea4
-	virtual void pendingDestroy() override;
+	virtual void onCleanupResources() override;
 
 	//02186e9c
 	virtual s32 onRender() override;

@@ -22,7 +22,7 @@ public:
 	// 021550B8
 	s32 onCreate() override;
 	// 02155358
-	bool onUserHeapCreated() override;
+	bool onPrepareResources() override;
 
 	// 0215505C
 	bool updateMain() override;

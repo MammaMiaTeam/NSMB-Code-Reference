@@ -347,7 +347,7 @@ public:
 	virtual s32 onRender() override;
 
 	//0218f150
-	virtual void pendingDestroy() override;
+	virtual void onCleanupResources() override;
 
 	//0218d68c
 	static void disableBowserJRAnimations(u32 lastWorld);//Disables all animations up to (including) lastWorld

@@ -18,7 +18,7 @@ public:
 	// 0213DAF8
 	s32 onDestroy() override;
 	// 0213DCFC
-	bool onUserHeapCreated() override;
+	bool onPrepareResources() override;
 
 	// 0213DB00
 	bool updateMain() override;

@@ -11,43 +11,6 @@ class Base
 {
 public:
 
-	// 0208fae8
-	static ProfileStep debugProfileStep;
-	// 0208faec
-	static ObjectType spawnObjectType;
-	// 0208faf0
-	static u16 debugObjectID;
-	// 0208faf4
-	static u16 spawnObjectID;
-	// 0208faf8
-	static SceneNode* spawnParentNode;
-	// 0208fafc
-	static OverlayLoadFunction loadOverlay;
-	// 0208fb00
-	static OverlayUnloadFunction unloadOverlay;
-	// 0208fb04
-	static u32 spawnSettings;
-
-	u32 guid;//GUID
-	u32 settings;
-	u16 id;//Class ID
-	ObjectState state;//Object state
-	bool destroyFlag;//Destroy flag
-
-	bool pendingUpdateFlag;//Pending update registry
-	bool pendingCreateFlag;//Pending create registry
-	ObjectType type;//Object type
-	u8 skipFlags;//Flags
-	//0x01: Skip update children
-	//0x02: Skip update
-	//0x04: Skip render children
-	//0x08: Skip render
-
-	ProcessLink link;//Link
-
-	u32 unk54; // unused (debug leftover?)
-	FrameHeap* userHeap;
-
 	//0204d2ac (C2, most likely protected)
 	sym Base() __body
 
@@ -81,16 +44,11 @@ public:
 	sym virtual s32 onRender() __rbody
 	sym virtual bool preRender() __rbody
 	sym virtual void postRender(BaseReturnState state) __body
-	//0x30
-	sym virtual void pendingDestroy() __body//When the object is about to get destroyed
-	//0x34
-	//0x38
-	//0204ccec
-	sym virtual bool createUserHeapEx(u32 size, Heap* parent) __rbody//???
-	//0204cdbc
-	sym virtual bool createUserHeap(u32 size, Heap* parent) __rbody//???
-	//0204cce4
-	sym virtual bool onUserHeapCreated() __rbody//???
+
+	sym virtual void onCleanupResources() __body
+	sym virtual bool prepareResourcesSafe(u32 size, Heap* parent) __rbody
+	sym virtual bool prepareResourcesFast(u32 size, Heap* parent) __rbody
+	sym virtual bool onPrepareResources() __rbody
 
 	//0204cc04
 	sym void create() __body
@@ -130,6 +88,44 @@ public:
 
 	//0204c908
 	sym static Base* spawnParent(u16 objectID, u32 settings, ObjectType type) __rbody
+
+	// 0208fae8
+	static ProfileStep debugProfileStep;
+	// 0208faec
+	static ObjectType spawnObjectType;
+	// 0208faf0
+	static u16 debugObjectID;
+	// 0208faf4
+	static u16 spawnObjectID;
+	// 0208faf8
+	static SceneNode* spawnParentNode;
+	// 0208fafc
+	static OverlayLoadFunction loadOverlay;
+	// 0208fb00
+	static OverlayUnloadFunction unloadOverlay;
+	// 0208fb04
+	static u32 spawnSettings;
+
+
+	u32 guid;//GUID
+	u32 settings;
+	u16 id;//Class ID
+	ObjectState state;//Object state
+	bool destroyFlag;//Destroy flag
+
+	bool pendingUpdateFlag;//Pending update registry
+	bool pendingCreateFlag;//Pending create registry
+	ObjectType type;//Object type
+	u8 skipFlags;//Flags
+	//0x01: Skip update children
+	//0x02: Skip update
+	//0x04: Skip render children
+	//0x08: Skip render
+
+	ProcessLink link;//Link
+
+	u32 unk54; // unused (debug leftover?)
+	FrameHeap* resourcesHeap;
 
 };
 

@@ -21,9 +21,9 @@ public:
 	// 02178674
 	s32 onDestroy() override;
 	// 0217867C
-	void pendingDestroy() override;
+	void onCleanupResources() override;
 	// 02178A94
-	bool onUserHeapCreated() override;
+	bool onPrepareResources() override;
 
 	// 021788F4
 	bool updateMain() override;

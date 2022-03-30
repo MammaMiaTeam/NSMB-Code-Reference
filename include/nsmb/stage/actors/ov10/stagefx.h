@@ -33,7 +33,7 @@ public:
 	sym virtual s32 onDestroy() override __rbody
 
 	// 020FC790
-	sym virtual void pendingDestroy() override __body
+	sym virtual void onCleanupResources() override __body
 
 	// 020FC54C
 	sym void initStageStart() __body
