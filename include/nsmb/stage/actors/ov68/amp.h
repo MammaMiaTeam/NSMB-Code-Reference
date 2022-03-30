@@ -54,7 +54,7 @@ public:
 	static constexpr u16 renderPriority = 128;
 
 	// 02179420
-	static ActorProfile profile;
+	static const ActorProfile profile;
 
 
 	ModelAnm bodyModel;

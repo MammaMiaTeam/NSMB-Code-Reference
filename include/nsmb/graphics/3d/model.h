@@ -42,7 +42,6 @@ public:
 	void renderModel();
 
 	//02019838
-	void setCommandCallback(NNSG3dSbcCallBackFunc* cb, u8* address, u8 cmd, NNSG3dSbcCallBackTiming timing); //Sets the SBC command callback with the given timing (address is eliminated and only left for backwards compatibility)
 	/*
 		The callback is executed when the current SBC command equals cmd.
 		Timings:
@@ -50,6 +49,15 @@ public:
 		B: During
 		C: After
 	*/
+	void setCommandCallback(NNSG3dSbcCallBackFunc cb, u8* address, u8 cmd, NNSG3dSbcCallBackTiming timing); //Sets the SBC command callback with the given timing (address is eliminated and only left for backwards compatibility)
+
+	inline void setOwner(void* ptr) {
+		NNS_G3dRenderObjSetUserPtr(&renderObj, ptr);
+	}
+
+	inline void* getOwner() {
+		return renderObj.ptrUser;
+	}
 
 	//0201980c
 	NNSG3dResMatData* getMaterialData(u32 index); //returns a pointer to the model's material data with the given index (doesn't check for index out of bounds)

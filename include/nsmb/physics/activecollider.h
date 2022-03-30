@@ -151,7 +151,7 @@ public:
 	sym void reset() __body
 
 	// 020a47a0
-	sym void init(StageActor* owner, const ActiveColliderInfo& info, bool backLayer) __body
+	sym void init(StageActor* owner, const ActiveColliderInfo& info, bool backLayer = false) __body
 
 	// 020a4758
 	sym void setPositionAroundPivot(u16 rotation, fx32 pivotX, fx32 pivotY) __body

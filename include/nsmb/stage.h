@@ -28,6 +28,10 @@
 
 // Overlay 34 - Whomp
 #include "stage/actors/ov34/whomp.h"
+#include "stage/actors/ov34/fencekoopa.h"
+
+// Overlay 54 - Trampoline
+#include "stage/actors/ov54/trampoline.h"
 
 // Overlay 68 - Amp
 #include "stage/actors/ov68/amp.h"

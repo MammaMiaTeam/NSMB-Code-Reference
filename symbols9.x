@@ -2801,7 +2801,7 @@ _ZN5Model6renderEPK7MtxFx43PK7VecFx32										= 0x02019864;
 _ZN5Model6renderEv															= 0x02019858;
 _ZN5Model6createEPvmm														= 0x02019948;
 _ZN5Model11renderModelEv													= 0x02019934;
-_ZN5Model18setCommandCallbackEPPFvP9NNSG3dRS_EPhh23NNSG3dSbcCallBackTiming	= 0x02019838;
+_ZN5Model18setCommandCallbackEPFvP9NNSG3dRS_EPhh23NNSG3dSbcCallBackTiming	= 0x02019838;
 _ZN5Model15getMaterialDataEm												= 0x0201980c;
 _ZN5Model21getMaterialCollectionEv											= 0x020197fc;
 _ZN5Model16getMaterialIndexEPK14NNSG3dResName_								= 0x020197e0;
@@ -3865,6 +3865,60 @@ _ZN5Whomp6sBreakE							= 0x021454D4;
 _ZTV5Whomp									= 0x02145394;
 
 
+/* arm9_ov54 */
+/*----------------------------------------------------------------*/
+/*----------------------------- amp ------------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN10TrampolineD0Ev										= 0x02154F88;
+_ZN10TrampolineD1Ev										= 0x02154F00;
+_ZN10TrampolineD2Ev										= 0x02154F00;
+_ZN10Trampoline8onCreateEv								= 0x021550B8;
+_ZN10Trampoline17onUserHeapCreatedEv					= 0x02155358;
+_ZN10Trampoline10updateMainEv							= 0x0215505C;
+_ZN10Trampoline13updateCarriedEv						= 0x02155018;
+_ZN10Trampoline13updateDroppedEv						= 0x0215553C;
+_ZN10Trampoline6thrownEv								= 0x02155490;
+_ZN10Trampoline10thrownStopEv							= 0x02155464;
+_ZN10Trampoline7grabbedEv								= 0x0215551C;
+_ZN10Trampoline8releasedEv								= 0x021554B4;
+_ZN10Trampoline10onBlockHitEv							= 0x02155C98;
+_ZN10Trampoline19onMegaWalkShockwaveEv					= 0x02155C94;
+_ZN10Trampoline26onMegaGroundPoundShockwaveEv			= 0x02155C90;
+_ZN10Trampoline11preRender3DEv							= 0x02155058;
+_ZN10Trampoline12postRender3DEv							= 0x02155034;
+_ZN10Trampoline11switchStateERKMS_FbvE					= 0x02155CEC;
+_ZN10Trampoline11updateStateEv							= 0x02155CA4;
+_ZN10Trampoline16setModelCallbackEPFvP9NNSG3dRS_E		= 0x02155390;
+_ZN10Trampoline13modelCallbackEP9NNSG3dRS_				= 0x021553B8;
+_ZN10Trampoline13setModelOwnerEPv						= 0x0215545C;
+_ZN10Trampoline16updatePlayerJumpEh						= 0x02155938;
+_ZN10Trampoline19updateJumpBoostKeysER6Playerh			= 0x02155B6C;
+_ZN10Trampoline24updatePlayerInteractionsEv				= 0x02155BE0;
+_ZN10Trampoline10checkStompER14ActiveColliderR6Player	= 0x02155E10;
+_ZN10Trampoline9mainStateEv								= 0x021556C4;
+_ZN10Trampoline12carriedStateEv							= 0x02155520;
+_ZN10Trampoline14activeCallbackER14ActiveColliderS1_	= 0x02155D78;
+_ZN10Trampoline13loadResourcesEv						= 0x02155E80;
+
+_ZN10Trampoline18animationDurationsE					= 0x0216C000;
+_ZN10Trampoline19jumpBoostVelocitiesE					= 0x0216C004;
+_ZN10Trampoline11jumpOffsetsE							= 0x0216C00C;
+_ZN10Trampoline12bottomSensorE							= 0x0216C014;
+_ZN10Trampoline9topSensorE								= 0x0216C020;
+_ZN10Trampoline14topSensorGiantE						= 0x0216C02C;
+_ZN10Trampoline15sideSensorGiantE						= 0x0216C03C;
+_ZN10Trampoline10sideSensorE							= 0x0216C04C;
+_ZN10Trampoline17bottomSensorGiantE						= 0x0216C05C;
+_ZN10Trampoline18activeColliderInfoE					= 0x0216C06C;
+_ZN10Trampoline7profileE								= 0x0216D154;
+
+_ZN10Trampoline10sMainStateE							= 0x02171750;
+_ZN10Trampoline13sCarriedStateE							= 0x02171758;
+
+_ZTV10Trampoline										= 0x0216D160;
+
+
 /* arm9_ov68 */
 /*----------------------------------------------------------------*/
 /*----------------------------- amp ------------------------------*/
@@ -3922,7 +3976,6 @@ _ZTV7Manhole										= 0x0218987C;
 
 
 /* arm9_ov10 */
-
 /*----------------------------------------------------------------*/
 /*--------------------------- stagefx ----------------------------*/
 /*----------------------------------------------------------------*/

@@ -265,8 +265,11 @@ public:
 	fx32 unk3B4;
 	u16 wiggleTimer;
 	u16 unk3BA;
+
+	// Behavior on entity released (note that only Bob-Ombs and trampolines will trigger the player drop animation)
 	ThrowBehavior throwBehavior;
 	u16 thrownFlag;
+
 	u16 unk3C0;
 	u16 playerCollisionCooldown[2];
 	SimplePlayerCollisionFlags simplePlayerCollisionResult;
