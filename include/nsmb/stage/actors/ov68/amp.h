@@ -41,9 +41,9 @@ public:
 	void updateBobbing();
 
 	// 02178C78
-	bool idle(void* arg);
+	bool idleState(void* arg);
 	// 02178B9C
-	bool electrocute(void* arg);
+	bool electrocuteState(void* arg);
 
 	// 02178EA8
 	static bool loadResources();

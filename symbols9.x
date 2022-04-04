@@ -3939,8 +3939,8 @@ _ZN3Amp12damagePlayerER14ActiveColliderR6Player		= 0x0217882C;
 _ZN3Amp10updateMainEv								= 0x021788F4;
 _ZN3Amp8onCreateEv									= 0x02178918;
 _ZN3Amp18onPrepareResourcesEv						= 0x02178A94;
-_ZN3Amp11electrocuteEPv								= 0x02178B9C;
-_ZN3Amp4idleEPv										= 0x02178C78;
+_ZN3Amp16electrocuteStateEPv						= 0x02178B9C;
+_ZN3Amp9idleStateEPv								= 0x02178C78;
 _ZN3Amp13updateBobbingEv							= 0x02178D24;
 _ZN3Amp11updateStateEPv								= 0x02178D5C;
 _ZN3Amp11switchStateEMS_FbPvEPv						= 0x02178DC4;
@@ -4049,6 +4049,50 @@ _ZN11PhantomHand7profileE							= 0x021795D0;
 _ZTV11PhantomHand									= 0x021795DC;
 
 
+/* arm9_ov71 */
+/*----------------------------------------------------------------*/
+/*--------------------------- splunkin ---------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN8SplunkinD0Ev												= 0x021783F0;
+_ZN8SplunkinD1Ev												= 0x02178378;
+_ZN8SplunkinD2Ev												= 0x02178378;
+_ZN8Splunkin8onCreateEv											= 0x021786AC;
+_ZN8Splunkin8onRenderEv											= 0x0217847C;
+_ZN8Splunkin9onDestroyEv										= 0x02178470;
+_ZN8Splunkin18onCleanupResourcesEv								= 0x02178478;
+_ZN8Splunkin18onPrepareResourcesEv								= 0x02178FC4;
+_ZN8Splunkin10updateMainEv										= 0x02178508;
+_ZN8Splunkin9onStompedEv										= 0x021789F0;
+_ZN8Splunkin15playerCollisionER14ActiveColliderS1_				= 0x02178E64;
+_ZN8Splunkin15entityCollisionER14ActiveColliderR10StageActor	= 0x02178DAC;
+_ZN8Splunkin12damagePlayerER14ActiveColliderR6Player			= 0x02178A64;
+_ZN8Splunkin13loadResourcesEv									= 0x0217905C;
+
+_ZN8Splunkin20updateCrackingFactorEv							= 0x02178534;
+_ZN8Splunkin14updateCrackingEv									= 0x02178550;
+_ZN8Splunkin16setCrackingScaleEv								= 0x021785B8;
+_ZN8Splunkin15animateCrackingEv									= 0x02178630;
+_ZN8Splunkin18setMaterialPaletteER5Modeljj						= 0x02178678;
+_ZN8Splunkin11switchStateEMS_FbvE								= 0x02178EF0;
+_ZN8Splunkin11updateStateEv										= 0x02178E90;
+_ZN8Splunkin9walkStateEv										= 0x0217892C;
+_ZN8Splunkin9turnStateEv										= 0x02178824;
+
+_ZN8Splunkin11paletteBaseE										= 0x021799B8;
+
+_ZN8Splunkin14paletteOffsetsE									= 0x021792A4;
+_ZN8Splunkin17turnRotationStepsE								= 0x021792A8;
+_ZN8Splunkin13turnRotationsE									= 0x021792AC;
+_ZN8Splunkin12bottomSensorE										= 0x021792B0;
+_ZN8Splunkin9topSensorE											= 0x021792BC;
+_ZN8Splunkin10sideSensorE										= 0x021792C8;
+_ZN8Splunkin18activeColliderInfoE								= 0x021792D4;
+_ZN8Splunkin7profileE											= 0x02179880;
+
+_ZTV8Splunkin													= 0x0217988C;
+
+
 /* arm9_ov98 */
 /*----------------------------------------------------------------*/
 /*--------------------------- manhole ----------------------------*/
@@ -4062,9 +4106,9 @@ _ZN7Manhole9onDestroyEv								= 0x02188A7C;
 _ZN7Manhole8onRenderEv								= 0x02188AA0;
 _ZN7Manhole10updateMainEv							= 0x02188B10;
 _ZN7Manhole8onCreateEv								= 0x02188B4C;
-_ZN7Manhole12rollBackwardEPv						= 0x02188C88;
-_ZN7Manhole11rollForwardEPv							= 0x02188DC4;
-_ZN7Manhole9solidIdleEPv							= 0x02188F0C;
+_ZN7Manhole17rollBackwardStateEPv					= 0x02188C88;
+_ZN7Manhole16rollForwardStateEPv					= 0x02188DC4;
+_ZN7Manhole10solidStateEPv							= 0x02188F0C;
 _ZN7Manhole18updateRollingSoundEv					= 0x021890D8;
 _ZN7Manhole20getPlatformCollisionEv					= 0x02189150;
 _ZN7Manhole11updateStateEPv							= 0x02189198;

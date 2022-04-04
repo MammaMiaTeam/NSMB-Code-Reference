@@ -39,11 +39,11 @@ public:
 	void updateState(void* arg);
 
 	// 02188F0C
-	bool solidIdle(void* arg);
+	bool solidState(void* arg);
 	// 02188DC4
-	bool rollForward(void* arg);
+	bool rollForwardState(void* arg);
 	// 02188C88
-	bool rollBackward(void* arg);
+	bool rollBackwardState(void* arg);
 
 
 	// 021890D8
