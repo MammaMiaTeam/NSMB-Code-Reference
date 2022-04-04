@@ -44,6 +44,9 @@
 // Overlay 98 - Manhole
 #include "stage/actors/ov98/manhole.h"
 
+// Overlay 108 - Broozer
+#include "stage/actors/ov108/broozer.h"
+
 // Overlay 123 - Toadsworth
 #include "stage/actors/ov123/toadsworth.h"
 

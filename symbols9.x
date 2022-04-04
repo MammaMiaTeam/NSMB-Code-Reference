@@ -3666,6 +3666,18 @@ _ZN10ViewShaker5startEhhhb							= 0x020f96a0;
 
 
 /*----------------------------------------------------------------*/
+/*--------------------------- unsorted ---------------------------*/
+/*----------------------------------------------------------------*/
+
+/* arm9_ov54 */
+Liquid_doWaves = 0x021646E0;
+
+/* arm9_ov10 */
+setPlayerStateForWaterBubbles = 0x02102BC4;
+
+
+/* arm9_ov10 */
+/*----------------------------------------------------------------*/
 /*----------------------- stagecontroller ------------------------*/
 /*----------------------------------------------------------------*/
 
@@ -3679,15 +3691,52 @@ _ZN15StageController9preUpdateEv	= 0x0201FF80;
 _ZTV15StageController				= 0x0203CF30;
 
 
-/*----------------------------------------------------------------*/
-/*--------------------------- unsorted ---------------------------*/
-/*----------------------------------------------------------------*/
-
-/* arm9_ov54 */
-Liquid_doWaves = 0x021646E0;
-
 /* arm9_ov10 */
-setPlayerStateForWaterBubbles = 0x02102BC4;
+/*----------------------------------------------------------------*/
+/*--------------------------- stagefx ----------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN7StageFXD2Ev							= 0x020FB57C;
+_ZN7StageFXD1Ev							= 0x020FB57C;
+_ZN7StageFXD0Ev							= 0x020FB5A8;
+_ZN7StageFX8onCreateEv					= 0x020FC7CC;
+_ZN7StageFX8onUpdateEv					= 0x020FC578;
+_ZN7StageFX8onRenderEv					= 0x020FC684;
+_ZN7StageFX9onDestroyEv					= 0x020FC794;
+_ZN7StageFX18onCleanupResourcesEv			= 0x020FC790;
+
+_ZN7StageFX14initStageStartEv			= 0x020FC54C;
+_ZN7StageFX11initVictoryEv				= 0x020FC214;
+_ZN7StageFX10initVsLoseEv				= 0x020FBFDC;
+_ZN7StageFX11initTimesUpEv				= 0x020FBCF8;
+_ZN7StageFX13initVsTimesUpEv			= 0x020FBC2C;
+_ZN7StageFX18initDelayedVictoryEv		= 0x020FBA00;
+_ZN7StageFX17initDelayedVsLoseEv		= 0x020FB9E0;
+
+_ZN7StageFX16updateStageStartEv			= 0x020FC2B4;
+_ZN7StageFX13updateVictoryEv			= 0x020FC050;
+_ZN7StageFX12updateVsLoseEv				= 0x020FBD30;
+_ZN7StageFX13updateTimesUpEv			= 0x020FBC5C;
+_ZN7StageFX15updateVsTimesUpEv			= 0x020FBA20;
+_ZN7StageFX20updateDelayedVictoryEv		= 0x020FB998;
+_ZN7StageFX19updateDelayedVsLoseEv		= 0x020FB948;
+
+_ZN7StageFX16renderStageStartEv			= 0x020FC548;
+_ZN7StageFX13renderVictoryEv			= 0x020FC1C0;
+_ZN7StageFX12renderVsLoseEv				= 0x020FBF60;
+_ZN7StageFX13renderTimesUpEv			= 0x020FBCB4;
+_ZN7StageFX15renderVsTimesUpEv			= 0x020FBBE0;
+
+_ZN7StageFX15renderLostLivesEv			= 0x020FB5F4;
+_ZN7StageFX18updateScalePaletteEPlPh	= 0x020FB900;
+_ZN7StageFX11getSettingsENS_4TypeEhh	= 0x020FB5DC;
+
+_ZN7StageFX7profileE					= 0x021277D4;
+_ZN7StageFX9initFuncsE					= 0x0212AEB0;
+_ZN7StageFX11updateFuncsE				= 0x0212AEE8;
+_ZN7StageFX11renderFuncsE				= 0x0212AF20;
+
+_ZTV7StageFX							= 0x02127840;
 
 
 /* arm9_ov24 */
@@ -4122,49 +4171,55 @@ _ZN7Manhole7profileE								= 0x02189870;
 _ZTV7Manhole										= 0x0218987C;
 
 
-/* arm9_ov10 */
+/* arm9_ov108 */
 /*----------------------------------------------------------------*/
-/*--------------------------- stagefx ----------------------------*/
+/*---------------------------- broozer ---------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN7StageFXD2Ev							= 0x020FB57C;
-_ZN7StageFXD1Ev							= 0x020FB57C;
-_ZN7StageFXD0Ev							= 0x020FB5A8;
-_ZN7StageFX8onCreateEv					= 0x020FC7CC;
-_ZN7StageFX8onUpdateEv					= 0x020FC578;
-_ZN7StageFX8onRenderEv					= 0x020FC684;
-_ZN7StageFX9onDestroyEv					= 0x020FC794;
-_ZN7StageFX18onCleanupResourcesEv			= 0x020FC790;
+_ZN7BroozerD0Ev											= 0x02189A00;
+_ZN7BroozerD1Ev											= 0x021899E0;
+_ZN7BroozerD2Ev											= 0x021899E0;
+_ZN7Broozer8onCreateEv									= 0x02189A74;
+_ZN7Broozer18onPrepareResourcesEv						= 0x02189D40;
+_ZN7Broozer10updateMainEv								= 0x02189A28;
+_ZN7Broozer14updateDefeatedEv							= 0x02189D98;
+_ZN7Broozer11onEntityHitEv								= 0x0218A9A4;
+_ZN7Broozer13onFireballHitEv							= 0x0218AA04;
+_ZN7Broozer12onStarmanHitEv								= 0x0218A9EC;
+_ZN7Broozer12onSlidingHitEv								= 0x0218A98C;
+_ZN7Broozer9onMegaHitEv									= 0x0218A9D4;
+_ZN7Broozer12onMegaKickedEv								= 0x0218A9BC;
+_ZN7Broozer9onStompedEv									= 0x0218AA1C;
+_ZN7Broozer13onGroundPoundEv							= 0x0218A974;
+_ZN7Broozer14onBlueShellHitEv							= 0x0218A95C;
+_ZN7Broozer19onMegaWalkShockwaveEv						= 0x0218A958;
+_ZN7Broozer12damagePlayerER14ActiveColliderR6Player		= 0x0218AB34;
+_ZN7Broozer13loadResourcesEv							= 0x0218AD40;
 
-_ZN7StageFX14initStageStartEv			= 0x020FC54C;
-_ZN7StageFX11initVictoryEv				= 0x020FC214;
-_ZN7StageFX10initVsLoseEv				= 0x020FBFDC;
-_ZN7StageFX11initTimesUpEv				= 0x020FBCF8;
-_ZN7StageFX13initVsTimesUpEv			= 0x020FBC2C;
-_ZN7StageFX18initDelayedVictoryEv		= 0x020FBA00;
-_ZN7StageFX17initDelayedVsLoseEv		= 0x020FB9E0;
+_ZN7Broozer11setDefeatedEv								= 0x0218AB00;
+_ZN7Broozer16updatePunchSoundEv							= 0x0218A8C0;
+_ZN7Broozer13hasLeftCameraEv							= 0x0218A858;
+_ZN7Broozer23incrementAnimationSpeedEi					= 0x0218A82C;
+_ZN7Broozer18updateTurnRotationEv						= 0x0218A7E0;
+_ZN7Broozer11switchStateERKMS_FbvE						= 0x0218ACB4;
+_ZN7Broozer11updateStateEv								= 0x0218AC6C;
+_ZN7Broozer9walkStateEv									= 0x0218A5EC;
+_ZN7Broozer9turnStateEv									= 0x0218A524;
+_ZN7Broozer11searchStateEv								= 0x0218A278;
+_ZN7Broozer10alertStateEv								= 0x0218A150;
+_ZN7Broozer8runStateEv									= 0x02189EC0;
+_ZN7Broozer12stompedStateEv								= 0x02189DE0;
 
-_ZN7StageFX16updateStageStartEv			= 0x020FC2B4;
-_ZN7StageFX13updateVictoryEv			= 0x020FC050;
-_ZN7StageFX12updateVsLoseEv				= 0x020FBD30;
-_ZN7StageFX13updateTimesUpEv			= 0x020FBC5C;
-_ZN7StageFX15updateVsTimesUpEv			= 0x020FBA20;
-_ZN7StageFX20updateDelayedVictoryEv		= 0x020FB998;
-_ZN7StageFX19updateDelayedVsLoseEv		= 0x020FB948;
+_ZN7Broozer5sWalkE										= 0x0218B020;
+_ZN7Broozer8sStompedE									= 0x0218B028;
+_ZN7Broozer4sRunE										= 0x0218B030;
+_ZN7Broozer6sAlertE										= 0x0218B038;
+_ZN7Broozer7sSearchE									= 0x0218B040;
+_ZN7Broozer5sTurnE										= 0x0218B048;
 
-_ZN7StageFX16renderStageStartEv			= 0x020FC548;
-_ZN7StageFX13renderVictoryEv			= 0x020FC1C0;
-_ZN7StageFX12renderVsLoseEv				= 0x020FBF60;
-_ZN7StageFX13renderTimesUpEv			= 0x020FBCB4;
-_ZN7StageFX15renderVsTimesUpEv			= 0x020FBBE0;
+_ZN7Broozer13runVelocitiesE								= 0x0218ADA4;
+_ZN7Broozer14walkVelocitiesE							= 0x0218ADAC;
+_ZN7Broozer18activeColliderInfoE						= 0x0218ADB4;
+_ZN7Broozer7profileE									= 0x0218AEF0;
 
-_ZN7StageFX15renderLostLivesEv			= 0x020FB5F4;
-_ZN7StageFX18updateScalePaletteEPlPh	= 0x020FB900;
-_ZN7StageFX11getSettingsENS_4TypeEhh	= 0x020FB5DC;
-
-_ZN7StageFX7profileE					= 0x021277D4;
-_ZN7StageFX9initFuncsE					= 0x0212AEB0;
-_ZN7StageFX11updateFuncsE				= 0x0212AEE8;
-_ZN7StageFX11renderFuncsE				= 0x0212AF20;
-
-_ZTV7StageFX							= 0x02127840;
+_ZTV7Broozer											= 0x0218AEFC;
