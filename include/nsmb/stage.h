@@ -36,7 +36,8 @@
 // Overlay 68 - Amp
 #include "stage/actors/ov68/amp.h"
 
-// Overlay 71 - PhantomHand
+// Overlay 71 - Boo, PhantomHand
+#include "stage/actors/ov71/boo.h"
 #include "stage/actors/ov71/phantomhand.h"
 
 // Overlay 98 - Manhole

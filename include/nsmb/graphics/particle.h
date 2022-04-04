@@ -17,6 +17,7 @@ struct SPLArcHdr;
 struct SPLEmitter;
 struct SPLManager;
 
+using EmitterT = u32;
 
 namespace Particle {
 

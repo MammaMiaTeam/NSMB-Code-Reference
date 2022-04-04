@@ -41,6 +41,9 @@ namespace Stage
 	// 020ca29c
 	extern bool fenceFreezeFlag;
 
+	// 020ca2a0
+	extern u8 currentBooStackIndex;
+
 	// 020ca2a4
 	extern u8 eventData[2];
 

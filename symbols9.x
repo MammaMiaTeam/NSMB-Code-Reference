@@ -3254,6 +3254,7 @@ _ZN5Stage11cameraZoomYE								= 0x020cad8c;
 _ZN5Stage20megaInteractionFlagsE					= 0x020ca284;
 _ZN5Stage10freezeFlagE								= 0x020ca28c;
 _ZN5Stage15fenceFreezeFlagE							= 0x020ca29c;
+_ZN5Stage20currentBooStackIndexE							= 0x020ca2a0;
 _ZN5Stage9eventDataE								= 0x020ca2a4;
 _ZN5Stage20megaInteractionViewsE					= 0x020ca2bc;
 _ZN5Stage22globalCollisionTriggerE					= 0x020ca2c0;
@@ -3948,6 +3949,80 @@ _ZN3Amp13loadResourcesEv							= 0x02178EA8;
 _ZN3Amp7profileE									= 0x02179420;
 
 _ZTV3Amp											= 0x0217942C;
+
+
+/* arm9_ov71 */
+/*----------------------------------------------------------------*/
+/*------------------------------ boo -----------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN3BooD0Ev											= 0x021759F0;
+_ZN3BooD1Ev											= 0x021759A0;
+_ZN3BooD2Ev											= 0x021759A0;
+_ZN3Boo8onCreateEv									= 0x02175D38;
+_ZN3Boo8onRenderEv									= 0x02175A48;
+_ZN3Boo18onPrepareResourcesEv						= 0x021760EC;
+_ZN3Boo10updateMainEv								= 0x02175C18;
+_ZN3Boo12damagePlayerER14ActiveColliderR6Player		= 0x021772E4;
+_ZN3Boo13loadResourcesEv							= 0x02177468;
+
+_ZN3Boo21updateSpriteAnimationEv					= 0x021771C4;
+_ZN3Boo17updateMusicEventsEv						= 0x02177194;
+_ZN3Boo13hasLeftCameraEv							= 0x02177128;
+_ZN3Boo18updateTurnRotationEv						= 0x021770A0;
+_ZN3Boo17checkPlayerInZoneEv						= 0x0217707C;
+_ZN3Boo15updateZoneLimitEv							= 0x02176FEC;
+_ZN3Boo22updateInflateParticlesEv					= 0x02176EE4;
+_ZN3Boo22updateDeflateParticlesEv					= 0x02176E24;
+_ZN3Boo16updateChaseSoundEv							= 0x02176DD0;
+_ZN3Boo18updateInflateSoundEv						= 0x02176D6C;
+_ZN3Boo11updateChaseEv								= 0x02176A20;
+_ZN3Boo16updateAnimationsEv							= 0x02176758;
+_ZN3Boo14updateStandardEv							= 0x021765FC;
+_ZN3Boo17updateZoneLimitedEv						= 0x02176528;
+_ZN3Boo15destroyViewLeftEv							= 0x02175CC4;
+_ZN3Boo11switchStateERKMS_FbvE						= 0x021773DC;
+_ZN3Boo11updateStateEv								= 0x02177394;
+_ZN3Boo9mainStateEv									= 0x021763AC;
+_ZN3Boo17eventDeflateStateEv						= 0x02176298;
+_ZN3Boo17eventInflateStateEv						= 0x02176184;
+
+_ZN3Boo5sMainE										= 0x021799A8;
+_ZN3Boo13sEventDeflateE								= 0x021799B0;
+_ZN3Boo13sEventInflateE								= 0x021799A0;
+
+_ZN3Boo20balloonRotationYStepE						= 0x02179134;
+_ZN3Boo16balloonRotationYE							= 0x02179130;
+_ZN3Boo13rotationYStepE								= 0x0217912C;
+_ZN3Boo9rotationYE									= 0x02179138;
+_ZN3Boo12waveFrameIDsE								= 0x0217913C;
+_ZN3Boo12turnFrameIDsE								= 0x02179144;
+_ZN3Boo12stackOffsetsE								= 0x02179170;
+_ZN3Boo26balloonChaseAccelerationsXE				= 0x021791E0;
+_ZN3Boo23balloonChaseVelocitiesXE					= 0x02179230;
+_ZN3Boo19chaseAccelerationsXE						= 0x021791B8;
+_ZN3Boo16chaseVelocitiesXE							= 0x02179208;
+_ZN3Boo19chaseAccelerationsYE						= 0x02179258;
+_ZN3Boo16chaseVelocitiesYE							= 0x02179190;
+_ZN3Boo18activeColliderInfoE						= 0x02179154;
+_ZN3Boo7profileE									= 0x02179378;
+
+_ZTV3Boo											= 0x02179390;
+
+
+/* arm9_ov71 */
+/*----------------------------------------------------------------*/
+/*-------------------------- balloon boo -------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN10BalloonBooD0Ev									= 0x021775E0;
+_ZN10BalloonBooD1Ev									= 0x02177584;
+_ZN10BalloonBooD2Ev									= 0x02177584;
+_ZN10BalloonBoo13loadResourcesEv					= 0x02177484;
+
+_ZN10BalloonBoo7profileE							= 0x02179384;
+
+_ZTV10BalloonBoo									= 0x021794B0;
 
 
 /* arm9_ov71 */
