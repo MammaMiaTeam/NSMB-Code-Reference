@@ -41,6 +41,9 @@ namespace Stage
 	// 020ca29c
 	extern bool fenceFreezeFlag;
 
+	// 020ca2a4
+	extern u8 eventData[2];
+
 	// 020ca2bc
 	extern u32 megaInteractionViews;
 
@@ -61,6 +64,15 @@ namespace Stage
 
 	// 020ca850
 	extern ActorCategory actorFreezeFlag;
+
+	// 020ca874
+	extern bool phantomHandsTargetEnabled;
+
+	// 020ca8b0
+	extern u16 phantomHandsDisableMask;
+
+	// 020ca918
+	extern Vec3 phantomHandsTarget;
 
 	// 0208b328
 	extern bool playerDead[2];

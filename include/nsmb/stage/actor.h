@@ -53,20 +53,20 @@ public:
 	sym bool isOutOfViewVertical() const __rbody
 
 	// 020a069c
-	// Calculates the shortest distance in pixels to a player, then returns it
-	sym Player* getDistanceToPlayer(s32* distanceX, s32* distanceY) const __rbody
+	// Returns the closest player to the entity (and writes back the distance)
+	sym Player* getClosestPlayer(s32* distanceX, s32* distanceY) const __rbody
 
 	// 020a05f8
-	// Calculates the shortest distance in pixels to a player, then returns it (no stage wrapping)
-	sym static Player* calcDistanceToPlayerNoWrap(u32 x, u32 y, s32* distanceX, s32* distanceY) __rbody
+	// Returns the closest player to the entity (and writes back the distance) - no stage wrapping
+	sym static Player* getClosestPlayerNoWrap(u32 x, u32 y, s32* distanceX, s32* distanceY) __rbody
 
 	// 020a0500
-	// Calculates the shortest distance in pixels to a player, then returns it (with stage wrapping)
-	sym static Player* calcDistanceToPlayerWrap(u32 x, u32 y, s32* distanceX, s32* distanceY) __rbody
+	// Returns the closest player to the entity (and writes back the distance) - with stage wrapping
+	sym static Player* getClosestPlayerWrap(u32 x, u32 y, s32* distanceX, s32* distanceY) __rbody
 
 	// 020a04e4
-	// Sets the function used to calculate the distance to the player
-	sym static void setCalcDistanceToPlayerFunction(u32 wrapType) __body
+	// Sets the function used to retrieve the closest to the player
+	sym static void setGetClosestPlayerFunction(u32 wrapType) __body
 
 
 	// 020a04c0

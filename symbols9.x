@@ -2385,10 +2385,10 @@ _ZN10StageActor9preUpdateEv							= 0x020a1154;
 _ZN10StageActor10postUpdateEN4Base11ReturnStateE	= 0x020a10f0;
 _ZNK10StageActor14isInActiveViewEv					= 0x020a10a0;
 _ZNK10StageActor19isOutOfViewVerticalEv				= 0x020a06dc;
-_ZNK10StageActor19getDistanceToPlayerEPlS0_			= 0x020a069c;
-_ZN10StageActor26calcDistanceToPlayerNoWrapEmmPlS0_	= 0x020a05f8;
-_ZN10StageActor24calcDistanceToPlayerWrapEmmPlS0_	= 0x020a0500;
-_ZN10StageActor31setCalcDistanceToPlayerFunctionEm	= 0x020a04e4;
+_ZNK10StageActor16getClosestPlayerEPlS0_			= 0x020a069c;
+_ZN10StageActor22getClosestPlayerNoWrapEmmPlS0_		= 0x020a05f8;
+_ZN10StageActor20getClosestPlayerWrapEmmPlS0_		= 0x020a0500;
+_ZN10StageActor27setGetClosestPlayerFunctionEm		= 0x020a04e4;
 _ZN10StageActor12wrapPositionER4Vec3R5Vec3sb		= 0x020a04c0;
 _ZN10StageActor23setWrapPositionFunctionEm			= 0x020a04b4;
 _ZNK10StageActor14isBehindTargetERKS_				= 0x020a047c;
@@ -3254,11 +3254,15 @@ _ZN5Stage11cameraZoomYE								= 0x020cad8c;
 _ZN5Stage20megaInteractionFlagsE					= 0x020ca284;
 _ZN5Stage10freezeFlagE								= 0x020ca28c;
 _ZN5Stage15fenceFreezeFlagE							= 0x020ca29c;
+_ZN5Stage9eventDataE								= 0x020ca2a4;
 _ZN5Stage20megaInteractionViewsE					= 0x020ca2bc;
 _ZN5Stage22globalCollisionTriggerE					= 0x020ca2c0;
 _ZN5Stage20megaGroundPoundViewsE					= 0x020ca2c4;
 _ZN5Stage11stageLayoutE								= 0x020cad40;
 _ZN5Stage15actorFreezeFlagE							= 0x020ca850;
+_ZN5Stage25phantomHandsTargetEnabledE				= 0x020ca874;
+_ZN5Stage23phantomHandsDisableMaskE					= 0x020ca8b0;
+_ZN5Stage18phantomHandsTargetE						= 0x020ca918;
 
 /* arm9_ov11 */
 _ZN5Stage16anmTilesOamTableE						= 0x0212f180;
@@ -3944,6 +3948,30 @@ _ZN3Amp13loadResourcesEv							= 0x02178EA8;
 _ZN3Amp7profileE									= 0x02179420;
 
 _ZTV3Amp											= 0x0217942C;
+
+
+/* arm9_ov71 */
+/*----------------------------------------------------------------*/
+/*------------------------- phantom hand -------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN11PhantomHandC2Ev								= 0x02177BE4;
+_ZN11PhantomHandD0Ev								= 0x02177B0C;
+_ZN11PhantomHandD1Ev								= 0x02177B7C;
+_ZN11PhantomHandD2Ev								= 0x02177B7C;
+_ZN11PhantomHand8onCreateEv							= 0x02177A18;
+_ZN11PhantomHand8onRenderEv							= 0x02177920;
+_ZN11PhantomHand18onPrepareResourcesEv				= 0x02177AB4;
+_ZN11PhantomHand10updateMainEv						= 0x021778F4;
+_ZN11PhantomHand13loadResourcesEv					= 0x02177C54;
+
+_ZN11PhantomHand11switchStateEMS_FbvE				= 0x02177800;
+_ZN11PhantomHand11updateStateEv						= 0x02177798;
+_ZN11PhantomHand9mainStateEv						= 0x02177644;
+
+_ZN11PhantomHand7profileE							= 0x021795D0;
+
+_ZTV11PhantomHand									= 0x021795DC;
 
 
 /* arm9_ov98 */

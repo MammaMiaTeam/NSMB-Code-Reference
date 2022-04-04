@@ -228,12 +228,9 @@ public:
 	u32 unk328;
 	u32 unk32C;
 
-	u32 eventMask[2];
-
-	struct EventIDs {
-		u8 target;
-		u8 trigger;
-	} eventIDs;
+	// No idea why packed is required
+	u64 eventMask __attribute__((packed));
+	u8 events[2];
 
 	u16 unk33A;
 	UpdateStateID updateStateID;
