@@ -3919,6 +3919,75 @@ _ZN5Whomp6sBreakE							= 0x021454D4;
 _ZTV5Whomp									= 0x02145394;
 
 
+/* arm9_ov42 */
+/*----------------------------------------------------------------*/
+/*-------------------------- bullet bill -------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN10BulletBillD0Ev											= 0x0214933C;
+_ZN10BulletBillD1Ev											= 0x0214929C;
+_ZN10BulletBillD2Ev											= 0x0214929C;
+_ZN10BulletBill8onCreateEv									= 0x0214968C;
+_ZN10BulletBill9onDestroyEv									= 0x021494A8;
+_ZN10BulletBill8onRenderEv									= 0x02149508;
+_ZN10BulletBill18onCleanupResourcesEv						= 0x02149504;
+_ZN10BulletBill18onPrepareResourcesEv						= 0x02149A78;
+_ZN10BulletBill10updateMainEv								= 0x021495F4;
+_ZN10BulletBill11onEntityHitEv								= 0x0214A358;
+_ZN10BulletBill9onMegaHitEv									= 0x0214A364;
+_ZN10BulletBill9onStompedEv									= 0x0214A3BC;
+_ZN10BulletBill13onGroundPoundEv							= 0x0214A184;
+_ZN10BulletBill13onStageBeatenER6Player						= 0x0214A550;
+_ZN10BulletBill12damagePlayerER14ActiveColliderR6Player		= 0x0214A44C;
+_ZN10BulletBill12doPlayerJumpER6Playerl						= 0x0214A668;
+_ZN10BulletBill13loadResourcesEv							= 0x0214A8D4;
+
+_ZN10BulletBill20updateBanzaiPlatformEv						= 0x02149F0C;
+_ZN10BulletBill19setupBanzaiPlatformEv						= 0x02149E8C;
+_ZN10BulletBill19updateBanzaiStretchEv						= 0x02149E6C;
+_ZN10BulletBill16updateBulletRollEv							= 0x02149D68;
+_ZN10BulletBill11switchStateERKMS_FbvE						= 0x0214A824;
+_ZN10BulletBill11updateStateEv								= 0x0214A7DC;
+_ZN10BulletBill9mainStateEv									= 0x02149AF0;
+_ZN10BulletBill15spawnBulletBillERK4Vec3mm					= 0x02149424;
+_ZN10BulletBill15spawnBanzaiBillERK4Vec3m					= 0x021493E4;
+
+_ZN10BulletBill5sMainE										= 0x02152828;
+
+_ZN10BulletBill18rotatedVelocitiesXE						= 0x02151938;
+_ZN10BulletBill18rotatedVelocitiesYE						= 0x021518F8;
+_ZN10BulletBill11velocitiesXE								= 0x02151888;
+_ZN10BulletBill17targetVelocitiesXE							= 0x02151880;
+_ZN10BulletBill18bulletRollSequenceE						= 0x021518A0;
+_ZN10BulletBill18bulletSmokeOffsetsE						= 0x02151898;
+_ZN10BulletBill18banzaiSmokeOffsetsE						= 0x02151890;
+_ZN10BulletBill20banzaiPlatformPointsE						= 0x02151918;
+_ZN10BulletBill17bulletRollTargetsE							= 0x0215187C;
+_ZN10BulletBill15bulletRollStepsE							= 0x02151878;
+_ZN10BulletBill10rotationsYE								= 0x02151874;
+_ZN10BulletBill10rotationsXE								= 0x021518B0;
+_ZN10BulletBill18activeColliderInfoE						= 0x021518DC;
+_ZN10BulletBill7profileE									= 0x02151FB0;
+
+_ZTV10BulletBill											= 0x02151FC8;
+
+
+/* arm9_ov42 */
+/*----------------------------------------------------------------*/
+/*-------------------------- banzai bill -------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN10BanzaiBillD0Ev											= 0x0214AA60;
+_ZN10BanzaiBillD1Ev											= 0x0214A9B4;
+_ZN10BanzaiBillD2Ev											= 0x0214A9B4;
+_ZN10BanzaiBill13loadResourcesEv							= 0x0214A8B0;
+
+_ZN10BanzaiBill18activeColliderInfoE						= 0x021518C0;
+_ZN10BanzaiBill7profileE									= 0x02151FBC;
+
+_ZTV10BanzaiBill											= 0x021520DC;
+
+
 /* arm9_ov54 */
 /*----------------------------------------------------------------*/
 /*----------------------------- amp ------------------------------*/
