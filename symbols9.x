@@ -3245,7 +3245,7 @@ _ZN5Stage7stageIDE									= 0x02085a14;
 _ZN5Stage5actIDE									= 0x02085a4c;
 
 /* arm9_ov0 */
-_ZN5Stage14liquidPositionE							= 0x020cae0c; 
+_ZN5Stage14liquidPositionE							= 0x020cae0c;
 _ZN5Stage18lastLiquidPositionE						= 0x020cadac;
 _ZN5Stage7cameraXE									= 0x020cae1c;
 _ZN5Stage7cameraYE									= 0x020cad94;
@@ -3254,7 +3254,7 @@ _ZN5Stage11cameraZoomYE								= 0x020cad8c;
 _ZN5Stage20megaInteractionFlagsE					= 0x020ca284;
 _ZN5Stage10freezeFlagE								= 0x020ca28c;
 _ZN5Stage15fenceFreezeFlagE							= 0x020ca29c;
-_ZN5Stage20currentBooStackIndexE							= 0x020ca2a0;
+_ZN5Stage20currentBooStackIndexE					= 0x020ca2a0;
 _ZN5Stage9eventDataE								= 0x020ca2a4;
 _ZN5Stage20megaInteractionViewsE					= 0x020ca2bc;
 _ZN5Stage22globalCollisionTriggerE					= 0x020ca2c0;
@@ -3703,27 +3703,27 @@ _ZN7StageFX8onCreateEv					= 0x020FC7CC;
 _ZN7StageFX8onUpdateEv					= 0x020FC578;
 _ZN7StageFX8onRenderEv					= 0x020FC684;
 _ZN7StageFX9onDestroyEv					= 0x020FC794;
-_ZN7StageFX18onCleanupResourcesEv			= 0x020FC790;
+_ZN7StageFX18onCleanupResourcesEv		= 0x020FC790;
 
-_ZN7StageFX14initStageStartEv			= 0x020FC54C;
-_ZN7StageFX11initVictoryEv				= 0x020FC214;
-_ZN7StageFX10initVsLoseEv				= 0x020FBFDC;
+_ZN7StageFX9initStartEv					= 0x020FC54C;
+_ZN7StageFX9initClearEv					= 0x020FC214;
+_ZN7StageFX8initLoseEv					= 0x020FBFDC;
 _ZN7StageFX11initTimesUpEv				= 0x020FBCF8;
 _ZN7StageFX13initVsTimesUpEv			= 0x020FBC2C;
-_ZN7StageFX18initDelayedVictoryEv		= 0x020FBA00;
-_ZN7StageFX17initDelayedVsLoseEv		= 0x020FB9E0;
+_ZN7StageFX11initVsClearEv				= 0x020FBA00;
+_ZN7StageFX10initVsLoseEv				= 0x020FB9E0;
 
-_ZN7StageFX16updateStageStartEv			= 0x020FC2B4;
-_ZN7StageFX13updateVictoryEv			= 0x020FC050;
-_ZN7StageFX12updateVsLoseEv				= 0x020FBD30;
+_ZN7StageFX11updateStartEv				= 0x020FC2B4;
+_ZN7StageFX11updateClearEv				= 0x020FC050;
+_ZN7StageFX10updateLoseEv				= 0x020FBD30;
 _ZN7StageFX13updateTimesUpEv			= 0x020FBC5C;
 _ZN7StageFX15updateVsTimesUpEv			= 0x020FBA20;
-_ZN7StageFX20updateDelayedVictoryEv		= 0x020FB998;
-_ZN7StageFX19updateDelayedVsLoseEv		= 0x020FB948;
+_ZN7StageFX13updateVsClearEv			= 0x020FB998;
+_ZN7StageFX12updateVsLoseEv				= 0x020FB948;
 
-_ZN7StageFX16renderStageStartEv			= 0x020FC548;
-_ZN7StageFX13renderVictoryEv			= 0x020FC1C0;
-_ZN7StageFX12renderVsLoseEv				= 0x020FBF60;
+_ZN7StageFX11renderStartEv				= 0x020FC548;
+_ZN7StageFX11renderClearEv				= 0x020FC1C0;
+_ZN7StageFX10renderLoseEv				= 0x020FBF60;
 _ZN7StageFX13renderTimesUpEv			= 0x020FBCB4;
 _ZN7StageFX15renderVsTimesUpEv			= 0x020FBBE0;
 
@@ -3731,12 +3731,24 @@ _ZN7StageFX15renderLostLivesEv			= 0x020FB5F4;
 _ZN7StageFX18updateScalePaletteEPlPh	= 0x020FB900;
 _ZN7StageFX11getSettingsENS_4TypeEhh	= 0x020FB5DC;
 
-_ZN7StageFX7profileE					= 0x021277D4;
-_ZN7StageFX9initFuncsE					= 0x0212AEB0;
-_ZN7StageFX11updateFuncsE				= 0x0212AEE8;
-_ZN7StageFX11renderFuncsE				= 0x0212AF20;
+_ZN7StageFX13initFunctionsE				= 0x0212AEB0;
+_ZN7StageFX15updateFunctionsE			= 0x0212AEE8;
+_ZN7StageFX15renderFunctionsE			= 0x0212AF20;
 
-_ZTV7StageFX							= 0x02127840;
+_ZN7StageFX17stageClearFileIDsE			= 0x0212770C;
+_ZN7StageFX13vsLoseFileIDsE				= 0x02127704;
+_ZN7StageFX12vsWinFileIDsE				= 0x0212774C;
+_ZN7StageFX18stageClearPalettesE		= 0x0212771C;
+_ZN7StageFX23stageClearLuigiPalettesE	= 0x021277BC;
+_ZN7StageFX23stageClearMarioPalettesE	= 0x021277C8;
+_ZN7StageFX18stageClearOAMDatasE		= 0x02127764;
+_ZN7StageFX13vsLoseOAMDatasE			= 0x021276E4;
+_ZN7StageFX13vsWinOAMDatasE				= 0x02127754;
+_ZN7StageFX16stageClearScalesE			= 0x0212780C;
+_ZN7StageFX13timesUpScalesE				= 0x021277E0;
+_ZN7StageFX7profileE					= 0x021277D4;
+
+_ZTV7StageFX							= 0x02127838;
 
 
 /* arm9_ov24 */

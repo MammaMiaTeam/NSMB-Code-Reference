@@ -2,22 +2,23 @@
 #include "nsmb.h"
 
 
-// vtable at 02127840 (ov10)
-class StageFX : public StageController {
-
+// vtable at 02127838 (ov10)
+class StageFX : public StageController
+{
 public:
 
-	enum Type : u32 {
-		StageStart,
-		Victory,
-		VsLose,
+	enum class Type : u32
+	{
+		Start,
+		Clear,		// handles both stage clear and MvsL victory
+		Lose,		// broken in singleplayer
 		TimesUp,
-		VsTimesUp, // unused
-		DelayedVictory,
-		DelayedVsLose
+		VsTimesUp,	// unused
+		VsClear,	// redirects to the other type with higher delay and runs some unknown MvsL functions
+		VsLose		// same as above
 	};
 
-	using StateFunction = bool(StageFX::*)();
+	using StateFunction = void(StageFX::*)();
 
 	// D0: 020FB5A8
 	// D1: 020FB57C
@@ -36,41 +37,41 @@ public:
 	sym virtual void onCleanupResources() override __body
 
 	// 020FC54C
-	sym void initStageStart() __body
+	sym void initStart() __body
 	// 020FC214
-	sym void initVictory() __body
+	sym void initClear() __body
 	// 020FBFDC
-	sym void initVsLose() __body
+	sym void initLose() __body
 	// 020FBCF8
 	sym void initTimesUp() __body
 	// 020FBC2C
 	sym void initVsTimesUp() __body
 	// 020FBA00
-	sym void initDelayedVictory() __body
+	sym void initVsClear() __body
 	// 020FB9E0
-	sym void initDelayedVsLose() __body
+	sym void initVsLose() __body
 
 	// 020FC2B4
-	sym void updateStageStart() __body
+	sym void updateStart() __body
 	// 020FC050
-	sym void updateVictory() __body
+	sym void updateClear() __body
 	// 020FBD30
-	sym void updateVsLose() __body
+	sym void updateLose() __body
 	// 020FBC5C
 	sym void updateTimesUp() __body
 	// 020FBA20
 	sym void updateVsTimesUp() __body
 	// 020FB998
-	sym void updateDelayedVictory() __body
+	sym void updateVsClear() __body
 	// 020FB948
-	sym void updateDelayedVsLose() __body
+	sym void updateVsLose() __body
 
 	// 020FC548
-	sym void renderStageStart() __body
+	sym void renderStart() __body
 	// 020FC1C0
-	sym void renderVictory() __body
+	sym void renderClear() __body
 	// 020FBF60
-	sym void renderVsLose() __body
+	sym void renderLose() __body
 	// 020FBCB4
 	sym void renderTimesUp() __body
 	// 020FBBE0
@@ -93,14 +94,38 @@ public:
 	// 021277D4
 	static const ActorProfile profile;
 
+	// 0212770C
+	static const u32 stageClearFileIDs[2];
+	// 02127704
+	static const u32 vsLoseFileIDs[2];
+	// 0212774C
+	static const u32 vsWinFileIDs[2];
+
+	// 0212771C
+	static const u8* stageClearPalettes[2];
+	// 021277BC
+	static const u8 stageClearLuigiPalettes[12];
+	// 021277C8
+	static const u8 stageClearMarioPalettes[12];
+
+	// 02127764
+	static const GXOamAttr* stageClearOAMDatas[2];
+	// 021276E4
+	static const GXOamAttr* vsLoseOAMDatas[2];
+	// 02127754
+	static const GXOamAttr* vsWinOAMDatas[2];
+
+	// 0212780C
+	static const fx32 stageClearScales[11];
+	// 021277E0
+	static const fx32 timesUpScales[11];
+
 	// 0212AEB0
-	static const StateFunction initFuncs[6];
-
+	static const StateFunction initFunctions[6];
 	// 0212AEE8
-	static const StateFunction updateFuncs[6];
-
+	static const StateFunction updateFunctions[6];
 	// 0212AF20
-	static const StateFunction renderFuncs[6];
+	static const StateFunction renderFunctions[6];
 
 
 	Type type;
@@ -109,11 +134,11 @@ public:
 	u32 step;
 	u32 scalePaletteCounter;
 	u32 waitTimer;
-	u32 unused138; // only set in initStageStart
+	u32 unused138;				// set in initStart
 	u32 character;
-	fx32 vsTimesUpY;
+	fx32 targetYPos;
 	GXOamAttr* oamData;
-	u32 unused148[8];
+	SpringFunction loseSpring;
 	u8 palette;
 	bool renderLives;
 
