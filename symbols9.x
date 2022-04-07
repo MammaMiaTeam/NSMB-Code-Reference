@@ -4000,6 +4000,61 @@ _ZN10BanzaiBill7profileE									= 0x02151FBC;
 _ZTV10BanzaiBill											= 0x021520DC;
 
 
+/* arm9_ov42 */
+/*----------------------------------------------------------------*/
+/*---------------------- bullet bill blaster ---------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN17BulletBillBlasterC1Ev									= 0x02148FB0;
+_ZN17BulletBillBlasterC2Ev									= 0x021490D4;
+_ZN17BulletBillBlasterD0Ev									= 0x02148D38;
+_ZN17BulletBillBlasterD1Ev									= 0x02148E78;
+_ZN17BulletBillBlasterD2Ev									= 0x02148C00;
+_ZN17BulletBillBlaster8onCreateEv							= 0x02147B48;
+_ZN17BulletBillBlaster9onDestroyEv							= 0x02147514;
+_ZN17BulletBillBlaster8onUpdateEv							= 0x02147AF0;
+_ZN17BulletBillBlaster8onRenderEv							= 0x0214753C;
+_ZN17BulletBillBlaster18onCleanupResourcesEv				= 0x02147538;
+_ZN17BulletBillBlaster18onPrepareResourcesEv				= 0x02147EA0;
+_ZN17BulletBillBlaster14updateDefeatedEv					= 0x02147FEC;
+_ZN17BulletBillBlaster13loadResourcesEv						= 0x02148A68;
+
+_ZN17BulletBillBlaster21updateBulletShotScaleEv				= 0x02148854;
+_ZN17BulletBillBlaster11updateShootEv						= 0x0214863C;
+_ZN17BulletBillBlaster11switchStateERKMS_FbvE				= 0x02148994;
+_ZN17BulletBillBlaster11updateStateEv						= 0x0214894C;
+_ZN17BulletBillBlaster9mainStateEv							= 0x02148544;
+_ZN17BulletBillBlaster12topCollisionER10StageActorS1_		= 0x02148B58;
+_ZN17BulletBillBlaster13sideCollisionER10StageActorS1_		= 0x02148AB0;
+
+_ZN17BulletBillBlaster5sMainE								= 0x02152820;
+_ZN17BulletBillBlaster10sDestroyedE							= 0x02152818;
+
+_ZN17BulletBillBlaster16shardVelocitiesXE					= 0x02151854;
+_ZN17BulletBillBlaster16shardVelocitiesYE					= 0x02151844;
+_ZN17BulletBillBlaster19shardAccelerationsXE				= 0x0215183C;
+_ZN17BulletBillBlaster20verticalShootOffsetsE				= 0x02151834;
+_ZN17BulletBillBlaster17resourceHeapSizesE					= 0x0215182C;
+_ZN17BulletBillBlaster7profileE								= 0x02151D74;
+
+_ZTV17BulletBillBlaster										= 0x02151D80;
+
+
+/* arm9_ov42 */
+/*----------------------------------------------------------------*/
+/*---------------------- banzai bill blaster ---------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN17BanzaiBillBlasterD0Ev									= 0x02149274;
+_ZN17BanzaiBillBlasterD1Ev									= 0x02149254;
+_ZN17BanzaiBillBlasterD2Ev									= 0x02149254;
+_ZN17BanzaiBillBlaster13loadResourcesEv						= 0x02148A20;
+
+_ZN17BanzaiBillBlaster7profileE								= 0x02151D68;
+
+_ZTV17BanzaiBillBlaster										= 0x02151E94;
+
+
 /* arm9_ov54 */
 /*----------------------------------------------------------------*/
 /*----------------------------- amp ------------------------------*/

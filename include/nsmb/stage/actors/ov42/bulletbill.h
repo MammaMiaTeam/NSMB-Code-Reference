@@ -34,9 +34,11 @@ public:
 		Fireball			// Fireball collision
 	};
 
+	inline BulletBill() {}
+
 	// D0: 0214933C
 	// D1: 0214929C
-	virtual ~BulletBill();
+	inline virtual ~BulletBill() {}
 
 	// 0214968C
 	s32 onCreate() override;
@@ -159,6 +161,7 @@ public:
 	s8 updateStep;
 
 };
+NTR_SIZE_GUARD(BulletBill, 0x5E4);
 
 
 // vtable at 021520DC (ov42)
@@ -185,3 +188,4 @@ public:
 	static const ActiveColliderInfo activeColliderInfo;
 
 };
+NTR_SIZE_GUARD(BanzaiBill, sizeof(BulletBill));

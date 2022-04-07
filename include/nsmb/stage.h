@@ -30,8 +30,9 @@
 #include "stage/actors/ov34/whomp.h"
 #include "stage/actors/ov34/fencekoopa.h"
 
-// Overlay 42 - BulletBill, BanzaiBill
+// Overlay 42 - BulletBill, BanzaiBill, BulletBillBlaster, BanzaiBillBlaster
 #include "stage/actors/ov42/bulletbill.h"
+#include "stage/actors/ov42/bulletbillblaster.h"
 
 // Overlay 54 - Trampoline
 #include "stage/actors/ov54/trampoline.h"
