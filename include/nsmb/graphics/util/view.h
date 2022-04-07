@@ -18,3 +18,4 @@ public:
 
 
 };
+NTR_SIZE_GUARD(View, 0xCC);

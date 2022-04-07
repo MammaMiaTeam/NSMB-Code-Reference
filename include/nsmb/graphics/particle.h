@@ -58,6 +58,7 @@ namespace Particle {
 		sym void end() __body
 
 	};
+	NTR_SIZE_GUARD(Emitter, 0x1C);
 
 
 	class EmitterSystem {
@@ -94,6 +95,7 @@ namespace Particle {
 		// 0x20218e0
 		sym void unregisterEmitter(Emitter* pEmitter) __body
 	};
+	NTR_SIZE_GUARD(EmitterSystem, 0x748);
 
 
 	class ControllerBase {
@@ -108,6 +110,7 @@ namespace Particle {
 		sym virtual bool destroy(SPLEmitter* emitter, bool generate) __rbody
 
 	};
+	NTR_SIZE_GUARD(ControllerBase, 0x4);
 
 
 	class Controller : public ControllerBase {
@@ -125,6 +128,7 @@ namespace Particle {
 		sym virtual bool destroy(SPLEmitter* emitter, bool generate) override __rbody
 
 	};
+	NTR_SIZE_GUARD(Controller, 0x8);
 
 
 	class ControllerLiquid : public Controller {
@@ -136,6 +140,7 @@ namespace Particle {
 		sym virtual bool destroy(SPLEmitter* pEmitter, bool generate) override __rbody
 
 	};
+	NTR_SIZE_GUARD(ControllerLiquid, sizeof(Controller));
 
 
 	class ControllerManualLiquid : public ControllerBase {
@@ -147,6 +152,7 @@ namespace Particle {
 		sym virtual bool destroy(SPLEmitter* pEmitter, bool generate) override __rbody
 
 	};
+	NTR_SIZE_GUARD(ControllerManualLiquid, sizeof(ControllerBase));
 
 
 	class ControllerManual : public ControllerBase {
@@ -161,6 +167,7 @@ namespace Particle {
 		sym static ControllerManual* getHandlerController() __rbody
 
 	};
+	NTR_SIZE_GUARD(ControllerManual, sizeof(ControllerBase));
 
 
 	/*
@@ -418,5 +425,6 @@ namespace Particle {
 		// 0x2021f0c
 		sym static void disable() __body
 	};
+	NTR_SIZE_GUARD(Handler, 0x7F4);
 
 }

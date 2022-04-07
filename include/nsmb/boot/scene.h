@@ -82,3 +82,4 @@ public:
 	*/
 
 };
+NTR_SIZE_GUARD(BootScene, 0x80);

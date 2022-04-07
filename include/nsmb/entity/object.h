@@ -15,6 +15,7 @@ struct ObjectProfile {
 	}
 
 };
+NTR_SIZE_GUARD(ObjectProfile, 0x8);
 
 
 class Object : public Base
@@ -43,3 +44,4 @@ public:
 	}
 
 };
+NTR_SIZE_GUARD(Object, sizeof(Base));

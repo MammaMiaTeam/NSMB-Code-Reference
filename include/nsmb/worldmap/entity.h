@@ -59,3 +59,4 @@ public:
 	static bool loadFiles();
 
 };
+NTR_SIZE_GUARD(WorldmapEntityModel, 0x198);

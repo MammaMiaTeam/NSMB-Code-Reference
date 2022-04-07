@@ -5,13 +5,18 @@
 
 struct MinigameHighscore {
 
-	u32 record0 : 20;
-	u32 record1 : 20;
-	u32 record2 : 20;
-	u32 record3 : 20;
-	u32 record4 : 20;
+	/*
+		u32 record0 : 20;
+		u32 record1 : 20;
+		u32 record2 : 20;
+		u32 record3 : 20;
+		u32 record4 : 20;
+	*/
+
+	u8 records[13];
 
 };
+NTR_SIZE_GUARD(MinigameHighscore, 0xD);
 
 
 struct MinigameSave {
@@ -21,6 +26,7 @@ struct MinigameSave {
 	MinigameHighscore minigameHighscores[18];
 
 };
+NTR_SIZE_GUARD(MinigameSave, 0xF4);
 
 
 struct MainSave {
@@ -128,6 +134,7 @@ struct MainSave {
 	WorldmapActor wmActors[2 * 8];				//Two types per world
 
 };
+NTR_SIZE_GUARD(MainSave, 0x248);
 
 IMPL_ENUMCLASS_OPERATORS(MainSave::WorldFlags);
 IMPL_ENUMCLASS_OPERATORS(MainSave::NodeFlags);
@@ -156,6 +163,7 @@ struct OptionSave {
 	u32 activeSlot;
 
 };
+NTR_SIZE_GUARD(OptionSave, 0x14);
 
 
 namespace Save {

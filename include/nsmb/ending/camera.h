@@ -39,3 +39,4 @@ public:
 
 
 };
+NTR_SIZE_GUARD(EndingCamera, 0x138);

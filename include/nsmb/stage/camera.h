@@ -14,8 +14,9 @@ public:
 	u32 unk120;//Current state index
 	u32 unk124;//Execute pre-state bool
 	u32 unk128;
-	u32 unk12c;//Roll
-	u32 unk130;
+	u32 unk12C;
+	u32 unk130;//Roll
+	u32 unk134;
 
 	//02123c80
 	static ObjectProfile profile;
@@ -37,3 +38,4 @@ public:
 	sym virtual s32 onRender() override __rbody
 
 };
+NTR_SIZE_GUARD(StageCamera, 0x138);

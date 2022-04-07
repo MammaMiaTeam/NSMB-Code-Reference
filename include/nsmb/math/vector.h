@@ -138,6 +138,7 @@ public:
 		Vec3::div(*this, *this, rhs);
 	}
 };
+NTR_SIZE_GUARD(Vec3, 0x10);
 
 
 
@@ -281,6 +282,7 @@ public:
 		Vec2::div(*this, *this, rhs);
 	}
 };
+NTR_SIZE_GUARD(Vec2, 0xC);
 
 
 
@@ -393,3 +395,4 @@ public:
 	}
 
 };
+NTR_SIZE_GUARD(Vec3s, 0xC);

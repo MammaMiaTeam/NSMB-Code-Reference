@@ -151,3 +151,4 @@ public:
 	u8 contractTimer;
 
 };
+NTR_SIZE_GUARD(Trampoline, 0x508);

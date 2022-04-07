@@ -4,7 +4,7 @@
 
 
 // TODO
-class StageLayout : public StageActor
+class StageLayout : public Object
 {
 public:
 
@@ -22,7 +22,12 @@ public:
 
 	// 020cac98
 	static bool doLayoutReset;
+
+
+	u8 unk5C[0xA8CC];
+
 };
+NTR_SIZE_GUARD(StageLayout, 0xA928);
 
 
 namespace Stage

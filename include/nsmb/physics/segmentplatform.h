@@ -24,3 +24,4 @@ public:
 	Vec2 end;
 
 };
+NTR_SIZE_GUARD(SegmentPlatform, 0x70);

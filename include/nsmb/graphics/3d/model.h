@@ -90,3 +90,4 @@ public:
 	//0201967c
 	bool restoreNodeMatrix(u32 nodeIndex); //Restores the node matrix with index nodeIndex. returns true if successful, false otherwise.
 };
+NTR_SIZE_GUARD(Model, 0x90);

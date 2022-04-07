@@ -55,3 +55,4 @@ public:
 	s8 updateStep;
 
 };
+NTR_SIZE_GUARD(PhantomHand, 0x4D4);

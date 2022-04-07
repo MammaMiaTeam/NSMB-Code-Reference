@@ -90,3 +90,4 @@ public:
 	static bool loadFiles();
 
 };
+NTR_SIZE_GUARD(WorldmapPlayerModel, 0x3D8);

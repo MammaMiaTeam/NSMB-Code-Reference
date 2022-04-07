@@ -104,6 +104,8 @@ public:
 	sym static void switchToFileCorruptedScene(u32 settings) __body
 
 };
+NTR_SIZE_GUARD(Scene, 0x64);
+
 
 namespace ProcessManager {
 

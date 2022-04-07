@@ -58,6 +58,7 @@ public:
 	Vec3 velocity;
 
 };
+NTR_SIZE_GUARD(ChildEffect, 0x24);
 
 
 class Effect {
@@ -147,6 +148,7 @@ public:
 	static EffectFunctions effectTable[24];
 
 };
+NTR_SIZE_GUARD(Effect, 0x1D4);
 
 
 class EffectHandler {
@@ -167,6 +169,7 @@ public:
 	s8 effectCount;
 
 };
+NTR_SIZE_GUARD(EffectHandler, 0x3AA8);
 
 
 namespace Effects {

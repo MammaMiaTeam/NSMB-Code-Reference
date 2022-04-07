@@ -29,3 +29,4 @@ public:
 
 
 };
+NTR_SIZE_GUARD(BlendColor, 0x18);

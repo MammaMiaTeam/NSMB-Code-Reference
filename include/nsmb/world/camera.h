@@ -49,3 +49,4 @@ public:
 	void updateState();
 
 };
+NTR_SIZE_GUARD(WorldCamera, 0x120);

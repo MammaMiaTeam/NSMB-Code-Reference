@@ -62,3 +62,4 @@ public:
 	sym void detachAnimation(BlendAnimation* anim) __body //Register anim for the model and activate it
 
 };
+NTR_SIZE_GUARD(BlendModelAnm, 0xC4);

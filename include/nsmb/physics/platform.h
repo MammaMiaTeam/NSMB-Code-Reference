@@ -60,3 +60,4 @@ public:
 	u8 unk54[4];
 
 };
+NTR_SIZE_GUARD(Platform, 0x58);

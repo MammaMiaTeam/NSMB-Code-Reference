@@ -112,3 +112,4 @@ public:
 	sym static void initWrapFunctions(u32 wrapType) __body
 
 };
+NTR_SIZE_GUARD(StageActor, 0x2C4);

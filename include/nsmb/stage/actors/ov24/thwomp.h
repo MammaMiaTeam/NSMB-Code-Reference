@@ -113,6 +113,7 @@ public:
 	u8 waitTimer;
 
 };
+NTR_SIZE_GUARD(Thwomp, 0x4F4);
 
 
 // vtable at 0213F804 (ov24)
@@ -139,3 +140,4 @@ public:
 	static LineSensorH topSensor;
 
 };
+NTR_SIZE_GUARD(GiantThwomp, sizeof(Thwomp));

@@ -85,3 +85,4 @@ public:
 	bool playerStanding;
 
 };
+NTR_SIZE_GUARD(Manhole, 0x50C);

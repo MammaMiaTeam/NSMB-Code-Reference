@@ -21,3 +21,4 @@ public:
 	sym static NNSG3dResMdl* loadModel(void* bmd, u32 modelID, NNSG3dResTex** texture) __rbody	//Loads the model with ID modelID from the NSBMD-file pointed to by bmd and outputs texture (if a valid one has been found). returns a pointer to the model if successful, a nullptr otherwise.
 
 };
+NTR_SIZE_GUARD(ModelBase, 0x58);

@@ -210,7 +210,7 @@ public:
 	s8 updateStep;
 
 };
-static_assert(sizeof(Boo) == 0x5B0, "");
+NTR_SIZE_GUARD(Boo, 0x5B0);
 
 
 // vtable at 021794B0 (ov71)
@@ -234,3 +234,4 @@ public:
 	static const ActorProfile profile;
 
 };
+NTR_SIZE_GUARD(BalloonBoo, sizeof(Boo));

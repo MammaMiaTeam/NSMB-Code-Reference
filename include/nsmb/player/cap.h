@@ -49,3 +49,4 @@ public:
 	static bool loadFiles();
 
 };
+NTR_SIZE_GUARD(PlayerCap, 0xC4);

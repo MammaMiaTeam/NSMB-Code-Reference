@@ -63,6 +63,7 @@ public:
 	static u8 getCharacterFadeMaskID(u8 character);
 
 };
+NTR_SIZE_GUARD(FadeMask, 0x5A4);
 
 
 class Fader
@@ -189,6 +190,7 @@ public:
 	}
 
 };
+NTR_SIZE_GUARD(Fader, 0x5C8);
 
 
 namespace Game {

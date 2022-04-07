@@ -30,3 +30,4 @@ public:
 	void setOrtho(fx32 r, fx32 t, fx32 b, fx32 l);
 
 };
+NTR_SIZE_GUARD(TitleScreenCamera, sizeof(FixedOrthoView));

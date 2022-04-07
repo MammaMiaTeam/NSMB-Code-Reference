@@ -84,6 +84,7 @@ struct ActiveColliderInfo
 
 	ActiveColliderCallback callback;
 };
+NTR_SIZE_GUARD(ActiveColliderInfo, 0x1C);
 
 
 class ActiveCollider {
@@ -199,4 +200,6 @@ protected:
 
 	// 020a3e04
 	sym bool testCollisionHTrpzVsOther(ActiveCollider* collision) __rbody
+
 };
+NTR_SIZE_GUARD(ActiveCollider, 0xB0);

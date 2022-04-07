@@ -32,3 +32,4 @@ public:
 	sym bool getTexturePaletteDestination(u32& palDest, u32 palID) __rbody //Calls GFX::getTexturePaletteDestination and returns whether address calculation was successful.
 
 };
+NTR_SIZE_GUARD(Texture, 0x8);

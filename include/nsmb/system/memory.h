@@ -69,6 +69,7 @@ public:
 	static Heap* setCurrent(Heap* currentHeap);								//Sets Memory::currentHeapPtr to currentHeap and returns a pointer to the previous heap
 
 };
+NTR_SIZE_GUARD(Heap, 0x14);
 
 
 
@@ -108,6 +109,7 @@ public:
 	static void invokeDeallocate(void* memBlock, NNSFndHeapHandle heap, u32 userParam);
 
 };
+NTR_SIZE_GUARD(ExpandedHeap, 0x30);
 
 
 
@@ -146,6 +148,7 @@ public:
 	static FrameHeap* create(u32 size, Heap* parent, s32 align);			//Creates a heap with size size on parent. If size == -1, the whole memory of parent is allocated for the new heap. If parent is null, currentHeapPtr is used (therefore do not create the root heap with this function). Align is replaced with its abolute value immediately and its minimum value is 4. returns a pointer to the new heap or null if allocation failed.
 
 };
+NTR_SIZE_GUARD(FrameHeap, 0x30);
 
 
 /*

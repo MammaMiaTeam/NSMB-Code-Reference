@@ -128,6 +128,7 @@ public:
 	FrameHeap* resourcesHeap;
 
 };
+NTR_SIZE_GUARD(Base, 0x5C);
 
 
 namespace Game

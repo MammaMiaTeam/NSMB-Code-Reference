@@ -143,5 +143,4 @@ public:
 	bool renderLives;
 
 };
-
-static_assert(sizeof(StageFX) == 0x16C, "");
+NTR_SIZE_GUARD(StageFX, 0x16C);

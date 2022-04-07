@@ -22,3 +22,4 @@ public:
 	// 02129438
 	static u8 coinFrame;
 };
+NTR_SIZE_GUARD(AnimatedTiles, 0x4);

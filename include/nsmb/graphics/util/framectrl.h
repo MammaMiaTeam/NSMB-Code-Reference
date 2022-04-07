@@ -51,3 +51,4 @@ public:
 	}
 
 };
+NTR_SIZE_GUARD(FrameCtrl, 0xC);

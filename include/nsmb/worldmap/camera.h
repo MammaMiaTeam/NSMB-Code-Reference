@@ -59,3 +59,4 @@ public:
 	void updateState();
 
 };
+NTR_SIZE_GUARD(WorldMapCamera, 0x168);

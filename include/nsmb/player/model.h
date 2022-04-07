@@ -166,3 +166,4 @@ public:
 
 
 };
+NTR_SIZE_GUARD(PlayerModel, 0x3C4);

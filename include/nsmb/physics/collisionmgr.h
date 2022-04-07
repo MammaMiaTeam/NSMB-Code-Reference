@@ -628,6 +628,8 @@ public:
 	u8 backLayerFlag;
 
 };
+NTR_SIZE_GUARD(CollisionMgr, 0xB8);
+
 
 using CollisionMgrResult	= CollisionMgr::Result;
 using SlopeType				= CollisionMgr::SlopeType;

@@ -18,3 +18,4 @@ public:
 	virtual ~FixedOrthoView();
 
 };
+NTR_SIZE_GUARD(FixedOrthoView, 0x108);

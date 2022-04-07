@@ -110,3 +110,4 @@ public:
 	s8 updateStep;
 
 };
+NTR_SIZE_GUARD(FenceKoopa, 0x4B8);

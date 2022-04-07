@@ -63,3 +63,4 @@ public:
 	}
 
 };
+NTR_SIZE_GUARD(AnimationCtrl, 0x2C);

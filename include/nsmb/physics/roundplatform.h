@@ -29,3 +29,4 @@ public:
 	u8 unk8b;
 
 };
+NTR_SIZE_GUARD(RoundPlatform, 0x8C);

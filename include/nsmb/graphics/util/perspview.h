@@ -18,3 +18,4 @@ public:
 	sym virtual ~PerspView() __body
 
 };
+NTR_SIZE_GUARD(PerspView, 0x108);

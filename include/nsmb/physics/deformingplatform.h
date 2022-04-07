@@ -34,3 +34,4 @@ public:
 	Vec2 bendPoint2;
 
 };
+NTR_SIZE_GUARD(DeformingPlatform, 0xA0);

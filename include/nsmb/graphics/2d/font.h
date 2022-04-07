@@ -24,6 +24,7 @@ struct FontLinkStack {
 	void clear();							//Clears the stack and sets linkCount to 0
 
 };
+NTR_SIZE_GUARD(FontLinkStack, 0x10);
 
 
 
@@ -42,6 +43,7 @@ struct UTF16Character {
 	void decode();				//Decodes the UTF-16 codepoint pointed to by charPtr and writes all other fields. 
 
 };
+NTR_SIZE_GUARD(UTF16Character, 0x10);
 
 
 
@@ -71,7 +73,8 @@ struct EscapeSequence {
 	void readParameter(u16* parameter);					//Writes the first parameter from params into parameter
 	static u16 buildU16(u8* sequencePtr, u32 offset);	//Build a u16 from two consecutive bytes pointed to by sequencePtr + offset
 
-}; 
+};
+NTR_SIZE_GUARD(EscapeSequence, 0x14);
 
 
 
@@ -106,6 +109,7 @@ struct EscapeSequenceEntry {
 		WARNING: An object offset greater than 1GB leads to unpredictable results; The object offset is calculated at 0x02015380 with [add r0,r0,r2, asr #0x1] and any u32 values where the MSB is set are arithmetically shifted to the right, leading to faults.
 	*/
 };
+NTR_SIZE_GUARD(EscapeSequenceEntry, 0x10);
 
 
 
@@ -138,6 +142,7 @@ public:
 												//When a null character is encountered, onStringDispatched() is invoked and false is returned.
 
 };
+NTR_SIZE_GUARD(FontBase, 0x18);
 
 
 
@@ -166,6 +171,7 @@ public:
 	void processString(u32 doCopy, u16* string);		//Clears all links, copies doCopy and string to copy and srcPtr respectively and processes every char in the string
 
 };
+NTR_SIZE_GUARD(FontCache, 0x24);
 
 
 
@@ -186,6 +192,7 @@ public:
 	virtual u16* getCachePtr() override;				//returns a pointer to stringCache
 
 };
+NTR_SIZE_GUARD(StringCache, 0x124);
 
 
 
@@ -209,6 +216,7 @@ public:
 	void stringifyOtherName(u16* name, u32 length);		//Copies name with length length (capped at 10) into the nicknameCache (used for the other player's name)
 
 };
+NTR_SIZE_GUARD(NicknameCache, 0x3C);
 
 
 
@@ -234,6 +242,8 @@ public:
 	void stringifyNumber(u32 number);					//Converts number to a string and stores it into the numberCache
 
 };
+NTR_SIZE_GUARD(NumberCache, 0x3C);
+
 
 
 
@@ -255,6 +265,7 @@ public:
 	virtual u16* getCachePtr() override;				//returns a pointer to genericCache
 
 };
+NTR_SIZE_GUARD(GenericCache, 0x64);
 
 
 
@@ -332,6 +343,7 @@ public:
 	void linkGenericCache3(EscapeSequence* sequence);						//Links to the next character in the string and sets charPtr to the fourth generic cache's cache ptr
 
 };
+NTR_SIZE_GUARD(FontBounds, 0x34);
 
 
 
@@ -364,6 +376,7 @@ struct FontTile {
 	static void decode(u32* x, u32* y, u32 shape);			//Converts from shape to separate x and y 8x8 tile counts
 
 };
+NTR_SIZE_GUARD(FontTile, 0xC);
 
 
 
@@ -418,6 +431,7 @@ public:
 	void deleteTarget();																	//Deletes buffers and sets the VRAM target address to null
 
 };
+NTR_SIZE_GUARD(FontString, 0x15C);
 
 
 
@@ -510,6 +524,7 @@ public:
 	void setColorSelector(EscapeSequence* sequence);						//Sets the font color selector to the escape sequence parameter
 
 };
+NTR_SIZE_GUARD(FontRenderer, 0x1828);
 
 
 
@@ -566,6 +581,7 @@ public:
 	bool renderCleared(FontCache* cache, void* bmg, u32* index);	//Clears cache's string buffer and renders a new string into it by calling renderParsed. returns true if successful, false otherwise.
 
 };
+NTR_SIZE_GUARD(BMGReader, 0x58);
 
 
 class TextBox
@@ -669,6 +685,7 @@ public:
 	void calculateYOffset(u32 lines);
 
 };
+NTR_SIZE_GUARD(TextBox, 0x78);
 
 
 

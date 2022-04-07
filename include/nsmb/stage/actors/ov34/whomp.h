@@ -176,3 +176,4 @@ public:
 	s8 updateStep;
 
 };
+NTR_SIZE_GUARD(Whomp, 0x51C);

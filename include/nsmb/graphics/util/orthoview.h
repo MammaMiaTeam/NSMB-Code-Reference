@@ -18,3 +18,4 @@ public:
 	sym virtual ~OrthoView() __body
 
 };
+NTR_SIZE_GUARD(OrthoView, 0x108);

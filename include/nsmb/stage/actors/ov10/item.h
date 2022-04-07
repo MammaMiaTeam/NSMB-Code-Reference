@@ -160,3 +160,4 @@ public:
     u8 unused5CF;			            // Unused (& 0x100), MP, vine, drop from top only
 
 };
+NTR_SIZE_GUARD(Item, 0x5D0);

@@ -73,3 +73,4 @@ public:
 	s8 updateStep;
 
 };
+NTR_SIZE_GUARD(Amp, 0x5A4);

@@ -25,6 +25,9 @@
 #define NIN		__attribute__((noinline))
 #define FIN		__attribute__((always_inline)) inline
 
+#define NTR_OFFSETOF(s,m) ((::size_t)&reinterpret_cast<char const volatile&>((((s*)0)->m)))
+#define NTR_SIZE_GUARD(t,s) static_assert(sizeof(t) == s, "")
+
 #ifdef _MSC_VER // VSCode doesn't need it
 #include "intellisense.h"
 #else

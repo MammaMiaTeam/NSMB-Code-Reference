@@ -79,3 +79,4 @@ public:
 	}
 	
 };
+NTR_SIZE_GUARD(ModelAnm, 0xA8);

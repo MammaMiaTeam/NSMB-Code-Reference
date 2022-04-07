@@ -37,3 +37,4 @@ public:
 	virtual s32 onCreate() override;
 
 };
+NTR_SIZE_GUARD(WorldmapActor, sizeof(Actor));

@@ -61,3 +61,4 @@ public:
 	u8 unk33;
 
 };
+NTR_SIZE_GUARD(PlatformMgr, 0x34);

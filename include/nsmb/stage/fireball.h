@@ -39,6 +39,7 @@ public:
 	virtual ~Fireball();
 
 };
+NTR_SIZE_GUARD(Fireball, 0x8C);
 
 
 class FireballHandler {
@@ -55,6 +56,7 @@ public:
 	virtual ~FireballHandler();
 
 };
+NTR_SIZE_GUARD(FireballHandler, 0x8C4);
 
 
 namespace Game {

@@ -21,5 +21,4 @@ public:
 	u8 unk120; // preUpdate related
 
 };
-
-static_assert(sizeof(StageController) == 0x124, "");
+NTR_SIZE_GUARD(StageController, 0x124);

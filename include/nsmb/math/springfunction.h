@@ -31,3 +31,4 @@ public:
 	bool stopped;
 
 };
+NTR_SIZE_GUARD(SpringFunction, 0x20);

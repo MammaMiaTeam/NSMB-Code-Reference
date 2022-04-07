@@ -12,6 +12,7 @@ struct ProcessNode {
 	sym void unlink() __body
 
 };
+NTR_SIZE_GUARD(ProcessNode, 0xC);
 
 
 struct PriorityNode : public ProcessNode {
@@ -23,6 +24,7 @@ struct PriorityNode : public ProcessNode {
 	sym void unlink() __body
 
 };
+NTR_SIZE_GUARD(PriorityNode, 0x10);
 
 
 struct SceneNode {
@@ -48,6 +50,7 @@ struct SceneNode {
 	sym SceneNode* getParentNext() __rbody
 
 };
+NTR_SIZE_GUARD(SceneNode, 0x14);
 
 
 struct LinkedList {
@@ -72,6 +75,7 @@ struct LinkedList {
 
 
 };
+NTR_SIZE_GUARD(LinkedList, 0x8);
 
 
 struct ProcessList : public LinkedList {
@@ -83,6 +87,7 @@ struct ProcessList : public LinkedList {
 	sym bool execute() __rbody
 
 };
+NTR_SIZE_GUARD(ProcessList, 0x10);
 
 
 struct ProcessSet : public ProcessList {
@@ -91,6 +96,7 @@ struct ProcessSet : public ProcessList {
 	sym bool add(PriorityNode* node) __rbody
 
 };
+NTR_SIZE_GUARD(ProcessSet, 0x10);
 
 
 struct SceneGraph {
@@ -111,3 +117,4 @@ struct SceneGraph {
 	sym bool execute() __rbody
 
 };
+NTR_SIZE_GUARD(SceneGraph, 0xC);

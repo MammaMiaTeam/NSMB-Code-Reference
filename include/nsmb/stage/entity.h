@@ -655,6 +655,6 @@ public:
 	virtual void doPlayerJump(Player& player, fx32 jumpVelocity);
 
 };
-static_assert(sizeof(StageEntity) == 0x3F4, "");
+NTR_SIZE_GUARD(StageEntity, 0x3F4);
 
 IMPL_ENUMCLASS_OPERATORS(StageEntity::CollisionResponse);

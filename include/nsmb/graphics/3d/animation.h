@@ -44,3 +44,4 @@ public:
 	}
 
 };
+NTR_SIZE_GUARD(Animation, 0x20);

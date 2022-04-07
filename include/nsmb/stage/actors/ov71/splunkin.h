@@ -108,3 +108,4 @@ public:
 	fx32 walkSpeed;
 
 };
+NTR_SIZE_GUARD(Splunkin, 0x4D8);

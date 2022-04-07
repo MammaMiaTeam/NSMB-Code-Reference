@@ -39,3 +39,4 @@ public:
 	fx32 left;
 
 };
+NTR_SIZE_GUARD(RotatingPlatform, 0x70);

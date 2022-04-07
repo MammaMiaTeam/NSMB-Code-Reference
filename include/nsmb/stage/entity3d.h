@@ -32,4 +32,4 @@ public:
 	virtual void postRender3D();
 
 };
-static_assert(sizeof(StageEntity3D) == 0x4A0, "");
+NTR_SIZE_GUARD(StageEntity3D, 0x4A0);

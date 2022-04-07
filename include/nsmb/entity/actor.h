@@ -165,6 +165,7 @@ public:
 	sym Vec3 getCenteredPosition() const __rbody
 
 };
+NTR_SIZE_GUARD(Actor, 0x120);
 
 namespace ProcessManager {
 

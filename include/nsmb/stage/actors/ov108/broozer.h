@@ -141,3 +141,4 @@ public:
 	s8 updateStep;
 
 };
+NTR_SIZE_GUARD(Broozer, 0x52C);

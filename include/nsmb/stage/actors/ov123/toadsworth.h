@@ -39,3 +39,4 @@ public:
     s8 updateStep;			        // Step of the current state: 0:init,1:update,-1:exit
 
 };
+NTR_SIZE_GUARD(Toadsworth, 0x524);

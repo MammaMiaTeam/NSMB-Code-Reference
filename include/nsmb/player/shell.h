@@ -32,3 +32,4 @@ public:
 	static bool loadFiles();
 
 };
+NTR_SIZE_GUARD(PlayerShell, 0x94);
