@@ -30,6 +30,7 @@ struct ColliderInfo {
 	} callbacks;
 
 };
+NTR_SIZE_GUARD(ColliderInfo, 0x1C);
 
 /*
 	Physics class responsible for handling a collision rectangle that acts like a solid object on all sides.
@@ -42,13 +43,15 @@ struct ColliderInfo {
 class Collider {
 public:
 
-	enum class UpdateFlag {
+	enum class UpdateFlag : u8
+	{
 		Collected				= (1 << 2),	// Used internally to signal that the object has been collected (used only for the coin type)
 		DirectionLeft			= (1 << 3),	// Used internally to specify if the side collision has occurred from the left
 		SkipUpdate				= (1 << 7),	// Used internally to skip the collision's calculation
 	};
 
-	enum class OptionFlag {
+	enum class OptionFlag : u8
+	{
 		NotSolid				= (1 << 0),
 		CalculateDelta			= (1 << 1),
 		DisableBlockParticles	= (1 << 4),
@@ -148,6 +151,7 @@ public:
 	void updatePlayerInteraction();
 
 };
+NTR_SIZE_GUARD(Collider, 0x6C);
 
 IMPL_ENUMCLASS_OPERATORS(Collider::UpdateFlag);
 IMPL_ENUMCLASS_OPERATORS(Collider::OptionFlag);

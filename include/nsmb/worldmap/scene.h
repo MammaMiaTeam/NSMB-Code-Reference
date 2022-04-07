@@ -169,77 +169,77 @@ public:
 	static IconAnimator worldmapIconAnimator;
 
 	//021a67f8
-	WorldPath worldPaths[9];
+	static WorldPath worldPaths[9];
 
 	//021a7384
-	WorldStruct looooool[8];
+	static WorldStruct looooool[8];
 
 	//021a60d4
-	ShitStruct shit[8];
+	static ShitStruct shit[8];
 
 	//021a6e94
-	LevelStruct w1Levels[0x13];
+	static LevelStruct w1Levels[0x13];
 
 	//021a6f78
-	LevelStruct w2Levels[0x14];
+	static LevelStruct w2Levels[0x14];
 
 	//021a6b1c
-	LevelStruct w3Levels[0x12];
+	static LevelStruct w3Levels[0x12];
 
 	//021a6ccc
-	LevelStruct w4Levels[0x13];
+	static LevelStruct w4Levels[0x13];
 
 	//021a7264
-	LevelStruct w5Levels[0x18];
+	static LevelStruct w5Levels[0x18];
 
 	//021a7068
-	LevelStruct w6Levels[0x15];
+	static LevelStruct w6Levels[0x15];
 
 	//021a6bf4
-	LevelStruct w7Levels[0x12];
+	static LevelStruct w7Levels[0x12];
 
 	//021a6db0
-	LevelStruct w8Levels[0x13];
+	static LevelStruct w8Levels[0x13];
 
 	//021a6438
-	PathStruct w1Paths[0x17];
+	static PathStruct w1Paths[0x17];
 
 	//021a6670
-	PathStruct w2Paths[0x18];
+	static PathStruct w2Paths[0x18];
 
 	//021a6494
-	PathStruct w3Paths[0x17];
+	static PathStruct w3Paths[0x17];
 
 	//021a63dc
-	PathStruct w4Paths[0x17];
+	static PathStruct w4Paths[0x17];
 
 	//021a6a24
-	PathStruct w5Paths[0x1E];
+	static PathStruct w5Paths[0x1E];
 
 	//021a6790
-	PathStruct w6Paths[0x1A];
+	static PathStruct w6Paths[0x1A];
 
 	//021a66d0
-	PathStruct w7Paths[0x18];
+	static PathStruct w7Paths[0x18];
 
 	//021a6384
-	PathStruct w8Paths[0x16];
+	static PathStruct w8Paths[0x16];
 
 
 	//021a3080
-	u32 wmPathMaskFiles[9];
+	static u32 wmPathMaskFiles[9];
 
 	//021a305c
-	u32 wmPathFiles[9];
+	static u32 wmPathFiles[9];
 
 	//021a8154
-	u32 worldmapModelFileIDs[8][16];
+	static u32 worldmapModelFileIDs[8][16];
 
 	//021add50
-	u8 worldStarCoinsCompleted;//Bitmask (1 << world)
+	static u8 worldStarCoinsCompleted;//Bitmask (1 << world)
 
 	//021a53ec
-	s8 nextWorld;//-1 if none pressed, else pressed icon = world
+	static s8 nextWorld;//-1 if none pressed, else pressed icon = world
 
 //Don't really belong here
 /*
@@ -276,22 +276,22 @@ public:
 	};
 
 	//021a53f4
-	const char challengeModeButtonNameX[2];
+	static const char challengeModeButtonNameX[2];
 
 	//021a53f8
-	const char challengeModeButtonNameL[2];
+	static const char challengeModeButtonNameL[2];
 
 	//021a53fc
-	const char challengeModeButtonNameY[2];
+	static const char challengeModeButtonNameY[2];
 
 	//021a5400
-	const char challengeModeButtonNameR[2];
+	static const char challengeModeButtonNameR[2];
 
 	//021a27bc
-	ChallengeModeState challengeModeStates[8];
+	static ChallengeModeState challengeModeStates[8];
 
 	//021add94
-	u32 currentChallengeModeState;
+	static u32 currentChallengeModeState;
 
 	//021adda0
 	static fx32 textBoxScale;
@@ -503,3 +503,4 @@ public:
 	static fx32 getRightCameraLimit(u32 world);
 
 };
+NTR_SIZE_GUARD(WorldmapScene, 0x888);
