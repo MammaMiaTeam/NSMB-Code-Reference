@@ -8,27 +8,28 @@
 */
 
 
-class PendulumBase;
+class Pendulum;
 
 
 class PendulumController
 {
 public:
 
-	Player* owner;
+	StageActor* owner;
 
-	PendulumController* unk4;
-	PendulumBase* unk8;
-	PendulumBase* unkC;
+	PendulumController* nextController;
+	Pendulum* grabbedPendulum;
+	Pendulum* attachedPendulum;
 
-	u32 unk10;
-	u32 unk14;
+	fx32 grabHeight;
+	fx32 segmentRestore;
 	u8 unk18;
-	u8 unk19;
-	u8 unk1A;
-	u8 unk1B;
+	u8 filterID;
+	u8 grabbedSegment;
+	u8 detachedTimer;
 
 };
+NTR_SIZE_GUARD(PendulumController, 0x1C);
 
 
 class SpinState
@@ -52,6 +53,7 @@ public:
 	virtual ~SpinState();
 
 };
+NTR_SIZE_GUARD(SpinState, 0x24);
 
 
 class Class212f724
@@ -68,6 +70,7 @@ public:
 	virtual ~Class212f724();
 
 };
+NTR_SIZE_GUARD(Class212f724, 0x14);
 
 
 class ProgressBarObject
@@ -90,3 +93,4 @@ public:
 	u32 unk1C;
 
 };
+NTR_SIZE_GUARD(ProgressBarObject, 0x20);
