@@ -36,5 +36,10 @@ public:
 	//021983cc
 	virtual s32 onCreate() override;
 
+	static constexpr u16 objectID = 319;
+
+	static constexpr u16 updatePriority = objectID;
+	static constexpr u16 renderPriority = 293;
+
 };
 NTR_SIZE_GUARD(WorldmapActor, sizeof(Actor));

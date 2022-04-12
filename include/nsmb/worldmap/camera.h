@@ -24,6 +24,14 @@ public:
 	u32 unk160;
 	u32 unk164;
 
+	static constexpr u16 objectID = 322;
+
+	static constexpr u16 updatePriority = objectID;
+	static constexpr u16 renderPriority = 2;
+
+	//0x020E8BEC
+	static ObjectProfile profile;
+
 	//021a65b0
 	static VecFx32 worldLightPositions[8];
 
@@ -32,9 +40,6 @@ public:
 
 	//021a864c
 	static fx32 fovySineTable[450];//I don't wanna say anything to this.
-
-	//0x020E8BEC
-	static ObjectProfile profile;
 
 	//C3:0x020D1F98
 	WorldMapCamera();

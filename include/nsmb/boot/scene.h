@@ -7,39 +7,6 @@ class BootScene : public Scene
 {
 public:
 
-	//Save related
-	u32 unk64;
-	u32 unk68;
-	u32 unk6c;
-	u32 unk70;
-
-	u32 unk74;//???
-
-	u16 unk78;//Timer: 0x78 or 0 if this is not the starting scene
-	u8 unk7a;//State 0-9
-	u8 unk7b;
-	u8 unk7c;
-	u8 unk7d;
-	u8 unk7e;
-
-	//021874c4
-	static u8 nintendoLogoNCG[0x5F0];
-
-	//02187ab4
-	static u8 nintendoLogoNCL[0x200];
-
-	//02187cb4
-	static u8 nintendoLogoNSC[0x1F0];
-
-	//02187ea4
-	static u8 copyrightTextNCG[0xD28];
-
-	//02188bcc
-	static u8 copyrightTextNCL[0x20];
-
-	//02188bec
-	static u8 copyrightTextNSC[0x2B8];
-
 	//C3:02187208
 	BootScene();
 
@@ -80,6 +47,44 @@ public:
 	Case 8 -> 9/F
 	Case 9 -> S
 	*/
+
+	static constexpr u16 objectID = 0;
+
+	static constexpr u16 updatePriority = objectID;
+	static constexpr u16 renderPriority = 7;
+
+	//021874c4
+	static u8 nintendoLogoNCG[0x5F0];
+
+	//02187ab4
+	static u8 nintendoLogoNCL[0x200];
+
+	//02187cb4
+	static u8 nintendoLogoNSC[0x1F0];
+
+	//02187ea4
+	static u8 copyrightTextNCG[0xD28];
+
+	//02188bcc
+	static u8 copyrightTextNCL[0x20];
+
+	//02188bec
+	static u8 copyrightTextNSC[0x2B8];
+
+	//Save related
+	u32 unk64;
+	u32 unk68;
+	u32 unk6c;
+	u32 unk70;
+
+	u32 unk74;//???
+
+	u16 unk78;//Timer: 0x78 or 0 if this is not the starting scene
+	u8 unk7a;//State 0-9
+	u8 unk7b;
+	u8 unk7c;
+	u8 unk7d;
+	u8 unk7e;
 
 };
 NTR_SIZE_GUARD(BootScene, 0x80);

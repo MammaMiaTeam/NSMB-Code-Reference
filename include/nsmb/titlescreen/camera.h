@@ -7,9 +7,6 @@ class TitleScreenCamera : public FixedOrthoView
 {
 public:
 
-	//0x020DAADC
-	static ObjectProfile profile;
-
 	//C3:0x020D3D74
 	TitleScreenCamera();
 
@@ -28,6 +25,14 @@ public:
 
 	//0x020D39A4
 	void setOrtho(fx32 r, fx32 t, fx32 b, fx32 l);
+
+	static constexpr u16 objectID = 323;
+
+	static constexpr u16 updatePriority = objectID;
+	static constexpr u16 renderPriority = 3;
+
+	//0x020DAADC
+	static ObjectProfile profile;
 
 };
 NTR_SIZE_GUARD(TitleScreenCamera, sizeof(FixedOrthoView));

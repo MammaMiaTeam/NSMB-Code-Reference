@@ -27,6 +27,11 @@ public:
 
 	using StateFunction = bool (Player::*)(void*);
 
+	static constexpr u16 objectID = 21;
+
+	static constexpr u16 updatePriority = objectID;
+	static constexpr u16 renderPriority = 28;
+
 	Door* door;
 	Door* bossDoor;
 	s32* unk7CC;
@@ -71,13 +76,13 @@ public:
 	u32 unk9C4; // platform bitfield?
 	u32 unk9C8[6];
 
-	u32 unk9E0[8]; // various emitter IDs
-	u32 unkA00[41]; // more emitter IDs
+	EmitterT unk9E0[8]; // various emitter IDs
+	EmitterT unkA00[41]; // more emitter IDs
 
 	u32 unkAA4[7];
 
-	u32 oneUpStarsEmittersID[3];
-	u32 oneUpStarsSmallEmittersID[3];
+	EmitterT oneUpStarsEmittersID[3];
+	EmitterT oneUpStarsSmallEmittersID[3];
 
 	fx32 modelAnimSpeed;
 	u32 powerupScaleStep;
@@ -232,4 +237,6 @@ public:
 	//D0:
 	//D1:
 	virtual ~Player();
+
 };
+NTR_SIZE_GUARD(Player, 0xBCC);

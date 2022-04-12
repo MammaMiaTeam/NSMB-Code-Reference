@@ -9,18 +9,6 @@ public:
 
 	typedef void(StageCamera::* StateFunction)();
 
-	StateFunction unk108;//State function
-	Vec3 unk110;
-	u32 unk120;//Current state index
-	u32 unk124;//Execute pre-state bool
-	u32 unk128;
-	u32 unk12C;
-	u32 unk130;//Roll
-	u32 unk134;
-
-	//02123c80
-	static ObjectProfile profile;
-
 	//C3:020ce658
 	__inline StageCamera() {}
 
@@ -36,6 +24,23 @@ public:
 
 	//020ce46c
 	sym virtual s32 onRender() override __rbody
+
+	static constexpr u16 objectID = 316;
+
+	static constexpr u16 updatePriority = objectID;
+	static constexpr u16 renderPriority = 0;
+
+	//02123c80
+	static ObjectProfile profile;
+
+	StateFunction unk108; //State function
+	Vec3 unk110;
+	u32 unk120; //Current state index
+	u32 unk124; //Execute pre-state bool
+	u32 unk128;
+	u32 unk12C;
+	u32 unk130; //Roll
+	u32 unk134;
 
 };
 NTR_SIZE_GUARD(StageCamera, 0x138);
