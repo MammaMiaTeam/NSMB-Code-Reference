@@ -4161,6 +4161,93 @@ _ZN13ChainChompLog7profileE							= 0x02175560;
 _ZTV13ChainChompLog									= 0x0217556C;
 
 
+/* arm9_ov57 */
+/*----------------------------------------------------------------*/
+/*---------------------- chain chomp chain -----------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN19ChainChompChainLinkC2Ev						= 0x021754AC;
+_ZN19ChainChompChainLinkD2Ev						= 0x02173C50;
+_ZN19ChainChompChainLink6createEv					= 0x02173194;
+_ZN19ChainChompChainLink6updateEv					= 0x02173140;
+_ZN19ChainChompChainLink7explodeEv					= 0x021730D8;
+_ZN19ChainChompChainLink9idleStateEv				= 0x021731FC;
+_ZN19ChainChompChainLink9moveStateEv				= 0x021731C0;
+
+_ZN15ChainChompChain6createERK4Vec3					= 0x021734EC;
+_ZN15ChainChompChain6updateERK4Vec3					= 0x0227ADF0;
+_ZN15ChainChompChain6renderEv						= 0x021733F0;
+_ZN15ChainChompChain7tightenEv						= 0x021733C0;
+_ZN15ChainChompChain6loosenERK4Vec3					= 0x02173248;
+_ZN15ChainChompChain7explodeEv						= 0x02173200;
+_ZN15ChainChompChain12prepareModelEv				= 0x02173A34;
+_ZN15ChainChompChain9loadModelEv					= 0x02173A74;
+_ZNK15ChainChompChain15getLinkPositionEh			= 0x02173654;
+_ZN15ChainChompChain17updateLinkGravityERK4Vec3		= 0x021739B0;
+_ZN15ChainChompChain18updateLinkDistanceERK4Vec3l	= 0x02173954;
+_ZN15ChainChompChain11pulledStateERK4Vec3			= 0x02173790;
+_ZN15ChainChompChain10tightStateERK4Vec3			= 0x021736B8;
+_ZN15ChainChompChain12defaultStateERK4Vec3			= 0x0217368C;
+_ZN15ChainChompChain10looseStateERK4Vec3			= 0x021735A0;
+_ZN15ChainChompChain12explodeStateERK4Vec3			= 0x0217359C;
+
+_ZN15ChainChompChain20defaultLooseDistanceE			= 0x021754D0;
+_ZN15ChainChompChain16defaultLinkScaleE				= 0x021754CC;
+
+
+/* arm9_ov57 */
+/*----------------------------------------------------------------*/
+/*------------------------- chain chomp --------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN10ChainChompD0Ev											= 0x02173B70;
+_ZN10ChainChompD1Ev											= 0x02173A98;
+_ZN10ChainChompD2Ev											= 0x02173A98;
+_ZN10ChainChomp8onCreateEv									= 0x02173F98;
+_ZN10ChainChomp8onRenderEv									= 0x02173E0C;
+_ZN10ChainChomp18onPrepareResourcesEv						= 0x0217534C;
+_ZN10ChainChomp10updateMainEv								= 0x02173EA4;
+_ZN10ChainChomp11onEntityHitEv								= 0x02173CF4;
+_ZN10ChainChomp12onStarmanHitEv								= 0x02173CC8;
+_ZN10ChainChomp9onMegaHitEv									= 0x02173C70;
+_ZN10ChainChomp14onBlueShellHitEv							= 0x02173C9C;
+_ZN10ChainChomp12damagePlayerER14ActiveColliderR6Player		= 0x02173D20;
+_ZN10ChainChompg13loadResourcesEv							= 0x021753B8;
+
+_ZN10ChainChomp15destroyInactiveEv							= 0x02174D58;
+_ZN10ChainChomp15checkOutOfRangeERK4Vec3RK6FxRect			= 0x02174E6C;
+_ZN10ChainChomp22updateColliderRotationEv					= 0x02174EBC;
+_ZNK10ChainChomp18calculateAimTargetEv						= 0x02174F5C;
+_ZN10ChainChomp7despawnEv									= 0x0217501C;
+_ZN10ChainChomp7releaseEv									= 0x021750B4;
+_ZNK10ChainChomp12flagDefeatedEv							= 0x02175128;
+_ZN10ChainChomp18updateTurnRotationEv						= 0x02175158;
+_ZN10ChainChomp11switchStateEMS_FbvE						= 0x02175268;
+_ZN10ChainChomp11updateStateEv								= 0x0217522C;
+_ZN10ChainChomp13defeatedStateEv							= 0x0217416C;
+_ZN10ChainChomp13releasedStateEv							= 0x02174224;
+_ZN10ChainChomp9restStateEv									= 0x0217430C;
+_ZN10ChainChomp11attackStateEv								= 0x02174698;
+_ZN10ChainChomp8aimStateEv									= 0x021748B4;
+_ZN10ChainChomp9walkStateEv									= 0x021749FC;
+
+_ZN10ChainChomp17targetVelocitiesXE							= 0x02175504;
+_ZN10ChainChomp14accelerationsXE							= 0x021754FC;
+_ZN10ChainChomp19releasedVelocitiesXE						= 0x021754F4;
+_ZN10ChainChomp18defaultHomeOffsetYE						= 0x021754F0;
+_ZN10ChainChomp12defaultScaleE								= 0x021754EC;
+_ZN10ChainChomp20playerBumpVelocitiesE						= 0x021754E8;
+_ZN10ChainChomp10rotationsYE								= 0x021754E4;
+_ZN10ChainChomp19defaultGroundOffsetE						= 0x021754E0;
+_ZN10ChainChomp21defaultColliderOffsetE						= 0x021754DC;
+_ZN10ChainChomp21defaultVerticalOffsetE						= 0x021754D8;
+_ZN10ChainChomp14rotationStepsYE							= 0x021754D4;
+_ZN10ChainChomp18activeColliderInfoE						= 0x0217550C;
+_ZN10ChainChomp7profileE									= 0x02175750;
+
+_ZTV10ChainChomp											= 0x0217575C;
+
+
 /* arm9_ov68 */
 /*----------------------------------------------------------------*/
 /*----------------------------- amp ------------------------------*/
