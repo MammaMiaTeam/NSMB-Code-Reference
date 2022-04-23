@@ -4120,6 +4120,47 @@ _ZN10Trampoline13sCarriedStateE							= 0x02171758;
 _ZTV10Trampoline										= 0x0216D160;
 
 
+/* arm9_ov57 */
+/*----------------------------------------------------------------*/
+/*------------------- chain chomp log renderer -------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN21ChainChompLogRenderer6renderERK4Vec3l			= 0x021726C0;
+_ZN21ChainChompLogRenderer6createEv					= 0x0217278C;
+_ZN21ChainChompLogRenderer14prepareTextureEv		= 0x021727B0;
+_ZN21ChainChompLogRenderer11loadTextureEv			= 0x021727E0;
+
+
+/* arm9_ov57 */
+/*----------------------------------------------------------------*/
+/*----------------------- chain chomp log ------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN13ChainChompLogD0Ev								= 0x02172868;
+_ZN13ChainChompLogD1Ev								= 0x021727F8;
+_ZN13ChainChompLogD2Ev								= 0x021727F8;
+_ZN13ChainChompLog8onCreateEv						= 0x021729CC;
+_ZN13ChainChompLog9onDestroyEv						= 0x021728E0;
+_ZN13ChainChompLog8onRenderEv						= 0x02172918;
+_ZN13ChainChompLog18onPrepareResourcesEv			= 0x0217306C;
+_ZN13ChainChompLog10updateMainEv					= 0x02172994;
+_ZN13ChainChompLog13loadResourcesEv					= 0x0217307C;
+
+_ZN13ChainChompLog16spawnChainChompsEm				= 0x02172EB8;
+_ZN13ChainChompLog18despawnChainChompsEv			= 0x02172E68;
+_ZN13ChainChompLog18releaseChainChompsEv			= 0x02172E18;
+_ZNK13ChainChompLog25checkPlayerGroundPoundingEv	= 0x02172D9C;
+_ZN13ChainChompLog18updateColliderRectEv			= 0x02172D04;
+_ZN13ChainChompLog11switchStateEMS_FbvE				= 0x02172F88;
+_ZN13ChainChompLog11updateStateEv					= 0x02172F4C;
+_ZN13ChainChompLog9mainStateEv						= 0x02172C7C;
+_ZN13ChainChompLog12poundedStateEv					= 0x02172B30;
+
+_ZN13ChainChompLog7profileE							= 0x02175560;
+
+_ZTV13ChainChompLog									= 0x0217556C;
+
+
 /* arm9_ov68 */
 /*----------------------------------------------------------------*/
 /*----------------------------- amp ------------------------------*/
