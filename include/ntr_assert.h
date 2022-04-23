@@ -1,9 +1,9 @@
 #pragma once
 #include <stdarg.h>
 
-#include "extra/ostream.hpp"
+extern "C" void dbg_message(const char* message);
 
-#define __ntr_message(s)	do { log::cout << s; } while (false)
+#define __ntr_message(s)	do { dbg_message((s)); } while (false)
 #define __ntr_terminate()	OS_Terminate()
 
 
@@ -17,13 +17,13 @@
 extern "C" void OS_Terminate();
 
 
-__inline void ntr_terminate() {
+inline void ntr_terminate() {
 	__ntr_terminate();
 }
 
 
-__inline /*__weak*/ void __ntr_assert(bool condition, const char* file, int line, const char* message, ...) {
-	
+inline /*__weak*/ void __ntr_assert(bool condition, const char* file, int line, const char* message, ...) {
+
 	if (!condition) {
 
 		static char buffer[1024];

@@ -110,14 +110,5 @@ namespace FS {
 		 * */
 		void terminate(const char* reason);
 
-		// 0x02008E2C
-		/**
-		 * \brief Converts a file ID to a %Nitro file ID.
-		 *
-		 * \param fsFileID The pointer to filesystem file ID structure.
-		 * \param fileID The file identifier of a file in the rom archive.
-		 * */
-		FSFileID getFileID(u32 fileID);
-
 	}
 }

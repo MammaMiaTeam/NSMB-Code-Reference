@@ -12,7 +12,7 @@ struct FxRect {
 
 class Vec3;
 class Vec2;
-
+class Vec3s;
 
 namespace Math {
 

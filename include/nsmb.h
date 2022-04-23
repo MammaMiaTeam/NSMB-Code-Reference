@@ -2,7 +2,7 @@
 
 #include "nitro_if.h"
 
-#include "assert.h"
+#include "ntr_assert.h"
 
 #include "nsmb/boot.h"
 #include "nsmb/ending.h"

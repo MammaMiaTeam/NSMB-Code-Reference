@@ -3,15 +3,13 @@
 // Set to 1 when generating symbols
 #define GEN_SYM 0
 
-#define __ret return {};
-
 #if GEN_SYM
 #define sym __attribute__((noinline, used))
 #define ssym __attribute__((noinline, used)) static
 #define GEN_FUNC(x, ...) sym x (__VA_ARGS__) {}
 #define GEN_SFUNC(x, ...) sym static x (__VA_ARGS__) {}
 #define __body {}
-#define __rbody { __ret }
+#define __rbody { return {}; }
 #else
 #define sym
 #define ssym

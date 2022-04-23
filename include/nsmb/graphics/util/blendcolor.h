@@ -14,18 +14,18 @@ public:
 	rgb_t difference;
 
 	// 020e91a0
-	sym BlendColor() __body
+	BlendColor();
 
-	// D0: 020e9170
-	// D1: 020e9190
-	sym virtual ~BlendColor() __body
+	// D0: 020E9170
+	// D1: 020E9190
+	virtual ~BlendColor();
 
 
-	// 020e9120
-	sym u16 blendChannel(u16& channel, u16 target, u16 amount) { __ret }
+	// 020E9120
+	u16 blendChannel(u16& channel, u16 target, u16 amount);
 
-	// 020e9018
-	sym bool blend(GXRgb target, u32 factor) { __ret }
+	// 020E9018
+	bool blend(GXRgb target, u32 factor);
 
 
 };

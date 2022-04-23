@@ -25,7 +25,7 @@ public:
 	virtual void render(const VecFx32* scale) override;
 
 	//020194f8
-	virtual void render(const MtxFx43* transform, const VecFx32* scale) override;
+	virtual void render(const MtxFx43& transform, const VecFx32* scale) override;
 
 	//020194e0
 	virtual void render() override;

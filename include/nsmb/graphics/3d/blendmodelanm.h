@@ -35,7 +35,7 @@ public:
 	sym virtual void render(const VecFx32* scale) override __body
 
 	//020191cc
-	sym virtual void render(const MtxFx43* transform, const VecFx32* scale) override __body
+	sym virtual void render(const MtxFx43& transform, const VecFx32* scale) override __body
 
 	//0201918c
 	sym virtual void render() override __body

@@ -1,6 +1,6 @@
 #pragma once
 #include "nsmb.h"
-#include "assert.h"
+#include "ntr_assert.h"
 
 
 enum class StageBlockID : u32 {

@@ -3,8 +3,10 @@
 
 
 struct TextureInfo {
-	u32 texImageParam;
-	u32 texPlttBase;
+
+	u32 textureParams;
+	u32 paletteParams;
+
 };
 
 
@@ -12,8 +14,6 @@ struct TextureInfo {
 class Texture
 {
 public:
-
-	NNSG3dResTex* texture;
 
 	//02018c2c
 	sym Texture() __body
@@ -29,7 +29,10 @@ public:
 	sym bool getTextureParams(u32& texParams, u32 texID) __rbody //Calls GFX::getTextureParams and returns whether parameter fetching was successful.
 
 	//02018b68
-	sym bool getTexturePaletteDestination(u32& palDest, u32 palID) __rbody //Calls GFX::getTexturePaletteDestination and returns whether address calculation was successful.
+	sym bool getPaletteParams(u32& palParams, u32 palID) __rbody //Calls GFX::getTexturePaletteDestination and returns whether address calculation was successful.
+
+
+	NNSG3dResTex* texture;
 
 };
 NTR_SIZE_GUARD(Texture, 0x8);

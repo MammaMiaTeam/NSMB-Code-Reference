@@ -34,6 +34,15 @@ namespace FS {
 	/// \brief The mode to use when reading files.
 	extern ReadMode readMode;
 
+	// 0x02008E2C
+	/**
+	 * \brief Converts a file ID to a %Nitro file ID.
+	 *
+	 * \param fsFileID The pointer to filesystem file ID structure.
+	 * \param fileID The file identifier of a file in the rom archive.
+	 * */
+	FSFileID getFileID(u32 fileID);
+
 	// 0x02008E54
 	/**
 	 * \brief Opens a file by ID.
@@ -362,12 +371,12 @@ namespace FS {
 
 	// 0x02009A98
 	/**
-	 * \brief Loads a cached file to the object bank A video memory.
+	 * \brief Loads a cached file to the object video memory.
 	 *
 	 * \param extFileID The extended file ID of the file.
 	 * \param offset The byte offset relative to the object bank A video memory.
 	 * */
-	void loadFileToOBJVramA(u32 extFileID, u32 offset);
+	void loadFileToOBJVram(u32 extFileID, u32 offset);
 
 	// 0x02009A30
 	/**

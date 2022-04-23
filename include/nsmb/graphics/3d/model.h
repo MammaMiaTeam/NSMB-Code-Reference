@@ -9,11 +9,6 @@ class Model : public ModelBase
 {
 public:
 
-	NNSG3dResMdl* data;
-	NNSG3dResTex* texture;
-
-	MtxFx43 matrix;
-
 	//C1:02019a30
 	//C2:02019a5c
 	sym Model() __body
@@ -22,24 +17,27 @@ public:
 	//D1:02019a10
 	//D2:020199c8
 	sym virtual ~Model() override __body
+		
+	//02019948
+	bool create(void* bmd, u32 modelID, u32 polygonID); //Loads the model with ID modelID from the bmd, assigns texture and model, sets the polygon ID and disables ambient/emission components. returns true if successful, false otherwise.
 
 	//02019944
 	virtual void null();
+
+	//02019934
+	void renderModel();
+
+	//02019934
+	void flush() const;
 
 	//020198c4
 	virtual void render(const VecFx32* scale);
 
 	//02019864
-	virtual void render(const MtxFx43* transform, const VecFx32* scale);
+	virtual void render(const MtxFx43& transform, const VecFx32* scale);
 
 	//02019858
 	virtual void render();
-
-	//02019948
-	bool create(void* bmd, u32 modelID, u32 polygonID); //Loads the model with ID modelID from the bmd, assigns texture and model, sets the polygon ID and disables ambient/emission components. returns true if successful, false otherwise.
-
-	//02019934
-	void renderModel();
 
 	//02019838
 	/*
@@ -65,15 +63,19 @@ public:
 	//020197fc
 	NNSG3dResMat* getMaterialCollection(); //returns a pointer to the model's material collection
 
-	//020197e0
-	s32 getMaterialIndex(const NNSG3dResName* name); //returns an index to the material given by name or -1 if no matching entry could be found
-
-	__inline u32 getMaterialCount() const {
+	inline u32 getMaterialCount() const {
 		return data->info.numMat;
 	}
 
+	//020197e0
+	s32 getMaterialIndex(const NNSG3dResName* name); //returns an index to the material given by name or -1 if no matching entry could be found
+
 	//020197d4
 	NNSG3dResNodeInfo* getNodeInfo(); //returns a pointer to the node info
+
+	inline u32 getNodeCount() const {
+		return data->info.numNode;
+	}
 
 	//020197bc
 	s32 getNodeIndex(const NNSG3dResName* name); //returns an index to the node given by name or -1 if no matching entry could be found
@@ -89,5 +91,12 @@ public:
 
 	//0201967c
 	bool restoreNodeMatrix(u32 nodeIndex); //Restores the node matrix with index nodeIndex. returns true if successful, false otherwise.
+
+
+	NNSG3dResMdl* data;
+	NNSG3dResTex* texture;
+
+	MtxFx43 matrix;
+
 };
 NTR_SIZE_GUARD(Model, 0x90);
