@@ -3,8 +3,8 @@
 
 
 // vtable at 0216D160 (ov54)
-class Trampoline : public StageEntity3D {
-
+class Trampoline : public StageEntity3D
+{
 public:
 	
 	static constexpr u16 JumpTriggerNone	= 0;

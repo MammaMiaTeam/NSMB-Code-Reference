@@ -4137,6 +4137,40 @@ _ZN10Trampoline13sCarriedStateE							= 0x02171758;
 _ZTV10Trampoline										= 0x0216D160;
 
 
+/* arm9_ov54 */
+/*----------------------------------------------------------------*/
+/*-------------------------- checkpoint --------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN10CheckpointD0Ev										= 0x02162020;
+_ZN10CheckpointD1Ev										= 0x02161FA4;
+_ZN10CheckpointD2Ev										= 0x02161FA4;
+_ZN10Checkpoint8onCreateEv								= 0x021621A8;
+_ZN10Checkpoint9onDestroyEv								= 0x021620A4;
+_ZN10Checkpoint8onRenderEv								= 0x021620C8;
+_ZN10Checkpoint18onCleanupResourcesEv					= 0x021620C4;
+_ZN10Checkpoint18onPrepareResourcesEv					= 0x02162314;
+_ZN10Checkpoint10updateMainEv							= 0x021620EC;
+_ZN10Checkpoint13loadResourcesEv						= 0x0216236C;
+
+_ZNK10Checkpoint18checkPlayerInRangeEv					= 0x021622AC;
+
+_ZN10Checkpoint7profileE								= 0x0216FF58;
+_ZN18VerticalCheckpoint7profileE						= 0x0216FF64;
+
+_ZTV10Checkpoint										= 0x0216FF70;
+
+
+/* arm9_ov54 */
+/*----------------------------------------------------------------*/
+/*-------------------------- checkpoint --------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN14CheckpointFlagC2Ev			= 0x02162628;
+_ZN14CheckpointFlag6updateEv	= 0x021624BC;
+_ZN14CheckpointFlag6renderEv	= 0x021623A0;
+
+
 /* arm9_ov57 */
 /*----------------------------------------------------------------*/
 /*------------------- chain chomp log renderer -------------------*/

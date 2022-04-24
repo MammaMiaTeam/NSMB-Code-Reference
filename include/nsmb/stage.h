@@ -34,8 +34,13 @@
 #include "stage/actors/ov42/bulletbill.h"
 #include "stage/actors/ov42/bulletbillblaster.h"
 
-// Overlay 54 - Trampoline
+// Overlay 54 - Checkpoint, Trampoline
+#include "stage/actors/ov54/checkpoint.h"
 #include "stage/actors/ov54/trampoline.h"
+
+// Overlay 57 - ChainChomp, ChainChompLog
+#include "stage/actors/ov57/chainchomp.h"
+#include "stage/actors/ov57/chainchomplog.h"
 
 // Overlay 68 - Amp
 #include "stage/actors/ov68/amp.h"
