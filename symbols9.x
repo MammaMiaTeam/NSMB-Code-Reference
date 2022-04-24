@@ -1886,7 +1886,18 @@ _ZN3SND8Internal5setupEPvl = 0x0204F2E0;
 
 /* arm9 */
 /*----------------------------------------------------------------*/
-/*---------------------------- math ------------------------------*/
+/*------------------------ arc function --------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN11ArcFunctionC2Ev				= 0x0200AC90;
+_ZN11ArcFunctionD2Ev				= 0x0200AC80;
+_ZN11ArcFunction4initERK4Vec3S2_ll	= 0x0200ABC4;
+_ZN11ArcFunction7processER4Vec3		= 0x0200AB24;
+
+
+/* arm9 */
+/*----------------------------------------------------------------*/
+/*---------------------- spring function -------------------------*/
 /*----------------------------------------------------------------*/
 
 _ZN14SpringFunction24processExponentialSmoothElllll	= 0x0201DA28;
@@ -3246,9 +3257,6 @@ _ZN5Stage9getAreaIDEhhh								= 0x0201f53c;
 
 /* arm9 */
 _ZN5Stage6eventsE									= 0x0208af3c;
-_ZN5Stage10stageGroupE								= 0x02085a18;
-_ZN5Stage7stageIDE									= 0x02085a14;
-_ZN5Stage5actIDE									= 0x02085a4c;
 
 /* arm9_ov0 */
 _ZN5Stage14liquidPositionE							= 0x020cae0c;
@@ -3319,10 +3327,16 @@ _ZN4Game16visiblePlaneMainE															= 0x02085a88;
 /*-------------------------- game misc ---------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN4Game9loadLevelEtmhhhhhhhhhhhhhhm		= 0x0200696C;
-_ZN4Game20resetStageCheckpointEv			= 0x020066F8;
+_ZN4Game12setSoundModeEN10OptionSave5SoundE	= 0x02006444;
+_ZN4Game16loadBackupParamsEv				= 0x020064a0;
+_ZN4Game16saveBackupParamsEv				= 0x0200658c;
+_ZN4Game14setFrameLengthEh					= 0x02006674;
+_ZN4Game17setStageCompletedEv				= 0x02006690;
+_ZN4Game20resetStageCheckpointEv			= 0x020066f8;
 _ZN4Game18setStageCheckpointEv				= 0x02006740;
 _ZN4Game18getStageCheckpointEv				= 0x02006790;
+_ZN4Game9getRandomEv						= 0x0200693C;
+_ZN4Game9loadLevelEtmhhhhhhhhhhhhhhm		= 0x0200696C;
 _ZN4Game14getPlayerCountEv					= 0x020202A0;
 _ZN4Game14setPlayerCountEm					= 0x020202B0;
 _ZN4Game16getCurrentPlayerEv				= 0x020205EC;
@@ -3340,13 +3354,16 @@ _ZN4Game13setPlayerDeadElb					= 0x02020230;
 _ZN4Game21getPlayerRespawnStateEl			= 0x020200B4;
 _ZN4Game21setPlayerRespawnStateEll			= 0x020200C4;
 
-_ZN4Game13localPlayerIDE					= 0x02085A7C;
-_ZN4Game6vsModeE							= 0x02085a84;
+_ZN4Game7stageIDE							= 0x02085A14;
+_ZN4Game10stageGroupE						= 0x02085A18;
+_ZN4Game19checkpointCollectedE				= 0x02085A1C;
+_ZN4Game9stageAreaE							= 0x02085A4C;
 _ZN4Game9luigiModeE							= 0x02085A50;
-_ZN4Game19checkpointCollectedE				= 0x02085a1c;
-_ZN4Game19currentWorldmapNodeE				= 0x02085a9c;
-_ZN4Game11modelMatrixE						= 0x0208b6e8;
+_ZN4Game13localPlayerIDE					= 0x02085A7C;
+_ZN4Game6vsModeE							= 0x02085A84;
+_ZN4Game16currentWorldNodeE					= 0x02085A9C;
 _ZN4Game10viewMatrixE						= 0x02085B20;
+_ZN4Game11modelMatrixE						= 0x0208B6E8;
 
 
 /* arm9 */
@@ -4068,7 +4085,7 @@ _ZTV17BanzaiBillBlaster										= 0x02151E94;
 
 /* arm9_ov54 */
 /*----------------------------------------------------------------*/
-/*----------------------------- amp ------------------------------*/
+/*-------------------------- trampoline --------------------------*/
 /*----------------------------------------------------------------*/
 
 _ZN10TrampolineD0Ev										= 0x02154F88;

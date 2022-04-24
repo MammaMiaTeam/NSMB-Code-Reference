@@ -56,15 +56,6 @@ namespace Stage
 	// 020ca2c4
 	extern u32 megaGroundPoundViews[2];
 
-	// 02085a18
-	extern u8 stageGroup;
-
-	// 02085a14
-	extern u8 stageID;
-
-	// 02085a4c
-	extern u8 actID;
-
 	// 020ca850
 	extern ActorCategory actorFreezeFlag;
 

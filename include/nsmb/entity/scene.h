@@ -3,7 +3,7 @@
 #include "object.h"
 
 
-enum class SceneID {
+enum class SceneID : u16 {
 
 	// Game/common
 	Boot,
