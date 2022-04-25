@@ -3789,6 +3789,28 @@ _ZN7StageFX7profileE					= 0x021277D4;
 _ZTV7StageFX							= 0x02127838;
 
 
+/* arm9_ov10 */
+/*----------------------------------------------------------------*/
+/*-------------------------- coin spawner ------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN11CoinSpawnerD0Ev										= 0x02156DF0;
+_ZN11CoinSpawnerD1Ev										= 0x02156D94;
+_ZN11CoinSpawnerD2Ev										= 0x02156D94;
+_ZN11CoinSpawner8onCreateEv									= 0x02156E74;
+_ZN11CoinSpawner10updateMainEv								= 0x02156E54;
+
+_ZN11CoinSpawner11switchStateERKMS_FbvE						= 0x02157128;
+_ZN11CoinSpawner11updateStateEv								= 0x021570E0;
+_ZN11CoinSpawner9mainStateEv								= 0x02156F44;
+
+_ZN11CoinSpawner5sMainE										= 0x02171770;
+
+_ZN11CoinSpawner7profileE									= 0x0216D4DC;
+
+_ZTV11CoinSpawner											= 0x0216D4E8;
+
+
 /* arm9_ov24 */
 /*----------------------------------------------------------------*/
 /*---------------------------- thwomp ----------------------------*/

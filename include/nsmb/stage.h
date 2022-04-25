@@ -19,9 +19,10 @@
 #include "stage/player/misc.h"
 #include "stage/player/player.h"
 
-// Overlay 10 - Item, StageFX
+// Overlay 10 - Item, StageFX, CoinSpawner
 #include "stage/actors/ov10/item.h"
 #include "stage/actors/ov10/stagefx.h"
+#include "stage/actors/ov10/coinspawner.h"
 
 // Overlay 24 - Thwomp
 #include "stage/actors/ov24/thwomp.h"
