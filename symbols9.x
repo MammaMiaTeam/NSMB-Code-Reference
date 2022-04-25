@@ -3794,21 +3794,94 @@ _ZTV7StageFX							= 0x02127838;
 /*-------------------------- coin spawner ------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN11CoinSpawnerD0Ev										= 0x02156DF0;
-_ZN11CoinSpawnerD1Ev										= 0x02156D94;
-_ZN11CoinSpawnerD2Ev										= 0x02156D94;
-_ZN11CoinSpawner8onCreateEv									= 0x02156E74;
-_ZN11CoinSpawner10updateMainEv								= 0x02156E54;
+_ZN11CoinSpawnerD0Ev						= 0x02156DF0;
+_ZN11CoinSpawnerD1Ev						= 0x02156D94;
+_ZN11CoinSpawnerD2Ev						= 0x02156D94;
+_ZN11CoinSpawner8onCreateEv					= 0x02156E74;
+_ZN11CoinSpawner10updateMainEv				= 0x02156E54;
 
-_ZN11CoinSpawner11switchStateERKMS_FbvE						= 0x02157128;
-_ZN11CoinSpawner11updateStateEv								= 0x021570E0;
-_ZN11CoinSpawner9mainStateEv								= 0x02156F44;
+_ZN11CoinSpawner11switchStateERKMS_FbvE		= 0x02157128;
+_ZN11CoinSpawner11updateStateEv				= 0x021570E0;
+_ZN11CoinSpawner9mainStateEv				= 0x02156F44;
 
-_ZN11CoinSpawner5sMainE										= 0x02171770;
+_ZN11CoinSpawner5sMainE						= 0x02171770;
 
-_ZN11CoinSpawner7profileE									= 0x0216D4DC;
+_ZN11CoinSpawner7profileE					= 0x0216D4DC;
 
-_ZTV11CoinSpawner											= 0x0216D4E8;
+_ZTV11CoinSpawner							= 0x0216D4E8;
+
+
+/* arm9_ov10 */
+/*----------------------------------------------------------------*/
+/*------------------------------ coin ----------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN4CoinD0Ev								= 0x020D8150;
+_ZN4CoinD1Ev								= 0x020D80CC;
+_ZN4CoinD2Ev								= 0x020D80CC;
+_ZN4Coin8onCreateEv							= 0x020D8628;
+_ZN4Coin9onDestroyEv						= 0x020D8604;
+_ZN4Coin8onRenderEv							= 0x020D8248;
+_ZN4Coin10updateMainEv						= 0x020D84EC;
+_ZN4Coin15updateAnimationEv					= 0x020D8244;
+_ZN4Coin10onBlockHitEv						= 0x020D9BF4;
+_ZN4Coin13onStageBeatenER6Player			= 0x020D8568;
+
+_ZN4Coin6detachEv							= 0x020D81DC;
+_ZN4Coin13setOwnerBlockEm					= 0x020D823C;
+_ZN4Coin18renderBubbleSpriteEv				= 0x020D8488;
+_ZN4Coin13prepareBubbleEv					= 0x020D8B40;
+_ZN4Coin17updateBubbleScaleEv				= 0x020D99A8;
+_ZN4Coin17updateLiquidScaleEv				= 0x020D9ACC;
+_ZN4Coin22updateSpriteAnimationsEv			= 0x020D9B40;
+_ZN4Coin13updateDespawnEv					= 0x020D9B84;
+_ZN4Coin15updateCollisionEv					= 0x020D9C78;
+_ZN4Coin11switchStateERKMS_FbvE				= 0x020D9DCC;
+_ZN4Coin11updateStateEv						= 0x020D9D84;
+_ZN4Coin12defaultStateEv					= 0x020D9890;
+_ZN4Coin9jumpStateEv						= 0x020D9634;
+_ZN4Coin9fallStateEv						= 0x020D93B4;
+_ZN4Coin13detachedStateEv					= 0x020D923C;
+_ZN4Coin10floatStateEv						= 0x020D91F4;
+_ZN4Coin11bubbleStateEv						= 0x020D9004;
+_ZN4Coin19blockFloatWaitStateEv				= 0x020D8FB0;
+_ZN4Coin15blockFloatStateEv					= 0x020D8EEC;
+_ZN4Coin14collectedStateEv					= 0x020D8D9C;
+_ZN4Coin14blockJumpStateEv					= 0x020D8B9C;
+_ZN4Coin15bottomCollisionER10StageActorS1_	= 0x020D9CF0;
+
+_ZN4Coin11sBlockFloatE						= 0x021293DC;
+_ZN4Coin7sBubbleE							= 0x021293E4;
+_ZN4Coin15sBlockFloatWaitE					= 0x021293EC;
+_ZN4Coin9sDetachedE							= 0x021293F4;
+_ZN4Coin6sFloatE							= 0x021293FC;
+_ZN4Coin10sCollectedE						= 0x02129404;
+_ZN4Coin5sFallE								= 0x0212940C;
+_ZN4Coin5sJumpE								= 0x02129414;
+_ZN4Coin8sDefaultE							= 0x0212941C;
+_ZN4Coin11sBlockSpawnE						= 0x02129424;
+
+_ZN4Coin12bubbleAnglesE						= 0x02121634;
+_ZN4Coin19detachedVelocitiesXE				= 0x0212163C;
+_ZN4Coin20blockJumpVelocitiesXE				= 0x02121644;
+_ZN4Coin19floatingVelocitiesXE				= 0x0212164C;
+_ZN4Coin18fallingVelocityMaxE				= 0x02121654;
+_ZN4Coin26fallingVelocityAttenuationE		= 0x02121660;
+_ZN4Coin19bubbleSpawnOffsetsXE				= 0x0212166C;
+_ZN4Coin19bubbleSpawnOffsetsYE				= 0x02121678;
+_ZN4Coin12bottomSensorE						= 0x02121684;
+_ZN4Coin9topSensorE							= 0x02121690;
+_ZN4Coin10sideSensorE						= 0x0212169C;
+_ZN4Coin14velocityXMasksE					= 0x021216A8;
+_ZN4Coin17bounceVelocitiesYE				= 0x021216B4;
+_ZN4Coin24blockFloatingVelocitiesYE			= 0x021216C4;
+_ZN4Coin16slopeVelocitiesXE					= 0x021216D8;
+_ZN4Coin24blockFloatingVelocitiesXE			= 0x021216EC;
+_ZN4Coin11velocitiesYE						= 0x02121700;
+_ZN4Coin12colliderInfoE						= 0x02125204;
+_ZN4Coin7profileE							= 0x021251F8;
+
+_ZTV4Coin									= 0x02125220;
 
 
 /* arm9_ov24 */
