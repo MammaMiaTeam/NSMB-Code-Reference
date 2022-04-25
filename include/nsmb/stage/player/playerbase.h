@@ -87,11 +87,11 @@ public:
 	union {
 		u32 all;
 		struct {
-			u32 action1				: 1;	// 0x00000001 
-			u32 starmanJump			: 1;	// 0x00000002 
+			u32 action1				: 1;	// 0x00000001
+			u32 starmanJump			: 1;	// 0x00000002
 			u32 wallSlide			: 1;	// 0x00000004 set when sliding on a wall
-			u32 action8				: 1;	// 0x00000008 
-			u32 action10			: 1;	// 0x00000010 
+			u32 action8				: 1;	// 0x00000008
+			u32 action10			: 1;	// 0x00000010
 			u32 wallJump			: 1;	// 0x00000020 set when wall-jumping
 			u32 wallClip			: 1;	// 0x00000040 set when clipping with a solid object
 			u32 throwActor			: 1;	// 0x00000080 set when throwing an actor
@@ -129,34 +129,34 @@ public:
 			u32 lockHorizontalMovement	: 1;	// 0x00000002 set when on a rope/in a pipe/hit by a falling snow object
 			u32 pipeCannon				: 1;	// 0x00000004 set when launching from a pipe cannon
 			u32 invisible				: 1;	// 0x00000008 set when using an entrance/warp/dying in a pit
-			u32 sliding					: 1;	// 0x00000010 
-			u32 slideJump				: 1;	// 0x00000020 
+			u32 sliding					: 1;	// 0x00000010
+			u32 slideJump				: 1;	// 0x00000020
 			u32 airborne				: 1;	// 0x00000040 set when in air
 			u32 releaseKeys				: 1;	// 0x00000080 set when standing on a ground
-			u32 subAction100			: 1;	// 0x00000100 
-			u32 subAction200			: 1;	// 0x00000200 
+			u32 subAction100			: 1;	// 0x00000100
+			u32 subAction200			: 1;	// 0x00000200
 			u32 fixDirection			: 1;	// 0x00000400 set when hit by a falling snow object/on a vine/rope/pipe cannon, cannot switch direction when walking/running
 			u32 running					: 1;	// 0x00000800 set when on rope/in pipe/walljumping/running
 			u32 disableCap				: 1;	// 0x00001000 set when the cap shouldn't be rendered
 			u32 drillSpin				: 1;	// 0x00002000 set when performing drill spin
 			u32 onSpinBlock				: 1;	// 0x00004000 set when standing on a spin block
-			u32 subAction8000			: 1;	// 0x00008000 
-			u32 subAction10000			: 1;	// 0x00010000 
+			u32 subAction8000			: 1;	// 0x00008000
+			u32 subAction10000			: 1;	// 0x00010000
 			u32 groundPounding			: 1;	// 0x00020000 set when groundpounding/climbing/in pipe/walljumping/hit by a falling snow object/on a vine/rope/pole, jump height is reduced
 			u32 subAction40000			: 1;	// 0x00040000 set when climbing vine/pole (not a swinging rope/vine)/in pipe (no horizontal movement)
-			u32 subAction80000			: 1;	// 0x00080000 
+			u32 subAction80000			: 1;	// 0x00080000
 			u32 onPipe					: 1;	// 0x00100000 set when standing on a pipe (maybe enabled near all valid pipes or even all valid entrances?)
 			u32 inPipe					: 1;	// 0x00200000 set when in pipe (maybe other entrances?)
-			u32 subAction400000			: 1;	// 0x00400000 
+			u32 subAction400000			: 1;	// 0x00400000
 			u32 invincible				: 1;	// 0x00800000 set when invincible
 			u32 subAction1000000		: 1;	// 0x01000000 set when hit by a falling snow object/on a pole (no horizontal movement)
 			u32 subAction2000000		: 1;	// 0x02000000 set when shooting from a pipe cannon (1)
-			u32 subAction4000000		: 1;	// 0x04000000 
-			u32 subAction8000000		: 1;	// 0x08000000 
-			u32 subAction10000000		: 1;	// 0x10000000 
+			u32 subAction4000000		: 1;	// 0x04000000
+			u32 subAction8000000		: 1;	// 0x08000000
+			u32 subAction10000000		: 1;	// 0x10000000
 			u32 subAction20000000		: 1;	// 0x20000000 set when shooting from a pipe cannon (2)
 			u32 megaJump				: 1;	// 0x40000000 set when doing a mega mushroom jump
-			u32 subAction80000000		: 1;	// 0x80000000 
+			u32 subAction80000000		: 1;	// 0x80000000
 		};
 	} subAction;
 
@@ -173,28 +173,28 @@ public:
 			u32 physicsAction80			: 1;	// 0x00000080 set when idle/groundpounding/spin drilling
 			u32 physicsAction100		: 1;	// 0x00000100
 			u32 physicsAction200		: 1;	// 0x00000200 (old tallJump)
-			u32 physicsAction400		: 1;	// 0x00000400 
+			u32 physicsAction400		: 1;	// 0x00000400
 			u32 physicsAction800		: 1;	// 0x00000800 set when hitting a ceiling/falling (ceiling + fall phase? as a leftover from sm64ds when doing a jump dive on a wall?), also when jumping from a moving rope/pole
-			u32 physicsAction1000		: 1;	// 0x00001000 
+			u32 physicsAction1000		: 1;	// 0x00001000
 			u32 tallJump				: 1;	// 0x00002000 set when the jump height should be increased (jumping out of water)
-			u32 physicsAction4000		: 1;	// 0x00004000 
-			u32 physicsAction8000		: 1;	// 0x00008000 
+			u32 physicsAction4000		: 1;	// 0x00004000
+			u32 physicsAction8000		: 1;	// 0x00008000
 			u32 physicsAction10000		: 1;	// 0x00010000 set when hit by a falling snow object
 			u32 waterOut				: 1;	// 0x00020000 set when emerging from water
 			u32 waterOutJump			: 1;	// 0x00040000 set when jumping out of water
 			u32 waterIn					: 1;	// 0x00080000 set when submerging in water
 			u32 physicsAction100000		: 1;	// 0x00100000 set when not jumping (????)
-			u32 physicsAction200000		: 1;	// 0x00200000 
+			u32 physicsAction200000		: 1;	// 0x00200000
 			u32 walkingOnWater			: 1;	// 0x00400000 set when walking on water (mini mushroom)
-			u32 physicsAction8000000	: 1;	// 0x00800000 
+			u32 physicsAction8000000	: 1;	// 0x00800000
 			u32 groundPoundPreLand		: 1;	// 0x01000000 set before landing from a ground pound
 			u32 doorIn					: 1;	// 0x02000000 set when entering a door		(door A)
 			u32 bossDoorIn				: 1;	// 0x04000000 set when entering a boss door	(door B)
 			u32 swimming				: 1;	// 0x08000000 set when swimming
-			u32 physicsAction10000000	: 1;	// 0x10000000 
-			u32 physicsAction20000000	: 1;	// 0x20000000 
-			u32 physicsAction40000000	: 1;	// 0x40000000 
-			u32 physicsAction80000000	: 1;	// 0x80000000 
+			u32 physicsAction10000000	: 1;	// 0x10000000
+			u32 physicsAction20000000	: 1;	// 0x20000000
+			u32 physicsAction40000000	: 1;	// 0x40000000
+			u32 physicsAction80000000	: 1;	// 0x80000000
 		};
 	} physicsState;
 
@@ -217,24 +217,24 @@ public:
 			u32 wallRight			: 1;	// 0x00000800 set when colliding with a wall on the right side
 			u32 collision1000		: 1;	// 0x00001000 set when colliding with some kind of ground
 			u32 hoverTileGround		: 1;	// 0x00002000 set when hovering/colliding with a tile ground
-			u32 collision4000		: 1;	// 0x00004000 
+			u32 collision4000		: 1;	// 0x00004000
 			u32 colliderGround		: 1;	// 0x00008000 set when colliding with a non-tile ground (platform/collider)
 			u32 quicksandTop		: 1;	// 0x00010000 set when colliding with a quicksand surface
 			u32 quicksand			: 1;	// 0x00020000 set when colliding with quicksand (submerged)
-			u32 collision40000		: 1;	// 0x00040000 
-			u32 collision80000		: 1;	// 0x00080000 
-			u32 collision100000		: 1;	// 0x00100000 
-			u32 collision200000		: 1;	// 0x00200000 
+			u32 collision40000		: 1;	// 0x00040000
+			u32 collision80000		: 1;	// 0x00080000
+			u32 collision100000		: 1;	// 0x00100000
+			u32 collision200000		: 1;	// 0x00200000
 			u32 liquid				: 1;	// 0x00400000 set when colliding with a liquid (submerged)
 			u32 tightrope			: 1;	// 0x00800000 set when colliding with a tightrope
-			u32 collision1000000	: 1;	// 0x01000000 
-			u32 collision2000000	: 1;	// 0x02000000 
-			u32 collision4000000	: 1;	// 0x04000000 
+			u32 collision1000000	: 1;	// 0x01000000
+			u32 collision2000000	: 1;	// 0x02000000
+			u32 collision4000000	: 1;	// 0x04000000
 			u32 predictGround		: 1;	// 0x08000000 set a few frames before touching ground
-			u32 collision10000000	: 1;	// 0x10000000 
-			u32 collision20000000	: 1;	// 0x20000000 
-			u32 collision40000000	: 1;	// 0x40000000 
-			u32 collision80000000	: 1;	// 0x80000000 
+			u32 collision10000000	: 1;	// 0x10000000
+			u32 collision20000000	: 1;	// 0x20000000
+			u32 collision40000000	: 1;	// 0x40000000
+			u32 collision80000000	: 1;	// 0x80000000
 		};
 	} collision, lastCollision;
 
@@ -296,109 +296,109 @@ public:
 	void releaseHorizontalKeys();
 
 	// 0212c90c
-	u16 getDirectionalKeysHeld();
+	u16 getDirectionalKeysHeld() const;
 
 	// 0212c8fc
-	u16 getDirectionalKeysPressed();
+	u16 getDirectionalKeysPressed() const;
 
 	// 0212c8ec
-	u16 getUpKeyHeld();
+	u16 getUpKeyHeld() const;
 
 	// 0212c8dc
-	u16 getDownKeyHeld();
+	u16 getDownKeyHeld() const;
 
 	// 0212c8cc
-	u16 getLeftKeyHeld();
+	u16 getLeftKeyHeld() const;
 
 	// 0212c8bc
-	u16 getRightKeyHeld();
+	u16 getRightKeyHeld() const;
 
 	// 0212c8ac
-	u16 getDownKeyPressed();
+	u16 getDownKeyPressed() const;
 
 	// 0212c880
-	u16 getRKeyPressed();
+	u16 getRKeyPressed() const;
 
 	// 0212c854
-	u16 getRKeyHeld();
+	u16 getRKeyHeld() const;
 
 	// 0212c828
-	u16 getJumpKeysPressed();
+	u16 getJumpKeysPressed() const;
 
 	// 0212c7fc
-	u16 getJumpKeysHeld();
+	u16 getJumpKeysHeld() const;
 
 	// 0212c7d0
-	u16 getRunKeysPressed();
+	u16 getRunKeysPressed() const;
 
 	// 0212c7a4
-	u16 getRunKeysHeld();
+	u16 getRunKeysHeld() const;
 
 	// 0212c78c
-	u16 getUpKeyHeldEx();
+	u16 getUpKeyHeldEx() const;
 
 	// 0212c774
-	u16 getDownKeyHeldEx();
+	u16 getDownKeyHeldEx() const;
 
 	// 0212c768
-	u16 getRunKeyHeld();
+	u16 getRunKeyHeld() const;
 
 	// 0212c75c
-	u16 getRunKeyPressed();
+	u16 getRunKeyPressed() const;
 
 	// 0212c720
-	u16 getActionKeysHeld();
+	u16 getActionKeysHeld() const;
 
 	// 0212c6e4
-	u16 getActionKeysPressed();
+	u16 getActionKeysPressed() const;
 
 	// 0212c6b0
-	u16 getCarryKeysHeld();
+	u16 getCarryKeysHeld() const;
 
 	// 0212c67c
-	u16 getCarryKeysPressed();
+	u16 getCarryKeysPressed() const;
 
 	// 0212c648
-	u16 getFireKeyPressed();
+	u16 getFireKeyPressed() const;
 
 	// 0212c63c
-	u16 getJumpKeyPressed();
+	u16 getJumpKeyPressed() const;
 
 	// 0212c630
-	u16 getJumpKeyHeld();
+	u16 getJumpKeyHeld() const;
 
 	// 0212c61c
-	u16 getHorizontalKeysHeld();
+	u16 getHorizontalKeysHeld() const;
 
 	// 0212c610
-	u16 getCrouchKeyHeld();
+	u16 getCrouchKeyHeld() const;
 
 	// 0212c5ec
-	u16 getCrouchKeyPressedEx();
+	u16 getCrouchKeyPressedEx() const;
 
 	// 0212c5c8
-	u16 getCrouchKeyHeldEx();
+	u16 getCrouchKeyHeldEx() const;
 
 	// 0212c5bc
-	u16 downKeyHeld();
+	u16 downKeyHeld() const;
 
 	// 0212c5b0
-	u16 upKeyHeld();
+	u16 upKeyHeld() const;
 
 	// 0212c5a4
-	u16 rightKeyHeld();
+	u16 rightKeyHeld() const;
 
 	// 0212c598
-	u16 leftKeyHeld();
+	u16 leftKeyHeld() const;
 
 	// 0212c56c
-	u16 getGroundPoundCancelKeyHeldEx();
+	u16 getGroundPoundCancelKeyHeldEx() const;
 
 	// 0212c52c
-	u16 getKeysPressed();
+	u16 getKeysPressed() const;
 
 	// 0212c4ec
-	BOOL getJumpPressedRingBuffer();
+	BOOL getJumpPressedRingBuffer() const;
 
 
 	// 0212c424
@@ -424,7 +424,7 @@ public:
 
 	// 0212BDE0
 	void removeLinkedActor(StageActor& actor); // unlink given actor if already linked	// 0212c1b8
-	
-	//void checkIfSecondPlayerExists(); 
+
+	//void checkIfSecondPlayerExists();
 
 };

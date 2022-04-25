@@ -2,6 +2,7 @@
 
 #include "graphics/graphics2d.h"
 #include "graphics/graphics3d.h"
+#include "graphics/graphics.h"
 
 #include "graphics/effect.h"
 #include "graphics/fader.h"

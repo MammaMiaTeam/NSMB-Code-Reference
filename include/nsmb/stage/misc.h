@@ -77,6 +77,9 @@ namespace Stage
 	// 0208b32c
 	extern PowerupState storedPowerup[2];
 
+	// 02026290
+	extern const GXRgb starToonTable[32];
+
 
 	__inline bool getEvent(u8 id) {
 		return events & (1ULL << (id - 1));

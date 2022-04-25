@@ -2,7 +2,7 @@
 #include "nitro_if.h"
 
 
-namespace GFX {
+namespace G3D {
 
 	// 02019B6C
 	void initialize(); // Initializes the graphics engine
