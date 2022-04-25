@@ -19,25 +19,25 @@
 #include "stage/player/misc.h"
 #include "stage/player/player.h"
 
-// Overlay 10 - Item, StageFX, Coin, CoinSpawner
+// Overlay 10 - Coin, Item, StageFX
+#include "stage/actors/ov10/coin.h"
 #include "stage/actors/ov10/item.h"
 #include "stage/actors/ov10/stagefx.h"
-#include "stage/actors/ov10/coin.h"
-#include "stage/actors/ov10/coinspawner.h"
 
 // Overlay 24 - Thwomp
 #include "stage/actors/ov24/thwomp.h"
 
-// Overlay 34 - Whomp
-#include "stage/actors/ov34/whomp.h"
+// Overlay 34 - FenceKoopa, Whomp
 #include "stage/actors/ov34/fencekoopa.h"
+#include "stage/actors/ov34/whomp.h"
 
 // Overlay 42 - BulletBill, BanzaiBill, BulletBillBlaster, BanzaiBillBlaster
 #include "stage/actors/ov42/bulletbill.h"
 #include "stage/actors/ov42/bulletbillblaster.h"
 
-// Overlay 54 - Checkpoint, Trampoline
+// Overlay 54 - Checkpoint, CoinSpawner, Trampoline
 #include "stage/actors/ov54/checkpoint.h"
+#include "stage/actors/ov54/coinspawner.h"
 #include "stage/actors/ov54/trampoline.h"
 
 // Overlay 57 - ChainChomp, ChainChompLog

@@ -2,7 +2,7 @@
 #include "nsmb.h"
 
 
-// vtable at 0216D4E8 (ov10)
+// vtable at 0216D4E8 (ov54)
 class CoinSpawner : public StageEntity
 {
 public:
