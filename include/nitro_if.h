@@ -39,6 +39,9 @@
 #define NTR_DEBUG 1
 
 
+typedef u16 bool16;
+typedef u32 bool32;
+
 typedef void* NITRO_TYPE_REPLACEMENT;
 
 #ifdef NITRO_NO_SDK
