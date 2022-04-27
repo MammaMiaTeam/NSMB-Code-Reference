@@ -4166,6 +4166,32 @@ _ZN17BanzaiBillBlaster7profileE								= 0x02151D68;
 _ZTV17BanzaiBillBlaster										= 0x02151E94;
 
 
+/* arm9_ov48 */
+/*----------------------------------------------------------------*/
+/*------------------------- wobble rock --------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN10WobbleRockD0Ev						= 0x0214767C;
+_ZN10WobbleRockD1Ev						= 0x021475F0;
+_ZN10WobbleRockD2Ev						= 0x021475F0;
+_ZN10WobbleRock8onCreateEv				= 0x021477F0;
+_ZN10WobbleRock9onDestroyEv				= 0x02147710;
+_ZN10WobbleRock8onRenderEv				= 0x02147734;
+_ZN10WobbleRock18onPrepareResourcesEv	= 0x02147BC4;
+_ZN10WobbleRock10updateMainEv			= 0x021477A4;
+_ZN10WobbleRock13loadResourcesEv		= 0x02147BFC;
+
+_ZN10WobbleRock13updateBalanceEv		= 0x02147A34;
+_ZN10WobbleRock11switchStateEMS_FbvE	= 0x02147AF0;
+_ZN10WobbleRock11updateStateEv			= 0x02147ABC;
+_ZN10WobbleRock9mainStateEv				= 0x02147948;
+_ZN10WobbleRock9fallStateEv				= 0x021478E0;
+
+_ZN10WobbleRock7profileE				= 0x02148920;
+
+_ZTV10WobbleRock						= 0x0214892C;
+
+
 /* arm9_ov54 */
 /*----------------------------------------------------------------*/
 /*-------------------------- trampoline --------------------------*/
@@ -4254,7 +4280,7 @@ _ZN14CheckpointFlag6updateEv	= 0x021624BC;
 _ZN14CheckpointFlag6renderEv	= 0x021623A0;
 
 
-/* arm9_ov10 */
+/* arm9_ov54 */
 /*----------------------------------------------------------------*/
 /*-------------------------- coin spawner ------------------------*/
 /*----------------------------------------------------------------*/

@@ -35,6 +35,9 @@
 #include "stage/actors/ov42/bulletbill.h"
 #include "stage/actors/ov42/bulletbillblaster.h"
 
+// Overlay 48 - WobbleRock
+#include "stage/actors/ov48/wobblerock.h"
+
 // Overlay 54 - Checkpoint, CoinSpawner, Trampoline
 #include "stage/actors/ov54/checkpoint.h"
 #include "stage/actors/ov54/coinspawner.h"
