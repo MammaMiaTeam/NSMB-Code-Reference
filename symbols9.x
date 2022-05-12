@@ -3862,6 +3862,91 @@ _ZN4Coin7profileE							= 0x021251F8;
 _ZTV4Coin									= 0x02125220;
 
 
+/* arm9_ov10 */
+/*----------------------------------------------------------------*/
+/*----------------------------- goomba ---------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN6GoombaD0Ev												= 0x020E06F4;
+_ZN6GoombaD1Ev												= 0x020E0698;
+_ZN6GoombaD2Ev												= 0x020E0698;
+_ZN6Goomba8onCreateEv										= 0x020E0AB4;
+_ZN6Goomba9onDestroyEv										= 0x020E0758;
+_ZN6Goomba8onRenderEv										= 0x020E0764;
+_ZN6Goomba18onCleanupResourcesEv							= 0x020E0760;
+_ZN6Goomba10updateMainEv									= 0x020E09EC;
+_ZN6Goomba14updateDefeatedEv								= 0x020E1648;
+_ZN6Goomba9onStompedEv										= 0x020E1B78;
+_ZN6Goomba19onMegaWalkShockwaveEv							= 0x020E1B08;
+_ZN6Goomba15playerCollisionER14ActiveColliderS1_			= 0x020E2228;
+_ZN6Goomba15entityCollisionER14ActiveColliderR10StageActor	= 0x020E2018;
+_ZN6Goomba12damagePlayerER14ActiveColliderR6Player			= 0x020E1BB0;
+_ZN6Goomba12doPlayerJumpER6Playerl							= 0x020E22B0;
+
+_ZN6Goomba17updateMusicEventsEl								= 0x020E23F4;
+_ZN6Goomba17updateMegaDroppedEv								= 0x020E19AC;
+_ZN6Goomba21updateSpriteAnimationEv							= 0x020E1694;
+_ZN6Goomba11switchStateEMS_FbPvES0_							= 0x020E24A8;
+_ZN6Goomba11updateStateEv									= 0x020E2448;
+_ZN6Goomba9walkStateEPv										= 0x020E1538;
+_ZN6Goomba9turnStateEPv										= 0x020E1478;
+_ZN6Goomba12stompedStateEPv									= 0x020E13D0;
+_ZN6Goomba16megaDroppedStateEPv								= 0x020E1330;
+_ZN6Goomba13pipeFallStateEPv								= 0x020E127C;
+_ZN6Goomba13paraWalkStateEPv								= 0x020E1060;
+_ZN6Goomba13paraTurnStateEPv								= 0x020E0F60;
+_ZN6Goomba13pipeExitStateEPv								= 0x020E0D98;
+
+_ZN6Goomba15stompedFrameIDsE								= 0x021217A0;
+_ZN6Goomba19stompedFrameLengthsE							= 0x021217A4;
+_ZN6Goomba17turnWingsFrameIDsE								= 0x021217A8;
+_ZN6Goomba12turnFrameIDsE									= 0x021217B0;
+_ZN6Goomba17walkWingsFrameIDsE								= 0x02121834;
+_ZN6Goomba11velocitiesXE									= 0x021217C0;
+_ZN6Goomba10sideSensorE										= 0x021217D4;
+_ZN6Goomba12bottomSensorE									= 0x021217EC;
+_ZN6Goomba15pipeVelocitiesXE								= 0x02121804;
+_ZN6Goomba15pipeVelocitiesYE								= 0x02121814;
+_ZN6Goomba12pipeTargetsXE									= 0x02121824;
+_ZN6Goomba12pipeTargetsYE									= 0x02121844;
+_ZN6Goomba18activeColliderInfoE								= 0x02121854;
+_ZN6Goomba7profileE											= 0x021263FC;
+
+_ZTV6Goomba													= 0x02126420;
+
+
+/* arm9_ov10 */
+/*----------------------------------------------------------------*/
+/*--------------------------- paragoomba -------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN10ParagoombaD0Ev											= 0x020E268C;
+_ZN10ParagoombaD1Ev											= 0x020E2624;
+_ZN10ParagoombaD2Ev											= 0x020E2624;
+
+_ZN10Paragoomba9topSensorE									= 0x021217C8;
+_ZN10Paragoomba7profileE									= 0x02126408;
+
+_ZTV10Paragoomba											= 0x02126648;
+
+
+/* arm9_ov10 */
+/*----------------------------------------------------------------*/
+/*--------------------------- mini goomba ------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN10MiniGoombaD0Ev											= 0x020E2764;
+_ZN10MiniGoombaD1Ev											= 0x020E26FC;
+_ZN10MiniGoombaD2Ev											= 0x020E26FC;
+
+_ZN10MiniGoomba11velocitiesXE								= 0x021217B8;
+_ZN10MiniGoomba12bottomSensorE								= 0x021217E0;
+_ZN10MiniGoomba10sideSensorE								= 0x021217F8;
+_ZN10MiniGoomba7profileE									= 0x02126414;
+
+_ZTV10MiniGoomba											= 0x02126534;
+
+
 /* arm9_ov24 */
 /*----------------------------------------------------------------*/
 /*---------------------------- thwomp ----------------------------*/

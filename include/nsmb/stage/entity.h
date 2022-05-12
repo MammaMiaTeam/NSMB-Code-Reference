@@ -216,8 +216,8 @@ public:
 	CollisionSwitch collisionSwitch;
 	SpawnSettings spawnSettings;
 	u16 unk2C6;
-	u8 hitCountdown;
-	u8 userCountdown;
+	u8 userCooldown1;
+	u8 userCooldown2;
 	u8 unk2CA;
 	u8 unk2CB;
 	u32 unk2CC;
@@ -277,7 +277,7 @@ public:
 	u8 unk3CD;
 	u8 decrement;
 	u8 unk3CF;
-	u8 unk3D0;
+	u8 unk3D0; // 3rd cooldown
 	u8 unk3D1;
 	u8 unk3D2;
 	u8 unk3D3;

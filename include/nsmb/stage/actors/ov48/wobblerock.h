@@ -60,7 +60,7 @@ public:
 
 	s16 wobbleAngle;
 	s16 previousAngle;
-	u8 updateStep;
+	s8 updateStep;
 	s8 wobbleForce;
 
 };
