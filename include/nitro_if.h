@@ -38,6 +38,9 @@
 // Set to 1 when compiling in Debug mode
 #define NTR_DEBUG 1
 
+#define NTR_NOINLINE	__attribute__((noinline))
+#define NTR_INLINE		__attribute__((always_inline)) inline
+
 
 typedef void* NITRO_TYPE_REPLACEMENT;
 
@@ -111,3 +114,12 @@ typedef void* NITRO_TYPE_REPLACEMENT;
 
 typedef u16 bool16;
 typedef u32 bool32;
+
+inline int OS_SNPrintf(char* dst, size_t len, const char* fmt, ...) {
+
+	va_list vl;
+	va_start(vl, fmt);
+
+	return OS_VSNPrintf(dst, len, fmt, vl);
+
+}

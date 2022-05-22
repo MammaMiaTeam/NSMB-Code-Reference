@@ -15,7 +15,8 @@ enum class CollisionSwitch : u16
 	LiquidParticles		= (1U << 2),	// Spawn particles and play SFX on liquid collision
 	NoLevelBeaten		= (1U << 4),	// Ignore defeat on level beaten
 	NoGroundPound		= (1U << 5),	// Ignore groundpound collision
-	NoMegaMushroom		= (1U << 7),	// Ignore mega player collision
+	NoMegaKick			= (1U << 6),	// Ignore mega player kick collision
+	NoMega				= (1U << 7),	// Ignore mega player collision
 	NoStarman			= (1U << 8),	// Ignore starman collision
 	NoSliding			= (1U << 9),	// Ignore sliding player collision
 	NoBlueShell			= (1U << 10),	// Ignore shell player collision
@@ -60,7 +61,7 @@ enum class CollisionType : u32
 	Block				= (1U << 7),
 	StageBeaten			= (1U << 8),
 	Starman				= (1U << 9),
-	MegaMushroom		= (1U << 10),
+	Mega				= (1U << 10),
 	SpinDrill			= (1U << 11),
 	Sliding				= (1U << 12),
 	Stomp				= (1U << 13),

@@ -227,7 +227,7 @@ NNS_SndHandleReleaseSeq = 0x205DD38;
 NNS_SndHandleInit = 0x205DD50;
 NNS_SndPlayerPauseAll = 0x205DD5C;
 NNS_SndPlayerPause = 0x205DDB8;
-NNS_SndPlayerStopSeqAll = 0x205DDC8;
+NNS_SndPlayerStopSeqBySeqArcIdx = 0x205DDC8;
 NNS_SndPlayerStopSeqByPlayerNo = 0x205DE34;
 NNS_SndPlayerStopSeq = 0x205DE98;
 NNS_SndPlayerCreateHeap = 0x205DEA8;
@@ -427,7 +427,6 @@ OSi_DoUnlockByWord = 0x20641F0;
 OS_TryLockByWord = 0x2064280;
 OS_InitLock = 0x20642E4;
 OS_VSNPrintf = 0x20643D4;
-OS_SNPrintf = 0x20643D4;
 OS_VSPrintf = 0x2064C9C;
 OS_SPrintf = 0x2064CB4;
 OS_GetThreadParameter = 0x2064DD8;
@@ -1897,6 +1896,42 @@ _ZN11ArcFunction7processER4Vec3		= 0x0200AB24;
 
 /* arm9 */
 /*----------------------------------------------------------------*/
+/*---------------------------- math ------------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN4Math4tickImEET_RS1_ = 0x02043380;
+_ZN4Math4tickItEET_RS1_ = 0x02043398;
+_ZN4Math4tickIsEET_RS1_ = 0x020433B0;
+_ZN4Math4tickIhEET_RS1_ = 0x020433C8;
+_ZN4Math4tickIaEET_RS1_ = 0x020433E0;
+
+_ZN4Math4lerpER4Vec3RKS0_l = 0x02043e30;
+_ZN4Math8lerpFx32ERllll = 0x020437a4;
+_ZN4Math8lerpFx32ERlllll = 0x020437f4;
+_ZN4Math4lerpER4Vec2RKS0_l = 0x02043d5c;
+_ZN4Math6sqrt64Ex = 0x02046030;
+_ZN4Math5atan2Ell = 0x02043b6c;
+_ZN4Math7inRangeElll = 0x02043750;
+_ZN4Math8distanceEss = 0x02043790;
+
+_ZN4Math10atan2TableE = 0x020848e4;
+_ZN4Math13unusedCounterE = 0x0208b66c;
+_ZN4Math12frameCounterE = 0x0208b668;
+
+
+/* arm9 */
+/*----------------------------------------------------------------*/
+/*--------------------------- random -----------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN6RandomC2Em				= 0x02044308;
+_ZN6RandomD2Ev				= 0x02006EE4;
+_ZN6Random6updateEv			= 0x020442B0;
+_ZN6Random12generateSeedEv	= 0x020442DC;
+
+
+/* arm9 */
+/*----------------------------------------------------------------*/
 /*---------------------- spring function -------------------------*/
 /*----------------------------------------------------------------*/
 
@@ -1954,25 +1989,6 @@ _ZN5Vec3sD1Ev							= 0x02003070;
 _ZTV4Vec3								= 0x02039200;
 _ZTV4Vec2								= 0x020391E0;
 _ZTV5Vec3s								= 0x020391F0;
-
-
-/* arm9 */
-/*----------------------------------------------------------------*/
-/*---------------------------- math ------------------------------*/
-/*----------------------------------------------------------------*/
-
-_ZN4Math4lerpER4Vec3RKS0_l = 0x02043e30;
-_ZN4Math8lerpFx32ERllll = 0x020437a4;
-_ZN4Math8lerpFx32ERlllll = 0x020437f4;
-_ZN4Math4lerpER4Vec2RKS0_l = 0x02043d5c;
-_ZN4Math6sqrt64Ex = 0x02046030;
-_ZN4Math5atan2Ell = 0x02043b6c;
-_ZN4Math7inRangeElll = 0x02043750;
-_ZN4Math8distanceEss = 0x02043790;
-
-_ZN4Math10atan2TableE = 0x020848e4;
-_ZN4Math13unusedCounterE = 0x0208b66c;
-_ZN4Math12frameCounterE = 0x0208b668;
 
 
 /* arm9 */
@@ -3261,7 +3277,6 @@ _ZN5Stage23addMegaDestructionScoreEhs				= 0x020200d4;
 _ZN5Stage23getMegaDestructionScoreEh				= 0x02020114;
 _ZN5Stage23setMegaDestructionScoreEht				= 0x02020128;
 _ZN5Stage7setZoomElmhh								= 0x020facfc;
-_ZN5Stage9getRandomEv								= 0x0200e6f4;
 _ZN5Stage9getAreaIDEhhh								= 0x0201f53c;
 
 /* arm9 */
@@ -3330,6 +3345,17 @@ _ZN4Game19currentProcessTableE                                                  
 _ZN4Game9actorTreeE																	= 0x0208fb0c;
 
 _ZN4Game16visiblePlaneMainE															= 0x02085a88;
+
+
+/* arm9_ov52 */
+/*-----------------------------------------------------------------*/
+/*------------------------ wifi utilities -------------------------*/
+/*-----------------------------------------------------------------*/
+
+_ZN4Wifi11getRandomMGEv		= 0x0200E6A4;
+_ZN4Wifi9getRandomEv		= 0x0200E6F4;
+_ZN4Wifi12syncRandomMGEv	= 0x0200E73C;
+_ZN4Wifi10syncRandomEv		= 0x0200E748;
 
 
 /* arm9_ov0 */

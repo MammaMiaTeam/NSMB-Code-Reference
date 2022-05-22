@@ -1,5 +1,6 @@
 #pragma once
 #include "nitro_if.h"
+#include "math/random.h"
 #include "system/save.h"
 
 enum class SceneID : u16;
@@ -134,8 +135,6 @@ namespace Game
 	// 0200693C
 	u32 getRandom();
 
-	IMPL_RANDOM(Game::getRandom);
-
 	// 0x0200696c
 	void loadLevel(u16 scene, u32 vs, u8 group, u8 stage, u8 act, u8 playerID, u8 playerMask, u8 character1, u8 character2, u8 powerup, u8 entrance, u8 flag, u8 unused1, u8 controlOptions, u8 unused2, u8 challengeMode, u32 rngSeed);
 
@@ -197,5 +196,11 @@ namespace Game
 
 	// 020200C4
 	u8 setPlayerRespawnState(s32 playerNo, s32 state);
+
+	// 02085A70
+	extern Random random;
+
+	// 02085A54
+	extern u8 randomCallCount;
 
 }

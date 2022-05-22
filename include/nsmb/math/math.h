@@ -16,16 +16,30 @@ class Vec3s;
 
 namespace Math {
 
-	//u32:02043380
-	//u16:02043398
-	//s16:020433b0
-	//u8:020433c8
-	//s8:020433e0
-	u32 timerTick(u32* timer);
-	u16 timerTick(u16* timer);
-	s16 timerTick(s16* timer);
-	u8  timerTick(u8* timer);
-	s8  timerTick(s8* timer);
+	template<class T>
+	NTR_INLINE T tick(T& value) {
+		return value == 0 ? value : value--;
+	}
+
+	// 02043380
+	template<>
+	u32 Math::tick(u32& value);
+
+	// 02043398
+	template<>
+	u16 Math::tick(u16& value);
+
+	// 020433B0
+	template<>
+	s16 Math::tick(s16& value);
+
+	// 020433C8
+	template<>
+	u8 Math::tick(u8& value);
+
+	// 020433E0
+	template<>
+	s8 Math::tick(s8& value);
 
 	//020433f8
 	//02043464
@@ -86,12 +100,6 @@ namespace Math {
 
 	//02044280 (sub?)
 	//void subtract();
-
-	//020442b0
-	u32 nextRandom(u32& value);
-
-	//020442dc
-	u32 generateSeed();
 
 
 	consteval s16 crad(fx32 r) {
@@ -202,20 +210,6 @@ namespace Math {
 		step = mul(mul(mul(-2.0fx, step), step), step) + mul(mul(3.0fx, step), step);
 		return mul(end, step) + mul(start, (1.0fx - step));
 	}
-
-	inline s32 getRangedValue(s32 value, s32 max) {
-		return value % max;
-	}
-
-	inline s32 getRangedValue(s32 value, s32 min, s32 max) {
-		return (value % (max - min)) + min;
-	}
-
-#define IMPL_RANDOM(function) \
-	inline s32 getRandom(s32 max) { return Math::getRangedValue((function)(), max); } \
-	inline s32 getRandom(s32 min, s32 max) { return Math::getRangedValue((function)(), min, max); }
-
-	//02044308 wtf
 
 }
 

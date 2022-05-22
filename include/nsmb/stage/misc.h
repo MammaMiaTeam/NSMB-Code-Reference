@@ -2,6 +2,7 @@
 #include "nitro_if.h"
 #include "layout/stagelayout.h"
 #include "layout/data.h"
+#include "nsmb/wifi/util.h"
 
 
 enum class CollisionType : u32;
@@ -81,13 +82,15 @@ namespace Stage
 	extern const GXRgb starToonTable[32];
 
 
-	__inline bool getEvent(u8 id) {
+	NTR_INLINE bool getEvent(u8 id) {
 		return events & (1ULL << (id - 1));
 	}
-	__inline void setEvent(u8 id) {
+
+	NTR_INLINE void setEvent(u8 id) {
 		events &= ~(1ULL << (id - 1));
 	}
-	__inline void clearEvent(u8 id) {
+
+	NTR_INLINE void clearEvent(u8 id) {
 		events &= ~(1ULL << (id - 1));
 	}
 
@@ -106,11 +109,18 @@ namespace Stage
 	// 0201f53c
 	u32 getAreaID(u8 group, u8 stage, u8 act);
 
+	// used in stage related operations (actor spawning, tile randomization)
+	
+	NTR_INLINE s32 getRandom(s32 max) {
+		return ((Wifi::getRandom() & 0x7FFF) * (max + 1)) / 0x8000;
+	}
 
-	// 0200e6f4
-	// used in stage related operations (actors, spawns, tile randomization)
-	ssym u32 getRandom() __rbody
+	NTR_INLINE s32 getRandom(s32 min, s32 max) {
+		return getRandom(max - min) + min;
+	}
 
-	IMPL_RANDOM(Stage::getRandom);
+	NTR_INLINE u16 getRandom() {
+		return getRandom(0x7FFF);
+	}
 
 }

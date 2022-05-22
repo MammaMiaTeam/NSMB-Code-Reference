@@ -19,6 +19,7 @@
 #include "nsmb/titlescreen.h"
 #include "nsmb/ui.h"
 #include "nsmb/util.h"
+#include "nsmb/wifi.h"
 #include "nsmb/world.h"
 #include "nsmb/worldmap.h"
 

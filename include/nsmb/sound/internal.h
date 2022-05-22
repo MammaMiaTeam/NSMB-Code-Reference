@@ -322,7 +322,7 @@ namespace SND {
 		/*
 			Allocates the boss sound heap.
 			Used in clearAndLoadLevelSeqs if a level field is checked.
-			Level field: reinterp__ret_cast<u16*>(Block3)[1];
+			Level field: reinterpret_cast<u16*>(Block3)[1];
 		*/
 		bool allocBossSndHeapState();
 
