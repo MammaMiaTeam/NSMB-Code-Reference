@@ -1,6 +1,7 @@
 #pragma once
 
-namespace SndGroup {
+
+namespace SndGroupID {
 
 	enum {
 		GROUP_MENU_SE,
