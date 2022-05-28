@@ -53,6 +53,9 @@ namespace Stage
 
 	// DATA
 
+	// 0203C8A0
+	extern const char* stageGroupNames[10];
+
 	// 0203C8C8
 	extern u32 stageBlockUnitSize[14];
 

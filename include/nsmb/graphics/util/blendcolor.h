@@ -5,7 +5,21 @@
 class BlendColor
 {
 
-	using rgb_t = struct { u16 r, g, b; };
+	using rgb_t = struct {
+
+		u16 r, g, b;
+
+		constexpr u16 packed() const {
+			return GX_RGB(r >> 8, g >> 8, b >> 8);
+		}
+
+		constexpr void set(u8 r, u8 g, u8 b) {
+			this->r = u16(r) << 8;
+			this->g = u16(g) << 8;
+			this->b = u16(b) << 8;
+		}
+
+	};
 
 public:
 
@@ -13,7 +27,7 @@ public:
 	rgb_t target;
 	rgb_t difference;
 
-	// 020e91a0
+	// 020E91A0
 	BlendColor();
 
 	// D0: 020E9170

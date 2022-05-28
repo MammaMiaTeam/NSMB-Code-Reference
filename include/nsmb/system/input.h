@@ -3,35 +3,36 @@
 #include "nsmb/util.h"
 
 
-enum class Keys : u16 {
+namespace Keys {
 
-	A			= PAD_BUTTON_A,
-	B			= PAD_BUTTON_B,
-	Select		= PAD_BUTTON_SELECT,
-	Start		= PAD_BUTTON_START,
+	constexpr u16 A				= PAD_BUTTON_A;
+	constexpr u16 B				= PAD_BUTTON_B;
+	constexpr u16 Select		= PAD_BUTTON_SELECT;
+	constexpr u16 Start			= PAD_BUTTON_START;
 
-	Right		= PAD_KEY_RIGHT,
-	Left		= PAD_KEY_LEFT,
-	Up			= PAD_KEY_UP,
-	Down		= PAD_KEY_DOWN,
+	constexpr u16 Right			= PAD_KEY_RIGHT;
+	constexpr u16 Left			= PAD_KEY_LEFT;
+	constexpr u16 Up			= PAD_KEY_UP;
+	constexpr u16 Down			= PAD_KEY_DOWN;
 
-	R			= PAD_BUTTON_R,
-	L			= PAD_BUTTON_L,
-	X			= PAD_BUTTON_X,
-	Y			= PAD_BUTTON_Y,
+	constexpr u16 R				= PAD_BUTTON_R;
+	constexpr u16 L				= PAD_BUTTON_L;
+	constexpr u16 X				= PAD_BUTTON_X;
+	constexpr u16 Y				= PAD_BUTTON_Y;
 
-	Debug		= PAD_BUTTON_DEBUG,
-	Folding		= PAD_DETECT_FOLD_MASK,
-	Hinge		= Folding,
+	constexpr u16 Debug			= PAD_BUTTON_DEBUG;
+	constexpr u16 Folding		= PAD_DETECT_FOLD_MASK;
+	constexpr u16 Hinge			= Folding;
 
-	ABXY		= A | B | X | Y,
-	Directional	= PAD_PLUS_KEY_MASK,
-	Buttons		= PAD_BUTTON_MASK,
-	All			= PAD_ALL_MASK,
+	constexpr u16 ABXY			= A | B | X | Y;
+	constexpr u16 Shoulder		= R | L;
+	constexpr u16 Vertical		= Up | Down;
+	constexpr u16 Horizontal	= Left | Right;
+	constexpr u16 Directional	= PAD_PLUS_KEY_MASK;
+	constexpr u16 Buttons		= PAD_BUTTON_MASK;
+	constexpr u16 All			= PAD_ALL_MASK;
 
-};
-
-IMPL_ENUMCLASS_OPERATORS(Keys);
+}
 
 
 namespace Input {

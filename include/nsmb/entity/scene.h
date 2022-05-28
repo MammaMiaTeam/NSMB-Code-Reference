@@ -94,9 +94,9 @@ public:
 	sym static u16 tryChangeScene() __rbody
 
 	//020131fc
-	sym static void switchScene(u16 sceneID, u32 settings) __body
+	sym static void switchScene(u16 sceneID, u32 settings = 0) __body
 
-	__inline static void switchScene(SceneID sceneID, u32 settings) {
+	__inline static void switchScene(SceneID sceneID, u32 settings = 0) {
 		switchScene(u16(sceneID), settings);
 	}
 

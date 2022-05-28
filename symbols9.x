@@ -1213,7 +1213,10 @@ NNS_G3dMdlSetMdlAmbAll = 0x02059FD0;
 NNS_G3dMdlSetMdlDiffAll = 0x0205A010;
 NNS_G3dMdlSetMdlLightEnableFlagAll = 0x02059F90;
 NNS_G3dMdlSetMdlPolygonModeAll = 0x02059F50;
+NNS_G3dMdlSetMdlPolygonIDAll = 0x02059F10;
 NNS_G3dMdlSetMdlAlphaAll = 0x02059ED0;
+NNS_G3dMdlSetMdlFogEnableFlagAll = 0x02059E90;
+NNS_G3dMdlSetMdlFogEnableFlagAll = 0x02059E90;
 NNSi_G3dFuncSbc_NODEMIX = 0x02058BB4;
 NNSi_G3dFuncSbc_CALLDL = 0x02058AD4;
 NNSi_G3dFuncSbc_ENVMAP = 0x020587B4;
@@ -1956,7 +1959,9 @@ _ZN3SND8Internal17soundArchivePathsE								= 0x02085304;
 /*------------------------ arc function --------------------------*/
 /*----------------------------------------------------------------*/
 
+_ZN11ArcFunctionC1Ev				= 0x0200AC90;
 _ZN11ArcFunctionC2Ev				= 0x0200AC90;
+_ZN11ArcFunctionD1Ev				= 0x0200AC80;
 _ZN11ArcFunctionD2Ev				= 0x0200AC80;
 _ZN11ArcFunction4initERK4Vec3S2_ll	= 0x0200ABC4;
 _ZN11ArcFunction7processER4Vec3		= 0x0200AB24;
@@ -1992,7 +1997,9 @@ _ZN4Math12frameCounterE = 0x0208b668;
 /*--------------------------- random -----------------------------*/
 /*----------------------------------------------------------------*/
 
+_ZN6RandomC1Em				= 0x02044308;
 _ZN6RandomC2Em				= 0x02044308;
+_ZN6RandomD1Ev				= 0x02006EE4;
 _ZN6RandomD2Ev				= 0x02006EE4;
 _ZN6Random6updateEv			= 0x020442B0;
 _ZN6Random12generateSeedEv	= 0x020442DC;
@@ -3387,7 +3394,8 @@ _ZN5Stage13storedPowerupE							= 0x02085a4c;
 /*----------------------- stage layout misc ----------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN4Game11stageBlocksE = 0x0208b168;
+_ZN5Stage15stageGroupNamesE = 0x0203C8A0;
+_ZN5Stage11stageBlocksE = 0x0208B168;
 
 
 /* arm9 */
@@ -3420,10 +3428,14 @@ _ZN4Game16visiblePlaneMainE															= 0x02085a88;
 /*------------------------ wifi utilities -------------------------*/
 /*-----------------------------------------------------------------*/
 
-_ZN4Wifi11getRandomMGEv		= 0x0200E6A4;
-_ZN4Wifi9getRandomEv		= 0x0200E6F4;
-_ZN4Wifi12syncRandomMGEv	= 0x0200E73C;
-_ZN4Wifi10syncRandomEv		= 0x0200E748;
+_ZN4Wifi11getRandomMGEv			= 0x0200E6A4;
+_ZN4Wifi9getRandomEv			= 0x0200E6F4;
+_ZN4Wifi12syncRandomMGEv		= 0x0200E73C;
+_ZN4Wifi10syncRandomEv			= 0x0200E748;
+
+_ZN4Wifi6randomE				= 0x02088A68;
+_ZN4Wifi15randomCallCountE		= 0x02088A48;
+_ZN4Wifi19randomBranchAddressE	= 0x0208885C;
 
 
 /* arm9_ov0 */
@@ -3468,6 +3480,8 @@ _ZN4Game6vsModeE							= 0x02085A84;
 _ZN4Game16currentWorldNodeE					= 0x02085A9C;
 _ZN4Game10viewMatrixE						= 0x02085B20;
 _ZN4Game11modelMatrixE						= 0x0208B6E8;
+_ZN4Game6randomE							= 0x02085A70;
+_ZN4Game15randomCallCountE					= 0x02085A54;
 
 
 /* arm9 */
