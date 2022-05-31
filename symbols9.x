@@ -4055,6 +4055,68 @@ _ZN10MiniGoomba7profileE									= 0x02126414;
 _ZTV10MiniGoomba											= 0x02126534;
 
 
+/* arm9_ov10 */
+/*----------------------------------------------------------------*/
+/*-------------------------- spin block --------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN9SpinBlockD0Ev									= 0x020D9F4C;
+_ZN9SpinBlockD1Ev									= 0x020D9EBC;
+_ZN9SpinBlockD2Ev									= 0x020D9EBC;
+_ZN9SpinBlock8onCreateEv							= 0x020DA0E4;
+_ZN9SpinBlock9onDestroyEv							= 0x020D9FE4;
+_ZN9SpinBlock18onPrepareResourcesEv					= 0x020DA300;
+_ZN9SpinBlock10updateMainEv							= 0x020DA000;
+_ZN9SpinBlock13loadResourcesEv						= 0x020DA9A8;
+
+_ZN9SpinBlock16setModelCallbackEPFvP9NNSG3dRS_E		= 0x020DA338;
+_ZN9SpinBlock13modelCallbackEP9NNSG3dRS_			= 0x020DA360;
+_ZN9SpinBlock13setModelOwnerEPv						= 0x020DA3C0;
+_ZN9SpinBlock20updatePlayerStandingEv				= 0x020DA6EC;
+_ZN9SpinBlock12stepRotationERsss					= 0x020DA6A0;
+_ZN9SpinBlock15updateBoardSpinEv					= 0x020DA554;
+_ZN9SpinBlock19updateBoardPositionEv				= 0x020DA410;
+_ZN9SpinBlock11switchStateERKMS_FbvE				= 0x020DA91C;
+_ZN9SpinBlock11updateStateEv						= 0x020DA8D4;
+_ZN9SpinBlock9mainStateEv							= 0x020DA3C8;
+_ZN9SpinBlock15bottomCollisionER10StageActorS1_		= 0x020DA9CC;
+_ZN9SpinBlock12topCollisionER10StageActorS1_		= 0x020DA9D0;
+
+_ZN9SpinBlock5sMainE								= 0x0212942C;
+
+_ZN9SpinBlock7profileE								= 0x02125348;
+
+_ZTV9SpinBlock										= 0x02125360;
+
+
+/* arm9_ov10 */
+/*----------------------------------------------------------------*/
+/*------------------------ spin block 255 ------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN12SpinBlock255D0Ev								= 0x020DABF0;
+_ZN12SpinBlock255D1Ev								= 0x020DAB54;
+_ZN12SpinBlock255D2Ev								= 0x020DAB54;
+
+_ZN12SpinBlock2557profileE							= 0x0212533C;
+
+_ZTV12SpinBlock255									= 0x02125598;
+
+
+/* arm9_ov10 */
+/*----------------------------------------------------------------*/
+/*------------------------ spin block 256 ------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN12SpinBlock256D0Ev								= 0x020DAD30;
+_ZN12SpinBlock256D1Ev								= 0x020DAC94;
+_ZN12SpinBlock256D2Ev								= 0x020DAC94;
+
+_ZN12SpinBlock2567profileE							= 0x02125354;
+
+_ZTV12SpinBlock256									= 0x0212547C;
+
+
 /* arm9_ov24 */
 /*----------------------------------------------------------------*/
 /*--------------------------- firebar ----------------------------*/

@@ -105,14 +105,14 @@ namespace Math {
 	consteval s16 crad(fx32 r) {
 		return (r * FX32_CONST(0x10000)) / FX64C_TWOPI;
 	}
-	consteval s16 cdeg(long double d) {
+	consteval s32 cdeg(long double d) {
 
 		if (d > 0)
 			while (d >= 360.0f) d -= 360.0f;
 		else
 			while (d < 0.0f) d += 360.0f;
 
-		return s16(s32((d * 0x10000) / 360));
+		return s32((d * 0x10000) / 360);
 
 	}
 
@@ -216,7 +216,7 @@ namespace Math {
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wliteral-suffix"
 
-consteval s16 operator""rad(long double r) {
+consteval s32 operator""rad(long double r) {
 
 	constexpr long double twopi = 6.28318530718;
 
@@ -225,29 +225,29 @@ consteval s16 operator""rad(long double r) {
 	else
 		while (r < 0.0f) r += twopi;
 
-	return s16(s32((r * 0x10000) / twopi));
+	return s32(s32((r * 0x10000) / twopi));
 
 }
 
-consteval s16 operator""deg(long double d) {
+consteval s32 operator""deg(long double d) {
 
 	if (d > 0)
 		while (d >= 360.0f) d -= 360.0f;
 	else
 		while (d < 0.0f) d += 360.0f;
 
-	return s16(s32((d * 0x10000) / 360));
+	return s32((d * 0x10000) / 360);
 
 }
 
-consteval s16 operator""deg(unsigned long long d) {
+consteval s32 operator""deg(unsigned long long d) {
 
 	if (d > 0)
 		while (d >= 360.0f) d -= 360.0f;
 	else
 		while (d < 0.0f) d += 360.0f;
 
-	return s16(s32((d * 0x10000) / 360));
+	return s32((d * 0x10000) / 360);
 
 }
 

@@ -19,10 +19,11 @@
 #include "stage/player/misc.h"
 #include "stage/player/player.h"
 
-// Overlay 10 - Coin, Goomba, MiniGoomba, Paragoomba, Item, StageFX
+// Overlay 10 - Coin, Goomba, MiniGoomba, Paragoomba, Item, SpinBlock, StageFX
 #include "stage/actors/ov10/coin.h"
 #include "stage/actors/ov10/goomba.h"
 #include "stage/actors/ov10/item.h"
+#include "stage/actors/ov10/spinblock.h"
 #include "stage/actors/ov10/stagefx.h"
 
 // Overlay 24 - FireBar, Thwomp

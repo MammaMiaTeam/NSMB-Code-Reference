@@ -53,6 +53,7 @@ public:
 
 	// 021892D8
 	static bool loadResources();
+
 	// 02188A40
 	static void activeCallback(ActiveCollider& self, ActiveCollider& other);
 
