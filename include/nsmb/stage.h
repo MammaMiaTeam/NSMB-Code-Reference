@@ -25,7 +25,8 @@
 #include "stage/actors/ov10/item.h"
 #include "stage/actors/ov10/stagefx.h"
 
-// Overlay 24 - Thwomp
+// Overlay 24 - FireBar, Thwomp
+#include "stage/actors/ov24/firebar.h"
 #include "stage/actors/ov24/thwomp.h"
 
 // Overlay 34 - FenceKoopa, Whomp

@@ -24,7 +24,7 @@ enum class CollisionFlag : u8
 {
 	None,			// none
 	Fireball,		// fireball
-	Flag2,			// used in Thwomp
+	Flag2,			// checked by castle enemies (Thwomp, Dry Bones, FireBar), fishes and possibly other stuff
 	Flag3,
 	Flag4,
 	Sliding,		// player sliding
@@ -177,6 +177,9 @@ public:
 		
 	// 020A3D68
 	Player* getPlayer() const;
+
+	// Assumed from 020E3824 (ov10)
+	NTR_INLINE u8 getPlayerID() const;
 
 protected:
 

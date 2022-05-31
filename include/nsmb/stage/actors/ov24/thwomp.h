@@ -103,7 +103,7 @@ public:
 
 	LineSensorH giantBottomSensor;
 
-	u32 unk4E0;
+	u32 unused4E0;
 	u32 giantFlag;
 	u32 unusedFlag;
 	u16 shakeTimer;

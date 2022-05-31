@@ -4057,6 +4057,36 @@ _ZTV10MiniGoomba											= 0x02126534;
 
 /* arm9_ov24 */
 /*----------------------------------------------------------------*/
+/*--------------------------- firebar ----------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN7FireBarD0Ev											= 0x0213E644;
+_ZN7FireBarD1Ev											= 0x0213E58C;
+_ZN7FireBarD2Ev											= 0x0213E58C;
+_ZN7FireBar8onCreateEv									= 0x0213EA14;
+_ZN7FireBar9onDestroyEv									= 0x0213E704;
+_ZN7FireBar8onUpdateEv									= 0x0213E9A4;
+_ZN7FireBar8onRenderEv									= 0x0213E740;
+_ZN7FireBar18onCleanupResourcesEv						= 0x0213E73C;
+_ZN7FireBar18onPrepareResourcesEv						= 0x0213EC40;
+_ZN7FireBar14onBlueShellHitEv							= 0x0213EED0;
+_ZN7FireBar12damagePlayerER14ActiveColliderR6Player		= 0x0213EED4;
+_ZN7FireBar13loadResourcesEv							= 0x0213EFFC;
+
+_ZN7FireBar11switchStateERKMS_FbvE						= 0x0213EF68;
+_ZN7FireBar11updateStateEv								= 0x0213EF20;
+_ZN7FireBar9mainStateEv									= 0x0213ECC0;
+
+_ZN7FireBar18activeColliderInfoE						= 0x0213F230;
+_ZN7FireBar7profileE									= 0x0213F928;
+
+_ZN7FireBar5sMainE										= 0x0213FAC0;
+
+_ZTV7FireBar											= 0x0213F934;
+
+
+/* arm9_ov24 */
+/*----------------------------------------------------------------*/
 /*---------------------------- thwomp ----------------------------*/
 /*----------------------------------------------------------------*/
 

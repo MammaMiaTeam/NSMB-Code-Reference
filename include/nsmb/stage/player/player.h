@@ -240,3 +240,10 @@ public:
 
 };
 NTR_SIZE_GUARD(Player, 0xBCC);
+
+
+// Assumed from 020E3824 (ov10)
+NTR_INLINE u8 ActiveCollider::getPlayerID() const {
+	return getPlayer()->linkedPlayerID;
+}
+
