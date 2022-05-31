@@ -3340,7 +3340,77 @@ _ZN8Collider8listTailE												= 0x020cabe8;
 /*--------------------------- fireball ---------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN4Game15fireballHandlerE = 0x02129484;
+_ZN8FireballC1Ev											= 0x020E3C84;
+_ZN8FireballC2Ev											= 0x020E3C84;
+_ZN8FireballD0Ev											= 0x020E3C0C;
+_ZN8FireballD1Ev											= 0x020E3C50;
+_ZN8FireballD2Ev											= 0x020E3C50;
+_ZN8Fireball6createEhRK4Vec3hS2_h							= 0x020E3A8C;
+_ZN8Fireball7destroyEv										= 0x020E3A3C;
+_ZN8Fireball6updateEv										= 0x020E39DC;
+_ZN8Fireball10extinguishEv									= 0x020E3488;
+_ZN8Fireball12destroyEnemyEv								= 0x020E2A10;
+_ZN8Fireball22updateVerticalVelocityEv						= 0x020E3BC4;
+_ZN8Fireball18updateDrawPriorityERK4Vec3					= 0x020E3B98;
+_ZN8Fireball20updatePlayerColliderEv						= 0x020E30D8;
+_ZN8Fireball19updateEnemyColliderEv							= 0x020E2DC4;
+_ZN8Fireball17applyBouncePlayerEmb							= 0x020E3428;
+_ZN8Fireball16applyBounceEnemyEmb							= 0x020E33C8;
+_ZN8Fireball11switchStateEMS_FvPvES0_						= 0x020E3908;
+_ZN8Fireball12createPlayerEv								= 0x020E34B4;
+_ZN8Fireball11playerStateEPv								= 0x020E3568;
+_ZN8Fireball18createPiranhaPlantEv							= 0x020E2FD8;
+_ZN8Fireball17piranhaPlantStateEPv							= 0x020E2E1C;
+_ZN8Fireball13createFireBroEv								= 0x020E2D4C;
+_ZN8Fireball12fireBroStateEPv								= 0x020E2A3C;
+_ZN8Fireball20playerActiveCallbackER14ActiveColliderS1_		= 0x020E3198;
+
+_ZN15FireballHandlerC1Ev									= 0x020E40A0;
+_ZN15FireballHandlerC2Ev									= 0x020E40A0;
+_ZN15FireballHandlerD0Ev									= 0x020E4010;
+_ZN15FireballHandlerD1Ev									= 0x020E405C;
+_ZN15FireballHandlerD2Ev									= 0x020E405C;
+_ZN15FireballHandler5spawnEhRK4Vec3hS2_						= 0x020E3E8C;
+_ZN15FireballHandler12destroyEnemyEv						= 0x020E3EE0;
+_ZN15FireballHandler6updateEv								= 0x020E3F1C;
+_ZN15FireballHandler6renderEv								= 0x020E3F58;
+_ZNK15FireballHandler5validEv								= 0x020E4008;
+
+_ZN9Fireballs20spawnFireBroFireballERK4Vec3h				= 0x020E3CE4;
+_ZN9Fireballs25spawnPiranhaPlantFireballERK4Vec3hS2_		= 0x020E3D4C;
+_ZN9Fireballs19spawnPlayerFireballEhRK4Vec3h				= 0x020E3D90;
+_ZN9Fireballs5spawnEhRK4Vec3hS2_							= 0x020E3DEC;
+_ZN9Fireballs21destroyEnemyFireballsEv						= 0x020E3E24;
+_ZN9Fireballs6updateEv										= 0x020E3E3C;
+_ZN9Fireballs6renderEv										= 0x020E3E54;
+_ZN9Fireballs5validEv										= 0x020E3E6C;
+_ZN9Fireballs13loadResourcesEv								= 0x020E3E84;
+
+_ZN8Fireball10rotationsYE									= 0x02121878;
+_ZN8Fireball18piranhaVelocitiesXE							= 0x0212188C;
+_ZN8Fireball18piranhaVelocitiesYE							= 0x0212187C;
+_ZN8Fireball18fireBroVelocitiesXE							= 0x02121884;
+_ZN8Fireball17playerVelocitiesXE							= 0x02121894;
+_ZN8Fireball12bottomSensorE									= 0x0212189C;
+_ZN8Fireball9topSensorE										= 0x021218A8;
+_ZN8Fireball10sideSensorE									= 0x021218B4;
+_ZN8Fireball9activeBoxE										= 0x021218C0;
+_ZN8Fireball17enemyColliderInfoE							= 0x021218D0;
+_ZN8Fireball18playerColliderInfoE							= 0x021218EC;
+_ZN8Fireball23playerBounceVelocitiesXE						= 0x02121908;
+_ZN8Fireball23playerBounceVelocitiesYE						= 0x02121930;
+_ZN8Fireball22enemyBounceVelocitiesXE						= 0x02121958;
+_ZN8Fireball22enemyBounceVelocitiesYE						= 0x02121980;
+
+_ZN8Fireball14activeColliderE								= 0x021294AC;
+_ZN8Fireball16platformManagersE								= 0x0212955C;
+_ZN8Fireball17collisionManagersE							= 0x0212989C;
+
+_ZN9Fireballs15fireballHandlerE								= 0x02129484;
+_ZN9Fireballs15activeFireballsE								= 0x02129480;
+
+_ZTV8Fireball												= 0x02126784;
+_ZTV15FireballHandler										= 0x02126794;
 
 
 /* arm9 */
@@ -3740,8 +3810,6 @@ _ZN13EffectHandler5validEv = 0x020e6834;
 
 _ZN7Effects12activeBricksE = 0x0212a41c;
 _ZN7Effects13effectHandlerE = 0x0212a420;
-_ZN6Effect22effectTableInitializedE = 0x0212a424;
-_ZN6Effect11effectTable = 0x0212a428;
 
 _ZTV6Effect = 0x02126a24;
 _ZTV13EffectHandler = 0x02126a04;

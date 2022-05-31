@@ -144,9 +144,6 @@ public:
 	ChildEffect pipeChildren[4];
 	ChildEffect brickMeteorChildren[4];
 
-	static s32 effectTableInitialized;
-	static EffectFunctions effectTable[24];
-
 };
 NTR_SIZE_GUARD(Effect, 0x1D4);
 
