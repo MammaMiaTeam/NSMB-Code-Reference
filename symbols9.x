@@ -3784,16 +3784,22 @@ _ZN4Item12checkConsumeEv = 0x020d475c;
 /*------------------------ animated tiles ------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN13AnimatedTilesC2Ev								= 0x020e2978;
-_ZN13AnimatedTilesD0Ev								= 0x020e2948;
-_ZN13AnimatedTilesD1Ev								= 0x020e2968;
-_ZN13AnimatedTilesD2Ev								= 0x020e2968;
-_ZN13AnimatedTiles6updateEv							= 0x0212944c;
-_ZN13AnimatedTiles18questionBlockFrameE				= 0x0212944c;
-_ZN13AnimatedTiles9coinFrameE						= 0x02129438;
-_ZN13AnimatedTiles10brickFrameE						= 0x0212943c;
+_ZN13AnimatedTilesC2Ev								= 0x020E2978;
+_ZN13AnimatedTilesD0Ev								= 0x020E2948;
+_ZN13AnimatedTilesD1Ev								= 0x020E2968;
+_ZN13AnimatedTilesD2Ev								= 0x020E2968;
+_ZN13AnimatedTiles6updateEv							= 0x020E27D4;
 
-_ZTV13AnimatedTiles									= 0x0212675c;
+_ZN13AnimatedTiles21questionBlockRotationE			= 0x02129474;
+_ZN13AnimatedTiles12coinRotationE					= 0x0212945C;
+_ZN13AnimatedTiles18questionBlockFrameE				= 0x0212944C;
+_ZN13AnimatedTiles18questionBlockTimerE				= 0x02129448;
+_ZN13AnimatedTiles9coinTimerE						= 0x02129444;
+_ZN13AnimatedTiles10brickTimerE						= 0x02129440;
+_ZN13AnimatedTiles10brickFrameE						= 0x0212943C;
+_ZN13AnimatedTiles9coinFrameE						= 0x02129438;
+
+_ZTV13AnimatedTiles									= 0x0212675C;
 
 
 /* arm9_ov10 */
