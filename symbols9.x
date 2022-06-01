@@ -4285,6 +4285,75 @@ _ZN13GiantThwomp7profileE								= 0x0213F6DC;
 _ZTV13GiantThwomp										= 0x0213F804;
 
 
+/* arm9_ov32 */
+/*----------------------------------------------------------------*/
+/*------------------------- pipe piranha -------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN11PipePiranhaD0Ev						= 0x02141F10;
+_ZN11PipePiranhaD1Ev						= 0x02141E80;
+_ZN11PipePiranhaD2Ev						= 0x02141E80;
+_ZN11PipePiranha8onCreateEv					= 0x02142654;
+_ZN11PipePiranha9onDestroyEv				= 0x02142440;
+_ZN11PipePiranha8onRenderEv					= 0x02142468;
+_ZN11PipePiranha18onCleanupResourcesEv		= 0x02142464;
+_ZN11PipePiranha18onPrepareResourcesEv		= 0x02143620;
+_ZN11PipePiranha10updateMainEv				= 0x021425D4;
+_ZN11PipePiranha10skipRenderEv				= 0x02141FAC;
+_ZN11PipePiranha10onBlockHitEv				= 0x02141FA8;
+_ZN11PipePiranha11onEntityHitEv				= 0x021422D4;
+_ZN11PipePiranha13onFireballHitEv			= 0x0214239C;
+_ZN11PipePiranha12onStarmanHitEv			= 0x021421FC;
+_ZN11PipePiranha9onMegaHitEv				= 0x02142118;
+_ZN11PipePiranha12onMegaKickedEv			= 0x021421E0;
+_ZN11PipePiranha14onSpinDrillHitEv			= 0x02142300;
+_ZN11PipePiranha14onBlueShellHitEv			= 0x0214206C;
+_ZN11PipePiranha13loadResourcesEv			= 0x02143678;
+
+_ZN11PipePiranha13modelCallbackEP9NNSG3dRS_	= 0x0214257C;
+_ZN11PipePiranha12setDirectionEv			= 0x02143468;
+_ZN11PipePiranha18updateSpinRotationEv		= 0x021433C4;
+_ZN11PipePiranha13spawnFireballEv			= 0x02143324;
+_ZN11PipePiranha17fetchNeckPositionEv		= 0x021432A8;
+_ZN11PipePiranha18fetchSpinDirectionEv		= 0x02142E88;
+_ZN11PipePiranha18updateNeckRotationEv		= 0x02142DEC;
+_ZN11PipePiranha9spawnCoinEv				= 0x02141FD4;
+_ZN11PipePiranha11switchStateEMS_FbvE		= 0x022030BC;
+_ZN11PipePiranha11updateStateEv				= 0x021434D4;
+_ZN11PipePiranha9waitStateEv				= 0x021430D8;
+_ZN11PipePiranha14leavePipeStateEv			= 0x02142EBC;
+_ZN11PipePiranha11attackStateEv				= 0x02142BB8;
+_ZN11PipePiranha14enterPipeStateEv			= 0x02142938;
+_ZN11PipePiranha13defeatedStateEv			= 0x0214288C;
+
+_ZN11PipePiranha15attackDurationsE			= 0x0214384C;
+_ZN11PipePiranha14rotationYStepsE			= 0x02143850;
+_ZN11PipePiranha10rotationsYE				= 0x02143854;
+_ZN11PipePiranha10rotationsZE				= 0x02143858;
+_ZN11PipePiranha16idleAnimationIDsE			= 0x02143860;
+_ZN11PipePiranha14pipeVelocitiesE			= 0x02143868;
+_ZN11PipePiranha11mouthOffsetE				= 0x02143870;
+_ZN11PipePiranha12exitOffsetsXE				= 0x0214387C;
+_ZN11PipePiranha12exitOffsetsYE				= 0x0214388C;
+_ZN11PipePiranha18headHitboxOffsetsXE		= 0x0214389C;
+_ZN11PipePiranha15coinVelocitiesXE			= 0x021438AC;
+_ZN11PipePiranha18headHitboxOffsetsYE		= 0x021438BC;
+_ZN11PipePiranha14centerOffsetsYE			= 0x021438CC;
+_ZN11PipePiranha12pipeOffsetsXE				= 0x021438DC;
+_ZN11PipePiranha12pipeOffsetsYE				= 0x021438EC;
+_ZN11PipePiranha14centerOffsetsXE			= 0x021438FC;
+_ZN11PipePiranha15coinVelocitiesYE			= 0x0214390C;
+_ZN11PipePiranha18activeColliderInfoE		= 0x0214391C;
+_ZN11PipePiranha16neckTargetAnglesE			= 0x02143938;
+
+_ZN9PiranhaUp7profileE						= 0x021439C8;
+_ZN11PiranhaDown7profileE					= 0x021439D4;
+_ZN12PiranhaRight7profileE					= 0x021439E0;
+_ZN11PiranhaLeft7profileE					= 0x021439EC;
+
+_ZTV11PipePiranha							= 0x021439F8;
+
+
 /* arm9_ov34 */
 /*----------------------------------------------------------------*/
 /*------------------------- fence koopa --------------------------*/

@@ -30,6 +30,9 @@
 #include "stage/actors/ov24/firebar.h"
 #include "stage/actors/ov24/thwomp.h"
 
+// Overlay 32 - PipePiranha
+#include "stage/actors/ov32/pipepiranha.h"
+
 // Overlay 34 - FenceKoopa, Whomp
 #include "stage/actors/ov34/fencekoopa.h"
 #include "stage/actors/ov34/whomp.h"
