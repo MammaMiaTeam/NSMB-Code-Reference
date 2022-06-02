@@ -155,7 +155,7 @@ public:
 	EffectHandler();
 	virtual ~EffectHandler();
 
-	bool valid() const;
+	bool init();
 	void update();
 	void render();
 	bool spawn(s8 id, const Vec3& pos, u32 settingA, u16 settingB, s8 playerID, u32 type);
@@ -171,7 +171,7 @@ NTR_SIZE_GUARD(EffectHandler, 0x3AA8);
 
 namespace Effects {
 
-	bool valid();
+	bool init();
 	bool spawn(s8 id, const Vec3& pos, s8 playerID);
 	bool spawn(s8 id, const Vec3& pos, u32 settingA, u16 settingB, s8 playerID, u32 type);
 	void update();

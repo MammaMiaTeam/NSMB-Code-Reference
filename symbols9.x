@@ -3374,7 +3374,7 @@ _ZN15FireballHandler5spawnEhRK4Vec3hS2_						= 0x020E3E8C;
 _ZN15FireballHandler12destroyEnemyEv						= 0x020E3EE0;
 _ZN15FireballHandler6updateEv								= 0x020E3F1C;
 _ZN15FireballHandler6renderEv								= 0x020E3F58;
-_ZNK15FireballHandler5validEv								= 0x020E4008;
+_ZNK15FireballHandler4initEv								= 0x020E4008;
 
 _ZN9Fireballs20spawnFireBroFireballERK4Vec3h				= 0x020E3CE4;
 _ZN9Fireballs25spawnPiranhaPlantFireballERK4Vec3hS2_		= 0x020E3D4C;
@@ -3383,7 +3383,7 @@ _ZN9Fireballs5spawnEhRK4Vec3hS2_							= 0x020E3DEC;
 _ZN9Fireballs21destroyEnemyFireballsEv						= 0x020E3E24;
 _ZN9Fireballs6updateEv										= 0x020E3E3C;
 _ZN9Fireballs6renderEv										= 0x020E3E54;
-_ZN9Fireballs5validEv										= 0x020E3E6C;
+_ZN9Fireballs4initEv										= 0x020E3E6C;
 _ZN9Fireballs13loadResourcesEv								= 0x020E3E84;
 
 _ZN8Fireball10rotationsYE									= 0x02121878;
@@ -3801,12 +3801,12 @@ _ZN7Effects6updateEv = 0x020e650c;
 _ZN7Effects6renderEv = 0x020e6524;
 _ZN7Effects5spawnEaRK4Vec3mtam = 0x020e653c;
 _ZN7Effects5spawnEaRK4Vec3a = 0x020e657c;
-_ZN7Effects5validEv = 0x020e65b4;
+_ZN7Effects4initEv = 0x020e65b4;
 _ZN13EffectHandler7destroyEa = 0x020e65cc;
 _ZN13EffectHandler6updateEv = 0x020e66bc;
 _ZN13EffectHandler6renderEv = 0x020e6710;
 _ZN13EffectHandler5spawnEaRK4Vec3mtam = 0x020e6764;
-_ZN13EffectHandler5validEv = 0x020e6834;
+_ZN13EffectHandler4initEv = 0x020e6834;
 
 _ZN7Effects12activeBricksE = 0x0212a41c;
 _ZN7Effects13effectHandlerE = 0x0212a420;
@@ -3969,6 +3969,21 @@ _ZN7StageFX13timesUpScalesE				= 0x021277E0;
 _ZN7StageFX7profileE					= 0x021277D4;
 
 _ZTV7StageFX							= 0x02127838;
+
+
+/* arm9_ov10 */
+/*----------------------------------------------------------------*/
+/*---------------------------- actor22 ---------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN7Actor22D0Ev			= 0x020E93C4;
+_ZN7Actor22D1Ev			= 0x020E9368;
+_ZN7Actor22D2Ev			= 0x020E9368;
+
+_ZN7Actor227profileE	= 0x02126BE0;
+
+_ZTV7Actor22			= 0x02126BEC;
+
 
 
 /* arm9_ov10 */

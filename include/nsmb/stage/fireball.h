@@ -158,7 +158,7 @@ public:
 	// 020E3F58
 	void render();
 	// 020E4008
-	bool valid() const;
+	bool init();
 
 
 	Fireball fireballs[16];
@@ -186,7 +186,7 @@ namespace Fireballs {
 	void render();
 
 	// 020E3E6C
-	bool valid();
+	bool init();
 	// 020E3E84
 	bool loadResources();
 

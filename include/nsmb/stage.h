@@ -20,6 +20,7 @@
 #include "stage/player/player.h"
 
 // Overlay 10 - Coin, Goomba, MiniGoomba, Paragoomba, Item, SpinBlock, StageFX
+#include "stage/actors/ov10/actor22.h"
 #include "stage/actors/ov10/coin.h"
 #include "stage/actors/ov10/goomba.h"
 #include "stage/actors/ov10/item.h"
