@@ -20,6 +20,8 @@
 #include "stage/player/misc.h"
 #include "stage/player/player.h"
 
+#include "stage/render/texture.h"
+
 // Overlay 10 - Coin, Goomba, MiniGoomba, Paragoomba, Item, SpinBlock, StageFX
 #include "stage/actors/ov10/actor22.h"
 #include "stage/actors/ov10/coin.h"

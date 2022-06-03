@@ -3642,6 +3642,24 @@ _ZTV17ProjectileHandler											= 0x02126A5C;
 
 /* arm9 */
 /*----------------------------------------------------------------*/
+/*----------------------- texture helper -------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN13TextureHelper10setTextureERK11TextureInfo					= 0x020F5D4C;
+_ZN13TextureHelper11beginRenderERK4Vec3S2_						= 0x020F5D70;
+_ZN13TextureHelper11beginRenderERK4Vec3S2_s						= 0x020F5DDC;
+_ZN13TextureHelper20beginRenderNoCullingERK4Vec3S2_s			= 0x020F5E48;
+_ZN13TextureHelper19setTextureIndentityEv						= 0x020F5EB4;
+_ZN13TextureHelper15setDefaultColorEv							= 0x020F5EE0;
+_ZN13TextureHelper7rotateZEs									= 0x020F5F08;
+_ZN13TextureHelper13setupTexturesER7TextureP11TextureInfommm	= 0x020F5F38;
+_ZN13TextureHelper12setupTextureER7TextureR11TextureInfommm		= 0x020F5F90;
+_ZN13TextureHelper16getPaletteParamsER7Texturem					= 0x020F5FC4;
+_ZN13TextureHelper16getTextureParamsER7Texturem					= 0x020F5FF0;
+
+
+/* arm9 */
+/*----------------------------------------------------------------*/
 /*-------------------------- stage misc --------------------------*/
 /*----------------------------------------------------------------*/
 
