@@ -3335,6 +3335,264 @@ _ZN8Collider8listHeadE												= 0x020cabe4;
 _ZN8Collider8listTailE												= 0x020cabe8;
 
 
+/* arm9 */
+/*----------------------------------------------------------------*/
+/*----------------------- stagecontroller ------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN15StageControllerC1Ev				= 0x0201FFC4;
+_ZN15StageControllerC2Ev				= 0x0201FFC4;
+_ZN15StageControllerD0Ev				= 0x0201FF40;
+_ZN15StageControllerD1Ev				= 0x0201FF20;
+_ZN15StageControllerD2Ev				= 0x0201FF20;
+_ZN15StageController9preUpdateEv		= 0x0201FF80;
+
+_ZTV15StageController					= 0x0203CF30;
+
+
+/* arm9_ov10 */
+/*----------------------------------------------------------------*/
+/*------------------------------ coin ----------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN4CoinD0Ev								= 0x020D8150;
+_ZN4CoinD1Ev								= 0x020D80CC;
+_ZN4CoinD2Ev								= 0x020D80CC;
+_ZN4Coin8onCreateEv							= 0x020D8628;
+_ZN4Coin9onDestroyEv						= 0x020D8604;
+_ZN4Coin8onRenderEv							= 0x020D8248;
+_ZN4Coin10updateMainEv						= 0x020D84EC;
+_ZN4Coin15updateAnimationEv					= 0x020D8244;
+_ZN4Coin10onBlockHitEv						= 0x020D9BF4;
+_ZN4Coin13onStageBeatenER6Player			= 0x020D8568;
+
+_ZN4Coin6detachEv							= 0x020D81DC;
+_ZN4Coin13setOwnerBlockEm					= 0x020D823C;
+_ZN4Coin18renderBubbleSpriteEv				= 0x020D8488;
+_ZN4Coin13prepareBubbleEv					= 0x020D8B40;
+_ZN4Coin17updateBubbleScaleEv				= 0x020D99A8;
+_ZN4Coin17updateLiquidScaleEv				= 0x020D9ACC;
+_ZN4Coin22updateSpriteAnimationsEv			= 0x020D9B40;
+_ZN4Coin13updateDespawnEv					= 0x020D9B84;
+_ZN4Coin15updateCollisionEv					= 0x020D9C78;
+_ZN4Coin11switchStateERKMS_FbvE				= 0x020D9DCC;
+_ZN4Coin11updateStateEv						= 0x020D9D84;
+_ZN4Coin12defaultStateEv					= 0x020D9890;
+_ZN4Coin9jumpStateEv						= 0x020D9634;
+_ZN4Coin9fallStateEv						= 0x020D93B4;
+_ZN4Coin13detachedStateEv					= 0x020D923C;
+_ZN4Coin10floatStateEv						= 0x020D91F4;
+_ZN4Coin11bubbleStateEv						= 0x020D9004;
+_ZN4Coin19blockFloatWaitStateEv				= 0x020D8FB0;
+_ZN4Coin15blockFloatStateEv					= 0x020D8EEC;
+_ZN4Coin14collectedStateEv					= 0x020D8D9C;
+_ZN4Coin14blockJumpStateEv					= 0x020D8B9C;
+_ZN4Coin15bottomCollisionER10StageActorS1_	= 0x020D9CF0;
+
+_ZN4Coin11sBlockFloatE						= 0x021293DC;
+_ZN4Coin7sBubbleE							= 0x021293E4;
+_ZN4Coin15sBlockFloatWaitE					= 0x021293EC;
+_ZN4Coin9sDetachedE							= 0x021293F4;
+_ZN4Coin6sFloatE							= 0x021293FC;
+_ZN4Coin10sCollectedE						= 0x02129404;
+_ZN4Coin5sFallE								= 0x0212940C;
+_ZN4Coin5sJumpE								= 0x02129414;
+_ZN4Coin8sDefaultE							= 0x0212941C;
+_ZN4Coin11sBlockSpawnE						= 0x02129424;
+
+_ZN4Coin12bubbleAnglesE						= 0x02121634;
+_ZN4Coin19detachedVelocitiesXE				= 0x0212163C;
+_ZN4Coin20blockJumpVelocitiesXE				= 0x02121644;
+_ZN4Coin19floatingVelocitiesXE				= 0x0212164C;
+_ZN4Coin18fallingVelocityMaxE				= 0x02121654;
+_ZN4Coin26fallingVelocityAttenuationE		= 0x02121660;
+_ZN4Coin19bubbleSpawnOffsetsXE				= 0x0212166C;
+_ZN4Coin19bubbleSpawnOffsetsYE				= 0x02121678;
+_ZN4Coin12bottomSensorE						= 0x02121684;
+_ZN4Coin9topSensorE							= 0x02121690;
+_ZN4Coin10sideSensorE						= 0x0212169C;
+_ZN4Coin14velocityXMasksE					= 0x021216A8;
+_ZN4Coin17bounceVelocitiesYE				= 0x021216B4;
+_ZN4Coin24blockFloatingVelocitiesYE			= 0x021216C4;
+_ZN4Coin16slopeVelocitiesXE					= 0x021216D8;
+_ZN4Coin24blockFloatingVelocitiesXE			= 0x021216EC;
+_ZN4Coin11velocitiesYE						= 0x02121700;
+_ZN4Coin12colliderInfoE						= 0x02125204;
+_ZN4Coin7profileE							= 0x021251F8;
+
+_ZTV4Coin									= 0x02125220;
+
+
+/* arm9_ov10 */
+/*----------------------------------------------------------------*/
+/*-------------------------- spin block --------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN9SpinBlockD0Ev									= 0x020D9F4C;
+_ZN9SpinBlockD1Ev									= 0x020D9EBC;
+_ZN9SpinBlockD2Ev									= 0x020D9EBC;
+_ZN9SpinBlock8onCreateEv							= 0x020DA0E4;
+_ZN9SpinBlock9onDestroyEv							= 0x020D9FE4;
+_ZN9SpinBlock18onPrepareResourcesEv					= 0x020DA300;
+_ZN9SpinBlock10updateMainEv							= 0x020DA000;
+_ZN9SpinBlock13loadResourcesEv						= 0x020DA9A8;
+
+_ZN9SpinBlock16setModelCallbackEPFvP9NNSG3dRS_E		= 0x020DA338;
+_ZN9SpinBlock13modelCallbackEP9NNSG3dRS_			= 0x020DA360;
+_ZN9SpinBlock13setModelOwnerEPv						= 0x020DA3C0;
+_ZN9SpinBlock20updatePlayerStandingEv				= 0x020DA6EC;
+_ZN9SpinBlock12stepRotationERsss					= 0x020DA6A0;
+_ZN9SpinBlock15updateBoardSpinEv					= 0x020DA554;
+_ZN9SpinBlock19updateBoardPositionEv				= 0x020DA410;
+_ZN9SpinBlock11switchStateERKMS_FbvE				= 0x020DA91C;
+_ZN9SpinBlock11updateStateEv						= 0x020DA8D4;
+_ZN9SpinBlock9mainStateEv							= 0x020DA3C8;
+_ZN9SpinBlock15bottomCollisionER10StageActorS1_		= 0x020DA9CC;
+_ZN9SpinBlock12topCollisionER10StageActorS1_		= 0x020DA9D0;
+
+_ZN9SpinBlock5sMainE								= 0x0212942C;
+
+_ZN9SpinBlock7profileE								= 0x02125348;
+
+_ZTV9SpinBlock										= 0x02125360;
+
+
+/* arm9_ov10 */
+/*----------------------------------------------------------------*/
+/*------------------------ spin block 255 ------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN12SpinBlock255D0Ev								= 0x020DABF0;
+_ZN12SpinBlock255D1Ev								= 0x020DAB54;
+_ZN12SpinBlock255D2Ev								= 0x020DAB54;
+
+_ZN12SpinBlock2557profileE							= 0x0212533C;
+
+_ZTV12SpinBlock255									= 0x02125598;
+
+
+/* arm9_ov10 */
+/*----------------------------------------------------------------*/
+/*------------------------ spin block 256 ------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN12SpinBlock256D0Ev								= 0x020DAD30;
+_ZN12SpinBlock256D1Ev								= 0x020DAC94;
+_ZN12SpinBlock256D2Ev								= 0x020DAC94;
+
+_ZN12SpinBlock2567profileE							= 0x02125354;
+
+_ZTV12SpinBlock256									= 0x0212547C;
+
+
+/* arm9_ov10 */
+/*----------------------------------------------------------------*/
+/*----------------------------- goomba ---------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN6GoombaD0Ev												= 0x020E06F4;
+_ZN6GoombaD1Ev												= 0x020E0698;
+_ZN6GoombaD2Ev												= 0x020E0698;
+_ZN6Goomba8onCreateEv										= 0x020E0AB4;
+_ZN6Goomba9onDestroyEv										= 0x020E0758;
+_ZN6Goomba8onRenderEv										= 0x020E0764;
+_ZN6Goomba18onCleanupResourcesEv							= 0x020E0760;
+_ZN6Goomba10updateMainEv									= 0x020E09EC;
+_ZN6Goomba14updateDefeatedEv								= 0x020E1648;
+_ZN6Goomba9onStompedEv										= 0x020E1B78;
+_ZN6Goomba19onMegaWalkShockwaveEv							= 0x020E1B08;
+_ZN6Goomba15playerCollisionER14ActiveColliderS1_			= 0x020E2228;
+_ZN6Goomba15entityCollisionER14ActiveColliderR10StageActor	= 0x020E2018;
+_ZN6Goomba12damagePlayerER14ActiveColliderR6Player			= 0x020E1BB0;
+_ZN6Goomba12doPlayerJumpER6Playerl							= 0x020E22B0;
+
+_ZN6Goomba17updateMusicEventsEl								= 0x020E23F4;
+_ZN6Goomba17updateMegaDroppedEv								= 0x020E19AC;
+_ZN6Goomba21updateSpriteAnimationEv							= 0x020E1694;
+_ZN6Goomba11switchStateEMS_FbPvES0_							= 0x020E24A8;
+_ZN6Goomba11updateStateEv									= 0x020E2448;
+_ZN6Goomba9walkStateEPv										= 0x020E1538;
+_ZN6Goomba9turnStateEPv										= 0x020E1478;
+_ZN6Goomba12stompedStateEPv									= 0x020E13D0;
+_ZN6Goomba16megaDroppedStateEPv								= 0x020E1330;
+_ZN6Goomba13pipeFallStateEPv								= 0x020E127C;
+_ZN6Goomba13paraWalkStateEPv								= 0x020E1060;
+_ZN6Goomba13paraTurnStateEPv								= 0x020E0F60;
+_ZN6Goomba13pipeExitStateEPv								= 0x020E0D98;
+
+_ZN6Goomba15stompedFrameIDsE								= 0x021217A0;
+_ZN6Goomba19stompedFrameLengthsE							= 0x021217A4;
+_ZN6Goomba17turnWingsFrameIDsE								= 0x021217A8;
+_ZN6Goomba12turnFrameIDsE									= 0x021217B0;
+_ZN6Goomba17walkWingsFrameIDsE								= 0x02121834;
+_ZN6Goomba11velocitiesXE									= 0x021217C0;
+_ZN6Goomba10sideSensorE										= 0x021217D4;
+_ZN6Goomba12bottomSensorE									= 0x021217EC;
+_ZN6Goomba15pipeVelocitiesXE								= 0x02121804;
+_ZN6Goomba15pipeVelocitiesYE								= 0x02121814;
+_ZN6Goomba12pipeTargetsXE									= 0x02121824;
+_ZN6Goomba12pipeTargetsYE									= 0x02121844;
+_ZN6Goomba18activeColliderInfoE								= 0x02121854;
+_ZN6Goomba7profileE											= 0x021263FC;
+
+_ZTV6Goomba													= 0x02126420;
+
+
+/* arm9_ov10 */
+/*----------------------------------------------------------------*/
+/*--------------------------- paragoomba -------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN10ParagoombaD0Ev											= 0x020E268C;
+_ZN10ParagoombaD1Ev											= 0x020E2624;
+_ZN10ParagoombaD2Ev											= 0x020E2624;
+
+_ZN10Paragoomba9topSensorE									= 0x021217C8;
+_ZN10Paragoomba7profileE									= 0x02126408;
+
+_ZTV10Paragoomba											= 0x02126648;
+
+
+/* arm9_ov10 */
+/*----------------------------------------------------------------*/
+/*--------------------------- mini goomba ------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN10MiniGoombaD0Ev											= 0x020E2764;
+_ZN10MiniGoombaD1Ev											= 0x020E26FC;
+_ZN10MiniGoombaD2Ev											= 0x020E26FC;
+
+_ZN10MiniGoomba11velocitiesXE								= 0x021217B8;
+_ZN10MiniGoomba12bottomSensorE								= 0x021217E0;
+_ZN10MiniGoomba10sideSensorE								= 0x021217F8;
+_ZN10MiniGoomba7profileE									= 0x02126414;
+
+_ZTV10MiniGoomba											= 0x02126534;
+
+
+/* arm9_ov10 */
+/*----------------------------------------------------------------*/
+/*------------------------ animated tiles ------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN13AnimatedTilesC2Ev								= 0x020E2978;
+_ZN13AnimatedTilesD0Ev								= 0x020E2948;
+_ZN13AnimatedTilesD1Ev								= 0x020E2968;
+_ZN13AnimatedTilesD2Ev								= 0x020E2968;
+_ZN13AnimatedTiles6updateEv							= 0x020E27D4;
+
+_ZN13AnimatedTiles21questionBlockRotationE			= 0x02129474;
+_ZN13AnimatedTiles12coinRotationE					= 0x0212945C;
+_ZN13AnimatedTiles18questionBlockFrameE				= 0x0212944C;
+_ZN13AnimatedTiles18questionBlockTimerE				= 0x02129448;
+_ZN13AnimatedTiles9coinTimerE						= 0x02129444;
+_ZN13AnimatedTiles10brickTimerE						= 0x02129440;
+_ZN13AnimatedTiles10brickFrameE						= 0x0212943C;
+_ZN13AnimatedTiles9coinFrameE						= 0x02129438;
+
+_ZTV13AnimatedTiles									= 0x0212675C;
+
+
 /* arm9_ov10 */
 /*----------------------------------------------------------------*/
 /*--------------------------- fireball ---------------------------*/
@@ -3642,6 +3900,20 @@ _ZTV17ProjectileHandler											= 0x02126A5C;
 
 /* arm9_ov10 */
 /*----------------------------------------------------------------*/
+/*---------------------------- actor22 ---------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN7Actor22D0Ev			= 0x020E93C4;
+_ZN7Actor22D1Ev			= 0x020E9368;
+_ZN7Actor22D2Ev			= 0x020E9368;
+
+_ZN7Actor227profileE	= 0x02126BE0;
+
+_ZTV7Actor22			= 0x02126BEC;
+
+
+/* arm9_ov10 */
+/*----------------------------------------------------------------*/
 /*----------------------- texture helper -------------------------*/
 /*----------------------------------------------------------------*/
 
@@ -3695,6 +3967,81 @@ _ZN12PipeRenderer18brokenPipeBRTexIDsE						= 0x021225CC;
 _ZN12PipeRenderer16pipeExitBRTexIDsE						= 0x021225D4;
 _ZN12PipeRenderer16pipeExitTLTexIDsE						= 0x021225E0;
 _ZN12PipeRenderer14pipeBodyTexIDsE							= 0x021225EC;
+
+
+/* arm9_ov10 */
+/*----------------------------------------------------------------*/
+/*------------------------- view shaker --------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN10ViewShaker6createEv					= 0x020F9A38;
+_ZN10ViewShaker7destroyEv					= 0x020F99F4;
+_ZN10ViewShaker6updateEv					= 0x020F9900;
+_ZN10ViewShaker5resetEv						= 0x020F98F4;
+_ZN10ViewShaker9setConfigEhRKNS_6ConfigE	= 0x020F9888;
+_ZN10ViewShaker5startEhh					= 0x020F982C;
+_ZN10ViewShaker5startEhhh					= 0x020F97DC;
+_ZN10ViewShaker5startEhhhb					= 0x020F96A0;
+
+
+/* arm9_ov10 */
+/*----------------------------------------------------------------*/
+/*--------------------------- stagefx ----------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN7StageFXD2Ev							= 0x020FB57C;
+_ZN7StageFXD1Ev							= 0x020FB57C;
+_ZN7StageFXD0Ev							= 0x020FB5A8;
+_ZN7StageFX8onCreateEv					= 0x020FC7CC;
+_ZN7StageFX8onUpdateEv					= 0x020FC578;
+_ZN7StageFX8onRenderEv					= 0x020FC684;
+_ZN7StageFX9onDestroyEv					= 0x020FC794;
+_ZN7StageFX18onCleanupResourcesEv		= 0x020FC790;
+
+_ZN7StageFX9initStartEv					= 0x020FC54C;
+_ZN7StageFX9initClearEv					= 0x020FC214;
+_ZN7StageFX8initLoseEv					= 0x020FBFDC;
+_ZN7StageFX11initTimesUpEv				= 0x020FBCF8;
+_ZN7StageFX13initVsTimesUpEv			= 0x020FBC2C;
+_ZN7StageFX11initVsClearEv				= 0x020FBA00;
+_ZN7StageFX10initVsLoseEv				= 0x020FB9E0;
+
+_ZN7StageFX11updateStartEv				= 0x020FC2B4;
+_ZN7StageFX11updateClearEv				= 0x020FC050;
+_ZN7StageFX10updateLoseEv				= 0x020FBD30;
+_ZN7StageFX13updateTimesUpEv			= 0x020FBC5C;
+_ZN7StageFX15updateVsTimesUpEv			= 0x020FBA20;
+_ZN7StageFX13updateVsClearEv			= 0x020FB998;
+_ZN7StageFX12updateVsLoseEv				= 0x020FB948;
+
+_ZN7StageFX11renderStartEv				= 0x020FC548;
+_ZN7StageFX11renderClearEv				= 0x020FC1C0;
+_ZN7StageFX10renderLoseEv				= 0x020FBF60;
+_ZN7StageFX13renderTimesUpEv			= 0x020FBCB4;
+_ZN7StageFX15renderVsTimesUpEv			= 0x020FBBE0;
+
+_ZN7StageFX15renderLostLivesEv			= 0x020FB5F4;
+_ZN7StageFX18updateScalePaletteEPlPh	= 0x020FB900;
+_ZN7StageFX11getSettingsENS_4TypeEhh	= 0x020FB5DC;
+
+_ZN7StageFX13initFunctionsE				= 0x0212AEB0;
+_ZN7StageFX15updateFunctionsE			= 0x0212AEE8;
+_ZN7StageFX15renderFunctionsE			= 0x0212AF20;
+
+_ZN7StageFX17stageClearFileIDsE			= 0x0212770C;
+_ZN7StageFX13vsLoseFileIDsE				= 0x02127704;
+_ZN7StageFX12vsWinFileIDsE				= 0x0212774C;
+_ZN7StageFX18stageClearPalettesE		= 0x0212771C;
+_ZN7StageFX23stageClearLuigiPalettesE	= 0x021277BC;
+_ZN7StageFX23stageClearMarioPalettesE	= 0x021277C8;
+_ZN7StageFX18stageClearOAMDatasE		= 0x02127764;
+_ZN7StageFX13vsLoseOAMDatasE			= 0x021276E4;
+_ZN7StageFX13vsWinOAMDatasE				= 0x02127754;
+_ZN7StageFX16stageClearScalesE			= 0x0212780C;
+_ZN7StageFX13timesUpScalesE				= 0x021277E0;
+_ZN7StageFX7profileE					= 0x021277D4;
+
+_ZTV7StageFX							= 0x02127838;
 
 
 /* arm9 */
@@ -3864,32 +4211,6 @@ __aeabi_atexit		= 0x0;
 __dso_handle		= 0x0;
 
 
-/* arm9_ov10 */
-/*----------------------------------------------------------------*/
-/*------------------------ PipeRenderer --------------------------*/
-/*----------------------------------------------------------------*/
-
-_ZN12PipeRenderer12loadTexturesEv										= 0x020f6640;
-_ZN12PipeRenderer5setupElmmmmm											= 0x020f6528;
-_ZN12PipeRenderer6renderERK4Vec3s										= 0x020f64ac;
-_ZN12PipeRenderer17loadPipesGraphicsEv									= 0x020f671c;
-_ZN12PipeRenderer16renderHorizontalERK4Vec3s							= 0x020f6798;
-_ZN12PipeRenderer14renderVerticalERK4Vec3s								= 0x020f6b7c;
-_ZN12PipeRenderer20renderHorizontalMiniERK4Vec3s						= 0x020f6d44;
-_ZN12PipeRenderer18renderVerticalMiniERK4Vec3s							= 0x020f6e80;
-_ZN12PipeRenderer10renderQuadERK4Vec2RK11TextureInfollS2_				= 0x020f6fb4;
-_ZN12PipeRenderer13setupTexturesEv										= 0x020f6528;
-
-_ZN12PipeRenderer20miniPipeExitTLTexIDsE								= 0x021225b8;
-_ZN12PipeRenderer20miniPipeExitBRTexIDsE								= 0x021225bc;
-_ZN12PipeRenderer18miniPipeBodyTexIDsE									= 0x021225c0;
-_ZN12PipeRenderer18brokenPipeTLTexIDsE									= 0x021225c4;
-_ZN12PipeRenderer18brokenPipeBRTexIDsE									= 0x021225cc;
-_ZN12PipeRenderer16pipeExitBRTexIDsE									= 0x021225d4;
-_ZN12PipeRenderer16pipeExitTLTexIDsE									= 0x021225e0;
-_ZN12PipeRenderer14pipeBodyTexIDsE										= 0x021225ec;
-
-
 /* arm9_ov52 */
 /*-----------------------------------------------------------------*/
 /*--------------------------- MvsL Menu ---------------------------*/
@@ -4054,44 +4375,6 @@ _ZN4Item11switchStateEMS_FbvE = 0x020d4eb8;
 _ZN4Item12checkConsumeEv = 0x020d475c;
 
 
-/* arm9_ov10 */
-/*----------------------------------------------------------------*/
-/*------------------------ animated tiles ------------------------*/
-/*----------------------------------------------------------------*/
-
-_ZN13AnimatedTilesC2Ev								= 0x020E2978;
-_ZN13AnimatedTilesD0Ev								= 0x020E2948;
-_ZN13AnimatedTilesD1Ev								= 0x020E2968;
-_ZN13AnimatedTilesD2Ev								= 0x020E2968;
-_ZN13AnimatedTiles6updateEv							= 0x020E27D4;
-
-_ZN13AnimatedTiles21questionBlockRotationE			= 0x02129474;
-_ZN13AnimatedTiles12coinRotationE					= 0x0212945C;
-_ZN13AnimatedTiles18questionBlockFrameE				= 0x0212944C;
-_ZN13AnimatedTiles18questionBlockTimerE				= 0x02129448;
-_ZN13AnimatedTiles9coinTimerE						= 0x02129444;
-_ZN13AnimatedTiles10brickTimerE						= 0x02129440;
-_ZN13AnimatedTiles10brickFrameE						= 0x0212943C;
-_ZN13AnimatedTiles9coinFrameE						= 0x02129438;
-
-_ZTV13AnimatedTiles									= 0x0212675C;
-
-
-/* arm9_ov10 */
-/*----------------------------------------------------------------*/
-/*------------------------- view shaker --------------------------*/
-/*----------------------------------------------------------------*/
-
-_ZN10ViewShaker6createEv							= 0x020f9a38;
-_ZN10ViewShaker7destroyEv							= 0x020f99f4;
-_ZN10ViewShaker6updateEv							= 0x020f9900;
-_ZN10ViewShaker5resetEv								= 0x020f98f4;
-_ZN10ViewShaker9setConfigEhRKNS_6ConfigE			= 0x020f9888;
-_ZN10ViewShaker5startEhh							= 0x020f982c;
-_ZN10ViewShaker5startEhhh							= 0x020f97dc;
-_ZN10ViewShaker5startEhhhb							= 0x020f96a0;
-
-
 /*----------------------------------------------------------------*/
 /*--------------------------- unsorted ---------------------------*/
 /*----------------------------------------------------------------*/
@@ -4101,316 +4384,6 @@ Liquid_doWaves = 0x021646E0;
 
 /* arm9_ov10 */
 setPlayerStateForWaterBubbles = 0x02102BC4;
-
-
-/* arm9_ov10 */
-/*----------------------------------------------------------------*/
-/*----------------------- stagecontroller ------------------------*/
-/*----------------------------------------------------------------*/
-
-_ZN15StageControllerC1Ev			= 0x0201FFC4;
-_ZN15StageControllerC2Ev			= 0x0201FFC4;
-_ZN15StageControllerD2Ev			= 0x0201FF20;
-_ZN15StageControllerD1Ev			= 0x0201FF20;
-_ZN15StageControllerD0Ev			= 0x0201FF40;
-_ZN15StageController9preUpdateEv	= 0x0201FF80;
-
-_ZTV15StageController				= 0x0203CF30;
-
-
-/* arm9_ov10 */
-/*----------------------------------------------------------------*/
-/*--------------------------- stagefx ----------------------------*/
-/*----------------------------------------------------------------*/
-
-_ZN7StageFXD2Ev							= 0x020FB57C;
-_ZN7StageFXD1Ev							= 0x020FB57C;
-_ZN7StageFXD0Ev							= 0x020FB5A8;
-_ZN7StageFX8onCreateEv					= 0x020FC7CC;
-_ZN7StageFX8onUpdateEv					= 0x020FC578;
-_ZN7StageFX8onRenderEv					= 0x020FC684;
-_ZN7StageFX9onDestroyEv					= 0x020FC794;
-_ZN7StageFX18onCleanupResourcesEv		= 0x020FC790;
-
-_ZN7StageFX9initStartEv					= 0x020FC54C;
-_ZN7StageFX9initClearEv					= 0x020FC214;
-_ZN7StageFX8initLoseEv					= 0x020FBFDC;
-_ZN7StageFX11initTimesUpEv				= 0x020FBCF8;
-_ZN7StageFX13initVsTimesUpEv			= 0x020FBC2C;
-_ZN7StageFX11initVsClearEv				= 0x020FBA00;
-_ZN7StageFX10initVsLoseEv				= 0x020FB9E0;
-
-_ZN7StageFX11updateStartEv				= 0x020FC2B4;
-_ZN7StageFX11updateClearEv				= 0x020FC050;
-_ZN7StageFX10updateLoseEv				= 0x020FBD30;
-_ZN7StageFX13updateTimesUpEv			= 0x020FBC5C;
-_ZN7StageFX15updateVsTimesUpEv			= 0x020FBA20;
-_ZN7StageFX13updateVsClearEv			= 0x020FB998;
-_ZN7StageFX12updateVsLoseEv				= 0x020FB948;
-
-_ZN7StageFX11renderStartEv				= 0x020FC548;
-_ZN7StageFX11renderClearEv				= 0x020FC1C0;
-_ZN7StageFX10renderLoseEv				= 0x020FBF60;
-_ZN7StageFX13renderTimesUpEv			= 0x020FBCB4;
-_ZN7StageFX15renderVsTimesUpEv			= 0x020FBBE0;
-
-_ZN7StageFX15renderLostLivesEv			= 0x020FB5F4;
-_ZN7StageFX18updateScalePaletteEPlPh	= 0x020FB900;
-_ZN7StageFX11getSettingsENS_4TypeEhh	= 0x020FB5DC;
-
-_ZN7StageFX13initFunctionsE				= 0x0212AEB0;
-_ZN7StageFX15updateFunctionsE			= 0x0212AEE8;
-_ZN7StageFX15renderFunctionsE			= 0x0212AF20;
-
-_ZN7StageFX17stageClearFileIDsE			= 0x0212770C;
-_ZN7StageFX13vsLoseFileIDsE				= 0x02127704;
-_ZN7StageFX12vsWinFileIDsE				= 0x0212774C;
-_ZN7StageFX18stageClearPalettesE		= 0x0212771C;
-_ZN7StageFX23stageClearLuigiPalettesE	= 0x021277BC;
-_ZN7StageFX23stageClearMarioPalettesE	= 0x021277C8;
-_ZN7StageFX18stageClearOAMDatasE		= 0x02127764;
-_ZN7StageFX13vsLoseOAMDatasE			= 0x021276E4;
-_ZN7StageFX13vsWinOAMDatasE				= 0x02127754;
-_ZN7StageFX16stageClearScalesE			= 0x0212780C;
-_ZN7StageFX13timesUpScalesE				= 0x021277E0;
-_ZN7StageFX7profileE					= 0x021277D4;
-
-_ZTV7StageFX							= 0x02127838;
-
-
-/* arm9_ov10 */
-/*----------------------------------------------------------------*/
-/*---------------------------- actor22 ---------------------------*/
-/*----------------------------------------------------------------*/
-
-_ZN7Actor22D0Ev			= 0x020E93C4;
-_ZN7Actor22D1Ev			= 0x020E9368;
-_ZN7Actor22D2Ev			= 0x020E9368;
-
-_ZN7Actor227profileE	= 0x02126BE0;
-
-_ZTV7Actor22			= 0x02126BEC;
-
-
-
-/* arm9_ov10 */
-/*----------------------------------------------------------------*/
-/*------------------------------ coin ----------------------------*/
-/*----------------------------------------------------------------*/
-
-_ZN4CoinD0Ev								= 0x020D8150;
-_ZN4CoinD1Ev								= 0x020D80CC;
-_ZN4CoinD2Ev								= 0x020D80CC;
-_ZN4Coin8onCreateEv							= 0x020D8628;
-_ZN4Coin9onDestroyEv						= 0x020D8604;
-_ZN4Coin8onRenderEv							= 0x020D8248;
-_ZN4Coin10updateMainEv						= 0x020D84EC;
-_ZN4Coin15updateAnimationEv					= 0x020D8244;
-_ZN4Coin10onBlockHitEv						= 0x020D9BF4;
-_ZN4Coin13onStageBeatenER6Player			= 0x020D8568;
-
-_ZN4Coin6detachEv							= 0x020D81DC;
-_ZN4Coin13setOwnerBlockEm					= 0x020D823C;
-_ZN4Coin18renderBubbleSpriteEv				= 0x020D8488;
-_ZN4Coin13prepareBubbleEv					= 0x020D8B40;
-_ZN4Coin17updateBubbleScaleEv				= 0x020D99A8;
-_ZN4Coin17updateLiquidScaleEv				= 0x020D9ACC;
-_ZN4Coin22updateSpriteAnimationsEv			= 0x020D9B40;
-_ZN4Coin13updateDespawnEv					= 0x020D9B84;
-_ZN4Coin15updateCollisionEv					= 0x020D9C78;
-_ZN4Coin11switchStateERKMS_FbvE				= 0x020D9DCC;
-_ZN4Coin11updateStateEv						= 0x020D9D84;
-_ZN4Coin12defaultStateEv					= 0x020D9890;
-_ZN4Coin9jumpStateEv						= 0x020D9634;
-_ZN4Coin9fallStateEv						= 0x020D93B4;
-_ZN4Coin13detachedStateEv					= 0x020D923C;
-_ZN4Coin10floatStateEv						= 0x020D91F4;
-_ZN4Coin11bubbleStateEv						= 0x020D9004;
-_ZN4Coin19blockFloatWaitStateEv				= 0x020D8FB0;
-_ZN4Coin15blockFloatStateEv					= 0x020D8EEC;
-_ZN4Coin14collectedStateEv					= 0x020D8D9C;
-_ZN4Coin14blockJumpStateEv					= 0x020D8B9C;
-_ZN4Coin15bottomCollisionER10StageActorS1_	= 0x020D9CF0;
-
-_ZN4Coin11sBlockFloatE						= 0x021293DC;
-_ZN4Coin7sBubbleE							= 0x021293E4;
-_ZN4Coin15sBlockFloatWaitE					= 0x021293EC;
-_ZN4Coin9sDetachedE							= 0x021293F4;
-_ZN4Coin6sFloatE							= 0x021293FC;
-_ZN4Coin10sCollectedE						= 0x02129404;
-_ZN4Coin5sFallE								= 0x0212940C;
-_ZN4Coin5sJumpE								= 0x02129414;
-_ZN4Coin8sDefaultE							= 0x0212941C;
-_ZN4Coin11sBlockSpawnE						= 0x02129424;
-
-_ZN4Coin12bubbleAnglesE						= 0x02121634;
-_ZN4Coin19detachedVelocitiesXE				= 0x0212163C;
-_ZN4Coin20blockJumpVelocitiesXE				= 0x02121644;
-_ZN4Coin19floatingVelocitiesXE				= 0x0212164C;
-_ZN4Coin18fallingVelocityMaxE				= 0x02121654;
-_ZN4Coin26fallingVelocityAttenuationE		= 0x02121660;
-_ZN4Coin19bubbleSpawnOffsetsXE				= 0x0212166C;
-_ZN4Coin19bubbleSpawnOffsetsYE				= 0x02121678;
-_ZN4Coin12bottomSensorE						= 0x02121684;
-_ZN4Coin9topSensorE							= 0x02121690;
-_ZN4Coin10sideSensorE						= 0x0212169C;
-_ZN4Coin14velocityXMasksE					= 0x021216A8;
-_ZN4Coin17bounceVelocitiesYE				= 0x021216B4;
-_ZN4Coin24blockFloatingVelocitiesYE			= 0x021216C4;
-_ZN4Coin16slopeVelocitiesXE					= 0x021216D8;
-_ZN4Coin24blockFloatingVelocitiesXE			= 0x021216EC;
-_ZN4Coin11velocitiesYE						= 0x02121700;
-_ZN4Coin12colliderInfoE						= 0x02125204;
-_ZN4Coin7profileE							= 0x021251F8;
-
-_ZTV4Coin									= 0x02125220;
-
-
-/* arm9_ov10 */
-/*----------------------------------------------------------------*/
-/*----------------------------- goomba ---------------------------*/
-/*----------------------------------------------------------------*/
-
-_ZN6GoombaD0Ev												= 0x020E06F4;
-_ZN6GoombaD1Ev												= 0x020E0698;
-_ZN6GoombaD2Ev												= 0x020E0698;
-_ZN6Goomba8onCreateEv										= 0x020E0AB4;
-_ZN6Goomba9onDestroyEv										= 0x020E0758;
-_ZN6Goomba8onRenderEv										= 0x020E0764;
-_ZN6Goomba18onCleanupResourcesEv							= 0x020E0760;
-_ZN6Goomba10updateMainEv									= 0x020E09EC;
-_ZN6Goomba14updateDefeatedEv								= 0x020E1648;
-_ZN6Goomba9onStompedEv										= 0x020E1B78;
-_ZN6Goomba19onMegaWalkShockwaveEv							= 0x020E1B08;
-_ZN6Goomba15playerCollisionER14ActiveColliderS1_			= 0x020E2228;
-_ZN6Goomba15entityCollisionER14ActiveColliderR10StageActor	= 0x020E2018;
-_ZN6Goomba12damagePlayerER14ActiveColliderR6Player			= 0x020E1BB0;
-_ZN6Goomba12doPlayerJumpER6Playerl							= 0x020E22B0;
-
-_ZN6Goomba17updateMusicEventsEl								= 0x020E23F4;
-_ZN6Goomba17updateMegaDroppedEv								= 0x020E19AC;
-_ZN6Goomba21updateSpriteAnimationEv							= 0x020E1694;
-_ZN6Goomba11switchStateEMS_FbPvES0_							= 0x020E24A8;
-_ZN6Goomba11updateStateEv									= 0x020E2448;
-_ZN6Goomba9walkStateEPv										= 0x020E1538;
-_ZN6Goomba9turnStateEPv										= 0x020E1478;
-_ZN6Goomba12stompedStateEPv									= 0x020E13D0;
-_ZN6Goomba16megaDroppedStateEPv								= 0x020E1330;
-_ZN6Goomba13pipeFallStateEPv								= 0x020E127C;
-_ZN6Goomba13paraWalkStateEPv								= 0x020E1060;
-_ZN6Goomba13paraTurnStateEPv								= 0x020E0F60;
-_ZN6Goomba13pipeExitStateEPv								= 0x020E0D98;
-
-_ZN6Goomba15stompedFrameIDsE								= 0x021217A0;
-_ZN6Goomba19stompedFrameLengthsE							= 0x021217A4;
-_ZN6Goomba17turnWingsFrameIDsE								= 0x021217A8;
-_ZN6Goomba12turnFrameIDsE									= 0x021217B0;
-_ZN6Goomba17walkWingsFrameIDsE								= 0x02121834;
-_ZN6Goomba11velocitiesXE									= 0x021217C0;
-_ZN6Goomba10sideSensorE										= 0x021217D4;
-_ZN6Goomba12bottomSensorE									= 0x021217EC;
-_ZN6Goomba15pipeVelocitiesXE								= 0x02121804;
-_ZN6Goomba15pipeVelocitiesYE								= 0x02121814;
-_ZN6Goomba12pipeTargetsXE									= 0x02121824;
-_ZN6Goomba12pipeTargetsYE									= 0x02121844;
-_ZN6Goomba18activeColliderInfoE								= 0x02121854;
-_ZN6Goomba7profileE											= 0x021263FC;
-
-_ZTV6Goomba													= 0x02126420;
-
-
-/* arm9_ov10 */
-/*----------------------------------------------------------------*/
-/*--------------------------- paragoomba -------------------------*/
-/*----------------------------------------------------------------*/
-
-_ZN10ParagoombaD0Ev											= 0x020E268C;
-_ZN10ParagoombaD1Ev											= 0x020E2624;
-_ZN10ParagoombaD2Ev											= 0x020E2624;
-
-_ZN10Paragoomba9topSensorE									= 0x021217C8;
-_ZN10Paragoomba7profileE									= 0x02126408;
-
-_ZTV10Paragoomba											= 0x02126648;
-
-
-/* arm9_ov10 */
-/*----------------------------------------------------------------*/
-/*--------------------------- mini goomba ------------------------*/
-/*----------------------------------------------------------------*/
-
-_ZN10MiniGoombaD0Ev											= 0x020E2764;
-_ZN10MiniGoombaD1Ev											= 0x020E26FC;
-_ZN10MiniGoombaD2Ev											= 0x020E26FC;
-
-_ZN10MiniGoomba11velocitiesXE								= 0x021217B8;
-_ZN10MiniGoomba12bottomSensorE								= 0x021217E0;
-_ZN10MiniGoomba10sideSensorE								= 0x021217F8;
-_ZN10MiniGoomba7profileE									= 0x02126414;
-
-_ZTV10MiniGoomba											= 0x02126534;
-
-
-/* arm9_ov10 */
-/*----------------------------------------------------------------*/
-/*-------------------------- spin block --------------------------*/
-/*----------------------------------------------------------------*/
-
-_ZN9SpinBlockD0Ev									= 0x020D9F4C;
-_ZN9SpinBlockD1Ev									= 0x020D9EBC;
-_ZN9SpinBlockD2Ev									= 0x020D9EBC;
-_ZN9SpinBlock8onCreateEv							= 0x020DA0E4;
-_ZN9SpinBlock9onDestroyEv							= 0x020D9FE4;
-_ZN9SpinBlock18onPrepareResourcesEv					= 0x020DA300;
-_ZN9SpinBlock10updateMainEv							= 0x020DA000;
-_ZN9SpinBlock13loadResourcesEv						= 0x020DA9A8;
-
-_ZN9SpinBlock16setModelCallbackEPFvP9NNSG3dRS_E		= 0x020DA338;
-_ZN9SpinBlock13modelCallbackEP9NNSG3dRS_			= 0x020DA360;
-_ZN9SpinBlock13setModelOwnerEPv						= 0x020DA3C0;
-_ZN9SpinBlock20updatePlayerStandingEv				= 0x020DA6EC;
-_ZN9SpinBlock12stepRotationERsss					= 0x020DA6A0;
-_ZN9SpinBlock15updateBoardSpinEv					= 0x020DA554;
-_ZN9SpinBlock19updateBoardPositionEv				= 0x020DA410;
-_ZN9SpinBlock11switchStateERKMS_FbvE				= 0x020DA91C;
-_ZN9SpinBlock11updateStateEv						= 0x020DA8D4;
-_ZN9SpinBlock9mainStateEv							= 0x020DA3C8;
-_ZN9SpinBlock15bottomCollisionER10StageActorS1_		= 0x020DA9CC;
-_ZN9SpinBlock12topCollisionER10StageActorS1_		= 0x020DA9D0;
-
-_ZN9SpinBlock5sMainE								= 0x0212942C;
-
-_ZN9SpinBlock7profileE								= 0x02125348;
-
-_ZTV9SpinBlock										= 0x02125360;
-
-
-/* arm9_ov10 */
-/*----------------------------------------------------------------*/
-/*------------------------ spin block 255 ------------------------*/
-/*----------------------------------------------------------------*/
-
-_ZN12SpinBlock255D0Ev								= 0x020DABF0;
-_ZN12SpinBlock255D1Ev								= 0x020DAB54;
-_ZN12SpinBlock255D2Ev								= 0x020DAB54;
-
-_ZN12SpinBlock2557profileE							= 0x0212533C;
-
-_ZTV12SpinBlock255									= 0x02125598;
-
-
-/* arm9_ov10 */
-/*----------------------------------------------------------------*/
-/*------------------------ spin block 256 ------------------------*/
-/*----------------------------------------------------------------*/
-
-_ZN12SpinBlock256D0Ev								= 0x020DAD30;
-_ZN12SpinBlock256D1Ev								= 0x020DAC94;
-_ZN12SpinBlock256D2Ev								= 0x020DAC94;
-
-_ZN12SpinBlock2567profileE							= 0x02125354;
-
-_ZTV12SpinBlock256									= 0x0212547C;
 
 
 /* arm9_ov24 */
