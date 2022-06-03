@@ -3660,6 +3660,19 @@ _ZN13TextureHelper16getTextureParamsER7Texturem					= 0x020F5FF0;
 
 /* arm9 */
 /*----------------------------------------------------------------*/
+/*------------------ large flip fence renderer -------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN22LargeFlipFenceRenderer4initEv								= 0x020F6280;
+_ZN22LargeFlipFenceRenderer6renderEv							= 0x020F60F0;
+_ZN22LargeFlipFenceRenderer15computeVerticesEv					= 0x020F631C;
+_ZNK22LargeFlipFenceRenderer17transformPositionERK4Vec3RS0_		= 0x020F601C;
+_ZN22LargeFlipFenceRenderer12setupTextureEv						= 0x020F62D4;
+_ZN22LargeFlipFenceRenderer11loadTextureEv						= 0x020F6304;
+
+
+/* arm9 */
+/*----------------------------------------------------------------*/
 /*-------------------------- stage misc --------------------------*/
 /*----------------------------------------------------------------*/
 
