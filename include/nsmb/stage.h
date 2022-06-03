@@ -10,6 +10,7 @@
 //#include "stage/scene.h"
 
 #include "stage/animatedtiles.h"
+#include "stage/curve.h"
 #include "stage/effect.h"
 #include "stage/fireball.h"
 #include "stage/projectile.h"
