@@ -3,8 +3,11 @@
 #include "nsmb/graphics/2d/oam.h"
 
 
-namespace EffectType
-{
+constexpr u32 EffectTypes = 25;
+
+
+namespace EffectType {
+
 	constexpr s8 Score100			= 0;
 	constexpr s8 Score200			= 1;
 	constexpr s8 Score400			= 2;
@@ -30,6 +33,7 @@ namespace EffectType
 	constexpr s8 BrickShards		= 22;
 	//constexpr s8 Unknown23			= 23;
 	constexpr s8 RedNumber			= 24;
+
 }
 
 

@@ -9,7 +9,7 @@ class Fireball
 {
 public:
 
-	using StateFunction = void (Fireball::*)(void* arg);
+	using StateFunction = bool(Fireball::*)(void* arg);
 
 	static constexpr u8 OwnerPlayer0 = 0;
 	static constexpr u8 OwnerPlayer1 = 1;
@@ -26,7 +26,7 @@ public:
 
 
 	// 020E3A8C
-	void create(u8 ownerType, const Vec3& position, u8 direction, const Vec3& unused, u8 id);
+	bool create(s8 ownerType, const Vec3& position, u8 direction, const Vec3* unused, u8 id);
 	// 020E3A3C
 	void destroy();
 	// 020E39DC
@@ -50,7 +50,7 @@ public:
 	void applyBounceEnemy(u32 steepness, bool uphill);
 
 	// 020E3908
-	bool switchState(StateFunction func, void* arg);
+	bool switchState(StateFunction function, void* arg);
 
 	// 020E34B4
 	void createPlayer();
@@ -124,8 +124,8 @@ public:
 	u32 unused78;
 	u32 unused7C;
 	bool active;
-	u8 ownerType;
-	s8 unused82;					// Set to -1 in Fireball() and destroy()
+	s8 ownerType;
+	s8 playerID;					// Set to -1 in Fireball() and destroy()
 	s8 updateStep;
 	u8 drawFlags;					// OAM::Flags
 	u8 direction;					// Bit 0 = horizontal, bit 1 = vertical
@@ -150,7 +150,7 @@ public:
 	virtual ~FireballHandler();
 
 	// 020E3E8C
-	void spawn(u8 ownerType, const Vec3& position, u8 direction, const Vec3& unused);
+	bool spawn(s8 ownerType, const Vec3& position, u8 direction, const Vec3* unused = nullptr);
 	// 020E3EE0
 	void destroyEnemy();
 	// 020E3F1C
@@ -170,13 +170,13 @@ NTR_SIZE_GUARD(FireballHandler, 0x8C4);
 namespace Fireballs {
 
 	// 020E3CE4
-	void spawnFireBroFireball(const Vec3& position, u8 direction);
+	bool spawnFireBroFireball(const Vec3& position, u8 direction);
 	// 020E3D4C
-	void spawnPiranhaPlantFireball(const Vec3& position, u8 direction, const Vec3& unused);
+	bool spawnPiranhaPlantFireball(const Vec3& position, u8 direction, const Vec3* unused = nullptr);
 	// 020E3D90
-	void spawnPlayerFireball(u8 playerID, const Vec3& position, u8 direction);
+	bool spawnPlayerFireball(u8 playerID, const Vec3& position, u8 direction);
 	// 020E3DEC
-	void spawn(u8 ownerType, const Vec3& position, u8 direction, const Vec3& unused);
+	bool spawn(s8 ownerType, const Vec3& position, u8 direction, const Vec3* unused = nullptr);
 	// 020E3E24
 	void destroyEnemyFireballs();
 

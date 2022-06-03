@@ -3345,7 +3345,7 @@ _ZN8FireballC2Ev											= 0x020E3C84;
 _ZN8FireballD0Ev											= 0x020E3C0C;
 _ZN8FireballD1Ev											= 0x020E3C50;
 _ZN8FireballD2Ev											= 0x020E3C50;
-_ZN8Fireball6createEhRK4Vec3hS2_h							= 0x020E3A8C;
+_ZN8Fireball6createEaRK4Vec3hPS1_h							= 0x020E3A8C;
 _ZN8Fireball7destroyEv										= 0x020E3A3C;
 _ZN8Fireball6updateEv										= 0x020E39DC;
 _ZN8Fireball10extinguishEv									= 0x020E3488;
@@ -3356,7 +3356,7 @@ _ZN8Fireball20updatePlayerColliderEv						= 0x020E30D8;
 _ZN8Fireball19updateEnemyColliderEv							= 0x020E2DC4;
 _ZN8Fireball17applyBouncePlayerEmb							= 0x020E3428;
 _ZN8Fireball16applyBounceEnemyEmb							= 0x020E33C8;
-_ZN8Fireball11switchStateEMS_FvPvES0_						= 0x020E3908;
+_ZN8Fireball11switchStateEMS_FbPvES0_						= 0x020E3908;
 _ZN8Fireball12createPlayerEv								= 0x020E34B4;
 _ZN8Fireball11playerStateEPv								= 0x020E3568;
 _ZN8Fireball18createPiranhaPlantEv							= 0x020E2FD8;
@@ -3370,16 +3370,16 @@ _ZN15FireballHandlerC2Ev									= 0x020E40A0;
 _ZN15FireballHandlerD0Ev									= 0x020E4010;
 _ZN15FireballHandlerD1Ev									= 0x020E405C;
 _ZN15FireballHandlerD2Ev									= 0x020E405C;
-_ZN15FireballHandler5spawnEhRK4Vec3hS2_						= 0x020E3E8C;
+_ZN15FireballHandler5spawnEaRK4Vec3hPS1_					= 0x020E3E8C;
 _ZN15FireballHandler12destroyEnemyEv						= 0x020E3EE0;
 _ZN15FireballHandler6updateEv								= 0x020E3F1C;
 _ZN15FireballHandler6renderEv								= 0x020E3F58;
 _ZNK15FireballHandler4initEv								= 0x020E4008;
 
 _ZN9Fireballs20spawnFireBroFireballERK4Vec3h				= 0x020E3CE4;
-_ZN9Fireballs25spawnPiranhaPlantFireballERK4Vec3hS2_		= 0x020E3D4C;
+_ZN9Fireballs25spawnPiranhaPlantFireballERK4Vec3hPS1_		= 0x020E3D4C;
 _ZN9Fireballs19spawnPlayerFireballEhRK4Vec3h				= 0x020E3D90;
-_ZN9Fireballs5spawnEhRK4Vec3hS2_							= 0x020E3DEC;
+_ZN9Fireballs5spawnEaRK4Vec3hPS1_							= 0x020E3DEC;
 _ZN9Fireballs21destroyEnemyFireballsEv						= 0x020E3E24;
 _ZN9Fireballs6updateEv										= 0x020E3E3C;
 _ZN9Fireballs6renderEv										= 0x020E3E54;
@@ -3411,6 +3411,233 @@ _ZN9Fireballs15activeFireballsE								= 0x02129480;
 
 _ZTV8Fireball												= 0x02126784;
 _ZTV15FireballHandler										= 0x02126794;
+
+
+/* arm9_ov10 */
+/*----------------------------------------------------------------*/
+/*--------------------------- effect -----------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN6EffectC1Ev = 0x020e6414;
+_ZN6EffectC2Ev = 0x020e6414;
+_ZN6EffectD0Ev = 0x020e6334;
+_ZN6EffectD1Ev = 0x020e63a8;
+_ZN13EffectHandlerD0Ev = 0x020e683c;
+_ZN13EffectHandlerD1Ev = 0x020e6888;
+_ZN11ChildEffectC1Ev = 0x020e64dc;
+_ZN11ChildEffectC2Ev = 0x020e64dc;
+_ZN11ChildEffectD1Ev = 0x020e6320;
+_ZN6Effect18updateMeteorDebrisEv = 0x020e415c;
+_ZN6Effect18renderMeteorDebrisEv = 0x020e4280;
+_ZN6Effect16initMeteorDebrisEv = 0x020e4378;
+_ZN6Effect21decrementBrickCounterEv = 0x020e4510;
+_ZN6Effect21incrementBrickCounterEv = 0x020e4538;
+_ZN6Effect12updateBricksEv = 0x020e4550;
+_ZN6Effect12renderBricksEv = 0x020e4710;
+_ZN6Effect10initBricksEv = 0x020e481c;
+_ZN6Effect16updatePipeShardsEv = 0x020e4a6c;
+_ZN6Effect16renderPipeShardsEv = 0x020e4b6c;
+_ZN6Effect14initPipeShardsEv = 0x020e4c3c;
+_ZN6Effect10renderStarEv = 0x020e4d7c;
+_ZN6Effect8initStarEv = 0x020e4dcc;
+_ZN6Effect11updateShineEv = 0x020e4de8;
+_ZN6Effect11renderShineEv = 0x020e4e68;
+_ZN6Effect9initShineEv = 0x020e4eb8;
+_ZN6Effect19updateFireballTrailEv = 0x020e4ed4;
+_ZN6Effect19renderFireballTrailEv = 0x020e4ef8;
+_ZN6Effect17initFireballTrailEv = 0x020e4f74;
+_ZN6Effect17updateDroppedCardEv = 0x020e4fac;
+_ZN6Effect17updateFallingCardEv = 0x020e50b4;
+_ZN6Effect17updateCardCollectEv = 0x020e51c8;
+_ZN6Effect17updateDisplayCardEv = 0x020e5338;
+_ZN6Effect10renderCardEv = 0x020e53dc;
+_ZN6Effect8initCardEv = 0x020e5424;
+_ZN6Effect14updateSparklesEv = 0x020e5428;
+_ZN6Effect14renderSparklesEv = 0x020e54f0;
+_ZN6Effect12initSparklesEv = 0x020e553c;
+_ZN6Effect15updateRedNumberEv = 0x020e555c;
+_ZN6Effect15renderRedNumberEv = 0x020e573c;
+_ZN6Effect13initRedNumberEv = 0x020e57c0;
+_ZN6Effect12updatePointsEv = 0x020e57c4;
+_ZN6Effect12renderPointsEv = 0x020e588c;
+_ZN6Effect10initPointsEv = 0x020e58e0;
+_ZN6Effect12applyGravityEv = 0x020e58fc;
+_ZN6Effect13applyVelocityERK4Vec3 = 0x020e5920;
+_ZN6Effect13applyVelocityEv = 0x020e5940;
+_ZN6Effect6updateEv = 0x020e5964;
+_ZN6Effect6renderEv = 0x020e59a8;
+_ZN6Effect7disableEv = 0x020e59ec;
+_ZN6Effect12switchUpdateEMS_FvvE = 0x020e59f8;
+_ZN6Effect6createEaRK4Vec3mtam = 0x020e5ac4;
+_ZN6EffectC2Ev = 0x020e6414;
+_ZN13EffectHandlerC2Ev = 0x020e68cc;
+_ZN7Effects7destroyEa = 0x020e64f0;
+_ZN7Effects6updateEv = 0x020e650c;
+_ZN7Effects6renderEv = 0x020e6524;
+_ZN7Effects5spawnEaRK4Vec3mtam = 0x020e653c;
+_ZN7Effects5spawnEaRK4Vec3a = 0x020e657c;
+_ZN7Effects4initEv = 0x020e65b4;
+_ZN13EffectHandler7destroyEa = 0x020e65cc;
+_ZN13EffectHandler6updateEv = 0x020e66bc;
+_ZN13EffectHandler6renderEv = 0x020e6710;
+_ZN13EffectHandler5spawnEaRK4Vec3mtam = 0x020e6764;
+_ZN13EffectHandler4initEv = 0x020e6834;
+
+_ZN7Effects12activeBricksE = 0x0212a41c;
+_ZN7Effects13effectHandlerE = 0x0212a420;
+
+_ZTV6Effect = 0x02126a24;
+_ZTV13EffectHandler = 0x02126a04;
+
+
+/* arm9_ov10 */
+/*----------------------------------------------------------------*/
+/*-------------------------- projectile --------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN10ProjectileC1Ev												= 0x020E7450;
+_ZN10ProjectileC2Ev												= 0x020E7450;
+_ZN10ProjectileD0Ev												= 0x020E73E0;
+_ZN10ProjectileD1Ev												= 0x020E7420;
+_ZN10ProjectileD2Ev												= 0x020E7420;
+_ZN10Projectile5spawnEaRK4Vec3tlPS1_PK5Vec3s					= 0x020E71D8;
+_ZN10Projectile5spawnEaRK4Vec3thPS1_							= 0x020E72F0;
+_ZN10Projectile7destroyEv										= 0x020E7188;
+_ZN10Projectile12switchUpdateEMS_FbvE							= 0x020E6F78;
+_ZN10Projectile6updateEv										= 0x020E7038;
+_ZN10Projectile12switchRenderEMS_FbvE							= 0x020E7084;
+_ZN10Projectile6renderEv										= 0x020E7144;
+_ZN10Projectile22updateVerticalVelocityEv						= 0x020E6F30;
+_ZN10Projectile13applyVelocityEv								= 0x020E6F0C;
+_ZN10Projectile15createBoomerangEv								= 0x020E787C;
+_ZN10Projectile15renderBoomerangEv								= 0x020E7864;
+_ZN10Projectile15updateBoomerangEv								= 0x020E7630;
+_ZN10Projectile23updateBoomerangColliderEv						= 0x020E7490;
+_ZN10Projectile23boomerangActiveCallbackER14ActiveColliderS1_	= 0x020E7AC4;
+_ZN10Projectile12createHammerEv									= 0x020E7CE4;
+_ZN10Projectile12renderHammerEv									= 0x020E7CCC;
+_ZN10Projectile12updateHammerEv									= 0x020E7BB4;
+_ZN10Projectile20updateHammerColliderEv							= 0x020E7AE8;
+_ZN10Projectile18createSledgehammerEv							= 0x020E812C;
+_ZN10Projectile18renderSledgehammerEv							= 0x020E8100;
+_ZN10Projectile18updateSledgehammerEv							= 0x020E800C;
+_ZN10Projectile26updateSledgehammerColliderEv					= 0x020E7F00;
+_ZN10Projectile21createMummipokeyStoneEv						= 0x020E8930;
+_ZN10Projectile21renderMummipokeyStoneEv						= 0x020E8904;
+_ZN10Projectile21updateMummipokeyStoneEv						= 0x020E85F0;
+_ZN10Projectile29updateMummipokeyStoneColliderEv				= 0x020E8410;
+_ZN10Projectile33updateMummipokeyStoneCollisionMgrEv			= 0x020E8354;
+_ZN10Projectile19createDryBowserBoneEv							= 0x020E8DF4;
+_ZN10Projectile19renderDryBowserBoneEv							= 0x020E8DC8;
+_ZN10Projectile19updateDryBowserBoneEv							= 0x020E8C80;
+_ZN10Projectile27updateDryBowserBoneColliderEv					= 0x020E8B74;
+
+_ZN10Projectile23boomerangAccelerationsXE						= 0x02121D2C;
+_ZN10Projectile23boomerangAccelerationsYE						= 0x02121D14;
+_ZN10Projectile20boomerangVelocitiesXE							= 0x02121D24;
+_ZN10Projectile20boomerangVelocitiesYE							= 0x02121D1C;
+_ZN10Projectile19boomerangDirectionsE							= 0x02121D34;
+_ZN10Projectile18boomerangActiveBoxE							= 0x02121D3C;
+_ZN10Projectile22boomerangColliderInfosE						= 0x02121D4C;
+_ZN10Projectile16hammerRotationsYE								= 0x02121DBC;
+_ZN10Projectile17hammerVelocitiesXE								= 0x02121DC0;
+_ZN10Projectile15hammerActiveBoxE								= 0x02121DC8;
+_ZN10Projectile18hammerColliderInfoE							= 0x02121DD8;
+_ZN10Projectile23sledgehammerVelocitiesXE						= 0x02121DF4;
+_ZN10Projectile21sledgehammerActiveBoxE							= 0x02121DFC;
+_ZN10Projectile25sledgehammerColliderInfosE						= 0x02121E0C;
+_ZN10Projectile25mummipokeyStoneSideSensorE						= 0x02121E44;
+_ZN10Projectile24mummipokeyStoneTopSensorE						= 0x02121E50;
+_ZN10Projectile27mummipokeyStoneBottomSensorE					= 0x02121E5C;
+_ZN10Projectile24mummipokeyStoneActiveBoxE						= 0x02121E68;
+_ZN10Projectile27mummipokeyStoneColliderInfoE					= 0x02121E78;
+_ZN10Projectile22dryBowserBoneActiveBoxE						= 0x02121E94;
+_ZN10Projectile25dryBowserBoneColliderInfoE						= 0x02121EA4;
+
+_ZN10Projectile11createTableE									= 0x0212A6A8;
+_ZN10Projectile15platformManagerE								= 0x0212A6D0;
+_ZN10Projectile14activeColliderE								= 0x0212A704;
+_ZN10Projectile16collisionManagerE								= 0x0212A7B4;
+
+_ZN15ProjectileModelC1Ev										= 0x020E6EFC;
+_ZN15ProjectileModelC2Ev										= 0x020E6EFC;
+_ZN15ProjectileModelD0Ev										= 0x020E6ECC;
+_ZN15ProjectileModelD1Ev										= 0x020E6EEC;
+_ZN15ProjectileModelD2Ev										= 0x020E6EBC;
+_ZN15ProjectileModel6createEv									= 0x020E6EB4;
+_ZN15ProjectileModel6renderER10Projectile						= 0x020E6EB0;
+
+_ZN14BoomerangModelC1Ev											= 0x020E7A9C;
+_ZN14BoomerangModelC2Ev											= 0x020E7A9C;
+_ZN14BoomerangModelD0Ev											= 0x020E7A3C;
+_ZN14BoomerangModelD1Ev											= 0x020E7A70;
+_ZN14BoomerangModelD2Ev											= 0x020E7A70;
+_ZN14BoomerangModel6createEv									= 0x020E79DC;
+_ZN14BoomerangModel6renderER10Projectile						= 0x020E78B8;
+
+_ZN11HammerModelC1Ev											= 0x020E7ED8;
+_ZN11HammerModelC2Ev											= 0x020E7ED8;
+_ZN11HammerModelD0Ev											= 0x020E7E78;
+_ZN11HammerModelD1Ev											= 0x020E7EAC;
+_ZN11HammerModelD2Ev											= 0x020E7EAC;
+_ZN11HammerModel6createEv										= 0x020E7E18;
+_ZN11HammerModel6renderER10Projectile							= 0x020E7D20;
+
+_ZN17SledgehammerModelC1Ev										= 0x020E832C;
+_ZN17SledgehammerModelC2Ev										= 0x020E832C;
+_ZN17SledgehammerModelD0Ev										= 0x020E82CC;
+_ZN17SledgehammerModelD1Ev										= 0x020E8300;
+_ZN17SledgehammerModelD2Ev										= 0x020E8300;
+_ZN17SledgehammerModel6createEv									= 0x020E828C;
+_ZN17SledgehammerModel6renderER10Projectile						= 0x020E8168;
+
+_ZN20MummipokeyStoneModelC1Ev									= 0x020E8B4C;
+_ZN20MummipokeyStoneModelC2Ev									= 0x020E8B4C;
+_ZN20MummipokeyStoneModelD0Ev									= 0x020E8AEC;
+_ZN20MummipokeyStoneModelD1Ev									= 0x020E8B20;
+_ZN20MummipokeyStoneModelD2Ev									= 0x020E8B20;
+_ZN20MummipokeyStoneModel6createEv								= 0x020E8A8C;
+_ZN20MummipokeyStoneModel6renderER10Projectile					= 0x020E896C;
+
+_ZN18DryBowserBoneModelC1Ev										= 0x020E8FF0;
+_ZN18DryBowserBoneModelC2Ev										= 0x020E8FF0;
+_ZN18DryBowserBoneModelD0Ev										= 0x020E8F90;
+_ZN18DryBowserBoneModelD1Ev										= 0x020E8FC4;
+_ZN18DryBowserBoneModelD2Ev										= 0x020E8FC4;
+_ZN18DryBowserBoneModel6createEv								= 0x020E8F50;
+_ZN18DryBowserBoneModel6renderER10Projectile					= 0x020E8E30;
+
+_ZN17ProjectileHandlerC1Ev										= 0x020E6E34;
+_ZN17ProjectileHandlerC2Ev										= 0x020E6E34;
+_ZN17ProjectileHandlerD0Ev										= 0x020E6DA4;
+_ZN17ProjectileHandlerD1Ev										= 0x020E6DF0;
+_ZN17ProjectileHandlerD2Ev										= 0x020E6DF0;
+_ZN17ProjectileHandler5spawnEaRK4Vec3tlPS1_PK5Vec3s				= 0x020E6B60;
+_ZN17ProjectileHandler5spawnEaRK4Vec3thPS1_						= 0x020E6BBC;
+_ZN17ProjectileHandler6updateEv									= 0x020E6ABC;
+_ZN17ProjectileHandler12renderSingleER10Projectile				= 0x020E6AF8;
+_ZN17ProjectileHandler6renderEv									= 0x020E6B24;
+_ZN17ProjectileHandler4initEv									= 0x020E6C10;
+_ZN17ProjectileHandler7destroyEv								= 0x020E6A40;
+
+_ZN11Projectiles5spawnEaRK4Vec3tlPS1_PK5Vec3s					= 0x020E6964;
+_ZN11Projectiles5spawnEaRK4Vec3thPS1_							= 0x020E69A4;
+_ZN11Projectiles6updateEv										= 0x020E69DC;
+_ZN11Projectiles12renderSingleER10Projectile					= 0x020E69F4;
+_ZN11Projectiles6renderEv										= 0x020E6A10;
+_ZN11Projectiles4initEv											= 0x020E6A28;
+_ZN11Projectiles7destroyEv										= 0x020E694C;
+
+_ZN11Projectiles17projectileHandlerE							= 0x0212A680;
+
+_ZTV10Projectile												= 0x02126A6C;
+_ZTV15ProjectileModel											= 0x02126A7C;
+_ZTV14BoomerangModel											= 0x02126AA4;
+_ZTV11HammerModel												= 0x02126ACC;
+_ZTV17SledgehammerModel											= 0x02126AF4;
+_ZTV20MummipokeyStoneModel										= 0x02126B1C;
+_ZTV18DryBowserBoneModel										= 0x02126B44;
+_ZTV17ProjectileHandler											= 0x02126A5C;
 
 
 /* arm9 */
@@ -3736,83 +3963,6 @@ _ZN5Input19playerKeysHeldStackE						= 0x020876a0;
 _ZN5Input13playerMappingE							= 0x020876b0;
 
 _ZN5Input22unusedDirectionalFlagsE					= 0x020262ec;
-
-
-/* arm9_ov10 */
-/*----------------------------------------------------------------*/
-/*--------------------------- effect -----------------------------*/
-/*----------------------------------------------------------------*/
-
-_ZN6EffectC1Ev = 0x020e6414;
-_ZN6EffectC2Ev = 0x020e6414;
-_ZN6EffectD0Ev = 0x020e6334;
-_ZN6EffectD1Ev = 0x020e63a8;
-_ZN13EffectHandlerD0Ev = 0x020e683c;
-_ZN13EffectHandlerD1Ev = 0x020e6888;
-_ZN11ChildEffectC1Ev = 0x020e64dc;
-_ZN11ChildEffectC2Ev = 0x020e64dc;
-_ZN11ChildEffectD1Ev = 0x020e6320;
-_ZN6Effect18updateMeteorDebrisEv = 0x020e415c;
-_ZN6Effect18renderMeteorDebrisEv = 0x020e4280;
-_ZN6Effect16initMeteorDebrisEv = 0x020e4378;
-_ZN6Effect21decrementBrickCounterEv = 0x020e4510;
-_ZN6Effect21incrementBrickCounterEv = 0x020e4538;
-_ZN6Effect12updateBricksEv = 0x020e4550;
-_ZN6Effect12renderBricksEv = 0x020e4710;
-_ZN6Effect10initBricksEv = 0x020e481c;
-_ZN6Effect16updatePipeShardsEv = 0x020e4a6c;
-_ZN6Effect16renderPipeShardsEv = 0x020e4b6c;
-_ZN6Effect14initPipeShardsEv = 0x020e4c3c;
-_ZN6Effect10renderStarEv = 0x020e4d7c;
-_ZN6Effect8initStarEv = 0x020e4dcc;
-_ZN6Effect11updateShineEv = 0x020e4de8;
-_ZN6Effect11renderShineEv = 0x020e4e68;
-_ZN6Effect9initShineEv = 0x020e4eb8;
-_ZN6Effect19updateFireballTrailEv = 0x020e4ed4;
-_ZN6Effect19renderFireballTrailEv = 0x020e4ef8;
-_ZN6Effect17initFireballTrailEv = 0x020e4f74;
-_ZN6Effect17updateDroppedCardEv = 0x020e4fac;
-_ZN6Effect17updateFallingCardEv = 0x020e50b4;
-_ZN6Effect17updateCardCollectEv = 0x020e51c8;
-_ZN6Effect17updateDisplayCardEv = 0x020e5338;
-_ZN6Effect10renderCardEv = 0x020e53dc;
-_ZN6Effect8initCardEv = 0x020e5424;
-_ZN6Effect14updateSparklesEv = 0x020e5428;
-_ZN6Effect14renderSparklesEv = 0x020e54f0;
-_ZN6Effect12initSparklesEv = 0x020e553c;
-_ZN6Effect15updateRedNumberEv = 0x020e555c;
-_ZN6Effect15renderRedNumberEv = 0x020e573c;
-_ZN6Effect13initRedNumberEv = 0x020e57c0;
-_ZN6Effect12updatePointsEv = 0x020e57c4;
-_ZN6Effect12renderPointsEv = 0x020e588c;
-_ZN6Effect10initPointsEv = 0x020e58e0;
-_ZN6Effect12applyGravityEv = 0x020e58fc;
-_ZN6Effect13applyVelocityERK4Vec3 = 0x020e5920;
-_ZN6Effect13applyVelocityEv = 0x020e5940;
-_ZN6Effect6updateEv = 0x020e5964;
-_ZN6Effect6renderEv = 0x020e59a8;
-_ZN6Effect7disableEv = 0x020e59ec;
-_ZN6Effect12switchUpdateEMS_FvvE = 0x020e59f8;
-_ZN6Effect6createEaRK4Vec3mtam = 0x020e5ac4;
-_ZN6EffectC2Ev = 0x020e6414;
-_ZN13EffectHandlerC2Ev = 0x020e68cc;
-_ZN7Effects7destroyEa = 0x020e64f0;
-_ZN7Effects6updateEv = 0x020e650c;
-_ZN7Effects6renderEv = 0x020e6524;
-_ZN7Effects5spawnEaRK4Vec3mtam = 0x020e653c;
-_ZN7Effects5spawnEaRK4Vec3a = 0x020e657c;
-_ZN7Effects4initEv = 0x020e65b4;
-_ZN13EffectHandler7destroyEa = 0x020e65cc;
-_ZN13EffectHandler6updateEv = 0x020e66bc;
-_ZN13EffectHandler6renderEv = 0x020e6710;
-_ZN13EffectHandler5spawnEaRK4Vec3mtam = 0x020e6764;
-_ZN13EffectHandler4initEv = 0x020e6834;
-
-_ZN7Effects12activeBricksE = 0x0212a41c;
-_ZN7Effects13effectHandlerE = 0x0212a420;
-
-_ZTV6Effect = 0x02126a24;
-_ZTV13EffectHandler = 0x02126a04;
 
 
 /* arm9 */

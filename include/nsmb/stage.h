@@ -11,6 +11,7 @@
 
 #include "stage/animatedtiles.h"
 #include "stage/fireball.h"
+#include "stage/projectile.h"
 #include "stage/viewshaker.h"
 
 #include "stage/layout/data.h"
