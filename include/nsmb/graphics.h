@@ -4,7 +4,6 @@
 #include "graphics/graphics3d.h"
 #include "graphics/graphics.h"
 
-#include "graphics/effect.h"
 #include "graphics/fader.h"
 #include "graphics/particle.h"
 
