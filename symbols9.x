@@ -3640,7 +3640,7 @@ _ZTV18DryBowserBoneModel										= 0x02126B44;
 _ZTV17ProjectileHandler											= 0x02126A5C;
 
 
-/* arm9 */
+/* arm9_ov10 */
 /*----------------------------------------------------------------*/
 /*----------------------- texture helper -------------------------*/
 /*----------------------------------------------------------------*/
@@ -3658,7 +3658,7 @@ _ZN13TextureHelper16getPaletteParamsER7Texturem					= 0x020F5FC4;
 _ZN13TextureHelper16getTextureParamsER7Texturem					= 0x020F5FF0;
 
 
-/* arm9 */
+/* arm9_ov10 */
 /*----------------------------------------------------------------*/
 /*------------------ large flip fence renderer -------------------*/
 /*----------------------------------------------------------------*/
@@ -3669,6 +3669,32 @@ _ZN22LargeFlipFenceRenderer15computeVerticesEv					= 0x020F631C;
 _ZNK22LargeFlipFenceRenderer17transformPositionERK4Vec3RS0_		= 0x020F601C;
 _ZN22LargeFlipFenceRenderer12setupTextureEv						= 0x020F62D4;
 _ZN22LargeFlipFenceRenderer11loadTextureEv						= 0x020F6304;
+
+
+/* arm9_ov10 */
+/*----------------------------------------------------------------*/
+/*------------------------ pipe renderer -------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN12PipeRenderer5setupElmmmmm								= 0x020F6528;
+_ZN12PipeRenderer6renderERK4Vec3s							= 0x020F64AC;
+_ZN12PipeRenderer13setupTexturesEv							= 0x020F6640;
+_ZN12PipeRenderer12loadTexturesEv							= 0x020F671C;
+_ZN12PipeRenderer16renderHorizontalERK4Vec3s				= 0x020F6798;
+_ZN12PipeRenderer14renderVerticalERK4Vec3s					= 0x020F6B7C;
+_ZN12PipeRenderer20renderHorizontalMiniERK4Vec3s			= 0x020F6D44;
+_ZN12PipeRenderer18renderVerticalMiniERK4Vec3s				= 0x020F6E80;
+_ZN12PipeRenderer10renderQuadERK4Vec2RK11TextureInfollS2_	= 0x020F6FB4;
+_ZN12PipeRenderer14assignTexturesEmmmmm						= 0x020F7158;
+
+_ZN12PipeRenderer20miniPipeExitTLTexIDsE					= 0x021225B8;
+_ZN12PipeRenderer20miniPipeExitBRTexIDsE					= 0x021225BC;
+_ZN12PipeRenderer18miniPipeBodyTexIDsE						= 0x021225C0;
+_ZN12PipeRenderer18brokenPipeTLTexIDsE						= 0x021225C4;
+_ZN12PipeRenderer18brokenPipeBRTexIDsE						= 0x021225CC;
+_ZN12PipeRenderer16pipeExitBRTexIDsE						= 0x021225D4;
+_ZN12PipeRenderer16pipeExitTLTexIDsE						= 0x021225E0;
+_ZN12PipeRenderer14pipeBodyTexIDsE							= 0x021225EC;
 
 
 /* arm9 */

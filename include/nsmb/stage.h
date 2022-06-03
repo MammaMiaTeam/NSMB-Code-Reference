@@ -21,6 +21,7 @@
 #include "stage/player/player.h"
 
 #include "stage/render/largeflipfencerenderer.h"
+#include "stage/render/piperenderer.h"
 #include "stage/render/texture.h"
 
 // Overlay 10 - Coin, Goomba, MiniGoomba, Paragoomba, Item, SpinBlock, StageFX
