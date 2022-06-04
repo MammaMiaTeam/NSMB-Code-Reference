@@ -192,7 +192,7 @@ namespace SND {
 	bool playSFXUnique(s32 sfxID, const Vec3* pos = nullptr);
 
 	// 020122D0
-	bool playSFXContinuous(s32 sfxID, const Vec3* pos, s32 volargume);
+	bool playSFXContinuous(s32 sfxID, const Vec3* pos, s32 arg);
 
 	// 02012314
 	bool playSFXContinuous(s32 sfxID, const Vec3* pos = nullptr);
