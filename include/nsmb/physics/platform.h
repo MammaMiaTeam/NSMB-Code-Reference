@@ -55,7 +55,7 @@ public:
 	PlatformType type;
 	u8 unk51;
 	bool linked;
-	u8 groupID;
+	u8 layerID;
 
 	u8 unk54[4];
 

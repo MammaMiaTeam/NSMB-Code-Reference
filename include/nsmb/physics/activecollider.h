@@ -126,8 +126,7 @@ public:
 	u16 collidedGroups;
 	u16 collidedFlags;
 
-	s8 backLayer;				// -1=ignored, 0=interact with front layer, 1=interact with back layer
-
+	u8 layerID;					// -1 = ignored, 0 = interact with front layer, 1 = interact with back layer
 	u8 defaultCollisionFlags;
 	u8 collisionResult;			// 0x2 is set when a collision occurs, 0x3 = stop updating
 	u8 collidedPlayerID;
@@ -152,7 +151,7 @@ public:
 	sym void reset() __body
 
 	// 020a47a0
-	sym void init(StageActor* owner, const ActiveColliderInfo& info, bool backLayer = false) __body
+	sym void init(StageActor* owner, const ActiveColliderInfo& info, u8 layerID = 0) __body
 
 	// 020a4758
 	sym void setPositionAroundPivot(u16 rotation, fx32 pivotX, fx32 pivotY) __body
@@ -170,7 +169,7 @@ public:
 	sym void manualUpdate() __body
 
 	// 020a445c
-	sym void unk_020a445c(const Vec3& position, const ActiveColliderInfo& info, bool backLayer, u32 unk) __body
+	sym void unk_020a445c(const Vec3& position, const ActiveColliderInfo& info, u8 layerID) __body
 
 	// 020a4434
 	sym static void initSystem() __body

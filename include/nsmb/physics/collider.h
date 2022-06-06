@@ -1,11 +1,8 @@
 #pragma once
 #include "nitro_if.h"
 #include "nsmb/util.h"
-#include "nsmb/math/vector.h"
+#include "collisionmgr.h"
 
-
-class StageActor;
-class CollisionMgr;
 
 
 /*
@@ -15,7 +12,7 @@ using ColliderCallback = void(*)(StageActor& self, StageActor& other);
 
 /*
 	Settings structure used to initialize a Collider.
-	The left and top boundaries should be less than the right and bottom boundaries, respectively.
+	The left and bottom boundaries should be less than the right and top boundaries, respectively.
 */
 struct ColliderInfo {
 
@@ -47,16 +44,19 @@ public:
 	{
 		Collected				= (1 << 2),	// Used internally to signal that the object has been collected (used only for the coin type)
 		DirectionLeft			= (1 << 3),	// Used internally to specify if the side collision has occurred from the left
-		SkipUpdate				= (1 << 7),	// Used internally to skip the collision's calculation
+		SkipTop					= (1 << 5),	// Used internally to skip the collision's calculation on the top side
+		SkipBottom				= (1 << 6),	// Used internally to skip the collision's calculation on the bottom side
+		SkipSides				= (1 << 7),	// Used internally to skip the collision's calculation on the left/right sides
 	};
 
 	enum class OptionFlag : u8
 	{
-		NotSolid				= (1 << 0),
+		NoDestruction			= (1 << 0),
 		CalculateDelta			= (1 << 1),
+		IgnoreGround			= (1 << 3),
 		DisableBlockParticles	= (1 << 4),
-		SlowPassThroughRight	= (1 << 5),
-		SlowPassThroughLeft		= (1 << 6),
+		PushableLeft			= (1 << 5),
+		PushableRight			= (1 << 6),
 	};
 
 	// Collider owner
@@ -81,12 +81,12 @@ public:
 	Vec2 originPointDelta;
 
 	// Miscellaneous
-	u32 behavior;						// Represents the general behavior of the Collider.	(TODO: enum?)
-	u32 collisionFlag;					// Stores the collision result after each update.	(TODO: enum? bitfield?)
+	TileType tileType;					// Represents the emulated tile type.
+	CollisionMgrResult collisionResult;	// Stores the collision result after each update.
 
 	bool registered;					// Represents the Collider execution list registered state.		(Set to true when the Collider gets registered for execution)
 
-	u8 colliderRelated;
+	u8 layerID;							// Must match the CollisionMgr's layerID during processing.
 	UpdateFlag updateFlag;				// Specifies the settings that are used internally by the collision functions.
 	OptionFlag optionFlag;				// Specifies the settings that should be used when checking for collision and when updating.
 

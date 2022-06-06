@@ -625,7 +625,7 @@ public:
 	u8 slowMovementMaybe;
 	u8 lastSlowMovementMaybe;
 	u8 unkB6;
-	u8 backLayerFlag;
+	u8 layerID;
 
 };
 NTR_SIZE_GUARD(CollisionMgr, 0xB8);
