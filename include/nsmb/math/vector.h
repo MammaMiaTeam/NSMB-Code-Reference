@@ -459,17 +459,17 @@ public:
 
 	// New
 	inline const VecFx32& vecfx_cr() const {
-		return *reinterpret_cast<const VecFx32*>(this);
+		return *reinterpret_cast<const VecFx32*>(&x);
 	}
 
 	// New
 	inline operator const VecFx32& () const {
-		return *reinterpret_cast<const VecFx32*>(this);
+		return *reinterpret_cast<const VecFx32*>(&x);
 	}
 
 	// New
 	inline operator VecFx32& () {
-		return *reinterpret_cast<VecFx32*>(this);
+		return *reinterpret_cast<VecFx32*>(&x);
 	}
 
 
