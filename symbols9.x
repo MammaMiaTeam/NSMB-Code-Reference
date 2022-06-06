@@ -1423,7 +1423,6 @@ _ZN2FS8Internal15loadOverlayInfoEP13FSOverlayInfo11MIProcessorm = 0x020085A0;
 _ZN2FS8Internal8openFileEP6FSFile8FSFileID = 0x0200860C;
 _ZN2FS8Internal8openFileEP6FSFilePKc = 0x020085E4;
 _ZN2FS8Internal8readFileEP6FSFilePvl = 0x020085AC;
-_ZN2FS8Internal9getFileIDEm = 0x02008E2C;
 _ZN2FS8InternalL13openFileCrashE = 0x0203A280;
 _ZN2FS8InternalL13readFileCrashE = 0x0203A290;
 _ZN2FS8InternalL17readFileFastCrashE = 0x0203A2A0;
@@ -1460,6 +1459,7 @@ _ZN2FS8loadFileE8FSFileIDPvl = 0x02008D14;
 _ZN2FS8loadFileEPKcPvl = 0x02008CD8;
 _ZN2FS8loadFileEt = 0x020087E0;
 _ZN2FS8loadFileEtb = 0x02008828;
+_ZN2FS9getFileIDEm = 0x02008E2C;
 _ZN2FS8openFileEP6FSFilet = 0x02008E54;
 _ZN2FS8readFileEP6FSFilePvl = 0x02008D80;
 _ZN2FS8readFileEP6FSFileb = 0x02008944;
@@ -1576,9 +1576,8 @@ _ZN6Memory8allocateEml				= 0x02044A8C;
 _ZN6Memory8allocateEm				= 0x02044A6C;
 _ZN6Memory10deallocateEPv			= 0x02044A50;
 
-_Z6mallocj	= 0x0204C0F8;
-_Z6mallocm	= 0x0204C0F8;
-_Z4freePv	= 0x0204C0DC;
+malloc		= 0x0204C0F8;
+free		= 0x0204C0DC;
 _Znwj		= 0x0204C0D0;
 _Znwm		= 0x0204C0D0;
 _Znaj		= 0x0204C0C4;
@@ -2155,8 +2154,8 @@ _ZN3OAM10drawMtxSubEPK9GXOamAttrllNS_5FlagsEhhPK7MtxFx22NS_8SettingsE = 0x0200BE
 _ZN3OAM10drawMtxSubEPK9GXOamAttrllNS_5FlagsEhhPK7MtxFx22sPKsNS_8SettingsE = 0x0200B8C8;
 _ZN3OAM4Anim4initEPKNS0_10FrameEntryEmhlt = 0x0200B510;
 _ZN3OAM4Anim6updateEv = 0x0200B44C;
-_ZN3OAM4Anim10drawSpriteEllmhhP4Vec2sPsm = 0x0200B3F4;
-_ZN3OAM4Anim7drawSubEllmhhP4Vec2sPsm = 0x0200B39C;
+_ZN3OAM4Anim10drawSpriteEllNS_5FlagsEhhPK4Vec2sPKsNS_8SettingsE = 0x0200B3F4;
+_ZN3OAM4Anim7drawSubEllNS_5FlagsEhhPK4Vec2sPKsNS_8SettingsE = 0x0200B39C;
 
 
 /* arm9 */
