@@ -2729,23 +2729,6 @@ _ZN9PerspViewD2Ev		= 0x020CD340;
 _ZTV9PerspView			= 0x020E5938;
 
 
-/* arm9_ov8 */
-/*----------------------------------------------------------------*/
-/*------------------------ ending camera -------------------------*/
-/*----------------------------------------------------------------*/
-
-_ZN12EndingCameraD0Ev			= 0x020DE16C;
-_ZN12EndingCameraD1Ev			= 0x020DE104;
-_ZN12EndingCameraD2Ev			= 0x020DE104;
-_ZN12EndingCamera8onCreateEv	= 0x020DE4F8;
-_ZN12EndingCamera8onUpdateEv	= 0x020DE408;
-_ZN12EndingCamera8onRenderEv	= 0x020DE424;
-
-_ZN12EndingCamera7profileE		= 0x020E9BF0;
-
-_ZTV12EndingCamera				= 0x02123cb8;
-
-
 /* arm9_ov10 */
 /*----------------------------------------------------------------*/
 /*------------------------ stage camera --------------------------*/
@@ -4410,6 +4393,467 @@ _ZN11StageLayout17readTileBehaviourEt	= 0x020afa30;
 _ZN11StageLayout13doLayoutResetE		= 0x020cac98;
 
 
+/* arm9_ov8 */
+/*----------------------------------------------------------------*/
+/*------------------------- ending scene -------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN11EndingSceneD0Ev					= 0x020DDD74;
+_ZN11EndingSceneD1Ev					= 0x020DDD94;
+_ZN11EndingSceneD2Ev					= 0x020DDD94;
+
+_ZN11EndingScene18onCleanupResourcesEv	= 0x020DDDF4;
+_ZN11EndingScene8onCreateEv				= 0x020DDE1C;
+_ZN11EndingScene8onRenderEv				= 0x020DDDD8;
+_ZN11EndingScene8onUpdateEv				= 0x020DDDBC;
+_ZN11EndingScene9onDestroyEv			= 0x020DDDF8;
+
+_ZN11EndingScene7sseqIDsE				= 0x020E9B80;
+_ZN11EndingScene7sfxSetsE				= 0x020E9B78;
+
+_ZN11EndingScene7profileE				= 0x020E9B88;
+
+_ZTV11EndingScene						= 0x020E9B90;
+
+
+/* arm9_ov8 */
+/*----------------------------------------------------------------*/
+/*---------------------- ending controller -----------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN16EndingControllerD0Ev											= 0x020E0410;
+_ZN16EndingControllerD1Ev											= 0x020E0498;
+_ZN16EndingControllerD2Ev											= 0x020E0498;
+
+_ZN16EndingController13loadResourcesEv								= 0x020E1EF0;
+_ZN16EndingController14getNextSlideIDEi								= 0x020E206C;
+_ZN16EndingController14markSlideStageEib							= 0x020E21D0;
+_ZN16EndingController15getFirstSlideIDEv							= 0x020E20F4;
+_ZN16EndingController16loadModelTextureEP12NNSG3dResMdlPKcPvjS4_j	= 0x020E1E50;
+_ZN16EndingController16slideStageBeatenEi							= 0x020E22C8;
+_ZN16EndingController18onPrepareResourcesEv							= 0x020E1C5C;
+_ZN16EndingController18processSlidesCountEv							= 0x020E2124;
+_ZN16EndingController18renderModelTextureEiP12NNSG3dResMdl			= 0x020E1CAC;
+_ZN16EndingController19loadBowserResourcesEv						= 0x020E1F88;
+_ZN16EndingController21loadBowserJrResourcesEv						= 0x020E1F38;
+_ZN16EndingController21setSlideshowConstantsEj						= 0x020E2184;
+_ZN16EndingController22getAlternatedSlideFlagEi						= 0x020E20A4;
+_ZN16EndingController22loadSlideshowResourcesEv						= 0x020E1FD4;
+_ZN16EndingController23markSlideStageCompletedEi					= 0x020E21C0;
+_ZN16EndingController8onCreateEv									= 0x020E1BF0;
+_ZN16EndingController8onRenderEv									= 0x020E1B90;
+_ZN16EndingController8onUpdateEv									= 0x020E1BC0;
+_ZN16EndingController9onDestroyEv									= 0x020E1B60;
+
+_ZN16EndingController18bowserJrComplainedE							= 0x020F1468;
+_ZN16EndingController16bowserJrPositionE							= 0x020F14F0;
+_ZN16EndingController19bowserStartPositionE							= 0x020F14C0;
+_ZN16EndingController21slideshowBackPositionE						= 0x020F14E0;
+_ZN16EndingController22slideshowFrontPositionE						= 0x020F14D0;
+_ZN16EndingController13cutsceneEndedE								= 0x020F1464;
+_ZN16EndingController12cutsceneFlagE								= 0x020F146C;
+_ZN16EndingController11slidesCountE									= 0x020EE210;
+_ZN16EndingController13slideDurationE								= 0x020EE214;
+
+_ZN16EndingController7profileE										= 0x020EE2C8;
+
+_ZTV16EndingController												= 0x020EE2D4;
+
+
+/* arm9_ov8 */
+/*----------------------------------------------------------------*/
+/*------------------------ ending camera -------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN12EndingCameraD0Ev					= 0x020DE16C;
+_ZN12EndingCameraD1Ev					= 0x020DE104;
+_ZN12EndingCameraD2Ev					= 0x020DE104;
+
+_ZN12EndingCamera13cutsceneStateEv		= 0x020DE404;
+_ZN12EndingCamera14slideshowStateEv		= 0x020DE348;
+_ZN12EndingCamera8setOrthoEiiii			= 0x020DE1DC;
+_ZN12EndingCamera8onCreateEv			= 0x020DE4F8;
+_ZN12EndingCamera8onRenderEv			= 0x020DE424;
+_ZN12EndingCamera8onUpdateEv			= 0x020DE408;
+_ZN12EndingCamera8setStateEj			= 0x020DE31C;
+_ZN12EndingCamera9callStateEv			= 0x020DE2A8;
+_ZN12EndingCamera9setVectorEiii			= 0x020DE288;
+
+_ZN12EndingCamera14stateFunctionsE		= 0x020EE888;
+
+_ZN12EndingCamera7profileE				= 0x020E9BF0;
+
+_ZTV12EndingCamera						= 0x020E9BF8;
+
+
+/* arm9_ov8 */
+/*----------------------------------------------------------------*/
+/*----------------------- ending bowserjr ------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN3End8BowserJr11getPositionEv				= 0x020E0528;
+_ZN3End8BowserJr11setPositionERK4Vec3		= 0x020E0534;
+_ZN3End8BowserJr11switchStateEi				= 0x020E0834;
+_ZN3End8BowserJr13complainStateEv			= 0x020E0590;
+_ZN3End8BowserJr15endTransitStateEv			= 0x020E0564;
+_ZN3End8BowserJr16dragTransitStateEv		= 0x020E06F4;
+_ZN3End8BowserJr16prepareResourcesEv		= 0x020E0A24;
+_ZN3End8BowserJr16waitTransitStateEv		= 0x020E0760;
+_ZN3End8BowserJr20complainTransitStateEv	= 0x020E05EC;
+_ZN3End8BowserJr5setupEv					= 0x020E09C8;
+_ZN3End8BowserJr6renderEv					= 0x020E0914;
+_ZN3End8BowserJr6updateEv					= 0x020E09AC;
+_ZN3End8BowserJr7destroyEv					= 0x020E090C;
+_ZN3End8BowserJr8endStateEv					= 0x020E0558;
+_ZN3End8BowserJr9callStateEv				= 0x020E0768;
+_ZN3End8BowserJr9dragStateEv				= 0x020E0634;
+_ZN3End8BowserJr9waitStateEv				= 0x020E0730;
+
+_ZN3End8BowserJr14stateFunctionsE			= 0x020F1570;
+_ZN3End8BowserJr21transitStateFunctionsE	= 0x020F1550;
+
+
+/* arm9_ov8 */
+/*----------------------------------------------------------------*/
+/*------------------------ ending bowser -------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN3End6Bowser11switchStateEi			= 0x020E0EC0;
+_ZN3End6Bowser12draggedStateEv			= 0x020E0D24;
+_ZN3End6Bowser13complainStateEv			= 0x020E0CB0;
+_ZN3End6Bowser15endTransitStateEv		= 0x020E0C74;
+_ZN3End6Bowser16prepareResourcesEv		= 0x020E10CC;
+_ZN3End6Bowser16waitTransitStateEv		= 0x020E0DEC;
+_ZN3End6Bowser19draggedTransitStateEv	= 0x020E0D80;
+_ZN3End6Bowser20complainTransitStateEv	= 0x020E0CE8;
+_ZN3End6Bowser5setupEv					= 0x020E1070;
+_ZN3End6Bowser6renderEv					= 0x020E0FA0;
+_ZN3End6Bowser6updateEv					= 0x020E1058;
+_ZN3End6Bowser7destroyEv				= 0x020E0F98;
+_ZN3End6Bowser8endStateEv				= 0x020E0A7C;
+_ZN3End6Bowser9callStateEv				= 0x020E0DF4;
+_ZN3End6Bowser9waitStateEv				= 0x020E0DBC;
+
+_ZN3End6Bowser14stateFunctionsE			= 0x020F1590;
+_ZN3End6Bowser21transitStateFunctionsE	= 0x020F1530;
+
+
+/* arm9_ov8 */
+/*----------------------------------------------------------------*/
+/*----------------------- ending slideshow -----------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN3End9Slideshow10slideStateEv				= 0x020E112C;
+_ZN3End9Slideshow11switchStateEi			= 0x020E1614;
+_ZN3End9Slideshow9loadSlideEj				= 0x020E17E8;
+_ZN3End9Slideshow14loadNewOverlayEv			= 0x020E178C;
+_ZN3End9Slideshow15applyNewOverlayEv		= 0x020E16D4;
+_ZN3End9Slideshow15endTransitStateEv		= 0x020E1124;
+_ZN3End9Slideshow11unloadSlideEv			= 0x020E17C4;
+_ZN3End9Slideshow8getSlideEv				= 0x020E17B4;
+_ZN3End9Slideshow16initTransitStateEv		= 0x020E14AC;
+_ZN3End9Slideshow16prepareResourcesEv		= 0x020E1A8C;
+_ZN3End9Slideshow16unloadNewOverlayEv		= 0x020E1768;
+_ZN3End9Slideshow17slideTransitStateEv		= 0x020E1378;
+_ZN3End9Slideshow5setupEv					= 0x020E1A64;
+_ZN3End9Slideshow6renderEv					= 0x020E1830;
+_ZN3End9Slideshow6updateEv					= 0x020E1A4C;
+_ZN3End9Slideshow7destroyEv					= 0x020E180C;
+_ZN3End9Slideshow8endStateEv				= 0x020E1120;
+_ZN3End9Slideshow9callStateEv				= 0x020E1560;
+_ZN3End9Slideshow9initStateEv				= 0x020E1488;
+
+_ZN3End9Slideshow19cachePaletteOffsetsE		= 0x020E4184;
+_ZN3End9Slideshow19cacheTextureOffsetsE		= 0x020E417C;
+_ZN3End9Slideshow14stateFunctionsE			= 0x020F1500;
+_ZN3End9Slideshow12materialNameE			= 0x020E418C;
+_ZN3End9Slideshow21transitStateFunctionsE	= 0x020F1518;
+
+
+/* arm9_ov8 */
+/*----------------------------------------------------------------*/
+/*------------------------ ending graphics -----------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN3End8Graphics10clearCacheEv										= 0x020E2D0C;
+_ZN3End8Graphics11loadTexPlttEPvjj									= 0x020E2AE0;
+_ZN3End8Graphics13hasCachedDataEv									= 0x020E2C70;
+_ZN3End8Graphics16getResourceIndexEP12NNSG3dResMdlPKc				= 0x020E2A50;
+_ZN3End8Graphics16getResourceIndexEP13NNSG3dResDictPKc				= 0x020E2AA4;
+_ZN3End8Graphics17cacheModelTextureEP12NNSG3dResMdlPKcPvjS5_jjj		= 0x020E2BA0;
+_ZN3End8Graphics17getPaletteAddressEP16NNSG3dResMatData				= 0x020E2A68;
+_ZN3End8Graphics17getTextureAddressEP16NNSG3dResMatData				= 0x020E2A8C;
+_ZN3End8Graphics19endingVBlankHandlerEv								= 0x020E2C8C;
+_ZN3End8Graphics7loadTexEPvjj										= 0x020E2B14;
+_ZN3End8Graphics9cacheDataEPvjjb									= 0x020E2AE0;
+_ZN3End8Graphics9initCacheEv										= 0x020E2D20;
+
+_ZN3End8Graphics10cacheIndexE										= 0x020F1648;
+_ZN3End8Graphics5cacheE												= 0x020F164C;
+
+
+/* arm9_ov8 */
+/*----------------------------------------------------------------*/
+/*----------------------- ending mainscreen ----------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN3End10MainScreen14setExitRequestEv		= 0x020E24D8;
+_ZN3End10MainScreen14setSaveRequestEv		= 0x020E2514;
+_ZN3End10MainScreen17setStoryCompletedEv	= 0x020E2550;
+_ZN3End10MainScreen5setupEv					= 0x020E29CC;
+_ZN3End10MainScreen6renderEv				= 0x020E2584;
+_ZN3End10MainScreen6updateEv				= 0x020E2640;
+_ZN3End10MainScreen7destroyEv				= 0x020E29B4;
+_ZN3End10MainScreen7setExitEv				= 0x020E244C;
+_ZN3End10MainScreen7setSaveEv				= 0x020E2488;
+_ZN3End10MainScreen8loadTextEjb				= 0x020E23FC;
+
+_ZN3End10MainScreen7textboxE				= 0x020F15D0;
+_ZN3End10MainScreen15dialogSelectionE		= 0x020F15B0;
+_ZN3End10MainScreen11dialogTimerE			= 0x020F15B8;
+_ZN3End10MainScreen3bmgE					= 0x020F15C0;
+_ZN3End10MainScreen5stateE					= 0x020F15B4;
+_ZN3End10MainScreen15brightnessTimerE		= 0x020F15BC;
+
+
+/* arm9_ov8 */
+/*----------------------------------------------------------------*/
+/*------------------------ ending subscreen ----------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN3End9SubScreen10initScriptEv				= 0x020E023C;
+_ZN3End9SubScreen10loadStringEhPKh			= 0x020DFE5C;
+_ZN3End9SubScreen10switchPageEv				= 0x020DFC08;
+_ZN3End9SubScreen11fadeInCharsEv			= 0x020DF8E8;
+_ZN3End9SubScreen11renderCharsEv			= 0x020E00A0;
+_ZN3End9SubScreen11startBGFadeEv			= 0x020DF58C;
+_ZN3End9SubScreen11updateCharsEv			= 0x020DEFC4;
+_ZN3End9SubScreen12enableBGFadeEv			= 0x020DF0A8;
+_ZN3End9SubScreen12fadeInStringEj			= 0x020DF92C;
+_ZN3End9SubScreen12fadeOutCharsEv			= 0x020DF5F4;
+_ZN3End9SubScreen12getCharBlinkEi			= 0x020DEF48;
+_ZN3End9SubScreen12getCharWidthEh			= 0x020E03B0;
+_ZN3End9SubScreen13fadeOutStringEj			= 0x020DF638;
+_ZN3End9SubScreen14getCharOffsetXEh			= 0x020E03D4;
+_ZN3End9SubScreen14getStringWidthEPKhi		= 0x020E035C;
+_ZN3End9SubScreen14shownFirstPageEv			= 0x020DF0BC;
+_ZN3End9SubScreen15updateCharWavesEi		= 0x020DECBC;
+_ZN3End9SubScreen16applyFadeOffsetYEjb		= 0x020DFB10;
+_ZN3End9SubScreen16reduceFadeOffsetEji		= 0x020DF7D0;
+_ZN3End9SubScreen16updateWavesBlinkEv		= 0x020DEF90;
+_ZN3End9SubScreen17getInactiveWaveIDEv		= 0x020DEC40;
+_ZN3End9SubScreen17startCharsFadeOutEv		= 0x020DF738;
+_ZN3End9SubScreen17updateStringWavesEj		= 0x020DED60;
+_ZN3End9SubScreen18startStringFadeOutEj		= 0x020DF81C;
+_ZN3End9SubScreen19updateWavesDistanceEv	= 0x020DEF14;
+_ZN3End9SubScreen5setupEv					= 0x020DF378;
+_ZN3End9SubScreen6renderEv					= 0x020DF0D8;
+_ZN3End9SubScreen6updateEv					= 0x020DF110;
+_ZN3End9SubScreen8fadeCharEj				= 0x020DFA74;
+_ZN3End9SubScreen8loadPageEj				= 0x020DFCC0;
+_ZN3End9SubScreen9stopWavesEj				= 0x020DEC88;
+
+_ZN3End9SubScreen5stateE					= 0x020EE8B0;
+_ZN3End9SubScreen9stateStepE				= 0x020EE898;
+_ZN3End9SubScreen13stateCooldownE			= 0x020EE8AC;
+_ZN3End9SubScreen14executionTimerE			= 0x020EE8B8;
+_ZN3End9SubScreen11charOamAttrE				= 0x020E9C68;
+_ZN3End9SubScreen12fontOffsetsXE			= 0x020EA3A8;
+_ZN3End9SubScreen10fontWidthsE				= 0x020EA410;
+_ZN3End9SubScreen6subOBJE					= 0x020EAA10;
+_ZN3End9SubScreen13subOBJPaletteE			= 0x020EA478;
+_ZN3End9SubScreen13mainBGPaletteE			= 0x020EE8A0;
+_ZN3End9SubScreen12subBGPaletteE			= 0x020E9C48;
+_ZN3End9SubScreen13bgFadeEnabledE			= 0x020EE89C;
+_ZN3End9SubScreen11bgFadeTimerE				= 0x020EE8A8;
+_ZN3End9SubScreen16basePageDurationE		= 0x020EE8A4;
+_ZN3End9SubScreen18pageDurationOffsetE		= 0x020EE8B4;
+_ZN3End9SubScreen18pageDurationFactorE		= 0x020EE8BC;
+_ZN3End9SubScreen18scriptEntriesCountE		= 0x020EE8C0;
+_ZN3End9SubScreen11currentPageE				= 0x020EE8C8;
+_ZN3End9SubScreen10pagesCountE				= 0x020EE8CC;
+_ZN3End9SubScreen10charCursorE				= 0x020EE8C4;
+_ZN3End9SubScreen5charsE					= 0x020EEA24;
+_ZN3End9SubScreen16charsObjCharNameE		= 0x020EEC64;
+_ZN3End9SubScreen22charsWavePaletteOffsetE	= 0x020EE924;
+_ZN3End9SubScreen22charsFadePaletteOffsetE	= 0x020EE9A4;
+_ZN3End9SubScreen14charsPositionXE			= 0x020EF264;
+_ZN3End9SubScreen14charsPositionYE			= 0x020EF464;
+_ZN3End9SubScreen12charsOffsetXE			= 0x020EF664;
+_ZN3End9SubScreen12charsOffsetYE			= 0x020EF864;
+_ZN3End9SubScreen14charsFadeAngleE			= 0x020EEB64;
+_ZN3End9SubScreen17charsFadeVelocityE		= 0x020EEE64;
+_ZN3End9SubScreen15charsFadeOffsetE			= 0x020EFA64;
+_ZN3End9SubScreen16charsFadeOffsetYE		= 0x020EF064;
+_ZN3End9SubScreen16charsWaveOffsetXE		= 0x020EFC64;
+_ZN3End9SubScreen16charsWaveOffsetYE		= 0x020EFE64;
+_ZN3End9SubScreen14charsWaveAngleE			= 0x020F0064;
+_ZN3End9SubScreen15charsWaveFactorE			= 0x020F0464;
+_ZN3End9SubScreen15charsWaveOffsetE			= 0x020F0C64;
+_ZN3End9SubScreen7stringsE					= 0x020EE8DC;
+
+
+/* arm9_ov8 */
+/*----------------------------------------------------------------*/
+/*-------------------------- ending wave -------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN3End4WaveC1Ev				= 0x020DEC3C;
+_ZN3End4WaveC2Ev				= 0x020DEC3C;
+_ZN3End4WaveD1Ev				= 0x020DEC38;
+_ZN3End4WaveD2Ev				= 0x020DEC38;
+
+_ZN3End4Wave10affectCharEi		= 0x020DE914;
+_ZN3End4Wave10isInactiveEv		= 0x020DEAA0;
+_ZN3End4Wave10updateCharEjjij	= 0x020DE938;
+_ZN3End4Wave11updateBlinkEv		= 0x020DEAFC;
+_ZN3End4Wave12charAffectedEi	= 0x020DE9F0;
+_ZN3End4Wave14unaffectStringEj	= 0x020DEB8C;
+_ZN3End4Wave14updateDistanceEv	= 0x020DEB2C;
+_ZN3End4Wave4initEjj			= 0x020DEA18;
+_ZN3End4Wave5resetEv			= 0x020DEC04;
+_ZN3End4Wave7playSFXEjji		= 0x020DE72C;
+_ZN3End4Wave8getBlinkEi			= 0x020DEAB4;
+_ZN3End4Wave8getSFXIDEv			= 0x020DE770;
+_ZN3End4Wave8isActiveEv			= 0x020DEA8C;
+_ZN3End4Wave9getCharIDEjj		= 0x020DE844;
+
+_ZN3End4Wave14standardSFXIDsE	= 0x020E4114;
+_ZN3End4Wave16diacriticsSFXIDsE	= 0x020E40BC;
+_ZN3End4Wave13symbolsSFXIDsE	= 0x020E40A0;
+
+
+/* arm9_ov8 */
+/*----------------------------------------------------------------*/
+/*------------------------ ending script -------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN3End6Script2s0E		= 0x020E9E8C;
+_ZN3End6Script2s1E		= 0x020EA120;
+_ZN3End6Script2s2E		= 0x020E9F4C;
+_ZN3End6Script2s3E		= 0x020E9C7C;
+_ZN3End6Script2s4E		= 0x020E9FFC;
+_ZN3End6Script2s5E		= 0x020E9C70;
+_ZN3End6Script2s6E		= 0x020EA00C;
+_ZN3End6Script2s7E		= 0x020EA350;
+_ZN3End6Script2s8E		= 0x020EA24C;
+_ZN3End6Script2s9E		= 0x020E9D60;
+_ZN3End6Script3s10E 	= 0x020EA2EC;
+_ZN3End6Script3s11E 	= 0x020EA238;
+_ZN3End6Script3s12E 	= 0x020EA260;
+_ZN3End6Script3s13E 	= 0x020EA300;
+_ZN3End6Script3s14E 	= 0x020E9DEC;
+_ZN3End6Script3s15E 	= 0x020E9FAC;
+_ZN3End6Script3s16E 	= 0x020EA03C;
+_ZN3End6Script3s17E 	= 0x020EA02C;
+_ZN3End6Script3s18E 	= 0x020EA04C;
+_ZN3End6Script3s19E 	= 0x020EA170;
+_ZN3End6Script3s20E 	= 0x020EA148;
+_ZN3End6Script3s21E 	= 0x020E9E0C;
+_ZN3End6Script3s22E 	= 0x020EA15C;
+_ZN3End6Script3s23E 	= 0x020EA05C;
+_ZN3End6Script3s24E 	= 0x020E9DCC;
+_ZN3End6Script3s25E 	= 0x020E9F6C;
+_ZN3End6Script3s26E 	= 0x020E9E6C;
+_ZN3End6Script3s27E 	= 0x020EA06C;
+_ZN3End6Script3s28E 	= 0x020E9E9C;
+_ZN3End6Script3s29E 	= 0x020E9F8C;
+_ZN3End6Script3s30E 	= 0x020E9CAC;
+_ZN3End6Script3s31E 	= 0x020E9D8C;
+_ZN3End6Script3s32E 	= 0x020EA29C;
+_ZN3End6Script3s33E 	= 0x020E9EBC;
+_ZN3End6Script3s34E 	= 0x020E9E2C;
+_ZN3End6Script3s35E 	= 0x020E9ECC;
+_ZN3End6Script3s36E 	= 0x020E9D48;
+_ZN3End6Script3s37E 	= 0x020EA184;
+_ZN3End6Script3s38E 	= 0x020E9F9C;
+_ZN3End6Script3s39E 	= 0x020E9E4C;
+_ZN3End6Script3s40E 	= 0x020EA094;
+_ZN3End6Script3s41E 	= 0x020EA378;
+_ZN3End6Script3s42E 	= 0x020EA0A8;
+_ZN3End6Script3s43E 	= 0x020EA0BC;
+_ZN3End6Script3s44E 	= 0x020EA1AC;
+_ZN3End6Script3s45E 	= 0x020E9CA0;
+_ZN3End6Script3s46E 	= 0x020EA2B0;
+_ZN3End6Script3s47E 	= 0x020E9FBC;
+_ZN3End6Script3s48E 	= 0x020EA1C0;
+_ZN3End6Script3s49E 	= 0x020E9E1C;
+_ZN3End6Script3s50E 	= 0x020EA1D4;
+_ZN3End6Script3s51E 	= 0x020EA0D0;
+_ZN3End6Script3s52E 	= 0x020E9E3C;
+_ZN3End6Script3s53E 	= 0x020EA0E4;
+_ZN3End6Script3s54E 	= 0x020EA1E8;
+_ZN3End6Script3s55E 	= 0x020EA1FC;
+_ZN3End6Script3s56E 	= 0x020E9FCC;
+_ZN3End6Script3s57E 	= 0x020E9D30;
+_ZN3End6Script3s58E 	= 0x020E9CDC;
+_ZN3End6Script3s59E 	= 0x020EA210;
+_ZN3End6Script3s60E 	= 0x020EA224;
+_ZN3End6Script3s61E 	= 0x020EA0F8;
+_ZN3End6Script3s62E 	= 0x020E9D3C;
+_ZN3End6Script3s63E 	= 0x020E9F0C;
+_ZN3End6Script3s64E 	= 0x020E9FDC;
+_ZN3End6Script3s65E 	= 0x020E9E5C;
+_ZN3End6Script3s66E 	= 0x020EA2C4;
+_ZN3End6Script3s67E 	= 0x020E9F1C;
+_ZN3End6Script3s68E 	= 0x020EA328;
+_ZN3End6Script3s69E 	= 0x020E9FEC;
+_ZN3End6Script3s70E 	= 0x020E9E7C;
+_ZN3End6Script3s71E 	= 0x020E9F3C;
+_ZN3End6Script3s72E 	= 0x020E9CE8;
+_ZN3End6Script3s73E 	= 0x020E9C50;
+_ZN3End6Script3s74E 	= 0x020E9C94;
+_ZN3End6Script3s75E 	= 0x020E9DBC;
+_ZN3End6Script3s76E 	= 0x020EA198;
+_ZN3End6Script3s77E 	= 0x020E9DFC;
+_ZN3End6Script3s78E 	= 0x020E9C58;
+_ZN3End6Script3s79E 	= 0x020EA134;
+_ZN3End6Script3s80E 	= 0x020EA33C;
+_ZN3End6Script3s81E 	= 0x020E9F2C;
+_ZN3End6Script3s82E 	= 0x020EA01C;
+_ZN3End6Script3s83E 	= 0x020E9CD0;
+_ZN3End6Script3s84E 	= 0x020E9DDC;
+_ZN3End6Script3s85E 	= 0x020E9C88;
+_ZN3End6Script3s86E 	= 0x020EA274;
+_ZN3End6Script3s87E 	= 0x020EA364;
+_ZN3End6Script3s88E 	= 0x020E9D00;
+_ZN3End6Script3s89E 	= 0x020EA288;
+_ZN3End6Script3s90E 	= 0x020E9F7C;
+_ZN3End6Script3s91E 	= 0x020E9F5C;
+_ZN3End6Script3s92E 	= 0x020E9C60;
+_ZN3End6Script3s93E 	= 0x020E9EAC;
+_ZN3End6Script3s94E 	= 0x020EA314;
+_ZN3End6Script3s95E 	= 0x020E9CB8;
+_ZN3End6Script3s96E 	= 0x020EA080;
+_ZN3End6Script3s97E 	= 0x020EA390;
+_ZN3End6Script3s98E 	= 0x020E9D54;
+_ZN3End6Script3s99E 	= 0x020E9D18;
+_ZN3End6Script4s100E	= 0x020E9D0C;
+_ZN3End6Script4s101E	= 0x020E9EDC;
+_ZN3End6Script4s102E	= 0x020E9EEC;
+_ZN3End6Script4s103E	= 0x020E9D6C;
+_ZN3End6Script4s104E	= 0x020E9D7C;
+_ZN3End6Script4s105E	= 0x020E9D24;
+_ZN3End6Script4s106E	= 0x020E9EFC;
+_ZN3End6Script4s107E	= 0x020E9C4C;
+_ZN3End6Script4s108E	= 0x020E9CC4;
+_ZN3End6Script4s109E	= 0x020E9D9C;
+_ZN3End6Script4s110E	= 0x020E9CF4;
+_ZN3End6Script4s111E	= 0x020EA10C;
+_ZN3End6Script4s112E	= 0x020EA2D8;
+_ZN3End6Script4s113E	= 0x020E9DAC;
+
+
+/* arm9_ov8 */
+/*----------------------------------------------------------------*/
+/*------------------------- ending misc --------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN3End6scriptE = 0x020EA678;
+_ZN3End5wavesE = 0x020EEAA4;
+_ZN3End6slidesE = 0x020E4198;
+
+
 /* arm9_ov10 */
 /*----------------------------------------------------------------*/
 /*----------------------------- item -----------------------------*/
@@ -4417,17 +4861,6 @@ _ZN11StageLayout13doLayoutResetE		= 0x020cac98;
 
 _ZN4Item11switchStateEMS_FbvE = 0x020d4eb8;
 _ZN4Item12checkConsumeEv = 0x020d475c;
-
-
-/*----------------------------------------------------------------*/
-/*--------------------------- unsorted ---------------------------*/
-/*----------------------------------------------------------------*/
-
-/* arm9_ov54 */
-Liquid_doWaves = 0x021646E0;
-
-/* arm9_ov10 */
-setPlayerStateForWaterBubbles = 0x02102BC4;
 
 
 /* arm9_ov24 */

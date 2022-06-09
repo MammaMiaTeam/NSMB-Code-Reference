@@ -1,46 +1,62 @@
 #pragma once
+
 #include "nsmb/graphics/util/perspview.h"
 
 
-// ov8
-class EndingCamera : public PerspView
-{
+// vtable at 020E9BF8 (ov8)
+class EndingCamera : public PerspView {
+
 public:
 
-	typedef void(EndingCamera::* StateFunction)();
+	using StateFunction = void(EndingCamera::*)();
 
-	//C3:020DE6A8
-	EndingCamera();
 
-	//D0:020DE16C
-	//D1:020DE104
+	inline EndingCamera() {}
+
+	// D0: 020DE16C
+	// D1: 020DE104
 	virtual ~EndingCamera();
 
-	//020DE4F8
+	// 020DE4F8
 	virtual s32 onCreate() override;
-
-	//020DE408
+	// 020DE408
 	virtual s32 onUpdate() override;
-
-	//020DE424
+	// 020DE424
 	virtual s32 onRender() override;
+
+	// 020DE31C
+	void setState(u32 stateID);
+	// 020DE2A8
+	void callState();
+
+	// 020DE348
+	void slideshowState();
+	// 020DE404
+	void cutsceneState();
+
+	// 020DE1DC
+	void setOrtho(fx32 tangent, fx32 bitangent, fx32 left, fx32 right);
+
+	// 020DE288
+	Vec3 setVector(fx32 x, fx32 y, fx32 z);
 
 	static constexpr u16 objectID = 324;
 
 	static constexpr u16 updatePriority = objectID;
 	static constexpr u16 renderPriority = 4;
 
-	//020E9BF0
-	static ObjectProfile profile;
+	// 020E9BF0
+	static const ObjectProfile profile;
 
-	StateFunction unk108;
-	Vec3 unk110;
-	u32 unk120;
-	u32 unk124;
-	u32 unk128;
-	u32 unk12c;
-	u32 unk130;
-	u32 unk134;
+	// 020EE888
+	static const StateFunction stateFunctions[2];
+
+
+	StateFunction updateFunction;
+	Vec3 unused110;
+	u32 stateID;
+	u32 updateStep;
+	u32 unused128[4];
 
 };
 NTR_SIZE_GUARD(EndingCamera, 0x138);
