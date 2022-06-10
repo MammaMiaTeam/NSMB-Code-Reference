@@ -73,7 +73,7 @@ namespace Particle {
 		// 0x2021bac
 		sym EmitterSystem() __body
 
-		__inline ~EmitterSystem() {
+		NTR_INLINE ~EmitterSystem() {
 			unregisterAllEmitters();
 		}
 
@@ -101,7 +101,7 @@ namespace Particle {
 	class ControllerBase {
 	public:
 
-		__inline ControllerBase() {}
+		NTR_INLINE ControllerBase() {}
 
 		// 0x2021f08
 		sym virtual void spawn(SPLEmitter* emitter) __body
@@ -134,7 +134,7 @@ namespace Particle {
 	class ControllerLiquid : public Controller {
 	public:
 
-		__inline ControllerLiquid() {} // the one at 0x2021edc doesn't set the vtable, there could even be another class between this one and Controller
+		NTR_INLINE ControllerLiquid() {} // the one at 0x2021edc doesn't set the vtable, there could even be another class between this one and Controller
 
 		// 0x2021e00
 		sym virtual bool destroy(SPLEmitter* pEmitter, bool generate) override __rbody
@@ -146,7 +146,7 @@ namespace Particle {
 	class ControllerManualLiquid : public ControllerBase {
 	public:
 
-		__inline ControllerManualLiquid() {}
+		NTR_INLINE ControllerManualLiquid() {}
 
 		// 0x2021d78
 		sym virtual bool destroy(SPLEmitter* pEmitter, bool generate) override __rbody
@@ -158,7 +158,7 @@ namespace Particle {
 	class ControllerManual : public ControllerBase {
 	public:
 
-		__inline ControllerManual() {}
+		NTR_INLINE ControllerManual() {}
 
 		// 0x2021d20
 		sym virtual bool destroy(SPLEmitter* pEmitter, bool generate) override __rbody

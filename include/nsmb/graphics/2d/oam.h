@@ -459,7 +459,7 @@ namespace OAM
 		 * 
 		 * \param updateSpeed The frame update speed.
 		 * */
-		__inline void setUpdateSpeed(fx32 updateSpeed) __attribute__((noinline))
+		NTR_INLINE void setUpdateSpeed(fx32 updateSpeed)
 		{
 			if ( updateSpeed < 0 )
 			{
@@ -488,7 +488,7 @@ namespace OAM
 		 * 
 		 * \return True if the objects were pushed to the render list successfully, false otherwise.
 		 * */
-		__inline bool draw(s32 x, s32 y, Flags flags, u8 palette, u8 affineSet, const Vec2* scale, fx16 rot, const s16 rotCenter[2], Settings settings) __attribute__((noinline)) {
+		NTR_INLINE bool draw(s32 x, s32 y, Flags flags, u8 palette, u8 affineSet, const Vec2* scale, fx16 rot, const s16 rotCenter[2], Settings settings) {
 			return OAM::draw(this->frames[this->curFrameID].oamAttrs, x, y, flags, palette, affineSet, scale, rot, rotCenter, settings);
 		}
 

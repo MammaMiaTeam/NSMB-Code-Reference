@@ -1,119 +1,66 @@
 #pragma once
 
-// Set to 1 when generating symbols
-#define GEN_SYM 0
 
-#if GEN_SYM
-#define sym __attribute__((noinline, used))
-#define ssym __attribute__((noinline, used)) static
-#define GEN_FUNC(x, ...) sym x (__VA_ARGS__) {}
-#define GEN_SFUNC(x, ...) sym static x (__VA_ARGS__) {}
+// Set to 1 when generating symbols
+#define NTR_GEN_SYM 0
+
+// Set to 1 when compiling in Debug mode
+#define NTR_DEBUG 1
+
+
+#if NTR_GEN_SYM
+#define sym [[gnu::noinline, gnu::used]]
+#define ssym sym static
 #define __body {}
 #define __rbody { return {}; }
 #else
 #define sym
 #define ssym
-#define GEN_FUNC(x, ...) x (__VA_ARGS__) ;
-#define GEN_SFUNC(x, ...) x (__VA_ARGS__) ;
 #define __body ;
 #define __rbody ;
 #endif
 
-#define USED	__attribute__((used))
-#define NIN		__attribute__((noinline))
-#define FIN		__attribute__((always_inline)) inline
 
-#define NTR_OFFSETOF(s,m) ((::size_t)&reinterpret_cast<char const volatile&>((((s*)0)->m)))
-#define NTR_SIZE_GUARD(t,s) static_assert(sizeof(t) == s, "")
+#define NTR_OFFSETOF(s, m)		((::size_t)&reinterpret_cast<char const volatile&>((((s*)0)->m)))
+#define NTR_SIZE_GUARD(t, s)	static_assert(sizeof(t) == (s), "Size of '" #t "' does not match expected value '" #s "'")
+#define NTR_ARRAY_SIZE(a)		(sizeof(a) / sizeof(a[0]))
 
-#ifdef _MSC_VER // VSCode doesn't need it
+#define NTR_NOINLINE			[[gnu::noinline]]
+#define NTR_INLINE				[[gnu::always_inline]] inline
+#define NTR_WEAK				[[gnu::weak]]
+
+#define NTR_PRAGMA(p)			_Pragma(#p)
+
+#define GCC_DIAGNOSTIC(x)		NTR_PRAGMA(GCC diagnostic x)
+#define GCC_PUSH				GCC_DIAGNOSTIC(push)
+#define GCC_POP					GCC_DIAGNOSTIC(pop)
+#define GCC_IGNORE(x)			GCC_DIAGNOSTIC(ignored x)
+#define GCC_ERROR(x)			GCC_DIAGNOSTIC(error x)
+#define GCC_WARNING(x)			GCC_DIAGNOSTIC(warning x)
+
+
+#ifdef _MSC_VER
 #include "intellisense.h"
 #else
-#define __inline	FIN
 #define if_consteval if (std::is_constant_evaluated())
-#define __weak		__attribute__((weak))
 #endif
 
 
-// Set to 1 when compiling in Debug mode
-#define NTR_DEBUG 1
-
-#define NTR_NOINLINE	__attribute__((noinline))
-#define NTR_INLINE		__attribute__((always_inline)) inline
-
-
-typedef void* NITRO_TYPE_REPLACEMENT;
-
-#ifdef NITRO_NO_SDK
-
-	#warning("Project built without Nitro-SDK/NNS, replacing interface")
-
-	typedef NITRO_TYPE_REPLACEMENT NNSFndHeapHandle;
-	typedef NITRO_TYPE_REPLACEMENT OSMutex;
-	typedef NITRO_TYPE_REPLACEMENT OSArenaId;
-	typedef NITRO_TYPE_REPLACEMENT NNSFndList;
-	typedef NITRO_TYPE_REPLACEMENT NNSG2dFont;
-	typedef NITRO_TYPE_REPLACEMENT NNSG2dGlyph;
-	typedef NITRO_TYPE_REPLACEMENT NNSSndHandle;
-	typedef NITRO_TYPE_REPLACEMENT NNSSndSeqPlayer;
-
-	enum NNSSndCaptureOutputEffectType {
-
-		NNS_SND_CAPTURE_OUTPUT_EFFECT_NORMAL = 0x0,
-		NNS_SND_CAPTURE_OUTPUT_EFFECT_SURROUND = 0x1,
-		NNS_SND_CAPTURE_OUTPUT_EFFECT_HEADPHONE = 0x2,
-		NNS_SND_CAPTURE_OUTPUT_EFFECT_MONO = 0x3
-
-	};
-
-	void MI_CpuFillFast(const void*, int, int);
-	void MI_CpuCopyFast(const void*, void*, int);
-	void MI_CpuFill8(const void*, int, int);
-	void MI_CpuCopy8(const void*, void*, int);
-
-	typedef unsigned char u8;
-	typedef unsigned short u16;
-	typedef unsigned int u32;
-	typedef unsigned long long int u64;
-
-	typedef signed char s8;
-	typedef signed short s16;
-	typedef signed int s32;
-	typedef signed long long int s64;
-
-	typedef s16 fx16;
-	typedef s32 fx32;
-	typedef s64 fx64;
-	typedef s64 fx64c;
-
-	struct VecFx32 {
-		fx32 x, y, z;
-	};
-
-	struct VecFx16 {
-		fx16 x, y, z;
-	};
-
-	fx32 FX_Div(fx32, fx32);
-	fx32 FX_MulInline(fx32, fx32);
-
-#else
-
-#	ifndef SDK_TS
-#	define SDK_TS
-#	endif
-
-#	ifndef SDK_CODE_ARM
-#	define SDK_CODE_ARM
-#	endif
-
-#	include "nitro.h"
-#	include "nnsys.h"
-
+#ifndef SDK_TS
+#define SDK_TS
 #endif
 
-typedef u16 bool16;
-typedef u32 bool32;
+#ifndef SDK_CODE_ARM
+#define SDK_CODE_ARM
+#endif
+
+#include "nitro.h"
+#include "nnsys.h"
+
+
+using bool16 = u16;
+using bool32 = u32;
+
 
 inline int OS_SNPrintf(char* dst, size_t len, const char* fmt, ...) {
 

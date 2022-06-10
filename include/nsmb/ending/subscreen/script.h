@@ -342,10 +342,10 @@ namespace End {
 			case L'û':	return 0x5F;
 			case L'ü':	return 0x60;
 			case L'.':	return 0x61;
-			case L'•':	return 0x62;
-			case L'_':	return 0x63;
-			case L'-':	return 0x64;
-			case L'@':	return 0x65;
+			case L'•':	return 0x62; // Assumed
+			case L'_':	return 0x63; // Assumed
+			case L'-':	return 0x64; // Assumed
+			case L'‾':	return 0x65; // Assumed
 			case L'&':	return 0x66;
 			case L'\'': return 0x67;
 			case L' ':	return 0x68;
@@ -453,10 +453,10 @@ namespace End {
 			case 0x5f: return L'û';
 			case 0x60: return L'ü';
 			case 0x61: return L'.';
-			case 0x62: return L'•';
-			case 0x63: return L'_';
-			case 0x64: return L'-';
-			case 0x65: return L'@';
+			case 0x62: return L'•'; // Assumed
+			case 0x63: return L'_'; // Assumed
+			case 0x64: return L'-'; // Assumed
+			case 0x65: return L'‾'; // Assumed
 			case 0x66: return L'&';
 			case 0x67: return L'\'';
 			case 0x68: return L' ';
@@ -487,11 +487,6 @@ namespace End {
 	};
 
 
-	/*
-		Script rules:
-		- An entry with string == nullptr counts as a terminator
-		- Each string has a max size of 0x29 and null terminators can be used. The game cannot handle strings starting with a terminator
-	*/
 	struct ScriptEntry {
 
 		enum Palette {
@@ -503,7 +498,7 @@ namespace End {
 		u8 page;
 		u8 posY;
 		u8 palette;
-		bool twoPages;
+		bool multipage;
 	};
 
 	static constexpr ScriptEntry scriptTerminator = {nullptr, 0, 0, 0, false};

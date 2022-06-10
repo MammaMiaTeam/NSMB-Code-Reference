@@ -27,7 +27,7 @@ public:
 										//0x4000: If set, OS_Panic is called on fatal exceptions (ResizeToFit / Allocate)
 										//0x8000: Not a real flag. It's never set and only used in Heap::SetFlags to indicate a flags change when 0.
 
-	__inline Heap() {}
+	NTR_INLINE Heap() {}
 	Heap(void* start, u32 size, Heap* parent);
 	virtual ~Heap();
 
@@ -81,7 +81,7 @@ public:
 	NNSFndHeapHandle allocator;			//Allocator
 	OSMutex mutex;						//Mutex to ensure atomic heap access
 
-	__inline ExpandedHeap() {}
+	NTR_INLINE ExpandedHeap() {}
 	ExpandedHeap(void* start, u32 size, Heap* parent, NNSFndHeapHandle allocator);	//Also inits mutex with OS_InitMutex
 	virtual ~ExpandedHeap();
 
@@ -121,7 +121,7 @@ public:
 	NNSFndHeapHandle allocator;			//Allocator
 	OSMutex mutex;						//Mutex, never used
 
-	__inline FrameHeap() {}
+	NTR_INLINE FrameHeap() {}
 	FrameHeap(void* start, u32 size, Heap* parent, NNSFndHeapHandle allocator);
 	virtual ~FrameHeap();
 

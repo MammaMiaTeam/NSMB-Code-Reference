@@ -96,7 +96,7 @@ public:
 	//020131fc
 	sym static void switchScene(u16 sceneID, u32 settings = 0) __body
 
-	__inline static void switchScene(SceneID sceneID, u32 settings = 0) {
+	NTR_INLINE static void switchScene(SceneID sceneID, u32 settings = 0) {
 		switchScene(u16(sceneID), settings);
 	}
 

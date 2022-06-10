@@ -40,7 +40,7 @@ struct StageBlocks {
 	void* progressPathNodes;
 	void* objectBanks;
 
-	__inline void* operator[] (u32 blockID) {
+	NTR_INLINE void* operator[] (u32 blockID) {
 		ntr_assert(blockID < u32(StageBlockID::Max), "Block ID must be between 0 and 13");
 		return static_cast<void**>(&header) + blockID;
 	}
@@ -85,18 +85,18 @@ namespace Stage
 		}
 	}
 
-	__inline u32 getBlockSize(u32 blockID) {
+	NTR_INLINE u32 getBlockSize(u32 blockID) {
 		ntr_assert(blockID < u32(StageBlockID::Max), "Block ID must be between 0 and 13");
 		return stageBlocksSize[blockID];
 	}
 
-	__inline u32 getBlockElementCount(u32 blockID) {
+	NTR_INLINE u32 getBlockElementCount(u32 blockID) {
 		ntr_assert(blockID < u32(StageBlockID::Max), "Block ID must be between 0 and 13");
 		return stageBlocksElements[blockID];
 	}
 
 	template<class T>
-	__inline T* getBlockData(u32 blockID, u32 index) {
+	NTR_INLINE T* getBlockData(u32 blockID, u32 index) {
 		ntr_assert(blockID < u32(StageBlockID::Max), "Block ID must be between 0 and 13");
 		ntr_assert(index < stageBlocksElements[blockID], "Block %d does not contain element %d", blockID, index);
 		u8* data = static_cast<u8*>(stageBlocks[blockID]);
@@ -105,7 +105,7 @@ namespace Stage
 	}
 
 	template<class T>
-	__inline T* getBlock(u32 blockID) {
+	NTR_INLINE T* getBlock(u32 blockID) {
 		ntr_assert(blockID < u32(StageBlockID::Max), "Block ID must be between 0 and 13");
 		return static_cast<T*>(stageBlocks[blockID]);
 	}

@@ -29,8 +29,6 @@
 #define asm
 #define __arm
 
-#define __weak 
-
 #define SDK_ARM9
 #define SDK_CODE_ARM
 
