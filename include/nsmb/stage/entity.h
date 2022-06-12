@@ -334,7 +334,7 @@ public:
 
 	// D1: 020986e0
 	// D0: 02098730
-	__inline virtual ~StageEntity() {}
+	NTR_INLINE virtual ~StageEntity() {}
 
 
 

@@ -173,10 +173,10 @@ namespace Game
 	// 0200dee0
 	void stageObjectBankOverlayProc(void* banks, bool load);
 
-	__inline void unloadStageObjectBankOverlays(void* banks) {
+	NTR_INLINE void unloadStageObjectBankOverlays(void* banks) {
 		stageObjectBankOverlayProc(banks, false);
 	}
-	__inline void loadStageObjectBankOverlays(void* banks) {
+	NTR_INLINE void loadStageObjectBankOverlays(void* banks) {
 		stageObjectBankOverlayProc(banks, true);
 	}
 

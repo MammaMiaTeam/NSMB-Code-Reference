@@ -10,11 +10,11 @@ public:
 	typedef void(StageCamera::* StateFunction)();
 
 	//C3:020ce658
-	__inline StageCamera() {}
+	NTR_INLINE StageCamera() {}
 
 	// D0:
 	// D1:
-	__inline virtual ~StageCamera() override {}
+	NTR_INLINE virtual ~StageCamera() override {}
 
 	//020ce540
 	sym virtual s32 onCreate() override __rbody

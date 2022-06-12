@@ -172,26 +172,26 @@ namespace Input {
 
 
 
-	__inline u16 getPressedKeys(u8 console = 0) {
+	NTR_INLINE u16 getPressedKeys(u8 console = 0) {
 		return consoleKeys[console].pressed;
 	}
-	__inline u16 getHeldKeys(u8 console = 0) {
+	NTR_INLINE u16 getHeldKeys(u8 console = 0) {
 		return consoleKeys[console].held;
 	}
-	__inline u16 getRepeatedKeys(u8 console = 0) {
+	NTR_INLINE u16 getRepeatedKeys(u8 console = 0) {
 		return consoleKeysRepeated[console];
 	}
-	__inline u16 getUpKeys(u8 console = 0) {
+	NTR_INLINE u16 getUpKeys(u8 console = 0) {
 		return consoleKeysUp[console];
 	}
 
-	__inline u16 getPlayerPressedKeys(u8 player = 0) {
+	NTR_INLINE u16 getPlayerPressedKeys(u8 player = 0) {
 		return playerKeysPressed[player];
 	}
-	__inline u16 getPlayerHeldKeys(u8 player = 0) {
+	NTR_INLINE u16 getPlayerHeldKeys(u8 player = 0) {
 		return playerKeysHeld[player];
 	}
-	__inline u16 getPlayerRepeatedKeys(u8 player = 0) {
+	NTR_INLINE u16 getPlayerRepeatedKeys(u8 player = 0) {
 		return playerKeysRepeated[player];
 	}
 

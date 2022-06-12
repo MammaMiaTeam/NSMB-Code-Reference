@@ -182,7 +182,7 @@ public:
 	//020076ac
 	void updateStaticMask(u8 target);
 
-	__inline void setAlphaBlending(int plane1, int plane2, int ev1, int ev2) {
+	NTR_INLINE void setAlphaBlending(int plane1, int plane2, int ev1, int ev2) {
 		alphaBlendingPlane1 = plane1;
 		alphaBlendingPlane2 = plane2;
 		alphaBlendingEVA = ev1;

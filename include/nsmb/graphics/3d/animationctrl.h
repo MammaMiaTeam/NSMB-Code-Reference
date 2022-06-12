@@ -30,7 +30,7 @@ public:
 	//02018c3c
 	sym void setFrame(u16 frame) __body //Sets the animation's frame and updates it accordingly
 	
-	__inline bool finished() {
+	NTR_INLINE bool finished() {
 		return frameController.finished();
 	}
 
@@ -50,7 +50,7 @@ public:
 		frameController.setFrameCount(count);
 	}
 
-	__inline u16 getFrameCount() {
+	NTR_INLINE u16 getFrameCount() {
 		return frameController.getFrameCount();
 	}
 

@@ -10,7 +10,7 @@ struct ObjectProfile {
 	u16 updatePriority;
 	u16 renderPriority;
 
-	__inline Object* tryConstruct() {
+	NTR_INLINE Object* tryConstruct() {
 		return constructor ? constructor() : nullptr;
 	}
 
@@ -22,7 +22,7 @@ class Object : public Base
 {
 public:
 
-	__inline Object() {}
+	NTR_INLINE Object() {}
 
 	//020131a8
 	sym virtual void postCreate(BaseReturnState state) __body

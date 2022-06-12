@@ -295,13 +295,13 @@ namespace FS {
 		return fileID | arcID << 8;
 	}
 
-	__inline u32 setDefaultDMA(u32 dmaNo) {
+	NTR_INLINE u32 setDefaultDMA(u32 dmaNo) {
 		u32 old = fsi_default_dma_no;
 		fsi_default_dma_no = dmaNo;
 		return old;
 	}
 
-	__inline u32 getDefaultDMA() {
+	NTR_INLINE u32 getDefaultDMA() {
 		return fsi_default_dma_no;
 	}
 

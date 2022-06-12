@@ -44,7 +44,7 @@ namespace Game
 	// 02085a88
 	extern u32 visiblePlaneMain;
 
-	__inline void setVisiblePlane(int plane) {
+	NTR_INLINE void setVisiblePlane(int plane) {
 		visiblePlaneMain = plane;
 	}
 

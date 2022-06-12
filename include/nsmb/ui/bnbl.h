@@ -32,7 +32,7 @@ namespace BNBL
 	// 0x02055A0C
 	s16 getRectangleIDAtPos(void* bnbl, s32 x, s32 y);
 
-	__inline s16 getTouchedRectangleID(void* bnbl) {
+	NTR_INLINE s16 getTouchedRectangleID(void* bnbl) {
 		return getRectangleIDAtPos(bnbl, penX, penY);
 	}
 

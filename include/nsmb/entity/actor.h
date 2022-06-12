@@ -28,7 +28,7 @@ struct ActorProfile : public ObjectProfile {
 
 	bool (*loadResources)();
 
-	__inline bool tryLoad() {
+	NTR_INLINE bool tryLoad() {
 		return loadResources ? loadResources() : true;
 	}
 

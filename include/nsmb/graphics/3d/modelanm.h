@@ -37,15 +37,15 @@ public:
 	void init(u32 animID, FrameCtrl::Type type, fx32 speed, u16 startFrame); //If animID equals the current animation ID, type and speed are applied to the frame controller. If not, the animation object is reset and is initialized with the given parameters.
 
 
-	__inline void update() {
+	NTR_INLINE void update() {
 		frameController.update();
 	}
 
-	__inline bool finished() {
+	NTR_INLINE bool finished() {
 		return frameController.finished();
 	}
 
-	__inline void setFrame(u16 frame) {
+	NTR_INLINE void setFrame(u16 frame) {
 		frameController.setFrame(frame);
 		NNS_G3dAnmObjSetFrame(animation, frame << FX32_SHIFT);
 	}
@@ -66,7 +66,7 @@ public:
 		frameController.setFrameCount(count);
 	}
 
-	__inline u16 getFrameCount() {
+	NTR_INLINE u16 getFrameCount() {
 		return frameController.getFrameCount();
 	}
 
