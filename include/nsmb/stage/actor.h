@@ -71,10 +71,10 @@ public:
 
 	// 020a04c0
 	// Wraps the position around the borders in case the stage has wrapping enabled (rotation argument is unused)
-	sym void wrapPosition(Vec3& position, Vec3s& rotation, bool wrapLeft = true) __body
+	sym static void wrapPosition(Vec3& position, Vec3s& rotation, bool wrapLeft = true) __body
 
 	// Wraps the position around the borders in case the stage has wrapping enabled (removes the need to use the rotation argument)
-	__inline void wrapPosition(Vec3& position, bool wrapLeft = true) {
+	NTR_INLINE void wrapPosition(Vec3& position, bool wrapLeft = true) {
 		Vec3s rot = rotation;
 		wrapPosition(position, rot, wrapLeft);
 	}

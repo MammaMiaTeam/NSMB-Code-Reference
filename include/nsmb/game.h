@@ -58,6 +58,13 @@ namespace MvsLStages
 	constexpr auto MvsLCastle = 4;
 }
 
+namespace WrapType
+{
+	constexpr auto None		 = 0;
+	constexpr auto Static	 = 1;
+	constexpr auto Scrolling = 2;
+}
+
 namespace Game
 {
 
@@ -75,8 +82,14 @@ namespace Game
 	extern u32 localPlayerID;
 	// 02085A84
 	extern u8 vsMode;
+	// 02085A88
+	extern u32 wrapType;
 	// 02085A9C
 	extern u32 currentWorldNode;
+	// 02085AA4
+	extern fx32 wrapX;
+	// 02085AA8
+	extern fx32 scrollingWrapX;
 	// 02085B20
 	extern MtxFx43 viewMatrix;
 	// 0208B6E8
