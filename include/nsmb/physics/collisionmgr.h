@@ -60,7 +60,8 @@ struct TileType
 	static constexpr u32 SolidOnBottom			= 0x40000000;
 	static constexpr u32 SolidOnTop				= 0x80000000;
 
-	static constexpr u32 ModifierMask			= 0x000000FF;
+	static constexpr u32 ModifierMask			= 0x0000FF00;
+	static constexpr u32 ModifierShift			= 8;
 
 	static constexpr u32 SolidMask				= Solid | BreakableBlock | BrickBlock | 0x80 | PartialSolid;
 	static constexpr u32 SolidMaskBottom		= SolidMask | SolidOnBottom;
@@ -78,7 +79,7 @@ struct TileType
 	constexpr TileType(u32 value) : value(value) {}
 
 	constexpr Modifier getModifier() const {
-		return Modifier(value & ModifierMask);
+		return Modifier((value & ModifierMask) >> ModifierShift);
 	}
 
 	constexpr void setModifier(Modifier modifier) {

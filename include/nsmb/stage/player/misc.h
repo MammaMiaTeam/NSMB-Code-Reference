@@ -8,7 +8,50 @@
 */
 
 
-class Pendulum;
+class PendulumController;
+
+class Pendulum
+{
+public:
+
+	virtual ~Pendulum();
+
+	StageActor* owner;
+
+	Pendulum* prev;
+	Pendulum* next;
+	PendulumController* activeController;
+
+	fx32 length;
+	fx32 velocityX;
+	s16 angleDiff;
+	u16 unk1E;
+	u8 type;
+	bool linked;
+	u8 groupID;
+	u8 flags;
+	u8 dirFlags;
+	u8 unk25;
+
+};
+NTR_SIZE_GUARD(Pendulum, 0x28);
+
+
+class PolePendulum : public Pendulum
+{
+public:
+
+	Vec2 unk28;
+	Vec2 unk34;
+	Vec2 origin;
+	fx32 top;
+	fx32 bottom;
+	u32 unk58;
+	s16 rotation;
+	u16 unk5A;
+
+};
+NTR_SIZE_GUARD(PolePendulum, 0x5C);
 
 
 class PendulumController
