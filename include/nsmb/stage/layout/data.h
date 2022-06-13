@@ -1,6 +1,7 @@
 #pragma once
 #include "nsmb.h"
 #include "ntr_assert.h"
+#include "entrance.h"
 
 
 enum class StageBlockID : u32 {
@@ -30,7 +31,7 @@ struct StageBlocks {
 	void* background;
 	void* tileset;
 	void* foreground;
-	void* entrances;
+	StageEntrance* entrances;
 	void* stageObjs;
 	void* views;
 	void* zones;
@@ -41,8 +42,10 @@ struct StageBlocks {
 	void* objectBanks;
 
 	NTR_INLINE void* operator[] (u32 blockID) {
-		ntr_assert(blockID < u32(StageBlockID::Max), "Block ID must be between 0 and 13");
+
+		ntr_assert(blockID < u32(StageBlockID::Max), "Invalid block ID [%d]", blockID);
 		return static_cast<void**>(&header) + blockID;
+
 	}
 
 };
@@ -73,41 +76,64 @@ namespace Stage
 
 
 	constexpr u32 getBlockUnitSize(u32 blockID) {
-		// this is dumb af
-		// ntr_assert(blockID < u32(StageBlockID::Max), "Block ID must be between 0 and 13");
+
 		if_consteval {
-			constexpr u32 sizes[] = { 0x20, 0x18, 0x14, 0x14, 0x14, 0x14, 0x0C, 0x10, 0x0C, 0x08, 0x08, 0x10, 0x10, 0x10 };
+
+			constexpr u32 sizes[] = {
+				0x20,
+				0x18,
+				0x14,
+				0x14,
+				0x14,
+				sizeof(StageEntrance),
+				0x0C,
+				0x10,
+				0x0C,
+				0x08,
+				0x08,
+				0x10,
+				0x10,
+				0x10
+			};
+
 			return sizes[blockID];
+
 		}
-		else {
-			ntr_assert(blockID < u32(StageBlockID::Max), "Block ID must be between 0 and 13");
-			return stageBlockUnitSize[blockID];
-		}
+
+		ntr_assert(blockID < u32(StageBlockID::Max), "Invalid block ID [%d]", blockID);
+		return stageBlockUnitSize[blockID];
+
 	}
 
 	NTR_INLINE u32 getBlockSize(u32 blockID) {
-		ntr_assert(blockID < u32(StageBlockID::Max), "Block ID must be between 0 and 13");
+
+		ntr_assert(blockID < u32(StageBlockID::Max), "Invalid block ID [%d]", blockID);
 		return stageBlocksSize[blockID];
+
 	}
 
 	NTR_INLINE u32 getBlockElementCount(u32 blockID) {
-		ntr_assert(blockID < u32(StageBlockID::Max), "Block ID must be between 0 and 13");
+
+		ntr_assert(blockID < u32(StageBlockID::Max), "Invalid block ID [%d]", blockID);
 		return stageBlocksElements[blockID];
+
 	}
 
 	template<class T>
 	NTR_INLINE T* getBlockData(u32 blockID, u32 index) {
-		ntr_assert(blockID < u32(StageBlockID::Max), "Block ID must be between 0 and 13");
-		ntr_assert(index < stageBlocksElements[blockID], "Block %d does not contain element %d", blockID, index);
-		u8* data = static_cast<u8*>(stageBlocks[blockID]);
-		data += (index * getBlockUnitSize(blockID));
-		return static_cast<T*>(static_cast<void*>(data));
+
+		ntr_assert(blockID < u32(StageBlockID::Max), "Invalid block ID [%d]", blockID);
+		ntr_assert(index < stageBlocksElements[blockID], "Invalid element index [%d] for block [%d]", index, blockID);
+		return static_cast<T*>(stageBlocks[blockID]) + index;
+
 	}
 
 	template<class T>
 	NTR_INLINE T* getBlock(u32 blockID) {
-		ntr_assert(blockID < u32(StageBlockID::Max), "Block ID must be between 0 and 13");
+
+		ntr_assert(blockID < u32(StageBlockID::Max), "Invalid block ID");
 		return static_cast<T*>(stageBlocks[blockID]);
+
 	}
 
 }

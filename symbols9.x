@@ -3207,6 +3207,53 @@ _ZTV11PlatformMgr									= 0x0203C620;
 
 /* arm9 */
 /*----------------------------------------------------------------*/
+/*--------------------------- entrance ---------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN8Entrance21overrideSpawnPositionEhll								= 0x0201DF90;
+_ZN8Entrance13switchVSMusicEv										= 0x0201DFE8;
+_ZN8Entrance12resetVSMusicEv										= 0x0201E00C;
+_ZN8Entrance13getSpawnMusicEh										= 0x0201E020;
+_ZN8Entrance20getViewRightBoundaryEh								= 0x0201E094;
+_ZN8Entrance19getViewLeftBoundaryEh									= 0x0201E0EC;
+_ZN8Entrance21getViewBottomBoundaryEh								= 0x0201E134;
+_ZN8Entrance18getViewTopBoundaryEh									= 0x0201E18C;
+_ZN8Entrance16overrideEntranceEllh12EntranceType13EntranceFlagsa	= 0x0201E1D4;
+_ZN8Entrance16setSpawnEntranceEhh									= 0x0201E35C;
+_ZN8Entrance16getEntranceIndexEh									= 0x0201E39C;
+_ZN8Entrance16getEntranceCountEv									= 0x0201E3F0;
+_ZN8Entrance11getEntranceEa											= 0x0201E400;
+_ZN8Entrance16getEntranceBlockEv									= 0x0201E450;
+_ZN8Entrance15getEntranceZoomEa										= 0x0201E460;
+_ZN8Entrance20getEntranceSpawnTypeEa								= 0x0201E4A8;
+_ZN8Entrance19accessSpawnEntranceEh									= 0x0201E4D0;
+_ZN8Entrance14accessEntranceEah										= 0x0201E64C;
+_ZN8Entrance10switchAreaEv											= 0x0201E744;
+_ZN8Entrance10reloadAreaEv											= 0x0201E808;
+_ZN8Entrance13setTargetAreaEhh										= 0x0201E864;
+_ZN8Entrance17setTargetEntranceERK13StageEntrance					= 0x0201E8C4;
+_ZN8Entrance14tryUseEntranceEllh									= 0x0201E944;
+_ZN8Entrance17setTargetEntranceEh									= 0x0201EC30;
+																	  
+_ZN8Entrance19lockedEntranceFlagsE									= 0x0203C6BC;
+_ZN8Entrance9vsMusicIDE												= 0x0203C6C0;
+_ZN8Entrance16playerSpawnTypesE										= 0x0203C6C4;
+_ZN8Entrance17entranceInfoTableE									= 0x0203C6DC;
+
+_ZN8Entrance16targetEntranceIDE										= 0x0208B084;
+_ZN8Entrance20connectedPipeUnkByteE									= 0x0208B088;
+_ZN8Entrance14subScreenSpawnE										= 0x0208B08C;
+_ZN8Entrance17connectedPipePathE									= 0x0208B090;
+_ZN8Entrance15spawnEntranceIDE										= 0x0208B094;
+_ZN8Entrance15transitionFlagsE										= 0x0208B098;
+_ZN8Entrance12targetAreaIDE											= 0x0208B09C;
+_ZN8Entrance13spawnEntranceE										= 0x0208B0A0;
+_ZN8Entrance23overriddenSpawnPositionE								= 0x0208B0B4;
+_ZN8Entrance18overriddenEntranceE									= 0x0208B0CC;
+																	  
+
+/* arm9 */
+/*----------------------------------------------------------------*/
 /*------------------------- platform base ------------------------*/
 /*----------------------------------------------------------------*/
 
