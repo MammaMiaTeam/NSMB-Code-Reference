@@ -58,7 +58,6 @@ NNSi_G3dAnmBlendJnt = 0x1FFAA50;
 NNSi_G3dAnmCalcNsBca = 0x1FFAD38;
 MTX_Identity22_ = 0x1FFB6E4;
 MTX_Identity33 = 0x1FFB6FC;
-MTX_Copy33To43 = 0x1FFB720;
 MTX_Copy33To43_ = 0x1FFB720;
 MTX_RotX33 = 0x1FFB74C;
 MTX_RotY33 = 0x1FFB768;
@@ -3972,6 +3971,116 @@ _ZN7Actor22D2Ev			= 0x020E9368;
 _ZN7Actor227profileE	= 0x02126BE0;
 
 _ZTV7Actor22			= 0x02126BEC;
+
+
+/* arm9_ov10 */
+/*----------------------------------------------------------------*/
+/*------------------------ line controller -----------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN14LineController6createERK4Vec2lb							= 0x020EA18C;
+_ZN14LineController6updateEv									= 0x020EA140;
+_ZNK14LineController11getPositionEv								= 0x020EA120;
+_ZN14LineController11setPositionERK4Vec2						= 0x020EA10C;
+_ZN14LineController8setSpeedEl									= 0x020EA0F4;
+_ZN14LineController9setOffsetERK4Vec2m							= 0x020EA0BC;
+_ZN14LineController5startEv										= 0x020EA010;
+
+_ZN14LineController15switchDirectionEv							= 0x020F4370;
+_ZN14LineController12clearOffsetsEv								= 0x020F4350;
+_ZN14LineController12checkEndTileEv								= 0x020F4294;
+
+_ZNK14LineController23calculateHorizontalStepEll4Vec2S0_RS0_	= 0x020F40D0;
+_ZNK14LineController21calculateVerticalStepEl4Vec2S0_Rl			= 0x020F3FC0;
+_ZNK14LineController18calculateCurveStepEl4Vec2S0_				= 0x020F3F30;
+
+_ZN14LineController16attachToAscSlopeE4Vec2S0_S0_				= 0x020F3E1C;
+_ZN14LineController17attachToDescSlopeE4Vec2S0_S0_				= 0x020F3D08;
+_ZN14LineController24attachToHorizontalCornerE4Vec2S0_S0_		= 0x020F3BF4;
+_ZN14LineController22attachToVerticalCornerE4Vec2S0_S0_			= 0x020F3AB4;
+_ZN14LineController18attachToHorizontalE4Vec2S0_S0_				= 0x020F39A0;
+_ZN14LineController16attachToVerticalE4Vec2S0_S0_				= 0x020F3860;
+_ZN14LineController24attachToAscFlatSlopeLeftE4Vec2S0_S0_		= 0x020F374C;
+_ZN14LineController25attachToAscFlatSlopeRightE4Vec2S0_S0_		= 0x020F3638;
+_ZN14LineController25attachToDescFlatSlopeLeftE4Vec2S0_S0_		= 0x020F3524;
+_ZN14LineController26attachToDescFlatSlopeRightE4Vec2S0_S0_		= 0x020F33F4;
+_ZN14LineController24attachToAscSteepSlopeTopE4Vec2S0_S0_		= 0x020F32D4;
+_ZN14LineController27attachToAscSteepSlopeBottomE4Vec2S0_S0_	= 0x020F31C0;
+_ZN14LineController28attachToDescSteepSlopeBottomE4Vec2S0_S0_	= 0x020F30A0;
+_ZN14LineController25attachToDescSteepSlopeTopE4Vec2S0_S0_		= 0x020F2F8C;
+_ZN14LineController19attachToSmallCircleE4Vec2S0_S0_			= 0x020F2E8C;
+_ZN14LineController20attachToMedium2ndArcE4Vec2S0_S0_			= 0x020F2D64;
+_ZN14LineController20attachToMedium1stArcE4Vec2S0_S0_			= 0x020F2C60;
+_ZN14LineController20attachToMedium3rdArcE4Vec2S0_S0_			= 0x020F2B38;
+_ZN14LineController20attachToMedium4thArcE4Vec2S0_S0_			= 0x020F2A28;
+_ZN14LineController17attachToBig1stArcE4Vec2S0_S0_				= 0x020F2924;
+_ZN14LineController17attachToBig2ndArcE4Vec2S0_S0_				= 0x020F27FC;
+_ZN14LineController17attachToBig3rdArcE4Vec2S0_S0_				= 0x020F26D4;
+_ZN14LineController17attachToBig4thArcE4Vec2S0_S0_				= 0x020F25C4;
+_ZN14LineController12attachToLineEv								= 0x020F1284;
+
+_ZN14LineController9beginIdleEv									= 0x020F1260;
+_ZN14LineController9beginFallEv									= 0x020F123C;
+_ZN14LineController13beginAscSlopeEv							= 0x020F11F0;
+_ZN14LineController14beginDescSlopeEv							= 0x020F11A0;
+_ZN14LineController19beginVerticalCornerEv						= 0x020F1168;
+_ZN14LineController21beginHorizontalCornerEv					= 0x020F1130;
+_ZN14LineController15beginHorizontalEv							= 0x020F10F8;
+_ZN14LineController13beginVerticalEv							= 0x020F10C0;
+_ZN14LineController21beginAscFlatSlopeLeftEv					= 0x020F1074;
+_ZN14LineController22beginAscFlatSlopeRightEv					= 0x020F1024;
+_ZN14LineController22beginDescFlatSlopeLeftEv					= 0x020F0FD4;
+_ZN14LineController23beginDescFlatSlopeRightEv					= 0x020F0F70;
+_ZN14LineController21beginAscSteepSlopeTopEv					= 0x020F0F24;
+_ZN14LineController24beginAscSteepSlopeBottomEv					= 0x020F0ED8;
+_ZN14LineController25beginDescSteepSlopeBottomEv				= 0x020F0E74;
+_ZN14LineController22beginDescSteepSlopeTopEv					= 0x020F0E10;
+_ZN14LineController16beginSmallCircleEv							= 0x020F0D40;
+_ZN14LineController17beginMedium2ndArcEv						= 0x020F0C74;
+_ZN14LineController17beginMedium1stArcEv						= 0x020F0BBC;
+_ZN14LineController17beginMedium3rdArcEv						= 0x020F0AEC;
+_ZN14LineController17beginMedium4thArcEv						= 0x020F0A20;
+_ZN14LineController14beginBig1stArcEv							= 0x020F0968;
+_ZN14LineController14beginBig2ndArcEv							= 0x020F089C;
+_ZN14LineController14beginBig3rdArcEv							= 0x020F07CC;
+_ZN14LineController14beginBig4thArcEv							= 0x020F0700;
+
+_ZN14LineController9idleStateEv									= 0x020F06FC;
+_ZN14LineController9fallStateEv									= 0x020F06B8;
+_ZN14LineController18checkAscendingLineEv						= 0x020F04EC;
+_ZN14LineController19checkDescendingLineEv						= 0x020F0348;
+_ZN14LineController19crossVerticalBottomEv						= 0x020F00D0;
+_ZN14LineController19crossAscendingSlopeEv						= 0x020EFD10;
+_ZN14LineController20crossHorizontalRightEv						= 0x020EFA74;
+_ZN14LineController20crossDescendingSlopeEv						= 0x020EF6D8;
+_ZN14LineController12update1stArcEll							= 0x020EE84C;
+_ZN14LineController12update2ndArcEll							= 0x020ED9DC;
+_ZN14LineController12update3rdArcEll							= 0x020ECB34;
+_ZN14LineController12update4thArcEll							= 0x020EBC94;
+_ZN14LineController13ascSlopeStateEv							= 0x020EBB54;
+_ZN14LineController14descSlopeStateEv							= 0x020EBA0C;
+_ZN14LineController19verticalCornerStateEv						= 0x020EB8DC;
+_ZN14LineController19crossHorizontalLeftEv						= 0x020EB8C4;
+_ZN14LineController21horizontalCornerStateEv					= 0x020EB7BC;
+_ZN14LineController15horizontalStateEv							= 0x020EB6BC;
+_ZN14LineController13verticalStateEv							= 0x020EB1F4;
+_ZN14LineController21ascFlatSlopeLeftStateEv					= 0x020EB04C;
+_ZN14LineController22ascFlatSlopeRightStateEv					= 0x020EAE98;
+_ZN14LineController22descFlatSlopeLeftStateEv					= 0x020EACD8;
+_ZN14LineController23descFlatSlopeRightStateEv					= 0x020EAB14;
+_ZN14LineController21ascSteepSlopeTopStateEv					= 0x020EA964;
+_ZN14LineController24ascSteepSlopeBottomStateEv					= 0x020EA7B4;
+_ZN14LineController25descSteepSlopeBottomStateEv				= 0x020EA5E8;
+_ZN14LineController22descSteepSlopeTopStateEv					= 0x020EA41C;
+_ZN14LineController16smallCircleStateEv							= 0x020EA2B0;
+_ZN14LineController17medium2ndArcStateEv						= 0x020EA298;
+_ZN14LineController17medium1stArcStateEv						= 0x020EA280;
+_ZN14LineController17medium3rdArcStateEv						= 0x020EA268;
+_ZN14LineController17medium4thArcStateEv						= 0x020EA250;
+_ZN14LineController14big1stArcStateEv							= 0x020EA238;
+_ZN14LineController14big2ndArcStateEv							= 0x020EA220;
+_ZN14LineController14big3rdArcStateEv							= 0x020EA208;
+_ZN14LineController14big4thArcStateEv							= 0x020EA1F0;
 
 
 /* arm9_ov10 */
