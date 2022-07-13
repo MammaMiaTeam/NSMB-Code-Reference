@@ -87,18 +87,22 @@ struct ActiveColliderInfo
 NTR_SIZE_GUARD(ActiveColliderInfo, 0x1C);
 
 
+enum class ActiveColliderShape : u8 {
+
+	Rectangle,
+	Round,
+	TrapezoidV,
+	TrapezoidH
+
+};
+
+
 class ActiveCollider {
 public:
 
 	static constexpr u32 GroupCount = 10;
 
-	enum class Shape : u8
-	{
-		Rectangle,
-		Round,
-		TrapezoidV,
-		TrapezoidH,
-	};
+	using Shape = ActiveColliderShape;
 
 	StageActor* owner;
 	u32 unk0;

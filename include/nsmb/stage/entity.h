@@ -246,7 +246,7 @@ public:
 	Vec3 wiggleScale;
 
 	// render/despawn box vectors
-	Vec2 existSize;
+	Vec2 activeSize;
 	Vec2 renderSize;
 	Vec2 viewOffset;
 

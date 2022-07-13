@@ -82,7 +82,7 @@ public:
 		unsigned int divLShift = (sizeof(s64) - sizeof(_Int)) * 8;
 		unsigned int divRShift = divLShift - _Shift;
 
-		s64 numer = static_cast<s64>(m_value) << divLShift;
+		s64 numer = static_cast<s64>(static_cast<u64>(m_value) << divLShift);
 		_FxInt denom = rhs.m_value;
 
 		s64 divResult = numer / denom;
@@ -164,11 +164,11 @@ public:
 		unsigned int divLShift = (sizeof(s64) - sizeof(_Int)) * 8;
 		unsigned int divRShift = divLShift - _Shift;
 
-		s64 numer = static_cast<s64>(m_value) << divLShift;
+		s64 numer = static_cast<s64>(static_cast<u64>(m_value) << divLShift);
 		_FxInt denom = rhs.m_value;
 
 		s64 divResult = numer / denom;
-		divResult += 1 << (divRShift - 1);
+		divResult += 1ULL << (divRShift - 1);
 		divResult >>= divRShift;
 
 		m_value = divResult;

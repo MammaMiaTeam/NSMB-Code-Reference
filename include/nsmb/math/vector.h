@@ -36,6 +36,12 @@ public:
 
 	constexpr Vec3(const VecFx32& vec) : VecFx32(vec) {}
 
+	constexpr Vec3(const VecFx16& vec) : VecFx32{} {
+		this->x = vec.x;
+		this->y = vec.y;
+		this->z = vec.z;
+	}
+
 	// D0: 02003190
 	// D1: 02003080
 	constexpr virtual ~Vec3() {}
@@ -195,6 +201,11 @@ public:
 	Vec3 cross(const VecFx32& other) const; // Performs the cross product between the vector and another one, then returns it
 	// 02045958
 	Vec3 cross(const VecFx32& a, const VecFx32& b); // Performs a x b storing the result in the vector and returning it
+
+	NTR_INLINE fx32 dot(const VecFx32& other) {
+		return VEC_DotProduct(this, &other);
+	}
+
 	// 02045908
 	ntr_nodisc Vec3 normalize(); // Normalizes the vector and returns it
 	// 020458B0
@@ -266,6 +277,10 @@ public:
 		x(vec.x), y(vec.y)
 	{}
 
+	constexpr Vec2(const FxRect& rect) :
+		x(rect.x), y(rect.y)
+	{}
+
 	// D0: 020031d0
 	// D1: 020030d8
 	constexpr virtual ~Vec2() {}
@@ -277,6 +292,10 @@ public:
 	}
 
 
+
+	constexpr Vec2& add(const FxRect& rhs) {
+		return *this += rhs;
+	}
 
 	constexpr Vec2& add(const VecFx32& rhs) {
 		return *this += rhs;
@@ -316,6 +335,16 @@ public:
 
 
 
+	constexpr Vec2 operator+(const FxRect& rhs) const {
+
+		Vec2 out = *this;
+
+		out.add(rhs);
+
+		return out;
+
+	}
+
 	constexpr Vec2 operator+(const VecFx32& rhs) const {
 
 		Vec2 out = *this;
@@ -353,6 +382,15 @@ public:
 		out.div(rhs);
 
 		return out;
+
+	}
+
+	constexpr Vec2& operator+=(const FxRect& rhs) {
+
+		x += rhs.x;
+		y += rhs.y;
+
+		return *this;
 
 	}
 
