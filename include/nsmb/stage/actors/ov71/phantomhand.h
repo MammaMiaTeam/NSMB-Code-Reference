@@ -3,8 +3,8 @@
 
 
 // vtable at 021795DC (ov71)
-class PhantomHand : public StageEntity {
-
+class PhantomHand : public StageEntity
+{
 public:
 
 	using StateFunction = bool(PhantomHand::*)();

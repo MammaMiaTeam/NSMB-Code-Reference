@@ -75,6 +75,11 @@
 // Overlay 108 - Broozer
 #include "stage/actors/ov108/broozer.h"
 
+// Overlay 121 - BigSpikedBall, SpikedBall, SpikedBallTrigger
+#include "stage/actors/ov121/bigspikedball.h"
+#include "stage/actors/ov121/spikedball.h"
+#include "stage/actors/ov121/spikedballtrigger.h"
+
 // Overlay 123 - Toadsworth
 #include "stage/actors/ov123/toadsworth.h"
 

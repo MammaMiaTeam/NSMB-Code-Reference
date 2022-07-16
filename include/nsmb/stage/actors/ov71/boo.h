@@ -3,8 +3,8 @@
 
 
 // vtable at 02179390 (ov71)
-class Boo : public StageEntity3DAnm {
-
+class Boo : public StageEntity3DAnm
+{
 public:
 
 	using StateFunction = bool(Boo::*)();

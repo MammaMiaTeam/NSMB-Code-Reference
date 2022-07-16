@@ -4088,12 +4088,12 @@ _ZN14LineController14big4thArcStateEv							= 0x020EA1F0;
 /*---------------------------- curve -----------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN5Curve14combineProductElllxxx:				= 0x020F4734;
-_ZN5Curve12parabolaLeftEl:						= 0x020F47A4;
-_ZN5Curve12parabolaDownEl:						= 0x020F47BC;
-_ZN5Curve13parabolaRightEl:						= 0x020F47E4;
-_ZN5Curve10bendPointsEPK4Vec2S2_PS0_ml:			= 0x020F4800;
-_ZN5Curve12samplePointsEPK4Vec2S2_S2_PS0_ml:	= 0x020F4894;
+_ZN5Curve14combineProductElllxxx				= 0x020F4734;
+_ZN5Curve12parabolaLeftEl						= 0x020F47A4;
+_ZN5Curve12parabolaDownEl						= 0x020F47BC;
+_ZN5Curve13parabolaRightEl						= 0x020F47E4;
+_ZN5Curve10bendPointsEPK4Vec2S2_PS0_ml			= 0x020F4800;
+_ZN5Curve12samplePointsEPK4Vec2S2_S2_PS0_ml	= 0x020F4894;
 
 
 /* arm9_ov10 */
@@ -5940,3 +5940,89 @@ _ZN7Broozer18activeColliderInfoE						= 0x0218ADB4;
 _ZN7Broozer7profileE									= 0x0218AEF0;
 
 _ZTV7Broozer											= 0x0218AEFC;
+
+
+/* arm9_ov121 */
+/*----------------------------------------------------------------*/
+/*-------------------------- spiked ball -------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN10SpikedBallD0Ev											= 0x0218C828;
+_ZN10SpikedBallD1Ev											= 0x0218C7C0;
+_ZN10SpikedBallD2Ev											= 0x0218C7C0;
+_ZN10SpikedBall8onCreateEv									= 0x0218C9C0;
+_ZN10SpikedBall9onDestroyEv									= 0x0218C89C;
+_ZN10SpikedBall8onRenderEv									= 0x0218C8A8;
+_ZN10SpikedBall18onCleanupResourcesEv						= 0x0218C8A4;
+_ZN10SpikedBall18onPrepareResourcesEv						= 0x0218D218;
+_ZN10SpikedBall10updateMainEv								= 0x0218C9A0;
+_ZN10SpikedBall10onBlockHitEv								= 0x0218C898;
+_ZN10SpikedBall13loadResourcesEv							= 0x0218D250;
+
+_ZN10SpikedBall14updateVelocityEv							= 0x0218D088;
+_ZN10SpikedBall11switchStateEMS_FbvE						= 0x0218D148;
+_ZN10SpikedBall11updateStateEv								= 0x0218D10C;
+_ZN10SpikedBall9mainStateEv									= 0x0218CD6C;
+_ZN10SpikedBall14activeCallbackER14ActiveColliderS1_		= 0x0218CC34;
+
+_ZN10SpikedBall9topSensorE									= 0x0218DEBC;
+_ZN10SpikedBall12bottomSensorE								= 0x0218DECC;
+_ZN10SpikedBall10sideSensorE								= 0x0218DEDC;
+_ZN10SpikedBall11velocitiesXE								= 0x0218DEEC;
+_ZN10SpikedBall16slopeVelocitiesXE							= 0x0218DEF8;
+_ZN10SpikedBall19slopeAccelerationsXE						= 0x0218DEFC;
+_ZN10SpikedBall18activeColliderInfoE						= 0x0218DF10;
+_ZN10SpikedBall7profileE									= 0x0218DFA8;
+
+_ZTV10SpikedBall											= 0x0218DFB4;
+
+
+/* arm9_ov121 */
+/*----------------------------------------------------------------*/
+/*------------------------ big spiked ball -----------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN13BigSpikedBallD0Ev										= 0x0218D314;
+_ZN13BigSpikedBallD1Ev										= 0x0218D2AC;
+_ZN13BigSpikedBallD2Ev										= 0x0218D2AC;
+_ZN13BigSpikedBall8onCreateEv								= 0x0218D4A4;
+_ZN13BigSpikedBall9onDestroyEv								= 0x0218D388;
+_ZN13BigSpikedBall8onRenderEv								= 0x0218D394;
+_ZN13BigSpikedBall18onCleanupResourcesEv					= 0x0218D390;
+_ZN13BigSpikedBall18onPrepareResourcesEv					= 0x0218DC84;
+_ZN13BigSpikedBall10updateMainEv							= 0x0218D484;
+_ZN13BigSpikedBall10onBlockHitEv							= 0x0218D384;
+_ZN13BigSpikedBall13loadResourcesEv							= 0x0218DCBC;
+
+_ZN13BigSpikedBall14updateVelocityEv						= 0x0218DAF4;
+_ZN13BigSpikedBall11switchStateEMS_FbvE						= 0x0218DBB4;
+_ZN13BigSpikedBall11updateStateEv							= 0x022D7718;
+_ZN13BigSpikedBall9mainStateEv								= 0x0218D850;
+_ZN13BigSpikedBall14activeCallbackER14ActiveColliderS1_		= 0x0218D700;
+
+_ZN13BjgSpikedBall9topSensorE								= 0x0218DF2C;
+_ZN13BjgSpikedBall12bottomSensorE							= 0x0218DF3C;
+_ZN13BjgSpikedBall10sideSensorE								= 0x0218DF4C;
+_ZN13BjgSpikedBall11velocitiesXE							= 0x0218DF5C;
+_ZN13BjgSpikedBall16slopeVelocitiesXE						= 0x0218DF68;
+_ZN13BjgSpikedBall19slopeAccelerationsXE					= 0x0218DF6C;
+_ZN13BjgSpikedBall18activeColliderInfoE						= 0x022D7B20;
+_ZN13BjgSpikedBall7profileE									= 0x0218E0D0;
+
+_ZTV13BigSpikedBall											= 0x0218E0DC;
+
+
+/* arm9_ov121 */
+/*----------------------------------------------------------------*/
+/*---------------------- spiked ball trigger ---------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN17SpikedBallTriggerD0Ev									= 0x0218DD74;
+_ZN17SpikedBallTriggerD1Ev									= 0x0218DD18;
+_ZN17SpikedBallTriggerD2Ev									= 0x0218DD18;
+_ZN17SpikedBallTrigger8onCreateEv							= 0x0218DE74;
+_ZN17SpikedBallTrigger9onDestroyEv							= 0x0218DDD8;
+_ZN17SpikedBallTrigger18onCleanupResourcesEv				= 0x0218DDE0;
+_ZN17SpikedBallTrigger10updateMainEv						= 0x0218DDE4;
+
+_ZN17SpikedBallTrigger7profileE								= 0x0218E1FC;

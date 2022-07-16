@@ -3,8 +3,8 @@
 
 
 // vtable at 0217988C (ov71)
-class Splunkin : public StageEntity {
-
+class Splunkin : public StageEntity
+{
 public:
 
 	using StateFunction = bool(Splunkin::*)();

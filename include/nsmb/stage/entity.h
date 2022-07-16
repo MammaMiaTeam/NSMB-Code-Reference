@@ -314,7 +314,6 @@ public:
 	bool backLayer;
 	u8 unk3ED;
 	s8 functionStep; // generic function step (where is it used??)
-	u8 facing; // 0 = down, 1 = up, 2 = left, 3 = right
 
 
 	// 0209dee0
