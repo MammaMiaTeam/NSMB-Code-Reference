@@ -26,13 +26,14 @@
 #include "stage/render/piperenderer.h"
 #include "stage/render/texture.h"
 
-// Overlay 10 - Coin, Goomba, MiniGoomba, Paragoomba, Item, SpinBlock, StageFX
+// Overlay 10 - Coin, Goomba, MiniGoomba, Paragoomba, Item, SpinBlock, etc.
 #include "stage/actors/ov10/actor22.h"
 #include "stage/actors/ov10/coin.h"
 #include "stage/actors/ov10/goomba.h"
 #include "stage/actors/ov10/item.h"
 #include "stage/actors/ov10/spinblock.h"
 #include "stage/actors/ov10/stagefx.h"
+#include "stage/actors/ov10/zoom.h"
 
 // Overlay 24 - FireBar, Thwomp
 #include "stage/actors/ov24/firebar.h"
