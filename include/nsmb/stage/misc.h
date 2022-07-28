@@ -28,10 +28,10 @@ namespace Stage
 	extern fx32 cameraY[2];
 
 	// 020cada4
-	extern fx32 cameraZoomX[2];
+	extern fx32 cameraWidth[2];
 
 	// 020cad8c
-	extern fx32 cameraZoomY[2];
+	extern fx32 cameraHeight[2];
 
 	// 020ca284
 	extern u8 megaInteractionFlags;
@@ -109,7 +109,7 @@ namespace Stage
 	// 0201f53c
 	u32 getAreaID(u8 group, u8 stage, u8 act);
 
-	// used in stage related operations (actor spawning, tile randomization)
+	// Used in stage related operations (actor spawning, tile randomization)
 	
 	NTR_INLINE s32 getRandom(s32 max) {
 		return ((Wifi::getRandom() & 0x7FFF) * (max + 1)) / 0x8000;
@@ -122,5 +122,20 @@ namespace Stage
 	NTR_INLINE u16 getRandom() {
 		return getRandom(0x7FFF);
 	}
+
+	// Camera/range utilities
+
+	fx32 getCameraCenterX(u8 playerID);
+	fx32 getCameraCenterY(u8 playerID);
+
+	bool isOutsideCamera(const Vec3& position, const FxRect& boundingBox, u8 playerID);
+	bool isOutsideCameraNoWrap(const Vec3& position, const FxRect& boundingBox, u8 playerID);
+	bool isOutsideCameraWrap(const Vec3& position, const FxRect& boundingBox, u8 playerID);
+
+	bool isOutsidePlayerRangeWrap(const Vec3& position, const FxRect& boundingBox, u8 viewID);
+	bool isOutsidePlayerRangeNoWrap(const Vec3& position, const FxRect& boundingBox, u8 playerID, u8 viewID);
+	bool isOutsidePlayerRange(const Vec3& position, const FxRect& boundingBox, u8 viewID);
+
+	u32 getForegroundScreenID(u32 fgID);
 
 }

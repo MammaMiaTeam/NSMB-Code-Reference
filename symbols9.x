@@ -2000,6 +2000,22 @@ _ZN11ArcFunction7processER4Vec3		= 0x0200AB24;
 
 /* arm9 */
 /*----------------------------------------------------------------*/
+/*------------------ stage - camera utilities --------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN5Stage16getCameraCenterYEh								= 0x0200ACA0;
+_ZN5Stage16getCameraCenterXEh								= 0x0200ACC4;
+_ZN5Stage21isOutsideCameraNoWrapERK4Vec3RK6FxRecth			= 0x0200ACE4;
+_ZN5Stage19isOutsideCameraWrapERK4Vec3RK6FxRecth			= 0x0200ADF8;
+_ZN5Stage15isOutsideCameraERK4Vec3RK6FxRecth				= 0x0200AE9C;
+_ZN5Stage20isOutsidePlayerRangeERK4Vec3RK6FxRecth			= 0x0200AED8;
+_ZN5Stage21isOutsidePlayerRangeNoWrapERK4Vec3RK6FxRecthh	= 0x0200B000;
+_ZN5Stage26getForegroundScreenIDEm							= 0x0200B0F0;
+_ZN5Stage24isOutsidePlayerRangeWrapERK4Vec3RK6FxRecth		= 0x0200B104;
+
+
+/* arm9 */
+/*----------------------------------------------------------------*/
 /*---------------------------- math ------------------------------*/
 /*----------------------------------------------------------------*/
 
@@ -4273,8 +4289,8 @@ _ZN5Stage14liquidPositionE							= 0x020cae0c;
 _ZN5Stage18lastLiquidPositionE						= 0x020cadac;
 _ZN5Stage7cameraXE									= 0x020cae1c;
 _ZN5Stage7cameraYE									= 0x020cad94;
-_ZN5Stage11cameraZoomXE								= 0x020cada4;
-_ZN5Stage11cameraZoomYE								= 0x020cad8c;
+_ZN5Stage11cameraWidthE								= 0x020cada4;
+_ZN5Stage12cameraHeightE							= 0x020cad8c;
 _ZN5Stage20megaInteractionFlagsE					= 0x020ca284;
 _ZN5Stage10freezeFlagE								= 0x020ca28c;
 _ZN5Stage15fenceFreezeFlagE							= 0x020ca29c;
