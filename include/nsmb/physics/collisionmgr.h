@@ -8,18 +8,50 @@ class PlatformMgr;
 class Collider;
 
 
+enum class DamageTileType : s8
+{
+
+	None = -1,
+	SpikesLeft,
+	SpikesRight,
+	SpikesUp,
+	SpikesDown,
+	Lava,
+	Poison,
+	Crushed,
+	Hit
+
+};
+
+enum class DamageTileFlags : u8
+{
+
+	None,
+	Bottom	= 0x01,
+	Top		= 0x02,
+	Right	= 0x04,
+	Left	= 0x08,
+	Immune	= 0x80
+
+};
+
+IMPL_ENUMCLASS_OPERATORS(DamageTileFlags);
+
 // TODO: move somewhere else (liquid.h)
 enum class LiquidType
 {
+
 	None,
 	Water,
 	Lava,
 	JungleFG,
 	Poison
+
 };
 
 enum class TileModifier : u8
 {
+
 	None,
 	Ice,
 	Snow,
@@ -36,6 +68,7 @@ enum class TileModifier : u8
 	Unknown13,
 	Sand,
 	Unknown15
+
 };
 
 IMPL_ENUMCLASS_OPERATORS(TileModifier);
@@ -99,11 +132,13 @@ struct TileType
 class BlockTrigger {
 public:
 
-	inline bool valid() {
+	NTR_INLINE bool valid() {
 		return tileType != 0;
 	}
 
-	inline void triggerQuestionBlock() {
+	NTR_INLINE void triggerQuestionBlock() {
+
+		ntr_force_assert("Not implemented");
 
 		// TODO!!
 		if (tileType & TileType::QuestionBlock) {
@@ -131,6 +166,7 @@ public:
 
 	enum class Modifier : u8
 	{
+
 		ConveyorBeltRight,
 		ConveyorBeltLeft,
 		Rope,
@@ -147,10 +183,12 @@ public:
 		Snow,
 		Sand,
 		Unknown15
+
 	};
 
 	enum class Result : u32
 	{
+
 		None = 0,
 
 		WallClipRight			= (1U << 0),
@@ -160,34 +198,34 @@ public:
 		WallFullRight			= (1U << 4),
 		WallFullLeft			= (1U << 5),
 
-		Ground40				= (1U << 6),	// ???
-		Unk80					= (1U << 7),	// ???????
+		Ground40				= (1U << 6), // Set by Colliders with optionFlag set to 128
+		Unk80					= (1U << 7), // ???????
 		GroundTile				= (1U << 8),
 		GroundSlope				= (1U << 9),
 		GroundPlatform			= (1U << 10),
-		Ground800				= (1U << 11), // ???
+		GroundDeforming			= (1U << 11), // Tightrope, but also any other DeformingPlatform
 		GroundCollider			= (1U << 12),
 
 		Ceiling					= (1U << 13),
 		CeilingSlope			= (1U << 14),
 		CeilingPartial			= (1U << 15),
 
-		Unk10000				= (1U << 16),
-		Unk20000				= (1U << 17),
-		Unk40000				= (1U << 18),
-		Unk80000				= (1U << 19),
+		ClimbableTopLeft		= (1U << 16),
+		ClimbableTopRight		= (1U << 17),
+		ClimbableBottomLeft		= (1U << 18),
+		ClimbableBottomRight	= (1U << 19),
 		CeilingBlockDestroyed	= (1U << 20),
 		Unk200000				= (1U << 21),
 		Collectable				= (1U << 22),
-		Unk800000				= (1U << 23),
-		Unk1000000				= (1U << 24),
+		Pole					= (1U << 23),
+		OneUpBrickHitAboveSuper	= (1U << 24), // Just why does this exist
 		Unk2000000				= (1U << 25),
-		Unk4000000				= (1U << 26),
+		Tightrope				= (1U << 26), // I have a feeling this is also set by any other DeformingPlatform
 		Unk8000000				= (1U << 27),
-		GroundBlockDestroyed	= (1U << 28),
-		Breakable				= (1U << 29),
+		BrickHitSuper			= (1U << 28), // Ground only?
+		Breakable				= (1U << 29), // Where is this set?
 		NotifySolidOnTop		= (1U << 30),
-		CeilingBlockActivated	= (1U << 31),
+		NotifyBlockActivated	= (1U << 31), // Ceiling only?
 
 
 		WallRightAny			= WallClipRight	| WallRight	| WallFullRight,
@@ -195,7 +233,7 @@ public:
 		WallAny					= WallRightAny | WallLeftAny,
 
 		TileGroundAny			= Ground40 | GroundTile | GroundSlope,
-		ActorGroundAny			= Ground40 | GroundPlatform | Ground800 | GroundCollider,
+		ActorGroundAny			= Ground40 | GroundPlatform | GroundDeforming | GroundCollider,
 		GroundAny				= ActorGroundAny | TileGroundAny,
 
 		CeilingAny				= Ceiling | CeilingSlope | CeilingPartial,
@@ -206,6 +244,7 @@ public:
 
 	enum class SlopeType : u8
 	{
+
 		Up1x1,
 		Down1x1,
 		Up2x1Part1,
@@ -224,18 +263,32 @@ public:
 		Down4x1Part1,
 		Down4x1Part2,
 		Down4x1Part3,
-		Down4x1Part4,
+		Down4x1Part4
+
 	};
 
 	enum class SlopeDirection : u32
 	{
+
 		Descending,
 		Ascending,
 		Invalid
+
+	};
+
+	enum class RaycastDirection : u8
+	{
+
+		Down,
+		Up,
+		Right,
+		Left
+
 	};
 
 	enum class SensorFlags : u32
 	{
+
 		None = 0,
 		Line						= 1U << 0,
 		IgnoreColliders				= 1U << 9,
@@ -260,6 +313,7 @@ public:
 		SlopeCheck					= 1U << 29, // TODO
 		IgnoreFallingBlockOrSlopes	= 1U << 30, // TODO
 		IgnoreSlopesUnk				= 1U << 31, // TODO
+
 	};
 
 	struct Sensor {
@@ -339,9 +393,9 @@ public:
 	// 020AB05C
 	void clearCollision();
 	// 020AB010
-	void init(StageActor* owner, const Sensor* bottomSensor, const Sensor* topSensor, const Sensor* sideSensor, const LineSensorH* climbSensor = nullptr);
+	void init(StageActor* owner, const Sensor* bottomSensor, const Sensor* topSensor, const Sensor* sideSensor, const LineSensorV* climbSensor = nullptr);
 	// 020AAFC0
-	void init(StageActor* owner, Vec3* position, Vec3* velocity, u8* playerID, const Sensor* bottomSensor, const Sensor* topSensor, const Sensor* sideSensor, const LineSensorH* climbSensor = nullptr);
+	void init(StageActor* owner, Vec3* position, Vec3* velocity, s8* playerID, const Sensor* bottomSensor, const Sensor* topSensor, const Sensor* sideSensor, const LineSensorV* climbSensor = nullptr);
 	// 020AAF30
 	bool getBottomSensorSize(Vec3& size);
 	// 020AAEA0
@@ -427,10 +481,15 @@ public:
 
 
 	// 020A9C8C
-	// updatePlayerGroundCollision()
+	Result updatePlayerGroundCollision();
+	// 020A9A58
+	Result updatePlayerHorizontal(Player& player);
 	// 020A94C8
+	Result updatePlayerVertical(Player& player);
 	// 020A92C0
+	Result updatePlayer(Player& player);
 	// 020A91DC
+	Result scanPlayerClimbable(fx32 top, fx32 bottom, fx32 right, fx32 left);
 
 
 	// 020A917C
@@ -438,7 +497,7 @@ public:
 	// 020A915C
 	Result updateWallCollision(fx32* velocityX = nullptr, SensorFlags flags = SensorFlags::None);
 	// 020A9090
-	Result updateCombined(Vec3* position, Vec3* velocity, u8* playerID, const Sensor* bottomSensor, const Sensor* topSensor, const Sensor* sideSensor, PlatformMgr* platformMgr, u8 platformGroupID);
+	Result updateCombined(Vec3* position, Vec3* velocity, s8* playerID, const Sensor* bottomSensor, const Sensor* topSensor, const Sensor* sideSensor, PlatformMgr* platformMgr, u8 platformGroupID);
 
 
 	// 020A9058
@@ -522,14 +581,16 @@ public:
 	static bool scanPointSolid(fx32 x, fx32 y);
 	// 020A764C
 	static TileType getFilteredTileType(fx32 x, fx32 y, TileType filter);
-
 	// 020A75CC
-	// playerPartialSolidScan()
+	static TileType scanSolidTile(fx32 x, fx32 y);
 	// 020A70A0
 	// activeColliderDestroyBlocks()
-
+	// 020A6F50
+	static TileType raycastSolidTiles(fx32 x, fx32 y, fx32 length, RaycastDirection direction);
 	// 020A6E70
 	static LiquidType getLiquidCollision(fx32 x, fx32 y, fx32* targetY, s32 playerID);
+	// 020A6D3C
+	static bool raycastSolidTileDown(const Vec3& position, Vec3& target);
 	// 020A6D18
 	static TileType getTileType(fx32 x, fx32 y);
 	// 020A6CE4
@@ -565,11 +626,11 @@ public:
 	const Sensor* bottomSensor;
 	const Sensor* topSensor;
 	const Sensor* sideSensor;
-	const LineSensorH* climbSensor;
+	const LineSensorV* climbSensor;
 
 	Vec3* linkedPosition;
 	Vec3* linkedVelocity;
-	u8* linkedPlayerID;
+	s8* linkedPlayerID;
 	PlatformMgr* linkedPlatformMgr;
 
 	CollisionMgr* next[3];
@@ -578,7 +639,7 @@ public:
 	Collider* colliders[3];
 
 	u32 unk4C;
-	u32 unk50;
+	fx32 colliderTopDeltaX;
 
 	Vec3 appliedForce;
 	Vec2 lastPosition;
@@ -594,7 +655,6 @@ public:
 
 	u16 attachedTileX;
 	u16 attachedTileY;
-
 	u16 slopeTileX;
 	u16 slopeTileY;
 
@@ -614,13 +674,13 @@ public:
 	SlopeType groundSlopeType;
 	SlopeType ceilingSlopeType;
 
-	u8 parentDirection;
+	u8 climbableType;					// 0 = vine, 1 = fence
 	u8 moreBits;
 	u8 surfaceDirection;
 	u8 moveDirection;
 	u8 unkAF;
-	u8 harmfulFlags;
-	u8 harmfulTileType;
+	DamageTileFlags damageFlags;
+	DamageTileType damageTileType;
 	u8 unkB2;
 	u8 slopeDirectionMaybe;
 	u8 slowMovementMaybe;
@@ -635,6 +695,7 @@ NTR_SIZE_GUARD(CollisionMgr, 0xB8);
 using CollisionMgrResult	= CollisionMgr::Result;
 using SlopeType				= CollisionMgr::SlopeType;
 using SlopeDirection		= CollisionMgr::SlopeDirection;
+using RaycastDirection		= CollisionMgr::RaycastDirection;
 using SensorFlags			= CollisionMgr::SensorFlags;
 using Sensor				= CollisionMgr::Sensor;
 using PointSensor			= CollisionMgr::PointSensor;

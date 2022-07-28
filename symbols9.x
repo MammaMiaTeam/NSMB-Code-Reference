@@ -3102,8 +3102,8 @@ _ZN12CollisionMgrD0Ev																	= 0x020AB0D4;
 
 _ZN12CollisionMgr5resetEv																= 0x020AB0B0;
 _ZN12CollisionMgr14clearCollisionEv														= 0x020AB05C;
-_ZN12CollisionMgr4initEP10StageActorPKNS_6SensorES4_S4_PKNS_11LineSensorHE				= 0x020AB010;
-_ZN12CollisionMgr4initEP10StageActorP4Vec3S3_PhPKNS_6SensorES7_S7_PKNS_11LineSensorHE	= 0x020AAFC0;
+_ZN12CollisionMgr4initEP10StageActorPKNS_6SensorES4_S4_PKNS_11LineSensorVE				= 0x020AB010;
+_ZN12CollisionMgr4initEP10StageActorP4Vec3S3_PaPKNS_6SensorES7_S7_PKNS_11LineSensorVE	= 0x020AAFC0;
 _ZN12CollisionMgr19getBottomSensorSizeER4Vec3											= 0x020AAF30;
 _ZN12CollisionMgr16getTopSensorSizeER4Vec3												= 0x020AAEA0;
 _ZN12CollisionMgr17getSideSensorSizeER4Vec3h											= 0x020AADF8;
@@ -3147,9 +3147,15 @@ _ZN12CollisionMgr17switchTopModifierE8TileType											= 0x020A9DA4;
 _ZN12CollisionMgr17cacheTilePositionEtt													= 0x020A9D3C;
 _ZN12CollisionMgr14getTileTypeAbsEtt													= 0x020A9CF4;
 
+_ZN12CollisionMgr27updatePlayerGroundCollisionEv										= 0x020A9C8C;
+_ZN12CollisionMgr22updatePlayerHorizontalER6Player										= 0x020A9A58;
+_ZN12CollisionMgr20updatePlayerVerticalER6Player										= 0x020A94C8;
+_ZN12CollisionMgr12updatePlayerER6Player												= 0x020A92C0;
+_ZN12CollisionMgr19scanPlayerClimbableEllll												= 0x020A91DC;
+
 _ZN12CollisionMgr21updateGroundCollisionEv												= 0x020A917C;
 _ZN12CollisionMgr19updateWallCollisionEPlNS_11SensorFlagsE								= 0x020A915C;
-_ZN12CollisionMgr14updateCombinedEP4Vec3S1_PhPKNS_6SensorES5_S5_P11PlatformMgrh			= 0x020A9090;
+_ZN12CollisionMgr14updateCombinedEP4Vec3S1_PaPKNS_6SensorES5_S5_P11PlatformMgrh			= 0x020A9090;
 
 _ZN12CollisionMgr23restoreSurfaceDirectionEhh											= 0x020A9058;
 _ZN12CollisionMgr12attachToTileEhh														= 0x020A9030;
@@ -3187,7 +3193,10 @@ _ZNK12CollisionMgr10accessDoorER4Vec3													= 0x020A76EC;
 _ZN12CollisionMgr16getSolidTileTypeEll													= 0x020A76D4;
 _ZN12CollisionMgr14scanPointSolidEll													= 0x020A7684;
 _ZN12CollisionMgr19getFilteredTileTypeEll8TileType										= 0x020A764C;
+_ZN12CollisionMgr13scanSolidTileEll														= 0x020A75CC;
+_ZN12CollisionMgr17raycastSolidTilesElllNS_16RaycastDirectionE							= 0x020A6F50;
 _ZN12CollisionMgr18getLiquidCollisionEllPll												= 0x020A6E70;
+_ZN12CollisionMgr20raycastSolidTileDownERK4Vec3RS0_										= 0x020A6D3C;
 _ZN12CollisionMgr11getTileTypeEll														= 0x020A6D18;
 _ZN12CollisionMgr19compareTileModifierEll12TileModifier									= 0x020A6CE4;
 _ZNK12CollisionMgr12getOwnerTypeEv														= 0x020A6CA8;
