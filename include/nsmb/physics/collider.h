@@ -64,7 +64,7 @@ public:
 
 	// Linked list
 	Collider* prev;						// Pointer to the previous registered Collider.
-	Collider* head;						// Pointer to the first registered Collider.
+	Collider* next;						// Pointer to the next registered Collider.
 
 	CollisionMgr* managers[3];			// Pointers to linked CollisionMgrs
 

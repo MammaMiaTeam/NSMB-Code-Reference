@@ -6,7 +6,7 @@
 namespace TextureHelper {
 
 	// 020F5D4C
-	void setTexture(const TextureInfo& info);
+	void bindTexture(const TextureInfo& info);
 
 	// 020F5D70
 	void beginRender(const Vec3& translation, const Vec3& scale);

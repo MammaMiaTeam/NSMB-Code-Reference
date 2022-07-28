@@ -364,7 +364,7 @@ public:
 	// 02098dd8
 	static bool isBelowCamera(fx32 positionY, ActiveCollider& collider, u8 playerID);
 
-	inline static bool isAboveCamera(fx32 positionY, ActiveCollider& collider, u8 playerID) {
+	NTR_INLINE static bool isAboveCamera(fx32 positionY, ActiveCollider& collider, u8 playerID) {
 		return -(positionY + collider.hitbox.rect.y + collider.hitbox.rect.halfHeight) > Stage::cameraY[playerID];
 	}
 
@@ -374,11 +374,11 @@ public:
 	// 02098fbc
 	bool checkSquished() const;
 
-	inline CollisionMgrResult updateTopSensor() {
+	NTR_INLINE CollisionMgrResult updateTopSensor() {
 		return collisionMgr.updateTopSensor(collisionMgr.collisionResult);
 	}
 
-	inline CollisionMgrResult updateTopSensor(CollisionMgrResult bottomResult) {
+	NTR_INLINE CollisionMgrResult updateTopSensor(CollisionMgrResult bottomResult) {
 		return collisionMgr.updateTopSensor(bottomResult);
 	}
 
@@ -448,7 +448,7 @@ public:
 	void onPlayerStomp(Player& player, fx32 jumpVelocity, bool noPoints);
 
 	// 0209a80c
-	PlayerStompType updatePlayerStomp(ActiveCollider& collider, fx32 jumpVelocity, u32 unk1, bool noPoints);
+	PlayerStompType updatePlayerStomp(ActiveCollider& collider, fx32 jumpVelocity, bool allowClippedJump, bool noPoints);
 
 	// 0209a938
 	void getScorePointsSetB(u32 type, fx32 x, fx32 y, s32 playerID) const;
@@ -477,14 +477,22 @@ public:
 	// 0209ac8c
 	u8 getVerticalDirectionToPlayer(const Vec3& position) const;
 
+	NTR_INLINE u8 getVerticalDirectionToPlayer() const {
+		return getVerticalDirectionToPlayer(position);
+	}
+
 	// 0209acd4
 	u8 getHorizontalDirectionToPlayer(const Vec3& position) const;
+
+	NTR_INLINE u8 getHorizontalDirectionToPlayer() const {
+		return getHorizontalDirectionToPlayer(position);
+	}
 
 	// 0209adb0
 	bool destroyInactive(u32 flags);
 
 	// 0209ae88
-	static bool isOutOfView(const Vec3& position, const FxRect& rect, u8 viewID);
+	static bool isOutOfView(const Vec3& position, const FxRect& boundingBox, u8 viewID);
 
 	/*--- small break here (Stage/StageScene functions) ---*/
 

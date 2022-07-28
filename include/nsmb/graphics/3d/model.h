@@ -49,11 +49,19 @@ public:
 	*/
 	void setCommandCallback(NNSG3dSbcCallBackFunc cb, u8* address, u8 cmd, NNSG3dSbcCallBackTiming timing); //Sets the SBC command callback with the given timing (address is eliminated and only left for backwards compatibility)
 
-	inline void setOwner(void* ptr) {
+	NTR_INLINE void disableRendering() {
+		NNS_G3dRenderObjSetFlag(&renderObj, NNS_G3D_RENDEROBJ_FLAG_SKIP_SBC_DRAW);
+	}
+
+	NTR_INLINE void enableRendering() {
+		NNS_G3dRenderObjResetFlag(&renderObj, NNS_G3D_RENDEROBJ_FLAG_SKIP_SBC_DRAW);
+	}
+
+	NTR_INLINE void setOwner(void* ptr) {
 		NNS_G3dRenderObjSetUserPtr(&renderObj, ptr);
 	}
 
-	inline void* getOwner() {
+	NTR_INLINE void* getOwner() {
 		return renderObj.ptrUser;
 	}
 
@@ -63,7 +71,7 @@ public:
 	//020197fc
 	NNSG3dResMat* getMaterialCollection(); //returns a pointer to the model's material collection
 
-	inline u32 getMaterialCount() const {
+	NTR_INLINE u32 getMaterialCount() const {
 		return data->info.numMat;
 	}
 
@@ -73,7 +81,7 @@ public:
 	//020197d4
 	NNSG3dResNodeInfo* getNodeInfo(); //returns a pointer to the node info
 
-	inline u32 getNodeCount() const {
+	NTR_INLINE u32 getNodeCount() const {
 		return data->info.numNode;
 	}
 

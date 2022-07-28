@@ -48,6 +48,32 @@ public:
 
 
 
+	constexpr void set(fx32 v) {
+		this->x = v;
+		this->y = v;
+		this->z = v;
+	}
+
+	constexpr void set(fx32 x, fx32 y, fx32 z) {
+		this->x = x;
+		this->y = y;
+		this->z = z;
+	}
+
+	constexpr void set(const VecFx32& vec) {
+		this->x = vec.x;
+		this->y = vec.y;
+		this->z = vec.z;
+	}
+
+	constexpr void set(const VecFx16& vec) {
+		this->x = vec.x;
+		this->y = vec.y;
+		this->z = vec.z;
+	}
+
+
+
 	constexpr bool isNull() const {
 		return x == 0 && y == 0 && z == 0;
 	}
@@ -284,6 +310,28 @@ public:
 	// D0: 020031d0
 	// D1: 020030d8
 	constexpr virtual ~Vec2() {}
+
+
+
+	constexpr void set(fx32 v) {
+		this->x = v;
+		this->y = v;
+	}
+
+	constexpr void set(fx32 x, fx32 y) {
+		this->x = x;
+		this->y = y;
+	}
+
+	constexpr void set(const VecFx32& vec) {
+		this->x = vec.x;
+		this->y = vec.y;
+	}
+
+	constexpr void set(const VecFx16& vec) {
+		this->x = vec.x;
+		this->y = vec.y;
+	}
 
 
 
@@ -543,6 +591,26 @@ public:
 	// D0: 020031b0
 	// D1: 02003070
 	constexpr virtual ~Vec3s() {}
+
+
+
+	constexpr void set(fx16 v) {
+		this->x = v;
+		this->y = v;
+		this->z = v;
+	}
+
+	constexpr void set(fx16 x, fx16 y, fx16 z) {
+		this->x = x;
+		this->y = y;
+		this->z = z;
+	}
+
+	constexpr void set(const VecFx16& vec) {
+		this->x = vec.x;
+		this->y = vec.y;
+		this->z = vec.z;
+	}
 
 
 

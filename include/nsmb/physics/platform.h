@@ -38,7 +38,7 @@ public:
 	StageActor* owner;
 
 	Platform* prev;
-	Platform* first;
+	Platform* next;
 	PlatformMgr* manager;
 
 	Vec2 pointEnd;
@@ -58,6 +58,10 @@ public:
 	u8 layerID;
 
 	u8 unk54[4];
+
+
+	static Platform* listHead;
+	static Platform* listTail;
 
 };
 NTR_SIZE_GUARD(Platform, 0x58);

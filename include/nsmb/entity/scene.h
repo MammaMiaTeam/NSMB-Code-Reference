@@ -109,7 +109,7 @@ NTR_SIZE_GUARD(Scene, 0x64);
 
 namespace ProcessManager {
 
-	inline Scene* getNextScene(Scene* scene = nullptr) {
+	NTR_INLINE Scene* getNextScene(const Scene* scene = nullptr) {
 		return static_cast<Scene*>(getNextObjectByType(ObjectType::Scene, scene));
 	}
 

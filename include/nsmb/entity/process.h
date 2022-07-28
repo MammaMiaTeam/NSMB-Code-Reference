@@ -31,13 +31,13 @@ namespace ProcessManager {
 	ssym void updateProcessLists() __body
 
 	//0204d630
-	ssym Base* getNextObjectByType(ObjectType type, Base* object = nullptr) __rbody
+	ssym Base* getNextObjectByType(ObjectType type, const Base* object = nullptr) __rbody
 
 	//0204d66c
-	ssym Base* getNextObjectByObjectID(u16 objectID, Base* object = nullptr) __rbody
+	ssym Base* getNextObjectByObjectID(u16 objectID, const Base* object = nullptr) __rbody
 
 	template<class T>
-	T* getNextObject(T* object = nullptr) {
+	T* getNextObject(const T* object = nullptr) {
 		return static_cast<T*>(getNextObjectByObjectID(T::objectID, object));
 	}
 
@@ -45,16 +45,16 @@ namespace ProcessManager {
 	ssym Base* getObjectByID(u32 id) __rbody
 
 	//0204d6dc
-	ssym u32 getIDIndex(ProcessLink* link) __rbody
+	ssym u32 getIDIndex(const ProcessLink& link) __rbody
 
 	//0204d6ec
 	ssym const char* getProcessListName(ProcessListType type) __rbody
 
 	//0204d6fc
-	ssym SceneNode* getNextNodeByType(SceneGraph* scene, ObjectType type, SceneNode* node) __rbody
+	ssym SceneNode* getNextNodeByType(SceneGraph* scene, ObjectType type, const SceneNode* node) __rbody
 
 	//0204d758
-	ssym SceneNode* getNextNodeByObjectID(SceneGraph* scene, u16 objectID, SceneNode* node) __rbody
+	ssym SceneNode* getNextNodeByObjectID(SceneGraph* scene, u16 objectID, const SceneNode* node) __rbody
 
 };
 

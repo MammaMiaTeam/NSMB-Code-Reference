@@ -2345,14 +2345,14 @@ _ZN10SceneGraph11removeChildEP9SceneNode	= 0x02043a54;
 /*--------------------------- process ----------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN14ProcessManager18updateProcessListsEv									= 0x0204d598;
-_ZN14ProcessManager19getNextObjectByTypeE10ObjectTypeP4Base					= 0x0204d630;
-_ZN14ProcessManager23getNextObjectByObjectIDEtP4Base						= 0x0204d66c;
-_ZN14ProcessManager13getObjectByIDEm										= 0x0204d6a8;
-_ZN14ProcessManager10getIDIndexEP11ProcessLink								= 0x0204d6dc;
-_ZN14ProcessManager18getProcessListNameE15ProcessListType					= 0x0204d6ec;
-_ZN14ProcessManager17getNextNodeByTypeEP10SceneGraph10ObjectTypeP9SceneNode	= 0x0204d6fc;
-_ZN14ProcessManager21getNextNodeByObjectIDEP10SceneGraphtP9SceneNode		= 0x0204d758;
+_ZN14ProcessManager18updateProcessListsEv										= 0x0204d598;
+_ZN14ProcessManager19getNextObjectByTypeE10ObjectTypePK4Base					= 0x0204d630;
+_ZN14ProcessManager23getNextObjectByObjectIDEtPK4Base							= 0x0204d66c;
+_ZN14ProcessManager13getObjectByIDEm											= 0x0204d6a8;
+_ZN14ProcessManager10getIDIndexERK11ProcessLink									= 0x0204d6dc;
+_ZN14ProcessManager18getProcessListNameE15ProcessListType						= 0x0204d6ec;
+_ZN14ProcessManager17getNextNodeByTypeEP10SceneGraph10ObjectTypePK9SceneNode	= 0x0204d6fc;
+_ZN14ProcessManager21getNextNodeByObjectIDEP10SceneGraphtPK9SceneNode			= 0x0204d758;
 
 
 /* arm9 */
@@ -2569,7 +2569,7 @@ _ZN11StageEntity22tryAttachToPlayerHandsElll						= 0x0209a0f4;
 _ZN11StageEntity19attachToPlayerHandsElll							= 0x0209a144;
 _ZN11StageEntity25updateSolidActiveColliderEmmh						= 0x0209a23c;
 _ZN11StageEntity13onPlayerStompER6Playerlb							= 0x0209a5bc;
-_ZN11StageEntity17updatePlayerStompER14ActiveColliderlmb			= 0x0209a80c;
+_ZN11StageEntity17updatePlayerStompER14ActiveColliderlbb			= 0x0209a80c;
 _ZNK11StageEntity18getScorePointsSetBEmlll							= 0x0209a938;
 _ZN11StageEntity18getScorePointsSetBERK4Vec3ml						= 0x0209a990;
 _ZNK11StageEntity18getScorePointsSetCEmlll							= 0x0209aa04;
@@ -3268,6 +3268,9 @@ _ZN8Platform5resetEv								= 0x0201c0d8;
 _ZN8Platform4linkEv									= 0x0201c080;
 _ZN8Platform6unlinkEv								= 0x0201c01c;
 
+_ZN8Platform8listHeadE								= 0x0208ae90;
+_ZN8Platform8listTailE								= 0x0208ae94;
+
 _ZTV8Platform										= 0x0203c6a0;
 
 
@@ -3369,6 +3372,9 @@ _ZN14ActiveCollider25testCollisionOtherVsVTrpzEPS_					= 0x020a4264;
 _ZN14ActiveCollider25testCollisionVTrpzVsOtherEPS_					= 0x020a40a4;
 _ZN14ActiveCollider25testCollisionOtherVsHTrpzEPS_					= 0x020a3fc4;
 _ZN14ActiveCollider25testCollisionHTrpzVsOtherEPS_					= 0x020a3e04;
+
+_ZN14ActiveCollider8listHeadE										= 0x020caac4;
+_ZN14ActiveCollider8listTailE										= 0x020caac8;
 
 _ZTV14ActiveCollider												= 0x020c6f08;
 
@@ -4120,7 +4126,7 @@ _ZN5Curve12samplePointsEPK4Vec2S2_S2_PS0_ml	= 0x020F4894;
 /*----------------------- texture helper -------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN13TextureHelper10setTextureERK11TextureInfo					= 0x020F5D4C;
+_ZN13TextureHelper11bindTextureERK11TextureInfo					= 0x020F5D4C;
 _ZN13TextureHelper11beginRenderERK4Vec3S2_						= 0x020F5D70;
 _ZN13TextureHelper11beginRenderERK4Vec3S2_s						= 0x020F5DDC;
 _ZN13TextureHelper20beginRenderNoCullingERK4Vec3S2_s			= 0x020F5E48;

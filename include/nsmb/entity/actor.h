@@ -169,7 +169,7 @@ NTR_SIZE_GUARD(Actor, 0x120);
 
 namespace ProcessManager {
 
-	inline Actor* getNextActor(Actor* actor = nullptr) {
+	NTR_INLINE Actor* getNextActor(const Actor* actor = nullptr) {
 		return static_cast<Actor*>(getNextObjectByType(ObjectType::Actor, actor));
 	}
 

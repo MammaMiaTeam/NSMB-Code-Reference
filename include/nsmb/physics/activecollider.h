@@ -108,7 +108,7 @@ public:
 	u32 unk0;
 
 	ActiveCollider* prev;
-	ActiveCollider* first;
+	ActiveCollider* next;
 
 	// hitbox info
 	ActiveColliderInfo hitbox;
@@ -143,6 +143,10 @@ public:
 	u8 unk10;
 	u16 lastCollidedGroups;
 	u16 unk12;
+
+
+	static ActiveCollider* listHead;
+	static ActiveCollider* listTail;
 
 	// 020a4868
 	sym ActiveCollider() __body
@@ -183,6 +187,14 @@ public:
 
 	// Assumed from 020E3824 (ov10)
 	NTR_INLINE u8 getPlayerID() const;
+
+	NTR_INLINE fx32 getCollisionPointX(CollisionGroup group) const {
+		return collisionPointX[u32(group)];
+	}
+
+	NTR_INLINE fx32 getCollisionPointY(CollisionGroup group) const {
+		return collisionPointY[u32(group)];
+	}
 
 protected:
 
