@@ -18,12 +18,12 @@ namespace Math {
 
 	template<class T>
 	NTR_INLINE T tick(T& value) {
-		return value == 0 ? value : value--;
+		return value ? --value : value;
 	}
 
 	// 02043380
 	template<>
-	u32 Math::tick(u32& value);
+	s32 Math::tick(s32& value);
 
 	// 02043398
 	template<>

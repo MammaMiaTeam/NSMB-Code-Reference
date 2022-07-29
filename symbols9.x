@@ -2019,7 +2019,7 @@ _ZN5Stage24isOutsidePlayerRangeWrapERK4Vec3RK6FxRecth		= 0x0200B104;
 /*---------------------------- math ------------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN4Math4tickImEET_RS1_ = 0x02043380;
+_ZN4Math4tickIlEET_RS1_ = 0x02043380;
 _ZN4Math4tickItEET_RS1_ = 0x02043398;
 _ZN4Math4tickIsEET_RS1_ = 0x020433B0;
 _ZN4Math4tickIhEET_RS1_ = 0x020433C8;
