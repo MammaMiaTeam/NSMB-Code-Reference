@@ -318,7 +318,7 @@ namespace Particle {
 		sym static void setAxisCallback(SPLEmitter* emitter, const VecFx16& axis) __body
 
 		// 0x2022a7c
-		sym static void createParticleAxis(u32 particleID, const Vec3& position, const VecFx16& axis) __body
+		sym static void createParticleAxis(u32 particleID, const Vec3& position, const VecFx16* axis) __body
 
 		// 0x2022a70
 		sym static void setSimpleCollisionYCallback(SPLEmitter* emitter, const fx32& collY) __body
@@ -327,28 +327,28 @@ namespace Particle {
 		sym static void setRadiusCallback(SPLEmitter* emitter, const fx32& radius) __body
 
 		// 0x2022a50
-		sym static void createParticleRadius(u32 particleID, const Vec3& position, const fx32& radius) __body
+		sym static void createParticleRadius(u32 particleID, const Vec3& position, const fx32* radius) __body
 
 		// 0x2022a44
 		sym static void setParticleLifeCallback(SPLEmitter* emitter, const u16& life) __body
 
 		// 0x2022a30
-		sym static void createParticleLife(u32 particleID, const Vec3& position, const u16& life) __body
+		sym static void createParticleLife(u32 particleID, const Vec3& position, const u16* life) __body
 
 		// 0x2022a04
 		sym static SPLEmitter* getSPLEmitter(u32 emitterID) __rbody
 
 		// 0x2022890
-		sym static u32 runEmitter(u32 emitterID, u32 particleID, const Vec3& position, const VecFx16& axis, const fx32& collY, const fx16& baseScale, ControllerBase* controller) __rbody
+		sym static u32 runEmitter(u32 emitterID, u32 particleID, const Vec3& position, const VecFx16* axis = nullptr, const fx32* collY = nullptr, const fx16* baseScale = nullptr, ControllerBase* controller = nullptr) __rbody
 
 		// 0x2022824
-		sym static u32 runEmitterBoss(u32 emitterID, u32 particleID, const Vec3& position, const VecFx16& axis, const fx32& collY, const fx16& baseScale, ControllerBase* controller) __rbody
+		sym static u32 runEmitterBoss(u32 emitterID, u32 particleID, const Vec3& position, const VecFx16* axis = nullptr, const fx32* collY = nullptr, const fx16* baseScale = nullptr, ControllerBase* controller = nullptr) __rbody
 
 		// 0x20227bc
-		sym static u32 runEmitterManualLiquid(u32 emitterID, u32 pclID, fx32 x, fx32 y, fx32 z, const VecFx16& axis) __rbody
+		sym static u32 runEmitterManualLiquid(u32 emitterID, u32 pclID, fx32 x, fx32 y, fx32 z, const VecFx16* axis = nullptr) __rbody
 
 		// 0x2022754
-		sym static u32 runEmitterManual(u32 emitterID, u32 pclID, fx32 x, fx32 y, fx32 z, const VecFx16& axis) __rbody
+		sym static u32 runEmitterManual(u32 emitterID, u32 pclID, fx32 x, fx32 y, fx32 z, const VecFx16* axis = nullptr) __rbody
 
 		// 0x20226e4
 		sym static u32 createSmokePuff(fx32 x, fx32 y, fx32 z) __rbody
@@ -396,7 +396,7 @@ namespace Particle {
 		sym static void createParticleBoss(u32 particleID, const Vec3& position) __body
 
 		// 0x20220d8
-		sym static void createParticleBossSimpleCollisionY(u32 particleID, const Vec3& position, const fx32& collY) __body
+		sym static void createParticleBossSimpleCollisionY(u32 particleID, const Vec3& position, const fx32* collY) __body
 
 		// 0x20220a4
 		sym static SPLEmitter* getSPLEmitterSafe(u32 emitterID) __rbody // checks if Emitter is nullptr before accessing SPLEmitter.
@@ -414,7 +414,7 @@ namespace Particle {
 		sym static void setEmitterParticleLife(u32 emitterID, u16 life) __body
 
 		// 0x2021f7c
-		sym static u32 runEmitterInitialVelocityAxis(u32 emitterID, u32 particleID, const Vec3& position, const VecFx16& axis, const fx32& collY, const fx16& baseScale, const fx16& initVelocityAxis, ControllerBase* controller) __rbody
+		sym static u32 runEmitterInitialVelocityAxis(u32 emitterID, u32 particleID, const Vec3& position, const VecFx16* axis = nullptr, const fx32* collY = nullptr, const fx16* baseScale = nullptr, const fx16* initVelocityAxis = nullptr, ControllerBase* controller = nullptr) __rbody
 
 		// 0x2021f58
 		sym static void setPolygonAttributeBoss(u32 attribute) __body
