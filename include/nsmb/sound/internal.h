@@ -149,16 +149,16 @@ namespace Internal {
 	void stopAllSFXEmitters(s32 frames);
 
 	// 0204DD74
-	void stopSFXEmitter(u32 seqArcIndex, u32 seqArcNo);
+	void stopSFXEmitter(s32 seqArcIndex, s32 seqArcNo);
 
 	// 0204DE10
-	bool startSFXEmitter(u32 seqArcIndex, u32 seqArcNo, SFXParams* params, SFXMode mode);
+	bool startSFXEmitter(s32 seqArcIndex, s32 seqArcNo, SFXParams* params, SFXMode mode);
 
 	// 0204E2F8
-	bool playSFX(u32 seqArcIndex, u32 seqArcNo, SFXParams* params, SFXMode mode);
+	bool playSFX(s32 seqArcIndex, s32 seqArcNo, SFXParams* params, SFXMode mode);
 
 	// 0204E304
-	SFXEmitter* findActiveSFXEmitter(u32 seqArcIndex, u32 seqArcNo);
+	SFXEmitter* findActiveSFXEmitter(s32 seqArcIndex, s32 seqArcNo);
 
 	// 0204E358
 	SFXEmitter* findFreeSFXEmitter(bool recycleLast);
@@ -179,7 +179,7 @@ namespace Internal {
 	bool setTempoRatio(s32 ratio);
 
 	// 0204E5AC
-	bool startSeq(u32 id);
+	bool startSeq(s32 id);
 
 	// 0204E87C
 	bool suspendSeq(s32 framesMain, s32 framesSecondary);
@@ -188,10 +188,10 @@ namespace Internal {
 	void updateSound();
 
 	// 0204ECBC
-	bool loadGroup(u32 id);
+	bool loadGroup(s32 id);
 
 	// 0204EDA8
-	bool loadSfxGroup(u32 id);
+	bool loadSFXGroup(s32 id);
 
 	// 0204EE14
 	void unloadAll();
@@ -206,7 +206,7 @@ namespace Internal {
 	void initArchive();
 
 	// 0204F194
-	bool loadSeq(u32 seqId);
+	bool loadSeq(s32 seqId);
 
 	// 0204F1DC
 	bool startOutputEffect(void* buffer, u32 size);
