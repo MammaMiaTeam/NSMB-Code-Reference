@@ -2319,13 +2319,29 @@ _ZTVN8Particle7HandlerE																						= 0x0203cf84;
 /*------------------------- blend color --------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN10BlendColorC1Ev						= 0x020e91a0;
-_ZN10BlendColorC2Ev						= 0x020e91a0;
-_ZN10BlendColorD0Ev						= 0x020e9170;
-_ZN10BlendColorD1Ev						= 0x020e9190;
-_ZN10BlendColorD2Ev						= 0x020e9190;
-_ZN10BlendColor12blendChannelERttt		= 0x020e9120;
-_ZN10BlendColor5blendEtm				= 0x020e9018;
+_ZN10BlendColorD0Ev						= 0x020E9170;
+_ZN10BlendColorD1Ev						= 0x020E9190;
+_ZN10BlendColorD2Ev						= 0x020E9190;
+_ZN10BlendColorC1Ev						= 0x020E91A0;
+_ZN10BlendColorC2Ev						= 0x020E91A0;
+_ZN10BlendColor12blendChannelERttt		= 0x020E9120;
+_ZN10BlendColor5blendEtm				= 0x020E9018;
+
+_ZTV10BlendColor						= 0x02126B5C;
+
+
+/* arm9_ov10 */
+/*----------------------------------------------------------------*/
+/*-------------------------- spin state --------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN9SpinStateD0Ev						= 0x020E91DC;
+_ZN9SpinStateD1Ev						= 0x020E9208;
+_ZN9SpinStateD2Ev						= 0x020E9208;
+_ZN9SpinStateC1Ev						= 0x020E9224;
+_ZN9SpinStateC2Ev						= 0x020E9224;
+
+_ZTV9SpinState							= 0x02126B6C;
 
 
 /* arm9 */
@@ -4418,6 +4434,7 @@ _ZN4Game5wrapXE								= 0x02085AA4;
 _ZN4Game14scrollingWrapXE					= 0x02085AA8;
 _ZN4Game10viewMatrixE						= 0x02085B20;
 _ZN4Game11modelMatrixE						= 0x0208B6E8;
+_ZN4Game12starmanTimerE						= 0x0208B350;
 _ZN4Game6randomE							= 0x02085A70;
 _ZN4Game15randomCallCountE					= 0x02085A54;
 
@@ -4454,6 +4471,20 @@ __dso_handle		= 0x0;
 /*-----------------------------------------------------------------*/
 
 _ZN8MvsLMenu18startConsoleSearchEv  = 0x021575A8;
+
+
+/* arm9_ov11 */
+/*-----------------------------------------------------------------*/
+/*------------------------- victory state -------------------------*/
+/*-----------------------------------------------------------------*/
+
+_ZN12VictoryStateD0Ev	= 0x0212B160;
+_ZN12VictoryStateD1Ev	= 0x0212B18C;
+_ZN12VictoryStateD2Ev	= 0x0212B18C;
+_ZN12VictoryStateC1Ev	= 0x0212B1A8;
+_ZN12VictoryStateC2Ev	= 0x0212B1A8;
+
+_ZTV12VictoryState		= 0x0212F71C;
 
 
 /* arm9_ov11 */
@@ -4609,23 +4640,414 @@ _ZTV10PlayerBase													= 0x0212F72C;
 
 
 /* arm9_ov10 */
+/*-----------------------------------------------------------------*/
+/*--------------------------- jump state --------------------------*/
+/*-----------------------------------------------------------------*/
+
+_ZN9JumpStateD0Ev		= 0x020FC9F8;
+_ZN9JumpStateD1Ev		= 0x020FCA18;
+_ZN9JumpStateD2Ev		= 0x020FCA18;
+_ZN9JumpStateC1Ev		= 0x020FCA60;
+_ZN9JumpStateC2Ev		= 0x020FCA60;
+_ZN9JumpStateC2Elbbba	= 0x020FCA28;
+
+_ZTV9JumpState			= 0x02128464;
+
+
+/* arm9_ov10 */
+/*-----------------------------------------------------------------*/
+/*------------------------ spin jump state ------------------------*/
+/*-----------------------------------------------------------------*/
+
+_ZN13SpinJumpStateD0Ev		= 0x020FC988;
+_ZN13SpinJumpStateD1Ev		= 0x020FC9A8;
+_ZN13SpinJumpStateD2Ev		= 0x020FC9A8;
+_ZN13SpinJumpStateC1Ev		= 0x020FC9D4;
+_ZN13SpinJumpStateC2Ev		= 0x020FC9D4;
+_ZN13SpinJumpStateC2Elsb	= 0x020FC9B8;
+
+_ZTV13SpinJumpState			= 0x02128474;
+
+
+/* arm9_ov10 */
 /*----------------------------------------------------------------*/
 /*---------------------------- player ----------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN6Player12setAnimationEmbmlt							= 0x02120BB8;
-_ZN6Player17setAnimationSpeedEl							= 0x021209E0;
-_ZN6Player16setMovementStateEMS_FbPvES0_				= 0x021006AC;
-_ZNK6Player20isAnimationCompletedEv						= 0x02120A14;
-_ZN6Player15updateAnimationEv							= 0x02120A24;
-_ZN6Player6freezeEb										= 0x0211F34C;
-_ZN6Player8unfreezeEv									= 0x0211F2EC;
-_ZN6Player13enterEntranceEv								= 0x021195E8;
 
-_ZN6Player14tryUnlinkActorEv							= 0x02104C9C;
-_ZN6Plater11unlinkActorEv								= 0x02104CCC;
+_ZN6Player12setAnimationEmbNS_9FrameModeElt					= 0x02120BB8;
+_ZN6Player15setCapAnimationEv								= 0x02120A98;
+_ZN6Player26setupCarryPartialAnimationEb					= 0x02120A34;
+_ZN6Player15updateAnimationEv								= 0x02120A24;
+_ZNK6Player24isBodyAnimationCompletedEv						= 0x02120A14;
+_ZN6Player21setBodyAnimationFrameEt							= 0x02120A04;
+_ZNK6Player21getBodyAnimationFrameEv						= 0x021209F4;
+_ZN6Player21setBodyAnimationSpeedEl							= 0x021209E0;
+_ZNK6Player21getBodyAnimationSpeedEv						= 0x021209D0;
+_ZNK6Player22isBodyAnimationPassingEs						= 0x021209C0;
+_ZN6Player16setHeadAnimationEm								= 0x02120938;
 
-_ZN6Player12starmanTimerE								= 0x0208B350;
+_ZN6Player16playPowerupSoundEv								= 0x02120894;
+_ZN6Player18switchPowerupModelEv							= 0x02120868;
+_ZN6Player20switchBodyAnimationsEmm							= 0x02120844;
+_ZN6Player14powerupAppliedEv								= 0x021207FC;
+_ZN6Player23disableTransitParticlesEv						= 0x021207D8;
+_ZN6Player17updatePowerupGainEv								= 0x021206A0;
+_ZN6Player14switchFromMegaEv								= 0x02120618;
+_ZN6Player10megaShrunkEv									= 0x021205D4;
+_ZN6Player19updateMegaShrinkingEv							= 0x021204CC;
+_ZN6Player20updatePowerupAppliedEv							= 0x02120498;
+_ZN6Player10growToMegaEv									= 0x02120344;
+_ZN6Player17updateMegaGrowingEv								= 0x02120130;
+_ZN6Player27updatePowerupScaleAnimationEv					= 0x02120004;
+_ZN6Player20preparePowerupSwitchEv							= 0x0211FDC8;
+_ZN6Player19updatePowerupSwitchEv							= 0x0211FC24;
+_ZN6Player17revertMegaGrowingEl								= 0x0211FB38;
+_ZN6Player16updateMegaRevertEv								= 0x0211F9B4;
+_ZN6Player18updatePowerupStateEv							= 0x0211F83C;
+_ZN6Player19switchPowerupDirectE12PowerupState				= 0x0211F758;
+
+_ZN6Player11spawnPipeUpEv									= 0x0211F710;
+_ZN6Player13spawnPipeDownEv									= 0x0211F6C8;
+_ZN6Player13spawnPipeLeftEv									= 0x0211F680;
+_ZN6Player14spawnPipeRightEv								= 0x0211F638;
+_ZN6Player15spawnMiniPipeUpEv								= 0x0211F5F0;
+_ZN6Player17spawnMiniPipeDownEv								= 0x0211F5A8;
+_ZN6Player17spawnMiniPipeLeftEv								= 0x0211F560;
+_ZN6Player18spawnMiniPipeRightEv							= 0x0211F518;
+_ZN6Player9spawnDoorEv										= 0x0211F4D0;
+_ZN6Player11spawnDoor14Ev									= 0x0211F488;
+_ZN6Player11spawnDoor15Ev									= 0x0211F440;
+_ZN6Player11spawnVSPipeEv									= 0x0211F3F8;
+_ZN6Player12spawnJumpingEv									= 0x0211F3DC;
+_ZN6Player9spawnVineEv										= 0x0211F3C0;
+_ZN6Player13beginCutsceneEb									= 0x0211F34C;
+_ZN6Player11endCutsceneEv									= 0x0211F2EC;
+_ZN6Player23beginBossDefeatCutsceneEv						= 0x0211F2A4;
+_ZN6Player15enterTransitionEv								= 0x0211F274;
+_ZN6Player18tryLeaveTransitionEv							= 0x0211F1D0;
+_ZN6Player18transitWorldCannonEPKNS_14ShootCannonArgE		= 0x0211F184;
+_ZN6Player16transitTurntableEv								= 0x0211F0F4;
+_ZN6Player14transitVictoryEv								= 0x0211F0AC;
+_ZN6Player19transitFlagpoleWaitEv							= 0x0211F090;
+_ZN6Player18signalFlagpoleWaitEv							= 0x0211F048;
+_ZN6Player22updateTransitCollisionEv						= 0x0211F020;
+_ZN6Player12spawnDefaultEv									= 0x0211EFB0;
+_ZN6Player12spawnFallingEv									= 0x0211EF3C;
+_ZN6Player17endJumpTransitionEv								= 0x0211EEDC;
+_ZN6Player17endVineTransitionEv								= 0x0211EE7C;
+_ZN6Player21switchTransitionStateEMS_FbPvES0_				= 0x0211EDA0;
+_ZN6Player21updateTransitionStateEv							= 0x0211ED40;
+_ZN6Player24tryTransitVersusCompleteEv						= 0x0211ECEC;
+_ZN6Player21tryTransitVersusDummyEv							= 0x0211ECB0;
+_ZN6Player17transitMegaShrinkEv								= 0x0211EBE4;
+_ZN6Player19defaultTransitStateEPv							= 0x0211E670;
+_ZN6Player15transitPipeExitENS_8PipeTypeE					= 0x0211E5A8;
+_ZN6Player25enterPipeDownTransitStateEPv					= 0x0211E44C;
+_ZN6Player25crawlPipeDownTransitStateEPv					= 0x0211E268;
+_ZN6Player25beginExitPipeUpTransitionEv						= 0x0211E234;
+_ZN6Player22exitPipeUpTransitStateEPv						= 0x0211E024;
+_ZN6Player23enterPipeUpTransitStateEPv						= 0x0211DECC;
+_ZN6Player23crawlPipeUpTransitStateEPv						= 0x0211DD10;
+_ZN6Player27beginExitPipeDownTransitionEv					= 0x0211DCDC;
+_ZN6Player24exitPipeDownTransitStateEPv						= 0x0211DB34;
+_ZN6Player26enterPipeRightTransitStateEPv					= 0x0211D9C0;
+_ZN6Player26crawlPipeRightTransitStateEPv					= 0x0211D7E8;
+_ZN6Player27beginExitPipeLeftTransitionEv					= 0x0211D7A4;
+_ZN6Player24exitPipeLeftTransitStateEPv						= 0x0211D53C;
+_ZN6Player25enterPipeLeftTransitStateEPv					= 0x0211D3C8;
+_ZN6Player25crawlPipeLeftTransitStateEPv					= 0x0211D1F0;
+_ZN6Player28beginExitPipeRightTransitionEv					= 0x0211D1AC;
+_ZN6Player25exitPipeRightTransitStateEPv					= 0x0211CF44;
+_ZN6Player24beginEnterDoorTransitionENS_8DoorTypeE			= 0x0211CDF4;
+_ZN6Player13enterDoorOpenEv									= 0x0211CD50;
+_ZN6Player13enterDoorWalkEv									= 0x0211CB84;
+_ZN6Player14enterDoorCloseEv								= 0x0211CAC0;
+_ZN6Player21enterDoorTransitStateEPv						= 0x0211C9F0;
+_ZN6Player23beginExitDoorTransitionEv						= 0x0211C918;
+_ZN6Player31beginExitStandardDoorTransitionEv				= 0x0211C8F4;
+_ZN6Player27beginExitMiniDoorTransitionEv					= 0x0211C8DC;
+_ZN6Player27beginExitBossDoorTransitionEv					= 0x0211C8B8;
+_ZN6Player20exitDoorTransitStateEPv							= 0x0211C61C;
+_ZN6Player21beginVSPipeTransitionEv							= 0x0211C5D4;
+_ZN6Player18vsPipeTransitStateEPv							= 0x0211C434;
+_ZN6Player20warpZoneTransitStateEPv							= 0x0211C3D0;
+_ZN6Player19beginJumpTransitionEv							= 0x0211C398;
+_ZN6Player16jumpTransitStateEPv								= 0x0211C318;
+_ZN6Player19beginVineTransitionEv							= 0x0211C2E8;
+_ZN6Player16vineTransitStateEPv								= 0x0211C1B8;
+_ZN6Player15playGoalFanfareEv								= 0x0211C0A8;
+_ZN6Player18goalSpawnFireworksEv							= 0x0211BE68;
+_ZN6Player13goalMegaClearEv									= 0x0211BE18;
+_ZN6Player20flagpoleTransitStateEPv							= 0x0211B5C8;
+_ZN6Player24flagpoleWaitTransitStateEPv						= 0x0211B4FC;
+_ZN6Player25versusTimesUpTransitStateEPv					= 0x0211B408;
+_ZN6Player26versusCompleteTransitStateEPv					= 0x0211B32C;
+_ZN6Player23versusDummyTransitStateEPv						= 0x0211B2F0;
+_ZN6Player27bowserJrVictoryTransitStateEPv					= 0x0211AEC8;
+_ZN6Player20cutsceneTransitStateEPv							= 0x0211AD44;
+_ZN6Player24bossCutsceneTransitStateEPv						= 0x0211AB7C;
+_ZN6Player22bossDefeatTransitStateEPv						= 0x0211A9A8;
+_ZN6Player23bossVictoryTransitStateEPv						= 0x0211A370;
+_ZN6Player20inactiveTransitStateEPv							= 0x0211A2B0;
+_ZN6Player28shootWorldCannonTransitStateEPv					= 0x02119ED4;
+_ZN6Player21turntableTransitStateEPv						= 0x02119E30;
+_ZN6Player25unusedVictoryTransitStateEPv					= 0x02119D74;
+_ZN6Player20beginDeathTransitionEv							= 0x02119C8C;
+_ZN6Player25standardDeathTransitStateEPv					= 0x02119B24;
+_ZN6Player21lavaDeathTransitStateEPv						= 0x0211997C;
+_ZN6Player23poisonDeathTransitStateEPv						= 0x021197FC;
+_ZN6Player20pitDeathTransitStateEPv							= 0x021196B0;
+_ZN6Player19transitEntranceWarpE12EntranceType				= 0x021195E8;
+_ZN6Player17beginEntrancePoseE12EntranceType				= 0x02119468;
+_ZN6Player20transitEntranceSpawnE12EntranceType				= 0x021191F0;
+_ZN6Player23beginEntranceTransitionE12EntranceType			= 0x02118F0C;
+_ZN6Player19purgeInactiveActorsEv							= 0x02118E6C;
+_ZN6Player16viewTransitStateEPv								= 0x0211870C;
+_ZN6Player16areaTransitStateEPv								= 0x02118554;
+_ZN6Player19updateStepParticlesEv							= 0x02118484;
+_ZN6Player28beginUnusedVictoryTransitionEv					= 0x02118410;
+_ZN6Player17unusedVictoryWalkEv								= 0x0211831C;
+_ZN6Player22unusedVictoryBeginTurnEv						= 0x021182E8;
+_ZN6Player11transitTurnEv									= 0x021182A8;
+_ZN6Player22unusedVictoryBeginJumpEv						= 0x02118218;
+_ZN6Player23unusedVictoryUpdateJumpEv						= 0x02118174;
+_ZN6Player11transitJumpEv									= 0x02118128;
+_ZN6Player16transitSpawnJumpEv								= 0x0211810C;
+_ZN6Player17transitUpdateJumpEv								= 0x021180C0;
+_ZN6Player21cutsceneBeginIdlePoseEv							= 0x0211807C;
+_ZN6Player17goalBeginPoleGrabEv								= 0x02118030;
+_ZN6Player21goalPoleGrabCompletedEv							= 0x02118024;
+_ZN6Player18goalBeginPoleSlideEv							= 0x02117FD4;
+_ZN6Player22goalPoleSlideCompletedEv						= 0x02117F9C;
+_ZN6Player17goalBeginPoleWaitEv								= 0x02117F60;
+_ZN6Player12goalPoleTurnEv									= 0x02117F08;
+_ZN6Player20transitStepCompletedEv							= 0x02117EE4;
+_ZN6Player17goalBeginPoleJumpEv								= 0x02117E64;
+_ZN6Player18cutsceneUpdateJumpEv							= 0x02117D94;
+_ZN6Player17goalBeginJumpLandEv								= 0x02117D68;
+_ZN6Player21goalJumpLandCompletedEv							= 0x02117D5C;
+_ZN6Player14goalFaceCameraEv								= 0x02117D34;
+_ZN6Player18goalBeginRemoveCapEv							= 0x02117CF8;
+_ZN6Player16goalUpdatePutCapEv								= 0x02117C70;
+_ZN6Player19goalUpdateRemoveCapEv							= 0x02117BC8;
+_ZN6Player18goalBeginMegaClearEv							= 0x02117B80;
+_ZN6Player22goalMegaClearCompletedEv						= 0x02117B74;
+_ZN6Player20bossBeginVictoryPoseEv							= 0x02117B2C;
+_ZN6Player24bowserJrBeginVictoryPoseEv						= 0x02117AE4;
+_ZN6Player18bossBeginWaitPeachEv							= 0x02117AB8;
+_ZN6Player18bossBeginRemoveCapEv							= 0x02117A8C;
+_ZN6Player19bossUpdateRemoveCapEv							= 0x02117A58;
+_ZN6Player18bossBeginPeachKissEv							= 0x02117A2C;
+_ZN6Player22bossPeachKissCompletedEv						= 0x02117A20;
+_ZN6Player20bossBeginPeachKissedEv							= 0x021179F4;
+_ZN6Player24bossPeachKissedCompletedEv						= 0x021179E8;
+_ZN6Player24cutsceneSetWalkAnimationEb						= 0x02117854;
+_ZN6Player17cutsceneBeginWalkEb								= 0x02117800;
+_ZN6Player18cutsceneUpdateWalkEb							= 0x02117684;
+_ZN6Player26transitAdjustPipePositionXEl					= 0x0211761C;
+_ZN6Player26transitAdjustPipePositionXEll					= 0x021175A0;
+_ZN6Player26transitAdjustPipePositionYEll					= 0x0211753C;
+_ZN6Player25transitBeginConnectedPipeEv						= 0x0211743C;
+_ZN6Player26transitUpdateConnectedPipeERt					= 0x0211727C;
+_ZN6Player18deathBeginDeadPoseEv							= 0x02117204;
+_ZN6Player18deathPoseCompletedEv							= 0x021171FC;
+_ZN6Player16deathBeginFlightEv								= 0x021170EC;
+_ZN6Player17deathUpdateFlightEv								= 0x0211706C;
+_ZN6Player18bossBeginCallPeachEv							= 0x02117018;
+_ZN6Player19bossBeginStarePeachEv							= 0x02116FC4;
+_ZN6Player19bossBeginReactPeachEv							= 0x02116F70;
+_ZN6Player14bossUpdateDashEv								= 0x02116EC8;
+_ZN6Player19bossBeginChasePeachEv							= 0x02116E4C;
+_ZN6Player20bossUpdateChasePeachEv							= 0x02116D48;
+_ZN6Player16bossWalkToSwitchEv								= 0x02116CB4;
+_ZN6Player23switchMegaWalkAnimationEl						= 0x02116C44;
+_ZN6Player19switchMegaAnimationEl							= 0x02116BA0;
+_ZN6Player18beginIdleAnimationEbl							= 0x0211688C;
+_ZN6Player22updateCommonAnimationsEbb						= 0x021160A4;
+_ZN6Player20transitBeginIdlePoseEb							= 0x02115FB0;
+_ZN6Player22setPerspectivePositionEslRK4Vec3				= 0x0210DB4C;
+
+_ZN6Player14activeCallbackER14ActiveColliderS1_				= 0x02109614;
+_ZN6Player21specialActiveCallbackER14ActiveColliderS1_		= 0x02109610;
+_ZN6Player26setSpecialColliderCallbackEv					= 0x02109600;
+
+_ZN6PlayerD0Ev												= 0x02108FE4;
+_ZN6PlayerD1Ev												= 0x02109064;
+_ZN6PlayerD2Ev												= 0x02109064;
+_ZN6PlayerC1Ev												= 0x021090DC;
+_ZN6PlayerC2Ev												= 0x021090DC;
+
+_ZN6Player4setXEl											= 0x02108FD4;
+_ZN6Player5moveXEl											= 0x02108FBC;
+_ZN6Player14adjustPositionEv								= 0x02108E10;
+_ZN6Player21setHorizontalVelocityEl							= 0x02108DE4;
+_ZN6Player19setVerticalVelocityEl							= 0x02108DC8;
+
+_ZN6Player18fetchPowerupParamsEv							= 0x02108C94;
+_ZN6Player20setupColliderPowerupEv							= 0x02108BEC;
+_ZN6Player17setupCollisionMgrEb								= 0x02107E44;
+
+_ZN6Player16setJumpFallAccelEv								= 0x0210618C;
+_ZN6Player22setJumpFallAccelNormalEv						= 0x021060DC;
+_ZN6Player15smoothRotationYEll								= 0x02105E7C;
+
+_ZN6Player5carryER10StageActor								= 0x02105A14;
+_ZN6Player17hangMiniToCeilingER10StageActor					= 0x02105994;
+_ZN6Player19dropMiniFromCeilingEv							= 0x021058F0;
+_ZN6Player13hangToCeilingER10StageActor						= 0x02105890;
+_ZN6Player15dropFromCeilingEv								= 0x021057EC;
+_ZN6Player12waitInCannonER10StageActorRK4Vec3ss				= 0x02105738;
+_ZN6Player21updateCannonTransformERK4Vec3ss					= 0x02105640;
+_ZN6Player15shootFromCannonER10StageActorlssm				= 0x02105558;
+_ZN6Player12grabPendulumEv									= 0x02105530;
+
+_ZN6Player8doJumpExElthbba									= 0x021054E8;
+_ZN6Player6doJumpEltbba										= 0x02105464;
+_ZN6Player7tryJumpEltbba									= 0x02105028;
+_ZN6Player10doSpinJumpEl									= 0x02104FE8;
+_ZN6Player11trySpinJumpERK13SpinJumpState					= 0x02104F40;
+_ZN6Player16trySpinBlockJumpEv								= 0x02104EA0;
+_ZN6Player13doBounceWhirlEv									= 0x02104E6C;
+_ZN6Player14doTornadoWhirlEv								= 0x02104E38;
+
+_ZN6Player21releaseHorizontalKeysEv							= 0x02104E20;
+_ZN6Player11losePowerupEv									= 0x02104DC8;
+_ZN6Player12onEntityBumpER10StageActorll					= 0x02104D28;
+_ZN6Player16releaseHeldActorEv								= 0x02104CCC;
+_ZN6Player19tryReleaseHeldActorEv							= 0x02104C9C;
+_ZN6Player6damageER10StageActorll16PlayerDamageType			= 0x02104A74;
+_ZN6Player10dealDamageER10StageActorll16PlayerDamageType	= 0x021048CC;
+
+_ZN6Player9tryCrouchEv										= 0x02104884;
+_ZN6Player7tryBumpERK4Vec2									= 0x02104810;
+_ZN6Player13tryPlayerBumpERK4Vec2							= 0x021047C0;
+_ZN6Player12doPlayerBumpERK4Vec2b							= 0x021046FC;
+_ZN6Player6doBumpERK4Vec2									= 0x02104648;
+_ZN6Player10doBossBumpERK4Vec2								= 0x021045EC;
+
+_ZN6Player13isNotClimbingEv									= 0x0210449C;
+_ZN6Player12grabFlagpoleERK4Vec3							= 0x02104474;
+_ZN6Player8trySlideEv										= 0x02104368;
+
+_ZN6Player18endDeathTransitionEv							= 0x021041E8;
+_ZN6Player16setMiniWaterWalkEv								= 0x021041B4;
+_ZN6Player21updateLiquidCollisionEv							= 0x0210407C;
+_ZN6Player28applyHorizontalExternalForceEv					= 0x02104018;
+_ZN6Player15updateCollisionEb								= 0x021031B4;
+_ZN6Player18tryUpdateCollisionEb							= 0x02103074;
+_ZN6Player13updatePhysicsEv									= 0x02102E68;
+_ZN6Player14updatePositionERK4Vec3sh						= 0x02102D78;
+
+_ZN6Player5stompEv											= 0x02102D58;
+_ZN6Player18tryEnterTransitionEv							= 0x02102C54;
+_ZN6Player7trySwimEv										= 0x02102BC4;
+_ZN6Player22tryEnterBossTransitionEv						= 0x02102AEC;
+_ZN6Player15leaveTransitionEv								= 0x02102AD4;
+_ZN6Player23setPerspectiveTransformElRK5Vec3sRK4Vec3		= 0x02102A84;
+_ZN6Player6virt48Ev											= 0x021029F4;
+_ZN6Player21doTurntableTransitionEv							= 0x02102980;
+_ZN6Player19doVictoryTransitionEm							= 0x02102960;
+_ZN6Player16setVictoryTargetElll							= 0x02102950;
+_ZN6Player16getHandsPositionEv								= 0x0210280C;
+_ZN6Player20doWarpZoneTransitionEv							= 0x021027C4;
+_ZN6Player16doDoorTransitionERK4Vec3						= 0x02102788;
+_ZN6Player12setSpinBlockEls									= 0x0210276C;
+
+_ZN6Player14getDoorTriggerEv								= 0x021026AC;
+_ZNK6Player13canAccessPipeEv								= 0x02102534;
+_ZN6Player16getCannonTriggerEv								= 0x021024F8;
+_ZN6Player11enterCannonERK4Vec3								= 0x021024A4;
+_ZN6Player6virt61ERK4Vec3									= 0x02102450;
+_ZN6Player13enterPipeDownERK4Vec3							= 0x02102414;
+
+_ZN6Player16doLightningShockEv								= 0x02102354;
+_ZN6Player8paralyzeEv										= 0x02102308;
+_ZN6Player13setJumpTablesEb									= 0x021022B4;
+_ZN6Player4buryEv											= 0x02102278;
+_ZN6Player22trySwitchPowerupDirectE12PowerupState			= 0x02102208;
+_ZN6Player20getTopSensorPositionEv							= 0x021021CC;
+_ZN6Player16onOneUpCollectedEv								= 0x02102144;
+
+_ZN6Player19tryDisableMegaPowerEv							= 0x02102108;
+_ZN6Player16disableMegaPowerEv								= 0x0210200C;
+_ZN6Player16crushMegaCeilingEv								= 0x02101FC4;
+_ZN6Player12crushCeilingEv									= 0x02101F50;
+_ZN6Player15crushMegaGroundEv								= 0x02101F14;
+_ZN6Player11crushGroundEv									= 0x02101EA4;
+_ZN6Player17crushMegaLeftWallEv								= 0x02101E68;
+_ZN6Player13crushLeftWallEv									= 0x02101DB0;
+_ZN6Player18crushMegaRightWallEv							= 0x02101D74;
+_ZN6Player14crushRightWallEv								= 0x02101CBC;
+
+_ZN6Player15updateMainLogicEv								= 0x02101A94;
+_ZN6Player15applyTileDamageEv								= 0x02101968;
+_ZN6Player15switchMainStateEMS_FbPvES0_						= 0x021006AC;
+_ZN6Player15updateMainStateEv								= 0x02100558;
+_ZN6Player16setMovementStateEMS_FbPvE						= 0x021004FC;
+_ZN6Player19updateMovementStateEv							= 0x021004B0;
+_ZN6Player12setMetaStateEMS_FbPvE							= 0x0210045C;
+_ZN6Player15updateMetaStateEv								= 0x02100418;
+_ZN6Player18onPrepareResourcesEv							= 0x021002C4;
+_ZN6Player22tryUpdateLayerPositionEv						= 0x021002A0;
+_ZN6Player19updateLayerPositionEv							= 0x02100260;
+_ZN6Player5resetEv											= 0x020FFE90;
+_ZN6Player8onCreateEv										= 0x020FF85C;
+_ZN6Player26updateFirstLiquidCollisionEv					= 0x020FF838;
+_ZN6Player24updateTimesUpTransitionsEv						= 0x020FF75C;
+_ZN6Player18updatePhysicsLayerEv							= 0x020FF6D0;
+_ZN6Player21updateSpecialColliderEv							= 0x020FF684;
+_ZN6Player23updateFenceSlamColliderEv						= 0x020FF638;
+_ZN6Player19updatePowerupTimersEv							= 0x020FF2D4;
+_ZN6Player20updateOneUpParticlesEv							= 0x020FF1C8;
+_ZN6Player20updateSmokeParticlesEv							= 0x020FF0A0;
+_ZN6Player27updateSlipperySkidParticlesEv					= 0x020FEF6C;
+_ZN6Player28updateSlipperySlideParticlesEv					= 0x020FEEE4;
+_ZN6Player24updateMegaSlideParticlesEv						= 0x020FEE44;
+_ZN6Player22spawnMegaLandParticlesEv						= 0x020FEDE8;
+_ZN6Player28spawnTripleJumpLandParticlesEv					= 0x020FED8C;
+_ZN6Player29spawnGroundPoundLandParticlesEv					= 0x020FECD4;
+_ZN6Player23spawnWaterLandParticlesEv						= 0x020FECB0;
+_ZN6Player26trySpawnWaterLandParticlesEv					= 0x020FEC84;
+_ZN6Player27spawnMegaWaterLandParticlesEv					= 0x020FEC28;
+_ZN6Player30trySpawnMegaWaterLandParticlesEv				= 0x020FEBFC;
+_ZN6Player16emptyTransitFuncEv								= 0x020FEBF8;
+_ZN6Player21udpateLiquidParticlesEv							= 0x020FE970;
+_ZN6Player13emptyBumpFuncEv									= 0x020FE96C;
+_ZN6Player23updateLavaFireParticlesEv						= 0x020FE908;
+_ZN6Player28updateElectrocutionParticlesEv					= 0x020FE790;
+_ZN6Player10isSteppingEv									= 0x020FE5F0;
+_ZN6Player19updateWalkParticlesEv							= 0x020FE118;
+_ZN6Player27updateWaterWalkingParticlesEv					= 0x020FE0E0;
+_ZN6Player31updateWaterWalkingParticlesLeftEv				= 0x020FE084;
+_ZN6Player32updateWaterWalkingParticlesRightEv				= 0x020FE028;
+_ZN6Player22spawnFenceHitParticlesERK4Vec3					= 0x020FE004;
+_ZN6Player22spawnWallJumpParticlesERK4Vec3h					= 0x020FDF9C;
+_ZN6Player24updateWallSlideParticlesERK4Vec3h				= 0x020FDF24;
+_ZN6Player26spawnSpinJumpStarParticlesEv					= 0x020FDED0;
+_ZN6Player24updateDrillSpinParticlesEv						= 0x020FDDAC;
+_ZN6Player28spawnDrillSpinWhirlParticlesEv					= 0x020FDD38;
+_ZN6Player22spawnMegaGrowParticlesEv						= 0x020FDC6C;
+_ZN6Player23spawnQuicksandParticlesEv						= 0x020FDC24;
+_ZN6Player22spawnFireworkParticlesERK4Vec3					= 0x020FDBCC;
+_ZN6Player23spawnHandSmokeParticlesEv						= 0x020FDB44;
+_ZN6Player19updateStarParticlesEv							= 0x020FDAD0;
+_ZN6Player19updateMegaParticlesEv							= 0x020FDA30;
+_ZN6Player20updateStompAnimationEv							= 0x020FD95C;
+_ZN6Player18updateActionTimersEv							= 0x020FD8B0;
+_ZN6Player24updateLookAtHeadRotationEv						= 0x020FD6B8;
+_ZN6Player8onUpdateEv										= 0x020FD1D4;
+_ZN6Player27updateCarryPartialAnimationEv					= 0x020FD138;
+_ZN6Player11playJumpSFXEv									= 0x020FD0F0;
+_ZN6Player11renderModelEv									= 0x020FD00C;
+_ZN6Player11renderModelEb									= 0x020FCF6C;
+_ZN6Player8onRenderEv										= 0x020FCACC;
+_ZN6Player18onCleanupResourcesEv							= 0x020FCAC8;
+_ZN6Player9onDestroyEv										= 0x020FCAC0;
+
+_ZN6Player7profileE											= 0x02128458;
+															  
+_ZTV6Player													= 0x021284E0;
 
 
 /* arm9 */

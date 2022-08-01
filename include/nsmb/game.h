@@ -94,6 +94,8 @@ namespace Game
 	extern MtxFx43 viewMatrix;
 	// 0208B6E8
 	extern MtxFx43 modelMatrix;
+	// 0208B350
+	extern s16 starmanTimer[2];
 
 
 	constexpr s32 getStage(u8 group, u8 node) {

@@ -474,7 +474,7 @@ public:
 	virtual void enterPipeDown(const Vec3& pipePosition);
 
 	virtual bool doLightningShock();
-	virtual bool isControllable();
+	virtual bool isControllable(); // Returns true if the player is not damaged/paralyzed or in a transition
 	virtual bool paralyze();
 	virtual void setJumpTables(bool higherJump);
 	virtual bool bury();

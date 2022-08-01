@@ -96,6 +96,21 @@ public:
 NTR_SIZE_GUARD(PendulumController, 0x1C);
 
 
+// vtable at 0212F71C (ov11)
+class VictoryState
+{
+public:
+
+	VictoryState();
+	virtual ~VictoryState();
+
+	Vec3 target;
+
+};
+NTR_SIZE_GUARD(VictoryState, 0x14);
+
+
+// vtable at 02126B6C (ov10)
 class SpinState
 {
 public:
@@ -116,35 +131,6 @@ public:
 NTR_SIZE_GUARD(SpinState, 0x24);
 
 
-// vtable at 0212F71C (ov11)
-class VictoryState
-{
-public:
-
-	VictoryState();
-	virtual ~VictoryState();
-
-	Vec3 target;
-
-};
-NTR_SIZE_GUARD(VictoryState, 0x14);
-
-
-// vtable at 02128474 (ov10)
-class SpinJumpState {
-public:
-
-	SpinJumpState();
-	SpinJumpState(fx32 force, s16 angle, bool triggerSFX);
-	virtual ~SpinJumpState();
-
-	fx32 force;
-	s16 angle;
-	bool triggerSFX;
-
-};
-
-
 // vtable at 02128464 (ov10)
 class JumpState {
 public:
@@ -158,5 +144,20 @@ public:
 	bool noConsecutive;
 	bool allowZeroForce;
 	s8 variation;
+
+};
+
+
+// vtable at 02128474 (ov10)
+class SpinJumpState {
+public:
+
+	SpinJumpState();
+	SpinJumpState(fx32 force, s16 angle, bool triggerSFX);
+	virtual ~SpinJumpState();
+
+	fx32 force;
+	s16 angle;
+	bool triggerSFX;
 
 };
