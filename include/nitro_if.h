@@ -61,6 +61,26 @@
 using bool16 = u16;
 using bool32 = u32;
 
+template<class T>
+struct BitFlag {
+
+	NTR_INLINE T& raw() {
+		return *reinterpret_cast<T*>(this);
+	}
+
+	NTR_INLINE T raw() const {
+		return *reinterpret_cast<const T*>(this);
+	}
+
+	NTR_INLINE operator T& () {
+		return raw();
+	}
+
+	NTR_INLINE operator T () const {
+		return raw();
+	}
+
+};
 
 inline int OS_SNPrintf(char* dst, size_t len, const char* fmt, ...) {
 

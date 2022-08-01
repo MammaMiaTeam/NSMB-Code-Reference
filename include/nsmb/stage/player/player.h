@@ -5,44 +5,11 @@
 class Door;
 
 
-enum class PlayerSpawnType : u8 {
-
-	Normal,
-	PipeUp,
-	PipeDown,
-	PipeLeft,
-	PipeRight,
-	Door,
-	Falling,
-	GroundPounding,
-	Sliding,
-	Swimming,
-	TransitNormal,			// Same as normal
-	TransitDoor,			// Same as normal, as this refers to the spawn type and not to a transition
-	MvsLPipe,
-	Jumping,
-	Unknown14,
-	Unknown15,
-	Vine,
-	MiniPipeUp,
-	MiniPipeDown,
-	MiniPipeLeft,
-	MiniPipeRight,
-
-};
 
 
-enum class PlayerDamageType {
 
-	Hit,
-	Bumped,
-	Lava,
-	Electrocute,
-	Poison,
-	Death,
-	Pit
 
-};
+
 
 
 class Player : public PlayerBase

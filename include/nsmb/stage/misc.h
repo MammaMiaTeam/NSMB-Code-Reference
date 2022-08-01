@@ -7,7 +7,7 @@
 
 enum class CollisionType : u32;
 
-enum class PowerupState : u8;
+enum class PowerupState : s8;
 
 namespace Stage
 {

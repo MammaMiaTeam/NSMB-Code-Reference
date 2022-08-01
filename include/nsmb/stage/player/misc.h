@@ -2,11 +2,32 @@
 #include "nitro_if.h"
 
 
+class ProgressBarObject
+{
+public:
+
+	StageActor* owner;
+	void* progressPath; // StagePath*
+
+	s32 unk8; // prev distance
+	u32 unkC;
+	u32 unk10;
+	u32 unk14;
+
+	u8 unk18;
+	u8 unk19;
+	u8 viewID;
+	u8 unk1B;
+
+	u32 unk1C;
+
+};
+NTR_SIZE_GUARD(ProgressBarObject, 0x20);
+
 /*
 *	TODO:
 *	move in physics/pendulum.h (?)
 */
-
 
 class PendulumController;
 
@@ -79,6 +100,9 @@ class SpinState
 {
 public:
 
+	SpinState();
+	virtual ~SpinState();
+
 	Vec3 position;
 	int offset;
 	int sideVelocity;
@@ -88,52 +112,51 @@ public:
 	bool enable; // maybe?
 	u8 direction;
 
-	// 02
-	SpinState();
-
-	// D0:
-	// D1:
-	virtual ~SpinState();
-
 };
 NTR_SIZE_GUARD(SpinState, 0x24);
 
 
-class Class212f724
+// vtable at 0212F71C (ov11)
+class VictoryState
 {
 public:
 
-	Vec3 unk0;
+	VictoryState();
+	virtual ~VictoryState();
 
-	// 0212b1a8
-	Class212f724();
-
-	// D0: 0212b160
-	// D1: 0212b18c
-	virtual ~Class212f724();
+	Vec3 target;
 
 };
-NTR_SIZE_GUARD(Class212f724, 0x14);
+NTR_SIZE_GUARD(VictoryState, 0x14);
 
 
-class ProgressBarObject
-{
+// vtable at 02128474 (ov10)
+class SpinJumpState {
 public:
 
-	StageActor* owner;
-	void* progressPath; // LevelPath*
+	SpinJumpState();
+	SpinJumpState(fx32 force, s16 angle, bool triggerSFX);
+	virtual ~SpinJumpState();
 
-	s32 unk8; // prev distance
-	u32 unkC;
-	u32 unk10;
-	u32 unk14;
-
-	u8 unk18;
-	u8 unk19;
-	u8 viewID;
-	u8 unk1B;
-
-	u32 unk1C;
+	fx32 force;
+	s16 angle;
+	bool triggerSFX;
 
 };
-NTR_SIZE_GUARD(ProgressBarObject, 0x20);
+
+
+// vtable at 02128464 (ov10)
+class JumpState {
+public:
+
+	JumpState();
+	JumpState(fx32 force, bool triggerSFX, bool noConsecutive, bool allowZeroForce, s8 variation);
+	virtual ~JumpState();
+
+	fx32 force;
+	bool triggerSFX;
+	bool noConsecutive;
+	bool allowZeroForce;
+	s8 variation;
+
+};
