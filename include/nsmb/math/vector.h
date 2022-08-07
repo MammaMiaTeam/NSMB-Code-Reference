@@ -228,7 +228,7 @@ public:
 	// 02045958
 	Vec3 cross(const VecFx32& a, const VecFx32& b); // Performs a x b storing the result in the vector and returning it
 
-	NTR_INLINE fx32 dot(const VecFx32& other) {
+	NTR_INLINE fx32 dot(const VecFx32& other) const {
 		return VEC_DotProduct(this, &other);
 	}
 

@@ -58,6 +58,16 @@
 #include "nnsys.h"
 
 
+void MTX_RotX33(MtxFx33& mtx, fx16 sine, fx16 cosine) __attribute__((long_call, target("thumb")));
+void MTX_RotY33(MtxFx33& mtx, fx16 sine, fx16 cosine) __attribute__((long_call, target("thumb")));
+void MTX_RotZ33(MtxFx33& mtx, fx16 sine, fx16 cosine) __attribute__((long_call, target("thumb")));
+
+void MTX_Scale43(MtxFx43& mtx, fx32 x, fx32 y, fx32 z) __attribute__((long_call, target("thumb")));
+void MTX_RotX43(MtxFx43& mtx, fx16 sine, fx16 cosine) __attribute__((long_call, target("thumb")));
+void MTX_RotY43(MtxFx43& mtx, fx16 sine, fx16 cosine) __attribute__((long_call, target("thumb")));
+void MTX_RotZ43(MtxFx43& mtx, fx16 sine, fx16 cosine) __attribute__((long_call, target("thumb")));
+
+
 using bool16 = u16;
 using bool32 = u32;
 

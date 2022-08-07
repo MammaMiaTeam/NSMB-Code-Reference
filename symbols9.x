@@ -59,19 +59,19 @@ NNSi_G3dAnmCalcNsBca = 0x1FFAD38;
 MTX_Identity22_ = 0x1FFB6E4;
 MTX_Identity33 = 0x1FFB6FC;
 MTX_Copy33To43_ = 0x1FFB720;
-MTX_RotX33 = 0x1FFB74C;
-MTX_RotY33 = 0x1FFB768;
-MTX_RotZ33 = 0x1FFB784;
+MTX_RotX33_ = 0x1FFB74C + 1;
+MTX_RotY33_ = 0x1FFB768 + 1;
+MTX_RotZ33_ = 0x1FFB784 + 1;
 MTX_MultVec33 = 0x1FFB79C;
 MTX_Concat33 = 0x1FFB820;
 MTX_RotAxis33 = 0x1FFB9BC;
 MTX_ScaleApply33 = 0x1FFBB1C;
 MTX_Identity43_ = 0x1FFBBE0;
 MTX_Copy43To44_ = 0x1FFBC08;
-MTX_Scale43_ = 0x1FFBC3C;
-MTX_RotX43_ = 0x1FFBC54;
-MTX_RotY43_ = 0x1FFBC74;
-MTX_RotZ43_ = 0x1FFBC90;
+MTX_Scale43_ = 0x1FFBC3C + 1;
+MTX_RotX43_ = 0x1FFBC54 + 1;
+MTX_RotY43_ = 0x1FFBC74 + 1;
+MTX_RotZ43_ = 0x1FFBC90 + 1;
 MTX_MultVec43 = 0x1FFBCAC;
 MTX_Concat43 = 0x1FFBD60;
 MTX_Inverse43 = 0x1FFBF80;
@@ -3093,6 +3093,15 @@ _ZN3MTX14rotateReversedER7MtxFx43sss						= 0x0204496c;
 _ZN3MTX5scaleER7MtxFx43lll									= 0x020449f8;
 _ZN3MTX9translateER7MtxFx43lll								= 0x02044a24;
 
+/* thumb functions */
+_Z10MTX_RotX33R7MtxFx33ss		= MTX_RotX33_;
+_Z10MTX_RotY33R7MtxFx33ss		= MTX_RotY33_;
+_Z10MTX_RotZ33R7MtxFx33ss		= MTX_RotZ33_;
+_Z11MTX_Scale43R7MtxFx43lll		= MTX_Scale43_;
+_Z10MTX_RotX43R7MtxFx43ss		= MTX_RotX43_;
+_Z10MTX_RotY43R7MtxFx43ss		= MTX_RotY43_;
+_Z10MTX_RotZ43R7MtxFx43ss		= MTX_RotZ43_;
+
 
 /* arm9_ov0 */
 /*----------------------------------------------------------------*/
@@ -4435,6 +4444,7 @@ _ZN4Game14scrollingWrapXE					= 0x02085AA8;
 _ZN4Game10viewMatrixE						= 0x02085B20;
 _ZN4Game11modelMatrixE						= 0x0208B6E8;
 _ZN4Game12starmanTimerE						= 0x0208B350;
+_ZN4Game12wrapFunctionE						= 0x02039968;
 _ZN4Game6randomE							= 0x02085A70;
 _ZN4Game15randomCallCountE					= 0x02085A54;
 
