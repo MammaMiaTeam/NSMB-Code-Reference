@@ -2024,6 +2024,11 @@ _ZN4Math4tickItEET_RS1_ = 0x02043398;
 _ZN4Math4tickIsEET_RS1_ = 0x020433B0;
 _ZN4Math4tickIhEET_RS1_ = 0x020433C8;
 _ZN4Math4tickIaEET_RS1_ = 0x020433E0;
+_ZN4Math6stepFxIsEEbRT_S1_S1_ = 0x020433F8;
+_ZN4Math6stepFxIlEEbRT_S1_S1_ = 0x02043464;
+_ZN4Math4stepIlEEbRT_S1_S1_ = 0x020434D8;
+_ZN4Math4stepIsEEbRT_S1_S1_ = 0x0204354C;
+_ZN4Math4stepIaEEbRT_S1_S1_ = 0x020435A8;
 
 _ZN4Math4lerpER4Vec3RKS0_l = 0x02043e30;
 _ZN4Math8lerpFx32ERllll = 0x020437a4;
@@ -2268,7 +2273,7 @@ _ZN8Particle7Handler15createRockSmokeElll																	= 0x02022674;
 _ZN8Particle7Handler18createBigRockSmokeElll																= 0x020226fc;
 _ZN8Particle7Handler19createRockExplosionElll																= 0x02022528;
 _ZN8Particle7Handler22createBigRockExplosionElll															= 0x0202245c;
-_ZN8Particle7Handler17createLittleSmokeElll																	= 0x020223e4;
+_ZN8Particle7Handler15createSandSmokeElll																	= 0x020223e4;
 _ZN8Particle7Handler22createLittleWhiteSmokeElll															= 0x02022364;
 _ZN8Particle7Handler18createGlitterStarsElll																= 0x020222ec;
 _ZN8Particle7Handler13createBubblesElll																		= 0x02022274;
@@ -3409,7 +3414,7 @@ _ZN14ActiveColliderD2Ev												= 0x020a484c;
 _ZN14ActiveCollider5resetEv											= 0x020a4808;
 _ZN14ActiveCollider4initEP10StageActorRK18ActiveColliderInfoh		= 0x020a47a0;
 _ZN14ActiveCollider22setPositionAroundPivotEtll						= 0x020a4758;
-_ZN14ActiveCollider19resetCollisionStateEv							= 0x020a4714;
+_ZN14ActiveCollider14clearCollisionEv								= 0x020a4714;
 _ZN14ActiveCollider4linkEv											= 0x020a46bc;
 _ZN14ActiveCollider6unlinkEv										= 0x020a4658;
 _ZN14ActiveCollider12manualUpdateEv									= 0x020a44b0;
@@ -4659,6 +4664,7 @@ _ZN9JumpStateD1Ev		= 0x020FCA18;
 _ZN9JumpStateD2Ev		= 0x020FCA18;
 _ZN9JumpStateC1Ev		= 0x020FCA60;
 _ZN9JumpStateC2Ev		= 0x020FCA60;
+_ZN9JumpStateC1Elbbba	= 0x020FCA28;
 _ZN9JumpStateC2Elbbba	= 0x020FCA28;
 
 _ZTV9JumpState			= 0x02128464;
@@ -4674,6 +4680,7 @@ _ZN13SpinJumpStateD1Ev		= 0x020FC9A8;
 _ZN13SpinJumpStateD2Ev		= 0x020FC9A8;
 _ZN13SpinJumpStateC1Ev		= 0x020FC9D4;
 _ZN13SpinJumpStateC2Ev		= 0x020FC9D4;
+_ZN13SpinJumpStateC1Elsb	= 0x020FC9B8;
 _ZN13SpinJumpStateC2Elsb	= 0x020FC9B8;
 
 _ZTV13SpinJumpState			= 0x02128474;
@@ -5592,6 +5599,53 @@ _ZN3End6slidesE = 0x020E4198;
 
 _ZN4Item11switchStateEMS_FbvE = 0x020d4eb8;
 _ZN4Item12checkConsumeEv = 0x020d475c;
+
+
+/* arm9_ov23 */
+/*----------------------------------------------------------------*/
+/*---------------------------- pokey -----------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN75PokeyD0Ev										= 0x0213BFD8;
+_ZN75PokeyD1Ev										= 0x0213BF00;
+_ZN75PokeyD2Ev										= 0x0213BF00;
+_ZN5Pokey8onCreateEv								= 0x0213D2C0;
+_ZN5Pokey9onDestroyEv								= 0x0213C4E4;
+_ZN5Pokey8onRenderEv								= 0x0213C530;
+_ZN5Pokey18onCleanupResourcesEv						= 0x0213C52C;
+_ZN5Pokey18onPrepareResourcesEv						= 0x0213DB0C;
+_ZN5Pokey10updateMainEv								= 0x0213CBBC;
+_ZN5Pokey14updateDefeatedEv							= 0x0213CEB8;
+_ZN5Pokey18updateDefeatedMegaEv						= 0x0213CCB8;
+_ZN5Pokey20updateFireballWiggleEv					= 0x0213CB2C;
+_ZN5Pokey11onEntityHitEv							= 0x0213C8EC;
+_ZN5Pokey13onFireballHitEv							= 0x0213C828;
+_ZN5Pokey12onStarmanHitEv							= 0x0213C75C;
+_ZN5Pokey9onMegaHitEv								= 0x0213C70C;
+_ZN5Pokey14onSpinDrillHitEv							= 0x0213C7E4;
+_ZN5Pokey14onBlueShellHitEv							= 0x0213C6C8;
+_ZN5Pokey13loadResourcesEv							= 0x0213DBA8;
+
+_ZNK5Pokey18isBodyPartInactiveEm					= 0x0213C0B8;
+_ZN5Pokey15destroyBodyPartER14ActiveCollider		= 0x0213C188;
+_ZNK5Pokey15getBodyPartSlotER14ActiveCollider		= 0x0213C4A4;
+_ZN5Pokey7damagedEv									= 0x0213C8F8;
+_ZN5Pokey11explodeMegaEv							= 0x0213D0B8;
+_ZN5Pokey7explodeEv									= 0x0213D1CC;
+_ZN5Pokey11switchStateEMS_FbvE						= 0x0213DA18;
+_ZN5Pokey11updateStateEv							= 0x0213D9B0;
+_ZN5Pokey9mainStateEv								= 0x0213D53C;
+_ZN5Pokey14activeCallbackER14ActiveColliderS1_		= 0x0213C1BC;
+
+_ZN5Pokey13hitVelocitiesE							= 0x0213EB38;
+_ZN5Pokey17heightVelocitiesXE						= 0x0213EB14;
+_ZN5Pokey10rotationsYE								= 0x0213EADC;
+_ZN5Pokey10sideSensorE								= 0x0213EAEC;
+_ZN5Pokey12bottomSensorE							= 0x0213EAE0;
+_ZN5Pokey18activeColliderInfoE						= 0x0213EAF8;
+_ZN5Pokey7profileE									= 0x0213EBF0;
+
+_ZTV5Pokey											= 0x0213EBFC;
 
 
 /* arm9_ov24 */

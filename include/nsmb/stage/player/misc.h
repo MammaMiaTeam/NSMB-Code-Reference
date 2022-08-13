@@ -153,11 +153,11 @@ class SpinJumpState {
 public:
 
 	SpinJumpState();
-	SpinJumpState(fx32 force, s16 angle, bool triggerSFX);
+	SpinJumpState(fx32 force, s16 spinForce, bool triggerSFX);
 	virtual ~SpinJumpState();
 
 	fx32 force;
-	s16 angle;
+	s16 spinForce;
 	bool triggerSFX;
 
 };

@@ -165,7 +165,7 @@ public:
 	sym void setPositionAroundPivot(u16 rotation, fx32 pivotX, fx32 pivotY) __body
 
 	// 020a4714
-	sym void resetCollisionState() __body
+	sym void clearCollision() __body
 
 	// 020a46bc
 	sym void link() __body
@@ -194,6 +194,14 @@ public:
 
 	NTR_INLINE fx32 getCollisionPointY(CollisionGroup group) const {
 		return collisionPointY[u32(group)];
+	}
+
+	NTR_INLINE bool checkCollidedGroup(CollisionGroup group) const {
+		return collidedGroups & (1 << u32(group));
+	}
+
+	NTR_INLINE bool checkCollidedFlag(CollisionFlag flag) const {
+		return collidedFlags & (1 << u32(flag));
 	}
 
 protected:

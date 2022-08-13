@@ -597,7 +597,7 @@ public:
 	u8 unk7B6;
 	s8 scoreComboType;
 	s8 scoreCombo;
-	u8 scoreCombo2;
+	s8 scoreComboStarman;
 	u8 unk7BA;
 	u8 unk7BB;
 	u8 scoreComboSFX;

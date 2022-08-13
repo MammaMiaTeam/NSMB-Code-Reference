@@ -68,6 +68,8 @@ namespace WrapType
 namespace Game
 {
 
+	using WrapFunction = void(*)(Vec3&, bool);
+
 	// 02085A18
 	extern u8 stageGroup;
 	// 02085A14
@@ -96,7 +98,33 @@ namespace Game
 	extern MtxFx43 modelMatrix;
 	// 0208B350
 	extern s16 starmanTimer[2];
+	// 02039968
+	extern WrapFunction wrapFunction;
 
+	NTR_INLINE void wrapPosition(Vec3& position, bool wrapLeft = true) {
+		wrapFunction(position, wrapLeft);
+	}
+
+	NTR_INLINE void wrapPosition(Vec2& position, bool wrapLeft = true) {
+		wrapFunction(reinterpret_cast<Vec3&>(position), wrapLeft);
+	}
+
+	NTR_INLINE void wrapPosition(fx32& x, bool wrapLeft = true) {
+
+		if (wrapType == WrapType::None)
+			return;
+		
+		x &= wrapX;
+		
+		if (wrapType == WrapType::Scrolling && wrapLeft) {
+		
+			fx32 marginLeft = *reinterpret_cast<fx32*>(0x02085AB0);
+			if (x < marginLeft)
+				x += wrapX + 1;
+		
+		}
+
+	}
 
 	constexpr s32 getStage(u8 group, u8 node) {
 

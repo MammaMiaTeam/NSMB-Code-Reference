@@ -21,31 +21,58 @@ namespace Math {
 		return value ? --value : value;
 	}
 
-	// 02043380
-	template<>
-	s32 Math::tick(s32& value);
+	template<> s32 Math::tick(s32& value);
+	template<> u16 Math::tick(u16& value);
+	template<> s16 Math::tick(s16& value);
+	template<> u8 Math::tick(u8& value);
+	template<> s8 Math::tick(s8& value);
 
-	// 02043398
-	template<>
-	u16 Math::tick(u16& value);
+	template<class T>
+	NTR_INLINE bool stepFx(T& value, T target, T step) {
 
-	// 020433B0
-	template<>
-	s16 Math::tick(s16& value);
+		if (!step)
+			return value == target;
 
-	// 020433C8
-	template<>
-	u8 Math::tick(u8& value);
+		if (target < value)
+			step = -step;
 
-	// 020433E0
-	template<>
-	s8 Math::tick(s8& value);
+		value += step;
 
-	//020433f8
-	//02043464
-	//020434d8
-	//s16:0204354c
-	//020435a8
+		if ((value - target) * step >= 0) {
+			value = target;
+			return true;
+		}
+
+		return false;
+
+	}
+
+	template<> bool stepFx(fx16& value, fx16 target, fx16 step);
+	template<> bool stepFx(fx32& value, fx32 target, fx32 step);
+
+	template<class T>
+	NTR_INLINE bool step(T& value, T target, T step) {
+
+		if (!step)
+			return value == target;
+
+		if (target < value)
+			step = -step;
+
+		value += step;
+
+		if ((value - target) * step >= 0) {
+			value = target;
+			return true;
+		}
+
+		return false;
+
+	}
+
+	template<> bool step(s32& value, s32 target, s32 step);
+	template<> bool step(s16& value, s16 target, s16 step);
+	template<> bool step(s8& value, s8 target, s8 step);
 
 	//lerp:02043604
 	void lerp(s16& start, s16 end, s16 ratio, s16 maxStep);

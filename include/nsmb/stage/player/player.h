@@ -660,7 +660,7 @@ public:
 	s16 unkB88;
 	s16 unkB8A;
 	s16 unkB8C;
-	s16 spinJumpAngle;
+	s16 spinJumpSpinForce;
 	s16 unkB90;
 	s16 oneUpSparkleTimer[3];
 	s16 lookAtRotation;

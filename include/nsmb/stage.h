@@ -35,6 +35,9 @@
 #include "stage/actors/ov10/stagefx.h"
 #include "stage/actors/ov10/zoom.h"
 
+// Overlay 24 - Pokey
+#include "stage/actors/ov23/pokey.h"
+
 // Overlay 24 - FireBar, Thwomp
 #include "stage/actors/ov24/firebar.h"
 #include "stage/actors/ov24/thwomp.h"

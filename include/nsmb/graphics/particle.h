@@ -366,7 +366,7 @@ namespace Particle {
 		sym static u32 createBigRockExplosion(fx32 x, fx32 y, fx32 z) __rbody
 
 		// 0x20223e4
-		sym static u32 createLittleSmoke(fx32 x, fx32 y, fx32 z) __rbody
+		sym static u32 createSandSmoke(fx32 x, fx32 y, fx32 z) __rbody
 
 		// 0x2022364
 		sym static u32 createLittleWhiteSmoke(fx32 x, fx32 y, fx32 z) __rbody
