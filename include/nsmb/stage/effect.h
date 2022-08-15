@@ -18,42 +18,43 @@ namespace EffectType {
 	constexpr s8 Score8000			= 7;
 	constexpr s8 Score1UP			= 8;
 	constexpr s8 Score10			= 9;
-	constexpr s8 MegaMushroomStars1 = 10;
-	constexpr s8 MegaMushroomStars2 = 11;
-	constexpr s8 MegaMushroomStars3 = 12;
-	constexpr s8 MegaMushroomStars4 = 13;
-	//constexpr s8 Unknown14			= 14;
-	//constexpr s8 Unknown15			= 15;
-	//constexpr s8 Unknown16			= 16;
-	//constexpr s8 Unknown17			= 17;
+	constexpr s8 GlitterStars1		= 10;
+	constexpr s8 GlitterStars2		= 11;
+	constexpr s8 GlitterStars3		= 12;
+	constexpr s8 GlitterStars4		= 13;
+	constexpr s8 GlitterPoof		= 14;
+	constexpr s8 CollectedStar		= 15;
+	constexpr s8 FallingStar		= 16;
+	constexpr s8 DroppedStar		= 17;
 	constexpr s8 FireballTrail		= 18;
 	constexpr s8 Shine				= 19;
 	constexpr s8 Star				= 20;
 	constexpr s8 PipeShards			= 21;
 	constexpr s8 BrickShards		= 22;
-	//constexpr s8 Unknown23			= 23;
+	constexpr s8 VolcanoDebris		= 23;
 	constexpr s8 RedNumber			= 24;
 
 }
 
 
 class Effect;
-typedef void(Effect::* EffectFunction)();
+using EffectFunction = void(Effect::*)();
 
 
 struct EffectFunctions {
+
 	EffectFunction initFunction;
 	EffectFunction renderFunction;
 	EffectFunction updateFunction;
+
 };
 
 
 class ChildEffect {
-
 public:
 
-	sym ChildEffect() __body
-	sym ~ChildEffect() __body
+	ChildEffect();
+	~ChildEffect();
 
 	u8 palette;
 	u8 frame;
@@ -66,11 +67,10 @@ NTR_SIZE_GUARD(ChildEffect, 0x24);
 
 
 class Effect {
-
 public:
 
-	sym Effect() __body
-	sym virtual ~Effect() __body
+	Effect();
+	virtual ~Effect();
 
 	bool create(s8 id, const Vec3& pos, u32 settingA, u32 settingB, s8 playerID, u32 type);
 	void update();
@@ -83,18 +83,18 @@ public:
 	void applyVelocity();
 
 	void initPoints();
-	void initSparkles();
+	void initGlitter();
 	void initCard();
 	void initFireballTrail();
 	void initShine();
 	void initStar();
 	void initBricks();
 	void initPipeShards();
-	void initMeteorDebris();
+	void initVolcanoDebris();
 	void initRedNumber();
 
 	void updatePoints();
-	void updateSparkles();
+	void updateGlitter();
 	void updateDisplayCard();
 	void updateFallingCard();
 	void updateDroppedCard();
@@ -103,18 +103,18 @@ public:
 	void updateShine();
 	void updateBricks();
 	void updatePipeShards();
-	void updateMeteorDebris();
+	void updateVolcanoDebris();
 	void updateRedNumber();
 
 	void renderPoints();
-	void renderSparkles();
+	void renderGlitter();
 	void renderCard();
 	void renderFireballTrail();
 	void renderShine();
 	void renderStar();
 	void renderBricks();
 	void renderPipeShards();
-	void renderMeteorDebris();
+	void renderVolcanoDebris();
 	void renderRedNumber();
 
 	static void incrementBrickCounter();
@@ -125,13 +125,13 @@ public:
 	OAM::Anim effectAnim;
 	Vec3 position;
 	Vec3 velocity;
-	Vec3 minVelocity;
+	Vec3 targetVelocity;
 	Vec3 scale;
 	Vec3s rotation;
 	fx32 gravity;
 	u32 settingA;
-	u32 relativeX;
-	u32 relativeY;
+	fx32 relativeX;
+	fx32 relativeY;
 	u32 unused88[2];
 	s32 ticker;
 	u32 palette;
@@ -141,8 +141,8 @@ public:
 	s8 slot;
 	bool active;
 	s8 id;
-	s8 effectStep;
-	u8 timer;
+	s8 updateStep;
+	u8 life;
 	s8 playerID;
 	u32 type;
 	ChildEffect pipeChildren[4];
@@ -153,7 +153,6 @@ NTR_SIZE_GUARD(Effect, 0x1D4);
 
 
 class EffectHandler {
-
 public:
 
 	EffectHandler();
