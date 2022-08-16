@@ -2910,19 +2910,6 @@ _ZN11Multiplayer13endConnectionEv = 0x0200F3D8;
 
 /* arm9 */
 /*----------------------------------------------------------------*/
-/*--------------------------- framectrl --------------------------*/
-/*----------------------------------------------------------------*/
-
-_ZN9FrameCtrl6updateEv						= 0x0201feb8;
-_ZN9FrameCtrl4initEtNS_4TypeElt				= 0x0201fe9c;
-_ZNK9FrameCtrl13getFrameCountEv				= 0x0201fe88;
-_ZN9FrameCtrl16setAnimationTypeENS_4TypeE	= 0x0201fe74;
-_ZNK9FrameCtrl8finishedEv					= 0x0201fe34;
-_ZNK9FrameCtrl7passingEs					= 0x0201fd1c;
-
-
-/* arm9 */
-/*----------------------------------------------------------------*/
 /*--------------------------- model base -------------------------*/
 /*----------------------------------------------------------------*/
 
@@ -3304,7 +3291,138 @@ _ZN8Entrance12targetAreaIDE											= 0x0208B09C;
 _ZN8Entrance13spawnEntranceE										= 0x0208B0A0;
 _ZN8Entrance23overriddenSpawnPositionE								= 0x0208B0B4;
 _ZN8Entrance18overriddenEntranceE									= 0x0208B0CC;
-																	  
+
+
+/* arm9 */
+/*----------------------------------------------------------------*/
+/*--------------------------- framectrl --------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN9FrameCtrl6updateEv						= 0x0201feb8;
+_ZN9FrameCtrl4initEtNS_4TypeElt				= 0x0201fe9c;
+_ZNK9FrameCtrl13getFrameCountEv				= 0x0201fe88;
+_ZN9FrameCtrl16setAnimationTypeENS_4TypeE	= 0x0201fe74;
+_ZNK9FrameCtrl8finishedEv					= 0x0201fe34;
+_ZNK9FrameCtrl7passingEs					= 0x0201fd1c;
+
+
+/* arm9 */
+/*----------------------------------------------------------------*/
+/*----------------------- stagecontroller ------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN15StageControllerC1Ev				= 0x0201FFC4;
+_ZN15StageControllerC2Ev				= 0x0201FFC4;
+_ZN15StageControllerD0Ev				= 0x0201FF40;
+_ZN15StageControllerD1Ev				= 0x0201FF20;
+_ZN15StageControllerD2Ev				= 0x0201FF20;
+_ZN15StageController9preUpdateEv		= 0x0201FF80;
+
+_ZTV15StageController					= 0x0203CF30;
+
+
+/* arm9 */
+/*----------------------------------------------------------------*/
+/*------------------------- game - player ------------------------*/
+/*----------------------------------------------------------------*/
+													  
+_ZN4Game19setPlayerInCutsceneEb						= 0x0202000C;
+_ZN4Game18isPlayerInCutsceneEv						= 0x0202001C;
+_ZN4Game24setPlayerLookingAtTargetEb				= 0x0202002C;
+_ZN4Game23isPlayerLookingAtTargetEv					= 0x0202003C;
+_ZN4Game23setPlayerLookAtPositionERK4Vec3			= 0x0202004C;
+_ZN4Game23setPlayerLookAtPositionElll				= 0x02020068;
+_ZN4Game21setBossSwitchPositionERK4Vec3				= 0x02020080;
+_ZN4Game21setBossSwitchPositionElll					= 0x0202009C;
+_ZN4Game20getPlayerVSPipeStateEl					= 0x020200B4;
+_ZN4Game20setPlayerVSPipeStateElNS_11VSPipeStateE	= 0x020200C4;
+_ZN4Game23addMegaDestructionScoreEls				= 0x020200D4;
+_ZN4Game23getMegaDestructionScoreEl					= 0x02020114;
+_ZN4Game23setMegaDestructionScoreEls				= 0x02020128;
+_ZN4Game12getMegaTimerEl							= 0x0202013C;
+_ZN4Game12setMegaTimerEls							= 0x02020150;
+_ZN4Game19setMiniShockedTimerEls					= 0x02020164;
+_ZN4Game15getStarmanTimerEl							= 0x02020178;
+_ZN4Game15setStarmanTimerEls						= 0x0202018C;
+_ZN4Game23updatePlayerCameraFocusEl					= 0x020201A0;
+_ZN4Game16getPlayerPowerupEl						= 0x020201B8;
+_ZN4Game16setPlayerPowerupElh						= 0x020201C8;
+_ZN4Game22getPlayerTextureParamsEl					= 0x020201D8;
+_ZN4Game22setPlayerTextureParamsElm					= 0x020201E8;
+_ZN4Game22getPlayerPaletteParamsEl					= 0x020201F8;
+_ZN4Game22setPlayerPaletteParamsElt					= 0x0202020C;
+_ZN4Game13getPlayerDeadEl							= 0x02020220;
+_ZN4Game13setPlayerDeadElb							= 0x02020230;
+_ZN4Game25getPlayerInventoryPowerupEl				= 0x02020240;
+_ZN4Game25setPlayerInventoryPowerupElh				= 0x02020250;
+_ZN4Game18getPlayerCharacterEl						= 0x02020260;
+_ZN4Game18setPlayerCharacterElh						= 0x02020270;
+_ZN4Game18getPlayerSpawnMaskEv						= 0x02020280;
+_ZN4Game18setPlayerSpawnMaskEm						= 0x02020290;
+_ZN4Game14getPlayerCountEv							= 0x020202A0;
+_ZN4Game14getPlayerCountEl							= 0x020202B0;
+_ZN4Game23getPlayerCollectedStarsEl					= 0x020202C0;
+_ZN4Game23setPlayerCollectedStarsEll				= 0x020202D0;
+_ZN4Game23getPlayerDisplayedStarsEl					= 0x020202E0;
+_ZN4Game23setPlayerDisplayedStarsEll				= 0x020202F0;
+_ZN4Game14addPlayerScoreEll							= 0x02020300;
+_ZN4Game14getPlayerScoreEl							= 0x02020334;
+_ZN4Game14setPlayerScoreEll							= 0x02020344;
+_ZN4Game13addPlayerCoinEl							= 0x02020354;
+_ZN4Game14getPlayerCoinsEl							= 0x0202040C;
+_ZN4Game14getPlayerCoinsEll							= 0x0202041C;
+_ZN4Game17addPlayerStarCoinEl						= 0x0202042C;
+_ZN4Game18setPlayerStarCoinsEll						= 0x02020444;
+_ZN4Game19addPlayerBattleStarEl						= 0x02020454;
+_ZN4Game20getPlayerBattleStarsEl					= 0x0202046C;
+_ZN4Game20setPlayerBattleStarsEll					= 0x0202047C;
+_ZN4Game14addPlayerDeathEl							= 0x0202048C;
+_ZN4Game15getPlayerDeathsEl							= 0x020204C0;
+_ZN4Game15setPlayerDeathsEll						= 0x020204D0;
+_ZN4Game14losePlayerLifeEl							= 0x020204E0;
+_ZN4Game14gainPlayerLifeEl							= 0x02020544;
+_ZN4Game14getPlayerLivesEl							= 0x02020570;
+_ZN4Game14setPlayerLivesEll							= 0x02020580;
+_ZN4Game11spawnPlayerElhmPK4Vec3PK5Vec3s			= 0x02020590;
+_ZN4Game14getLocalPlayerEv							= 0x020205EC;
+_ZN4Game9getPlayerEl								= 0x02020608;
+_ZN4Game9setPlayerElP6Player						= 0x02020618;
+_ZN4Game16resetPlayerStateEv						= 0x02020628;
+_ZN4Game19loadPlayerResourcesEv						= 0x02020700;
+_ZN4Game19setupLuigiResourcesEv						= 0x020207F4;
+_ZN4Game19setupMarioResourcesEv						= 0x02020C64;
+_ZN4Game19playTransitionMusicEl						= 0x020210DC;
+_ZN4Game19playerModelCallbackEP9NNSG3dRS_			= 0x02021108;
+
+_ZN4Game13playerPowerupE							= 0x0208B324;
+_ZN4Game10playerDeadE								= 0x0208B328;
+_ZN4Game22playerInventoryPowerupE					= 0x0208B32C;
+_ZN4Game15playerCharacterE							= 0x0208B330;
+_ZN4Game15playerMegaTimerE							= 0x0208B334;
+_ZN4Game16playerInCutsceneE							= 0x0208B338;
+_ZN4Game26playerMegaDestructionScoreE				= 0x0208B33C;
+_ZN4Game15playerSpawnMaskE							= 0x0208B340;
+_ZN4Game22playerMiniShockedTimerE					= 0x0208B344;
+_ZN4Game11playerCountE								= 0x0208B348;
+_ZN4Game21playerLookingAtTargetE					= 0x0208B34C;
+_ZN4Game18playerStarmanTimerE						= 0x0208B350;
+_ZN4Game17playerVSPipeStateE						= 0x0208B354;
+_ZN4Game7playersE									= 0x0208B35C;
+_ZN4Game11playerLivesE								= 0x0208B364;
+_ZN4Game17playerBattleStarsE						= 0x0208B36C;
+_ZN4Game15playerStarCoinsE							= 0x0208B374;
+_ZN4Game11playerCoinsE								= 0x0208B37C;
+_ZN4Game11playerScoreE								= 0x0208B384;
+_ZN4Game20playerDisplayedStarsE						= 0x0208B38C;
+_ZN4Game12playerDeathsE								= 0x0208B394;
+_ZN4Game20playerCollectedStarsE						= 0x0208B39C;
+_ZN4Game18bossSwitchPositionE						= 0x0208B3A4;
+_ZN4Game20playerLookAtPositionE						= 0x0208B3B0;
+_ZN4Game19playerPaletteParamsE						= 0x0208B3BC;
+_ZN4Game27playerJumpPressedRingBufferE				= 0x0208B3D4;
+_ZN4Game24playerJumpHeldRingBufferE					= 0x0208B3F4;
+_ZN4Game19playerTextureParamsE						= 0x0208B414;
+
 
 /* arm9 */
 /*----------------------------------------------------------------*/
@@ -3455,21 +3573,6 @@ _ZN8Collider23updatePlayerInteractionEv								= 0x020ab18c;
 
 _ZN8Collider8listHeadE												= 0x020cabe4;
 _ZN8Collider8listTailE												= 0x020cabe8;
-
-
-/* arm9 */
-/*----------------------------------------------------------------*/
-/*----------------------- stagecontroller ------------------------*/
-/*----------------------------------------------------------------*/
-
-_ZN15StageControllerC1Ev				= 0x0201FFC4;
-_ZN15StageControllerC2Ev				= 0x0201FFC4;
-_ZN15StageControllerD0Ev				= 0x0201FF40;
-_ZN15StageControllerD1Ev				= 0x0201FF20;
-_ZN15StageControllerD2Ev				= 0x0201FF20;
-_ZN15StageController9preUpdateEv		= 0x0201FF80;
-
-_ZTV15StageController					= 0x0203CF30;
 
 
 /* arm9_ov10 */
@@ -4313,9 +4416,6 @@ _ZTV7StageFX							= 0x02127838;
 /*-------------------------- stage misc --------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN5Stage23addMegaDestructionScoreEhs				= 0x020200d4;
-_ZN5Stage23getMegaDestructionScoreEh				= 0x02020114;
-_ZN5Stage23setMegaDestructionScoreEht				= 0x02020128;
 _ZN5Stage7setZoomElmhh								= 0x020facfc;
 _ZN5Stage9getAreaIDEhhh								= 0x0201f53c;
 
@@ -4418,22 +4518,7 @@ _ZN4Game18setStageCheckpointEv				= 0x02006740;
 _ZN4Game18getStageCheckpointEv				= 0x02006790;
 _ZN4Game9getRandomEv						= 0x0200693C;
 _ZN4Game9loadLevelEtmhhhhhhhhhhhhhhm		= 0x0200696C;
-_ZN4Game14getPlayerCountEv					= 0x020202A0;
-_ZN4Game14setPlayerCountEm					= 0x020202B0;
-_ZN4Game16getCurrentPlayerEv				= 0x020205EC;
-_ZN4Game9getPlayerEl						= 0x02020608;
-_ZN4Game9setPlayerElP6Player				= 0x02020618;
 _ZN4Game26stageObjectBankOverlayProcEPvb	= 0x0200DEE0;
-_ZN4Game18getPlayerCharacterEl				= 0x02020260;
-_ZN4Game18setPlayerCharacterElh				= 0x02020270;
-_ZN4Game14getPlayerLivesEl					= 0x02020570;
-_ZN4Game14setPlayerLivesEll					= 0x02020580;
-_ZN4Game25getPlayerInventoryPowerupEl		= 0x02020240;
-_ZN4Game25setPlayerInventoryPowerupElh		= 0x02020250;
-_ZN4Game13getPlayerDeadEl					= 0x02020220;
-_ZN4Game13setPlayerDeadElb					= 0x02020230;
-_ZN4Game21getPlayerRespawnStateEl			= 0x020200B4;
-_ZN4Game21setPlayerRespawnStateEll			= 0x020200C4;
 
 _ZN4Game7stageIDE							= 0x02085A14;
 _ZN4Game10stageGroupE						= 0x02085A18;
@@ -4448,7 +4533,6 @@ _ZN4Game5wrapXE								= 0x02085AA4;
 _ZN4Game14scrollingWrapXE					= 0x02085AA8;
 _ZN4Game10viewMatrixE						= 0x02085B20;
 _ZN4Game11modelMatrixE						= 0x0208B6E8;
-_ZN4Game12starmanTimerE						= 0x0208B350;
 _ZN4Game12wrapFunctionE						= 0x02039968;
 _ZN4Game6randomE							= 0x02085A70;
 _ZN4Game15randomCallCountE					= 0x02085A54;
@@ -4647,9 +4731,6 @@ _ZN10PlayerBase24ropeDirectionalRotationYE							= 0x0212E214;
 _ZN10PlayerBase24megaDirectionalRotationYE							= 0x0212E218;
 _ZN10PlayerBase20directionalRotationYE								= 0x0212E21C;
 _ZN10PlayerBase25shellDirectionalRotationYE							= 0x0212E220;
-
-_ZN10PlayerBase21jumpPressedRingBufferE								= 0x0208B3D4;
-_ZN10PlayerBase18jumpHeldRingBufferE								= 0x0208B3F4;
 
 _ZTV10PlayerBase													= 0x0212F72C;
 

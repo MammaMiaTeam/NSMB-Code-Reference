@@ -96,8 +96,6 @@ namespace Game
 	extern MtxFx43 viewMatrix;
 	// 0208B6E8
 	extern MtxFx43 modelMatrix;
-	// 0208B350
-	extern s16 starmanTimer[2];
 	// 02039968
 	extern WrapFunction wrapFunction;
 
@@ -185,21 +183,6 @@ namespace Game
 		loadLevel(static_cast<u16>(scene), vs, group, stage, act, playerID, playerMask, character1, character2, powerup, entrance, flag, unused1, controlOptions, unused2, challengeMode, rngSeed);
 	}
 
-	// 020202a0
-	u32 getPlayerCount();
-
-	// 020202b0
-	void setPlayerCount(u32 count);
-
-	// 020205ec
-	Player* getCurrentPlayer();
-
-	// 02020608
-	Player* getPlayer(s32 playerID);
-
-	// 02020618
-	void setPlayer(s32 playerID, Player* player);
-
 	// 0200dee0
 	void stageObjectBankOverlayProc(void* banks, bool load);
 
@@ -209,36 +192,6 @@ namespace Game
 	NTR_INLINE void loadStageObjectBankOverlays(void* banks) {
 		stageObjectBankOverlayProc(banks, true);
 	}
-
-	// 02020260
-	u8 getPlayerCharacter(s32 playerID);
-
-	// 02020270
-	void setPlayerCharacter(s32 playerID, u8 characterID);
-
-	// 02020570
-	u8 getPlayerLives(s32 playerID);
-
-	// 02020580
-	void setPlayerLives(s32 playerID, s32 lives);
-
-	// 02020240
-	u8 getPlayerInventoryPowerup(s32 playerID);
-
-	// 02020250
-	u8 setPlayerInventoryPowerup(s32 playerID, u8 powerup);
-
-	// 02020220
-	u8 getPlayerDead(s32 playerID);
-
-	// 02020230
-	u8 setPlayerDead(s32 playerID, bool dead);
-
-	// 020200B4
-	u8 getPlayerRespawnState(s32 playerNo);
-
-	// 020200C4
-	u8 setPlayerRespawnState(s32 playerNo, s32 state);
 
 	// 02085A70
 	extern Random random;

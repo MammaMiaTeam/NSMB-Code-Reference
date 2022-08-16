@@ -13,6 +13,7 @@
 #include "nsmb/math.h"
 #include "nsmb/mvslmenu.h"
 #include "nsmb/physics.h"
+#include "nsmb/player.h"
 #include "nsmb/sound.h"
 #include "nsmb/stage.h"
 #include "nsmb/system.h"

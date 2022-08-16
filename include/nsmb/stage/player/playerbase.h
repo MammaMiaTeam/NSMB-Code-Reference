@@ -402,7 +402,7 @@ public:
 	NTR_INLINE bool getBufferedJumpHeld() const {
 
 		for (u32 i = 0; i < 4; i++) {
-			if (jumpHeldRingBuffer[linkedPlayerID][i])
+			if (Game::playerJumpHeldRingBuffer[linkedPlayerID][i])
 				return true;
 		}
 
@@ -537,9 +537,6 @@ public:
 	static const s16 megaDirectionalRotationY[2];
 	static const s16 directionalRotationY[2];
 	static const s16 shellDirectionalRotationY[2];
-
-	static u32 jumpPressedRingBuffer[2][4];
-	static u32 jumpHeldRingBuffer[2][4];
 
 
 	PlayerModel model;
