@@ -35,7 +35,7 @@ public:
 	// 02142374
 	void damagePlayer(ActiveCollider& self, Player& player) override;
 	// 02142450
-	void defeat(fx32 velX, fx32 velY, fx32 accelY, u8 unk) override;
+	void defeat(fx32 velX, fx32 velY, fx32 accelY, u8 arg) override;
 
 	// 02142104
 	static void setMaterialPalette(ModelAnm& model, u32 matID, u32 paletteID);

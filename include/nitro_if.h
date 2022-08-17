@@ -28,6 +28,7 @@
 #define NTR_NOINLINE			[[gnu::noinline]]
 #define NTR_INLINE				[[gnu::always_inline]] inline
 #define NTR_WEAK				[[gnu::weak]]
+#define ntr_fallthrough			[[fallthrough]]
 
 #define NTR_PRAGMA(p)			_Pragma(#p)
 

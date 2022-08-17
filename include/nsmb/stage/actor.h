@@ -11,12 +11,25 @@ class Player;
 class StageActor : public Actor
 {
 public:
+	
+	enum class ColliderPushSide : u8
+	{
+
+		None	= 0,
+		Left	= 0x1,
+		Right	= 0x2,
+		Down	= 0x4,
+		Up		= 0x8
+
+	};
 
 	enum class ReleaseMode : u8
 	{
+
 		None,
 		Drop,
 		Throw
+
 	};
 
 	ActiveCollider activeCollider;
@@ -26,7 +39,7 @@ public:
 	ReleaseMode releaseMode;
 	u8 direction;
 	u8 viewID;
-	u8 unk2BB;
+	ColliderPushSide colliderPushSides;
 	BOOL preUpdatePassed;
 
 	//020a127c

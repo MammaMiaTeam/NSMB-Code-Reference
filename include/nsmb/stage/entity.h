@@ -174,15 +174,17 @@ public:
 		Drop,
 		Throw
 	};
-
+	
 	enum class CollisionResponse
 	{
+
 		None			= 0,
-		Bottom			= 1 << 0,
-		Top				= 1 << 1,
-		Sides			= 1 << 2,
+		Bottom			= 0x1,
+		Top				= 0x2,
+		Sides			= 0x4,
 
 		Any				= Bottom | Top | Sides
+
 	};
 
 	// 020c4ec0
@@ -201,7 +203,7 @@ public:
 	static s16 directionalRotationYVelocity[2];
 
 	// 020c4ed4
-	static s16 directionalDefeatedHVelocity[2];
+	static fx16 directionalDefeatedHVelocity[2];
 
 	// 020c4ed8
 	static fx32 layerPosition[2];
@@ -232,8 +234,8 @@ public:
 	// No idea why packed is required
 	u64 eventMask __attribute__((packed));
 	u8 events[2];
+	u16 unk33A; // possibly alignment
 
-	u16 unk33A;
 	UpdateStateID updateStateID;
 	u32 unk340;
 	u32 playerID;
@@ -255,12 +257,11 @@ public:
 	Vec2 collisionActorPos;
 
 	fx32 wiggleOscillator;
-
 	u32 unk3A8;
 	u32 unk3AC;
 	CollisionType collisionType;
-
 	fx32 unk3B4;
+
 	u16 wiggleTimer;
 	u16 unk3BA;
 
@@ -276,7 +277,7 @@ public:
 
 	u8 defeatRelated;
 	u8 unk3CD;
-	u8 decrement;
+	u8 decrement; // not ticked automatically
 	u8 unk3CF;
 	u8 unk3D0; // 3rd cooldown
 	u8 unk3D1;
@@ -287,28 +288,22 @@ public:
 
 	u8 playerDirection;
 	u8 hitCombo;
-
-	u8 scoreEnhancement;
+	u8 enhancedScore;
 	u8 unk3DB;
 	bool spawnedByCreateActorMaybe; // bool
 	u8 unk3DD;
-
 	u8 blockHitDirection;
-
-	u8 killedRelated;
+	u8 defeatedArg;
 	bool permanentDelete;
 	u8 unk3E1;
 	u8 usedInLiquid;
 	u8 unk3E3;
-
 	bool defeatRollRelative; // bool
 	bool invisible; // bool
-
 	bool quicksandFlag;
 	bool slipperyFlag;
 	u8 unk3E8;
 	u8 unk3E9;
-
 	u8 defeatedDirection;
 	u8 freezeRelated;
 	bool backLayer;
@@ -372,7 +367,7 @@ public:
 	bool setGroundPoundCollision(const Player& player);
 
 	// 02098fbc
-	bool checkSquished() const;
+	bool checkCrushed() const;
 
 	NTR_INLINE CollisionMgrResult updateTopSensor() {
 		return collisionMgr.updateTopSensor(collisionMgr.collisionResult);
@@ -649,7 +644,7 @@ public:
 	virtual void damagePlayer(ActiveCollider& self, Player& player);
 
 	// 0209c9d0
-	virtual void defeat(fx32 velX, fx32 velY, fx32 accelY, u8 unk);
+	virtual void defeat(fx32 velX, fx32 velY, fx32 accelY, u8 arg);
 	// 0209c994
 	virtual void defeatMega(fx32 velX, fx32 velY, fx32 accelY);
 

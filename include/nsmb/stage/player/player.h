@@ -3,6 +3,7 @@
 
 
 class Door;
+enum class EntranceType : u8;
 
 // vtable at 021284E0 (ov10)
 class Player : public PlayerBase
@@ -54,6 +55,7 @@ public:
 	enum class ColliderPushSide : u32
 	{
 
+		None	= 0,
 		Down	= 0x1,
 		Up		= 0x2,
 		Right	= 0x4,
