@@ -4735,6 +4735,109 @@ _ZN10PlayerBase25shellDirectionalRotationYE							= 0x0212E220;
 _ZTV10PlayerBase													= 0x0212F72C;
 
 
+/* arm9_ov11 */
+/*-----------------------------------------------------------------*/
+/*-------------------------- player model -------------------------*/
+/*-----------------------------------------------------------------*/
+
+
+_ZN11PlayerModelD0Ev											= 0x0212DB78;
+_ZN11PlayerModelD1Ev											= 0x0212DBAC;
+_ZN11PlayerModelD2Ev											= 0x0212DBAC;
+_ZN11PlayerModelC1Ev											= 0x0212DBD8;
+_ZN11PlayerModelC2Ev											= 0x0212DBD8;
+_ZN11PlayerModel6createEhm										= 0x0212DB00;
+_ZN11PlayerModel8loadBodyEm										= 0x0212D8B0;
+_ZN11PlayerModel8loadHeadEv										= 0x0212D710;
+_ZN11PlayerModel20setBodyModelCallbackEPPFvP9NNSG3dRS_E			= 0x0212D6C0;
+_ZN11PlayerModel17setBodyModelOwnerEPv							= 0x0212D6A0;
+_ZN11PlayerModel6renderER7MtxFx43R4Vec3aimmi					= 0x0212D154;
+_ZN11PlayerModel14enableBodyToonER5Model						= 0x0212D140;
+_ZN11PlayerModel14enableHeadToonER5Model						= 0x0212D12C;
+_ZN11PlayerModel15disableBodyToonER5Model						= 0x0212D118;
+_ZN11PlayerModel15disableHeadToonER5Model						= 0x0212D104;
+_ZN11PlayerModel22setDeathTexImageParamsEv						= 0x0212CFE4;
+_ZN11PlayerModel16setBodyAnimationEPvmN9FrameCtrl4TypeElt		= 0x0212CE50;
+_ZN11PlayerModel20switchBodyAnimationsEmm						= 0x0212CE00;
+_ZN11PlayerModel16setHeadAnimationEPvN9FrameCtrl4TypeElt		= 0x0212CD64;
+_ZN11PlayerModel6updateEv										= 0x0212CCF0;
+_ZN11PlayerModel17animationFinishedEv							= 0x0212CCE0;
+_ZN11PlayerModel24setCurrentAnimationFrameEt					= 0x0212CCD4;
+_ZNK11PlayerModel24getCurrentAnimationFrameEv					= 0x0212CCC4;
+_ZNK11PlayerModel21getFullAnimationFrameEv						= 0x0212CCBC;
+_ZNK11PlayerModel22getAnimationFrameCountEv						= 0x0212CCAC;
+_ZN11PlayerModel17setAnimationSpeedEl							= 0x0212CCA4;
+_ZNK11PlayerModel17getAnimationSpeedEv							= 0x0212CC9C;
+_ZNK11PlayerModel16animationPassingEt							= 0x0212CC8C;
+_ZN11PlayerModel20initPartialAnimationEPvN9FrameCtrl4TypeElt	= 0x0212CBE8;
+_ZN11PlayerModel21startPartialAnimationEm						= 0x0212CB28;
+_ZN11PlayerModel19endPartialAnimationEv							= 0x0212CA98;
+_ZN11PlayerModel22updatePartialAnimationEv						= 0x0212CA78;
+_ZN11PlayerModel18saveNodeTransformsEv							= 0x0212C98C;
+
+_ZN11PlayerModel19luigiHeadAnimationsE							= 0x0212E404;
+_ZN11PlayerModel19marioHeadAnimationsE							= 0x0212E494;
+_ZN11PlayerModel12bodyModelIDsE									= 0x0212E524;
+_ZN11PlayerModel18bodyPaletteOffsetsE							= 0x0212E52C;
+_ZN11PlayerModel18headPaletteOffsetsE							= 0x0212E534;
+_ZN11PlayerModel16bodyModelFileIDsE								= 0x0212E53C;
+_ZN11PlayerModel19capHeadPaletteSlotsE							= 0x0212E544;
+_ZN11PlayerModel16bodyPaletteSlotsE								= 0x0212E554;
+_ZN11PlayerModel20deadHeadPaletteSlotsE							= 0x0212E564;
+_ZN11PlayerModel12headModelIDsE									= 0x0212E574;
+_ZN11PlayerModel16headModelFileIDsE								= 0x0212E584;
+_ZN11PlayerModel18headPatternFileIDsE							= 0x0212E228;
+_ZN11PlayerModel14headAnimationsE								= 0x0212F714;
+_ZN11PlayerModel20deadBodyTextureSlotsE							= 0x0212F850;
+_ZN11PlayerModel20deadHeadTextureSlotsE							= 0x0212F870;
+
+_ZTV11PlayerModel												= 0x0212F860;
+
+
+/* arm9_ov11 */
+/*-----------------------------------------------------------------*/
+/*--------------------------- player cap --------------------------*/
+/*-----------------------------------------------------------------*/
+
+_ZN9PlayerCapD0Ev				= 0x0212DEC0;
+_ZN9PlayerCapD1Ev				= 0x0212DEF4;
+_ZN9PlayerCapD2Ev				= 0x0212DEF4;
+_ZN9PlayerCapC1Ev				= 0x0212DF20;
+_ZN9PlayerCapC2Ev				= 0x0212DF20;
+_ZN9PlayerCap6createEh			= 0x0212DE44;
+_ZN9PlayerCap6renderEilatti		= 0x0212DCE4;
+_ZN9PlayerCap12setAnimationEhi	= 0x0212DC68;
+_ZN9PlayerCap13loadResourcesEv	= 0x0212DF4C;
+
+_ZN9PlayerCap13paletteParamsE	= 0x0212F8E0;
+_ZN9PlayerCap13textureParamsE	= 0x0212F8E4;
+_ZN9PlayerCap12modelFileIDsE	= 0x0212E5A4;
+_ZN9PlayerCap14paletteOffsetsE	= 0x0212E5AC;
+_ZN9PlayerCap13capAnimationsE	= 0x0212E5B4;
+
+_ZTV9PlayerCap					= 0x0212F8B0;
+
+
+/* arm9_ov11 */
+/*-----------------------------------------------------------------*/
+/*-------------------------- player shell -------------------------*/
+/*-----------------------------------------------------------------*/
+
+_ZN11PlayerShellD0Ev				= 0x0212E130;
+_ZN11PlayerShellD1Ev				= 0x0212E15C;
+_ZN11PlayerShellD2Ev				= 0x0212E15C;
+_ZN11PlayerShellC1Ev				= 0x0212E180;
+_ZN11PlayerShellC2Ev				= 0x0212E180;
+_ZN11PlayerShell6createEv			= 0x0212E0F8;
+_ZN11PlayerShell6renderEiatti		= 0x0212E020;
+_ZN11PlayerShell13loadResourcesEv	= 0x0212E1A4;
+
+_ZN11PlayerShell13paletteParamsE	= 0x0212F8EC;
+_ZN11PlayerShell13textureParamsE	= 0x0212F8F0;
+
+_ZTV11PlayerShell					= 0x0212F8C0;
+
+
 /* arm9_ov10 */
 /*-----------------------------------------------------------------*/
 /*--------------------------- jump state --------------------------*/

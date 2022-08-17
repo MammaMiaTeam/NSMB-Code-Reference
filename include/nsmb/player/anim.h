@@ -8,9 +8,9 @@ struct PlayerCapAnimation {
 	u32 marioSmallAnimID;
 	u32 luigiAnimID;
 	u32 luigiSmallAnimID;
-	u32 frameCtrlType;
-	fx32 frameCtrlSpeed;
-	u32 frameCtrlStart;
+	FrameCtrl::Type type;
+	fx32 speed;
+	u16 startFrame;
 
 };
 
