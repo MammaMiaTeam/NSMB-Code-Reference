@@ -12,6 +12,98 @@ public:
 
 	using StateFunction = bool (Player::*)(void*);
 
+	struct AnimationSet {
+
+		u32 fileID;
+		u32 resAnimID;
+		FrameCtrl::Type flags;
+		u32 blendSteps;
+		u32 headAnimID;
+
+	};
+
+	struct CharacterAnimation {
+
+		u32 id;
+		u32 fileID;
+
+	};
+
+	struct Animation {
+
+		u32 id;
+		fx32 speed;
+
+	};
+
+	struct CarryAnimation {
+
+		u32 fileID;
+		u32 id;
+		FrameCtrl::Type flags;
+
+	};
+
+	struct SensorCollection {
+
+		LineSensorH top;
+		LineSensorH bottom;
+		LineSensorV side;
+		LineSensorV climb;
+
+	};
+
+	struct SensorConfig {
+
+		SensorCollection tallSensors;
+		SensorCollection shortSensors;
+		SensorCollection ledgeSensors;
+		SensorCollection waterSensors;
+
+	};
+
+	struct PowerupParam {
+
+		const Constants* constants;
+		const SensorConfig* sensors;
+		const FxRect* hitbox;
+		u8 modelID;
+		u8 textureID;
+
+	};
+
+	struct JumpCurveAccelTable {
+
+		fx32 jumpGravity;		// 
+		fx32 jumpAscend;		// applied during the ascending phase, when velocity.y > 2.5
+		fx32 jumpPeak;			// applied shortly before reaching the jump peak, when 1.5 < velocity.y <= 2.5
+		fx32 fallPeak;			// applied shortly after reaching the jump peak, when -2 < velocity.y < 0
+		fx32 swimAscend;		// applied during the ascending phase, when velocity.y >= 0
+		fx32 swimPeak;			// applied shortly after reaching the jump peak, when targetVelV <= velocity.y < 0
+		fx32 swimDescend;		// applied during the descending phase, when velocity.y < targetVelV; except the velocity can't be less than its target value
+		fx32 spinJumpDescend;	// applied during the descending phase, when velocity.y <= 0; spin drill force hardcoded at 02106270 (ov10)
+		fx32 spinJumpAscend;	// applied during the ascending phase, when velocity.y > 0
+		fx32 unused24;			// 
+		fx32 unused28;			// 
+		fx32 unused2C;			// 
+		fx32 megaJumpGravity;	// 
+		fx32 megaJumpAscend;	// applied during the ascending phase, when velocity.y > 2.5
+		fx32 megaJumpPeak;		// applied shortly before reaching the jump peak, when 1.5 < velocity.y <= 2.5
+		fx32 megaFallPeak;		// applied shortly after reaching the jump peak, when -2 < velocity.y < 0
+		fx32 unused40;			// 
+
+	};
+
+	struct JumpCurveLimitTable {
+
+		fx32 standard;			// standard jump/fall vertical velocity limit
+		fx32 unused4;			// 
+		fx32 wallSlide;			// sliding down a wall
+		fx32 unusedC;			// 
+		fx32 megaJump;			// jumping/falling while Mega
+
+	};
+
 	struct ShootCannonArg {
 
 		fx32 curveForce;
@@ -306,8 +398,20 @@ public:
 	void setupColliderPowerup();
 	void setupCollisionMgr(bool switchingPowerup);
 
-	void setJumpFallAccel();
-	void setJumpFallAccelNormal();
+	void updateQuicksandHorizontalVelocity();
+	void limitHorizontalVelocity(fx32 target);
+	void updateHorizontalVelocityLimit();
+	void updateHorizontalMovement();
+	// 021065B4
+	void updateVerticalVelocityLimit();
+	void updateSpinJumpGravity();
+	void updateBouncyBricksJumpGravity();
+	void updateTallJumpGravity();
+	void updateShortJumpGravity();
+	void updateJumpFallGravity();
+	void updateJumpGravity();
+	void updateSwimGravity();
+	void updateGravityAcceleration();
 	void smoothRotationY(s32 end, fx32 ratio);
 
 	bool carry(StageActor& actor) override;
@@ -476,17 +580,81 @@ public:
 
 	static const ActorProfile profile;
 
+	static const ActiveColliderInfo activeColliderInfo;
+	static const ActiveColliderInfo specialColliderInfo;
+	static const FxRect slidingHitboxes[2];						// 0 = short, 1 = tall
+	static const FxRect fenceSlamHitbox;
+
+	static const u8 bumpedAnimationIDs[4];						// [bump type]
+	static const s32 bumpUnitDirections[4];						// [bump type]
+
+	static const u32 characterAnimFileIDs[2];					// [character]
+	static const CharacterAnimation idleAnimations[2];			// [character]
+	static const CharacterAnimation walkAnimations[2];			// [character]
+	static const CharacterAnimation runAnimations[2];			// [character]
+	static const CharacterAnimation smallLandAnimations[2];		// [character]
+	static const CarryAnimation carryAnimations[2];				// [character]
+	static const Animation consecutiveJumpAnimations[7];		// [variation]
+	static const fx32 ledgeWalkAnimSpeeds[32];					// [abs(velH) >> 8]
+	static const fx32 ledgeGrabAnimSpeeds[32];					// [abs(velH) >> 8]
+
+	static const s16 entranceSpawnInvincibleCooldown[22];		// [entrance type]
+	static const CollisionFlag wallJumpCollisionFlags[2];		// [direction]
+	static const fx32 quicksandVelocitiesX[2];					// [direction]
+	static const u32 liquidWaveLevels[8];						// [powerup]
+	static const fx32 starRollSideSensorSizes[6][2];			// [powerup][bottom/top]
+	static const fx32 powerupShrinkAnimationHeights[7][7];		// [scale anim type][frame]
+
+	static const u32 switchMegaSFXs[2];							// [character]
+	static const u32 spinJumpSFXs[2];							// [character]
+	static const u32 cannonSFXs[2];								// [character]
+	static const u32 grabRopeSFXs[2];							// [character]
+	static const u32 buriedSFXs[2];								// [character]
+	static const u32 electrocutedSFXs[2];						// [character]
+	static const u32 holdLedgeSFXs[2];							// [character]
+	static const u32 tripleJumpSFXs[2];							// [character]
+	static const u32 climbLedgeSFXs[2];							// [character]
+	static const u32 jumpLedgeSFXs[2];							// [character]
+	static const u32 unbalancedRopeSFXs[2];						// [character]
+	static const u32 winSFXs[2];								// [character]
+	static const u32 lavaDamageSFXs[2];							// [character]
+	static const u32 throwSFXs[2][2];							// [character][variation]
+	static const u32 doubleJumpSFXs[2][2];						// [character][variation]
+	static const u32 wallJumpSFXs[2][3];						// [character][variation]
+	static const u32 jumpSFXs[8];								// [powerup]
+
+	static const FireworkParam fireworkSet1[1];
+	static const FireworkParam fireworkSet2[2];
+	static const FireworkParam fireworkSet3[3];
+	static const FireworkParam fireworkSet4[4];
+	static const FireworkParam fireworkSet5[5];
+	static const FireworkParam fireworkSet6[6];
+	static const FireworkParam fireworkSet7[7];
+	static const FireworkParam fireworkSet8[8];
+	static const FireworkParam fireworkSet9[9];
+	static const u32 fireworkParticleIDs[3][5];					// [variation][part]
+
+	static const FxRect hitboxMini;
+	static const FxRect hitboxSmall;
+	static const FxRect hitboxSuper;
+	static const FxRect hitboxMega;
+	static const SensorConfig sensorsMini;
+	static const SensorConfig sensorsSmall;
+	static const SensorConfig sensorsSuper;
+	static const SensorConfig sensorsMega;
+	static const PowerupParam powerupParams[7];					// [powerup]
+
+	static const JumpCurveLimitTable jumpCurveLimitTables[2];	// [higher jump]
+	static const JumpCurveAccelTable jumpCurveAccelTables[2];	// [higher jump]
+
+
 
 	Door* door;
 	Door* bossDoor;
-	fx32* jumpTable1;
-	fx32* jumpTable2;
+	const JumpCurveAccelTable* jumpCurveAccel;
+	const JumpCurveLimitTable* jumpCurveLimit;
 
-	LineSensorH topSensor;
-	LineSensorH botSensor;
-	LineSensorV sideSensor;
-	LineSensorV climbSensor;
-
+	SensorCollection sensors;
 	ActiveCollider specialCollider;
 	PendulumController pendulum;
 	VictoryState victoryState;
@@ -687,7 +855,7 @@ public:
 	u8 unkBAC;
 	s8 transitionStateStep;
 	bool holdingItemFlag;
-	bool currentModel;
+	bool renderShell;
 	u8 unkBB0;
 	s8 stompState;
 	DamageTileFlags damageTileFlags;
@@ -724,6 +892,9 @@ using PlayerFrameMode		= Player::FrameMode;
 using ColliderPushSide		= Player::ColliderPushSide;
 using PlayerPipeType		= Player::PipeType;
 using PlayerDoorType		= Player::DoorType;
+using PlayerConstants		= Player::Constants;
+using PlayerSensorConfig	= Player::SensorConfig;
+using PlayerPowerupParam	= Player::PowerupParam;
 
 IMPL_ENUMCLASS_OPERATORS(Player::ColliderPushSide);
 

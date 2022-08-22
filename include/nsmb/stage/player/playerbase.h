@@ -98,27 +98,6 @@ enum class PowerupState : s8
 
 };
 
-struct PlayerPhysics {
-
-	fx32 scale;
-	fx32 walkingMaxSpeed;
-	fx32 unk8;
-	fx32 runningMaxSpeed;
-	fx32 starRunningMaxSpeed;
-	fx32 swimmingMaxSpeed;
-	fx32 unk18;
-	fx32 walkingUnderwaterMaxSpeed;
-	fx32 jumpVelocity;
-	fx32 unk24;
-	fx32 quicksandJumpVelocity;
-	fx32 quicksandSubmergeJumpdVelocity;
-	fx32 unk30;
-	fx32 unk34;
-	fx32 width;
-	fx32 height;
-
-};
-
 struct PlayerActionFlag : BitFlag<u32>
 {
 
@@ -359,6 +338,27 @@ class PlayerBase : public StageActor
 {
 public:
 
+	struct Constants {
+
+		fx32 scale;
+		fx32 walkingMaxSpeed;
+		fx32 unk8;
+		fx32 runningMaxSpeed;
+		fx32 starRunningMaxSpeed;
+		fx32 swimmingMaxSpeed;
+		fx32 unk18;
+		fx32 walkingUnderwaterMaxSpeed;
+		fx32 jumpVelocity;
+		fx32 unk24;
+		fx32 quicksandJumpVelocity;
+		fx32 quicksandSubmergedJumpVelocity;
+		fx32 unk30;
+		fx32 unk34;
+		fx32 width;
+		fx32 height;
+
+	};
+
 	void fetchKeys();
 	void releaseKeys();
 	void releaseHorizontalKeys();
@@ -532,17 +532,33 @@ public:
 	fx32 processJumpVelocity(fx32 velocity) const;
 	PlayerHeight getHeight() const;
 
+	static constexpr fx32 maxWalkSpeedJumpModifier = 0.28125fx; // 021146B8 (ov10)
+	static constexpr fx32 miniJumpFactor = 0.8125fx; // 021146FC (ov10)
+	static constexpr fx32 highJumpFactor = 0.84375fx; // 02114738 (ov10)
 
 	static const s16 ropeDirectionalRotationY[2];
 	static const s16 megaDirectionalRotationY[2];
 	static const s16 directionalRotationY[2];
 	static const s16 shellDirectionalRotationY[2];
+	static const u8 horizontalKeysDirection[4];
+	static const s32 unitDirection[2];
+	static const u16 horizontalKeysMask[2];
+	static const CollisionMgrResult wallClipCollisionMasks[2];
+	static const u16 horizontalInvKeysMask[2];
+	static const CollisionFlag wallCollisionFlags[2];
+	static const s32 horizontalKeysUnitDirection[2];
+	static const FxRect defaultBoundingBox;
+	static const fx32 walkSpeedJumpModifier[16];
+	static const Constants constantsMini;
+	static const Constants constantsSmall;
+	static const Constants constantsSuper;
+	static const Constants constantsMega;
 
 
 	PlayerModel model;
 	StageActor* linkedActor;
 	MtxFx43 unk68C;
-	PlayerPhysics* physics;
+	Constants* constants;
 	FxRect boundingBox;
 	SpinState spinState;
 	BlendColor diffuse;

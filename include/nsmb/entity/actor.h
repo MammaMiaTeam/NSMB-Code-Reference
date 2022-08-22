@@ -55,9 +55,9 @@ public:
 	Vec3s rotation;
 	Vec3s lastRotation;
 	fx32 velH;
-	fx32 minVelH;
+	fx32 targetVelH;
 	fx32 accelV;
-	fx32 minVelV;
+	fx32 targetVelV;
 	fx32 accelH;
 	u32 unkC4;
 	Vec3 velocity;
