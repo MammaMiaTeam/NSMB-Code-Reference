@@ -3117,6 +3117,7 @@ _ZN12CollisionMgr16releaseCollidersEv													= 0x020ABA48;
 _ZN12CollisionMgr16acquireCollidersEv													= 0x020AB9AC;
 
 _ZN12CollisionMgrC2Ev																	= 0x020AB13C;
+_ZN12CollisionMgrC1Ev																	= 0x020AB13C;
 _ZN12CollisionMgrD2Ev																	= 0x020AB110;
 _ZN12CollisionMgrD1Ev																	= 0x020AB110;
 _ZN12CollisionMgrD0Ev																	= 0x020AB0D4;
@@ -3124,7 +3125,7 @@ _ZN12CollisionMgrD0Ev																	= 0x020AB0D4;
 _ZN12CollisionMgr5resetEv																= 0x020AB0B0;
 _ZN12CollisionMgr14clearCollisionEv														= 0x020AB05C;
 _ZN12CollisionMgr4initEP10StageActorPKNS_6SensorES4_S4_PKNS_11LineSensorVE				= 0x020AB010;
-_ZN12CollisionMgr4initEP10StageActorP4Vec3S3_PaPKNS_6SensorES7_S7_PKNS_11LineSensorVE	= 0x020AAFC0;
+_ZN12CollisionMgr4initEP4Vec3S1_PaPKNS_6SensorES5_S5_PKNS_11LineSensorVE				= 0x020AAFC0;
 _ZN12CollisionMgr19getBottomSensorSizeER4Vec3											= 0x020AAF30;
 _ZN12CollisionMgr16getTopSensorSizeER4Vec3												= 0x020AAEA0;
 _ZN12CollisionMgr17getSideSensorSizeER4Vec3h											= 0x020AADF8;
@@ -5885,6 +5886,7 @@ _ZN3End6slidesE = 0x020E4198;
 
 _ZN4Item11switchStateEMS_FbvE = 0x020d4eb8;
 _ZN4Item12checkConsumeEv = 0x020d475c;
+_ZN4Item18onPrepareResourcesEv = 0x020d2248;
 
 
 /* arm9_ov23 */
@@ -7035,14 +7037,14 @@ _ZN13BigSpikedBall11updateStateEv							= 0x022D7718;
 _ZN13BigSpikedBall9mainStateEv								= 0x0218D850;
 _ZN13BigSpikedBall14activeCallbackER14ActiveColliderS1_		= 0x0218D700;
 
-_ZN13BjgSpikedBall9topSensorE								= 0x0218DF2C;
-_ZN13BjgSpikedBall12bottomSensorE							= 0x0218DF3C;
-_ZN13BjgSpikedBall10sideSensorE								= 0x0218DF4C;
-_ZN13BjgSpikedBall11velocitiesXE							= 0x0218DF5C;
-_ZN13BjgSpikedBall16slopeVelocitiesXE						= 0x0218DF68;
-_ZN13BjgSpikedBall19slopeAccelerationsXE					= 0x0218DF6C;
-_ZN13BjgSpikedBall18activeColliderInfoE						= 0x022D7B20;
-_ZN13BjgSpikedBall7profileE									= 0x0218E0D0;
+_ZN13BigSpikedBall9topSensorE								= 0x0218DF2C;
+_ZN13BigSpikedBall12bottomSensorE							= 0x0218DF3C;
+_ZN13BigSpikedBall10sideSensorE								= 0x0218DF4C;
+_ZN13BigSpikedBall11velocitiesXE							= 0x0218DF5C;
+_ZN13BigSpikedBall16slopeVelocitiesXE						= 0x0218DF68;
+_ZN13BigSpikedBall19slopeAccelerationsXE					= 0x0218DF6C;
+_ZN13BigSpikedBall18activeColliderInfoE						= 0x022D7B20;
+_ZN13BigSpikedBall7profileE									= 0x0218E0D0;
 
 _ZTV13BigSpikedBall											= 0x0218E0DC;
 

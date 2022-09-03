@@ -97,6 +97,8 @@ public:
 	//020d4eb8
 	bool switchState(StateFunction function);    //Switches the state function to function. Always returns true.
 
+	bool onPrepareResources();
+
 	static constexpr u16 objectID = 31;
 
 	static constexpr u16 updatePriority = objectID;

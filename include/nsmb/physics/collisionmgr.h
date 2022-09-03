@@ -407,7 +407,7 @@ public:
 	// 020AB010
 	void init(StageActor* owner, const Sensor* bottomSensor, const Sensor* topSensor, const Sensor* sideSensor, const LineSensorV* climbSensor = nullptr);
 	// 020AAFC0
-	void init(StageActor* owner, Vec3* position, Vec3* velocity, s8* playerID, const Sensor* bottomSensor, const Sensor* topSensor, const Sensor* sideSensor, const LineSensorV* climbSensor = nullptr);
+	void init(Vec3* position, Vec3* velocity, s8* playerID, const Sensor* bottomSensor, const Sensor* topSensor, const Sensor* sideSensor, const LineSensorV* climbSensor = nullptr);
 	// 020AAF30
 	bool getBottomSensorSize(Vec3& size);
 	// 020AAEA0
