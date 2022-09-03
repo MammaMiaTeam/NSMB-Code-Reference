@@ -62,6 +62,7 @@
 #define NTR_ARM					NTR_TARGET(arm)
 #define NTR_WARNING(s)			[[gnu::warning(#s)]]
 #define NTR_ERROR(s)			[[gnu::error(#s)]]
+#define ntr_fallthrough			[[fallthrough]]
 
 #define NTR_PRAGMA(p)			_Pragma(#p)
 
@@ -93,10 +94,10 @@
 
 
 template<auto>
-[[gnu::warning("SoftLog")]] constexpr void SoftLog() {}
+NTR_WARNING(SoftLog) constexpr void SoftLog() {}
 
 template<auto>
-[[gnu::error("HardLog")]] constexpr void HardLog() {}
+NTR_ERROR(HardLog) constexpr void HardLog() {}
 
 
 #ifdef __INTELLISENSE__
