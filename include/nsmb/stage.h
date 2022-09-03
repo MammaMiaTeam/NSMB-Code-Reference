@@ -56,10 +56,11 @@
 // Overlay 48 - WobbleRock
 #include "stage/actors/ov48/wobblerock.h"
 
-// Overlay 54 - Checkpoint, CoinSpawner, Trampoline
+// Overlay 54 - Checkpoint, CoinSpawner, Trampoline, VolcanoEruption
 #include "stage/actors/ov54/checkpoint.h"
 #include "stage/actors/ov54/coinspawner.h"
 #include "stage/actors/ov54/trampoline.h"
+#include "stage/actors/ov54/volcanoeruption.h"
 
 // Overlay 57 - ChainChomp, ChainChompLog
 #include "stage/actors/ov57/chainchomp.h"

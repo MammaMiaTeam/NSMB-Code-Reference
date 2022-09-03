@@ -6404,10 +6404,10 @@ _ZN10Trampoline19jumpBoostVelocitiesE					= 0x0216C004;
 _ZN10Trampoline11jumpOffsetsE							= 0x0216C00C;
 _ZN10Trampoline12bottomSensorE							= 0x0216C014;
 _ZN10Trampoline9topSensorE								= 0x0216C020;
-_ZN10Trampoline14topSensorGiantE						= 0x0216C02C;
-_ZN10Trampoline15sideSensorGiantE						= 0x0216C03C;
+_ZN10Trampoline12topSensorBigE							= 0x0216C02C;
+_ZN10Trampoline13sideSensorBigE							= 0x0216C03C;
 _ZN10Trampoline10sideSensorE							= 0x0216C04C;
-_ZN10Trampoline17bottomSensorGiantE						= 0x0216C05C;
+_ZN10Trampoline15bottomSensorBigE						= 0x0216C05C;
 _ZN10Trampoline18activeColliderInfoE					= 0x0216C06C;
 _ZN10Trampoline7profileE								= 0x0216D154;
 
@@ -6415,6 +6415,28 @@ _ZN10Trampoline10sMainStateE							= 0x02171750;
 _ZN10Trampoline13sCarriedStateE							= 0x02171758;
 
 _ZTV10Trampoline										= 0x0216D160;
+
+
+/* arm9_ov54 */
+/*----------------------------------------------------------------*/
+/*-------------------------- coin spawner ------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN11CoinSpawnerD0Ev						= 0x02156DF0;
+_ZN11CoinSpawnerD1Ev						= 0x02156D94;
+_ZN11CoinSpawnerD2Ev						= 0x02156D94;
+_ZN11CoinSpawner8onCreateEv					= 0x02156E74;
+_ZN11CoinSpawner10updateMainEv				= 0x02156E54;
+
+_ZN11CoinSpawner11switchStateERKMS_FbvE		= 0x02157128;
+_ZN11CoinSpawner11updateStateEv				= 0x021570E0;
+_ZN11CoinSpawner9mainStateEv				= 0x02156F44;
+
+_ZN11CoinSpawner5sMainE						= 0x02171770;
+
+_ZN11CoinSpawner7profileE					= 0x0216D4DC;
+
+_ZTV11CoinSpawner							= 0x0216D4E8;
 
 
 /* arm9_ov54 */
@@ -6453,24 +6475,47 @@ _ZN14CheckpointFlag6renderEv	= 0x021623A0;
 
 /* arm9_ov54 */
 /*----------------------------------------------------------------*/
-/*-------------------------- coin spawner ------------------------*/
+/*---------------------- volcano eruption ------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN11CoinSpawnerD0Ev						= 0x02156DF0;
-_ZN11CoinSpawnerD1Ev						= 0x02156D94;
-_ZN11CoinSpawnerD2Ev						= 0x02156D94;
-_ZN11CoinSpawner8onCreateEv					= 0x02156E74;
-_ZN11CoinSpawner10updateMainEv				= 0x02156E54;
+_ZN15VolcanoEruptionD0Ev									= 0x02162AD4;
+_ZN15VolcanoEruptionD1Ev									= 0x021629D4;
+_ZN15VolcanoEruptionD2Ev									= 0x021629D4;
+_ZN15VolcanoEruption8onCreateEv								= 0x0216335C;
+_ZN15VolcanoEruption9onDestroyEv							= 0x02162F70;
+_ZN15VolcanoEruption8onRenderEv								= 0x02162FB0;
+_ZN15VolcanoEruption18onCleanupResourcesEv					= 0x02162FAC;
+_ZN15VolcanoEruption18onPrepareResourcesEv					= 0x02163490;
+_ZN15VolcanoEruption10updateMainEv							= 0x02163344;
+_ZN15VolcanoEruption10skipRenderEv							= 0x02164228;
+_ZN15VolcanoEruption10onBlockHitEv							= 0x02162BDC;
+_ZN15VolcanoEruption13onStageBeatenER6Player				= 0x02162E40;
+_ZN15VolcanoEruption13loadResourcesEv						= 0x021634C8;
 
-_ZN11CoinSpawner11switchStateERKMS_FbvE		= 0x02157128;
-_ZN11CoinSpawner11updateStateEv				= 0x021570E0;
-_ZN11CoinSpawner9mainStateEv				= 0x02156F44;
+_ZNK15VolcanoEruption11getRockSlotER14ActiveCollider		= 0x02162BE0;
+_ZN15VolcanoEruption15spawnBrokenRockEl						= 0x02162C44;
+_ZN15VolcanoEruption16spawnFallingRockEl					= 0x02163C0C;
+_ZN15VolcanoEruption17spawnEruptingRockEl					= 0x02164244;
+_ZNK15VolcanoEruption15getFreeRockSlotEv					= 0x02164370;
+_ZN15VolcanoEruption11switchStateEMS_FbvE					= 0x0216441C;
+_ZN15VolcanoEruption11updateStateEv							= 0x021643C8;
+_ZN15VolcanoEruption10eruptStateEv							= 0x0216400C;
+_ZN15VolcanoEruption9waitStateEv							= 0x02163F5C;
+_ZN15VolcanoEruption17rocksFallingStateEv					= 0x021636F0;
+_ZN15VolcanoEruption5eruptERK4Vec3h							= 0x02162F00;
+_ZN15VolcanoEruption14activeCallbackER14ActiveColliderS1_	= 0x021634F4;
 
-_ZN11CoinSpawner5sMainE						= 0x02171770;
+_ZN15VolcanoEruption7profileE								= 0x02170130;
+_ZN15VolcanoEruption18activeColliderInfoE					= 0x0216C278;
+_ZN15VolcanoEruption17bottomSensorSmallE					= 0x0216C23C;
+_ZN15VolcanoEruption15bottomSensorBigE						= 0x0216C254;
+_ZN15VolcanoEruption19eruptionVelocitiesXE					= 0x0216C264;
+_ZN15VolcanoEruption15fallVelocitiesYE						= 0x0216C248;
+_ZN15VolcanoEruption20eruptionVelocitySetsE					= 0x0216C294;
+_ZN15VolcanoEruption17eruptionScaleSetsE					= 0x0216C2B4;
+_ZN15VolcanoEruption17fallOffsetFactorsE					= 0x0216C318;
 
-_ZN11CoinSpawner7profileE					= 0x0216D4DC;
-
-_ZTV11CoinSpawner							= 0x0216D4E8;
+_ZTV15VolcanoEruption										= 0x0217013C;
 
 
 /* arm9_ov57 */

@@ -96,13 +96,13 @@ public:
 	static const ActiveColliderInfo activeColliderInfo;
 
 	// 0216C05C
-	static const LineSensorH bottomSensorGiant;
+	static const LineSensorH bottomSensorBig;
 	// 0216C04C
 	static const LineSensorV sideSensor;
 	// 0216C03C
-	static const LineSensorV sideSensorGiant;
+	static const LineSensorV sideSensorBig;
 	// 0216C02C
-	static const LineSensorH topSensorGiant;
+	static const LineSensorH topSensorBig;
 	// 0216C020
 	static const PointSensor topSensor;
 	// 0216C014
@@ -133,7 +133,7 @@ public:
 	fx32 hitboxHeight;
 
 	fx32 groundForce;
-	u32 giantFlag;
+	u32 biggerFlag;
 	fx32 animScale;
 	fx32 animScaleInv;
 
