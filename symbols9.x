@@ -2219,6 +2219,7 @@ _ZN3OAM4Anim7drawSubEllNS_5FlagsEhhPK4Vec2sPKsNS_8SettingsE = 0x0200B39C;
 _ZN8Particle7Emitter5startEmmPK7VecFx32PK7VecFx16PKlPKsPNS_14ControllerBaseE								= 0x02021c10;
 _ZN8Particle7Emitter3endEv																					= 0x02021bf0;
 
+_ZN8Particle13EmitterSystemC1Ev																				= 0x02021bac;
 _ZN8Particle13EmitterSystemC2Ev																				= 0x02021bac;
 
 _ZN8Particle13EmitterSystem18destroyAllEmittersEv															= 0x02021ae8;
@@ -2231,6 +2232,7 @@ _ZN8Particle13EmitterSystem17unregisterEmitterEPNS_7EmitterE												= 0x0202
 _ZN8Particle14ControllerBase5spawnEP10SPLEmitter															= 0x02021f08;
 _ZN8Particle14ControllerBase7destroyEP10SPLEmitterb															= 0x02021f00;
 
+_ZN8Particle10ControllerC1Ev																				= 0x02021eb8;
 _ZN8Particle10ControllerC2Ev																				= 0x02021eb8;
 _ZN8Particle10Controller5spawnEP10SPLEmitter																= 0x02021e8c;
 _ZN8Particle10Controller7destroyEP10SPLEmitterb																= 0x02021e7c;
@@ -2242,6 +2244,7 @@ _ZN8Particle22ControllerManualLiquid7destroyEP10SPLEmitterb													= 0x0202
 _ZN8Particle16ControllerManual7destroyEP10SPLEmitterb														= 0x02021d20;
 _ZN8Particle16ControllerManual20getHandlerControllerEv														= 0x02021cfc;
 
+_ZN8Particle7HandlerC1Ev																					= 0x02023180;
 _ZN8Particle7HandlerC2Ev																					= 0x02023180;
 _ZN8Particle7HandlerD2Ev																					= 0x02023118;
 _ZN8Particle7HandlerD1Ev																					= 0x02023118;
@@ -3100,13 +3103,14 @@ _Z10MTX_RotZ43R7MtxFx43ss		= MTX_RotZ43_;
 /*------------------------ collision manager ---------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN12CollisionMgr21updateColliderTopWrapENS_11SensorFlagsE								= 0x020ACC78;
+_ZN12CollisionMgr25setupColliderInterworkingEv											= 0x020ACCE4;
+_ZN12CollisionMgr21updateColliderTopWrapENS_11SensorFlagslE								= 0x020ACC78;
 _ZN12CollisionMgr17updateColliderTopENS_11SensorFlagsEl									= 0x020AC7BC;
-_ZN12CollisionMgr24updateColliderBottomWrapENS_11SensorFlagsE							= 0x020AC750;
+_ZN12CollisionMgr24updateColliderBottomWrapENS_11SensorFlagslE							= 0x020AC750;
 _ZN12CollisionMgr20updateColliderBottomENS_11SensorFlagsEl								= 0x020AC288;
-_ZN12CollisionMgr22updateColliderSideWrapENS_11SensorFlagsEh							= 0x020AC21C;
+_ZN12CollisionMgr22updateColliderSideWrapENS_11SensorFlagsEhl							= 0x020AC21C;
 _ZN12CollisionMgr18updateColliderSideENS_11SensorFlagsEhl								= 0x020ABCFC;
-_ZN12CollisionMgr28updateColliderSideWrapUnusedENS_11SensorFlagsEh						= 0x020ABC90;
+_ZN12CollisionMgr28updateColliderSideWrapUnusedENS_11SensorFlagsEhl						= 0x020ABC90;
 _ZN12CollisionMgr24updateColliderSideUnusedENS_11SensorFlagsEhl							= 0x020ABA68;
 
 _ZN12CollisionMgr16releaseCollidersEv													= 0x020ABA48;
@@ -3145,7 +3149,7 @@ _ZN12CollisionMgr18updateBottomSensorEb													= 0x01FFF93C;
 _ZN12CollisionMgr23calculateSlopeCollisionE8TileTypeNS_11SensorFlagsE					= 0x020AABFC;
 _ZN12CollisionMgr28switchBottomModifierNoStairsE8TileType								= 0x020AABE4;
 _ZN12CollisionMgr20switchBottomModifierE8TileType										= 0x020AABA8;
-_ZN12CollisionMgr17setBottomModifierE8TileType											= 0x020AAB74;
+_ZN12CollisionMgr17setBottomModifierE12TileModifier										= 0x020AAB74;
 _ZN12CollisionMgr12modifierNoneEv														= 0x020AAB70;
 _ZN12CollisionMgr17modifierQuicksandEv													= 0x020AAB44;
 _ZN12CollisionMgr25modifierConveyorBeltRightEv											= 0x020AAB18;
@@ -3221,6 +3225,21 @@ _ZNK12CollisionMgr23getActorGroundCollisionEv											= 0x020A6C9C;
 _ZNK12CollisionMgr12isSlopeSteepEv														= 0x020A6C68;
 _ZNK12CollisionMgr13isGroundSteepEv														= 0x020A6C34;
 _ZNK12CollisionMgr23getGroundSlopeCollisionEv											= 0x020A6C28;
+
+_ZN12CollisionMgr17attachedScanTableE													= 0x020CAB1C;
+_ZN12CollisionMgr17attachedMoveTableE													= 0x020CAB3C;
+_ZN12CollisionMgr21bottomSensorModifiersE												= 0x020CAB5C;
+_ZN12CollisionMgr13dummyModifierE														= 0x020CABDC;
+_ZN12CollisionMgr18colliderSolversTopE													= 0x020CAC0C;
+_ZN12CollisionMgr19colliderSolversSideE													= 0x020CAC24;
+_ZN12CollisionMgr21colliderSolversBottomE												= 0x020CAC3C;
+_ZN12CollisionMgr25colliderSolversUnusedSideE											= 0x020CAC54;
+_ZN12CollisionMgr11cachedTileXE															= 0x020CAB0C;
+_ZN12CollisionMgr11cachedTileYE															= 0x020CAB10;
+_ZN12CollisionMgr18bottomSensorSolverE													= 0x020CABEC;
+_ZN12CollisionMgr16unusedSideSolverE													= 0x020CABF4;
+_ZN12CollisionMgr16sideSensorSolverE													= 0x020CABFC;
+_ZN12CollisionMgr15topSensorSolverE														= 0x020CAC04;
 
 _ZTV12CollisionMgr																		= 0x020C7000;
 
@@ -3476,7 +3495,7 @@ _ZN16RotatingPlatformD0Ev												= 0x0201af80;
 _ZN16RotatingPlatformD1Ev												= 0x020030e8;
 _ZN16RotatingPlatform6updateEv											= 0x0201ba18;
 _ZN16RotatingPlatform4initEP10StageActorlllllshPK4Vec3					= 0x0201bd60;
-_ZN16RotatingPlatform4initEP10StageActorP20RotatingPlatformInfoPK4Vec3	= 0x0201bc50;
+_ZN16RotatingPlatform4initEP10StageActorRK20RotatingPlatformInfoPK4Vec3	= 0x0201bc50;
 _ZN16RotatingPlatform9setHeightEll										= 0x0201bc30;
 _ZN16RotatingPlatform8setRightEl										= 0x0201bc18;
 _ZN16RotatingPlatform7setLeftEl											= 0x0201bc00;
@@ -5209,9 +5228,9 @@ _ZN6Player15updateMainLogicEv								= 0x02101A94;
 _ZN6Player15applyTileDamageEv								= 0x02101968;
 _ZN6Player15switchMainStateEMS_FbPvES0_						= 0x021006AC;
 _ZN6Player15updateMainStateEv								= 0x02100558;
-_ZN6Player16setMovementStateEMS_FbPvE						= 0x021004FC;
+_ZN6Player16setMovementStateEMS_FvE							= 0x021004FC;
 _ZN6Player19updateMovementStateEv							= 0x021004B0;
-_ZN6Player12setMetaStateEMS_FbPvE							= 0x0210045C;
+_ZN6Player12setMetaStateEMS_FvE								= 0x0210045C;
 _ZN6Player15updateMetaStateEv								= 0x02100418;
 _ZN6Player18onPrepareResourcesEv							= 0x021002C4;
 _ZN6Player22tryUpdateLayerPositionEv						= 0x021002A0;
@@ -5317,7 +5336,7 @@ _ZN6Player22wallJumpCollisionFlagsE							= 0x021226A8;
 _ZN6Player31entranceSpawnInvincibleCooldownE				= 0x02122970;
 _ZN6Player19ledgeGrabAnimSpeedsE							= 0x02122D84;
 _ZN6Player19ledgeWalkAnimSpeedsE							= 0x02122D04;
-_ZN6Player25consecutiveJumpAnimationsE						= 0x021229FC;
+_ZN6Player23jumpVariationAnimationsE						= 0x021229FC;
 _ZN6Player15carryAnimationsE								= 0x02122844;
 _ZN6Player19smallLandAnimationsE							= 0x0212277C;
 _ZN6Player13runAnimationsE									= 0x0212276C;

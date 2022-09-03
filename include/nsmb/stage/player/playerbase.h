@@ -341,17 +341,17 @@ public:
 	struct Constants {
 
 		fx32 scale;
-		fx32 walkingMaxSpeed;
-		fx32 unk8;
-		fx32 runningMaxSpeed;
-		fx32 starRunningMaxSpeed;
-		fx32 swimmingMaxSpeed;
+		fx32 walkMaxVelocity;
+		fx32 dashThreshold;
+		fx32 dashMaxVelocity;
+		fx32 dashMaxVelocityStarman;
+		fx32 swimMaxVelocity;
 		fx32 unk18;
-		fx32 walkingUnderwaterMaxSpeed;
+		fx32 walkMaxVelocityWater;
 		fx32 jumpVelocity;
 		fx32 unk24;
 		fx32 quicksandJumpVelocity;
-		fx32 quicksandSubmergedJumpVelocity;
+		fx32 quicksandInJumpVelocity;
 		fx32 unk30;
 		fx32 unk34;
 		fx32 width;

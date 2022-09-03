@@ -126,3 +126,5 @@ public:
 
 };
 NTR_SIZE_GUARD(StageActor, 0x2C4);
+
+IMPL_ENUMCLASS_OPERATORS(StageActor::ColliderPushSide);

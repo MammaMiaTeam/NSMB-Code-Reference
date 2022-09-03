@@ -93,8 +93,8 @@ struct TileType
 	static constexpr u32 SolidOnBottom			= 0x40000000;
 	static constexpr u32 SolidOnTop				= 0x80000000;
 
-	static constexpr u32 ModifierMask			= 0x0000FF00;
-	static constexpr u32 ModifierShift			= 8;
+	static constexpr u32 ModifierMask			= 0x0000F000;
+	static constexpr u32 ModifierShift			= 12;
 
 	static constexpr u32 SolidMask				= Solid | BreakableBlock | BrickBlock | 0x80 | PartialSolid;
 	static constexpr u32 SolidMaskBottom		= SolidMask | SolidOnBottom;
@@ -111,12 +111,16 @@ struct TileType
 	constexpr TileType() : value(0) {}
 	constexpr TileType(u32 value) : value(value) {}
 
+	constexpr static TileType fromModifier(Modifier modifier) {
+		return TileType(u32(modifier) << ModifierShift);
+	}
+
 	constexpr Modifier getModifier() const {
 		return Modifier((value & ModifierMask) >> ModifierShift);
 	}
 
 	constexpr void setModifier(Modifier modifier) {
-		value = (value & ~ModifierMask) | u8(modifier);
+		value = (value & ~ModifierMask) | (u32(modifier) << ModifierShift);
 	}
 
 	constexpr operator u32() const {
@@ -355,23 +359,31 @@ public:
 
 	};
 
+	using SolverFunction = Result(CollisionMgr::*)(SensorFlags flags, fx32 wrapOffset);
+	using SideSolverFunction = Result(CollisionMgr::*)(SensorFlags flags, u8 direction, fx32 wrapOffset);
+	using AttachedFunction = Result(CollisionMgr::*)();
+	using ModifierFunction = void(CollisionMgr::*)();
+
+
+	// 020ACCE4
+	static void setupColliderInterworking();
 
 	// 020ACC78
-	void updateColliderTopWrap(SensorFlags flags);
+	Result updateColliderTopWrap(SensorFlags flags, fx32 wrapOffset = 0);
 	// 020AC7BC
-	void updateColliderTop(SensorFlags flags, fx32 wrapOffset = 0);
+	Result updateColliderTop(SensorFlags flags, fx32 wrapOffset = 0);
 	// 020AC750
-	void updateColliderBottomWrap(SensorFlags flags);
+	Result updateColliderBottomWrap(SensorFlags flags, fx32 wrapOffset = 0);
 	// 020AC288
-	void updateColliderBottom(SensorFlags flags, fx32 wrapOffset = 0);
+	Result updateColliderBottom(SensorFlags flags, fx32 wrapOffset = 0);
 	// 020AC21C
-	void updateColliderSideWrap(SensorFlags flags, u8 direction);
+	Result updateColliderSideWrap(SensorFlags flags, u8 direction, fx32 wrapOffset = 0);
 	// 020ABCFC
-	void updateColliderSide(SensorFlags flags, u8 direction, fx32 wrapOffset = 0);
+	Result updateColliderSide(SensorFlags flags, u8 direction, fx32 wrapOffset = 0);
 	// 020ABC90
-	void updateColliderSideWrapUnused(SensorFlags flags, u8 direction);
+	Result updateColliderSideWrapUnused(SensorFlags flags, u8 direction, fx32 wrapOffset = 0);
 	// 020ABA68
-	void updateColliderSideUnused(SensorFlags flags, u8 direction, fx32 wrapOffset = 0);
+	Result updateColliderSideUnused(SensorFlags flags, u8 direction, fx32 wrapOffset = 0);
 
 
 	// 020ABA48
@@ -443,7 +455,7 @@ public:
 	// 020AABA8
 	bool switchBottomModifier(TileType type);
 	// 020AAB74
-	bool setBottomModifier(TileType type);
+	bool setBottomModifier(TileModifier modifier);
 	// 020AAB70
 	void modifierNone();
 	// 020AAB44
@@ -620,6 +632,21 @@ public:
 		return Result(u32(Result::WallRightAny) << direction);
 	}
 
+	static const AttachedFunction attachedScanTable[4];
+	static const AttachedFunction attachedMoveTable[4];
+	static const ModifierFunction bottomSensorModifiers[16];
+	static const ModifierFunction dummyModifier;
+	static const SolverFunction colliderSolversTop[3];
+	static const SideSolverFunction colliderSolversSide[3];
+	static const SolverFunction colliderSolversBottom[3];
+	static const SideSolverFunction colliderSolversUnusedSide[3];
+
+	static u16 cachedTileX;
+	static u16 cachedTileY;
+	static SolverFunction bottomSensorSolver;
+	static SideSolverFunction unusedSideSolver;
+	static SideSolverFunction sideSensorSolver;
+	static SolverFunction topSensorSolver;
 
 	StageActor* owner;
 

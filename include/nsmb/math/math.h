@@ -130,7 +130,7 @@ namespace Math {
 
 
 	consteval s16 crad(fx32 r) {
-		return (r * FX32_CONST(0x10000)) / FX64C_TWOPI;
+		return (fx64(r) * FX64_CONST(0x10000)) / 0x6487ED5;
 	}
 	consteval s32 cdeg(long double d) {
 
@@ -144,7 +144,7 @@ namespace Math {
 	}
 
 	constexpr s16 rad(fx32 r) {
-		return (r * FX32_CONST(0x10000)) / FX64C_TWOPI;
+		return (fx64(r) * FX64_CONST(0x10000)) / 0x6487ED5;
 	}
 	constexpr s16 deg(s32 d) {
 
@@ -222,7 +222,17 @@ namespace Math {
 		fx32 b = end * FX32_ONE;
 		return FX_Whole(lerpFx(a, b, factor));
 	}
-	
+
+	template<class A, class B>
+	constexpr auto max(A a, B b) {
+		return a > b ? a : b;
+	}
+
+	template<class A, class B>
+	constexpr auto min(A a, B b) {
+		return a < b ? a : b;
+	}
+
 	constexpr fx32 abs(fx32 a) {
 		return (a < 0) ? -a : a;
 	}

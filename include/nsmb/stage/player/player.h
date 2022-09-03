@@ -11,6 +11,8 @@ class Player : public PlayerBase
 public:
 
 	using StateFunction = bool (Player::*)(void*);
+	using MoveFunction = void (Player::*)();
+	using MetaFunction = void (Player::*)();
 
 	struct AnimationSet {
 
@@ -99,7 +101,7 @@ public:
 		fx32 standard;			// standard jump/fall vertical velocity limit
 		fx32 unused4;			// 
 		fx32 wallSlide;			// sliding down a wall
-		fx32 unusedC;			// 
+		fx32 groundPound;		// ground-pounding
 		fx32 megaJump;			// jumping/falling while Mega
 
 	};
@@ -508,9 +510,9 @@ public:
 
 	bool switchMainState(StateFunction function, void* arg = nullptr);
 	bool updateMainState();
-	void setMovementState(StateFunction function);
+	void setMovementState(MoveFunction function);
 	void updateMovementState();
-	void setMetaState(StateFunction function);
+	void setMetaState(MetaFunction function);
 	void updateMetaState();
 
 	bool onPrepareResources() override;
@@ -578,6 +580,8 @@ public:
 	static constexpr u16 updatePriority = objectID;
 	static constexpr u16 renderPriority = 28;
 
+	static constexpr fx32 modelScaleFactor = 0.9fx;
+
 	static const ActorProfile profile;
 
 	static const ActiveColliderInfo activeColliderInfo;
@@ -594,7 +598,7 @@ public:
 	static const CharacterAnimation runAnimations[2];			// [character]
 	static const CharacterAnimation smallLandAnimations[2];		// [character]
 	static const CarryAnimation carryAnimations[2];				// [character]
-	static const Animation consecutiveJumpAnimations[7];		// [variation]
+	static const Animation jumpVariationAnimations[7];			// [variation]
 	static const fx32 ledgeWalkAnimSpeeds[32];					// [abs(velH) >> 8]
 	static const fx32 ledgeGrabAnimSpeeds[32];					// [abs(velH) >> 8]
 
@@ -672,8 +676,8 @@ public:
 	StateFunction mainState;
 	StateFunction prevMainState;
 	StateFunction transitionState;
-	StateFunction movementState;
-	StateFunction metaState;
+	MoveFunction movementState;
+	MetaFunction metaState;
 
 	FrameMode modelFrameMode;
 	bool32 modelBlendFlag;
