@@ -7,6 +7,17 @@
 #define FUNC_EXIT			static_cast<s8>(-1)
 
 
+namespace Func {
+
+    static constexpr s8 Init = 0;
+    static constexpr s8 Exit = -1;
+
+    template<u8 N>
+    static constexpr s8 Step = N + 1;
+
+}
+
+
 template<class Ret, class Class, class... Args>
 auto ptmf_cast(Ret(*func)(Class*, Args...))->Ret(Class::*)(Args...) {
 

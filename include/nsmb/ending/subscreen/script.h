@@ -520,9 +520,23 @@ consteval End::CharT operator""end(wchar_t c) {
 	return End::charConv(c);
 }
 
+#ifdef __INTELLISENSE__ // Intellisense does not support templated literal operators
+
+consteval const End::CharT* operator""end(const char* str, size_t size) {
+	return {};
+}
+
+consteval const End::CharT* operator""end(const wchar_t* str, size_t size) {
+	return {};
+}
+
+#else // Actual implementation
+
 template<End::StringHelper Str>
 consteval const End::CharT* operator""end() {
 	return Str;
 }
+
+#endif
 
 GCC_POP

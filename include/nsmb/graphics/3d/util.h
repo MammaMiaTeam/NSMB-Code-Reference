@@ -62,4 +62,24 @@ namespace G3D {
 		jntAnmSetFlag(res, NNS_G3D_JNTANM_RESULTFLAG_SCALE_ONE, !used);
 	}
 
+	NTR_INLINE void anmObjSetNode(NNSG3dAnmObj* obj, u32 id, bool set) {
+
+		if (id < obj->numMapData && obj->mapData[id] & NNS_G3D_ANMOBJ_MAPDATA_EXIST) {
+			if (set) {
+				obj->mapData[id] &= ~NNS_G3D_ANMOBJ_MAPDATA_DISABLED;
+			} else {
+				obj->mapData[id] |= NNS_G3D_ANMOBJ_MAPDATA_DISABLED;
+			}
+		}
+
+	}
+
+	NTR_INLINE void anmObjDisableNode(NNSG3dAnmObj* obj, u32 id) {
+		anmObjSetNode(obj, id, false);
+	}
+
+	NTR_INLINE void anmObjEnableNode(NNSG3dAnmObj* obj, u32 id) {
+		anmObjSetNode(obj, id, true);
+	}
+
 }
