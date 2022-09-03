@@ -3295,7 +3295,7 @@ _ZN8Entrance13setTargetAreaEhh										= 0x0201E864;
 _ZN8Entrance17setTargetEntranceERK13StageEntrance					= 0x0201E8C4;
 _ZN8Entrance14tryUseEntranceEllh									= 0x0201E944;
 _ZN8Entrance17setTargetEntranceEh									= 0x0201EC30;
-																	  
+
 _ZN8Entrance19lockedEntranceFlagsE									= 0x0203C6BC;
 _ZN8Entrance9vsMusicIDE												= 0x0203C6C0;
 _ZN8Entrance16playerSpawnTypesE										= 0x0203C6C4;
@@ -3345,7 +3345,7 @@ _ZTV15StageController					= 0x0203CF30;
 /*----------------------------------------------------------------*/
 /*------------------------- game - player ------------------------*/
 /*----------------------------------------------------------------*/
-													  
+
 _ZN4Game19setPlayerInCutsceneEb						= 0x0202000C;
 _ZN4Game18isPlayerInCutsceneEv						= 0x0202001C;
 _ZN4Game24setPlayerLookingAtTargetEb				= 0x0202002C;
@@ -5350,7 +5350,7 @@ _ZN6Player15fenceSlamHitboxE								= 0x021227AC;
 _ZN6Player15slidingHitboxesE								= 0x021228C4;
 _ZN6Player19specialColliderInfoE							= 0x021228A8;
 _ZN6Player18activeColliderInfoE								= 0x0212288C;
-															  
+
 _ZTV6Player													= 0x021284E0;
 
 
