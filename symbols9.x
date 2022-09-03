@@ -6770,6 +6770,85 @@ _ZN8Splunkin7profileE											= 0x02179880;
 _ZTV8Splunkin													= 0x0217988C;
 
 
+/* arm9_ov82 */
+/*----------------------------------------------------------------*/
+/*--------------------------- snowball ---------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN8SnowballD0Ev										= 0x02179A28;
+_ZN8SnowballD1Ev										= 0x021799C0;
+_ZN8SnowballD2Ev										= 0x021799C0;
+_ZN8Snowball8onCreateEv									= 0x02179D28;
+_ZN8Snowball9onDestroyEv								= 0x02179C04;
+_ZN8Snowball8onRenderEv									= 0x02179C10;
+_ZN8Snowball18onCleanupResourcesEv						= 0x02179C0C;
+_ZN8Snowball18onPrepareResourcesEv						= 0x02179F20;
+_ZN8Snowball10updateMainEv								= 0x02179D04;
+_ZN8Snowball14updateDefeatedEv							= 0x02179AF8;
+_ZN8Snowball18updateDefeatedMegaEv						= 0x02179AC0;
+_ZN8Snowball10onBlockHitEv								= 0x02179BD0;
+_ZN8Snowball11onEntityHitEv								= 0x02179B40;
+_ZN8Snowball6defeatElllh								= 0x02179A98;
+_ZN8Snowball13loadResourcesEv							= 0x02179F58;
+
+_ZN8Snowball11switchStateEMS_FbvE						= 0x0217A458;
+_ZN8Snowball11updateStateEv								= 0x0217A41C;
+_ZN8Snowball9mainStateEv								= 0x0217A0AC;
+_ZN8Snowball14activeCallbackER14ActiveColliderS1_		= 0x02179F7C;
+
+_ZN8Snowball7profileE									= 0x0217B928;
+_ZN8Snowball18activeColliderInfoE						= 0x0217B888;
+_ZN8Snowball9topSensorE									= 0x0217B858;
+_ZN8Snowball12bottomSensorE								= 0x0217B868;
+_ZN8Snowball10sideSensorE								= 0x0217B878;
+
+_ZTV8Snowball											= 0x0217B934;
+
+
+/* arm9_ov82 */
+/*----------------------------------------------------------------*/
+/*-------------------------- snow spike --------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN9SnowSpikeD0Ev										= 0x0217A60C;
+_ZN9SnowSpikeD1Ev										= 0x0217A574;
+_ZN9SnowSpikeD2Ev										= 0x0217A574;
+_ZN9SnowSpike8onCreateEv								= 0x0217AEF4;
+_ZN9SnowSpike9onDestroyEv								= 0x0217AAD4;
+_ZN9SnowSpike8onRenderEv								= 0x0217AAE0;
+_ZN9SnowSpike18onCleanupResourcesEv						= 0x0217AADC;
+_ZN9SnowSpike18onPrepareResourcesEv						= 0x0217B02C;
+_ZN9SnowSpike10updateMainEv								= 0x0217AEC8;
+_ZN9SnowSpike10skipRenderEv								= 0x0217AAAC;
+_ZN9SnowSpike15updateAnimationEv						= 0x0217A8C0;
+_ZN9SnowSpike9onStompedEv								= 0x0217AD54;
+_ZN9SnowSpike12damagePlayerER14ActiveColliderR6Player	= 0x0217AE34;
+_ZN9SnowSpike13loadResourcesEv							= 0x0217B0BC;
+
+_ZN9SnowSpike15destroyInactiveEv						= 0x0217A6AC;
+_ZN9SnowSpike14playerCollidedER6Player					= 0x0217ADA8;
+_ZN9SnowSpike11switchStateEMS_FbvE						= 0x0217B740;
+_ZN9SnowSpike11updateStateEv							= 0x0217B704;
+_ZN9SnowSpike9idleStateEv								= 0x0217B5FC;
+_ZN9SnowSpike9turnStateEv								= 0x0217B500;
+_ZN9SnowSpike19createSnowballStateEv					= 0x0217B38C;
+_ZN9SnowSpike17grabSnowballStateEv						= 0x0217B294;
+_ZN9SnowSpike18throwSnowballStateEv						= 0x0217B100;
+
+_ZN9SnowSpike7profileE									= 0x0217BAA8;
+_ZN9SnowSpike18activeColliderInfoE						= 0x0217B8F0;
+_ZN9SnowSpike10sideSensorE								= 0x0217B8E4;
+_ZN9SnowSpike12bottomSensorE							= 0x0217B8D8;
+_ZN9SnowSpike9topSensorE								= 0x0217B8CC;
+_ZN9SnowSpike13armBoneOffsetE							= 0x0217B8C0;
+_ZN9SnowSpike19snowballVelocitiesXE						= 0x0217B8B8;
+_ZN9SnowSpike24snowballMouthVelocitiesXE				= 0x0217B8B0;
+_ZN9SnowSpike10armBoneIDsE								= 0x0217B8A8;
+_ZN9SnowSpike10rotationsYE								= 0x0217B8A4;
+
+_ZTV9SnowSpike											= 0x0217BAB4;
+
+
 /* arm9_ov98 */
 /*----------------------------------------------------------------*/
 /*--------------------------- manhole ----------------------------*/

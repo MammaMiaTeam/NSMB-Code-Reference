@@ -73,6 +73,10 @@
 #include "stage/actors/ov71/phantomhand.h"
 #include "stage/actors/ov71/splunkin.h"
 
+// Overlay 82 - Snowball, SnowSpike
+#include "stage/actors/ov82/snowball.h"
+#include "stage/actors/ov82/snowspike.h"
+
 // Overlay 98 - Manhole
 #include "stage/actors/ov98/manhole.h"
 
