@@ -9,6 +9,13 @@
 
 namespace Func {
 
+    template<class Ret, class Class, class... Args>
+    using MemberType = Ret(Class::*)(Args...);
+
+    template<class Ret, class... Args>
+    using Type = Ret(*)(Args...);
+
+
     static constexpr s8 Init = 0;
     static constexpr s8 Exit = -1;
 

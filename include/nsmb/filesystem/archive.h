@@ -3,6 +3,9 @@
 #include "file.h"
 
 
+class Heap;
+
+
 namespace FS {
 
 	/// \brief The archive namespace.

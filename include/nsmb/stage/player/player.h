@@ -2,6 +2,8 @@
 #include "playerbase.h"
 
 
+using EmitterT = u32;
+
 class Door;
 enum class EntranceType : u8;
 

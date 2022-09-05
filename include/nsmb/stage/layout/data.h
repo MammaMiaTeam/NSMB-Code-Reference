@@ -1,5 +1,4 @@
 #pragma once
-#include "nsmb.h"
 #include "ntr_assert.h"
 #include "entrance.h"
 

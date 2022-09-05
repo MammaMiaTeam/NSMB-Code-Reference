@@ -3,6 +3,8 @@
 #include "nsmb/math/vector.h"
 
 
+enum class ActorType : u8;
+class Player;
 class StageActor;
 class PlatformMgr;
 class Collider;

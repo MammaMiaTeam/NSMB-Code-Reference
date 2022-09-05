@@ -1,5 +1,6 @@
 #pragma once
 #include "misc.h"
+#include "nsmb/player.h"
 #include "nsmb/player/model.h"
 #include "nsmb/stage/actor.h"
 #include "nsmb/graphics/util/blendcolor.h"
