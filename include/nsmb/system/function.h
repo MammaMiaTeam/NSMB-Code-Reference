@@ -2,11 +2,6 @@
 #include "nitro_if.h"
 
 
-#define FUNC_INIT			static_cast<s8>(0)
-#define FUNC_STEP(x)		static_cast<s8>((x)+1)
-#define FUNC_EXIT			static_cast<s8>(-1)
-
-
 namespace Func {
 
     template<class Ret, class Class, class... Args>
@@ -19,8 +14,9 @@ namespace Func {
     static constexpr s8 Init = 0;
     static constexpr s8 Exit = -1;
 
-    template<u8 N>
-    static constexpr s8 Step = N + 1;
+    constexpr s8 Step(u8 step) {
+        return step + 1;
+    }
 
 }
 

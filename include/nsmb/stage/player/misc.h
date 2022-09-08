@@ -2,6 +2,11 @@
 #include "nitro_if.h"
 
 
+class Vec2;
+class Vec3;
+class StageActor;
+
+
 class ProgressBarObject
 {
 public:

@@ -1,5 +1,6 @@
 #pragma once
 #include "nitro_if.h"
+#include "nsmb/util.h"
 #include "nsmb/math/vector.h"
 
 
