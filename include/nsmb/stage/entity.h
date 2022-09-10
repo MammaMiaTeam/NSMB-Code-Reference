@@ -287,7 +287,7 @@ public:
 	u8* objectSpawnFlags; // (re)spawn flags: 1 = created/exists, 8 = permanently destroyed
 
 	u8 playerDirection;
-	u8 hitCombo;
+	u8 scoreCombo;
 	u8 enhancedScore;
 	u8 unk3DB;
 	bool spawnedByCreateActorMaybe; // bool
@@ -309,6 +309,17 @@ public:
 	bool backLayer;
 	u8 unk3ED;
 	s8 functionStep; // generic function step (where is it used??)
+
+
+
+	NTR_INLINE s8 cycleScoreCombo() {
+
+		if (scoreCombo < 8)
+			scoreCombo++;
+
+		return scoreCombo;
+
+	}
 
 
 	// 0209dee0

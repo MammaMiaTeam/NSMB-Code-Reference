@@ -533,6 +533,68 @@ public:
 	fx32 processJumpVelocity(fx32 velocity) const;
 	PlayerHeight getHeight() const;
 
+	NTR_INLINE s8 cycleStandardScoreCombo() {
+
+		if (scoreComboStandard < 10)
+			scoreComboStandard++;
+
+		scoreJumpVariation = (scoreJumpVariation + 1) % 4;
+
+		if (scoreComboStandard > 8)
+			scoreComboStandard = 8;
+
+		return scoreComboStandard;
+
+	}
+
+	NTR_INLINE s8 cycleStarmanScoreCombo() {
+
+		if (scoreComboStarman < 10)
+			scoreComboStarman++;
+
+		if (scoreComboStarman > 8)
+			scoreComboStarman = 8;
+
+		return scoreComboStarman;
+
+	}
+
+	NTR_INLINE s8 cycleSlidingScoreCombo() {
+
+		if (scoreComboSliding < 10)
+			scoreComboSliding++;
+
+		if (scoreComboSliding > 8)
+			scoreComboSliding = 8;
+
+		return scoreComboSliding;
+
+	}
+
+	NTR_INLINE s8 cycleBlueShellScoreCombo() {
+
+		if (scoreComboBlueShell < 10)
+			scoreComboBlueShell++;
+
+		if (scoreComboBlueShell > 8)
+			scoreComboBlueShell = 8;
+
+		return scoreComboBlueShell;
+
+	}
+
+	NTR_INLINE s8 cycleFenceScoreCombo() {
+
+		if (scoreComboFenceSlam < 10)
+			scoreComboFenceSlam++;
+
+		if (scoreComboFenceSlam > 8)
+			scoreComboFenceSlam = 8;
+
+		return scoreComboFenceSlam;
+
+	}
+
 	static constexpr fx32 maxWalkSpeedJumpModifier = 0.28125fx; // 021146B8 (ov10)
 	static constexpr fx32 miniJumpFactor = 0.8125fx; // 021146FC (ov10)
 	static constexpr fx32 highJumpFactor = 0.84375fx; // 02114738 (ov10)
@@ -609,12 +671,12 @@ public:
 	u8 playerID;
 	bool visibleFlag;
 	u8 unk7B6;
-	s8 scoreComboType;
-	s8 scoreCombo;
+	s8 scoreComboStandard;
+	s8 scoreJumpVariation;
 	s8 scoreComboStarman;
-	u8 unk7BA;
-	u8 unk7BB;
-	u8 scoreComboSFX;
+	s8 scoreComboSliding;
+	s8 scoreComboBlueShell;
+	s8 scoreComboFenceSlam;
 	u8 unk7BD;
 	u8 unk7BE;
 	bool higherJumpFlag;

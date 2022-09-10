@@ -1,6 +1,7 @@
 #pragma once
 #include "nitro_if.h"
 #include "nsmb/math/vector.h"
+#include "nsmb/util.h"
 
 
 enum class ActorType : u8;
