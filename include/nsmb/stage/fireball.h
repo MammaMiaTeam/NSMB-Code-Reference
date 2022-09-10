@@ -2,6 +2,8 @@
 #include "nitro_if.h"
 #include "nsmb/math/vector.h"
 #include "nsmb/graphics/2d/oam.h"
+#include "nsmb/physics/activecollider.h"
+#include "nsmb/physics/collisionmgr.h"
 
 
 // vtable at 02126784 (ov10)
