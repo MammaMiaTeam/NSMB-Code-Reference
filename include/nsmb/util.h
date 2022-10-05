@@ -96,12 +96,6 @@ template<Integer T> constexpr T& operator >>= (T& lhs, type const& rhs) noexcept
 #define IMPL_ENUMCLASS_OPERATORS(type) __IMPL_ENUMCLASS_OPERATORS(type, type, u32)
 
 
-#define get_over_asm(_1,_2,_3,NAME,...) NAME
-#define over_asm(...) get_over_asm(__VA_ARGS__, over_asm3, over_asm2)(__VA_ARGS__)
-#define over_asm2(addr, asm) over(addr) asm_func void over_##addr() { __asm__(asm); }
-#define over_asm3(addr, ov, asm) over(addr, ov) asm_func void over_##addr##_ov##ov() { __asm__(asm); }
-
-
 extern "C"
 {
 	/*
