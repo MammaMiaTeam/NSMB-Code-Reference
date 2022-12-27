@@ -4,6 +4,8 @@
 
 #include "nitro.h"
 
+// TODO Rewrite the entire thing
+
 #define USE_NITRO_NATIVES 1
 
 extern void __die();
@@ -101,8 +103,8 @@ public:
 	constexpr FxType operator-() const {
 
 		// non-consteval guard
-		if (!std::is_constant_evaluated())
-			__die();
+		/*if (!std::is_constant_evaluated())
+			__die();*/
 
 		FxType f;
 		f.m_value = -m_value;
@@ -214,10 +216,10 @@ namespace Fx
 #pragma GCC diagnostic push
 #pragma GCC diagnostic ignored "-Wliteral-suffix"
 
-consteval auto operator""fxs(long double value)		{ return FxProxy<fx16, s16, 12>(__opfx_round<fx16>(value * 0x1000)); }
-consteval auto operator""fx(long double value)		{ return FxProxy<fx32, s32, 12>(__opfx_round<fx32>(value * 0x1000)); }
-consteval auto operator""fxl(long double value)		{ return FxProxy<fx64, s64, 12>(__opfx_round<fx64>(value * 0x1000)); }
-consteval auto operator""fxlc(long double value)	{ return FxProxy<fx64, s64, 32>(__opfx_round<fx64>(value * 0x100000000)); }
+consteval auto operator""fxs(long double value)		{ return FxType<fx16, s16, 12>(__opfx_round<fx16>(value * 0x1000)); }
+consteval auto operator""fx(long double value)		{ return FxType<fx32, s32, 12>(__opfx_round<fx32>(value * 0x1000)); }
+consteval auto operator""fxl(long double value)		{ return FxType<fx64, s64, 12>(__opfx_round<fx64>(value * 0x1000)); }
+consteval auto operator""fxlc(long double value)	{ return FxType<fx64, s64, 32>(__opfx_round<fx64>(value * 0x100000000)); }
 
 #pragma GCC diagnostic pop
 

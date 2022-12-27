@@ -1,6 +1,14 @@
 #pragma once
 
 
+// Undefine NCPatcher attribute macros to avoid conflict
+#undef arm
+#undef thumb
+#undef always_inline
+#undef noinline
+#undef asm_func
+
+
 // Set to 1 when generating symbols
 #define NTR_GEN_SYM 0
 
@@ -60,8 +68,8 @@
 #define NTR_TARGET(t)			[[gnu::target(#t)]]
 #define NTR_THUMB				NTR_TARGET(thumb)
 #define NTR_ARM					NTR_TARGET(arm)
-#define NTR_WARNING(s)			[[gnu::warning(#s)]]
-#define NTR_ERROR(s)			[[gnu::error(#s)]]
+#define NTR_WARNING(s)			[[gnu::warning(s)]]
+#define NTR_ERROR(s)			[[gnu::error(s)]]
 #define ntr_fallthrough			[[fallthrough]]
 
 #define NTR_PRAGMA(p)			_Pragma(#p)
@@ -94,10 +102,10 @@
 
 
 template<auto>
-NTR_WARNING(SoftLog) constexpr void SoftLog() {}
+NTR_WARNING("SoftLog") constexpr void SoftLog() {}
 
 template<auto>
-NTR_ERROR(HardLog) constexpr void HardLog() {}
+NTR_ERROR("HardLog") constexpr void HardLog() {}
 
 
 #ifdef __INTELLISENSE__
@@ -121,6 +129,7 @@ NTR_LONGCALL NTR_THUMB void MTX_RotZ43(MtxFx43& mtx, fx16 sine, fx16 cosine);
 
 using bool16 = u16;
 using bool32 = u32;
+using SizeT = size_t;
 
 template<class T>
 struct BitFlag {
