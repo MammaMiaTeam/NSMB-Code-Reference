@@ -337,7 +337,7 @@ namespace FS {
 	 * \param set If it should set it. (stupid as fuck and makes no sense)
 	 * \param firstFileID The file ID offset.
 	 * */
-	void setFileIDOffset(bool set, u16 firstFileID);
+	void setFileIDOffset(BOOL set, u16 firstFileID);
 
 	// 0x02009410
 	/**

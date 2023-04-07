@@ -134,7 +134,7 @@ public:
 	u32 step;
 	u32 scalePaletteCounter;
 	u32 waitTimer;
-	u32 unused138;				// set in initStart
+	u32 unused138;				// Written in initStart
 	u32 character;
 	fx32 targetYPos;
 	GXOamAttr* oamData;

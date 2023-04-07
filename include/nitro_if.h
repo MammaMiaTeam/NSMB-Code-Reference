@@ -51,6 +51,7 @@
 #define NTR_OFFSETOF(s, m)		((::size_t)&reinterpret_cast<char const volatile&>((((s*)0)->m)))
 #define NTR_SIZE_GUARD(t, s)	static_assert(sizeof(t) == (s), "Size of '" #t "' does not match expected value '" #s "'")
 #define NTR_ARRAY_SIZE(a)		((::size_t)(sizeof(a) / sizeof(a[0])))
+#define NTR_BREAK()				asm("bkpt #0")
 
 #ifdef __INTELLISENSE__
 	#define NTR_REGISTER(r, d)	register d
@@ -132,14 +133,14 @@ using bool32 = u32;
 using SizeT = size_t;
 
 template<class T>
-struct BitFlag {
+struct alignas(alignof(T)) BitFlag {
 
 	NTR_INLINE T& raw() {
-		return *reinterpret_cast<T*>(this);
+		return *rcast<T*>(this);
 	}
 
 	NTR_INLINE T raw() const {
-		return *reinterpret_cast<const T*>(this);
+		return *rcast<const T*>(this);
 	}
 
 	NTR_INLINE operator T& () {
@@ -148,6 +149,21 @@ struct BitFlag {
 
 	NTR_INLINE operator T () const {
 		return raw();
+	}
+
+};
+
+template<class T>
+struct StrongBitFlag : BitFlag<T> {
+
+	using BitFlag<T>::raw;
+	using BitFlag<T>::operator T&;
+	using BitFlag<T>::operator T;
+
+	NTR_INLINE StrongBitFlag() = default;
+
+	NTR_INLINE StrongBitFlag(const T& data) {
+		BitFlag<T>::raw() = data;
 	}
 
 };
