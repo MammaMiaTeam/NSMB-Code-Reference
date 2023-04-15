@@ -187,15 +187,32 @@ namespace Math {
 	}
 
 	constexpr fx32 mul(fx32 a, fx32 b) {
-		return ((fx32)(((s64)(a)*b + FX32_HALF) >> FX32_SHIFT));
+		return (fx32)(((s64)(a)*b + FX32_HALF) >> FX32_SHIFT);
+	}
+
+	constexpr fx64 mul64(fx32 a, fx32 b) {
+		return (((s64)a) * ((s64)b) + FX32_HALF) >> FX64_SHIFT;
+	}
+
+	constexpr fx32 mul32x64c(fx32 a, fx64c b) {
+		return (((s64)a) * ((s64)b) + FX64C_HALF) >> FX64C_SHIFT;
 	}
 
 	constexpr fx32 div(fx32 n, fx32 d) {
 		if_consteval {
-			return (s32)(((s64)(n << 12)) / (d));
+			return (s32)(((s64)(n << 12)) / d);
 		}
 		else {
 			return FX_Div(n, d);
+		}
+	}
+
+	constexpr fx64c div64c(fx32 n, fx32 d) {
+		if_consteval {
+			return (((s64)n) << 32) / d;
+		}
+		else {
+			return FX_DivFx64c(n, d);
 		}
 	}
 
@@ -206,6 +223,10 @@ namespace Math {
 		else {
 			return FX_Inv(d);
 		}
+	}
+
+	constexpr fx64c inv64c(fx32 d) {
+		return div64c(FX32_ONE, d);
 	}
 
 	inline fx32 sqrt(fx32 p) {
@@ -236,7 +257,7 @@ namespace Math {
 	constexpr fx32 abs(fx32 a) {
 		return (a < 0) ? -a : a;
 	}
-	
+
 	constexpr fx32 clamp(fx32 a, fx32 min, fx32 max) {
 		return a < min ? min : (a > max ? max : a);
 	}

@@ -10,7 +10,7 @@ namespace ViewShaker
 	static constexpr Flags TriggerMegaGroundPound			= 1 << 0;
 	static constexpr Flags TriggerMegaWalkShockwave			= 1 << 1;
 	static constexpr Flags TriggerMegaGroundPoundShockwave	= 1 << 2;
-	static constexpr Flags UnusedAction8					= 1 << 3;
+	static constexpr Flags UnusedAction8					= 1 << 3; // update()
 
 	struct Config
 	{

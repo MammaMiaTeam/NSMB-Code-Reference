@@ -1,3 +1,4 @@
+#pragma once
 
 #define ntr_nodisc [[nodiscard]]
 

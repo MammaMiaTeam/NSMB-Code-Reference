@@ -263,7 +263,7 @@ public:
 	fx32 unk3B4;
 
 	u16 wiggleTimer;
-	u16 unk3BA;
+	u16 liquidFlag;
 
 	// Behavior on entity released (note that only Bob-Ombs and trampolines will trigger the player drop animation)
 	ThrowBehavior throwBehavior;
@@ -275,8 +275,8 @@ public:
 
 	u16* objectRespawnTimer;
 
-	u8 defeatRelated;
-	u8 unk3CD;
+	u8 exitedLiquid;
+	u8 lastLiquidFlag;
 	u8 decrement; // not ticked automatically
 	u8 unk3CF;
 	u8 unk3D0; // 3rd cooldown

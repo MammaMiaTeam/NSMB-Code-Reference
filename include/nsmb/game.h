@@ -98,6 +98,10 @@ namespace Game
 	extern MtxFx43 modelMatrix;
 	// 02039968
 	extern WrapFunction wrapFunction;
+	// 02088BD4
+	extern u32 sceneTimer;
+	// 02088BD8
+	extern u32 actorTimer;
 
 	NTR_INLINE void wrapPosition(Vec3& position, bool wrapLeft = true) {
 		wrapFunction(position, wrapLeft);

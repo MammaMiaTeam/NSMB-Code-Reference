@@ -16,7 +16,7 @@
 //typedef int BOOL;
 #define BOOL int
 
-#define consteval
+#define consteval constexpr
 #define if_consteval if (true)
 
 //#undef __cplusplus
@@ -26,7 +26,7 @@
 
 #define NNS_G2D_UNICODE
 
-#define asm
+#define asm(x)
 #define __arm
 
 #define SDK_ARM9
@@ -40,13 +40,12 @@
 #define va_arg(v, l) __builtin_va_arg(v, l)
 #define va_end(v) __builtin_va_end(v)
 
-#define hook(...) ;
-#define rlnk(...) ;
-#define safe(...) ;
-#define over(...) ;
-#define asm_func __attribute__((naked))
-#define thumb
-#define nodisc
+#define ncp_jump(...) ;
+#define ncp_call(...) ;
+#define ncp_hook(...) ;
+#define ncp_repl(...) ;
+#define ncp_over(...) ;
+#define arm9_start 0x02000000
 
 
 #endif

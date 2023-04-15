@@ -90,6 +90,7 @@ FX_GetDivResultFx64c = 0x1FFC880;
 FX_InvSqrt = 0x1FFC8A8;
 FX_Sqrt = 0x1FFC918;
 FX_Div = 0x1FFC9C0;
+FX_DivFx64c = 0x1FFC984;
 FX_Inv = 0x1FFC968;
 VEC_Fx16Normalize = 0x1FFC9DC;
 VEC_Normalize = 0x1FFCB30;
@@ -4554,6 +4555,8 @@ _ZN4Game14scrollingWrapXE					= 0x02085AA8;
 _ZN4Game10viewMatrixE						= 0x02085B20;
 _ZN4Game11modelMatrixE						= 0x0208B6E8;
 _ZN4Game12wrapFunctionE						= 0x02039968;
+_ZN4Game10sceneTimerE						= 0x02088BD4;
+_ZN4Game10actorTimerE						= 0x02088BD8;
 _ZN4Game6randomE							= 0x02085A70;
 _ZN4Game15randomCallCountE					= 0x02085A54;
 
