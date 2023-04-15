@@ -1270,7 +1270,16 @@ FSi_ReadDummyCallback = 0x0206A9C8;
 /* DATA/BSS */
 
 FX_SinCosTable_ = 0x2080304;
+SDK_AUTOLOAD_DTCM_START = 0x027e0000;
 NNS_G3dGlb = 0x027e00c8;
+OSi_UseAlarm = 0x020945b4;
+OSi_AlarmQueue = 0x020945b8;
+OSi_UseTick = 0x020945a4;
+OSi_CurrentThreadPtr = 0x020942ac;
+OSi_ThreadInfo = 0x020942b4;
+wm9buf = 0x02096b4c;
+wmInitialized = 0x02096b48;
+bufMsgQ = 0x02096b50;
 fsi_default_dma_no = 0x02096100;
 
 
@@ -1402,7 +1411,7 @@ _ZN2FS12setFileCountEt = 0x02009410;
 _ZN2FS13hasLZ77HeaderEPv = 0x02008E00;
 _ZN2FS13loadBGPaletteEmmb = 0x02009918;
 _ZN2FS14loadOBJPaletteEmmb = 0x02009A30;
-_ZN2FS15setFileIDOffsetEbt = 0x020093F8;
+_ZN2FS15setFileIDOffsetEit = 0x020093F8;
 _ZN2FS15setReadModeFastEv = 0x02008970;
 _ZN2FS15setReadModeSafeEv = 0x02008980;
 _ZN2FS16loadBGSubPaletteEmm = 0x02009878;
@@ -4495,7 +4504,7 @@ _ZN4Game11taskCleanupEv																= 0x02004c30;
 _ZN4Game7runTaskEPFvPvES0_mS0_m														= 0x02004cb8;
 _ZN4Game11resetSystemEm																= 0x0200514c;
 _ZN4Game14drawBNCLSpriteEhP9GXOamAttrN3OAM5FlagsEhhPK4Vec2sPKsNS2_8SettingsEll		= 0x0200421c;
-_ZN4GameL17drawBNCLSpriteSubEhP9GXOamAttrN3OAM5FlagsEhhPK4Vec2sPKsNS2_8SettingsEll	= 0x0200419c;
+_ZN4Game17drawBNCLSpriteSubEhP9GXOamAttrN3OAM5FlagsEhhPK4Vec2sPKsNS2_8SettingsEll	= 0x0200419c;
 _ZN4Game15initExtendedIDsEv															= 0x02004dfc;
 _ZN4Game14waitVBlankIntrEv															= 0x020058c0;
 _ZN4Game16disableVRAMBanksEv														= 0x02004be0;

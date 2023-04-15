@@ -78,6 +78,7 @@ struct StageEntrance {
 	u8 targetStageArea;			// TODO: document behavior when `flags & ConnectedPipe`
 	u8 targetStageIndex;		// If `flags & ConnectedPipe` -> Pipe path ID
 	u8 targetStageGroup;
+	u8 targetEntrance;
 	u8 cameraZoom;
 
 	EntranceType type;

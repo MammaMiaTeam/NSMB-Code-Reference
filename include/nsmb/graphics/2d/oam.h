@@ -54,7 +54,7 @@ namespace OAM
 	{
 		None = 0,			/**< \brief No flags. */
 		UpdateShadow = 1,	/**< \brief Updates double the digit count in the array to account for the shadow. */
-		Unk2h = 2			/**< \brief Ignores the %oam counter attribute table??? */
+		NoLeadingZeroes = 2	/**< \brief Does not render leading zeroes */
 	};
 
 	struct File {
