@@ -4512,6 +4512,8 @@ _ZN4Game12getBootSceneEv															= 0x0200563c;
 _ZN4Game12setBootSceneEt															= 0x0200564c;
 
 _ZN4Game16mainProcessTableE                                                         = 0x0203997c;
+_ZN4Game27currentExecutingProcessListE												= 0x020852a8;
+_ZN4Game18currentProcessNodeE														= 0x0208fb08;
 _ZN4Game19currentProcessTableE                                                      = 0x0208fb98;
 _ZN4Game9actorTreeE																	= 0x0208fb0c;
 
@@ -4586,6 +4588,7 @@ __aeabi_idivmod		= 0x0207e138;
 /* __aeabi_ldivmod		= 0x0207df78; */
 
 _ull_div = 0x0207df30;
+_ll_udiv = 0x0207df30;
 _ull_mod = 0x0207df3c;
 _ll_div  = 0x0207df88;
 _ll_mod  = 0x0207df78;

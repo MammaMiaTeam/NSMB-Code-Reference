@@ -22,7 +22,7 @@ inline void ntr_terminate() {
 }
 
 
-inline /*NTR_WEAK*/ void __ntr_assert(bool condition, const char* file, int line, const char* message, ...) {
+inline constexpr /*NTR_WEAK*/ void __ntr_assert(bool condition, const char* file, int line, const char* message, ...) {
 
 	if (!condition) {
 

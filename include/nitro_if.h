@@ -131,6 +131,7 @@ NTR_LONGCALL NTR_THUMB void MTX_RotZ43(MtxFx43& mtx, fx16 sine, fx16 cosine);
 using bool16 = u16;
 using bool32 = u32;
 using SizeT = size_t;
+using AddressT = u32;
 
 template<class T>
 struct alignas(alignof(T)) BitFlag {
