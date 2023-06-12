@@ -37,8 +37,8 @@ classDiagram
 	Object <|-- Actor
 	Actor : ov0
 	Actor : vtable @ 0x020C6C2C
-	Actor : +void setX(fx32 x)
-	Actor : +void moveX(fx32 offset)
+	Actor : void setX(fx32 x)
+	Actor : void moveX(fx32 offset)
 	
 	%% Graphics
 	class FadeMask
