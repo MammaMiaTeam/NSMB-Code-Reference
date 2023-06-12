@@ -6,23 +6,23 @@ classDiagram
 
 	class Base
 	Base : vtable @ 0x02085258
-	Base : +s32 onCreate()
-	Base : +bool preCreate()
-	Base : +void postCreate(ReturnState state)
-	Base : +s32 onDestroy()
-	Base : +bool preDestroy()
-	Base : +void postDestroy(ReturnState state)
-	Base : +s32 onUpdate()
-	Base : +bool preUpdate()
-	Base : +void postUpdate(ReturnState state)
-	Base : +s32 onRender()
-	Base : +bool preRender()
-	Base : +void postRender(ReturnState state)
-	Base : +void onCleanupResources()
-	Base : +bool prepareResourcesSafe(u32 size, Heap* parent)
-	Base : +bool prepareResourcesFast(u32 size, Heap* parent)
-	Base : +bool onPrepareResources()
-	Base : +~Base()
+	Base : s32 onCreate()
+	Base : bool preCreate()
+	Base : void postCreate(ReturnState state)
+	Base : s32 onDestroy()
+	Base : bool preDestroy()
+	Base : void postDestroy(ReturnState state)
+	Base : s32 onUpdate()
+	Base : bool preUpdate()
+	Base : void postUpdate(ReturnState state)
+	Base : s32 onRender()
+	Base : bool preRender()
+	Base : void postRender(ReturnState state)
+	Base : void onCleanupResources()
+	Base : bool prepareResourcesSafe(u32 size, Heap* parent)
+	Base : bool prepareResourcesFast(u32 size, Heap* parent)
+	Base : bool onPrepareResources()
+	Base : ~Base()
 
 	class Object
 	Base <|-- Object
@@ -185,5 +185,85 @@ classDiagram
 	PlayerBase <|-- Player
 	Player : ov10
 	Player : vtable @ 0x021284E0
+	
+	%% Graphics.2D
+	class FontBase
+	FontBase : vtable @ 0x0203C09C
+	FontBase : ~FontBase()
+	FontBase : void prepare()
+	FontBase : void onStringDispatched()
+	FontBase : void processChar(UTF16Character* c)
+	FontBase : void parseEscapeSequence(EscapeSequence* sequence)
+	
+	class FontCache
+	FontBase <|-- FontCache
+	FontCache : vtable @ 0x0203C10C
+	FontCache : u32 getCacheSize()
+	FontCache : u16* getCachePtr()
 
+	class StringCache
+	FontCache <|-- StringCache
+	StringCache : vtable @ 0x0203C15C
+
+	class NicknameCache
+	FontCache <|-- NicknameCache
+	NicknameCache : vtable @ 0x0203C134
+
+	class NumberCache
+	FontCache <|-- NumberCache
+	NumberCache : vtable @ 0x0203C0BC
+
+	class GenericCache
+	FontCache <|-- GenericCache
+	GenericCache : vtable @ 0x0203C0E4
+
+	class FontBounds
+	FontBase <|-- FontBounds
+	FontBounds : vtable @ 0x0203C07C
+
+	class FontString
+	FontString : vtable @ 0x0203C034
+	FontString : ~FontString()
+
+	class FontRenderer
+	FontBase <|-- FontRenderer
+	FontRenderer : vtable @ 0x0203C05C
+
+	class BMGReader
+	BMGReader : vtable @ 0x0203C024
+	BMGReader : ~BMGReader()
+
+	%% Graphics.3D
+	class ModelBase
+	ModelBase : vtable @ 0x0203C4B4
+	ModelBase : ~ModelBase()
+	
+	class Model
+	ModelBase <|-- Model
+	Model : vtable @ 0x0203C514
+	Model : void null()
+	Model : void render(const VecFx32* scale)
+	Model : void render(const MtxFx43& transform, const VecFx32* scale)
+	Model : void render()
+	
+	class ModelAnm
+	Model <|-- ModelAnm
+	ModelAnm : vtable @ 0x0203C4F4
+	
+	class BlendModelAnm
+	Model <|-- BlendModelAnm
+	BlendModelAnm : vtable @ 0x0203C4D4
+	
+	class Animation
+	Animation : vtable @ 0x0203C4A4
+	Animation : ~Animation()
+	
+	class AnimationCtrl
+	Animation <|-- AnimationCtrl
+	AnimationCtrl : vtable @ 0x0203C4C4
+	
+	class Texture
+	Texture : vtable @ 0x0203C494
+	Texture : ~Texture()
+	
 ```
