@@ -25,26 +25,26 @@ public:
 	s8 selector2; //Selector 2 (end interpolation) [c1->c0]
 
 	//020193e0
-	sym BlendModelAnm() __body
+	BlendModelAnm();
 
 	//D0:020193c0
 	//D1:020193c0
-	sym virtual ~BlendModelAnm() override __body
+	virtual ~BlendModelAnm() override;
 
 	//02019214
-	sym virtual void render(const VecFx32* scale) override __body
+	virtual void render(const VecFx32* scale) override;
 
 	//020191cc
-	sym virtual void render(const MtxFx43& transform, const VecFx32* scale) override __body
+	virtual void render(const MtxFx43& transform, const VecFx32* scale) override;
 
 	//0201918c
-	sym virtual void render() override __body
+	virtual void render() override;
 
 	//020192a8
-	sym bool create(void* bmd, void* bca, u32 modelID, u32 animID, u32 polygonID) __rbody //Loads the model with the given params from the bmd. Allocates memory for both BlendAnimations, initializes the frame controller and registers the first animation. returns true if successful, false otherwise.
+	bool create(void* bmd, void* bca, u32 modelID, u32 animID, u32 polygonID); //Loads the model with the given params from the bmd. Allocates memory for both BlendAnimations, initializes the frame controller and registers the first animation. returns true if successful, false otherwise.
 
 	//02018fb8
-	sym void pushAnimation(u32 animID, u32 steps, FrameCtrl::Type type, fx32 speed, u16 startFrame) __body
+	void pushAnimation(u32 animID, u32 steps, FrameCtrl::Type type, fx32 speed, u16 startFrame);
 	/*
 		Pushes a new animation to blend to.
 		If animID equals the current animation's ID, frame controller settings are applied only.
@@ -53,13 +53,13 @@ public:
 	*/
 
 	//02019138
-	sym void update() __body //Updates the frame controller and increments the blend ratio. If the ratio exceeds 1.0 after update, it is capped at 1.0 and unregisters the animation.
+	void update(); //Updates the frame controller and increments the blend ratio. If the ratio exceeds 1.0 after update, it is capped at 1.0 and unregisters the animation.
 
 	//02019288
-	sym void attachAnimation(BlendAnimation* anim) __body //If it's active, unregister it from the model and deactivate it
+	void attachAnimation(BlendAnimation* anim); //If it's active, unregister it from the model and deactivate it
 
 	//0201925c
-	sym void detachAnimation(BlendAnimation* anim) __body //Register anim for the model and activate it
+	void detachAnimation(BlendAnimation* anim); //Register anim for the model and activate it
 
 };
 NTR_SIZE_GUARD(BlendModelAnm, 0xC4);

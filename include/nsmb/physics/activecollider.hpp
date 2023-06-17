@@ -149,38 +149,38 @@ public:
 	static ActiveCollider* listTail;
 
 	// 020a4868
-	sym ActiveCollider() __body
+	ActiveCollider();
 
 	// D1: 020a484c
 	// D0: 020a4820
-	sym virtual ~ActiveCollider() __body
+	virtual ~ActiveCollider();
 
 	// 020a4808
-	sym void reset() __body
+	void reset();
 
 	// 020a47a0
-	sym void init(StageActor* owner, const ActiveColliderInfo& info, u8 layerID = 0) __body
+	void init(StageActor* owner, const ActiveColliderInfo& info, u8 layerID = 0);
 
 	// 020a4758
-	sym void setPositionAroundPivot(u16 rotation, fx32 pivotX, fx32 pivotY) __body
+	void setPositionAroundPivot(u16 rotation, fx32 pivotX, fx32 pivotY);
 
 	// 020a4714
-	sym void clearCollision() __body
+	void clearCollision();
 
 	// 020a46bc
-	sym void link() __body
+	void link();
 
 	// 020a4658
-	sym void unlink() __body
+	void unlink();
 
 	// 020a44b0
-	sym void manualUpdate() __body
+	void manualUpdate();
 
 	// 020a445c
-	sym void unk_020a445c(const Vec3& position, const ActiveColliderInfo& info, u8 layerID) __body
+	void unk_020a445c(const Vec3& position, const ActiveColliderInfo& info, u8 layerID);
 
 	// 020a4434
-	sym static void initSystem() __body
+	static void initSystem();
 		
 	// 020A3D68
 	Player* getPlayer() const;
@@ -207,25 +207,25 @@ public:
 protected:
 
 	// 01ffdd88
-	sym bool testCollisionRect(ActiveCollider* collision) __rbody
+	bool testCollisionRect(ActiveCollider* collision);
 
 	// 020a4344
-	sym bool testCollisionRound(ActiveCollider* collision) __rbody
+	bool testCollisionRound(ActiveCollider* collision);
 
 	// 020a4328
-	//sym bool unk_020a4328(ActiveCollider* collision() __rbody
+	//bool unk_020a4328(ActiveCollider* collision();
 
 	// 020a4264
-	sym bool testCollisionOtherVsVTrpz(ActiveCollider* collision) __rbody
+	bool testCollisionOtherVsVTrpz(ActiveCollider* collision);
 
 	// 020a40a4
-	sym bool testCollisionVTrpzVsOther(ActiveCollider* collision) __rbody
+	bool testCollisionVTrpzVsOther(ActiveCollider* collision);
 
 	// 020a3fc4
-	sym bool testCollisionOtherVsHTrpz(ActiveCollider* collision) __rbody
+	bool testCollisionOtherVsHTrpz(ActiveCollider* collision);
 
 	// 020a3e04
-	sym bool testCollisionHTrpzVsOther(ActiveCollider* collision) __rbody
+	bool testCollisionHTrpzVsOther(ActiveCollider* collision);
 
 };
 NTR_SIZE_GUARD(ActiveCollider, 0xB0);

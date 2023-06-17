@@ -71,98 +71,98 @@ public:
 	ActorCategory actorCategory;
 
 	//020a0edc
-	sym Actor() __body
+	Actor();
 
 	//D0:020a0e04
 	//D1:020a0e74
-	sym virtual ~Actor() __body
+	virtual ~Actor();
 
 	//D2:020a0d9c
 
 	//020a0d7c
-	sym virtual bool preCreate() override __rbody
+	virtual bool preCreate() override;
 
 	//020a0d70
-	sym virtual void postCreate(BaseReturnState state) override __body
+	virtual void postCreate(BaseReturnState state) override;
 
 	//020a0d50
-	sym virtual bool preDestroy() override __rbody
+	virtual bool preDestroy() override;
 
 	//020a0d44
-	sym virtual void postDestroy(BaseReturnState state) override __body
+	virtual void postDestroy(BaseReturnState state) override;
 
 	//020a0cac
-	sym virtual bool preUpdate() override __rbody
+	virtual bool preUpdate() override;
 
 	//020a0ca0
-	sym virtual void postUpdate(BaseReturnState state) override __body
+	virtual void postUpdate(BaseReturnState state) override;
 
 	//020a0c48
-	sym virtual bool preRender() override __rbody
+	virtual bool preRender() override;
 
 	//020a0c3c
-	sym virtual void postRender(BaseReturnState state ) override __body
+	virtual void postRender(BaseReturnState state ) override;
 
 	//0201ff68
-	sym virtual void setX(fx32 x) __body //U SURE???
+	virtual void setX(fx32 x); //U SURE???
 
 	//0201ff70
-	sym virtual void moveX(fx32 offset) __body //U SURE???
+	virtual void moveX(fx32 offset); //U SURE???
 
 	//020a0bf8
-	sym u32 getActorCount(u16 objectID) __rbody
+	u32 getActorCount(u16 objectID);
 
 	//020a0bb8
-	sym static void setSpawnParams(const Vec3* position, const Vec3s* rotation, const fx32* scale, const s8* linkPlayerID) __body
+	static void setSpawnParams(const Vec3* position, const Vec3s* rotation, const fx32* scale, const s8* linkPlayerID);
 
 	//020a0b64
-	sym static Actor* spawnActor(u16 objectID, u32 settings, const Vec3* position, const Vec3s* rotation = nullptr, const fx32* scale = nullptr, const s8* linkPlayerID = nullptr) __rbody
+	static Actor* spawnActor(u16 objectID, u32 settings, const Vec3* position, const Vec3s* rotation = nullptr, const fx32* scale = nullptr, const s8* linkPlayerID = nullptr);
 
 	//020a0b5c
-	sym void linkPlayer(s8 playerID) __body
+	void linkPlayer(s8 playerID);
 
 
 
 	// Applies the current acceleration to a velocity vector
-	sym Vec3 applyAcceleration(const Vec3& velocity) const __rbody
+	Vec3 applyAcceleration(const Vec3& velocity) const;
 
 	// Applies the input velocity to the position
-	sym void applyVelocityToPosition(const Vec3& velocity) __body
+	void applyVelocityToPosition(const Vec3& velocity);
 
 	// Applies the current acceleration to the velocity, then adds the new velocity to the position
-	sym void applyVelocity() __body
+	void applyVelocity();
 
 	// Calculates and applies the velocity, using the input Z rotation, to the position (2D, distributed over the X and Y axes)
-	sym void applyDirectionalVelocity(u16 rotation) __body
+	void applyDirectionalVelocity(u16 rotation);
 
 	// Calculates the velocity using the actor's Y rotation (3D, distributed over the X and Z axes)
-	sym void setDirectionalVelocity3D() __body
+	void setDirectionalVelocity3D();
 
 	// Calculates the horizontal velocity (2D, X axis)
-	sym void updateHorizontalVelocity() __body
+	void updateHorizontalVelocity();
 	
 	// Calculates the vertical velocity (2D, Y axis)
-	sym void updateVerticalVelocity() __body
+	void updateVerticalVelocity();
 
 	// Calculates the verical velocity, then clamps it to velVMin (2D, Y axis)
-	sym void updateVerticalVelocityClamped() __body
+	void updateVerticalVelocityClamped();
 
 	// Calculates the horizontal velocity, then clamps it to velHMin (2D/3D, velH)
-	sym void updateHorizontalVelocityClamped() __body
+	void updateHorizontalVelocityClamped();
 
 	// Calculates the horizontal and vertical velocities, clamping them to velHMin and velVMin (2D, X and Y axes)
-	sym void updateVelocityClamped() __body
+	void updateVelocityClamped();
 
 	// Calculates and applies the velocity, using the actor's Y rotation, to the position (3D, distributed over the X and Z axes)
-	sym void applyDirectionalVelocity3D() __body
+	void applyDirectionalVelocity3D();
 
 	// Performs an exponential smoothing on the acceleration vector in order to attenuate it
-	sym void attenuateAcceleration() __body
+	void attenuateAcceleration();
 
 
 
 	// Applies the center offset to the current position
-	sym Vec3 getCenteredPosition() const __rbody
+	Vec3 getCenteredPosition() const;
 
 };
 NTR_SIZE_GUARD(Actor, 0x120);

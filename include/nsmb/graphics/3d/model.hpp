@@ -11,12 +11,12 @@ public:
 
 	//C1:02019a30
 	//C2:02019a5c
-	sym Model() __body
+	Model();
 
 	//D0:020199e8
 	//D1:02019a10
 	//D2:020199c8
-	sym virtual ~Model() override __body
+	virtual ~Model() override;
 		
 	//02019948
 	bool create(void* bmd, u32 modelID, u32 polygonID); //Loads the model with ID modelID from the bmd, assigns texture and model, sets the polygon ID and disables ambient/emission components. returns true if successful, false otherwise.

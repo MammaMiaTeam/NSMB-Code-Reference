@@ -22,69 +22,69 @@ public:
 
 	// D0: 020FB5A8
 	// D1: 020FB57C
-	sym inline virtual ~StageFX() {}
+	inline virtual ~StageFX() {}
 
 	// 020FC7CC
-	sym virtual s32 onCreate() override __rbody
+	virtual s32 onCreate() override;
 	// 020FC578
-	sym virtual s32 onUpdate() override __rbody
+	virtual s32 onUpdate() override;
 	// 020FC684
-	sym virtual s32 onRender() override __rbody
+	virtual s32 onRender() override;
 	// 020FC794
-	sym virtual s32 onDestroy() override __rbody
+	virtual s32 onDestroy() override;
 
 	// 020FC790
-	sym virtual void onCleanupResources() override __body
+	virtual void onCleanupResources() override;
 
 	// 020FC54C
-	sym void initStart() __body
+	void initStart();
 	// 020FC214
-	sym void initClear() __body
+	void initClear();
 	// 020FBFDC
-	sym void initLose() __body
+	void initLose();
 	// 020FBCF8
-	sym void initTimesUp() __body
+	void initTimesUp();
 	// 020FBC2C
-	sym void initVsTimesUp() __body
+	void initVsTimesUp();
 	// 020FBA00
-	sym void initVsClear() __body
+	void initVsClear();
 	// 020FB9E0
-	sym void initVsLose() __body
+	void initVsLose();
 
 	// 020FC2B4
-	sym void updateStart() __body
+	void updateStart();
 	// 020FC050
-	sym void updateClear() __body
+	void updateClear();
 	// 020FBD30
-	sym void updateLose() __body
+	void updateLose();
 	// 020FBC5C
-	sym void updateTimesUp() __body
+	void updateTimesUp();
 	// 020FBA20
-	sym void updateVsTimesUp() __body
+	void updateVsTimesUp();
 	// 020FB998
-	sym void updateVsClear() __body
+	void updateVsClear();
 	// 020FB948
-	sym void updateVsLose() __body
+	void updateVsLose();
 
 	// 020FC548
-	sym void renderStart() __body
+	void renderStart();
 	// 020FC1C0
-	sym void renderClear() __body
+	void renderClear();
 	// 020FBF60
-	sym void renderLose() __body
+	void renderLose();
 	// 020FBCB4
-	sym void renderTimesUp() __body
+	void renderTimesUp();
 	// 020FBBE0
-	sym void renderVsTimesUp() __body
+	void renderVsTimesUp();
 
 	// 020FB5F4
-	sym void renderLostLives() __body
+	void renderLostLives();
 
 	// 020FB900
-	sym bool updateScalePalette(fx32* scales, u8* palettes) __rbody
+	bool updateScalePalette(fx32* scales, u8* palettes);
 
 	// 020FB5DC
-	sym static u32 getSettings(Type type, u8 character, u8 unk) __rbody
+	static u32 getSettings(Type type, u8 character, u8 unk);
 
 	static constexpr u16 objectID = 18;
 

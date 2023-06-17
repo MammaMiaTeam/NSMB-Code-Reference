@@ -28,13 +28,13 @@ enum class ProcessListType : u32 {
 namespace ProcessManager {
 
 	//0204d598
-	ssym void updateProcessLists() __body
+	void updateProcessLists();
 
 	//0204d630
-	ssym Base* getNextObjectByType(ObjectType type, const Base* object = nullptr) __rbody
+	Base* getNextObjectByType(ObjectType type, const Base* object = nullptr);
 
 	//0204d66c
-	ssym Base* getNextObjectByObjectID(u16 objectID, const Base* object = nullptr) __rbody
+	Base* getNextObjectByObjectID(u16 objectID, const Base* object = nullptr);
 
 	template<class T>
 	T* getNextObject(const T* object = nullptr) {
@@ -42,19 +42,19 @@ namespace ProcessManager {
 	}
 
 	//0204d6a8
-	ssym Base* getObjectByID(u32 id) __rbody
+	Base* getObjectByID(u32 id);
 
 	//0204d6dc
-	ssym u32 getIDIndex(const ProcessLink& link) __rbody
+	u32 getIDIndex(const ProcessLink& link);
 
 	//0204d6ec
-	ssym const char* getProcessListName(ProcessListType type) __rbody
+	const char* getProcessListName(ProcessListType type);
 
 	//0204d6fc
-	ssym SceneNode* getNextNodeByType(SceneGraph* scene, ObjectType type, const SceneNode* node) __rbody
+	SceneNode* getNextNodeByType(SceneGraph* scene, ObjectType type, const SceneNode* node);
 
 	//0204d758
-	ssym SceneNode* getNextNodeByObjectID(SceneGraph* scene, u16 objectID, const SceneNode* node) __rbody
+	SceneNode* getNextNodeByObjectID(SceneGraph* scene, u16 objectID, const SceneNode* node);
 
 };
 

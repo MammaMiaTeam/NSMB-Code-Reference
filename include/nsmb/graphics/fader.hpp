@@ -38,11 +38,11 @@ public:
 	static FadeMask::Shape characterFadeMaskIDs[2];
 
 	//02014170
-	sym FadeMask() __body
+	FadeMask();
 
 	//D0:02014100
 	//D1:0201413c
-	sym virtual ~FadeMask() __body
+	virtual ~FadeMask();
 
 	//020140a0
 	bool loadModels();
@@ -129,10 +129,10 @@ public:
 	bool fadingStopped;//Fading stopped
 
 	//02008558
-	sym Fader() __body
+	Fader();
 
 	//02003090
-	sym ~Fader() __body
+	~Fader();
 
 	//020083cc
 	void setupSceneFading(FadingType type, bool fadeBright, bool staticBlend);

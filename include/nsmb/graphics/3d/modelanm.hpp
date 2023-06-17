@@ -15,11 +15,11 @@ public:
 	u32 animID; //Anim ID
 
 	//02019644
-	sym ModelAnm() __body
+	ModelAnm();
 
 	//D0:020195fc
 	//D1:02019624
-	sym virtual ~ModelAnm() override __body
+	virtual ~ModelAnm() override;
 
 	//02019518
 	virtual void render(const VecFx32* scale) override;

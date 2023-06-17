@@ -179,7 +179,7 @@ namespace OAM
 	 * \param digitCount The number of digits the counter has.
 	 * \param flags The flags for updating the counter.
 	 * */
-	ssym void updateCounter(const GXOamAttr* oamAttrs, GXOamAttr** oamCounterAttrTable, s32 value, s32 digitCount, CounterFlags flags) __body
+	void updateCounter(const GXOamAttr* oamAttrs, GXOamAttr** oamCounterAttrTable, s32 value, s32 digitCount, CounterFlags flags);
 
 	// OAM::loadFiles | 0x0200B708
 	/**
@@ -264,7 +264,7 @@ namespace OAM
 	 * 
 	 * \return True if the objects were pushed to the render list successfully, false otherwise.
 	 * */
-	ssym bool draw(const GXOamAttr* oamAttrs, s32 x, s32 y, Flags flags, u8 palette, u8 affineSet, Settings settings) __rbody
+	bool draw(const GXOamAttr* oamAttrs, s32 x, s32 y, Flags flags, u8 palette, u8 affineSet, Settings settings);
 
 	// OAM::drawExt | 0x0200D87C
 	/**
@@ -283,7 +283,7 @@ namespace OAM
 	 * 
 	 * \return True if the objects were pushed to the render list successfully, false otherwise.
 	 * */
-	ssym bool draw(const GXOamAttr* oamAttrs, s32 x, s32 y, Flags flags, u8 palette, u8 affineSet, const Vec2* scale, s16 rot, const s16 rotCenter[2], Settings settings) __rbody
+	bool draw(const GXOamAttr* oamAttrs, s32 x, s32 y, Flags flags, u8 palette, u8 affineSet, const Vec2* scale, s16 rot, const s16 rotCenter[2], Settings settings);
 
 	// OAM::drawMtx | 0x0200CE10
 	/**
@@ -301,7 +301,7 @@ namespace OAM
 	 * 
 	 * \return True if the objects were pushed to the render list successfully, false otherwise.
 	 * */
-	ssym bool drawMtx(const GXOamAttr* oamAttrs, s32 x, s32 y, Flags flags, u8 palette, u8 affineSet, const MtxFx22* mtx, s32 unk8, Settings settings) __rbody
+	bool drawMtx(const GXOamAttr* oamAttrs, s32 x, s32 y, Flags flags, u8 palette, u8 affineSet, const MtxFx22* mtx, s32 unk8, Settings settings);
 
 	// OAM::drawMtxRot | 0x0200C7D4
 	/**
@@ -321,7 +321,7 @@ namespace OAM
 	 * 
 	 * \return True if the objects were pushed to the render list successfully, false otherwise.
 	 * */
-	ssym bool drawMtx(const GXOamAttr* oamAttrs, s32 x, s32 y, Flags flags, u8 palette, u8 affineSet, const MtxFx22* mtx, s32 unk8, s16 rot, const s16 rotCenter[2], Settings settings) __rbody
+	bool drawMtx(const GXOamAttr* oamAttrs, s32 x, s32 y, Flags flags, u8 palette, u8 affineSet, const MtxFx22* mtx, s32 unk8, s16 rot, const s16 rotCenter[2], Settings settings);
 	
 	// OAM::drawSprite | 0x0200D578
 	/**
@@ -340,7 +340,7 @@ namespace OAM
 	 * 
 	 * \return True if the objects were pushed to the render list successfully, false otherwise.
 	 * */
-	ssym bool drawSprite(const GXOamAttr* oamAttrs, fx32 x, fx32 y, Flags flags, u8 palette, u8 affineSet, const Vec2* scale, s16 rot, const s16 rotCenter[2], Settings settings) __rbody
+	bool drawSprite(const GXOamAttr* oamAttrs, fx32 x, fx32 y, Flags flags, u8 palette, u8 affineSet, const Vec2* scale, s16 rot, const s16 rotCenter[2], Settings settings);
 
 	/* ======== BOTTOM SCREEN ======== */
 
@@ -358,7 +358,7 @@ namespace OAM
 	 * 
 	 * \return True if the objects were pushed to the render list successfully, false otherwise.
 	 * */
-	ssym bool drawSub(const GXOamAttr* oamAttrs, s32 x, s32 y, Flags flags, u8 palette, u8 affineSet, Settings settings) __rbody
+	bool drawSub(const GXOamAttr* oamAttrs, s32 x, s32 y, Flags flags, u8 palette, u8 affineSet, Settings settings);
 
 	// OAM::drawExtSub | 0x0200C600
 	/**
@@ -377,7 +377,7 @@ namespace OAM
 	 * 
 	 * \return True if the objects were pushed to the render list successfully, false otherwise.
 	 * */
-	ssym bool drawSub(const GXOamAttr* oamAttrs, s32 x, s32 y, Flags flags, u8 palette, u8 affineSet, const Vec2* scale, s16 rot, const s16 rotCenter[2], Settings settings) __rbody
+	bool drawSub(const GXOamAttr* oamAttrs, s32 x, s32 y, Flags flags, u8 palette, u8 affineSet, const Vec2* scale, s16 rot, const s16 rotCenter[2], Settings settings);
 
 	// OAM::drawMtxSub | 0x0200BED4
 	/**
@@ -394,7 +394,7 @@ namespace OAM
 	 * 
 	 * \return True if the objects were pushed to the render list successfully, false otherwise.
 	 * */
-	ssym bool drawMtxSub(const GXOamAttr* oamAttrs, s32 x, s32 y, Flags flags, u8 palette, u8 affineSet, const MtxFx22* mtx, Settings settings) __rbody
+	bool drawMtxSub(const GXOamAttr* oamAttrs, s32 x, s32 y, Flags flags, u8 palette, u8 affineSet, const MtxFx22* mtx, Settings settings);
 
 	// OAM::drawMtxRotSub | 0x0200B8C8
 	/**
@@ -413,7 +413,7 @@ namespace OAM
 	 * 
 	 * \return True if the objects were pushed to the render list successfully, false otherwise.
 	 * */
-	ssym bool drawMtxSub(const GXOamAttr* oamAttrs, s32 x, s32 y, Flags flags, u8 palette, u8 affineSet, const MtxFx22* mtx, fx16 rot, const s16 rotCenter[2], Settings settings) __rbody
+	bool drawMtxSub(const GXOamAttr* oamAttrs, s32 x, s32 y, Flags flags, u8 palette, u8 affineSet, const MtxFx22* mtx, fx16 rot, const s16 rotCenter[2], Settings settings);
 
 	/* ======== ANIMATION CLASS ======== */
 
@@ -509,7 +509,7 @@ namespace OAM
 		 * 
 		 * \return True if the objects were pushed to the render list successfully, false otherwise.
 		 * */
-		sym bool drawSprite(fx32 x, fx32 y, Flags flags, u8 palette, u8 affineSet, const Vec2* scale, fx16 rot, const s16 rotCenter[2], Settings settings) __rbody
+		bool drawSprite(fx32 x, fx32 y, Flags flags, u8 palette, u8 affineSet, const Vec2* scale, fx16 rot, const s16 rotCenter[2], Settings settings);
 
 		// OAM::Anim::drawSprite | 0x0200B39C
 		/**
@@ -527,7 +527,7 @@ namespace OAM
 		 * 
 		 * \return True if the objects were pushed to the render list successfully, false otherwise.
 		 * */
-		sym bool drawSub(s32 x, s32 y, Flags flags, u8 palette, u8 affineSet, const Vec2* scale, fx16 rot, const s16 rotCenter[2], Settings settings) __rbody
+		bool drawSub(s32 x, s32 y, Flags flags, u8 palette, u8 affineSet, const Vec2* scale, fx16 rot, const s16 rotCenter[2], Settings settings);
 		
 	private:
 

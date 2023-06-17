@@ -25,17 +25,17 @@ public:
 	NTR_INLINE Object() {}
 
 	//020131a8
-	sym virtual void postCreate(BaseReturnState state) __body
+	virtual void postCreate(BaseReturnState state);
 
 	//D0:0201313c
 	//D1:0201311c
-	sym virtual ~Object() __body
+	virtual ~Object();
 
 	//02013168
-	sym static Object* spawnScene(u16 objectID, u32 settings, ObjectType type) __rbody
+	static Object* spawnScene(u16 objectID, u32 settings, ObjectType type);
 
 	//02013188
-	sym static Object* spawnObject(u16 objectID, Base* scene, u32 settings, ObjectType type) __rbody
+	static Object* spawnObject(u16 objectID, Base* scene, u32 settings, ObjectType type);
 
 
 	template<class T>

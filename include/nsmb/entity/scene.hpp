@@ -55,53 +55,53 @@ public:
 	static u32 nextSceneSettings;
 
 	//02013b2c
-	sym Scene() __body
+	Scene();
 
 	//D2:020137b8
 
 	//D0:020138dc
 	//D1:02013a08
-	sym virtual ~Scene() override __body
+	virtual ~Scene() override;
 
 	//02013764
-	sym virtual bool preCreate() override __rbody
+	virtual bool preCreate() override;
 
 	//02013718
-	sym virtual void postCreate(BaseReturnState state) override __body
+	virtual void postCreate(BaseReturnState state) override;
 
 	//020136e8
-	sym virtual bool preDestroy() override __rbody
+	virtual bool preDestroy() override;
 
 	//020136c8
-	sym virtual void postDestroy(BaseReturnState state) override __body
+	virtual void postDestroy(BaseReturnState state) override;
 
 	//02013500
-	sym virtual bool preUpdate() override __rbody
+	virtual bool preUpdate() override;
 
 	//020134f4
-	sym virtual void postUpdate(BaseReturnState state) override __body
+	virtual void postUpdate(BaseReturnState state) override;
 
 	//020134c4
-	sym virtual bool preRender() override __rbody
+	virtual bool preRender() override;
 
 	//020134b8
-	sym virtual void postRender(BaseReturnState state) override __body
+	virtual void postRender(BaseReturnState state) override;
 
 	//020133a4
-	sym static void prepareFirstScene() __body
+	static void prepareFirstScene();
 
 	//020132a0
-	sym static u16 tryChangeScene() __rbody
+	static u16 tryChangeScene();
 
 	//020131fc
-	sym static void switchScene(u16 sceneID, u32 settings = 0) __body
+	static void switchScene(u16 sceneID, u32 settings = 0);
 
 	NTR_INLINE static void switchScene(SceneID sceneID, u32 settings = 0) {
 		switchScene(u16(sceneID), settings);
 	}
 
 	//020131d8
-	sym static void switchToFileCorruptedScene(u32 settings) __body
+	static void switchToFileCorruptedScene(u32 settings);
 
 };
 NTR_SIZE_GUARD(Scene, 0x64);

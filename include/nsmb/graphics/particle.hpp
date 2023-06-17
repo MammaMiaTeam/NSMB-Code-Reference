@@ -52,10 +52,10 @@ namespace Particle {
 		inline Emitter() {}
 
 		// 0x2021c10
-		sym bool start(u32 emitterID, u32 particleID, const VecFx32* position, const VecFx16* axis, const fx32* collY, const fx16* baseScale, ControllerBase* controller) __rbody
+		bool start(u32 emitterID, u32 particleID, const VecFx32* position, const VecFx16* axis, const fx32* collY, const fx16* baseScale, ControllerBase* controller);
 
 		// 0x2021bf0
-		sym void end() __body
+		void end();
 
 	};
 	NTR_SIZE_GUARD(Emitter, 0x1C);
@@ -71,29 +71,29 @@ namespace Particle {
 		Emitter* activeEmitters[16];
 
 		// 0x2021bac
-		sym EmitterSystem() __body
+		EmitterSystem();
 
 		NTR_INLINE ~EmitterSystem() {
 			unregisterAllEmitters();
 		}
 
 		// 0x2021ae8
-		sym void destroyAllEmitters() __body
+		void destroyAllEmitters();
 
 		// 0x2021a88
-		sym void unregisterAllEmitters() __body
+		void unregisterAllEmitters();
 
 		// 0x2021a48
-		sym Emitter* getEmitter(u32 emitterID) __rbody
+		Emitter* getEmitter(u32 emitterID);
 
 		// 0x202194c
-		sym u32 startEmitter(u32 particleID, const VecFx32* position, const VecFx16* axis, const fx32* collY, const fx16* baseScale, ControllerBase* controller) __rbody
+		u32 startEmitter(u32 particleID, const VecFx32* position, const VecFx16* axis, const fx32* collY, const fx16* baseScale, ControllerBase* controller);
 
 		// 0x2021920
-		sym void registerEmitter(Emitter* pEmitter) __body
+		void registerEmitter(Emitter* pEmitter);
 
 		// 0x20218e0
-		sym void unregisterEmitter(Emitter* pEmitter) __body
+		void unregisterEmitter(Emitter* pEmitter);
 	};
 	NTR_SIZE_GUARD(EmitterSystem, 0x748);
 
@@ -104,10 +104,10 @@ namespace Particle {
 		NTR_INLINE ControllerBase() {}
 
 		// 0x2021f08
-		sym virtual void spawn(SPLEmitter* emitter) __body
+		virtual void spawn(SPLEmitter* emitter);
 
 		// 0x2021f00
-		sym virtual bool destroy(SPLEmitter* emitter, bool generate) __rbody
+		virtual bool destroy(SPLEmitter* emitter, bool generate);
 
 	};
 	NTR_SIZE_GUARD(ControllerBase, 0x4);
@@ -119,13 +119,13 @@ namespace Particle {
 		fx16 spawnRateDec; // ???
 
 		// 0x2021eb8
-		sym Controller() __body
+		Controller();
 
 		// 0x2021e8c
-		sym virtual void spawn(SPLEmitter* emitter) override __body
+		virtual void spawn(SPLEmitter* emitter) override;
 
 		// 0x2021e7c
-		sym virtual bool destroy(SPLEmitter* emitter, bool generate) override __rbody
+		virtual bool destroy(SPLEmitter* emitter, bool generate) override;
 
 	};
 	NTR_SIZE_GUARD(Controller, 0x8);
@@ -137,7 +137,7 @@ namespace Particle {
 		NTR_INLINE ControllerLiquid() {} // the one at 0x2021edc doesn't set the vtable, there could even be another class between this one and Controller
 
 		// 0x2021e00
-		sym virtual bool destroy(SPLEmitter* pEmitter, bool generate) override __rbody
+		virtual bool destroy(SPLEmitter* pEmitter, bool generate) override;
 
 	};
 	NTR_SIZE_GUARD(ControllerLiquid, sizeof(Controller));
@@ -149,7 +149,7 @@ namespace Particle {
 		NTR_INLINE ControllerManualLiquid() {}
 
 		// 0x2021d78
-		sym virtual bool destroy(SPLEmitter* pEmitter, bool generate) override __rbody
+		virtual bool destroy(SPLEmitter* pEmitter, bool generate) override;
 
 	};
 	NTR_SIZE_GUARD(ControllerManualLiquid, sizeof(ControllerBase));
@@ -161,10 +161,10 @@ namespace Particle {
 		NTR_INLINE ControllerManual() {}
 
 		// 0x2021d20
-		sym virtual bool destroy(SPLEmitter* pEmitter, bool generate) override __rbody
+		virtual bool destroy(SPLEmitter* pEmitter, bool generate) override;
 
 		// 0x2021cfc
-		sym static ControllerManual* getHandlerController() __rbody
+		static ControllerManual* getHandlerController();
 
 	};
 	NTR_SIZE_GUARD(ControllerManual, sizeof(ControllerBase));
@@ -280,150 +280,150 @@ namespace Particle {
 
 
 		// 0x2023180
-		sym Handler() __body
+		Handler();
 
 		// 0x2023118
 		// 0x20230a8
-		sym virtual ~Handler() __body
+		virtual ~Handler();
 
 
 		// 0x202308c
-		sym static void* allocate(u32 size) __rbody
+		static void* allocate(u32 size);
 
 		// 0x2022dd0
-		sym void init(u32 id) __body
+		void init(u32 id);
 
 		// 0x2022d98
-		sym static BossFileInfo* getBossParticleInfo(u32 area) __rbody
+		static BossFileInfo* getBossParticleInfo(u32 area);
 
 		// 0x2022d68
-		sym static u32 getBossParticleFileID(u32 area) __rbody
+		static u32 getBossParticleFileID(u32 area);
 
 		// 0x2022cb4
-		sym void initBoss() __body
+		void initBoss();
 
 		// 0x2022c3c
-		sym void updateParticles() __body
+		void updateParticles();
 
 		// 0x2022be4
-		sym static void renderParticles() __body
+		static void renderParticles();
 
 		// 0x2022b64
-		sym static void createParticle(u32 particleID, const Vec3& position) __body
+		static void createParticle(u32 particleID, const Vec3& position);
 
 		// 0x2022aac
-		sym static void createParticleEx(u32 particleID, const Vec3& position, void* arg, ParticleSystemCallback func) __body
+		static void createParticleEx(u32 particleID, const Vec3& position, void* arg, ParticleSystemCallback func);
 
 		// 0x2022a90
-		sym static void setAxisCallback(SPLEmitter* emitter, const VecFx16& axis) __body
+		static void setAxisCallback(SPLEmitter* emitter, const VecFx16& axis);
 
 		// 0x2022a7c
-		sym static void createParticleAxis(u32 particleID, const Vec3& position, const VecFx16* axis) __body
+		static void createParticleAxis(u32 particleID, const Vec3& position, const VecFx16* axis);
 
 		// 0x2022a70
-		sym static void setSimpleCollisionYCallback(SPLEmitter* emitter, const fx32& collY) __body
+		static void setSimpleCollisionYCallback(SPLEmitter* emitter, const fx32& collY);
 
 		// 0x2022a64
-		sym static void setRadiusCallback(SPLEmitter* emitter, const fx32& radius) __body
+		static void setRadiusCallback(SPLEmitter* emitter, const fx32& radius);
 
 		// 0x2022a50
-		sym static void createParticleRadius(u32 particleID, const Vec3& position, const fx32* radius) __body
+		static void createParticleRadius(u32 particleID, const Vec3& position, const fx32* radius);
 
 		// 0x2022a44
-		sym static void setParticleLifeCallback(SPLEmitter* emitter, const u16& life) __body
+		static void setParticleLifeCallback(SPLEmitter* emitter, const u16& life);
 
 		// 0x2022a30
-		sym static void createParticleLife(u32 particleID, const Vec3& position, const u16* life) __body
+		static void createParticleLife(u32 particleID, const Vec3& position, const u16* life);
 
 		// 0x2022a04
-		sym static SPLEmitter* getSPLEmitter(u32 emitterID) __rbody
+		static SPLEmitter* getSPLEmitter(u32 emitterID);
 
 		// 0x2022890
-		sym static u32 runEmitter(u32 emitterID, u32 particleID, const Vec3& position, const VecFx16* axis = nullptr, const fx32* collY = nullptr, const fx16* baseScale = nullptr, ControllerBase* controller = nullptr) __rbody
+		static u32 runEmitter(u32 emitterID, u32 particleID, const Vec3& position, const VecFx16* axis = nullptr, const fx32* collY = nullptr, const fx16* baseScale = nullptr, ControllerBase* controller = nullptr);
 
 		// 0x2022824
-		sym static u32 runEmitterBoss(u32 emitterID, u32 particleID, const Vec3& position, const VecFx16* axis = nullptr, const fx32* collY = nullptr, const fx16* baseScale = nullptr, ControllerBase* controller = nullptr) __rbody
+		static u32 runEmitterBoss(u32 emitterID, u32 particleID, const Vec3& position, const VecFx16* axis = nullptr, const fx32* collY = nullptr, const fx16* baseScale = nullptr, ControllerBase* controller = nullptr);
 
 		// 0x20227bc
-		sym static u32 runEmitterManualLiquid(u32 emitterID, u32 pclID, fx32 x, fx32 y, fx32 z, const VecFx16* axis = nullptr) __rbody
+		static u32 runEmitterManualLiquid(u32 emitterID, u32 pclID, fx32 x, fx32 y, fx32 z, const VecFx16* axis = nullptr);
 
 		// 0x2022754
-		sym static u32 runEmitterManual(u32 emitterID, u32 pclID, fx32 x, fx32 y, fx32 z, const VecFx16* axis = nullptr) __rbody
+		static u32 runEmitterManual(u32 emitterID, u32 pclID, fx32 x, fx32 y, fx32 z, const VecFx16* axis = nullptr);
 
 		// 0x20226e4
-		sym static u32 createSmokePuff(fx32 x, fx32 y, fx32 z) __rbody
+		static u32 createSmokePuff(fx32 x, fx32 y, fx32 z);
 
 		// 0x2022674
-		sym static u32 createRockSmoke(fx32 x, fx32 y, fx32 z) __rbody
+		static u32 createRockSmoke(fx32 x, fx32 y, fx32 z);
 
 		// 0x20226fc
-		sym static u32 createBigRockSmoke(fx32 x, fx32 y, fx32 z) __rbody
+		static u32 createBigRockSmoke(fx32 x, fx32 y, fx32 z);
 
 		// 0x2022528
-		sym static u32 createRockExplosion(fx32 x, fx32 y, fx32 z) __rbody
+		static u32 createRockExplosion(fx32 x, fx32 y, fx32 z);
 
 		// 0x202245c
-		sym static u32 createBigRockExplosion(fx32 x, fx32 y, fx32 z) __rbody
+		static u32 createBigRockExplosion(fx32 x, fx32 y, fx32 z);
 
 		// 0x20223e4
-		sym static u32 createSandSmoke(fx32 x, fx32 y, fx32 z) __rbody
+		static u32 createSandSmoke(fx32 x, fx32 y, fx32 z);
 
 		// 0x2022364
-		sym static u32 createLittleWhiteSmoke(fx32 x, fx32 y, fx32 z) __rbody
+		static u32 createLittleWhiteSmoke(fx32 x, fx32 y, fx32 z);
 
 		// 0x20222ec
-		sym static u32 createGlitterStars(fx32 x, fx32 y, fx32 z) __rbody
+		static u32 createGlitterStars(fx32 x, fx32 y, fx32 z);
 
 		// 0x2022274
-		sym static u32 createBubbles(fx32 x, fx32 y, fx32 z) __rbody
+		static u32 createBubbles(fx32 x, fx32 y, fx32 z);
 
 		// 0x2022244
-		sym static void createBigSmokePuff(const Vec3& position) __body
+		static void createBigSmokePuff(const Vec3& position);
 
 		// 0x2022220
-		sym static void createSmokePuff(const Vec3& position) __body
+		static void createSmokePuff(const Vec3& position);
 
 		// 0x20221fc
-		sym static void createWaterParticles(const Vec3& position) __body
+		static void createWaterParticles(const Vec3& position);
 
 		// 0x20221d8
-		sym static void createLavaParticles(const Vec3& position) __body
+		static void createLavaParticles(const Vec3& position);
 
 		// 0x20221b4
-		sym static void createPoisonedWaterParticles(const Vec3& position) __body
+		static void createPoisonedWaterParticles(const Vec3& position);
 
 		// 0x2022134
-		sym static void createParticleBoss(u32 particleID, const Vec3& position) __body
+		static void createParticleBoss(u32 particleID, const Vec3& position);
 
 		// 0x20220d8
-		sym static void createParticleBossSimpleCollisionY(u32 particleID, const Vec3& position, const fx32* collY) __body
+		static void createParticleBossSimpleCollisionY(u32 particleID, const Vec3& position, const fx32* collY);
 
 		// 0x20220a4
-		sym static SPLEmitter* getSPLEmitterSafe(u32 emitterID) __rbody // checks if Emitter is nullptr before accessing SPLEmitter.
+		static SPLEmitter* getSPLEmitterSafe(u32 emitterID); // checks if Emitter is nullptr before accessing SPLEmitter.
 
 		// 0x2022074
-		sym static void stopEmitterGeneration(u32 emitterID) __body
+		static void stopEmitterGeneration(u32 emitterID);
 
 		// 0x2022020
-		sym static void stopEmitterGenerationBoss(u32 emitterID) __body // swaps SPLEmitter and calls stopEmitterGeneration, despite it not using SPLEmitter directly at all
+		static void stopEmitterGenerationBoss(u32 emitterID); // swaps SPLEmitter and calls stopEmitterGeneration, despite it not using SPLEmitter directly at all
 
 		// 0x2022008
-		sym static void setEmitterGenerationRate(u32 emitterID, u32 rate) __body
+		static void setEmitterGenerationRate(u32 emitterID, u32 rate);
 
 		// 0x2021ff0
-		sym static void setEmitterParticleLife(u32 emitterID, u16 life) __body
+		static void setEmitterParticleLife(u32 emitterID, u16 life);
 
 		// 0x2021f7c
-		sym static u32 runEmitterInitialVelocityAxis(u32 emitterID, u32 particleID, const Vec3& position, const VecFx16* axis = nullptr, const fx32* collY = nullptr, const fx16* baseScale = nullptr, const fx16* initVelocityAxis = nullptr, ControllerBase* controller = nullptr) __rbody
+		static u32 runEmitterInitialVelocityAxis(u32 emitterID, u32 particleID, const Vec3& position, const VecFx16* axis = nullptr, const fx32* collY = nullptr, const fx16* baseScale = nullptr, const fx16* initVelocityAxis = nullptr, ControllerBase* controller = nullptr);
 
 		// 0x2021f58
-		sym static void setPolygonAttributeBoss(u32 attribute) __body
+		static void setPolygonAttributeBoss(u32 attribute);
 
 		// 0x2021f30
-		sym static void resetPolygonAttributeBoss(u32 attribute) __body
+		static void resetPolygonAttributeBoss(u32 attribute);
 
 		// 0x2021f0c
-		sym static void disable() __body
+		static void disable();
 	};
 	NTR_SIZE_GUARD(Handler, 0x7F4);
 

@@ -10,11 +10,11 @@ public:
 	MtxFx43 viewMatrix;
 
 	//020a3abc
-	sym virtual s32 onRender() override __rbody
+	virtual s32 onRender() override;
 
 	//D0:020a3a88
 	//D1:020a3a5c
-	sym virtual ~View() __body
+	virtual ~View();
 
 
 };

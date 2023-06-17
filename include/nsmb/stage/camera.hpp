@@ -17,13 +17,13 @@ public:
 	NTR_INLINE virtual ~StageCamera() override {}
 
 	//020ce540
-	sym virtual s32 onCreate() override __rbody
+	virtual s32 onCreate() override;
 
 	//020ce42c
-	sym virtual s32 onUpdate() override __rbody
+	virtual s32 onUpdate() override;
 
 	//020ce46c
-	sym virtual s32 onRender() override __rbody
+	virtual s32 onRender() override;
 
 	static constexpr u16 objectID = 316;
 

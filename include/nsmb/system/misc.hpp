@@ -23,20 +23,20 @@ namespace Game
 {
 
 	// 0200765c
-	ssym void storeDataCache(const void* ptr, u32 size) __body
+	void storeDataCache(const void* ptr, u32 size);
 	
 	// 02007684
-	ssym void flushDataCache(const void* ptr, u32 size) __body
+	void flushDataCache(const void* ptr, u32 size);
 	
 
 
 	typedef void (*TaskFunc)(void*);
 	
 	// 02004c30
-	ssym bool taskCleanup() __rbody
+	bool taskCleanup();
 	
 	// 02004cb8
-	ssym void runTask(TaskFunc func, void* arg, u32 prio, void* stack, u32 stackSize) __body
+	void runTask(TaskFunc func, void* arg, u32 prio, void* stack, u32 stackSize);
 
 
 
@@ -52,28 +52,28 @@ namespace Game
 
 
 	// 0200514c
-	ssym void resetSystem(u32 param) __body
+	void resetSystem(u32 param);
 
 	// 0200421c
-	ssym bool drawBNCLSprite(u8 id, GXOamAttr* oamAttrs, OAM::Flags flags, u8 palette, u8 affineSet, const Vec2* scale, s16 rot, const s16 rotCenter[2], OAM::Settings settings, s32 x, s32 y) __rbody
+	bool drawBNCLSprite(u8 id, GXOamAttr* oamAttrs, OAM::Flags flags, u8 palette, u8 affineSet, const Vec2* scale, s16 rot, const s16 rotCenter[2], OAM::Settings settings, s32 x, s32 y);
 
 	// 0200419c
-	ssym bool drawBNCLSpriteSub(u8 id, GXOamAttr* oamAttrs, OAM::Flags flags, u8 palette, u8 affineSet, const Vec2* scale, s16 rot, const s16 rotCenter[2], OAM::Settings settings, s32 x, s32 y) __rbody
+	bool drawBNCLSpriteSub(u8 id, GXOamAttr* oamAttrs, OAM::Flags flags, u8 palette, u8 affineSet, const Vec2* scale, s16 rot, const s16 rotCenter[2], OAM::Settings settings, s32 x, s32 y);
 
 
 	// 02004dfc
-	ssym void initExtendedIDs() __body
+	void initExtendedIDs();
 
 	// 020058c0
-	ssym void waitVBlankIntr() __body
+	void waitVBlankIntr();
 
 	// 02004be0
-	ssym void disableVRAMBanks() __body
+	void disableVRAMBanks();
 
 	// 0200563c
-	ssym u16 getBootScene() __rbody
+	u16 getBootScene();
 
 	// 0200564c
-	ssym void setBootScene(u16 sceneID) __body
+	void setBootScene(u16 sceneID);
 
 }

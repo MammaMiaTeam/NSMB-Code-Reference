@@ -8,14 +8,14 @@ class alignas(4) StageController : public Actor {
 public:
 
 	// 0201FFC4
-	sym StageController() __body
+	StageController();
 
 	// D0: 0201FF40
 	// D1: 0201FF20
-	sym inline virtual ~StageController() {}
+	inline virtual ~StageController() {}
 
 	// 0201FF80
-	sym virtual bool preUpdate() override __rbody
+	virtual bool preUpdate() override;
 
 
 	u8 unk120; // preUpdate related

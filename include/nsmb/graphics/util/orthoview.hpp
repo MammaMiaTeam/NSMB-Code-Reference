@@ -15,7 +15,7 @@ public:
 
 	//D0:020ce734
 	//D1:020ce6dc
-	sym virtual ~OrthoView() __body
+	virtual ~OrthoView();
 
 };
 NTR_SIZE_GUARD(OrthoView, 0x108);

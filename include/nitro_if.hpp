@@ -17,15 +17,15 @@
 
 
 #if NTR_GEN_SYM
-#define sym [[gnu::noinline, gnu::used]]
-#define ssym sym static
-#define __body {}
-#define __rbody { return {}; }
+#define [[gnu::noinline, gnu::used]]
+#define static
+#define; {}
+#define; { return {}; }
 #else
 #define sym
 #define ssym
-#define __body ;
-#define __rbody ;
+#define; ;
+#define; ;
 #endif
 
 

@@ -12,82 +12,82 @@ class Base
 public:
 
 	//0204d2ac (C2, most likely protected)
-	sym Base() __body
+	Base();
 
 	//0204d23c (D2, D1 is pure??)
 	//~Base()
 
 	//0204cba0
-	sym BaseReturnState processCreate() __rbody
+	BaseReturnState processCreate();
 
 	//01ffd22c
-	sym BaseReturnState processUpdate() __rbody
+	BaseReturnState processUpdate();
 
 	//01ffd1c8
-	sym BaseReturnState processRender() __rbody
+	BaseReturnState processRender();
 
 	//0204cb20
-	sym BaseReturnState processDestroy() __rbody
+	BaseReturnState processDestroy();
 
 	//01ffd524
-	sym BaseReturnState process(BaseOnFunction callback, BasePreFunction preCallback, BasePostFunction postCallback) __rbody
+	BaseReturnState process(BaseOnFunction callback, BasePreFunction preCallback, BasePostFunction postCallback);
 
-	sym virtual s32 onCreate() __rbody
-	sym virtual bool preCreate() __rbody
-	sym virtual void postCreate(BaseReturnState state) __body
-	sym virtual s32 onDestroy() __rbody
-	sym virtual bool preDestroy() __rbody
-	sym virtual void postDestroy(BaseReturnState state) __body
-	sym virtual s32 onUpdate() __rbody
-	sym virtual bool preUpdate() __rbody
-	sym virtual void postUpdate(BaseReturnState state) __body
-	sym virtual s32 onRender() __rbody
-	sym virtual bool preRender() __rbody
-	sym virtual void postRender(BaseReturnState state) __body
+	virtual s32 onCreate();
+	virtual bool preCreate();
+	virtual void postCreate(BaseReturnState state);
+	virtual s32 onDestroy();
+	virtual bool preDestroy();
+	virtual void postDestroy(BaseReturnState state);
+	virtual s32 onUpdate();
+	virtual bool preUpdate();
+	virtual void postUpdate(BaseReturnState state);
+	virtual s32 onRender();
+	virtual bool preRender();
+	virtual void postRender(BaseReturnState state);
 
-	sym virtual void onCleanupResources() __body
-	sym virtual bool prepareResourcesSafe(u32 size, Heap* parent) __rbody
-	sym virtual bool prepareResourcesFast(u32 size, Heap* parent) __rbody
-	sym virtual bool onPrepareResources() __rbody
+	virtual void onCleanupResources();
+	virtual bool prepareResourcesSafe(u32 size, Heap* parent);
+	virtual bool prepareResourcesFast(u32 size, Heap* parent);
+	virtual bool onPrepareResources();
 
 	//0204cc04
-	sym void create() __body
+	void create();
 
 	//0204d08c
-	sym void destroy() __body
+	void destroy();
 
 	//0204cac0
-	sym bool hasChildNotCreated() __rbody
+	bool hasChildNotCreated();
 
 	//D1 is null
-	sym virtual ~Base() __body
+	virtual ~Base();
 
 	//0204d078
 	//Null if root
-	sym Base* getParent() __rbody 
+	Base* getParent(); 
 	//0204cc98
-	sym void* operator new(size_t size) __rbody
+	void* operator new(size_t size);
 
 	//0204cc7c
-	sym void operator delete(void* ptr) __body
+	void operator delete(void* ptr);
 
 	//0204ca80
-	sym static void setSpawnParams(u16 objectID, SceneNode* parent, u32 settings, ObjectType type) __body
+	static void setSpawnParams(u16 objectID, SceneNode* parent, u32 settings, ObjectType type);
 
 	//0204c974
-	sym static u32 loadSceneOverlay(u16 objectID) __rbody
+	static u32 loadSceneOverlay(u16 objectID);
 
 	//0204c948
-	sym static void unloadSceneOverlay(u16 objectID) __body
+	static void unloadSceneOverlay(u16 objectID);
 
 	//0204c9a4
-	sym static Base* spawn(u16 objectID, SceneNode* parent, u32 settings, ObjectType type) __rbody
+	static Base* spawn(u16 objectID, SceneNode* parent, u32 settings, ObjectType type);
 
 	//0204c920
-	sym static Base* spawnChild(u16 objectID, Base* parent, u32 settings, ObjectType type) __rbody
+	static Base* spawnChild(u16 objectID, Base* parent, u32 settings, ObjectType type);
 
 	//0204c908
-	sym static Base* spawnParent(u16 objectID, u32 settings, ObjectType type) __rbody
+	static Base* spawnParent(u16 objectID, u32 settings, ObjectType type);
 
 	// 0208fae8
 	static ProfileStep debugProfileStep;
