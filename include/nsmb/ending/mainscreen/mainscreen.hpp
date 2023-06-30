@@ -1,6 +1,6 @@
 #pragma once
 
-#include "nitro_if.hpp"
+#include "nsmb_nitro.hpp"
 
 
 class TextBox;

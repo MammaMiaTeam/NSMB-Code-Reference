@@ -1,6 +1,6 @@
 #pragma once
-#include "nitro_if.hpp"
-#include "nsmb/util.hpp"
+#include "nsmb_nitro.hpp"
+#include "nsmb/extra/bitmaskenum.hpp"
 #include "nsmb/math/vector.hpp"
 
 
@@ -33,7 +33,7 @@ namespace OAM
 
 }
 
-IMPL_ENUMCLASS_OPERATORS(OAM::Flags);
+NTR_CREATE_BITMASK_ENUM(OAM::Flags);
 
 
 namespace OAM

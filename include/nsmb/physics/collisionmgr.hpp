@@ -1,7 +1,8 @@
 #pragma once
-#include "nitro_if.hpp"
+#include "nsmb_nitro.hpp"
 #include "nsmb/math/vector.hpp"
-#include "nsmb/util.hpp"
+#include "nsmb/extra/assert.hpp"
+#include "nsmb/extra/bitmaskenum.hpp"
 
 
 enum class ActorType : u8;
@@ -38,7 +39,7 @@ enum class DamageTileFlags : u8
 
 };
 
-IMPL_ENUMCLASS_OPERATORS(DamageTileFlags);
+NTR_CREATE_BITMASK_ENUM(DamageTileFlags);
 
 // TODO: move somewhere else (liquid.h)
 enum class LiquidType
@@ -74,7 +75,7 @@ enum class TileModifier : u8
 
 };
 
-IMPL_ENUMCLASS_OPERATORS(TileModifier);
+NTR_CREATE_BITMASK_ENUM(TileModifier);
 
 struct TileType
 {
@@ -733,8 +734,8 @@ using LineSensorH			= CollisionMgr::LineSensorH;
 using LineSensorV			= CollisionMgr::LineSensorV;
 
 
-IMPL_ENUMCLASS_OPERATORS(CollisionMgrResult);
-IMPL_ENUMCLASS_OPERATORS(SensorFlags);
+NTR_CREATE_BITMASK_ENUM(CollisionMgrResult);
+NTR_CREATE_BITMASK_ENUM(SensorFlags);
 
 
 constexpr PointSensor::PointSensor(fx32 x, fx32 y, SensorFlags flags) :

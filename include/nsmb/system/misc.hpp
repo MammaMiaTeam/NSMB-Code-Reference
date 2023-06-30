@@ -1,5 +1,5 @@
 #pragma once
-#include "nitro_if.hpp"
+#include "nsmb_nitro.hpp"
 #include "nsmb/graphics/2d/oam.hpp"
 
 

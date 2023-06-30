@@ -151,4 +151,4 @@ public:
 };
 NTR_SIZE_GUARD(PlayerModel, 0x3C4);
 
-IMPL_ENUMCLASS_OPERATORS(PlayerModel::Flags);
+NTR_CREATE_BITMASK_ENUM(PlayerModel::Flags);

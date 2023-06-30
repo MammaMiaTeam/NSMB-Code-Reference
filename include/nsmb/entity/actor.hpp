@@ -2,6 +2,7 @@
 #include "common.hpp"
 #include "object.hpp"
 #include "nsmb/math/vector.hpp"
+#include "nsmb/extra/bitmaskenum.hpp"
 
 
 enum class ActorType : u8 {
@@ -21,7 +22,7 @@ enum class ActorCategory : u8 {
 	StageOverlay		= (1 << 6),
 	StageEntity			= (1 << 7)
 };
-IMPL_ENUMCLASS_OPERATORS(ActorCategory);
+NTR_CREATE_BITMASK_ENUM(ActorCategory);
 
 
 struct ActorProfile : public ObjectProfile {

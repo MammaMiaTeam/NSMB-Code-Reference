@@ -1,5 +1,5 @@
 #pragma once
-#include "ntr_assert.hpp"
+#include "nsmb/extra/assert.hpp"
 #include "entrance.hpp"
 
 
@@ -76,7 +76,7 @@ namespace Stage
 
 	constexpr u32 getBlockUnitSize(u32 blockID) {
 
-		if_consteval {
+		if consteval {
 
 			constexpr u32 sizes[] = {
 				0x20,

@@ -902,7 +902,7 @@ using PlayerConstants		= Player::Constants;
 using PlayerSensorConfig	= Player::SensorConfig;
 using PlayerPowerupParam	= Player::PowerupParam;
 
-IMPL_ENUMCLASS_OPERATORS(Player::ColliderPushSide);
+NTR_CREATE_BITMASK_ENUM(Player::ColliderPushSide);
 
 
 // Assumed from 020E3824 (ov10)

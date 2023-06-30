@@ -1,5 +1,5 @@
 #pragma once
-#include "nitro_if.hpp"
+#include "nsmb_nitro.hpp"
 
 
 enum class PlayerSpawnType : u8;
@@ -44,7 +44,7 @@ enum class EntranceFlags : u8 {
 	ExitOnly		= 0x80
 
 };
-IMPL_ENUMCLASS_OPERATORS(EntranceFlags);
+NTR_CREATE_BITMASK_ENUM(EntranceFlags);
 
 
 enum class EntranceTransitionFlags : u8 {
@@ -55,7 +55,7 @@ enum class EntranceTransitionFlags : u8 {
 	CircleFade		= 0x08
 
 };
-IMPL_ENUMCLASS_OPERATORS(EntranceTransitionFlags);
+NTR_CREATE_BITMASK_ENUM(EntranceTransitionFlags);
 
 
 enum class EntranceUseResult : u32 {

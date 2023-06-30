@@ -1,6 +1,6 @@
 #pragma once
-#include "nitro_if.hpp"
-#include "extra/fx.hpp"
+#include "nsmb_nitro.hpp"
+#include "nsmb/extra/fixedpoint.hpp"
 
 
 struct FxRect {
@@ -199,7 +199,7 @@ namespace Math {
 	}
 
 	constexpr fx32 div(fx32 n, fx32 d) {
-		if_consteval {
+		if consteval {
 			return (s32)(((s64)(n << 12)) / d);
 		}
 		else {
@@ -208,7 +208,7 @@ namespace Math {
 	}
 
 	constexpr fx64c div64c(fx32 n, fx32 d) {
-		if_consteval {
+		if consteval {
 			return (((s64)n) << 32) / d;
 		}
 		else {
@@ -217,7 +217,7 @@ namespace Math {
 	}
 
 	constexpr fx32 inv(fx32 d) {
-		if_consteval {
+		if consteval {
 			return div(FX32_ONE, d);
 		}
 		else {

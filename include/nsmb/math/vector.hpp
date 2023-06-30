@@ -1,7 +1,6 @@
 #pragma once
-#include "nitro_if.hpp"
-#include "ntr_assert.hpp"
-#include "nodiscard.hpp"
+#include "nsmb_nitro.hpp"
+#include "nsmb/extra/ignore.hpp"
 #include "math.hpp"
 
 
@@ -90,7 +89,7 @@ public:
 
 	constexpr Vec3& mul(fx32 rhs) {
 
-		if_consteval {
+		if consteval {
 
 			x = Math::mul(x, rhs);
 			y = Math::mul(y, rhs);
@@ -109,13 +108,13 @@ public:
 	}
 
 	// 02045BDC
-	ntr_nodisc static Vec3 add(const Vec3& a, const VecFx32& b);
+	NTR_NODISC static Vec3 add(const Vec3& a, const VecFx32& b);
 	// 02045B90
-	ntr_nodisc static Vec3 sub(const Vec3& a, const VecFx32& b);
+	NTR_NODISC static Vec3 sub(const Vec3& a, const VecFx32& b);
 	// 02045B24
-	ntr_nodisc static Vec3 mul(const Vec3& vec, fx32 factor);
+	NTR_NODISC static Vec3 mul(const Vec3& vec, fx32 factor);
 
-	ntr_nodisc constexpr Vec3 div(const Vec3& vec, fx32 factor) {
+	NTR_NODISC constexpr Vec3 div(const Vec3& vec, fx32 factor) {
 
 		//ntr_assert(factor != 0, "Tried to divide vector by zero");
 
@@ -131,7 +130,7 @@ public:
 
 
 
-	ntr_nodisc constexpr Vec3 operator+(const VecFx32& rhs) const {
+	NTR_NODISC constexpr Vec3 operator+(const VecFx32& rhs) const {
 
 		Vec3 out = *this;
 
@@ -141,7 +140,7 @@ public:
 
 	}
 
-	ntr_nodisc constexpr Vec3 operator-(const VecFx32& rhs) const {
+	NTR_NODISC constexpr Vec3 operator-(const VecFx32& rhs) const {
 
 		Vec3 out = *this;
 
@@ -151,7 +150,7 @@ public:
 
 	}
 
-	ntr_nodisc constexpr Vec3 operator*(fx32 rhs) const {
+	NTR_NODISC constexpr Vec3 operator*(fx32 rhs) const {
 
 		Vec3 out = *this;
 
@@ -161,7 +160,7 @@ public:
 
 	}
 
-	ntr_nodisc constexpr Vec3 operator/(fx32 rhs) const {
+	NTR_NODISC constexpr Vec3 operator/(fx32 rhs) const {
 
 		Vec3 out = *this;
 
@@ -206,7 +205,7 @@ public:
 
 	}
 
-	ntr_nodisc constexpr Vec3 operator-() const {
+	NTR_NODISC constexpr Vec3 operator-() const {
 		return Vec3(-x, -y, -z);
 	}
 
@@ -217,12 +216,12 @@ public:
 
 
 
-	ntr_nodisc inline fx32 length() const {
+	NTR_NODISC inline fx32 length() const {
 		return VEC_Mag(this);
 	}
 
 	// 020459FC
-	ntr_nodisc fx32 distance(const VecFx32& other) const; // Calculates the distance from the vector to another one
+	NTR_NODISC fx32 distance(const VecFx32& other) const; // Calculates the distance from the vector to another one
 	// 020459AC
 	Vec3 cross(const VecFx32& other) const; // Performs the cross product between the vector and another one, then returns it
 	// 02045958
@@ -233,7 +232,7 @@ public:
 	}
 
 	// 02045908
-	ntr_nodisc Vec3 normalize(); // Normalizes the vector and returns it
+	NTR_NODISC Vec3 normalize(); // Normalizes the vector and returns it
 	// 020458B0
 	bool normalizeSafe(); // Normalizes the vector if not null
 
@@ -241,7 +240,7 @@ public:
 
 		Vec3 out = *this;
 
-		ntr_ignore = out.normalize();
+		Ignore = out.normalize();
 
 		return out;
 
@@ -355,7 +354,7 @@ public:
 
 	constexpr Vec2& mul(fx32 rhs) {
 
-		if_consteval {
+		if consteval {
 
 			x = Math::mul(x, rhs);
 			y = Math::mul(y, rhs);
@@ -486,15 +485,15 @@ public:
 
 
 	// 02045E10
-	ntr_nodisc fx32 length() const; // Calculates the magnitude of the vector
+	NTR_NODISC fx32 length() const; // Calculates the magnitude of the vector
 	// 02045DDC
-	ntr_nodisc fx32 distance(const VecFx32& other) const; // Calculates the distance from the vector to another one
+	NTR_NODISC fx32 distance(const VecFx32& other) const; // Calculates the distance from the vector to another one
 	// 02045DBC
 	fx64 magnitudeSquared() const; // Returns the squared magnitude (length^2)
 	// 02045D74
 	fx32 crossLength(const Vec2& other) const; // Emulates a 3D cross product and returns the Z component of the resulting vector
 	// 02045D1C
-	ntr_nodisc Vec2 normalize(); // Normalizes the vector and returns it
+	NTR_NODISC Vec2 normalize(); // Normalizes the vector and returns it
 	// 02045CD0
 	bool normalizeSafe(); // Normalizes the vector if not null
 
@@ -502,7 +501,7 @@ public:
 
 		Vec2 out = *this;
 
-		ntr_ignore = out.normalize();
+		Ignore = out.normalize();
 
 		return out;
 
@@ -636,15 +635,15 @@ public:
 		return *this /= rhs;
 	}
 
-	ntr_nodisc constexpr static Vec3s add(const Vec3s& a, const VecFx16& b) {
+	NTR_NODISC constexpr static Vec3s add(const Vec3s& a, const VecFx16& b) {
 		return Vec3s(a.x + b.x, a.y + b.y, a.z + b.z);
 	}
 
-	ntr_nodisc constexpr static Vec3s sub(const Vec3s& a, const VecFx16& b) {
+	NTR_NODISC constexpr static Vec3s sub(const Vec3s& a, const VecFx16& b) {
 		return Vec3s(a.x - b.x, a.y - b.y, a.z - b.z);
 	}
 
-	ntr_nodisc constexpr static Vec3s mul(const Vec3s& vec, fx16 factor) {
+	NTR_NODISC constexpr static Vec3s mul(const Vec3s& vec, fx16 factor) {
 
 		Vec3s out;
 
@@ -656,7 +655,7 @@ public:
 
 	}
 
-	ntr_nodisc constexpr static Vec3s div(const Vec3s& vec, fx16 factor) {
+	NTR_NODISC constexpr static Vec3s div(const Vec3s& vec, fx16 factor) {
 
 		//ntr_assert(factor != 0, "Tried to divide vector by zero");
 
@@ -672,7 +671,7 @@ public:
 
 
 
-	ntr_nodisc constexpr Vec3s operator+(const VecFx16& rhs) const {
+	NTR_NODISC constexpr Vec3s operator+(const VecFx16& rhs) const {
 
 		Vec3s out = *this;
 
@@ -682,7 +681,7 @@ public:
 
 	}
 
-	ntr_nodisc constexpr Vec3s operator-(const VecFx16& rhs) const {
+	NTR_NODISC constexpr Vec3s operator-(const VecFx16& rhs) const {
 
 		Vec3s out = *this;
 
@@ -692,7 +691,7 @@ public:
 
 	}
 
-	ntr_nodisc constexpr Vec3s operator*(fx16 rhs) const {
+	NTR_NODISC constexpr Vec3s operator*(fx16 rhs) const {
 
 		Vec3s out = *this;
 
@@ -702,7 +701,7 @@ public:
 
 	}
 
-	ntr_nodisc constexpr Vec3s operator/(fx16 rhs) const {
+	NTR_NODISC constexpr Vec3s operator/(fx16 rhs) const {
 
 		Vec3s out = *this;
 
@@ -754,7 +753,7 @@ public:
 
 	}
 
-	ntr_nodisc constexpr Vec3s operator-() const {
+	NTR_NODISC constexpr Vec3s operator-() const {
 		return Vec3s(-x, -y, -z);
 	}
 

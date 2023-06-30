@@ -1,5 +1,5 @@
 #pragma once
-#include "nitro_if.hpp"
+#include "nsmb_nitro.hpp"
 #include "nsmb/math/math.hpp"
 #include "nsmb/math/vector.hpp"
 
@@ -17,7 +17,7 @@ enum class CollisionGroup : u8
 	Bullet,			// bullet bill/banzai bill
 	Debris,			// volcano debris
 };
-IMPL_ENUMCLASS_OPERATORS(CollisionGroup);
+NTR_CREATE_BITMASK_ENUM(CollisionGroup);
 
 
 enum class CollisionFlag : u8
@@ -39,7 +39,7 @@ enum class CollisionFlag : u8
 	Flag14,
 	Flag15,
 };
-IMPL_ENUMCLASS_OPERATORS(CollisionFlag);
+NTR_CREATE_BITMASK_ENUM(CollisionFlag);
 
 
 namespace

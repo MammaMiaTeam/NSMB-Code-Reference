@@ -62,7 +62,7 @@ struct LinkedList {
 	bool append(ProcessNode* node);
 
 	//02043920
-	sym	bool remove(ProcessNode* node);
+	bool remove(ProcessNode* node);
 
 	//020438b0
 	bool prepend(ProcessNode* node);

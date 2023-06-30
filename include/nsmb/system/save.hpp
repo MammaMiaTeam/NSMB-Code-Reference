@@ -1,6 +1,6 @@
 #pragma once
-#include "nitro_if.hpp"
-#include "nsmb/util.hpp"
+#include "nsmb_nitro.hpp"
+#include "nsmb/extra/bitmaskenum.hpp"
 
 
 struct MinigameHighscore {
@@ -136,11 +136,11 @@ struct MainSave {
 };
 NTR_SIZE_GUARD(MainSave, 0x248);
 
-IMPL_ENUMCLASS_OPERATORS(MainSave::WorldFlags);
-IMPL_ENUMCLASS_OPERATORS(MainSave::NodeFlags);
-IMPL_ENUMCLASS_OPERATORS(MainSave::StartFlags);
-IMPL_ENUMCLASS_OPERATORS(MainSave::PathFlags);
-IMPL_ENUMCLASS_OPERATORS(MainSave::CompletionFlags);
+NTR_CREATE_BITMASK_ENUM(MainSave::WorldFlags);
+NTR_CREATE_BITMASK_ENUM(MainSave::NodeFlags);
+NTR_CREATE_BITMASK_ENUM(MainSave::StartFlags);
+NTR_CREATE_BITMASK_ENUM(MainSave::PathFlags);
+NTR_CREATE_BITMASK_ENUM(MainSave::CompletionFlags);
 
 
 struct OptionSave {

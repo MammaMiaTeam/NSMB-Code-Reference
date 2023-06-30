@@ -1,5 +1,5 @@
 #pragma once
-#include "nitro_if.hpp"
+#include "nsmb_nitro.hpp"
 #include <new>
 
 
@@ -13,7 +13,7 @@ extern "C" {
 
 	};
 
-	DestructorChain** __global_destructor_chain;
+	extern DestructorChain** __global_destructor_chain;
 
 	void __destroy_global_chain(void);
 

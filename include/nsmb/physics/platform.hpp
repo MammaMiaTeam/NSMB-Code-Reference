@@ -1,6 +1,6 @@
 #pragma once
-#include "nitro_if.hpp"
-#include "nsmb/util.hpp"
+#include "nsmb_nitro.hpp"
+#include "nsmb/extra/bitmaskenum.hpp"
 #include "nsmb/math/vector.hpp"
 
 

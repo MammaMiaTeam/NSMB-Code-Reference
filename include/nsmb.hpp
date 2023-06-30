@@ -1,8 +1,6 @@
 #pragma once
 
-#include "nitro_if.hpp"
-
-#include "ntr_assert.hpp"
+#include "nsmb_nitro.hpp"
 
 #include "nsmb/boot.hpp"
 #include "nsmb/ending.hpp"
@@ -19,10 +17,8 @@
 #include "nsmb/system.hpp"
 #include "nsmb/titlescreen.hpp"
 #include "nsmb/ui.hpp"
-#include "nsmb/util.hpp"
 #include "nsmb/wifi.hpp"
 #include "nsmb/world.hpp"
 #include "nsmb/worldmap.hpp"
-
-#include "extra/fx.hpp"
-#include "extra/ostream.hpp"
+#include "nsmb/vendor.hpp"
+#include "nsmb/extra.hpp"

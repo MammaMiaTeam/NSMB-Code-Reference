@@ -1,6 +1,7 @@
 #pragma once
 
-#include "nitro_if.hpp"
+#include "nsmb_nitro.hpp"
+#include "nsmb/extra/preprocessor.hpp"
 
 
 namespace End {
@@ -509,8 +510,8 @@ namespace End {
 }
 
 
-GCC_PUSH
-GCC_IGNORE("-Wliteral-suffix")
+PP_DIAGNOSTIC_PUSH
+PP_DIAGNOSTIC_IGNORE("-Wliteral-suffix")
 
 consteval End::CharT operator""end(char c) {
 	return End::charConv(c);
@@ -539,4 +540,4 @@ consteval const End::CharT* operator""end() {
 
 #endif
 
-GCC_POP
+PP_DIAGNOSTIC_POP

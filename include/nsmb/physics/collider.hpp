@@ -1,6 +1,6 @@
 #pragma once
-#include "nitro_if.hpp"
-#include "nsmb/util.hpp"
+#include "nsmb_nitro.hpp"
+#include "nsmb/extra/bitmaskenum.hpp"
 #include "collisionmgr.hpp"
 
 
@@ -153,5 +153,5 @@ public:
 };
 NTR_SIZE_GUARD(Collider, 0x6C);
 
-IMPL_ENUMCLASS_OPERATORS(Collider::UpdateFlag);
-IMPL_ENUMCLASS_OPERATORS(Collider::OptionFlag);
+NTR_CREATE_BITMASK_ENUM(Collider::UpdateFlag);
+NTR_CREATE_BITMASK_ENUM(Collider::OptionFlag);

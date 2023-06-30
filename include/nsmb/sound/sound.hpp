@@ -5,6 +5,7 @@
 #include "sndgroupdef.hpp"
 #include "seqplayerdef.hpp"
 #include "nsmb/math/vector.hpp"
+#include "nsmb/extra/assert.hpp"
 
 
 namespace SND {

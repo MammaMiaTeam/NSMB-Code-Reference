@@ -1,12 +1,14 @@
 
-# visual studio
+# IDE
 /.vs/
 /.vscode/
 
-# nitro
+# Nitro
 /include/nitro/
 /include/nitro_wl/
 /include/nnsys/
 /include/nitro.h
 /include/nnsys.h
-include/intellisense.h
+
+# Misc
+*.bak

@@ -25,7 +25,7 @@ enum class CollisionSwitch : u16
 	// 1U << 13 - used in Manhole
 	NoFireball			= (1U << 14),	// Ignore fireball collision
 };
-IMPL_ENUMCLASS_OPERATORS(CollisionSwitch);
+NTR_CREATE_BITMASK_ENUM(CollisionSwitch);
 
 
 enum class SpawnSettings : u16
@@ -36,7 +36,7 @@ enum class SpawnSettings : u16
 	AlwaysLoad			= (1U << 2),
 	IgnoreView			= (1U << 3),
 };
-IMPL_ENUMCLASS_OPERATORS(SpawnSettings);
+NTR_CREATE_BITMASK_ENUM(SpawnSettings);
 
 
 enum class CollisionType : u32
@@ -70,7 +70,7 @@ enum class CollisionType : u32
 	FenceSlam			= (1U << 16),
 
 };
-IMPL_ENUMCLASS_OPERATORS(CollisionType);
+NTR_CREATE_BITMASK_ENUM(CollisionType);
 
 
 struct ObjectInfo
@@ -133,7 +133,7 @@ enum class SimplePlayerCollisionFlags : u16
 	SpecialPlayer0	= 1 << 2,
 	SpecialPlayer1	= 1 << 3,
 };
-IMPL_ENUMCLASS_OPERATORS(SimplePlayerCollisionFlags);
+NTR_CREATE_BITMASK_ENUM(SimplePlayerCollisionFlags);
 
 
 struct SimplePlayerCollision
@@ -671,4 +671,4 @@ public:
 };
 NTR_SIZE_GUARD(StageEntity, 0x3F4);
 
-IMPL_ENUMCLASS_OPERATORS(StageEntity::CollisionResponse);
+NTR_CREATE_BITMASK_ENUM(StageEntity::CollisionResponse);

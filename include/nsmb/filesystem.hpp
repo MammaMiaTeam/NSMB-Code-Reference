@@ -8,4 +8,3 @@
 
 
 namespace Filesystem = FS;
-namespace fs = FS;

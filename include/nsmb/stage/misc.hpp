@@ -1,5 +1,5 @@
 #pragma once
-#include "nitro_if.hpp"
+#include "nsmb_nitro.hpp"
 #include "layout/stagelayout.hpp"
 #include "layout/data.hpp"
 #include "nsmb/wifi/util.hpp"

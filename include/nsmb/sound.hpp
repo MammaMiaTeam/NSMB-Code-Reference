@@ -8,4 +8,3 @@
 
 
 namespace Sound = SND;
-namespace snd = SND;
