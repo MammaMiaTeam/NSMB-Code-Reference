@@ -42,6 +42,7 @@
 #define NTR_ERROR(msg)			[[gnu::error(msg)]]
 #define NTR_ALIAS(sym)			[[gnu::alias(sym)]]
 #define NTR_WEAKREF(sym)		[[gnu::weakref(sym)]]
+#define NTR_COPY(sym)			[[gnu::copy(sym)]]
 #define NTR_FALLTHROUGH			[[fallthrough]]
 #define NTR_NORETURN			[[noreturn]]
 #define NTR_NODISC				[[nodiscard]]

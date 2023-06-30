@@ -9,13 +9,15 @@
 #define NTR_TERMINATE_SYMBOL	__ntr_terminate
 
 
-NTR_NORETURN NTR_INLINE static void NTR_TERMINATE_SYMBOL() {
+NTR_COPY(OS_Terminate) NTR_INLINE static void NTR_TERMINATE_SYMBOL() {
 	OS_Terminate();
 }
 
 
 #define ntr_terminate() do {NTR_TERMINATE_SYMBOL();} while (false)
 
+
+#ifdef NTR_DEBUG
 
 static constexpr void NTR_ASSERT_SYMBOL(bool condition, const char* file, int line, const char* message, ...) {
 
@@ -36,11 +38,13 @@ static constexpr void NTR_ASSERT_SYMBOL(bool condition, const char* file, int li
 
 }
 
+#endif
 
-#ifdef NTR_DEBUG // TODO __VA_OPT__ Over GCC extension
 
-	#define ntr_assert(cond, msg, ...) do {NTR_ASSERT_SYMBOL(!!(cond), __FILE__, __LINE__, (msg), ##__VA_ARGS__);} while (false)
-	#define ntr_force_assert(msg, ...) ntr_assert(false, (msg), ##__VA_ARGS__)
+#ifdef NTR_DEBUG
+
+	#define ntr_assert(cond, msg, ...) do {NTR_ASSERT_SYMBOL(!!(cond), __FILE__, __LINE__, msg __VA_OPT__(,) __VA_ARGS__);} while (false)
+	#define ntr_force_assert(msg, ...) ntr_assert(false, msg __VA_OPT__(,) __VA_ARGS__)
 
 #else
 
