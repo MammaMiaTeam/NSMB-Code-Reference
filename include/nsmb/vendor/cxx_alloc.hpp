@@ -44,7 +44,7 @@ extern "C" {
 	};
 
 	// Define a global object
-#define CXX_OBJ(type, name) \
+	#define CXX_OBJ(type, name) \
 	static inline void __dtor_##name(type* obj) { \
 		obj->~type(); \
 	} \
@@ -52,7 +52,7 @@ extern "C" {
 	type name
 
 	// Define a global object with the same lifetime as a given overlay
-#define CXX_OBJ_OV(type, name) \
+	#define CXX_OBJ_OV(type, name) \
 	static inline void __dtor_##name(type* obj) { \
 		obj->~type(); \
 	} \
@@ -60,12 +60,12 @@ extern "C" {
 	type name
 
 	// Initialize and register a global object
-#define CXX_OBJ_INIT(name) \
+	#define CXX_OBJ_INIT(name) \
 	new (&name) decltype(name); \
 	__register_global_object(&name, reinterpret_cast<void*>(&__dtor_##name), &name##_dc)
 
 	// Initialize and register a global object with the same lifetime as the given overlay
-#define CXX_OBJ_INIT_OV(ovID, name) \
+	#define CXX_OBJ_INIT_OV(ovID, name) \
 	CXX_OBJ_INIT(name); \
 	name##_dc.overlayID = ovID
 	

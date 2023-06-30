@@ -510,7 +510,7 @@ namespace End {
 }
 
 
-PP_DIAGNOSTIC_PUSH
+PP_DIAGNOSTIC_PUSH()
 PP_DIAGNOSTIC_IGNORE("-Wliteral-suffix")
 
 consteval End::CharT operator""end(char c) {
@@ -540,4 +540,4 @@ consteval const End::CharT* operator""end() {
 
 #endif
 
-PP_DIAGNOSTIC_POP
+PP_DIAGNOSTIC_POP()

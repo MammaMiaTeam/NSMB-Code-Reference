@@ -93,12 +93,12 @@ struct EscapeSequenceEntry {
 
 	/*
 		Call parameters are encoded as follows:
-			0x00000001: Virtual function call flag: If set, functionTarget is interp__reted as the virtual function table offset
+			0x00000001: Virtual function call flag: If set, functionTarget is interpreted as the virtual function table offset
 			0xFFFFFFFE: Object offset: Determines the caller object by offsetting the object's current this pointer.
 
 		An escape sequence function is thereby called like:
 
-			object = reinterp__ret_cast<u8*>(object) + (entry->callParams >> 1); //Offset address by object offset
+			object = reinterpret_cast<u8*>(object) + (entry->callParams >> 1); //Offset address by object offset
 
 			if(entry->callParams & 1){
 				(**object + entry->functionTarget)(object, escapeSequence); //Call virtual function

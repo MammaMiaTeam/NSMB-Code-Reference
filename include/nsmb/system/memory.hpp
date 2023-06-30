@@ -54,7 +54,7 @@ public:
 	void deallocate(void* ptr);												//Calls vDeallocate. Skips null pointers.
 	void destroy();															//Calls vDestroy
 	void dispose();															//Calls Destroy
-	static s32 forcePo2Alignment(s32 minAlign, u32 po2Align);				//returns po2Align if it's not smaller than minAlign. If it is, it finds the next greater po2 of minAlign. Sign is __retained.
+	static s32 forcePo2Alignment(s32 minAlign, u32 po2Align);				//returns po2Align if it's not smaller than minAlign. If it is, it finds the next greater po2 of minAlign. Sign is retained.
 	void lockMutex();														//Calls vLockMutex. If we're in a non-system mode (e.g. IRQ) and flag 0x2000 is set, OS_Panic is called.
 	u32 maxAllocatableSize(s32 align);										//Calls vMaxAllocatableSize
 	u32 maxAllocationUnitSize();											//Calls vMaxAllocationUnitSize

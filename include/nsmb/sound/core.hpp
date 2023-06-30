@@ -6,7 +6,7 @@ extern "C" void PushCommand_impl(SNDCommandID command, u32 arg0, u32 arg1, u32 a
 
 namespace SND
 {
-	namespace __Detail
+	namespace Detail
 	{
 
 		constexpr inline u16 kPitchTable[SND_PITCH_TABLE_SIZE] = {
@@ -155,7 +155,7 @@ namespace SND
 			pitch -= SND_PITCH_TABLE_SIZE;
 		}
 
-		u64 timer = __Detail::kPitchTable[pitch];
+		u64 timer = Detail::kPitchTable[pitch];
 
 		timer += SND_PITCH_TABLE_BIAS;
 		timer *= base_timer;
@@ -182,7 +182,7 @@ namespace SND
 	}
 
 	constexpr s16 calcDecibel(int scale) {
-		return __Detail::kDecibelTable[MATH_CLAMP(scale, 0, 127)];
+		return Detail::kDecibelTable[MATH_CLAMP(scale, 0, 127)];
 	}
 
 	NTR_INLINE u16 calcChannelVolume(int dB) {

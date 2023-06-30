@@ -271,17 +271,18 @@ namespace Math {
 
 }
 
-#pragma GCC diagnostic push
-#pragma GCC diagnostic ignored "-Wliteral-suffix"
+PP_DIAGNOSTIC_PUSH()
+PP_DIAGNOSTIC_IGNORE("-Wliteral-suffix")
 
 consteval s32 operator""rad(long double r) {
 
 	constexpr long double twopi = 6.28318530718;
 
-	if (r > 0)
-		while (r >= twopi) r -= twopi;
-	else
-		while (r < 0.0f) r += twopi;
+	if (r > 0) {
+		while (r >= twopi) { r -= twopi; }
+	} else {
+		while (r < 0.0f) { r += twopi; }
+	}
 
 	return s32(s32((r * 0x10000) / twopi));
 
@@ -289,10 +290,11 @@ consteval s32 operator""rad(long double r) {
 
 consteval s32 operator""deg(long double d) {
 
-	if (d > 0)
-		while (d >= 360.0f) d -= 360.0f;
-	else
-		while (d < 0.0f) d += 360.0f;
+	if (d > 0) {
+		while (d >= 360.0f) { d -= 360.0f; }
+	} else {
+		while (d < 0.0f) { d += 360.0f; }
+	}
 
 	return s32((d * 0x10000) / 360);
 
@@ -300,14 +302,14 @@ consteval s32 operator""deg(long double d) {
 
 consteval s32 operator""deg(unsigned long long d) {
 
-	if (d > 0)
-		while (d >= 360.0f) d -= 360.0f;
-	else
-		while (d < 0.0f) d += 360.0f;
+	if (d > 0) {
+		while (d >= 360.0f) { d -= 360.0f; }
+	} else {
+		while (d < 0.0f) { d += 360.0f; }
+	}
 
 	return s32((d * 0x10000) / 360);
 
 }
 
-#pragma GCC diagnostic pop
-
+PP_DIAGNOSTIC_POP()

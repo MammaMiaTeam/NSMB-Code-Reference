@@ -42,7 +42,7 @@ enum class CollisionFlag : u8
 NTR_CREATE_BITMASK_ENUM(CollisionFlag);
 
 
-namespace
+namespace // TODO Move to Bits
 {
 	template<class T>
 	constexpr auto __mask_or(T a) {

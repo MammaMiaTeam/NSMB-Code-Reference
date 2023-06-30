@@ -31,6 +31,9 @@ namespace CC {
 	template<class T>
 	concept Fixed = Detail::IsFixed<T>::Value;
 
+	template<class T, SizeT Fract>
+	concept FractFixed = Fixed<T> && (T::Shift == Fract);
+
 }
 
 using Fx16 = FixedPoint<s16, 12>;
@@ -630,7 +633,7 @@ constexpr FixedPoint<I, F> operator^(T a, FixedPoint<I, F> b) {
 }
 
 
-PP_DIAGNOSTIC_PUSH
+PP_DIAGNOSTIC_PUSH()
 PP_DIAGNOSTIC_IGNORE("-Wliteral-suffix")
 
 consteval Fx16 operator""fxs(long double value)	{
@@ -649,4 +652,4 @@ consteval Fx64c operator""fxlc(long double value) {
 	return Fx64c(value);
 }
 
-PP_DIAGNOSTIC_POP
+PP_DIAGNOSTIC_POP()
