@@ -1,5 +1,25 @@
 #pragma once
 
+// Safety checks
+// In reality they only get caught if this header is included somewhere, but it should cover most of the cases
+
+#if !__has_include("nitro.h")
+	#error "Nitro SDK 3.0 is missing in the 'include' folder"
+#endif
+
+#if !__has_include("nnsys.h")
+	#error "Nintendo Nitro System 3.0 is missing in the 'include' folder"
+#endif
+
+#ifdef NITRO_H_
+	#error "Nitro SDK included from original header (only use nsmb_nitro.hpp)"
+#endif
+
+#ifdef NNSYS_H_
+	#error "Nintendo Nitro System included from original header (only use nsmb_nitro.hpp)"
+#endif
+
+
 #ifndef SDK_TS
 	#define SDK_TS
 #endif
