@@ -89,7 +89,7 @@ __attribute__((noreturn)) extern void OS_Terminate();
 
 NTR_FORMAT(printf, 2, 3) int OS_SPrintf(char *dst, const char *fmt, ...);
 
-NTR_INLINE int OS_SNPrintf(char* dst, size_t len, const char* fmt, ...) {
+NTR_FORMAT(printf, 2, 3) NTR_INLINE int OS_SNPrintf(char* dst, size_t len, const char* fmt, ...) {
 
 	va_list vl;
 	va_start(vl, fmt);

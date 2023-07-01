@@ -57,11 +57,12 @@ private:
 
 	static constexpr SizeT BufferSize = 120;
 
+	template<class T>
 	struct ValueToken {
 
-		constexpr ValueToken(u8 value) : value(value) {}
+		constexpr ValueToken(T value) : value(value) {}
 
-		u8 value;
+		T value;
 
 	};
 
@@ -73,9 +74,9 @@ public:
 	static constexpr UppercaseToken Uppercase{};
 	static constexpr LowercaseToken Lowercase{};
 
-	struct SetW : ValueToken {};
-	struct SetFill : ValueToken {};
-	struct Precision : ValueToken {};
+	struct SetW : ValueToken<u8> {};
+	struct SetFill : ValueToken<char> {};
+	struct Precision : ValueToken<u8> {};
 
 	enum Base : u8 {
 		Dec,
@@ -90,6 +91,7 @@ public:
 		u8 precision;
 		Base base : 2;
 		bool uppercase : 1;
+		bool fixedVec : 1;
 
 	};
 
@@ -101,7 +103,7 @@ public:
 	}
 
 
-	static void puts(const char* text) {}
+	NTR_INLINE static void puts(const char* text) {}
 
 	NTR_INLINE static void print(const char* fmt, ...) {}
 
@@ -169,91 +171,6 @@ public:
 	}
 
 
-	Log& operator<<(u32 val) {
-
-		SizeT length;
-
-		if (flags.base == Base::Dec) {
-			length = StringConv::decimal(buffer, val);
-		} else if (flags.base == Base::Hex) {
-			length = StringConv::hex(buffer, val, flags.uppercase);
-		} else {
-			length = StringConv::decimal(buffer, val);
-		}
-
-		insertFill(length);
-		flush();
-
-		return *this;
-
-	}
-
-	Log& operator<<(s32 val) {
-
-		SizeT length;
-
-		if (flags.base == Base::Dec) {
-			length = StringConv::decimal(buffer, val);
-		} else if (flags.base == Base::Hex) {
-			length = StringConv::hex(buffer, val, flags.uppercase);
-		} else {
-			length = StringConv::decimal(buffer, val);
-		}
-
-		insertFill(length);
-		flush();
-
-		return *this;
-
-	}
-
-	Log& operator<<(u64 val) {
-
-		SizeT length;
-
-		if (flags.base == Base::Dec) {
-			length = StringConv::decimal(buffer, val);
-		} else if (flags.base == Base::Hex) {
-			length = StringConv::hex(buffer, val, flags.uppercase);
-		} else {
-			length = StringConv::decimal(buffer, val);
-		}
-
-		insertFill(length);
-		flush();
-
-		return *this;
-
-	}
-
-	Log& operator<<(s64 val) {
-
-		SizeT length;
-
-		if (flags.base == Base::Dec) {
-			length = StringConv::decimal(buffer, val);
-		} else if (flags.base == Base::Hex) {
-			length = StringConv::hex(buffer, val, flags.uppercase);
-		} else {
-			length = StringConv::decimal(buffer, val);
-		}
-
-		insertFill(length);
-		flush();
-
-		return *this;
-
-	}
-
-
-	NTR_INLINE Log& operator<<(u8 n)		{ return *this << u32(n); }
-	NTR_INLINE Log& operator<<(u16 n)		{ return *this << u32(n); }
-	NTR_INLINE Log& operator<<(unsigned n)	{ return *this << u32(n); }
-
-	NTR_INLINE Log& operator<<(s8 n)		{ return *this << s32(n); }
-	NTR_INLINE Log& operator<<(s16 n)		{ return *this << s32(n); }
-	NTR_INLINE Log& operator<<(int n)		{ return *this << s32(n); }
-
 	template<class T>
 	NTR_INLINE Log& operator<<(T* ptr) {
 		return *this << rcast<AddressT>(ptr);
@@ -293,6 +210,15 @@ public:
 
 	NTR_INLINE Log& operator<<(const Vec3s& v) {
 		return *this << "[ " << v.x << ", " << v.y << ", " << v.z << " ]";
+	}
+
+	template<CC::Integer I>
+	NTR_INLINE Log& operator<<(I n) {
+
+		printInteger(Math::abs(n), n < 0);
+
+		return *this;
+
 	}
 
 	template<CC::Fixed F>
@@ -369,6 +295,23 @@ private:
 		.uppercase = false
 	};
 
+
+	static void printInteger(u64 n, bool sign) {
+
+		SizeT length;
+
+		if (flags.base == Base::Dec) {
+			length = StringConv::decimal(buffer, sign ? -n : n);
+		} else if (flags.base == Base::Hex) {
+			length = StringConv::hex(buffer, sign ? -n : n, flags.uppercase);
+		} else {
+			length = StringConv::binary(buffer, sign ? -n : n);
+		}
+
+		insertFill(length);
+		flush();
+
+	}
 
 	static void insertFill(SizeT length) {
 

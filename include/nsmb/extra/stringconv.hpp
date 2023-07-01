@@ -17,7 +17,7 @@ namespace StringConv {
 
 		//ntr_assert(base <= 16, "Illegal numeric base");
 
-		if (base <= 16) { // TODO Asserting causes recursive includes
+		if (base > 16) { // TODO Asserting causes recursive includes
 			return 0;
 		}
 
@@ -28,14 +28,14 @@ namespace StringConv {
 		u32 count = 0;
 
 		for (count; count < Size; count++) {
-		
+
 			buffer[count] = chars[n % base];
 			n /= base;
 
 			if (n == 0) {
 				break;
 			}
-		
+
 		}
 
 		count++;
