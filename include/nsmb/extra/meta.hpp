@@ -28,12 +28,15 @@ namespace CC {
 
 	template<class T>
 	concept UnsignedInteger = !Equal<T, bool> && UnsignedIntegral<T>;
-	
+
 	template<class T>
 	concept Float = std::floating_point<T>;
 
 	template<class T>
 	concept Arithmetic = Integral<T> || Float<T>;
+
+	template<class T>
+	concept Pointer = std::is_pointer_v<T>;
 
 }
 

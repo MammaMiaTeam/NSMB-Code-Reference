@@ -7,48 +7,27 @@
 #include "stringconv.hpp"
 
 
-/*#ifdef NTR_DEBUG
+#ifdef NTR_DEBUG
 
 asm(R"(
-	.macro print text
+.macro		print text
 	mov		r12, r12
-	b		end
-	.word	0x6464
+	b		1f
+	.word	0x00006464
 	.ascii	"\text"
-	.word	0
-	end:
-	.endm
+	.align	4
+1:
+.endm
 )");
 
 #else
 
 asm(R"(
-	.macro print text
-	.endm
+.macro print text
+.endm
 )");
 
-#endif*/
-
-
-/*template<auto>
-NTR_WARNING("SoftLog") constexpr void SoftLog() {}
-
-template<auto>
-NTR_ERROR("HardLog") constexpr void HardLog() {}
-
-
-#ifdef __INTELLISENSE__
-
-	#define NTR_SOFTLOG(v) do {} while (false)
-	#define NTR_HARDLOG(v) do {} while (false)
-
-#else
-
-	#define NTR_SOFTLOG(v) do { SoftLog<(v)>() } while (false)
-	#define NTR_HARDLOG(v) do { HardLog<(v)>() } while (false)
-
-#endif*/
-
+#endif
 
 
 class Log {
@@ -69,10 +48,16 @@ private:
 	struct UppercaseToken {};
 	struct LowercaseToken {};
 
+	struct FixedVecToken {};
+	struct IntVecToken {};
+
 public:
 
 	static constexpr UppercaseToken Uppercase{};
 	static constexpr LowercaseToken Lowercase{};
+
+	static constexpr FixedVecToken FixedVec{};
+	static constexpr IntVecToken IntVec{};
 
 	struct SetW : ValueToken<u8> {};
 	struct SetFill : ValueToken<char> {};
@@ -98,6 +83,13 @@ public:
 
 	#ifndef NTR_DEBUG
 
+	template<auto>
+	NTR_INLINE consteval softConstant() {}
+
+	template<auto>
+	NTR_INLINE consteval hardConstant() {}
+
+
 	NTR_INLINE Log& operator<<(const auto&) {
 		return *this;
 	}
@@ -110,6 +102,13 @@ public:
 	NTR_INLINE static void vprint(const char* fmt, va_list vl) {}
 
 	#else
+
+	template<auto>
+	NTR_WARNING("Log") NTR_INLINE consteval void softConstant() {}
+
+	template<auto>
+	NTR_ERROR("Log") NTR_INLINE consteval void hardConstant() {}
+
 
 	NTR_INLINE Log& operator<<(UppercaseToken) {
 		flags.uppercase = true;
@@ -171,8 +170,8 @@ public:
 	}
 
 
-	template<class T>
-	NTR_INLINE Log& operator<<(T* ptr) {
+	template<CC::Pointer P>
+	NTR_INLINE Log& operator<<(P ptr) {
 		return *this << rcast<AddressT>(ptr);
 	}
 
@@ -192,7 +191,26 @@ public:
 
 		PTMF ptmf = func;
 
-		return *this << "[ " << ptmf.ptr << " " << ptmf.param << "]";
+		return *this << "[" << ptmf.ptr << " " << ptmf.param << "]";
+
+	}
+
+	template<class T, SizeT N> requires requires (Log&& l, T&& t) { l << t; }
+	NTR_INLINE Log& operator<<(const T (&arr)[N]) {
+
+		*this << "[";
+
+		for (SizeT i; const T& e : arr) {
+
+			*this << e;
+
+			if (i++ != N - 1) {
+				*this << ", ";
+			}
+
+		}
+
+		return *this << "]";
 
 	}
 
@@ -200,16 +218,34 @@ public:
 		return *this << (flags.uppercase ? (b ? "TRUE" : "FALSE") : (b ? "true" : "false"));
 	}
 
-	NTR_INLINE Log& operator<<(const Vec2& v) {
-		return *this << "[ " << v.x << ", " << v.y << " ]";
+	NTR_INLINE Log& operator<<(const Vec2& v) { // TODO Better implementation (CC::Vector concept + array indexing)
+
+		if (flags.fixedVec) {
+			return *this << "[" << Fx32(v.x) << ", " << Fx32(v.y) << "]";
+		} else {
+			return *this << "[" << v.x << ", " << v.y << "]";
+		}
+
 	}
 
 	NTR_INLINE Log& operator<<(const Vec3& v) {
-		return *this << "[ " << v.x << ", " << v.y << ", " << v.z << " ]";
+
+		if (flags.fixedVec) {
+			return *this << "[" << Fx32(v.x) << ", " << Fx32(v.y) << ", " << Fx32(v.z) << "]";
+		} else {
+			return *this << "[" << v.x << ", " << v.y << ", " << v.z << "]";
+		}
+
 	}
 
 	NTR_INLINE Log& operator<<(const Vec3s& v) {
-		return *this << "[ " << v.x << ", " << v.y << ", " << v.z << " ]";
+
+		if (flags.fixedVec) {
+			return *this << "[" << Fx16(v.x) << ", " << Fx16(v.y) << ", " << Fx16(v.z) << "]";
+		} else {
+			return *this << "[" << v.x << ", " << v.y << ", " << v.z << "]";
+		}
+
 	}
 
 	template<CC::Integer I>
@@ -224,7 +260,9 @@ public:
 	template<CC::Fixed F>
 	NTR_INLINE Log& operator<<(F f) {
 
-		StringConv::fixed(buffer, f, flags.precision);
+		SizeT length = StringConv::fixed(buffer, f, flags.precision);
+
+		insertFill(length);
 		flush();
 
 		return *this;
@@ -292,7 +330,8 @@ private:
 		.width = 0,
 		.precision = 4,
 		.base = Dec,
-		.uppercase = false
+		.uppercase = false,
+		.fixedVec = true
 	};
 
 
@@ -335,14 +374,14 @@ private:
 	}
 
 	NTR_NAKED static void flush() {asm(R"(
-		mov		r12,r12
-		b		skip
+		mov		r12, r12
+		b		end
 		.word	0x00006464
 		.global _ZN3Log6bufferE
 	_ZN3Log6bufferE:
 		.fill	120
 		.word	0
-	skip:
+	end:
 		bx		lr
 	)");};
 
