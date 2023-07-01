@@ -63,6 +63,7 @@
 #define NTR_ALIAS(sym)			[[gnu::alias(sym)]]
 #define NTR_WEAKREF(sym)		[[gnu::weakref(sym)]]
 #define NTR_COPY(sym)			[[gnu::copy(sym)]]
+#define NTR_FORMAT(fun, a, b)	[[gnu::format(func, a, b)]]
 #define NTR_FALLTHROUGH			[[fallthrough]]
 #define NTR_NORETURN			[[noreturn]]
 #define NTR_NODISC				[[nodiscard]]
@@ -85,6 +86,8 @@ NTR_LONGCALL NTR_THUMB void MTX_RotZ43(MtxFx43& mtx, fx16 sine, fx16 cosine);
 
 // Standard C++ attributes do not allow overriding already existing functions
 __attribute__((noreturn)) extern void OS_Terminate();
+
+NTR_FORMAT(printf, 2, 3) int OS_SPrintf(char *dst, const char *fmt, ...);
 
 NTR_INLINE int OS_SNPrintf(char* dst, size_t len, const char* fmt, ...) {
 

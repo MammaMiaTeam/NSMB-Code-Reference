@@ -19,7 +19,7 @@ NTR_COPY(OS_Terminate) NTR_INLINE static void NTR_TERMINATE_SYMBOL() {
 
 #ifdef NTR_DEBUG
 
-static constexpr void NTR_ASSERT_SYMBOL(bool condition, const char* file, int line, const char* message, ...) {
+NTR_FORMAT(printf, 4, 5) static constexpr void NTR_ASSERT_SYMBOL(bool condition, const char* file, int line, const char* message, ...) {
 
 	if (!condition) {
 

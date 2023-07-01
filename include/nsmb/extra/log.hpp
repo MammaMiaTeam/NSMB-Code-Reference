@@ -332,7 +332,7 @@ public:
 
 	}
 
-	static void print(const char* fmt, ...) {
+	NTR_FORMAT(printf, 1, 2) static void print(const char* fmt, ...) {
 
 		va_list vl;
 		va_start(vl, fmt);
