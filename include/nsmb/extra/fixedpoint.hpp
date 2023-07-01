@@ -34,6 +34,9 @@ namespace CC {
 	template<class T, SizeT Fract>
 	concept FractFixed = Fixed<T> && (T::Shift == Fract);
 
+	template<class T>
+	concept IntegerBased = Fixed<T> || Integer<T>;
+
 }
 
 using Fx16 = FixedPoint<s16, 12>;
@@ -73,7 +76,7 @@ public:
 	constexpr explicit FixedPoint(J j) : i(j) {}
 
 	template<CC::Float F>
-	consteval FixedPoint(F f) : i(One.raw() * f + F(0.5)) {}
+	consteval FixedPoint(F f) : i(One.raw() * f + F(0.5)) {} // TODO Avoid dupe with set
 
 	template<CC::Fixed F>
 	constexpr explicit FixedPoint(F x) : i(0) { set(x); }
@@ -264,9 +267,15 @@ public:
 	}
 
 
-	template<CC::Arithmetic A>
-	constexpr FixedPoint& operator=(A x) {
+	template<CC::Integer J>
+	constexpr FixedPoint& operator=(J x) {
 		set(x);
+		return *this;
+	}
+
+	template<CC::Float F>
+	consteval FixedPoint& operator=(F f) {
+		set(f);
 		return *this;
 	}
 
@@ -338,18 +347,18 @@ public:
 		return shiftRight(n);
 	}
 
-	template<CC::Integer A>
-	constexpr FixedPoint& operator&=(A x) {
+	template<CC::Integer J>
+	constexpr FixedPoint& operator&=(J x) {
 		return bitAnd(x);
 	}
 
-	template<CC::Integer A>
-	constexpr FixedPoint& operator|=(A x) {
+	template<CC::Integer J>
+	constexpr FixedPoint& operator|=(J x) {
 		return bitOr(x);
 	}
 
-	template<CC::Integer A>
-	constexpr FixedPoint& operator^=(A x) {
+	template<CC::Integer J>
+	constexpr FixedPoint& operator^=(J x) {
 		return bitXor(x);
 	}
 
@@ -358,22 +367,19 @@ public:
 	}
 
 
-	template<CC::Arithmetic A>
-	constexpr void set(A x) {
+	template<CC::Integer J>
+	constexpr void set(J x) {
+		*this = fromRaw(x);
+	}
 
-		if constexpr (CC::Integer<A>) {
-			*this = fromRaw(x);
-		} else {
-			*this = fromFloat(x);
-		}
-
+	template<CC::Float F>
+	consteval void set(F f) {
+		*this = fromFloat(f);
 	}
 
 	template<CC::Fixed F>
 	constexpr void set(F f) {
-
 		*this = fromFixed(f);
-
 	}
 
 
@@ -433,7 +439,7 @@ public:
 
 
 	template<CC::Float F>
-	static constexpr FixedPoint fromFloat(F f) {
+	static consteval FixedPoint fromFloat(F f) {
 		return FixedPoint(One.raw() * f + F(0.5));
 	}
 
@@ -523,6 +529,10 @@ private:
 	I i;
 
 };
+NTR_SIZE_GUARD(Fx16, sizeof(typename Fx16::IntegerT));
+NTR_SIZE_GUARD(Fx32, sizeof(typename Fx32::IntegerT));
+NTR_SIZE_GUARD(Fx64, sizeof(typename Fx64::IntegerT));
+NTR_SIZE_GUARD(Fx64c, sizeof(typename Fx64c::IntegerT));
 
 
 template<CC::Fixed F, CC::Integer J>
@@ -602,33 +612,33 @@ constexpr X operator%(FixedPoint<I, F> a, FixedPoint<J, F> b) {
 
 
 
-template<CC::Integer I, SizeT F, class U> requires (CC::Integer<U> || CC::Equal<U, FixedPoint<I, F>>)
-constexpr FixedPoint<I, F> operator&(FixedPoint<I, F> a, U b) {
+template<CC::Fixed F, class U> requires (CC::Integer<U> || CC::Equal<U, F>)
+constexpr F operator&(F a, U b) {
 	return a.bitAnd(b);
 }
 
-template<CC::Integer I, SizeT F, CC::Integer T>
-constexpr FixedPoint<I, F> operator&(T a, FixedPoint<I, F> b) {
+template<CC::Fixed F, CC::Integer T>
+constexpr F operator&(T a, F b) {
 	return b.bitAnd(a);
 }
 
-template<CC::Integer I, SizeT F, class U> requires (CC::Integer<U> || CC::Equal<U, FixedPoint<I, F>>)
-constexpr FixedPoint<I, F> operator|(FixedPoint<I, F> a, U b) {
+template<CC::Fixed F, class U> requires (CC::Integer<U> || CC::Equal<U, F>)
+constexpr F operator|(F a, U b) {
 	return a.bitOr(b);
 }
 
-template<CC::Integer I, SizeT F, CC::Integer T>
-constexpr FixedPoint<I, F> operator|(T a, FixedPoint<I, F> b) {
+template<CC::Fixed F, CC::Integer T>
+constexpr F operator|(T a, F b) {
 	return b.bitOr(a);
 }
 
-template<CC::Integer I, SizeT F, class U> requires (CC::Integer<U> || CC::Equal<U, FixedPoint<I, F>>)
-constexpr FixedPoint<I, F> operator^(FixedPoint<I, F> a, U b) {
+template<CC::Fixed F, class U> requires (CC::Integer<U> || CC::Equal<U, F>)
+constexpr F operator^(F a, U b) {
 	return a.bitXor(b);
 }
 
-template<CC::Integer I, SizeT F, CC::Integer T>
-constexpr FixedPoint<I, F> operator^(T a, FixedPoint<I, F> b) {
+template<CC::Fixed F, CC::Integer T>
+constexpr F operator^(T a, F b) {
 	return b.bitXor(a);
 }
 
