@@ -502,7 +502,7 @@ namespace End {
 		bool multipage;
 	};
 
-	static constexpr ScriptEntry scriptTerminator = {nullptr, 0, 0, 0, false};
+	static constexpr ScriptEntry ScriptTerminator = {nullptr, 0, 0, 0, false};
 
 	// 020EA678
 	extern const ScriptEntry script[115];

@@ -84,10 +84,10 @@ public:
 	#ifndef NTR_DEBUG
 
 	template<auto>
-	NTR_INLINE consteval softConstant() {}
+	NTR_INLINE consteval void softConstant() {}
 
 	template<auto>
-	NTR_INLINE consteval hardConstant() {}
+	NTR_INLINE consteval void hardConstant() {}
 
 
 	NTR_INLINE Log& operator<<(const auto&) {
