@@ -22,3 +22,5 @@
 #include "nsmb/worldmap.hpp"
 #include "nsmb/vendor.hpp"
 #include "nsmb/extra.hpp"
+
+#include "nsmb/scenes/corruptedsavescene.hpp"

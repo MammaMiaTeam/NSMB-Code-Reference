@@ -5,18 +5,18 @@
 
 /*
 	Stack that holds linking pointers to UTF-16 strings
-	Links are used to have special font cache's contents inlined into a string. 
+	Links are used to have special font cache's contents inlined into a string.
 	If e.g. a NumberCache is linked, the FontLinkStack pushes the pointer to the next character in the main string and sets charPtr to the special cache's string start.
 */
 struct FontLinkStack {
 
 	u16* fontLinks[3];						//Font link stack
 	u32 linkCount;							//Font link count
-	
+
 
 	FontLinkStack();						//Resets the stack
 	~FontLinkStack();						//Destroys. Does nothing.
-	
+
 	bool empty();							//returns true if linkCount is 0
 	void push(u16** link);					//Pushes a new link on the stack and increments linkCount
 	u16** peek();							//returns a pointer to the stack top (doesn't check if stack is empty)
@@ -40,7 +40,7 @@ struct UTF16Character {
 	bool invalidChar;			//True if UTF-16 codepoint is invalid
 
 	UTF16Character(u16* ptr);	//Sets ptr to charPtr and calls decode()
-	void decode();				//Decodes the UTF-16 codepoint pointed to by charPtr and writes all other fields. 
+	void decode();				//Decodes the UTF-16 codepoint pointed to by charPtr and writes all other fields.
 
 };
 NTR_SIZE_GUARD(UTF16Character, 0x10);
@@ -117,7 +117,7 @@ NTR_SIZE_GUARD(EscapeSequenceEntry, 0x10);
 /*
 	Base class for all font related objects
 */
-class FontBase 
+class FontBase
 {
 public:
 
@@ -137,7 +137,7 @@ public:
 	void restoreLink();							//Sets charPtr to the topmost link on the stack and pops it thereafter
 	void copy(FontBase* src);					//Copies src's parameters into the calling object and calls prepare()
 	void setCharPtr(u16* cPtr);					//Sets charPtr to cPtr and calls prepare()
-	bool processNextChar(bool stopAtNewline);	//Processes the next char, calls processChar()/parseEscapeSequence() respectively and returns true if there are still chars left to dispatch. 
+	bool processNextChar(bool stopAtNewline);	//Processes the next char, calls processChar()/parseEscapeSequence() respectively and returns true if there are still chars left to dispatch.
 												//stopAtNewline forces a full stop if a newline character is encountered (also clears the link stack).
 												//When a null character is encountered, onStringDispatched() is invoked and false is returned.
 
@@ -151,7 +151,7 @@ NTR_SIZE_GUARD(FontBase, 0x18);
 	'Special font caches' refer to all caches not being a StringCache.
 	When subclassing, ensure alignment on a 4-byte boundary
 */
-class FontCache : public FontBase 
+class FontCache : public FontBase
 {
 public:
 
@@ -178,7 +178,7 @@ NTR_SIZE_GUARD(FontCache, 0x24);
 /*
 	Cache holding main strings
 */
-class StringCache : public FontCache 
+class StringCache : public FontCache
 {
 public:
 
@@ -199,7 +199,7 @@ NTR_SIZE_GUARD(StringCache, 0x124);
 /*
 	Cache holding a player's nickname
 */
-class NicknameCache : public FontCache 
+class NicknameCache : public FontCache
 {
 public:
 
@@ -251,7 +251,7 @@ NTR_SIZE_GUARD(NumberCache, 0x3C);
 /*
 	Cache holding generic strings
 */
-class GenericCache : public FontCache 
+class GenericCache : public FontCache
 {
 public:
 
@@ -280,7 +280,7 @@ class FontRenderer;
 		CountMode::LineCount: Counts the number of lines
 		CountMode::Done: Finished calculation
 */
-class FontBounds : public FontBase 
+class FontBounds : public FontBase
 {
 public:
 
@@ -387,7 +387,7 @@ NTR_SIZE_GUARD(FontTile, 0xC);
 		2) Tile buffer: Font rendered in tiled order
 	Before the font is displayed on screen, the (filled) bitmap buffer is converted and copied to the tile buffer.
 */
-class FontString 
+class FontString
 {
 public:
 
@@ -445,7 +445,7 @@ NTR_SIZE_GUARD(FontString, 0x15C);
 	This font engine only supports 2bpp fonts. This is a hardcoded limitation in several functions.
 	Shadowed strings are rendered three times: Twice at startY = 1 (startX 0 and 1), once with a different color selector at startX and startY = 0.
 */
-class FontRenderer : public FontBase 
+class FontRenderer : public FontBase
 {
 public:
 
@@ -499,22 +499,22 @@ public:
 
 	FontString* setupAndRender(u8* vramTarget, u32 xTiles, u32 yTiles, void* bmg, u32* index);							//Renders string with the main font to vramTarget with xTiles tiles in x direction and yTiles tiles in y direction (and allocates buffers accordingly). The string is fetched from file and a pointer to it is returned if successful. Buffers are deallocated upon failure and false is returned in this case.
 	FontString* setupAndRender(u8* vramTarget, u32 xTiles, u32 yTiles, FontCache* stringCache, NNSG2dFont* fontPtr);	//Renders the string into the next free FontString (and allocates buffers accordingly). The string is fetched from stringCache's cache, copied into FontString's cache and a pointer to it is returned if successful. Buffers are deallocated upon failure and false is returned in this case.
-	
+
 	void loadAndRenderGenericCache(u32 index, void* bmg, u32* stringIndex);	//Loads the string from file and renders it into genericCache[index]
 	void renderGenericCache(u32 index, FontCache* cache);					//Renders cache's string and copies it into genericCache[index]'s cache
 	void clearGenericCache(u32 index);										//If index is smaller than 4, genericCache[index] is cleared; if index >= 4, all generic caches are cleared
-	
+
 	void resetSpecialCaches();												//Loads the owner's nickname into its respective cache and clears all other special font caches
-	void uploadBuffer();													//Copies for each GarbageFrame (if a VRAM target address is set) the tile buffer to the destination and deletes both bitmap and tile buffers	
+	void uploadBuffer();													//Copies for each GarbageFrame (if a VRAM target address is set) the tile buffer to the destination and deletes both bitmap and tile buffers
 	FontString* getNextFreeFontString();									//returns a pointer to the next FontString without other linked caches or null if none could be found
 	void convertBuffer(FontTile* tile);										//Copies the bitmap buffer's contents containing tile into the tile buffer
-	void calculateAlignment();												//Calculates alignment on the x axis and adds startX to the left alignment border. 
-	
+	void calculateAlignment();												//Calculates alignment on the x axis and adds startX to the left alignment border.
+
 	void renderChar(UTF16Character* c);										//Renders the character's glyph and increments currentX accordingly. In case c is a newline character, currentY is incremented by yMargin + 16 and alignment is recalculated.
 	void renderGlyph(NNSG2dGlyph* glyph);									//Renders glyph into the bitmap buffer
 	void renderFontString(FontString* string);								//Renders string's contents. If shadows are enabled, it's rendered two additional times offset.
 	void renderFontStrings();												//Calls renderString() on every FontString having a non-null VRAM target pointer
-	
+
 	void linkNicknameCache(EscapeSequence* sequence);						//Links to the next character in the string and sets charPtr to the nickname cache's cache ptr
 	void linkNumberCache(EscapeSequence* sequence);							//Links to the next character in the string and sets charPtr to the number cache's cache ptr
 	void linkGenericCache0(EscapeSequence* sequence);						//Links to the next character in the string and sets charPtr to the first generic cache's cache ptr
@@ -600,7 +600,7 @@ public:
 	};
 
 	GXOamAttr tileOAMAttributes[0xC];
-	u32 optionCount;
+	u32 lineCount;
 	u8 leftSelectArrow[6];  //Left select arrow
 	u8 rightSelectArrow[6]; //Right select arrow
 	u8 leftDialogArrow[2];  //Left dialog arrow
@@ -655,7 +655,7 @@ public:
 	u32 getArrowDialogRight(u8 option);
 
 	//020141b8
-	u32 getOptionCount();
+	u32 getLineCount();
 
 	//02014368
 	void loadLeftDialogOption(void* bmg, u32* stringIndex, u32 vramOffset);
@@ -746,7 +746,7 @@ namespace Font {
 namespace Util {
 
 	u32 reverse(u32* value);					//Reverses the u32 pointed to by value and returns it
-	
+
 	u32 dereference(u32* ptr);					//returns *ptr as u32
 	u16 dereference(u16* ptr);					//returns *ptr as u16
 	u8 dereference(u8* ptr);					//returns *ptr as u8

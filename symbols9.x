@@ -1040,6 +1040,7 @@ __call_static_initializers = 0x207FCA4;
 NNS_G3dGeBuffer = 0x2092BB0;
 NNS_G3dFlagGXDmaAsync = 0x2092BB4;
 NNS_SoundCaptureThread = 0x2093684;
+sCurrent = 0x2093744;
 OSi_LauncherThread = 0x2094384;
 CARDi_IsPulledOutFlag = 0x2096B40;
 CARD_UserCallback = 0x2096B44;
@@ -7078,3 +7079,34 @@ _ZN17SpikedBallTrigger18onCleanupResourcesEv				= 0x0218DDE0;
 _ZN17SpikedBallTrigger10updateMainEv						= 0x0218DDE4;
 
 _ZN17SpikedBallTrigger7profileE								= 0x0218E1FC;
+
+
+/* arm9_ov5 */
+/*----------------------------------------------------------------*/
+/*--------------------- corrupted save scene ---------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN18CorruptedSaveSceneC1Ev									= 0x020CCCC8;
+_ZN18CorruptedSaveSceneC2Ev									= 0x020CCCC8;
+_ZN18CorruptedSaveSceneD0Ev									= 0x020CCC68;
+_ZN18CorruptedSaveSceneD1Ev									= 0x020CCC9C;
+_ZN18CorruptedSaveSceneD2Ev									= 0x020CCC9C;
+_ZN18CorruptedSaveScene8onCreateEv							= 0x020CC910;
+_ZN18CorruptedSaveScene9onDestroyEv							= 0x020CC8D8;
+_ZN18CorruptedSaveScene8onUpdateEv							= 0x020CC794;
+_ZN18CorruptedSaveScene8onRenderEv							= 0x020CC840;
+_ZN18CorruptedSaveScene18onCleanupResourcesEv				= 0x020CC8D4;
+_ZN18CorruptedSaveScene10centerTextEv						= 0x020CC2E0;
+_ZN18CorruptedSaveScene22appendSpecificSaveNameEv			= 0x020CC314;
+_ZN18CorruptedSaveScene10setMessageEm						= 0x020CC3A4;
+_ZN18CorruptedSaveScene13eraseSaveDataEv					= 0x020CC404;
+_ZN18CorruptedSaveScene11dialogStateEv						= 0x020CC4A4;
+_ZN18CorruptedSaveScene10eraseStateEv						= 0x020CC5BC;
+_ZN18CorruptedSaveScene11promptStateEv						= 0x020CC664;
+_ZN18CorruptedSaveScene10delayStateEv						= 0x020CC75C;
+_ZN18CorruptedSaveScene14terminateStateEv					= 0x020CC77C;
+
+_ZN18CorruptedSaveScene17specificSaveMasksE					= 0x020CCD18;
+_ZN18CorruptedSaveScene21specificSaveStringIDsE				= 0x020CCD28;
+_ZN18CorruptedSaveScene7profileE							= 0x020CCD40;
+_ZTV18CorruptedSaveScene									= 0x020CCD48;
