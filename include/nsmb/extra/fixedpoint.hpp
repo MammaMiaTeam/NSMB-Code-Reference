@@ -5,6 +5,7 @@
 #include "bits.hpp"
 
 #include <compare>
+#include <algorithm>
 
 
 template<CC::SignedInteger I, SizeT Fract>
@@ -108,10 +109,11 @@ public:
 
 	template<CC::Integer J>
 	constexpr FixedPoint& multiply(J x) {
-		return multiply(FixedPoint(x));
+		i *= x;
+		return *this;
 	}
 
-	template<CC::Fixed F>
+	template<CC::Fixed F> requires(Shift < 32 || F::Shift < 32)
 	NTR_INLINE constexpr FixedPoint& multiply(F x) {
 
 		bool constants = __builtin_constant_p(x) && __builtin_constant_p(i);
@@ -127,7 +129,7 @@ public:
 
 	}
 
-	template<CC::Fixed F>
+	template<CC::Fixed F> requires(Shift < 32 || F::Shift < 32)
 	constexpr FixedPoint& multiplyInternal(F x) {
 
 		using X = TT::MaxType<I, typename F::IntegerT>;
@@ -145,10 +147,11 @@ public:
 
 	template<CC::Integer J>
 	constexpr FixedPoint& divide(J x) {
-		return divide(FixedPoint(x));
+		i /= x;
+		return *this;
 	}
 
-	template<CC::Fixed F>
+	template<CC::Fixed F> requires(Shift < 32 || F::Shift < 32)
 	NTR_INLINE constexpr FixedPoint& divide(F x) {
 
 		bool constants = __builtin_constant_p(x) && __builtin_constant_p(i);
@@ -164,7 +167,7 @@ public:
 
 	}
 
-	template<CC::Fixed F>
+	template<CC::Fixed F> requires(Shift < 32 || F::Shift < 32)
 	constexpr FixedPoint& divideInternal(F x) {
 
 		using X = TT::MaxType<I, typename F::IntegerT>;
@@ -179,10 +182,11 @@ public:
 
 	template<CC::Integer J>
 	constexpr FixedPoint& mod(J x) {
-		return mod(FixedPoint(x));
+		i %= x;
+		return *this;
 	}
 
-	template<CC::Fixed F>
+	template<CC::Fixed F> requires(Shift < 32 || F::Shift < 32)
 	NTR_INLINE constexpr FixedPoint& mod(F x) {
 
 		bool constants = __builtin_constant_p(x) && __builtin_constant_p(i);
@@ -198,7 +202,7 @@ public:
 
 	}
 
-	template<CC::Fixed F>
+	template<CC::Fixed F> requires(Shift < 32 || F::Shift < 32)
 	constexpr FixedPoint& modInternal(F x) {
 
 		using X = TT::MaxType<I, typename F::IntegerT>;
@@ -217,7 +221,7 @@ public:
 	}
 
 	constexpr FixedPoint& shiftRight(SizeT n) {
-		i <<= n;
+		i >>= n;
 		return *this;
 	}
 
@@ -545,8 +549,8 @@ constexpr F operator+(J a, F b) {
 	return b.add(a);
 }
 
-template<CC::SignedInteger I, CC::SignedInteger J, SizeT F, class X = FixedPoint<TT::MaxType<I, J>, F>>
-constexpr X operator+(FixedPoint<I, F> a, FixedPoint<J, F> b) {
+template<CC::SignedInteger I, CC::SignedInteger J, SizeT F, SizeT G, class X = FixedPoint<TT::MaxType<I, J>, std::max(F, G)>>
+constexpr X operator+(FixedPoint<I, F> a, FixedPoint<J, G> b) {
 	return X(a).add(X(b));
 }
 
@@ -560,8 +564,8 @@ constexpr F operator-(J a, F b) {
 	return b.negate().add(a);
 }
 
-template<CC::SignedInteger I, CC::SignedInteger J, SizeT F, class X = FixedPoint<TT::MaxType<I, J>, F>>
-constexpr X operator-(FixedPoint<I, F> a, FixedPoint<J, F> b) {
+template<CC::SignedInteger I, CC::SignedInteger J, SizeT F, SizeT G, class X = FixedPoint<TT::MaxType<I, J>, std::max(F, G)>>
+constexpr X operator-(FixedPoint<I, F> a, FixedPoint<J, G> b) {
 	return X(a).subtract(X(b));
 }
 
@@ -575,8 +579,8 @@ constexpr F operator*(J a, F b) {
 	return b.multiply(a);
 }
 
-template<CC::SignedInteger I, CC::SignedInteger J, SizeT F, class X = FixedPoint<TT::MaxType<I, J>, F>>
-constexpr X operator*(FixedPoint<I, F> a, FixedPoint<J, F> b) {
+template<CC::SignedInteger I, CC::SignedInteger J, SizeT F, SizeT G, class X = FixedPoint<TT::MaxType<I, J>, std::max(F, G)>> requires(F < 32 || G < 32)
+constexpr X operator*(FixedPoint<I, F> a, FixedPoint<J, G> b) {
 	return X(a).multiply(X(b));
 }
 
@@ -590,8 +594,8 @@ constexpr F operator/(J a, F b) {
 	return F(a).divide(b);
 }
 
-template<CC::SignedInteger I, CC::SignedInteger J, SizeT F, class X = FixedPoint<TT::MaxType<I, J>, F>>
-constexpr X operator/(FixedPoint<I, F> a, FixedPoint<J, F> b) {
+template<CC::SignedInteger I, CC::SignedInteger J, SizeT F, SizeT G, class X = FixedPoint<TT::MaxType<I, J>, std::max(F, G)>> requires(F < 32 || G < 32)
+constexpr X operator/(FixedPoint<I, F> a, FixedPoint<J, G> b) {
 	return X(a).divide(X(b));
 }
 
@@ -605,8 +609,8 @@ constexpr F operator%(J a, F b) {
 	return F(a).mod(b);
 }
 
-template<CC::SignedInteger I, CC::SignedInteger J, SizeT F, class X = FixedPoint<TT::MaxType<I, J>, F>>
-constexpr X operator%(FixedPoint<I, F> a, FixedPoint<J, F> b) {
+template<CC::SignedInteger I, CC::SignedInteger J, SizeT F, SizeT G, class X = FixedPoint<TT::MaxType<I, J>, std::max(F, G)>> requires(F < 32 || G < 32)
+constexpr X operator%(FixedPoint<I, F> a, FixedPoint<J, G> b) {
 	return X(a).mod(X(b));
 }
 
