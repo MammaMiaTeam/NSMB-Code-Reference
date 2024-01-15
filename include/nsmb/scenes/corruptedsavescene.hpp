@@ -5,6 +5,40 @@
 class CorruptedSaveScene : public Scene {
 public:
 
+	enum Type {
+
+		SaveCorrupted,
+		SaveFile1,
+		SaveFile2,
+		SaveFile3,
+		SaveMinigames,
+		SpecificSaveCorrupted,
+		ReadError,
+		OptionsCorrupted,
+		EraseError,
+		Erasing,
+		Erased,
+		ErasePrompt,
+		Yes,
+		No,
+		EraseWarning,
+		SaveError,
+		FileEraseError,
+		CopyError
+
+	};
+
+	enum SpecificSave {
+
+		File1 = 0x100,
+		File2 = 0x200,
+		File3 = 0x400,
+		Minigames = 0x800,
+		Options = 0x1000,
+
+	};
+
+
 	CorruptedSaveScene();
 
 	virtual ~CorruptedSaveScene() override;
@@ -38,6 +72,14 @@ public:
 	void delayState();
 
 	void terminateState();
+
+
+	constexpr static u32 makeSettings(u32 type, u32 specificSave) {
+		u32 s{};
+		s |= type & 0xFF;
+		s |= specificSave & 0x1F00;
+		return s;
+	}
 
 
 	static constexpr u16 objectID = 11;
