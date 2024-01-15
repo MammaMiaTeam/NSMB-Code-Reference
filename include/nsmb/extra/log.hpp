@@ -388,3 +388,12 @@ private:
 	#endif
 
 };
+
+class DiscardLog {
+public:
+
+	constexpr const DiscardLog& operator<<(const auto&) const {
+		return *this;
+	}
+
+};
