@@ -1,6 +1,6 @@
 #pragma once
 #include "nsmb_nitro.hpp"
-#include "nsmb/graphics/3D/model.hpp"
+#include "nsmb/graphics/3d/model.hpp"
 #include "nsmb/graphics/util/framectrl.hpp"
 
 
