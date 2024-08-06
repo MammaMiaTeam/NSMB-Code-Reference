@@ -5,50 +5,95 @@
 #include "log.hpp"
 
 
-#define NTR_ASSERT_SYMBOL		__ntr_assert // TODO Weak symbols
-#define NTR_TERMINATE_SYMBOL	__ntr_terminate
-
-
-NTR_COPY(OS_Terminate) NTR_INLINE static void NTR_TERMINATE_SYMBOL() {
-	OS_Terminate();
-}
-
-
-#define ntr_terminate() do {NTR_TERMINATE_SYMBOL();} while (false)
-
+struct __ntr {
 
 #ifdef NTR_DEBUG
 
-NTR_FORMAT(printf, 4, 5) static constexpr void NTR_ASSERT_SYMBOL(bool condition, const char* file, int line, const char* message, ...) {
+	struct Debug {
 
-	if (!condition) {
+		char message[120];
+
+		const char* file;
+		int line;
+
+	};
+
+	static inline Debug debug;
+
+#endif
+
+	NTR_COPY(OS_Terminate) NTR_FORMAT(printf, 3, 4) static void terminate(const char* file, int line, const char* fmt, ...)
+#ifndef NTR_DEBUG
+	asm("OS_Terminate");
+#else
+	{
 
 		va_list vl;
-		va_start(vl, message);
+		va_start(vl, fmt);
 
-		Log::print("Assertion failed (File %s, line %d):\n", file, line);
-		Log::vprint(message, vl);
-		Log::puts("\n");
+		OS_VSNPrintf(debug.message, 120, fmt, vl);
+
+		Log::print("ntr_terminate: %s\n", debug.message);
 
 		va_end(vl);
 
-		ntr_terminate();
+		debug.file = file;
+		debug.line = line;
 
+		OS_Terminate();
+
+	}
+#endif
+
+#ifdef NTR_DEBUG
+
+	NTR_FORMAT(printf, 4, 5) static constexpr void assert(bool condition, const char* file, int line, const char* fmt, ...) {
+
+		if (condition) {
+			return;
+		}
+
+		Log::print("ntr_assert failed in file '%s' [%d]\n", file, line);
+
+		terminate(file, line, fmt, __builtin_apply_args());
+
+	}
+
+#endif
+
+};
+
+
+#define ntr_terminate(fmt, ...) do { ::__ntr::terminate(__FILE__, __LINE__, fmt __VA_OPT__(,) __VA_ARGS__); } while (false)
+
+#ifdef NTR_DEBUG
+	#define ntr_debug_message	scast<const char*>(::__ntr::debug.message)
+	#define ntr_debug_file		scast<const char*>(::__ntr::debug.file)
+	#define ntr_debug_line		scast<const int>(::__ntr::debug.line)
+#else
+	#define ntr_debug_message	"Unknown"
+	#define ntr_debug_file		"Unknown"
+	#define ntr_debug_line		-1
+#endif
+
+
+inline void __ntr_assertion_failed_at_compile_time() {}
+
+static constexpr void __ntr_assert_constexpr(bool condition) {
+
+	if (std::is_constant_evaluated() && !condition) {
+		__ntr_assertion_failed_at_compile_time();
 	}
 
 }
 
-#endif
-
 
 #ifdef NTR_DEBUG
-
-	#define ntr_assert(cond, msg, ...) do {NTR_ASSERT_SYMBOL(!!(cond), __FILE__, __LINE__, msg __VA_OPT__(,) __VA_ARGS__);} while (false)
-	#define ntr_force_assert(msg, ...) ntr_assert(false, msg __VA_OPT__(,) __VA_ARGS__)
-
+	#define __NTR_ASSERT_IMPL(cond, fmt, ...) ::__ntr::assert(!!(cond), __FILE__, __LINE__, fmt __VA_OPT__(,) __VA_ARGS__)
 #else
-
-	#define ntr_assert(cond, msg, ...) do {} while (false)
-	#define ntr_force_assert(msg, ...) do {} while (false)
-
+	#define __NTR_ASSERT_IMPL(cond, fmt, ...) [[assume(cond)]]
 #endif
+
+
+#define ntr_assert(cond, msg, ...) do { ::__ntr_assert_constexpr(!!(cond)); __NTR_ASSERT_IMPL(cond, msg __VA_OPT__(,) __VA_ARGS__); } while (false)
+#define ntr_force_assert(msg, ...) do { __NTR_ASSERT_IMPL(false, msg __VA_OPT__(,) __VA_ARGS__); } while (false)
