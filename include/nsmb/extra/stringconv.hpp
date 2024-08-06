@@ -71,7 +71,7 @@ namespace StringConv {
 		return generic(out, Math::abs(n), 2, n < 0, false);
 	}
 
-	constexpr SizeT genericFixed(char* out, s64 raw, SizeT shift, SizeT precision) { // TODO precision support
+	constexpr SizeT genericFixed(char* out, s64 raw, SizeT shift, SizeT precision) {
 
 		s64 integer = raw >> shift;
 		s64 fract = Bits::mask(raw, 0, shift);

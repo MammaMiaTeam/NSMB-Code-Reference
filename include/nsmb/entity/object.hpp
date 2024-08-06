@@ -38,6 +38,7 @@ public:
 	static Object* spawnObject(u16 objectID, Base* scene, u32 settings, ObjectType type);
 
 
+	// Nintendo most likely used macros to generate such functions, but this works best
 	template<class T>
 	static Object* constructObject() {
 		return new T;

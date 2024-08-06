@@ -39,13 +39,14 @@
 
 
 #define NTR_OFFSETOF(s, m)		((::size_t)&reinterpret_cast<char const volatile&>((((s*)0)->m)))
-#define NTR_SIZE_GUARD(t, s)	static_assert(sizeof(t) == (s), "Size of '" #t "' does not match expected value '" #s "'")
 #define NTR_ARRAY_SIZE(a)		((::size_t)(sizeof(a) / sizeof(a[0])))
 #define NTR_BREAK()				asm("bkpt #0")
 
 #ifdef __INTELLISENSE__
+	#define NTR_SIZE_GUARD(t, s)	static_assert(true, "")
 	#define NTR_REGISTER(type, name, reg)	register __typeof__(type) name
 #else
+	#define NTR_SIZE_GUARD(t, s)	static_assert(sizeof(t) == (s), "Size of '" #t "' does not match expected value '" #s "'")
 	#define NTR_REGISTER(type, name, reg)	register __typeof__(type) name asm(#reg)
 #endif
 

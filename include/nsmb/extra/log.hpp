@@ -81,7 +81,7 @@ public:
 	};
 
 
-	#ifndef NTR_DEBUG
+#ifndef NTR_DEBUG
 
 	template<auto>
 	NTR_INLINE consteval void softConstant() {}
@@ -101,7 +101,7 @@ public:
 
 	NTR_INLINE static void vprint(const char* fmt, va_list vl) {}
 
-	#else
+#else
 
 	template<auto>
 	NTR_WARNING("Log") NTR_INLINE consteval void softConstant() {}
@@ -317,11 +317,15 @@ public:
 
 	}
 
-	#endif
+	constexpr static const char* data() {
+		return buffer;
+	}
+
+#endif
 
 private:
 
-	#ifdef NTR_DEBUG
+#ifdef NTR_DEBUG
 
 	static char buffer[BufferSize];
 
@@ -385,7 +389,7 @@ private:
 		bx		lr
 	)");};
 
-	#endif
+#endif
 
 };
 
