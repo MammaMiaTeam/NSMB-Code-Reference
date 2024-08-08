@@ -10,10 +10,13 @@
 #ifdef NTR_DEBUG
 
 asm(R"(
-.macro		print text
+.macro		print text:req cc=al
+	b\cc	2f			@ Double branch could be avoided but it's only for debugging anyways
+	b		1f
+2:
 	mov		r12, r12
 	b		1f
-	.word	0x00006464
+	.word	0x6464
 	.ascii	"\text"
 	.align	4
 1:
@@ -23,11 +26,32 @@ asm(R"(
 #else
 
 asm(R"(
-.macro print text
+.macro		print text:req cc=al
 .endm
 )");
 
 #endif
+
+#define __NTR_PRINT_ALIAS(cc) asm(".macro print" #cc " text\nprint \"\\text\", " #cc "\n.endm");
+
+__NTR_PRINT_ALIAS(eq);
+__NTR_PRINT_ALIAS(ne);
+__NTR_PRINT_ALIAS(gt);
+__NTR_PRINT_ALIAS(lt);
+__NTR_PRINT_ALIAS(ge);
+__NTR_PRINT_ALIAS(le);
+__NTR_PRINT_ALIAS(hs);
+__NTR_PRINT_ALIAS(lo);
+__NTR_PRINT_ALIAS(mi);
+__NTR_PRINT_ALIAS(pl);
+__NTR_PRINT_ALIAS(al);
+__NTR_PRINT_ALIAS(nv);
+__NTR_PRINT_ALIAS(vs);
+__NTR_PRINT_ALIAS(vc);
+__NTR_PRINT_ALIAS(hi);
+__NTR_PRINT_ALIAS(ls);
+
+#undef __NTR_PRINT_ALIAS
 
 
 class Log {
