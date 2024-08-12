@@ -6743,7 +6743,7 @@ _ZN13LakituSpawner4initEv 							= 0x02178908;
 _ZN13LakituSpawner7profileE 						= 0x02178948;
 _ZN13LakituSpawner5sMainE 							= 0x02178C20;
 
-_ZTV13LakituSpawner 								= 0x02178954
+_ZTV13LakituSpawner 								= 0x02178954;
 
 
 /* arm9_ov66 */
