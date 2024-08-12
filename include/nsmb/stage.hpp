@@ -35,6 +35,9 @@
 #include "stage/actors/ov10/stagefx.hpp"
 #include "stage/actors/ov10/zoom.hpp"
 
+// Overlay 22 - PipeEnemySpawner
+#include "stage/actors/ov22/pipeenemyspawner.hpp"
+
 // Overlay 24 - Pokey
 #include "stage/actors/ov23/pokey.hpp"
 
@@ -56,15 +59,20 @@
 // Overlay 48 - WobbleRock
 #include "stage/actors/ov48/wobblerock.hpp"
 
-// Overlay 54 - Checkpoint, CoinSpawner, Trampoline, VolcanoEruption
+// Overlay 54 - Checkpoint, CoinSpawner, Trampoline, VolcanoEruption, TileGod
 #include "stage/actors/ov54/checkpoint.hpp"
 #include "stage/actors/ov54/coinspawner.hpp"
 #include "stage/actors/ov54/trampoline.hpp"
 #include "stage/actors/ov54/volcanoeruption.hpp"
+#include "stage/actors/ov54/tilegod.hpp"
 
 // Overlay 57 - ChainChomp, ChainChompLog
 #include "stage/actors/ov57/chainchomp.hpp"
 #include "stage/actors/ov57/chainchomplog.hpp"
+
+// Overlay 66 - LakituSpawner, Lakitu
+#include "stage/actors/ov66/lakitu.hpp"
+#include "stage/actors/ov66/lakituspawner.hpp"
 
 // Overlay 68 - Amp
 #include "stage/actors/ov68/amp.hpp"
