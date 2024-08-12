@@ -5905,6 +5905,33 @@ _ZN4Item12checkConsumeEv = 0x020d475c;
 _ZN4Item18onPrepareResourcesEv = 0x020d2248;
 
 
+/* arm9_ov22 */
+/*----------------------------------------------------------------*/
+/*--------------------- pipe enemy spawner -----------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN16PipeEnemySpawnerD0Ev = 0x0213BF5C;
+_ZN16PipeEnemySpawnerD1Ev = 0x0213BF00;
+_ZN16PipeEnemySpawnerD2Ev = 0x0213BF00;
+_ZN16PipeEnemySpawner8onCreateEv = 0x0213BFD8;
+_ZN16PipeEnemySpawner8onUpdateEv = 0x0213BFC0;
+
+_ZN16PipeEnemySpawner11updateStateEv = 0x0213C388;
+_ZN16PipeEnemySpawner11switchStateERKMS_FbvE = 0x0213C3D0;
+_ZN16PipeEnemySpawner9mainStateEv = 0x0213C034;
+_ZN16PipeEnemySpawner4initEv = 0x0213C508;
+
+_ZN16PipeEnemySpawner15goombaCooldownsE = 0x0213C4C0;
+_ZN16PipeEnemySpawner14goombaOffsetsXE = 0x0213C4C8;
+_ZN16PipeEnemySpawner14goombaOffsetsYE = 0x0213E4E8;
+_ZN16PipeEnemySpawner14bobOmbOffsetsXE = 0x0213C4F8;
+_ZN16PipeEnemySpawner14bobOmbOffsetsYE = 0x0213C4D8;
+_ZN16PipeEnemySpawner7profileE = 0x0213C548;
+_ZN16PipeEnemySpawner5sMainE = 0x0213C680;
+
+_ZTV16PipeEnemySpawner = 0x0213C554;
+
+
 /* arm9_ov23 */
 /*----------------------------------------------------------------*/
 /*---------------------------- pokey -----------------------------*/
@@ -6459,6 +6486,32 @@ _ZTV11CoinSpawner							= 0x0216D4E8;
 
 /* arm9_ov54 */
 /*----------------------------------------------------------------*/
+/*-------------------------- tile god ----------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN7TileGodD0Ev						= 0x021566C4;
+_ZN7TileGodD1Ev						= 0x02156668;
+_ZN7TileGodD2Ev						= 0x02156668;
+_ZN7TileGod8onCreateEv				= 0x02156758;
+_ZN7TileGod10updateMainEv			= 0x02156728;
+
+_ZN7TileGod11switchStateERKMS_FbvE	= 0x02156CD8;
+_ZN7TileGod11updateStateEv			= 0x02156C90;
+_ZN7TileGod9mainStateEv				= 0x02156890;
+
+_ZN7TileGod8setTilesEbb 			= 0x021569CC;
+
+_ZN7TileGod4initEv					= 0x0216C5E0;
+_ZN7TileGod11tileIDTableE			= 0x0216C0A4;
+
+_ZN7TileGod5sMainE					= 0x02171768;
+
+_ZN7TileGod7profileE				= 0x0216D3B4;
+
+_ZTV7TileGod						= 0x0216D3C0;
+
+/* arm9_ov54 */
+/*----------------------------------------------------------------*/
 /*-------------------------- checkpoint --------------------------*/
 /*----------------------------------------------------------------*/
 
@@ -6662,6 +6715,82 @@ _ZN10ChainChomp18activeColliderInfoE						= 0x0217550C;
 _ZN10ChainChomp7profileE									= 0x02175750;
 
 _ZTV10ChainChomp											= 0x0217575C;
+
+
+/* arm9_ov66 */
+/*----------------------------------------------------------------*/
+/*------------------------ lakitu spawner ------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN13LakituSpawnerD2Ev 								= 0x021759A0;
+_ZN13LakituSpawnerD1Ev								= 0x021759A0;
+_ZN13LakituSpawnerD0Ev 								= 0x021759FC;
+
+_ZN13LakituSpawner8onCreateEv 						= 0x02175B14;
+_ZN13LakituSpawner8onUpdateEv 						= 0x02175A60;
+
+_ZN13LakituSpawner13updateDestroyEv 				= 0x02175A7C;
+_ZN13LakituSpawner9callStateEv 						= 0x02175F34;
+_ZN13LakituSpawner11switchStateERKMS_FbvE			= 0x02175F7C;
+_ZN13LakituSpawner9mainStateEv 						= 0x02175B64;
+_ZN13LakituSpawner12setLakituUnkEv 					= 0x02175D78;
+_ZN13LakituSpawner8trySpawnEP6Playerj 				= 0x02175D8C;
+_ZN13LakituSpawner11spawnLakituEP6Player 			= 0x02175E28;
+_ZN13LakituSpawner19checkIfPlayerInZoneEP6Player 	= 0x02175EC4;
+_ZN13LakituSpawner13loadResourcesEv 				= 0x02176008;
+
+_ZN13LakituSpawner4initEv 							= 0x02178908;
+_ZN13LakituSpawner7profileE 						= 0x02178948;
+_ZN13LakituSpawner5sMainE 							= 0x02178C20;
+
+_ZTV13LakituSpawner 								= 0x02178954
+
+
+/* arm9_ov66 */
+/*----------------------------------------------------------------*/
+/*----------------------------- lakitu ---------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN6LakituD2Ev 										= 0x02176050;
+_ZN6LakituD1Ev 										= 0x02176050;
+_ZN6LakituD0Ev 										= 0x021760F0;
+_ZN6Lakitu8onCreateEv 								= 0x021760F0;
+_ZN6Lakitu9onDestroyEv 								= 0x02176894;
+_ZN6Lakitu8onRenderEv								= 0x021769F8;
+_ZN6Lakitu18onCleanupResourcesEv 					= 0x0217692C;
+_ZN6Lakitu18onPrepareResourcesEv 					= 0x021786B0;
+
+_ZN6Lakitu10updateMainEv 							= 0x021786B0;
+_ZN6Lakitu10skipRenderEv 							= 0x02176304;
+_ZN6Lakitu10onBlockHitEv 							= 0x02176840;
+_ZN6Lakitu11onEntityHitEv 							= 0x02176750;
+_ZN6Lakitu13onFireballHitEv 						= 0x02176668;
+_ZN6Lakitu12onStarmanHitEv							= 0x02176530;
+_ZN6Lakitu9onStompedEv 								= 0x02176804;
+_ZN6Lakitu14onBlueShellHitEv 						= 0x02176440;
+_ZN6Lakitu12damagePlayerER14ActiveColliderR6Player 	= 0x02176C28;
+
+_ZN6Lakitu13checkIfInViewEv 						= 0x02176198;
+_ZN6Lakitu17checkCloudTimeoutEv 					= 0x021779E4;
+_ZN6Lakitu13fallFromCloudEv 						= 0x02177A40;
+_ZN6Lakitu24getClosestPlayerDistanceElPlS0_ 		= 0x02176930;
+_ZN6Lakitu10throwSpinyEv 							= 0x02177CFC;
+_ZN6Lakitu17setTargetVelocityEl 					= 0x02177FD8;
+_ZN6Lakitu11updateStateEv 							= 0x02178598;
+_ZN6Lakitu11switchStateEMS_FbvE 					= 0x021785CC;
+_ZN6Lakitu9mainStateEv 								= 0x02177DC8;
+_ZN6Lakitu18playerInCloudStateEv 					= 0x02177260;
+_ZN6Lakitu14cloudIdleStateEv 						= 0x0217784C;
+_ZN6Lakitu15throwSpinyStateEv						= 0x02177AC8;
+_ZN6Lakitu16spawnFromBGStateEv 						= 0x02178088;
+_ZN6Lakitu16outsideZonestateEv 						= 0x02178468;
+_ZN6Lakitu13loadResourcesEv 						= 0x021787AC;
+
+_ZN6Lakitu10rotationsYE 							= 0x02178898;
+_ZN6Lakitu11velocitiesXE 							= 0x0217889C;
+_ZN6Lakitu7profileE 								= 0x02178AF0;
+
+_ZTV6Lakitu 										= 0x02178AFC;
 
 
 /* arm9_ov68 */
