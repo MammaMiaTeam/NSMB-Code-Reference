@@ -8,7 +8,7 @@ public:
 
 	using StateFunction = bool(TileGod::*)();
 
-	enum class BlockTypes : u32 
+	enum class BlockType : u32 
 	{
 		RedBlock,
 		BrickBlock,
@@ -21,7 +21,7 @@ public:
 		UsedBlock = 0xf
 	};
 
-	enum class PatternTypes : u32 
+	enum class PatternType : u32 
 	{
 		Solid,
 		Checkerboard,
@@ -47,10 +47,7 @@ public:
 	bool mainState();
 
 	// 021569CC
-	void setTiles(bool triggered, bool onCreate); //onCreate = when called from spawn
-
-	// 0216c5e0
-	static void init(); // probably what this is?
+	void updateTiles(bool create, bool silent);
 
 	static constexpr u16 objectID = 206;
 
@@ -69,14 +66,14 @@ public:
 
 	const StateFunction* updateFunction;
 
-	u32 eventMask[2]; 		// ?
-	u32 tilesX; 			// num tiles X
-	u32 tilesY;				// num tiles Y
-	bool32 triggered;
-	BlockTypes blockType;
+	u32 prevEventMask[2];
+	u32 tilesWidth;
+	u32 tilesHeight;
+	bool32 createFirst;
+	BlockType blockType;
 	bool32 permanent;
-	PatternTypes patternType;
-	bool16 isActive; 		// if not set actor can be destroyed when inactive
+	PatternType patternType;
+	bool16 keepActive;
 	s8 updateStep;
 
 };
