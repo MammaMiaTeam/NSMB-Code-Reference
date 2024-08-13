@@ -8,7 +8,7 @@ public:
 
 	using StateFunction = bool(PipeEnemySpawner::*)();
 
-	enum class EnemyTypes : u32 {
+	enum class EnemyType : u32 {
 		Goomba,
 		BobOmb
 	};
@@ -36,9 +36,6 @@ public:
 	// 0213C248
 	void spawnBobOmb();
 
-	// 0213C508
-	static void init(); // ?
-
 	static constexpr u16 objectID = 64;
 
 	static constexpr u16 updatePriority = objectID;
@@ -51,11 +48,9 @@ public:
 	static const StateFunction sMain;
 
 	// 0213C4C0
-	static const u16 goombaCooldowns[4]; // time between each goomba spawn ...3 and 4 unused?? or unused bob-omb cooldown maybe?
-	// 0213C4C4
-	//static const u16 unusedbobOmbCooldowns[2]; 
+	static const u16 goombaCooldowns[3]; // Indexed by spawnCounter
 	// 0213C4C8
-	static const fx32 goombaOffsetsX[4];
+	static const fx32 goombaOffsetsX[4]; // Indexed by pipe direction 
 	// 0213E4E8
 	static const fx32 goombaOffsetsY[4];
 	// 0213C4F8
@@ -63,11 +58,9 @@ public:
 	// 0213C4D8
 	static const fx32 bobOmbOffsetsY[4];
 
-	//NTR_INLINE static const u32 bobOmbCooldown = 0x153;
-
 	const StateFunction* updateFunction;
 
-	EnemyTypes enemyType;
+	EnemyType enemyType;
 	u16 spawnCooldown;
 	u16 spawnCounter;  
 	s8 updateStep;
