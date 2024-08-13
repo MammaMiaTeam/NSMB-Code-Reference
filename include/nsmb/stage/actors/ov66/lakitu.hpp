@@ -8,15 +8,15 @@ public:
 
 	using StateFunction = bool(Lakitu::*)();
 
-	struct Models : BitFlag<u8> {
-		u8 cloud : 1; 	// 0x1
-		u8 lakitu : 1;  // 0x2
+	struct RenderBitfield : BitFlag<bool> {
+		u8 cloud : true; 	// 0x1
+		u8 lakitu : true;   // 0x2
 	};
 
 	enum class Target : u16 {
 		Player1,
 		Player2,
-		FindClosest
+		Closest
 	};
 
 	// D0: 021760F0
@@ -55,54 +55,65 @@ public:
 	void damagePlayer(ActiveCollider& self, Player& player) override;
 
 	// 02176198
-	bool checkIfInView(); //returns true and sets lakitu model skipRender if out of player range or outside view 
+	bool updateVisibility(); //returns true and sets lakitu model skipRender if out of player range or outside view 
 	// 021779E4
-	bool checkCloudTimeout();
+	bool updateDestroyCooldown();
 	// 02177A40
-	bool fallFromCloud();
+	bool detachLakitu();
 
 	// 02176930
 	//returns closest player if no player ID is targeted; otherwise it will return the targeted player and get the (floored) distance to it
-	Player* getClosestPlayerDistance(s32 playerID, s32* distanceX, s32* distanceY); 
+	Player* getTargetPlayerDistance(Target target, s32* distanceX, s32* distanceY); 
 
 	// 02177CFC
-	void throwSpiny();
+	void throwSpiny(StageEntity* spiny);
 	// 02177FD8
-	void setTargetVelocity(s32 targetPlayerID);
+	void updateTargetVelocity(u32 playerID);
 
 	// 02178598
 	void updateState();
 	// 021785CC
-	bool switchState(StateFunction function); // ?
+	bool switchState(StateFunction function);
 
 	// 02177DC8
 	bool mainState();
 	// 02177260
-	bool playerInCloudState();
+	bool riddenState();
 	// 0217784C
-	bool cloudIdleState(); //when no one is riding the cloud
+	bool idleState(); // when no one is riding the cloud
 	// 02177AC8
-	bool throwSpinyState();
+	bool throwState();
 	// 02178088
-	bool spawnFromBGState();
+	bool spawnState();
 	// 02178468
-	bool outsideZonestate(); //when spawned with lakitu spawner and outside zone
+	bool inactiveState(); // when spawned with lakitu spawner and player leaves lakitu's zone
 
-	inline void cloudSetup() {
-		colliderInfo.rect = {0,0,12.0fx,12.0fx};
-		colliderInfo.selfGroup = CollisionGroup::Hostile;
-		colliderInfo.selfFlag = CollisionFlag::None;
-		colliderInfo.checkGroupMask = 3;
-		colliderInfo.checkFlagMask = 0;
-		colliderInfo.options = 0;
-		colliderInfo.callback = StageEntity::damagePlayerCallback;
-		activeCollider.init(this,colliderInfo,0);
-		activeCollider.link();
-		velocity = {0,0,0};
-	}
+NTR_INLINE void initializeCloud() { // Inlined in several virtuals
+
+    colliderInfo = {
+
+        0, 0,
+        12.0fx, 12.0fx,
+
+        CollisionGroup::Hostile,
+        CollisionFlag::None,
+        MAKE_GROUP_MASK(CollisionGroup::Player, CollisionGroup::PlayerSpecial),
+        MAKE_FLAG_MASK_EX(CollisionFlag::None),
+        0,
+
+        StageEntity::damagePlayerCallback
+
+    };
+
+    activeCollider.init(this,colliderInfo,0);
+    activeCollider.link();
+
+    velocity = {};
+
+}
 
 	// 021787AC
-	bool loadResources();
+	static bool loadResources();
 
 	static constexpr u16 objectID = 39;
 
@@ -111,9 +122,6 @@ public:
 
 	// 02178AF0
 	static const ActorProfile profile;
-
-	// 0214E420 (ov42) //part of spiny???
-	//static Spiny* spawnSpiny(const Vec3& position, u32 settings);
 
 	// 02178898
 	static const s16 rotationsY[2];
@@ -127,20 +135,20 @@ public:
 	StateFunction updateFunction;
 	StateFunction prevUpdateFunction;
 	ActiveColliderInfo colliderInfo;
-	Vec3 handPos;
-	u32 heldSpinyGUID;
-	u32 lakituSpawnerGUID;
-	Vec3 lakituPos;
-	Vec3s lakituRot;
-	fx32 lakituVelY;
-	fx32 cloudFlashTimer;
-	u16 cooldown; 			// for cloud rotation to camera and spiny throw cooldown 
-	u16 cloudFlashes;
-	Target targetPlayerID; 
-	Models modelsOutOfView;
+	Vec3 handPosition;
+	u32 spinyGUID;
+	u32 spawnerGUID;
+	Vec3 lakituPosition;
+	Vec3s lakituRotation;
+	fx32 lakituVelocity;
+	fx32 destroyCooldown;
+	u16 commonCooldown; 			// for cloud rotation to camera and spiny throw cooldown 
+	u16 cloudBlinkingTimer;
+	Target target; 
+	RenderBitfield outsideViewModels;
 	s8 updateStep;
-	Models activeModels;
-	Models skipModelRender;
+	RenderBitfield activeModels;
+	RenderBitfield skipRenderModels;
 	s8 mountedPlayerID; 	// ID of a player controlling the cloud
 
 };
