@@ -28,17 +28,17 @@ public:
 	bool mainState();
 
 	// 02175D78
-	void setLakituUnk(); // sets spawned lakitu's unk2C6 to 1
+	void attachLakitu(); // sets spawned lakitu's unk2C6 to 1
 
 	// 02175D8C
-	void trySpawn(Player* player, u32 lakituNum);
+	void updateSpawner(Player* player, u32 lakituID);
 	// 02175E28
 	void spawnLakitu(Player* player);
 
 	// 02175EC4
-	bool checkIfPlayerInZone(Player* player);
+	bool targetAvailable(Player* player);
 	// 02176008
-	bool loadResources();
+	static bool loadResources();
 
 	static constexpr u16 objectID = 59;
 
@@ -48,8 +48,6 @@ public:
 	// 02178948
 	static const ActorProfile profile;
 
-	// 02178908
-	static void init(); // ?
 	// 02178C20
 	static StateFunction sMain;
 
@@ -57,12 +55,12 @@ public:
 	const StateFunction* updateFunction;
 
 	Lakitu* lakitus[2];
-    u32 lakituIDs[2];
-    u16 lakituTimers[2];
-    u8 spinyZOrder; // ?
+    u32 lakituGUIDs[2];
+    u16 spawnCooldowns[2];
+    bool multiTarget;
     u8 zoneID;
     u8 spinyType; 	// 0=Normal; 1=Rolling
-    u8 unk40f; 		// probably unused
+    u8 unused40F;
     s8 updateStep;
 
 };
