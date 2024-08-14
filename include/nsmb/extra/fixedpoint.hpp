@@ -400,7 +400,7 @@ public:
 	}
 
 	constexpr I round() const {
-		return (i + Half) >> Shift;
+		return (i + Half) >> Shift + isNegative();
 	}
 
 	constexpr I fract() const {
