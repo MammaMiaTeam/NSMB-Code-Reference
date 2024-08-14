@@ -392,7 +392,7 @@ public:
 	}
 
 	constexpr I trunc() const {
-		return i >> Shift;
+		return i >> Shift + isNegative();
 	}
 
 	constexpr I whole() const {
