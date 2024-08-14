@@ -196,7 +196,19 @@ public:
 
 	template<CC::Pointer P>
 	NTR_INLINE Log& operator<<(P ptr) {
-		return *this << rcast<AddressT>(ptr);
+
+		Flags old = flags;
+
+		flags.fill = '0';
+		flags.width = 8;
+		flags.base = Base::Hex;
+
+		operator<<(rcast<AddressT>(ptr));
+
+		flags = old;
+
+		return *this;
+		
 	}
 
 	template<class R, class T, class... Args>
@@ -205,7 +217,7 @@ public:
 		union PTMF {
 
 			struct {
-				AddressT ptr;
+				void* ptr;
 				u32 param;
 			};
 
@@ -275,7 +287,18 @@ public:
 	template<CC::Integer I>
 	NTR_INLINE Log& operator<<(I n) {
 
-		printInteger(Math::abs(n), n < 0);
+		SizeT length;
+
+		if (flags.base == Base::Dec) {
+			length = StringConv::decimal(buffer, n);
+		} else if (flags.base == Base::Hex) {
+			length = StringConv::hex(buffer, n, flags.uppercase);
+		} else {
+			length = StringConv::binary(buffer, n);
+		}
+
+		insertFill(length);
+		flush();
 
 		return *this;
 
