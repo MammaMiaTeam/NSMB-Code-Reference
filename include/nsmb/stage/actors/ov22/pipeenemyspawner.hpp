@@ -36,10 +36,10 @@ public:
 	// 0213C248
 	void spawnBobOmb();
 
-	static constexpr u16 objectID = 64;
+	static constexpr u16 ObjectID = 64;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 78;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 78;
 
 	// 0213C548
 	static const ActorProfile profile;
@@ -48,9 +48,9 @@ public:
 	static const StateFunction sMain;
 
 	// 0213C4C0
-	static const u16 goombaCooldowns[3]; // Indexed by spawnCounter
+	static const u16 goombaCooldowns[3]; // [spawnCounter]
 	// 0213C4C8
-	static const fx32 goombaOffsetsX[4]; // Indexed by pipe direction 
+	static const fx32 goombaOffsetsX[4]; // [pipe]
 	// 0213E4E8
 	static const fx32 goombaOffsetsY[4];
 	// 0213C4F8

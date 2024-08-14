@@ -24,10 +24,10 @@ public:
 	u32 unk160;
 	u32 unk164;
 
-	static constexpr u16 objectID = 322;
+	static constexpr u16 ObjectID = 322;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 2;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 2;
 
 	//0x020E8BEC
 	static ObjectProfile profile;

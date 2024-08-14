@@ -48,10 +48,10 @@ public:
 	Case 9 -> S
 	*/
 
-	static constexpr u16 objectID = 0;
+	static constexpr u16 ObjectID = 0;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 7;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 7;
 
 	//021874c4
 	static u8 nintendoLogoNCG[0x5F0];

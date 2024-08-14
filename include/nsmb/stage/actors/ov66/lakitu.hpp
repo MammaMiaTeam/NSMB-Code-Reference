@@ -8,9 +8,9 @@ public:
 
 	using StateFunction = bool(Lakitu::*)();
 
-	struct RenderBitfield : BitFlag<bool> {
-		u8 cloud : true; 	// 0x1
-		u8 lakitu : true;   // 0x2
+	struct RenderBitfield : BitFlag<u8> {
+		bool cloud : 1;
+		bool lakitu : 1;
 	};
 
 	enum class Target : u16 {
@@ -88,37 +88,37 @@ public:
 	// 02178468
 	bool inactiveState(); // when spawned with lakitu spawner and player leaves lakitu's zone
 
-NTR_INLINE void initializeCloud() { // Inlined in several virtuals
+	NTR_INLINE void initializeCloud() { // Inlined in several virtuals
 
-    colliderInfo = {
+	    colliderInfo = {
 
-        0, 0,
-        12.0fx, 12.0fx,
+	        0, 0,
+	        12.0fx, 12.0fx,
 
-        CollisionGroup::Hostile,
-        CollisionFlag::None,
-        MAKE_GROUP_MASK(CollisionGroup::Player, CollisionGroup::PlayerSpecial),
-        MAKE_FLAG_MASK_EX(CollisionFlag::None),
-        0,
+	        CollisionGroup::Hostile,
+	        CollisionFlag::None,
+	        MAKE_GROUP_MASK(CollisionGroup::Player, CollisionGroup::PlayerSpecial),
+	        MAKE_FLAG_MASK_EX(CollisionFlag::None),
+	        0,
 
-        StageEntity::damagePlayerCallback
+	        StageEntity::damagePlayerCallback
 
-    };
+	    };
 
-    activeCollider.init(this,colliderInfo,0);
-    activeCollider.link();
+	    activeCollider.init(this,colliderInfo,0);
+	    activeCollider.link();
 
-    velocity = {};
+	    velocity = {};
 
-}
+	}
 
 	// 021787AC
 	static bool loadResources();
 
-	static constexpr u16 objectID = 39;
+	static constexpr u16 ObjectID = 39;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 53;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 53;
 
 	// 02178AF0
 	static const ActorProfile profile;
@@ -142,14 +142,14 @@ NTR_INLINE void initializeCloud() { // Inlined in several virtuals
 	Vec3s lakituRotation;
 	fx32 lakituVelocity;
 	fx32 destroyCooldown;
-	u16 commonCooldown; 			// for cloud rotation to camera and spiny throw cooldown 
+	u16 commonCooldown; 				// Cloud rotation to camera and throw cooldown 
 	u16 cloudBlinkingTimer;
 	Target target; 
 	RenderBitfield outsideViewModels;
 	s8 updateStep;
 	RenderBitfield activeModels;
 	RenderBitfield skipRenderModels;
-	s8 mountedPlayerID; 	// ID of a player controlling the cloud
+	s8 mountedPlayerID;
 
 };
 NTR_SIZE_GUARD(Lakitu,0x5e4);

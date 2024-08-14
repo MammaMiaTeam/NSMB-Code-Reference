@@ -40,10 +40,10 @@ public:
 	// 020DE288
 	Vec3 setVector(fx32 x, fx32 y, fx32 z);
 
-	static constexpr u16 objectID = 324;
+	static constexpr u16 ObjectID = 324;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 4;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 4;
 
 	// 020E9BF0
 	static const ObjectProfile profile;

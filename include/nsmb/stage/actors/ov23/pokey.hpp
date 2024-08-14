@@ -42,10 +42,10 @@ public:
 	static bool loadResources();
 	static void activeCallback(ActiveCollider& self, ActiveCollider& other);
 
-	static constexpr u16 objectID = 98;
+	static constexpr u16 ObjectID = 98;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 232;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 232;
 	
 	static const ActorProfile profile;
 

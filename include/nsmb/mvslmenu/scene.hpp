@@ -120,10 +120,10 @@ public:
 	NicknameInfo* getOpponentNickname(); // 0x021574A4
 	void syncInputScheme(int aid); // 0x02157454
 
-	static constexpr u16 objectID = 6;
+	static constexpr u16 ObjectID = 6;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 14;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 14;
 
 	static ObjectProfile profile; // 0x0215BDEC
 

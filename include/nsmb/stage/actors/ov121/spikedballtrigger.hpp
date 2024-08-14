@@ -21,10 +21,10 @@ public:
 	// 0218DDE4
 	bool updateMain() override;
 
-	static constexpr u16 objectID = 104;
+	static constexpr u16 ObjectID = 104;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 225;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 225;
 
 	// 0218E1F0
 	static const ActorProfile profile;

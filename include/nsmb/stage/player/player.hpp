@@ -577,10 +577,10 @@ public:
 	s32 onDestroy() override;
 
 
-	static constexpr u16 objectID = 21;
+	static constexpr u16 ObjectID = 21;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 28;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 28;
 
 	static constexpr fx32 modelScaleFactor = 0.9fx;
 

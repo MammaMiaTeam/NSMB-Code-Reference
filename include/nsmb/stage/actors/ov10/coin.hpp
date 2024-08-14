@@ -96,10 +96,10 @@ public:
 	// 020D9CF0
 	static void bottomCollision(StageActor& self, StageActor& other);
 
-	static constexpr u16 objectID = 66;
+	static constexpr u16 ObjectID = 66;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 158;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 158;
 
 	// 021251F8
 	static const ActorProfile profile;

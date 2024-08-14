@@ -32,10 +32,10 @@ public:
 	// 0216236C
 	static bool loadResources();
 
-	static constexpr u16 objectID = 159;
+	static constexpr u16 ObjectID = 159;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 187;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 187;
 
 	// 0216FF58
 	static const ActorProfile profile;
@@ -57,10 +57,10 @@ class VerticalCheckpoint : public Checkpoint
 {
 public:
 
-	static constexpr u16 objectID = 158;
+	static constexpr u16 ObjectID = 158;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 186;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 186;
 
 	// 0216FF64
 	static const ActorProfile profile;

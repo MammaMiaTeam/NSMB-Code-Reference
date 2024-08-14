@@ -167,10 +167,10 @@ class PiranhaUp : public PipePiranha
 {
 public:
 
-	static constexpr u16 objectID = 23;
+	static constexpr u16 ObjectID = 23;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 31;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 31;
 
 	// 021439C8
 	static const ActorProfile profile;
@@ -183,10 +183,10 @@ class PiranhaDown : public PipePiranha
 {
 public:
 
-	static constexpr u16 objectID = 24;
+	static constexpr u16 ObjectID = 24;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 32;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 32;
 
 	// 021439D4
 	static const ActorProfile profile;
@@ -199,10 +199,10 @@ class PiranhaRight : public PipePiranha
 {
 public:
 
-	static constexpr u16 objectID = 25;
+	static constexpr u16 ObjectID = 25;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 33;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 33;
 
 	// 021439E0
 	static const ActorProfile profile;
@@ -215,10 +215,10 @@ class PiranhaLeft : public PipePiranha
 {
 public:
 
-	static constexpr u16 objectID = 26;
+	static constexpr u16 ObjectID = 26;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 34;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 34;
 
 	// 021439EC
 	static const ActorProfile profile;

@@ -27,10 +27,10 @@ public:
 	// 02156F44
 	bool mainState();
 
-	static constexpr u16 objectID = 92;
+	static constexpr u16 ObjectID = 92;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 119;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 119;
 
 	// 0216D4DC
 	static const ActorProfile profile;

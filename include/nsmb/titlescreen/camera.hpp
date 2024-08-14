@@ -26,10 +26,10 @@ public:
 	//0x020D39A4
 	void setOrtho(fx32 r, fx32 t, fx32 b, fx32 l);
 
-	static constexpr u16 objectID = 323;
+	static constexpr u16 ObjectID = 323;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 3;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 3;
 
 	//0x020DAADC
 	static ObjectProfile profile;

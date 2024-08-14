@@ -49,10 +49,10 @@ public:
 	// 021569CC
 	void updateTiles(bool create, bool silent);
 
-	static constexpr u16 objectID = 206;
+	static constexpr u16 ObjectID = 206;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 120;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 120;
 
 	// 0216D3B4
 	static const ActorProfile profile;

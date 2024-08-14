@@ -68,10 +68,10 @@ public:
 	// 02141F58
 	static void activeCallback(ActiveCollider& self, ActiveCollider& other);
 
-	static constexpr u16 objectID = 96;
+	static constexpr u16 ObjectID = 96;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 244;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 244;
 
 	// 02145200
 	static const ActorProfile profile;

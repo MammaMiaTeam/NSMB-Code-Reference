@@ -37,10 +37,10 @@ public:
 
 	static bool loadResources();
 
-	static constexpr u16 objectID = 155;
+	static constexpr u16 ObjectID = 155;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 180;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 180;
 
 	static const ActorProfile profile;
 	static const ActiveColliderInfo activeColliderInfo;

@@ -56,10 +56,10 @@ public:
 	// 020DA9A8
 	static bool loadResources();
 
-	static constexpr u16 objectID = 254;
+	static constexpr u16 ObjectID = 254;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 91;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 91;
 
 	// 02125348
 	static const ActorProfile profile;
@@ -99,10 +99,10 @@ public:
 	// D1: 020DAB54
 	virtual ~SpinBlock255() {}
 
-	static constexpr u16 objectID = 255;
+	static constexpr u16 ObjectID = 255;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 92;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 92;
 
 	// 0212533C
 	static const ActorProfile profile;
@@ -120,10 +120,10 @@ public:
 	// D1: 020DAC94
 	virtual ~SpinBlock256() {}
 
-	static constexpr u16 objectID = 256;
+	static constexpr u16 ObjectID = 256;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 93;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 93;
 
 	// 02125354
 	static const ActorProfile profile;

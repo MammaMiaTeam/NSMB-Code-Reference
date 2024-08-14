@@ -62,10 +62,10 @@ public:
 	// 020E1FD4
 	static bool loadSlideshowResources();
 
-	static constexpr u16 objectID = 314;
+	static constexpr u16 ObjectID = 314;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 305;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 305;
 
 	// 020EE2C8
 	static const ObjectProfile profile;

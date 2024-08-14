@@ -8,10 +8,10 @@ public:
 
 	typedef bool(Toadsworth::*StateFunction)();
 
-	static constexpr u16 objectID = 134;
+	static constexpr u16 ObjectID = 134;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 152;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 152;
 
 	StateFunction* updateFunction;  // Current update function
 	Vec3 magicWandPos;			    // Current position of the magic wand

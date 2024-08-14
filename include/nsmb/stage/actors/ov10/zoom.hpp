@@ -22,10 +22,10 @@ public:
 	// 020D7FDC
 	void onCleanupResources() override;
 
-	static constexpr u16 objectID = 0x31;
+	static constexpr u16 ObjectID = 0x31;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 0x3F;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 0x3F;
 
 	// 02125088
 	static const ActorProfile profile;

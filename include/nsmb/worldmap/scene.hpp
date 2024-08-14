@@ -55,10 +55,10 @@ public:
 		QuitDialog = 2
 	};
 
-	static constexpr u16 objectID = 9;
+	static constexpr u16 ObjectID = 9;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 294;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 294;
 
 	Particle::Handler unk64;
 	Vec2 unk858;

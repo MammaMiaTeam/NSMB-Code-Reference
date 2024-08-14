@@ -82,10 +82,10 @@ public:
 	}
 
 
-	static constexpr u16 objectID = 11;
+	static constexpr u16 ObjectID = 11;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 18;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 18;
 
 	static const ObjectProfile profile;
 

@@ -25,10 +25,10 @@ public:
 	// 020DDDF4
 	virtual void onCleanupResources() override;
 
-	static constexpr u16 objectID = 12;
+	static constexpr u16 ObjectID = 12;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 19;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 19;
 
 	// 020E9B88
 	static const ObjectProfile profile;

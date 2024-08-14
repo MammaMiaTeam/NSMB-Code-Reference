@@ -48,10 +48,10 @@ public:
 	// 02178EA8
 	static bool loadResources();
 
-	static constexpr u16 objectID = 110;
+	static constexpr u16 ObjectID = 110;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 128;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 128;
 
 	// 02179420
 	static const ActorProfile profile;

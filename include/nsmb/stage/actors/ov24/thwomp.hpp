@@ -62,10 +62,10 @@ public:
 	// 0213E364
 	static bool loadResources();
 
-	static constexpr u16 objectID = 37;
+	static constexpr u16 ObjectID = 37;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 51;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 51;
 
 	// 0213F6D0
 	static const ActorProfile profile;
@@ -125,10 +125,10 @@ public:
 	// D1: 0213E45C
 	virtual ~GiantThwomp() {}
 
-	static constexpr u16 objectID = 38;
+	static constexpr u16 ObjectID = 38;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 52;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 52;
 
 	// 0213F6DC
 	static const ActorProfile profile;

@@ -99,10 +99,10 @@ public:
 
 	bool onPrepareResources();
 
-	static constexpr u16 objectID = 31;
+	static constexpr u16 ObjectID = 31;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 44;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 44;
 
 	Toadsworth* toadsworth;			    // A pointer to your local toadsworth
 	ModelAnm itemModel;			        // Model of the item (mega mushroom only)

@@ -39,10 +39,10 @@ public:
 	//0x020CCCD4
 	void updateState();
 
-	static constexpr u16 objectID = 318;
+	static constexpr u16 ObjectID = 318;
 
-	static constexpr u16 updatePriority = objectID;
-	static constexpr u16 renderPriority = 1;
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 1;
 
 	// 0x020E58D0
 	static ObjectProfile profile;
