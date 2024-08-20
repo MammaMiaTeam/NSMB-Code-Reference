@@ -1,9 +1,7 @@
 #pragma once
-#include "nsmb_nitro.hpp"
+#include "nsmb/math/vector.hpp"
 
 
-class Vec2;
-class Vec3;
 class StageActor;
 
 

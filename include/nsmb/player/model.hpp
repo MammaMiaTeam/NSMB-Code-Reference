@@ -1,4 +1,6 @@
 #pragma once
+#include "nsmb/extra/assert.hpp"
+#include "nsmb/extra/bitmaskenum.hpp"
 #include "anim.hpp"
 #include "cap.hpp"
 #include "shell.hpp"

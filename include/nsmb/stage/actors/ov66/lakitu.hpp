@@ -131,7 +131,7 @@ public:
 
 	ModelAnm cloudModel;
 	ModelAnm lakituModel;
-	AnimationCtrl patternAnimation;
+	AnimationCtrl blinkAnimation;
 	StateFunction updateFunction;
 	StateFunction prevUpdateFunction;
 	ActiveColliderInfo colliderInfo;
