@@ -384,24 +384,7 @@ private:
 		.uppercase = false,
 		.fixedVec = true
 	};
-
-
-	static void printInteger(u64 n, bool sign) {
-
-		SizeT length;
-
-		if (flags.base == Base::Dec) {
-			length = StringConv::decimal(buffer, sign ? -n : n);
-		} else if (flags.base == Base::Hex) {
-			length = StringConv::hex(buffer, sign ? -n : n, flags.uppercase);
-		} else {
-			length = StringConv::binary(buffer, sign ? -n : n);
-		}
-
-		insertFill(length);
-		flush();
-
-	}
+	
 
 	static void insertFill(SizeT length) {
 

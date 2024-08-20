@@ -73,7 +73,7 @@ namespace StringConv {
 
 	constexpr SizeT genericFixed(char* out, s64 raw, SizeT shift, SizeT precision) {
 
-		s64 integer = raw >> shift + (raw < 0);
+		s64 integer = (raw >> shift) + (raw < 0);
 		s64 fract = Bits::mask(raw, 0, shift);
 
 		SizeT pos = decimal(out, integer);

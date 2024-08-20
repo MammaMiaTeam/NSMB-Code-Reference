@@ -392,7 +392,7 @@ public:
 	}
 
 	constexpr I trunc() const {
-		return i >> Shift + isNegative();
+		return (i >> Shift) + isNegative();
 	}
 
 	constexpr I whole() const {
@@ -400,7 +400,7 @@ public:
 	}
 
 	constexpr I round() const {
-		return (i + Half) >> Shift + isNegative();
+		return ((i + (isNegative() ? -Half : Half)) >> Shift) + isNegative();
 	}
 
 	constexpr I fract() const {
