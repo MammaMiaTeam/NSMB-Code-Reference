@@ -108,10 +108,10 @@ public:
 #ifndef NTR_DEBUG
 
 	template<auto>
-	NTR_INLINE consteval void softConstant() {}
+	NTR_INLINE static consteval void softConstant() {}
 
 	template<auto>
-	NTR_INLINE consteval void hardConstant() {}
+	NTR_INLINE static consteval void hardConstant() {}
 
 
 	NTR_INLINE Log& operator<<(const auto&) {
@@ -128,10 +128,10 @@ public:
 #else
 
 	template<auto>
-	NTR_WARNING("Log") NTR_INLINE consteval void softConstant() {}
+	NTR_WARNING("Log") NTR_INLINE static consteval void softConstant() {}
 
 	template<auto>
-	NTR_ERROR("Log") NTR_INLINE consteval void hardConstant() {}
+	NTR_ERROR("Log") NTR_INLINE static consteval void hardConstant() {}
 
 
 	NTR_INLINE Log& operator<<(UppercaseToken) {

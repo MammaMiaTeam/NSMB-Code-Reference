@@ -392,7 +392,7 @@ public:
 	}
 
 	constexpr I trunc() const {
-		return (i >> Shift) + isNegative();
+		return (i >> Shift) + (fract() ? isNegative() : 0);
 	}
 
 	constexpr I whole() const {
@@ -649,6 +649,22 @@ constexpr F operator^(T a, F b) {
 
 PP_DIAGNOSTIC_PUSH()
 PP_DIAGNOSTIC_IGNORE("-Wliteral-suffix")
+
+consteval Fx16 operator""fxs(unsigned long long value) {
+	return Fx16::One * value;
+}
+
+consteval Fx32 operator""fx(unsigned long long value) {
+	return Fx32::One * value;
+}
+
+consteval Fx64 operator""fxl(unsigned long long value)	{
+	return Fx64::One * value;
+}
+
+consteval Fx64c operator""fxlc(unsigned long long value) {
+	return Fx64c::One * value;
+}
 
 consteval Fx16 operator""fxs(long double value)	{
 	return Fx16(value);
