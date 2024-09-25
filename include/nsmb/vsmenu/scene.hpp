@@ -9,7 +9,7 @@
  * In this menu you choose your character and connect to the other console.
  * Depends on overlay 52.
  */
-class MvsLMenu : public Scene
+class VSMenuScene : public Scene
 {
 public:
 
@@ -53,23 +53,23 @@ public:
 		virtual void update() override; // 0x0215725C
 		virtual void render() override; // 0x021571FC
 
-		void setup(s32 x, s32 y, MvsLMenu* owner); // 0x021571DC
+		void setup(s32 x, s32 y, VSMenuScene* owner); // 0x021571DC
 
-		MvsLMenu* owner;
+		VSMenuScene* owner;
 	};
 
 	struct SubMenu
 	{
-		void (MvsLMenu::*create)();
-		void (MvsLMenu::*update)();
-		void (MvsLMenu::*render)();
+		void (VSMenuScene::*create)();
+		void (VSMenuScene::*update)();
+		void (VSMenuScene::*render)();
 		u32 unused;
 	};
 
-	MvsLMenu(); // ctor: 0x02159388
-	virtual ~MvsLMenu() override; // D0: 0x0215711C | D1: 0x021570B0
+	static VSMenuScene* construct(); // 0x02159388
+	virtual ~VSMenuScene() override; // D0: 0x0215711C | D1: 0x021570B0
 
-	static void syncInputSchemeWrapper(int aid, MvsLMenu* owner); // 0x02159370
+	static void syncInputSchemeWrapper(int aid, VSMenuScene* owner); // 0x02159370
 	static void loadMvsLFilesThread(); // 0x0215934C
 
 	virtual s32 onCreate() override; // 0x02158FE8
@@ -140,7 +140,7 @@ public:
 
 	static SubMenu selectModeSM; // 0x0215CB30
 	static SubMenu charSelectSM; // 0x0215CA6C
-	static SubMenu searchSM; // 0x022332C4
+	static SubMenu searchSM; // 0x0215CAA4
 	static SubMenu confirmSM; // 0x0215CAC0
 	static SubMenu waitHostConfirmSM; // 0x0215CB14
 	static SubMenu playerLeftSM; // 0x0215CA88
