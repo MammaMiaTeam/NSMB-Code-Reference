@@ -63,7 +63,7 @@ public:
 
 	// 020a06dc
 	// returns whether the actor is vertically outside of the stage camera
-	bool isOutOfViewVertical() const;
+	bool isOutOfViewVertical(const FxRect& boundingBox, s32 playerID) const;
 
 	// 020a069c
 	// Returns the closest player to the entity (and writes back the distance)
