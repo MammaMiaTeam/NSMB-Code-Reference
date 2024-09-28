@@ -9,7 +9,7 @@
  * In this menu you choose your character and connect to the other console.
  * Depends on overlay 52.
  */
-class VSMenuScene : public Scene
+class VSConnectScene : public Scene
 {
 public:
 
@@ -53,23 +53,23 @@ public:
 		virtual void update() override; // 0x0215725C
 		virtual void render() override; // 0x021571FC
 
-		void setup(s32 x, s32 y, VSMenuScene* owner); // 0x021571DC
+		void setup(s32 x, s32 y, VSConnectScene* owner); // 0x021571DC
 
-		VSMenuScene* owner;
+		VSConnectScene* owner;
 	};
 
 	struct SubMenu
 	{
-		void (VSMenuScene::*create)();
-		void (VSMenuScene::*update)();
-		void (VSMenuScene::*render)();
+		void (VSConnectScene::*create)();
+		void (VSConnectScene::*update)();
+		void (VSConnectScene::*render)();
 		u32 unused;
 	};
 
-	static VSMenuScene* construct(); // 0x02159388
-	virtual ~VSMenuScene() override; // D0: 0x0215711C | D1: 0x021570B0
+	static VSConnectScene* construct(); // 0x02159388
+	virtual ~VSConnectScene() override; // D0: 0x0215711C | D1: 0x021570B0
 
-	static void syncInputSchemeWrapper(int aid, VSMenuScene* owner); // 0x02159370
+	static void syncInputSchemeWrapper(int aid, VSConnectScene* owner); // 0x02159370
 	static void loadMvsLFilesThread(); // 0x0215934C
 
 	virtual s32 onCreate() override; // 0x02158FE8
