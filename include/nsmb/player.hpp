@@ -81,7 +81,7 @@ namespace Game {
 	u32 getPlayerSpawnMask();
 	void setPlayerSpawnMask(u32 mask);
 	s32 getPlayerCount();
-	void getPlayerCount(s32 count);
+	void setPlayerCount(s32 count);
 	s32 getPlayerCollectedStars(s32 playerID);
 	void setPlayerCollectedStars(s32 playerID, s32 count);
 	s32 getPlayerDisplayedStars(s32 playerID);
