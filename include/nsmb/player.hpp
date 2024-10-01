@@ -91,7 +91,7 @@ namespace Game {
 	void setPlayerScore(s32 playerID, s32 count);
 	bool addPlayerCoin(s32 playerID);
 	s32 getPlayerCoins(s32 playerID);
-	void getPlayerCoins(s32 playerID, s32 count);
+	void setPlayerCoins(s32 playerID, s32 count);
 	void addPlayerStarCoin(s32 playerID);
 	void setPlayerStarCoins(s32 playerID, s32 count);
 	void addPlayerBattleStar(s32 playerID);
