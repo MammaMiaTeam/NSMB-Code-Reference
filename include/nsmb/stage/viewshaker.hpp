@@ -1,6 +1,20 @@
 #pragma once
 #include "misc.hpp"
 
+//
+// WARNING:
+// Never do the following with any of the ViewShaker::start overloads!
+//
+// for (s32 playerID = 0; playerID < Game::getPlayerCount(); playerID++) {
+//     if (Game::localPlayerID == playerID) {
+//         ViewShaker::start(type, viewID);
+//     }
+// }
+//
+// Doing so desynchronizes multiplayer, use the 4 argument overload instead without the local condition as such:
+//
+// ViewShaker::start(type, viewID, playerID, 0);
+//
 
 namespace ViewShaker
 {
@@ -22,10 +36,13 @@ namespace ViewShaker
 		u32 flags;
 	};
 
+	// Starts shaking the view for the specified player.
 	void start(u8 type, u8 viewID, u8 playerID, bool triggerActions);
 
+	// Starts shaking the view for the specified player and the other player if in the same view.
 	void start(u8 type, u8 viewID, u8 playerID);
 
+	// Starts shaking the view for both players.
 	void start(u8 type, u8 viewID);
 
 	void setConfig(u8 playerID, const Config& config);
