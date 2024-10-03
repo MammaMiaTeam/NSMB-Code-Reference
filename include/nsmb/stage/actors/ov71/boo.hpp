@@ -73,9 +73,9 @@ public:
 	// 021770A0
 	bool updateTurnRotation();
 	// 0217707C
-	bool checkPlayerInZone();
+	bool checkPlayerInZone(Player* player);
 	// 02176FEC
-	void updateZoneLimit();
+	bool updateZoneLimit();
 	// 02176EE4
 	void updateInflateParticles();
 	// 02176E24
@@ -87,7 +87,7 @@ public:
 	// 02176A20
 	bool updateChase();
 	// 02176758
-	void updateAnimations();
+	void updateAnimations(BalloonAnimation balloonAnimation);
 	// 021765FC
 	void updateStandard();
 	// 02176528
