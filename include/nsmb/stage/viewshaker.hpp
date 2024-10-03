@@ -3,17 +3,20 @@
 
 //
 // WARNING:
-// Never do the following with any of the ViewShaker::start overloads!
+// If you intend to shake the screen for only one player,
+// never do the following with any of the ViewShaker::start overloads!
 //
-// for (s32 playerID = 0; playerID < Game::getPlayerCount(); playerID++) {
-//     if (Game::localPlayerID == playerID) {
-//         ViewShaker::start(type, viewID);
-//     }
+// if (canShakePlayer(Game::localPlayerID)) {
+//     ViewShaker::start(type, viewID);
 // }
 //
 // Doing so desynchronizes multiplayer, use the 4 argument overload instead without the local condition as such:
 //
-// ViewShaker::start(type, viewID, playerID, 0);
+// for (s32 playerID = 0; playerID < Game::getPlayerCount(); playerID++) {
+//     if (canShakePlayer(playerID)) {
+//         ViewShaker::start(type, viewID, playerID, 0);
+//     }
+// }
 //
 
 namespace ViewShaker
