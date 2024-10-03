@@ -9,7 +9,7 @@
 #include "nsmb/game.hpp"
 #include "nsmb/graphics.hpp"
 #include "nsmb/math.hpp"
-#include "nsmb/mvslmenu.hpp"
+#include "nsmb/vsconnect.hpp"
 #include "nsmb/physics.hpp"
 #include "nsmb/player.hpp"
 #include "nsmb/sound.hpp"
