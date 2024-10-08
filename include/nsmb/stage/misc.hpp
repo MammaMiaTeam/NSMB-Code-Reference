@@ -131,7 +131,7 @@ namespace Stage
 	u32 getAreaID(u8 group, u8 stage, u8 act);
 
 	// Used in stage related operations (actor spawning, tile randomization)
-	
+
 	NTR_INLINE s32 getRandom(s32 max) {
 		return ((Wifi::getRandom() & 0x7FFF) * (max + 1)) / 0x8000;
 	}
@@ -153,7 +153,7 @@ namespace Stage
 	bool isOutsideCameraNoWrap(const Vec3& position, const FxRect& boundingBox, u8 playerID);
 	bool isOutsideCameraWrap(const Vec3& position, const FxRect& boundingBox, u8 playerID);
 
-	bool isOutsidePlayerRangeWrap(const Vec3& position, const FxRect& boundingBox, u8 viewID);
+	bool isOutsidePlayerRangeWrap(const Vec3& position, const FxRect& boundingBox, u8 playerID, u8 viewID);
 	bool isOutsidePlayerRangeNoWrap(const Vec3& position, const FxRect& boundingBox, u8 playerID, u8 viewID);
 	bool isOutsidePlayerRange(const Vec3& position, const FxRect& boundingBox, u8 viewID);
 

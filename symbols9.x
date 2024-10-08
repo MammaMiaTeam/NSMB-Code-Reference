@@ -2019,9 +2019,9 @@ _ZN5Stage16getCameraCenterXEh								= 0x0200ACC4;
 _ZN5Stage21isOutsideCameraNoWrapERK4Vec3RK6FxRecth			= 0x0200ACE4;
 _ZN5Stage19isOutsideCameraWrapERK4Vec3RK6FxRecth			= 0x0200ADF8;
 _ZN5Stage15isOutsideCameraERK4Vec3RK6FxRecth				= 0x0200AE9C;
-_ZN5Stage20isOutsidePlayerRangeERK4Vec3RK6FxRecth			= 0x0200AED8;
-_ZN5Stage21isOutsidePlayerRangeNoWrapERK4Vec3RK6FxRecthh	= 0x0200B000;
-_ZN5Stage26getForegroundScreenIDEm							= 0x0200B0F0;
+_ZN5Stage20isOutsidePlayerRangeERK4Vec3RK6FxRecthh			= 0x0200AED8;
+_ZN5Stage26isOutsidePlayerRangeNoWrapERK4Vec3RK6FxRecthh	= 0x0200B000;
+_ZN5Stage21getForegroundScreenIDEm							= 0x0200B0F0;
 _ZN5Stage24isOutsidePlayerRangeWrapERK4Vec3RK6FxRecth		= 0x0200B104;
 
 
