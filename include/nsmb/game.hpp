@@ -2,6 +2,7 @@
 #include "nsmb_nitro.hpp"
 #include "math/random.hpp"
 #include "system/save.hpp"
+#include "math/vector.hpp"
 
 enum class SceneID : u16;
 

@@ -189,6 +189,12 @@ public:
 
 	};
 
+	enum class BumpOffender
+	{
+		Mario = 2,
+		Luigi = 3
+	};
+
 
 	void setAnimation(u32 id, bool doBlend, FrameMode frameMode, fx32 speed, u16 frame = 0);
 	void setCapAnimation();
@@ -382,8 +388,12 @@ public:
 	void beginIdleAnimation(bool doBlend, fx32 speed);
 	void updateCommonAnimations(bool doBlend, bool unk);
 	void transitBeginIdlePose(bool doBlend);
+	bool idleState(void* arg);
+
 
 	void setPerspectivePosition(s16 rotation, fx32 scale, const Vec3& position);
+
+	bool checkGroundpoundBump();
 
 	static void activeCallback(ActiveCollider& self, ActiveCollider& other);
 	static void specialActiveCallback(ActiveCollider& self, ActiveCollider& other);
@@ -653,6 +663,7 @@ public:
 	static const JumpCurveLimitTable jumpCurveLimitTables[2];	// [higher jump]
 	static const JumpCurveAccelTable jumpCurveAccelTables[2];	// [higher jump]
 
+	static BumpOffender bumpOffender;
 
 
 	Door* door;

@@ -2,6 +2,7 @@
 #include "nsmb_nitro.hpp"
 #include "nsmb/math/random.hpp"
 
+// WARNING: This header is heavily subject to change!
 
 namespace Wifi
 {
@@ -18,6 +19,11 @@ namespace Wifi
 	// 0200E748
 	u32 syncRandom();
 
+	// 0x02046C34
+	u16 getConsoleCount();
+
+	// 020887F0
+	extern u8 currentAid;
 
 	// 02088A68
 	extern Random random;
@@ -27,5 +33,8 @@ namespace Wifi
 
 	// 0208885C	
 	extern u32 randomBranchAddress;
+
+	// 0x02046C34
+	extern u16 consoleCount;
 
 }

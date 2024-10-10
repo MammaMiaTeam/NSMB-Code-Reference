@@ -4530,10 +4530,13 @@ _ZN4Wifi11getRandomMGEv			= 0x0200E6A4;
 _ZN4Wifi9getRandomEv			= 0x0200E6F4;
 _ZN4Wifi12syncRandomMGEv		= 0x0200E73C;
 _ZN4Wifi10syncRandomEv			= 0x0200E748;
+_ZN4Wifi15getConsoleCountEv		= 0x02046C34;
 
+_ZN4Wifi10currentAidE			= 0x020887F0;
 _ZN4Wifi6randomE				= 0x02088A68;
 _ZN4Wifi15randomCallCountE		= 0x02088A48;
 _ZN4Wifi19randomBranchAddressE	= 0x0208885C;
+_ZN4Wifi12consoleCountE         = 0x02085200;
 
 
 /* arm9_ov0 */
@@ -5182,7 +5185,9 @@ _ZN6Player19switchMegaAnimationEl							= 0x02116BA0;
 _ZN6Player18beginIdleAnimationEbl							= 0x0211688C;
 _ZN6Player22updateCommonAnimationsEbb						= 0x021160A4;
 _ZN6Player20transitBeginIdlePoseEb							= 0x02115FB0;
+_ZN6Player9idleStateEPv										= 0x02115AAC;
 _ZN6Player22setPerspectivePositionEslRK4Vec3				= 0x0210DB4C;
+_ZN6Player20checkGroundpoundBumpEv							= 0x0210ABDC;
 
 _ZN6Player14activeCallbackER14ActiveColliderS1_				= 0x02109614;
 _ZN6Player21specialActiveCallbackER14ActiveColliderS1_		= 0x02109610;
@@ -5375,6 +5380,7 @@ _ZN6Player9onDestroyEv										= 0x020FCAC0;
 _ZN6Player7profileE											= 0x02128458;
 _ZN6Player20jumpCurveAccelTablesE							= 0x02122E04;
 _ZN6Player20jumpCurveLimitTablesE							= 0x02122948;
+_ZN6Player12bumpOffenderE					                = 0x0212AF64;
 _ZN6Player13powerupParamsE									= 0x02122C94;
 _ZN6Player11sensorsMegaE									= 0x02123314;
 _ZN6Player12sensorsSuperE									= 0x02123214;

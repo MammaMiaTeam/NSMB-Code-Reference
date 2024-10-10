@@ -31,16 +31,6 @@ namespace OAM
 		BitmapMode = 0xC0		/**< \brief Renders the objects in bitmap mode. */
 	};
 
-}
-
-NTR_CREATE_BITMASK_ENUM(OAM::Flags);
-
-
-namespace OAM
-{
-
-	/* ======== TYPES ======== */
-
 	/// \brief The %OAM drawing settings.
 	enum class Settings : u32
 	{
@@ -542,3 +532,7 @@ namespace OAM
 	};
 
 }
+
+NTR_CREATE_BITMASK_ENUM(OAM::Flags);
+NTR_CREATE_BITMASK_ENUM(OAM::Settings);
+NTR_CREATE_BITMASK_ENUM(OAM::CounterFlags);
