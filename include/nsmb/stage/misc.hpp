@@ -45,6 +45,9 @@ namespace Stage
 
 	// 020ca28c
 	extern bool freezeFlag;
+	
+	// 020ca298
+	extern s8 stageClearerID;
 
 	// 020ca29c
 	extern bool fenceFreezeFlag;

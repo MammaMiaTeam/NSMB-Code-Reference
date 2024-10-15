@@ -4463,6 +4463,7 @@ _ZN5Stage11cameraWidthE								= 0x020cada4;
 _ZN5Stage12cameraHeightE							= 0x020cad8c;
 _ZN5Stage20megaInteractionFlagsE					= 0x020ca284;
 _ZN5Stage10freezeFlagE								= 0x020ca28c;
+_ZN5Stage14stageClearerIDE							= 0x020ca298;
 _ZN5Stage15fenceFreezeFlagE							= 0x020ca29c;
 _ZN5Stage20currentBooStackIndexE					= 0x020ca2a0;
 _ZN5Stage9eventDataE								= 0x020ca2a4;
