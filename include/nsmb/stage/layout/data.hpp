@@ -1,6 +1,7 @@
 #pragma once
 #include "nsmb/extra/assert.hpp"
 #include "entrance.hpp"
+#include "object.hpp"
 
 
 enum class StageBlockID : u32 {
@@ -31,7 +32,7 @@ struct StageBlocks {
 	void* tileset;
 	void* foreground;
 	StageEntrance* entrances;
-	void* stageObjs;
+	StageObject* stageObjs;
 	void* views;
 	void* zones;
 	void* progressPaths;
