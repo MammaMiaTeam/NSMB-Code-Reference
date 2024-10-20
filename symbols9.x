@@ -2916,6 +2916,21 @@ _ZN5Fader8fadedOutEv                            = 0x02007C68;
 _ZN4Game5faderE									= 0x02088f48;
 
 
+_ZN8FadeMask20characterFadeMaskIDsE = 0x0203bd88;
+_ZN8FadeMask8modelIDsE = 0x02026634;
+
+_ZTV8FadeMask = 0x0203BD8C;
+_ZN8FadeMaskC1Ev = 0x02014170;
+_ZN8FadeMaskD0Ev = 0x02014100;
+_ZN8FadeMaskD1Ev = 0x0201413c;
+
+_ZN8FadeMask10loadModelsEv = 0x020140a0;
+_ZN8FadeMask16updateTransitionENS_5ShapeEP7VecFx32tlNS_4ModeE = 0x02013c00;
+_ZN8FadeMask17loadMaskModelFileEv = 0x02013bdc;
+_ZN8FadeMask14loadMaskModelsEv = 0x02013bd0;
+_ZN8FadeMask6updateENS_5ShapeEP7VecFx32tlNS_4ModeE = 0x02013ba8;
+_ZN8FadeMask22getCharacterFadeMaskIDEh = 0x02013b98;
+
 /* arm9 */
 /*----------------------------------------------------------------------*/
 /*----------------------------- multiplayer ----------------------------*/
