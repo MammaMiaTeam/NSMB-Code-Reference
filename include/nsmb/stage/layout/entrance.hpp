@@ -145,7 +145,7 @@ namespace Entrance {
 	bool switchArea();
 
 	// Does nothing
-	void reloadArea();
+	void reloadArea(bool unused);
 
 	void setTargetArea(u8 entranceID, u8 stageArea);
 
