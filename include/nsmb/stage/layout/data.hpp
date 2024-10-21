@@ -2,6 +2,8 @@
 #include "nsmb/extra/assert.hpp"
 #include "entrance.hpp"
 #include "object.hpp"
+#include "view.hpp"
+#include "zone.hpp"
 
 
 enum class StageBlockID : u32 {
@@ -33,8 +35,8 @@ struct StageBlocks {
 	void* foreground;
 	StageEntrance* entrances;
 	StageObject* stageObjs;
-	void* views;
-	void* zones;
+	StageView* views;
+	StageZone* zones;
 	void* progressPaths;
 	void* paths;
 	void* pathNodes;
