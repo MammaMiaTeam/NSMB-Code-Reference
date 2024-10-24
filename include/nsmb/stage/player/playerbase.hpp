@@ -631,7 +631,7 @@ public:
 	Vec3 unk744;
 
 	fx32 colliderOffset;
-	u32 modelScale;
+	fx32 modelScale;
 	u32 unk75C;
 	u32 unk760;
 	u32 unk764;
