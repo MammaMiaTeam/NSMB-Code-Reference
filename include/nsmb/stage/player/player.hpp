@@ -768,7 +768,7 @@ public:
 
 	fx32 modelAnimSpeed;
 	fx32 powerupScaleStep;
-	fx32 modelScale;
+	fx32 powerupTargetScale;
 	fx32 perspectiveScale;
 	fx32 unkAE8;
 	fx32 unkAEC;
