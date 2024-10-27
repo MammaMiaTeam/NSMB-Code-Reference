@@ -1,5 +1,6 @@
 #pragma once
 #include "playerbase.hpp"
+#include "nsmb/extra/extend.hpp"
 
 
 using EmitterT = u32;
@@ -902,8 +903,12 @@ public:
 	u8 unkBCA;
 	bool lookAtActive; // set to true when "LookingAtTarget" is enabled and the player's head rotation is being calculated
 
+
+	#include NTR_EXT_INCLUDE(Player)
+
 };
-NTR_SIZE_GUARD(Player, 0xBCC);
+NTR_EXT_SIZE_GUARD(Player, 0xBCC);
+
 
 using PlayerFrameMode		= Player::FrameMode;
 using ColliderPushSide		= Player::ColliderPushSide;
@@ -920,4 +925,3 @@ NTR_CREATE_BITMASK_ENUM(Player::ColliderPushSide);
 NTR_INLINE u8 ActiveCollider::getPlayerID() const {
 	return getPlayer()->linkedPlayerID;
 }
-
