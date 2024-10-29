@@ -140,5 +140,10 @@ public:
 	u8 searchingFlag;
 	s8 updateStep;
 
+
+	#include NTR_EXT_INCLUDE(Broozer)
+
 };
+#if !NTR_HAS_EXT(Broozer)
 NTR_SIZE_GUARD(Broozer, 0x52C);
+#endif

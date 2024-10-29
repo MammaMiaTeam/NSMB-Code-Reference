@@ -175,5 +175,10 @@ public:
 
 	s8 updateStep;
 
+
+	#include NTR_EXT_INCLUDE(Whomp)
+
 };
+#if !NTR_HAS_EXT(Whomp)
 NTR_SIZE_GUARD(Whomp, 0x51C);
+#endif

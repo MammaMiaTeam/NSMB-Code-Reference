@@ -160,8 +160,13 @@ public:
 	u8 bulletRollSequenceIndex;				// Bullet Bill roll animation sequence step
 	s8 updateStep;
 
+
+	#include NTR_EXT_INCLUDE(BulletBill)
+
 };
+#if !NTR_HAS_EXT(BulletBill)
 NTR_SIZE_GUARD(BulletBill, 0x5E4);
+#endif
 
 
 // vtable at 021520DC (ov42)
@@ -187,5 +192,10 @@ public:
 	// 021518C0
 	static const ActiveColliderInfo activeColliderInfo;
 
+
+	#include NTR_EXT_INCLUDE(BanzaiBill)
+
 };
+#if !NTR_HAS_EXT(BanzaiBill)
 NTR_SIZE_GUARD(BanzaiBill, sizeof(BulletBill));
+#endif

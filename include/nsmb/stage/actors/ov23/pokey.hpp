@@ -83,5 +83,10 @@ public:
 	u8 bodyPartWiggleTimers[9];
 	s16 bodyPartRotations[9];
 
+
+	#include NTR_EXT_INCLUDE(Pokey)
+
 };
+#if !NTR_HAS_EXT(Pokey)
 NTR_SIZE_GUARD(Pokey, 0x10B0);
+#endif

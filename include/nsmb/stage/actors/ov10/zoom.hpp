@@ -40,5 +40,10 @@ public:
 	fx32 zoomTime;
 	u32 playerZoomState[2];
 
+
+	#include NTR_EXT_INCLUDE(Zoom)
+
 };
+#if !NTR_HAS_EXT(Zoom)
 NTR_SIZE_GUARD(Zoom, 0x418);
+#endif

@@ -54,5 +54,10 @@ public:
 
 	s8 updateStep;
 
+
+	#include NTR_EXT_INCLUDE(PhantomHand)
+
 };
+#if !NTR_HAS_EXT(PhantomHand)
 NTR_SIZE_GUARD(PhantomHand, 0x4D4);
+#endif

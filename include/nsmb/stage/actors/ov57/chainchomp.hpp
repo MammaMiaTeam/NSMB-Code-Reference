@@ -132,5 +132,10 @@ public:
 	u8 jumpsLeft;
 	u8 playerCollisionCooldown;
 
+
+	#include NTR_EXT_INCLUDE(ChainChomp)
+
 };
+#if !NTR_HAS_EXT(ChainChomp)
 NTR_SIZE_GUARD(ChainChomp, 0x8A8);
+#endif

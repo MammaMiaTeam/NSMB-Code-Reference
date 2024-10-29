@@ -142,5 +142,10 @@ public:
 	u8 palette;
 	bool renderLives;
 
+
+	#include NTR_EXT_INCLUDE(StageFX)
+
 };
+#if !NTR_HAS_EXT(StageFX)
 NTR_SIZE_GUARD(StageFX, 0x16C);
+#endif

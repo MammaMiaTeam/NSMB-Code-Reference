@@ -60,5 +60,10 @@ public:
 	u8 unused4D8;
 	s8 updateStep;
 
+
+	#include NTR_EXT_INCLUDE(Snowball)
+
 };
+#if !NTR_HAS_EXT(Snowball)
 NTR_SIZE_GUARD(Snowball, 0x4DC);
+#endif

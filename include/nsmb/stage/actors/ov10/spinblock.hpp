@@ -86,8 +86,13 @@ public:
 	s8 activePlayerCooldowns[2];
 	s8 updateStep;
 
+
+	#include NTR_EXT_INCLUDE(SpinBlock)
+
 };
+#if !NTR_HAS_EXT(SpinBlock)
 NTR_SIZE_GUARD(SpinBlock, 0x55C);
+#endif
 
 
 // vtable at 02125598 (ov24)
@@ -107,8 +112,13 @@ public:
 	// 0212533C
 	static const ActorProfile profile;
 
+
+	#include NTR_EXT_INCLUDE(SpinBlock255)
+
 };
+#if !NTR_HAS_EXT(SpinBlock255)
 NTR_SIZE_GUARD(SpinBlock255, sizeof(SpinBlock));
+#endif
 
 
 // vtable at 0212547C (ov24)
@@ -128,5 +138,10 @@ public:
 	// 02125354
 	static const ActorProfile profile;
 
+
+	#include NTR_EXT_INCLUDE(SpinBlock256)
+
 };
+#if !NTR_HAS_EXT(SpinBlock256)
 NTR_SIZE_GUARD(SpinBlock256, sizeof(SpinBlock));
+#endif

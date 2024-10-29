@@ -206,5 +206,10 @@ public:
 	u8 collectedPlayerID;
 	s8 updateStep;
 
+
+	#include NTR_EXT_INCLUDE(Coin)
+
 };
+#if !NTR_HAS_EXT(Coin)
 NTR_SIZE_GUARD(Coin, 0x4E8);
+#endif

@@ -63,5 +63,10 @@ public:
 	s8 updateStep;
 	s8 wobbleForce;
 
+
+	#include NTR_EXT_INCLUDE(WobbleRock)
+
 };
+#if !NTR_HAS_EXT(WobbleRock)
 NTR_SIZE_GUARD(WobbleRock, 0x508);
+#endif

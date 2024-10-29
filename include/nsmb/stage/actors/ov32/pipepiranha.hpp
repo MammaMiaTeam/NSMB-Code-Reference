@@ -159,11 +159,16 @@ public:
 	u8 spinDirection;
 	s8 updateStep;
 
+
+	#include NTR_EXT_INCLUDE(PipePiranha)
+
 };
+#if !NTR_HAS_EXT(PipePiranha)
 NTR_SIZE_GUARD(PipePiranha, 0x59C);
+#endif
 
 
-class PiranhaUp : public PipePiranha
+class PiranhaUp : public PipePiranha // TODO Remove
 {
 public:
 
@@ -179,7 +184,7 @@ public:
 NTR_SIZE_GUARD(PiranhaUp, sizeof(PipePiranha));
 
 
-class PiranhaDown : public PipePiranha
+class PiranhaDown : public PipePiranha // TODO Remove
 {
 public:
 
@@ -195,7 +200,7 @@ public:
 NTR_SIZE_GUARD(PiranhaDown, sizeof(PipePiranha));
 
 
-class PiranhaRight : public PipePiranha
+class PiranhaRight : public PipePiranha // TODO Remove
 {
 public:
 
@@ -211,7 +216,7 @@ public:
 NTR_SIZE_GUARD(PiranhaRight, sizeof(PipePiranha));
 
 
-class PiranhaLeft : public PipePiranha
+class PiranhaLeft : public PipePiranha // TODO Remove
 {
 public:
 

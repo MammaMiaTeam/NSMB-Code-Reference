@@ -100,7 +100,12 @@ public:
 	State activeState;
 	DamageType damageType;
 
+
+	#include NTR_EXT_INCLUDE(ChainChompLog)
+
 };
+#if !NTR_HAS_EXT(ChainChompLog)
 NTR_SIZE_GUARD(ChainChompLog, 0x48C);
+#endif
 
 static_assert(ChainChompLog::MaxChainChompCount == 1, "Invalid ChainChomp count specified in ChainChompLog");

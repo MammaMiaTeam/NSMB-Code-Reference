@@ -3,6 +3,7 @@
 #include "extra/assert.hpp"
 #include "extra/bitmaskenum.hpp"
 #include "extra/bits.hpp"
+#include "extra/extend.hpp"
 #include "extra/fixedpoint.hpp"
 #include "extra/ignore.hpp"
 #include "extra/log.hpp"

@@ -109,5 +109,10 @@ public:
 	u8 verticalFlag;
 	s8 updateStep;
 
+
+	#include NTR_EXT_INCLUDE(FenceKoopa)
+
 };
+#if !NTR_HAS_EXT(FenceKoopa)
 NTR_SIZE_GUARD(FenceKoopa, 0x4B8);
+#endif

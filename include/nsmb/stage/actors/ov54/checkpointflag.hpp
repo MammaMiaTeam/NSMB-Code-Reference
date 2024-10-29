@@ -30,5 +30,10 @@ public:
 	u8 unused57;
 	bool shrinkFlag;
 
+
+	#include NTR_EXT_INCLUDE(CheckpointFlag)
+
 };
+#if !NTR_HAS_EXT(CheckpointFlag)
 NTR_SIZE_GUARD(CheckpointFlag, 0x5C);
+#endif

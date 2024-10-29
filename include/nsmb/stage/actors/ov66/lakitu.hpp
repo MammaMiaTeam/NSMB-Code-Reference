@@ -151,5 +151,10 @@ public:
 	RenderBitfield skipRenderModels;
 	s8 mountedPlayerID;
 
+
+	#include NTR_EXT_INCLUDE(Lakitu)
+
 };
-NTR_SIZE_GUARD(Lakitu,0x5e4);
+#if !NTR_HAS_EXT(Lakitu)
+NTR_SIZE_GUARD(Lakitu, 0x5E4);
+#endif

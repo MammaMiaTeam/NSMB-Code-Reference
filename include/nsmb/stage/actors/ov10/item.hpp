@@ -166,5 +166,10 @@ public:
 	u8 cardID;			                // ID of the red toadhouse card
 	u8 unused5CF;			            // Unused (& 0x100), MP, vine, drop from top only
 
+
+	#include NTR_EXT_INCLUDE(Item)
+
 };
+#if !NTR_HAS_EXT(Item)
 NTR_SIZE_GUARD(Item, 0x5D0);
+#endif

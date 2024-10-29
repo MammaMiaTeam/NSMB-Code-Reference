@@ -145,8 +145,13 @@ public:
 	u8 invisibleFlag;
 	s8 updateStep;
 
+
+	#include NTR_EXT_INCLUDE(Gombaa)
+
 };
+#if !NTR_HAS_EXT(Goomba)
 NTR_SIZE_GUARD(Goomba, 0x45C);
+#endif
 
 
 // vtable at 02126648 (ov10)
@@ -169,8 +174,13 @@ public:
 	// 021217C8
 	static const PointSensor topSensor;
 
+
+	#include NTR_EXT_INCLUDE(Paragoomba)
+
 };
+#if !NTR_HAS_EXT(Paragoomba)
 NTR_SIZE_GUARD(Paragoomba, sizeof(Goomba));
+#endif
 
 
 // vtable at 02126534 (ov10)
@@ -197,5 +207,10 @@ public:
 	// 021217B8
 	static const fx32 velocitiesX[2];
 
+
+	#include NTR_EXT_INCLUDE(MiniGoomba)
+
 };
+#if !NTR_HAS_EXT(MiniGoomba)
 NTR_SIZE_GUARD(MiniGoomba, sizeof(Goomba));
+#endif

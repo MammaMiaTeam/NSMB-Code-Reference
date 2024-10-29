@@ -112,8 +112,13 @@ public:
 	s8 updateStep;
 	u8 waitTimer;
 
+
+	#include NTR_EXT_INCLUDE(Thwomp)
+
 };
+#if !NTR_HAS_EXT(Thwomp)
 NTR_SIZE_GUARD(Thwomp, 0x4F4);
+#endif
 
 
 // vtable at 0213F804 (ov24)
@@ -139,5 +144,10 @@ public:
 	// 0213F1C8
 	static LineSensorH topSensor;
 
+
+	#include NTR_EXT_INCLUDE(GiantThwomp)
+
 };
+#if !NTR_HAS_EXT(GiantThwomp)
 NTR_SIZE_GUARD(GiantThwomp, sizeof(Thwomp));
+#endif

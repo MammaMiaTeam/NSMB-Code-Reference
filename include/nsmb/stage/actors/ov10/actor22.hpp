@@ -19,5 +19,10 @@ public:
 	// 02126BE0
 	static const ActorProfile profile;
 
+
+	#include NTR_EXT_INCLUDE(Actor22)
+
 };
+#if !NTR_HAS_EXT(Actor22)
 NTR_SIZE_GUARD(Actor22, sizeof(StageEntity));
+#endif

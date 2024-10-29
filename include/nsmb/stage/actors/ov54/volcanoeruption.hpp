@@ -81,5 +81,10 @@ public:
 	u8 rockDrawPrioTimer[10];
 	s8 updateStep;
 	
+
+	#include NTR_EXT_INCLUDE(VolcanoEruption)
+
 };
+#if !NTR_HAS_EXT(VolcanoEruption)
 NTR_SIZE_GUARD(VolcanoEruption, 0xD74);
+#endif

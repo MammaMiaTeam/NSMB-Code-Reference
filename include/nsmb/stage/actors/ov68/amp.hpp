@@ -72,5 +72,10 @@ public:
 
 	s8 updateStep;
 
+
+	#include NTR_EXT_INCLUDE(Amp)
+
 };
+#if !NTR_HAS_EXT(Amp)
 NTR_SIZE_GUARD(Amp, 0x5A4);
+#endif

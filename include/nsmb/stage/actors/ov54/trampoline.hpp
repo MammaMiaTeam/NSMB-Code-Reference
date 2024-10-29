@@ -150,5 +150,10 @@ public:
 	u8 carryCooldown;
 	u8 contractTimer;
 
+
+	#include NTR_EXT_INCLUDE(Trampoline)
+
 };
+#if !NTR_HAS_EXT(Trampoline)
 NTR_SIZE_GUARD(Trampoline, 0x508);
+#endif

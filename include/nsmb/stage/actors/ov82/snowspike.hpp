@@ -72,5 +72,10 @@ public:
 	bool snowballVisible;
 	s8 updateStep;
 
+
+	#include NTR_EXT_INCLUDE(SnowSpike)
+
 };
+#if !NTR_HAS_EXT(SnowSpike)
 NTR_SIZE_GUARD(SnowSpike, 0x5A0);
+#endif

@@ -63,5 +63,10 @@ public:
     u8 unused40F;
     s8 updateStep;
 
+
+	#include NTR_EXT_INCLUDE(LakituSpawner)
+
 };
-NTR_SIZE_GUARD(LakituSpawner,0x414);
+#if !NTR_HAS_EXT(LakituSpawner)
+NTR_SIZE_GUARD(LakituSpawner, 0x414);
+#endif

@@ -43,5 +43,10 @@ public:
 	u8 stageMode;			        // 0: Green, 1: Enemy, 2: Red, 3: Yellow, 4: Blue
 	s8 updateStep;			        // Step of the current state: 0:init,1:update,-1:exit
 
+
+	#include NTR_EXT_INCLUDE(Toadsworth)
+
 };
+#if !NTR_HAS_EXT(Toadsworth)
 NTR_SIZE_GUARD(Toadsworth, 0x524);
+#endif

@@ -85,5 +85,10 @@ public:
 	u8 rollTimer;
 	bool playerStanding;
 
+
+	#include NTR_EXT_INCLUDE(Manhole)
+
 };
+#if !NTR_HAS_EXT(Manhole)
 NTR_SIZE_GUARD(Manhole, 0x50C);
+#endif

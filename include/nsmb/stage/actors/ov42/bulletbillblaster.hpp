@@ -135,8 +135,13 @@ public:
 	s8 megaPlayerIDs[2];
 	s8 updateStep;
 
+
+	#include NTR_EXT_INCLUDE(BulletBillBlaster)
+
 };
+#if !NTR_HAS_EXT(BulletBillBlaster)
 NTR_SIZE_GUARD(BulletBillBlaster, 0xA44);
+#endif
 
 
 // vtable at 02151E94 (ov42)
@@ -159,5 +164,10 @@ public:
 	// 02151D68
 	static const ActorProfile profile;
 
+
+	#include NTR_EXT_INCLUDE(BanzaiBillBlaster)
+
 };
+#if !NTR_HAS_EXT(BanzaiBillBlaster)
 NTR_SIZE_GUARD(BanzaiBillBlaster, sizeof(BulletBillBlaster));
+#endif

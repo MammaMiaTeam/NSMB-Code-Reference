@@ -209,8 +209,13 @@ public:
 	u8 zoneID;									// The zone a Balloon Boo is restricted in
 	s8 updateStep;
 
+
+	#include NTR_EXT_INCLUDE(Boo)
+
 };
+#if !NTR_HAS_EXT(Boo)
 NTR_SIZE_GUARD(Boo, 0x5B0);
+#endif
 
 
 // vtable at 021794B0 (ov71)
@@ -233,5 +238,10 @@ public:
 	// 02179384
 	static const ActorProfile profile;
 
+
+	#include NTR_EXT_INCLUDE(BalloonBoo)
+
 };
+#if !NTR_HAS_EXT(BalloonBoo)
 NTR_SIZE_GUARD(BalloonBoo, sizeof(Boo));
+#endif

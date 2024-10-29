@@ -74,5 +74,10 @@ public:
 	bool16 clockwise;
 	s8 updateStep;
 
+
+	#include NTR_EXT_INCLUDE(FireBar)
+
 };
+#if !NTR_HAS_EXT(FireBar)
 NTR_SIZE_GUARD(FireBar, 0x1CC4);
+#endif

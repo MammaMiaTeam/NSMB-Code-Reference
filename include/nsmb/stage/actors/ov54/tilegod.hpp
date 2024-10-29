@@ -76,5 +76,10 @@ public:
 	bool16 keepActive;
 	s8 updateStep;
 
+
+	#include NTR_EXT_INCLUDE(TileGod)
+
 };
+#if !NTR_HAS_EXT(TileGod)
 NTR_SIZE_GUARD(TileGod, 0x41C);
+#endif

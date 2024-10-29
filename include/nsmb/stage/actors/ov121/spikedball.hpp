@@ -84,5 +84,10 @@ public:
 	u8 spikedBallID;
 	bool activeFlag;
 
+
+	#include NTR_EXT_INCLUDE(SpikedBall)
+
 };
+#if !NTR_HAS_EXT(SpikedBall)
 NTR_SIZE_GUARD(SpikedBall, 0x4AC);
+#endif

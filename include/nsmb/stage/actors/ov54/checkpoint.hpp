@@ -48,12 +48,17 @@ public:
 	u8 triggerDirection;
 	bool collected;
 
+
+	#include NTR_EXT_INCLUDE(Checkpoint)
+
 };
+#if !NTR_HAS_EXT(Checkpoint)
 NTR_SIZE_GUARD(Checkpoint, 0x51C);
+#endif
 
 
 // vtable at 0216FF70 (ov54)
-class VerticalCheckpoint : public Checkpoint
+class VerticalCheckpoint : public Checkpoint // TODO Remove
 {
 public:
 

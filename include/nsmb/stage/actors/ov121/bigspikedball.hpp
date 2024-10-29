@@ -81,5 +81,10 @@ public:
 	bool bouncingFlag;
 	s8 updateStep;
 
+
+	#include NTR_EXT_INCLUDE(BigSpikedBall)
+
 };
+#if !NTR_HAS_EXT(BigSpikedBall)
 NTR_SIZE_GUARD(BigSpikedBall, 0x4A8);
+#endif

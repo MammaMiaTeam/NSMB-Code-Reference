@@ -907,7 +907,9 @@ public:
 	#include NTR_EXT_INCLUDE(Player)
 
 };
-NTR_EXT_SIZE_GUARD(Player, 0xBCC);
+#if !NTR_HAS_EXT(Player)
+NTR_SIZE_GUARD(Player, 0xBCC);
+#endif
 
 
 using PlayerFrameMode		= Player::FrameMode;

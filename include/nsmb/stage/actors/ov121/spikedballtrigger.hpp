@@ -33,5 +33,10 @@ public:
 	u8 spikedBallID;
 	u32 unused3F4;
 
+
+	#include NTR_EXT_INCLUDE(SpikedBallTrigger)
+
 };
+#if !NTR_HAS_EXT(SpikedBallTrigger)
 NTR_SIZE_GUARD(SpikedBallTrigger, 0x3F8);
+#endif

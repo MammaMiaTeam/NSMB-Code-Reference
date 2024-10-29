@@ -65,5 +65,10 @@ public:
 	u16 spawnCounter;  
 	s8 updateStep;
 
+
+	#include NTR_EXT_INCLUDE(PipeEnemySpawner)
+
 };
+#if !NTR_HAS_EXT(PipeEnemySpawner)
 NTR_SIZE_GUARD(PipeEnemySpawner, 0x404);
+#endif
