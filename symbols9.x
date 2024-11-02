@@ -4465,6 +4465,7 @@ _ZTV7StageFX							= 0x02127838;
 /*-------------------------- stage misc --------------------------*/
 /*----------------------------------------------------------------*/
 
+_ZN5Stage20challengeModeEnabledE					= 0x02085a10;
 _ZN5Stage7setZoomElmhh								= 0x020facfc;
 _ZN5Stage9getAreaIDEhhh								= 0x0201f53c;
 
