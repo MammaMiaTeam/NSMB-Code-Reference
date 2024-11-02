@@ -70,6 +70,9 @@ namespace Stage
 	// 020ca850
 	extern ActorCategory actorFreezeFlag;
 
+	// 02085a10
+	extern bool challengeModeFlag;
+
 	// 020ca874
 	extern bool phantomHandsTargetEnabled;
 
