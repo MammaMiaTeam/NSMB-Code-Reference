@@ -4,9 +4,12 @@
 #include "nsmb/math/rectangle.hpp"
 #include "nsmb/math/math.hpp"
 
-class StageZone
-{
-public:
+struct StageZone {
+
+	// 0x0201EEF8
+	static StageZone* get(u8 id, Rectangle<fx32>* outRect);
+
+
 	u16 x;
 	u16 y;
 	u16 width;
@@ -16,6 +19,5 @@ public:
 	u8 unkA;
 	u8 unkB;
 
-	// 0x0201EEF8
-	static StageZone* get(u8 id, Rectangle<fx32>* outRect);
 };
+NTR_SIZE_GUARD(StageZone, 0xC);

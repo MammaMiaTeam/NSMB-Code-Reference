@@ -1457,11 +1457,11 @@ _ZN2FS5Cache8Internal8loadFileEmPNS0_10CacheEntryEmb = 0x02009ED4;
 _ZN2FS5Cache8loadDataEm = 0x02009BC8;
 _ZN2FS5Cache8loadFileEmb = 0x02009C64;
 
-_ZN2FS8Internal11crashReasonE = 0x02085CF8;
+_ZN2FS8Internal12assertSourceE = 0x02085CF8;
 _ZN2FS8Internal11loadOverlayE11MIProcessorm = 0x02008594;
 _ZN2FS8Internal12pathToFileIDEP8FSFileIDPKc = 0x02008648;
 _ZN2FS8Internal13unloadOverlayE11MIProcessorm = 0x02008588;
-_ZN2FS8Internal9terminateEPKc = 0x02008670;
+_ZN2FS8Internal6assertEPKc = 0x02008670;
 _ZN2FS8Internal15loadOverlayInfoEP13FSOverlayInfo11MIProcessorm = 0x020085A0;
 _ZN2FS8Internal8openFileEP6FSFile8FSFileID = 0x0200860C;
 _ZN2FS8Internal8openFileEP6FSFilePKc = 0x020085E4;
@@ -2131,6 +2131,94 @@ _ZTV5Vec3s								= 0x020391F0;
 
 /* arm9 */
 /*----------------------------------------------------------------*/
+/*----------------------------- Wifi -----------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN4Wifi15isWMInitializedEv                                         = 0x02046080; /* Wifi::isWMInitialized() */
+_ZN4Wifi10shutdownWMEv                                              = 0x02046090; /* Wifi::shutdownWM() */
+_ZN4Wifi12onShutdownWMEPv                                           = 0x0204614C; /* Wifi::onShutdownWM(void*) */
+_ZN4Wifi12initializeWMEv                                            = 0x02046160; /* Wifi::initializeWM() */
+_ZN4Wifi14onInitializeWMEPv                                         = 0x020461AC; /* Wifi::onInitializeWM(void*) */
+_ZN4Wifi2MB21isChildDownloadFailedEv                                = 0x020461C0; /* Wifi::MB::isChildDownloadFailed() */
+_ZN4Wifi2MB11isFakeChildEv                                          = 0x02046210; /* Wifi::MB::isFakeChild() */
+_ZN4Wifi2MB19isChildReadyForBootEv                                  = 0x02046220; /* Wifi::MB::isChildReadyForBoot() */
+_ZN4Wifi2MB16connectFakeChildEv                                     = 0x02046240; /* Wifi::MB::connectFakeChild() */
+_ZN4Wifi2MB18terminateFakeChildEv                                   = 0x020462E8; /* Wifi::MB::terminateFakeChild() */
+_ZN4Wifi2MB26getFakeChildParentGameInfoEv                           = 0x020463EC; /* Wifi::MB::getFakeChildParentGameInfo() */
+_ZN4Wifi2MB26getFakeChildParentsBssDescEv                           = 0x020463F8; /* Wifi::MB::getFakeChildParentsBssDesc() */
+_ZN4Wifi2MB14startFakeChildEm                                       = 0x02046644; /* Wifi::MB::startFakeChild(unsigned long) */
+_ZN4Wifi2MB21getChildDownloadStateEv                                = 0x020467E8; /* Wifi::MB::getChildDownloadState() */
+_ZN4Wifi2MB15onFakeSetCStateEmPv                                    = 0x020467F8; /* Wifi::MB::onFakeSetCState(unsigned long, void*) */
+_ZN4Wifi2MB16getFakeScanStateEv                                     = 0x02046808; /* Wifi::MB::getFakeScanState() */
+_ZN4Wifi2MB15onFakeStartScanEtPv                                    = 0x02046818; /* Wifi::MB::onFakeStartScan(unsigned short, void*) */
+_ZN4Wifi2MB18getChildMacAddressEt                                   = 0x02046828; /* Wifi::MB::getChildMacAddress(unsigned short) */
+_ZN4Wifi2MB20getDownloadParameterEv                                 = 0x02046860; /* Wifi::MB::getDownloadParameter() */
+_ZN4Wifi2MB12getChildInfoEt                                         = 0x0204688C; /* Wifi::MB::getChildInfo(unsigned short) */
+_ZN4Wifi2MB6updateEt                                                = 0x020468C4; /* Wifi::MB::update(unsigned short) */
+_ZN4Wifi2MB11startParentEmP14MBGameRegistry                         = 0x02046ADC; /* Wifi::MB::startParent(unsigned long, MBGameRegistry*) */
+_ZN4Wifi17disableChildEntryEv                                       = 0x02046B80; /* Wifi::disableChildEntry() */
+_ZN4Wifi18getConnectedBitmapEv                                      = 0x02046BA8; /* Wifi::getConnectedBitmap() */
+_ZN4Wifi16hasErrorOccurredEv                                        = 0x02046BB4; /* Wifi::hasErrorOccurred() */
+_ZN4Wifi12getLinkLevelEv                                            = 0x02046BF8; /* Wifi::getLinkLevel() */
+_ZN4Wifi13getCurrentAidEv                                           = 0x02046C28; /* Wifi::getCurrentAid() */
+_ZN4Wifi28getCommunicatingConsoleCountEv                            = 0x02046C34; /* Wifi::getCommunicatingConsoleCount() */
+_ZN4Wifi22isConsoleCommunicatingEt                                  = 0x02046C44; /* Wifi::isConsoleCommunicating(unsigned short) */
+_ZN4Wifi7isChildEv                                                  = 0x02046C5C; /* Wifi::isChild() */
+_ZN4Wifi8isParentEv                                                 = 0x02046C78; /* Wifi::isParent() */
+_ZN4Wifi16isMultiBootChildEv                                        = 0x02046C88; /* Wifi::isMultiBootChild() */
+_ZN4Wifi16terminateSessionEv                                        = 0x02046CA4; /* Wifi::terminateSession() */
+_ZN4Wifi13getSharedDataEt                                           = 0x02046E98; /* Wifi::getSharedData(unsigned short) */
+_ZN4Wifi16updateSharedDataEPKv                                      = 0x02046ECC; /* Wifi::updateSharedData(void const*) */
+_ZN4Wifi10isWFSReadyEv                                              = 0x02046F9C; /* Wifi::isWFSReady() */
+_ZN4Wifi15connectToParentEm                                         = 0x02046FDC; /* Wifi::connectToParent(unsigned long) */
+_ZN4Wifi17getParentsBssDescEv                                       = 0x02047194; /* Wifi::getParentsBssDesc() */
+_ZN4Wifi14startChildScanEmPh                                        = 0x020471A0; /* Wifi::startChildScan(unsigned long, unsigned char*) */
+_ZN4Wifi13onParentFoundEP9WMBssDesc                                 = 0x020472A8; /* Wifi::onParentFound(WMBssDesc*) */
+_ZN4Wifi11startParentEmhPvt                                         = 0x020473BC; /* Wifi::startParent(unsigned long, unsigned char, void*, unsigned short) */
+_ZN4Wifi21isFastTransferEnabledEv                                   = 0x02047694; /* Wifi::isFastTransferEnabled() */
+_ZN4Wifi18enableFastTransferEv                                      = 0x020476A4; /* Wifi::enableFastTransfer() */
+_ZN4Wifi20onEnableFastTransferEPv                                   = 0x020476EC; /* Wifi::onEnableFastTransfer(void*) */
+_ZN4Wifi18enableSyncTransferEv                                      = 0x02047708; /* Wifi::enableSyncTransfer() */
+_ZN4Wifi20onEnableSyncTransferEPv                                   = 0x02047750; /* Wifi::onEnableSyncTransfer(void*) */
+_ZN4Wifi10initializeEy                                              = 0x0204776C; /* Wifi::initialize(unsigned long long) */
+_ZN4Wifi21measureOptimalChannelEv                                   = 0x0204785C; /* Wifi::measureOptimalChannel() */
+_ZN4Wifi12setupSessionEi                                            = 0x02047A94; /* Wifi::setupSession(int) */
+_ZN4Wifi15whJudgeAcceptorEP21WMStartParentCallback                  = 0x02047BDC; /* Wifi::whJudgeAcceptor(WMStartParentCallback*) */
+_ZN4Wifi11wfsCallbackEPv                                            = 0x02047C00; /* Wifi::wfsCallback(void*) */
+_ZN4Wifi12wfsAllocatorEPvmS0_                                       = 0x02047C0C; /* Wifi::wfsAllocator(void*, unsigned long, void*) */
+_ZN4Wifi16indicateCallbackEPPFvPvE                                  = 0x02047C90; /* Wifi::indicateCallback(void (**)(void*)) */
+
+_ZN4Wifi14parentsBssDescE                                           = 0x0208C0C0; /* Wifi::parentsBssDesc */
+_ZN4Wifi8recvDataE                                                  = 0x0208BA40; /* Wifi::recvData */
+_ZN4Wifi8sendDataE                                                  = 0x0208B8A0; /* Wifi::sendData */
+_ZN4Wifi21communicatingConsolesE                                    = 0x0208B848; /* Wifi::communicatingConsoles */
+_ZN4Wifi17connectionTimeoutE                                        = 0x0208B830; /* Wifi::connectionTimeout */
+_ZN4Wifi14multiBootEndedE                                           = 0x0208B824; /* Wifi::multiBootEnded */
+_ZN4Wifi13communicatingE                                            = 0x0208B820; /* Wifi::communicating */
+_ZN4Wifi12multiBootingE                                             = 0x0208B800; /* Wifi::multiBooting */
+_ZN4Wifi4heapE                                                      = 0x0208B7FC; /* Wifi::heap */
+_ZN4Wifi12fastTransferE                                             = 0x0208B7F4; /* Wifi::fastTransfer */
+_ZN4Wifi11beaconCountE                                              = 0x0208B7E8; /* Wifi::beaconCount */
+_ZN4Wifi9unused7E4E                                                 = 0x0208B7E4; /* Wifi::unused7E4 */
+_ZN4Wifi12sessionReadyE                                             = 0x0208B7DC; /* Wifi::sessionReady */
+_ZN4Wifi11sessionGgidE                                              = 0x0208B7D4; /* Wifi::sessionGgid */
+_ZN4Wifi10parentFlagE                                               = 0x0208B7D0; /* Wifi::parentFlag */
+_ZN4Wifi9wmEnabledE                                                 = 0x0208B7C8; /* Wifi::wmEnabled */
+_ZN4Wifi19pictoChatParentFlagE                                      = 0x0208B7B8; /* Wifi::pictoChatParentFlag */
+_ZN4Wifi16disconnectReasonE                                         = 0x0208B7A0; /* Wifi::disconnectReason */
+_ZN4Wifi19parentsBssDescCountE                                      = 0x0208B798; /* Wifi::parentsBssDescCount */
+_ZN4Wifi11sessionTgidE                                              = 0x0208B794; /* Wifi::sessionTgid */
+_ZN4Wifi25communicatingConsoleCountE                                = 0x02085200; /* Wifi::communicatingConsoleCount */
+_ZN4Wifi14optimalChannelE                                           = 0x020851F8; /* Wifi::optimalChannel */
+_ZN4Wifi11maxChildrenE                                              = 0x020851F4; /* Wifi::maxChildren */
+_ZN4Wifi2MB23fakeChildParentGameInfoE                               = 0x0208E7E0; /* Wifi::MB::fakeChildParentGameInfo */
+_ZN4Wifi2MB8gameInfoE                                               = 0x0208B81C; /* Wifi::MB::gameInfo */
+_ZN4Wifi2MB13fakeChildFlagE                                         = 0x0208B7C0; /* Wifi::MB::fakeChildFlag */
+_ZN4Wifi2MB10childStateE                                            = 0x02085204; /* Wifi::MB::childState */
+_ZN4Wifi2MB13fakeScanStateE                                         = 0x020851FC; /* Wifi::MB::fakeScanState */
+
+/* arm9 */
+/*----------------------------------------------------------------*/
 /*---------------------------- save ------------------------------*/
 /*----------------------------------------------------------------*/
 
@@ -2223,6 +2311,227 @@ _ZN3OAM4Anim4initEPKNS0_10FrameEntryEmhlt = 0x0200B510;
 _ZN3OAM4Anim6updateEv = 0x0200B44C;
 _ZN3OAM4Anim10drawSpriteEllNS_5FlagsEhhPK4Vec2sPKsNS_8SettingsE = 0x0200B3F4;
 _ZN3OAM4Anim7drawSubEllNS_5FlagsEhhPK4Vec2sPKsNS_8SettingsE = 0x0200B39C;
+
+
+/* arm9 */
+/*----------------------------------------------------------------*/
+/*----------------------------- Net ------------------------------*/
+/*----------------------------------------------------------------*/
+
+/* multiboot.hpp
+
+_ZN3Net14stopChildEntryEv                                           = 0x02001000; /* Net::stopChildEntry() */
+_ZN3Net14getParentBssidEm                                           = 0x0200102C; /* Net::getParentBssid(unsigned long) */
+_ZN3Net17getParentGameInfoEm                                        = 0x02001050; /* Net::getParentGameInfo(unsigned long) */
+_ZN3Net22startMultiBootTransferEv                                   = 0x020010A8; /* Net::startMultiBootTransfer() */
+_ZN3Net14startFakeChildEv                                           = 0x020010E8; /* Net::startFakeChild() */
+_ZN3Net20startMultiBootParentEP14MBGameRegistry                     = 0x02001198; /* Net::startMultiBootParent(MBGameRegistry*) */
+_ZN3Net4Core20startParentBroadcastEv                                = 0x02001270; /* Net::Core::startParentBroadcast() */
+_ZN3Net4Core21multiBootPairChildrenEv                               = 0x020013C8; /* Net::Core::multiBootPairChildren() */
+_ZN3Net4Core11unusedStateEv                                         = 0x020014EC; /* Net::Core::unusedState() */
+_ZN3Net4Core20parentBroadcastStateEv                                = 0x020014F0; /* Net::Core::parentBroadcastState() */
+_ZN3Net4Core14fakeChildStateEv                                      = 0x0200163C; /* Net::Core::fakeChildState() */
+_ZN3Net4Core20parentMultiBootStateEv                                = 0x02001698; /* Net::Core::parentMultiBootState() */
+
+/* util.hpp */
+
+_ZN3Net6assertEi                                                    = 0x0200E660; /* Net::assert(int) */
+_ZN3Net11getRandom12Ev                                              = 0x0200E6A4; /* Net::getRandom12() */
+_ZN3Net9getRandomEv                                                 = 0x0200E6F4; /* Net::getRandom() */
+_ZN3Net14syncRandomFullEv                                           = 0x0200E73C; /* Net::syncRandomFull() */
+_ZN3Net14syncRandomFastEv                                           = 0x0200E748; /* Net::syncRandomFast() */
+_ZN3Net13clearUnused2AEv                                            = 0x0200E798; /* Net::clearUnused2A() */
+_ZN3Net11checkMarkerEm                                              = 0x0200E7AC; /* Net::checkMarker(unsigned long) */
+_ZN3Net11clearMarkerEm                                              = 0x0200E7B8; /* Net::clearMarker(unsigned long) */
+_ZN3Net9setMarkerEm                                                 = 0x0200E7C4; /* Net::setMarker(unsigned long) */
+_ZN3Net18getConsoleTouchPadEt                                       = 0x0200E7D0; /* Net::getConsoleTouchPad(unsigned short) */
+_ZN3Net14getConsoleKeysEt                                           = 0x0200E854; /* Net::getConsoleKeys(unsigned short) */
+_ZN3Net24renderSignalStrengthIconEmmh                               = 0x0200E874; /* Net::renderSignalStrengthIcon(unsigned long, unsigned long, unsigned char) */
+_ZN3Net27uploadSignalStrengthPaletteEmmh                            = 0x0200E944; /* Net::uploadSignalStrengthPalette(unsigned long, unsigned long, unsigned char) */
+_ZN3Net24uploadSignalStrengthIconEPvPKvS2_mh                        = 0x0200E9E4; /* Net::uploadSignalStrengthIcon(void*, void const*, void const*, unsigned long, unsigned char) */
+_ZN3Net13getPacketByteEtm                                           = 0x0200EACC; /* Net::getPacketByte(unsigned short, unsigned long) */
+_ZN3Net13setPacketByteEmh                                           = 0x0200EB00; /* Net::setPacketByte(unsigned long, unsigned char) */
+_ZN3Net13getPacketTickEt                                            = 0x0200EB10; /* Net::getPacketTick(unsigned short) */
+_ZN3Net15getPacketActionEt                                          = 0x0200EB30; /* Net::getPacketAction(unsigned short) */
+_ZN3Net9getPacketEt                                                 = 0x0200EB50; /* Net::getPacket(unsigned short) */
+_ZN3Net16getMultiBootGgidEv                                         = 0x0200EBE0; /* Net::getMultiBootGgid() */
+_ZN3Net20hasMultiBootChildrenEv                                     = 0x0200EC2C; /* Net::hasMultiBootChildren() */
+
+/* transfer.hpp */
+
+_ZN3Net4Core18selectSyncTransferEv                                  = 0x0200EC78; /* Net::Core::selectSyncTransfer() */
+_ZN3Net4Core18selectFastTransferEv                                  = 0x0200ECB4; /* Net::Core::selectFastTransfer() */
+_ZN3Net4Core15setFastTransferENS_18PacketFastTransferE              = 0x0200ED1C; /* Net::Core::setFastTransfer(Net::PacketFastTransfer) */
+_ZN3Net4Core22revertTaskFastTransferEv                              = 0x0200ED98; /* Net::Core::revertTaskFastTransfer() */
+_ZN3Net4Core15stopTaskManagerEv                                     = 0x0200EF4C; /* Net::Core::stopTaskManager() */
+_ZN3Net4Core16startTaskManagerEv                                    = 0x0200EFDC; /* Net::Core::startTaskManager() */
+_ZN3Net4Core15taskManagerProcEv                                     = 0x0200F098; /* Net::Core::taskManagerProc() */
+_ZN3Net19setTaskFastTransferEv                                      = 0x0200ED58; /* Net::setTaskFastTransfer() */
+_ZN3Net18revertFastTransferENS_18PacketFastTransferE                = 0x0200EDD4; /* Net::revertFastTransfer(Net::PacketFastTransfer) */
+_ZN3Net10isTaskDoneEl                                               = 0x0200EE40; /* Net::isTaskDone(long) */
+_ZN3Net12scheduleTaskEPFvPvES0_mNS_18PacketFastTransferE            = 0x0200EE9C; /* Net::scheduleTask(void (*)(void*), void*, unsigned long, Net::PacketFastTransfer) */
+
+/* core.hpp */
+
+_ZN3Net4Core17beginSyncTransferEv                                   = 0x0200F144; /* Net::Core::beginSyncTransfer() */
+_ZN3Net4Core20beginSynchronizationEv                                = 0x0200F170; /* Net::Core::beginSynchronization() */
+_ZN3Net4Core16getParentBssDescEm                                    = 0x0200F2C8; /* Net::Core::getParentBssDesc(unsigned long) */
+_ZN3Net4Core15resetConnectionEv                                     = 0x0200F310; /* Net::Core::resetConnection() */
+_ZN3Net4Core14stopConnectionEv                                      = 0x0200F3D8; /* Net::Core::stopConnection() */
+_ZN3Net4Core12readUserInfoEP10MBUserInfo                            = 0x0200F474; /* Net::Core::readUserInfo(MBUserInfo*) */
+_ZN3Net4Core16resetSessionInfoEi                                    = 0x0200F4E0; /* Net::Core::resetSessionInfo(int) */
+_ZN3Net4Core14startChildScanEv                                      = 0x0200F6B0; /* Net::Core::startChildScan() */
+_ZN3Net4Core18setConnectionStateENS_15ConnectionStateE              = 0x0200F7CC; /* Net::Core::setConnectionState(Net::ConnectionState) */
+_ZN3Net4Core17stabilizeTransferEv                                   = 0x0200F7F8; /* Net::Core::stabilizeTransfer() */
+_ZN3Net4Core12pairConsolesEv                                        = 0x0200F9F8; /* Net::Core::pairConsoles() */
+_ZN3Net4Core14transferPacketENS_12PacketActionE                     = 0x0200FAE0; /* Net::Core::transferPacket(Net::PacketAction) */
+_ZN3Net4Core17fastTransferStateEv                                   = 0x0200FDF0; /* Net::Core::fastTransferState() */
+_ZN3Net4Core14childScanStateEv                                      = 0x0200FEE4; /* Net::Core::childScanState() */
+_ZN3Net15connectToParentEm                                          = 0x0200F1B4; /* Net::connectToParent(unsigned long) */
+_ZN3Net16shutdownWirelessEv                                         = 0x0200F608; /* Net::shutdownWireless() */
+_ZN3Net18initializeWirelessEv                                       = 0x0200F65C; /* Net::initializeWireless() */
+_ZN3Net6updateEv                                                    = 0x02010094; /* Net::update() */
+_ZN3Net12updatePacketEv                                             = 0x0201031C; /* Net::updatePacket() */
+_ZN3Net11setHandlersEPFvvES1_PFvttE                                 = 0x020103BC; /* Net::setHandlers(void (*)(), void (*)(), void (*)(unsigned short, unsigned short)) */
+_ZN3Net10initializeEa                                               = 0x02010444; /* Net::initialize(signed char) */
+
+/* task.hpp */
+
+_ZNK3Net4Task7expiredEv                                             = 0x020106D4; /* Net::Task::expired() const */
+_ZN3Net11TaskManagerC2Ev                                            = 0x02010930; /* Net::TaskManager::TaskManager() */
+_ZN3Net11TaskManager12scheduleTaskEPFvPvES1_m                       = 0x020108B4; /* Net::TaskManager::scheduleTask(void (*)(void*), void*, unsigned long) */
+_ZN3Net11TaskManager7executeEv                                      = 0x02010834; /* Net::TaskManager::execute() */
+_ZN3Net11TaskManager9clearTaskEm                                    = 0x0201081C; /* Net::TaskManager::clearTask(unsigned long) */
+_ZN3Net11TaskManager12validateTaskEm                                = 0x02010784; /* Net::TaskManager::validateTask(unsigned long) */
+_ZN3Net11TaskManager16validateAllTasksEv                            = 0x02010740; /* Net::TaskManager::validateAllTasks() */
+
+/* net.hpp */
+
+_ZN3Net22onPacketPollingDefaultEv                                   = 0x02010964; /* Net::onPacketPollingDefault() */
+_ZN3Net29onRenderSignalStrengthDefaultEv                            = 0x0201097C; /* Net::onRenderSignalStrengthDefault() */
+_ZN3Net18checkMultiBootGgidEv                                       = 0x020109C8; /* Net::checkMultiBootGgid() */
+_ZN3Net20startMultiBootParentEh                                     = 0x02010A14; /* Net::startMultiBootParent(unsigned char) */
+_ZN3Net14startChildScanEv                                           = 0x02010A3C; /* Net::startChildScan() */
+_ZN3Net20startParentBroadcastEv                                     = 0x02010A60; /* Net::startParentBroadcast() */
+_ZN3Net18setDefaultHandlersEv                                       = 0x02010A84; /* Net::setDefaultHandlers() */
+_ZN3Net20getLocalizedGameInfoEv                                     = 0x02010AA8; /* Net::getLocalizedGameInfo() */
+_ZN3Net16getLocalizedGgidEv                                         = 0x02010AF0; /* Net::getLocalizedGgid() */
+
+/* packet.hpp */
+
+_ZN3Net21PacketSequenceBuilderC2Ev                                  = 0x02011968; /* Net::PacketSequenceBuilder::PacketSequenceBuilder() */
+_ZN3Net21PacketSequenceBuilderD1Ev                                  = 0x02011958; /* Net::PacketSequenceBuilder::~PacketSequenceBuilder() */
+_ZN3Net21PacketSequenceBuilderD0Ev                                  = 0x02011938; /* Net::PacketSequenceBuilder::~PacketSequenceBuilder() */
+_ZN3Net21PacketSequenceBuilder5clearEv                              = 0x0201190C; /* Net::PacketSequenceBuilder::clear() */
+_ZN3Net21PacketSequenceBuilder10pushPacketEhhPKh                    = 0x0201189C; /* Net::PacketSequenceBuilder::pushPacket(unsigned char, unsigned char, unsigned char const*) */
+_ZN3Net21PacketSequenceBuilder8nextByteEv                           = 0x020117C0; /* Net::PacketSequenceBuilder::nextByte() */
+
+_ZN3Net10PacketByteC2Ev                                             = 0x02010DC4; /* Net::PacketByte::PacketByte() */
+_ZN3Net10PacketByteD1Ev                                             = 0x02010D9C; /* Net::PacketByte::~PacketByte() */
+_ZN3Net10PacketByteD0Ev                                             = 0x02010D6C; /* Net::PacketByte::~PacketByte() */
+
+_ZN3Net9PacketIntC2Ev                                               = 0x02010D38; /* Net::PacketInt::PacketInt() */
+_ZN3Net9PacketIntD1Ev                                               = 0x02010D10; /* Net::PacketInt::~PacketInt() */
+_ZN3Net9PacketIntD0Ev                                               = 0x02010CE0; /* Net::PacketInt::~PacketInt() */
+
+_ZN3Net12PacketBufferC2Ev                                           = 0x02010CC8; /* Net::PacketBuffer::PacketBuffer() */
+_ZN3Net12PacketBufferD1Ev                                           = 0x02010C74; /* Net::PacketBuffer::~PacketBuffer() */
+_ZN3Net12PacketBufferD0Ev                                           = 0x02010C18; /* Net::PacketBuffer::~PacketBuffer() */
+_ZN3Net12PacketBuffer6createEhPFvtPvES1_                            = 0x02010BB0; /* Net::PacketBuffer::create(unsigned char, void (*)(unsigned short, void*), void*) */
+_ZN3Net12PacketBuffer4sendEPKh                                      = 0x02010B34; /* Net::PacketBuffer::send(unsigned char const*) */
+
+_ZN3Net4Core10initPacketEv                                          = 0x020116FC; /* Net::Core::initPacket() */
+_ZN3Net4Core11clearPacketEv                                         = 0x02011658; /* Net::Core::clearPacket() */
+_ZN3Net4Core17processSendPacketEv                                   = 0x0201157C; /* Net::Core::processSendPacket() */
+_ZN3Net4Core17processRecvPacketEv                                   = 0x020114B4; /* Net::Core::processRecvPacket() */
+_ZN3Net4Core22advancePacketSequencerEth                             = 0x02011380; /* Net::Core::advancePacketSequencer(unsigned short, unsigned char) */
+_ZN3Net4Core9setMarkerEm                                            = 0x02011364; /* Net::Core::setMarker(unsigned long) */
+_ZN3Net4Core11clearMarkerEm                                         = 0x02011344; /* Net::Core::clearMarker(unsigned long) */
+_ZN3Net4Core11checkMarkerEm                                         = 0x02011328; /* Net::Core::checkMarker(unsigned long) */
+_ZN3Net4Core18checkAllPacketBitsEmh                                 = 0x02011238; /* Net::Core::checkAllPacketBits(unsigned long, unsigned char) */
+_ZN3Net4Core15shareRandomSeedEv                                     = 0x02011058; /* Net::Core::shareRandomSeed() */
+_ZN3Net4Core16allocPacketBytesEm                                    = 0x02011010; /* Net::Core::allocPacketBytes(unsigned long) */
+_ZN3Net4Core15freePacketBytesEmm                                    = 0x02010FE4; /* Net::Core::freePacketBytes(unsigned long, unsigned long) */
+_ZN3Net4Core15writePacketByteEmh                                    = 0x02010FD4; /* Net::Core::writePacketByte(unsigned long, unsigned char) */
+_ZN3Net4Core14writePacketIntEmm                                     = 0x02010FA0; /* Net::Core::writePacketInt(unsigned long, unsigned long) */
+_ZN3Net4Core14readPacketByteEtm                                     = 0x02010F68; /* Net::Core::readPacketByte(unsigned short, unsigned long) */
+_ZN3Net4Core13readPacketIntEtm                                      = 0x02010F00; /* Net::Core::readPacketInt(unsigned short, unsigned long) */
+_ZN3Net4Core21createPacketSequencerEPPhhPFvtPvES3_                  = 0x02010E60; /* Net::Core::createPacketSequencer(unsigned char**, unsigned char, void (*)(unsigned short, void*), void*) */
+_ZN3Net4Core21deletePacketSequencerEm                               = 0x02010E40; /* Net::Core::deletePacketSequencer(unsigned long) */
+_ZN3Net4Core20writePacketSequencerEmhPKh                            = 0x02010DF8; /* Net::Core::writePacketSequencer(unsigned long, unsigned char, unsigned char const*) */
+
+/* .bss */
+
+_ZN3Net15currentLanguageE                                           = 0x020887E8; /* Net::currentLanguage */
+_ZN3Net8localAidE                                                   = 0x020887F0; /* Net::localAid */
+_ZN3Net15connectionStateE                                           = 0x020887FC; /* Net::connectionState */
+_ZN3Net21connectedConsoleCountE                                     = 0x02088804; /* Net::connectedConsoleCount */
+_ZN3Net20expectedConsoleCountE                                      = 0x0208880C; /* Net::expectedConsoleCount */
+_ZN3Net16multiBootSessionE                                          = 0x02088810; /* Net::multiBootSession */
+_ZN3Net12sessionStateE                                              = 0x02088814; /* Net::sessionState */
+_ZN3Net11moduleStateE                                               = 0x02088818; /* Net::moduleState */
+_ZN3Net18maxSessionChildrenE                                        = 0x0208881C; /* Net::maxSessionChildren */
+_ZN3Net9unused820E                                                  = 0x02088820; /* Net::unused820 */
+_ZN3Net9unused824E                                                  = 0x02088824; /* Net::unused824 */
+_ZN3Net9unused828E                                                  = 0x02088828; /* Net::unused828 */
+_ZN3Net15maxConsoleCountE                                           = 0x0208882C; /* Net::maxConsoleCount */
+_ZN3Net9unused834E                                                  = 0x02088834; /* Net::unused834 */
+_ZN3Net9unused838E                                                  = 0x02088838; /* Net::unused838 */
+_ZN3Net10errorStateE                                                = 0x0208883C; /* Net::errorState */
+_ZN3Net10packetTickE                                                = 0x02088840; /* Net::packetTick */
+_ZN3Net12timeoutTimerE                                              = 0x02088844; /* Net::timeoutTimer */
+_ZN3Net9unused848E                                                  = 0x02088848; /* Net::unused848 */
+_ZN3Net22multiBootDownloadParamE                                    = 0x0208884C; /* Net::multiBootDownloadParam */
+_ZN3Net16consoleGameInfosE                                          = 0x02088850; /* Net::consoleGameInfos */
+_ZN3Net13consoleStatesE                                             = 0x02088854; /* Net::consoleStates */
+_ZN3Net4ggidE                                                       = 0x02088858; /* Net::ggid */
+_ZN3Net15onPacketPollingE                                           = 0x02088860; /* Net::onPacketPolling */
+_ZN3Net17onConnectionErrorE                                         = 0x02088864; /* Net::onConnectionError */
+_ZN3Net22onRenderSignalStrengthE                                    = 0x02088868; /* Net::onRenderSignalStrength */
+_ZN3Net9syncCountE                                                  = 0x02088874; /* Net::syncCount */
+_ZN3Net10sendPacketE                                                = 0x020888E0; /* Net::sendPacket */
+_ZN3Net19randomBranchAddressE                                       = 0x0208885C; /* Net::randomBranchAddress */
+_ZN3Net15randomCallCountE                                           = 0x02088A48; /* Net::randomCallCount */
+_ZN3Net6markerE                                                     = 0x02088A4C; /* Net::marker */
+_ZN3Net15randomShareStepE                                           = 0x02088A50; /* Net::randomShareStep */
+_ZN3Net20packetSequencerStepsE                                      = 0x02088A54; /* Net::packetSequencerSteps */
+_ZN3Net18packetSequencerIDsE                                        = 0x02088A58; /* Net::packetSequencerIDs */
+_ZN3Net25packetSequencerBufCursorsE                                 = 0x02088A5C; /* Net::packetSequencerBufCursors */
+_ZN3Net25packetFreeBytesSendBitmapE                                 = 0x02088A60; /* Net::packetFreeBytesSendBitmap */
+_ZN3Net25packetSequencerBufLengthsE                                 = 0x02088A64; /* Net::packetSequencerBufLengths */
+_ZN3Net25packetFreeBytesRecvBitmapE                                 = 0x02088A84; /* Net::packetFreeBytesRecvBitmap */
+_ZN3Net15packetFreeBytesE                                           = 0x02088A94; /* Net::packetFreeBytes */
+_ZN3Net6randomE                                                     = 0x02088A68; /* Net::random */
+_ZN3Net21packetSequenceBuilderE                                     = 0x02088AB4; /* Net::packetSequenceBuilder */
+_ZN3Net16packetSequencersE                                          = 0x02088ADC; /* Net::packetSequencers */
+_ZN3Net15taskManagerHeapE                                           = 0x0208886C; /* Net::taskManagerHeap */
+_ZN3Net16taskManagerStackE                                          = 0x02088870; /* Net::taskManagerStack */
+_ZN3Net18taskManagerMsgPoolE                                        = 0x02088884; /* Net::taskManagerMsgPool */
+_ZN3Net16taskManagerMutexE                                          = 0x02088898; /* Net::taskManagerMutex */
+_ZN3Net19taskManagerMsgQueueE                                       = 0x020888B0; /* Net::taskManagerMsgQueue */
+_ZN3Net11taskManagerE                                               = 0x02088920; /* Net::taskManager */
+_ZN3Net17taskManagerThreadE                                         = 0x02088988; /* Net::taskManagerThread */
+_ZN3Net17taskManagerActiveE                                         = 0x020887EC; /* Net::taskManagerActive */
+_ZN3Net20packetOrderStabilityE                                      = 0x020887F4; /* Net::packetOrderStability */
+_ZN3Net15packetTransTypeE                                           = 0x020887F8; /* Net::packetTransType */
+_ZN3Net20packetTransIntegrityE                                      = 0x02088800; /* Net::packetTransIntegrity */
+_ZN3Net15packetFastTransE                                           = 0x02088830; /* Net::packetFastTrans */
+_ZN3Net15taskManagerBusyE                                           = 0x02088808; /* Net::taskManagerBusy */
+
+/* .data */
+
+_ZN3Net20multiBootParentBssidE                                      = 0x0203AB88; /* Net::multiBootParentBssid */
+_ZN3Net22signalStrengthGraphicsE                                    = 0x0203AB90; /* Net::signalStrengthGraphics */
+_ZN3Net20signalStrengthSpriteE                                      = 0x0203ABB0; /* Net::signalStrengthSprite */
+_ZN3Net10gameInfoEUE                                                = 0x0203ACE0; /* Net::gameInfoEU */
+_ZN3Net10gameInfoJPE                                                = 0x0203ACA4; /* Net::gameInfoJP */
+_ZN3Net10gameInfoUSE                                                = 0x0203ACE0; /* Net::gameInfoUS */
+_ZN3Net21packetSequencerBitmapE                                     = 0x0203AE6C; /* Net::packetSequencerBitmap */
+
+_ZTVN3Net21PacketSequenceBuilderE                                   = 0x0203AE70; /* vtable for Net::PacketSequenceBuilder */
+_ZTVN3Net12PacketBufferE                                            = 0x0203AE80; /* vtable for Net::PacketBuffer */
+_ZTVN3Net9PacketIntE                                                = 0x0203AE90; /* vtable for Net::PacketInt */
+_ZTVN3Net10PacketByteE                                              = 0x0203AEA0; /* vtable for Net::PacketByte */
 
 
 /* arm9 */
@@ -2528,8 +2837,6 @@ _ZN5Actor9preUpdateEv							= 0x020a0cac;
 _ZN5Actor10postUpdateE15BaseReturnState			= 0x020a0ca0;
 _ZN5Actor9preRenderEv							= 0x020a0c48;
 _ZN5Actor10postRenderE15BaseReturnState			= 0x020a0c3c;
-_ZN5Actor4setXEl								= 0x0201ff68;
-_ZN5Actor5moveXEl								= 0x0201ff70;
 _ZN5Actor13getActorCountEt						= 0x020a0bf8;
 _ZN5Actor14setSpawnParamsEPK4Vec3PK5Vec3sPKlPKa	= 0x020a0bb8;
 _ZN5Actor10spawnActorEtmPK4Vec3PK5Vec3sPKlPKa	= 0x020a0b64;
@@ -2554,6 +2861,10 @@ _ZN5Actor15spawnPlayerLinkE						= 0x020ca864;
 _ZN5Actor10spawnScaleE							= 0x020ca868;
 
 _ZTV5Actor										= 0x020c6c2c;
+
+/* arm9 */
+_ZN5Actor4setXEl								= 0x0201ff68;
+_ZN5Actor5moveXEl								= 0x0201ff70;
 
 
 /* arm9_ov0 */
@@ -2867,6 +3178,17 @@ _ZN17TitleScreenCamera8setOrthoEllll	= 0x020D39A4;
 _ZN17TitleScreenCamera7profileE			= 0x020DAADC;
 
 _ZTV17TitleScreenCamera					= 0x020DAAE4;
+
+
+/* arm9_ov9 */
+/*----------------------------------------------------------------*/
+/*-------------------------- windowctrl --------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN10WindowCtrl6attachEv						= 0x020CC6B4;
+_ZN10WindowCtrl6detachEv						= 0x020CC5D4;
+_ZN10WindowCtrl6updateEv						= 0x020CC5F8;
+_ZN10WindowCtrl7setModeEh						= 0x020CC5E8;
 
 
 /* arm9 */
@@ -3588,7 +3910,6 @@ _ZN14ActiveCollider12manualUpdateEv									= 0x020a44b0;
 _ZN14ActiveCollider12unk_020a445cERK4Vec3RK18ActiveColliderInfoh	= 0x020a445c;
 _ZN14ActiveCollider10initSystemEv									= 0x020a4434;
 _ZNK14ActiveCollider9getPlayerEv									= 0x020a3d68;
-_ZN14ActiveCollider17testCollisionRectEPS_							= 0x01ffdd88;
 _ZN14ActiveCollider18testCollisionRoundEPS_							= 0x020a4344;
 _ZN14ActiveCollider25testCollisionOtherVsVTrpzEPS_					= 0x020a4264;
 _ZN14ActiveCollider25testCollisionVTrpzVsOtherEPS_					= 0x020a40a4;
@@ -3599,6 +3920,9 @@ _ZN14ActiveCollider8listHeadE										= 0x020caac4;
 _ZN14ActiveCollider8listTailE										= 0x020caac8;
 
 _ZTV14ActiveCollider												= 0x020c6f08;
+
+/* arm9_itcm */
+_ZN14ActiveCollider17testCollisionRectEPS_							= 0x01ffdd88;
 
 
 /* arm9_ov0 */
@@ -4579,7 +4903,7 @@ _ZN4Wifi19randomBranchAddressE	= 0x0208885C;
 _ZN4Wifi12consoleCountE         = 0x02085200;
 
 
-/* arm9_ov0 */
+/* arm9 */
 /*----------------------------------------------------------------*/
 /*-------------------------- game misc ---------------------------*/
 /*----------------------------------------------------------------*/
@@ -5498,7 +5822,7 @@ _ZN5Input23getFirstConsoleKeysHeldEPmt				= 0x0200a488;
 _ZN5Input31updateVerticalSelectionIteratorEPll		= 0x0200a42c;
 _ZN5Input33updateHorizontalSelectionIteratorEPll	= 0x0200a3d0;
 
-_ZN5Input16triggerSoftResetE						= 0x02087630;
+_ZN5Input13softResetHeldE							= 0x02087630;
 _ZN5Input14localConsoleIDE							= 0x02087634;
 _ZN5Input16consoleKeysTimerE						= 0x02087638;
 _ZN5Input13consoleKeysUpE							= 0x02087640;

@@ -2,6 +2,10 @@
 
 #include "nsmb_nitro.hpp"
 
+#include "wireless_shared/mbp.hpp"
+#include "wireless_shared/wfs.hpp"
+#include "wireless_shared/wh.hpp"
+
 #include "nsmb/boot.hpp"
 #include "nsmb/ending.hpp"
 #include "nsmb/entity.hpp"
@@ -10,6 +14,7 @@
 #include "nsmb/graphics.hpp"
 #include "nsmb/math.hpp"
 #include "nsmb/vsconnect.hpp"
+#include "nsmb/net.hpp"
 #include "nsmb/physics.hpp"
 #include "nsmb/player.hpp"
 #include "nsmb/sound.hpp"

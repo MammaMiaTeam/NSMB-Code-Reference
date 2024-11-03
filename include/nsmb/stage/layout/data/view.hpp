@@ -4,28 +4,17 @@
 #include "nsmb/math/rectangle.hpp"
 #include "nsmb/math/vector.hpp"
 
-class StageView
-{
-public:
-	class Rect : public Rectangle<u16>
-	{
-	public:
+struct StageView {
+
+	struct Rect : public Rectangle<u16> {
+
 		// 0x0201ED98
 		static bool overlaps(const Rect& rect, const Rect& viewRect);
 
 		// 0x0201EE60
 		static bool contains(const Vec3& position, const Rect& viewRect);
-	};
 
-	Rect rect;
-	u8 id;
-	u8 cameraSettingsID;
-	u8 bgmID;
-	u8 unk1;
-	u8 unk2;
-	u8 unk3;
-	u8 lightType;
-	u8 progressPathID;
+	};
 
 	// 0x0201EF94
 	static u8 getAt(const Rect& rect);
@@ -59,4 +48,17 @@ public:
 
 	// 0x0201F184
 	static StageView* get(u8 id, Rectangle<fx32>* outRect);
+
+
+	Rect rect;
+	u8 id;
+	u8 cameraSettingsID;
+	u8 bgmID;
+	u8 unk1;
+	u8 unk2;
+	u8 unk3;
+	u8 lightType;
+	u8 progressPathID;
+
 };
+NTR_SIZE_GUARD(StageView, 0x10);
