@@ -53,6 +53,7 @@ public:
 	{
 		NoDestruction			= (1 << 0),
 		CalculateDelta			= (1 << 1),
+		CarryPlayerOff			= (1 << 2), // If this flag is disabled the player is offset whenever the rectangle is moved horizontally and the delta recalculated
 		IgnoreGround			= (1 << 3),
 		DisableBlockParticles	= (1 << 4),
 		PushableLeft			= (1 << 5),

@@ -168,7 +168,7 @@ namespace Input {
 	extern u8 localConsoleID;
 
 	// 02087630
-	extern bool triggerSoftReset;
+	extern bool softResetHeld;
 
 
 

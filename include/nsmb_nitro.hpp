@@ -90,7 +90,10 @@ __attribute__((noreturn)) extern void OS_Terminate();
 
 NTR_FORMAT(printf, 2, 3) int OS_SPrintf(char *dst, const char *fmt, ...);
 
-NTR_FORMAT(printf, 2, 3) NTR_INLINE int OS_SNPrintf(char* dst, size_t len, const char* fmt, ...) {
+// ERROR #1: (with NTR_INLINE) This can never be inlined because it has variable arguments
+// ERROR #2: (without NTR_INLINE) Multiple definitions of OS_SNPrintf...
+// ok GCC
+NTR_FORMAT(printf, 2, 3) inline int OS_SNPrintf(char* dst, size_t len, const char* fmt, ...) {
 
 	va_list vl;
 	va_start(vl, fmt);

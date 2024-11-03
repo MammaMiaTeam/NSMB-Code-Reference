@@ -2837,8 +2837,6 @@ _ZN5Actor9preUpdateEv							= 0x020a0cac;
 _ZN5Actor10postUpdateE15BaseReturnState			= 0x020a0ca0;
 _ZN5Actor9preRenderEv							= 0x020a0c48;
 _ZN5Actor10postRenderE15BaseReturnState			= 0x020a0c3c;
-_ZN5Actor4setXEl								= 0x0201ff68;
-_ZN5Actor5moveXEl								= 0x0201ff70;
 _ZN5Actor13getActorCountEt						= 0x020a0bf8;
 _ZN5Actor14setSpawnParamsEPK4Vec3PK5Vec3sPKlPKa	= 0x020a0bb8;
 _ZN5Actor10spawnActorEtmPK4Vec3PK5Vec3sPKlPKa	= 0x020a0b64;
@@ -2863,6 +2861,10 @@ _ZN5Actor15spawnPlayerLinkE						= 0x020ca864;
 _ZN5Actor10spawnScaleE							= 0x020ca868;
 
 _ZTV5Actor										= 0x020c6c2c;
+
+/* arm9 */
+_ZN5Actor4setXEl								= 0x0201ff68;
+_ZN5Actor5moveXEl								= 0x0201ff70;
 
 
 /* arm9_ov0 */
@@ -3908,7 +3910,6 @@ _ZN14ActiveCollider12manualUpdateEv									= 0x020a44b0;
 _ZN14ActiveCollider12unk_020a445cERK4Vec3RK18ActiveColliderInfoh	= 0x020a445c;
 _ZN14ActiveCollider10initSystemEv									= 0x020a4434;
 _ZNK14ActiveCollider9getPlayerEv									= 0x020a3d68;
-_ZN14ActiveCollider17testCollisionRectEPS_							= 0x01ffdd88;
 _ZN14ActiveCollider18testCollisionRoundEPS_							= 0x020a4344;
 _ZN14ActiveCollider25testCollisionOtherVsVTrpzEPS_					= 0x020a4264;
 _ZN14ActiveCollider25testCollisionVTrpzVsOtherEPS_					= 0x020a40a4;
@@ -3919,6 +3920,9 @@ _ZN14ActiveCollider8listHeadE										= 0x020caac4;
 _ZN14ActiveCollider8listTailE										= 0x020caac8;
 
 _ZTV14ActiveCollider												= 0x020c6f08;
+
+/* arm9_itcm */
+_ZN14ActiveCollider17testCollisionRectEPS_							= 0x01ffdd88;
 
 
 /* arm9_ov0 */
@@ -4898,7 +4902,7 @@ _ZN4Wifi19randomBranchAddressE	= 0x0208885C;
 _ZN4Wifi12consoleCountE         = 0x02085200;
 
 
-/* arm9_ov0 */
+/* arm9 */
 /*----------------------------------------------------------------*/
 /*-------------------------- game misc ---------------------------*/
 /*----------------------------------------------------------------*/
@@ -5817,7 +5821,7 @@ _ZN5Input23getFirstConsoleKeysHeldEPmt				= 0x0200a488;
 _ZN5Input31updateVerticalSelectionIteratorEPll		= 0x0200a42c;
 _ZN5Input33updateHorizontalSelectionIteratorEPll	= 0x0200a3d0;
 
-_ZN5Input16triggerSoftResetE						= 0x02087630;
+_ZN5Input13softResetHeldE							= 0x02087630;
 _ZN5Input14localConsoleIDE							= 0x02087634;
 _ZN5Input16consoleKeysTimerE						= 0x02087638;
 _ZN5Input13consoleKeysUpE							= 0x02087640;

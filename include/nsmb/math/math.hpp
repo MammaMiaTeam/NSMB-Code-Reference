@@ -259,7 +259,7 @@ namespace Math { // TODO Global cleanup
 
 	template<CC::IntegerBased A, CC::IntegerBased B, CC::IntegerBased C>
 	NTR_INLINE constexpr auto clamp(A a, B min, C max) {
-		return (a < min) ? min : ((a > max) ? max : a);
+		return (a < A(min)) ? A(min) : ((a > A(max)) ? A(max) : a);
 	}
 
 	constexpr fx32 smoothstep(fx32 start, fx32 end, fx32 step) {
