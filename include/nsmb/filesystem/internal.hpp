@@ -11,8 +11,8 @@ namespace FS {
 	namespace Internal {
 
 		// 0x02085CF8
-		/// \brief The pointer to the crash reason message.
-		extern const char* crashReason;
+		/// \brief The pointer to the assertion source string.
+		extern const char* assertSource;
 
 		// 0x02008588
 		/**
@@ -104,11 +104,11 @@ namespace FS {
 
 		// 0x02008670
 		/**
-		 * \brief Sets the crash reason message for filesystem crashes.
+		 * \brief Sets the assert source for filesystem assertions.
 		 *
-		 * \param reason The pointer to the crash reason message.
+		 * \param source The pointer to the assert source string.
 		 * */
-		void terminate(const char* reason);
+		void assert(const char* source);
 
 	}
 }

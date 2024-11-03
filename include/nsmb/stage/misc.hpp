@@ -2,7 +2,7 @@
 #include "nsmb_nitro.hpp"
 #include "layout/stagelayout.hpp"
 #include "layout/data.hpp"
-#include "nsmb/wifi/util.hpp"
+#include "nsmb/net/util.hpp"
 
 
 enum class CollisionType : u32;
@@ -139,7 +139,7 @@ namespace Stage
 	// Used in stage related operations (actor spawning, tile randomization)
 
 	NTR_INLINE s32 getRandom(s32 max) {
-		return ((Wifi::getRandom() & 0x7FFF) * (max + 1)) / 0x8000;
+		return ((Net::getRandom() & 0x7FFF) * (max + 1)) / 0x8000;
 	}
 
 	NTR_INLINE s32 getRandom(s32 min, s32 max) {
