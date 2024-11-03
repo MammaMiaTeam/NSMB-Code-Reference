@@ -6,6 +6,7 @@
 
 #include "graphics/fader.hpp"
 #include "graphics/particle.hpp"
+#include "graphics/windowctrl.hpp"
 
 #include "graphics/util/blendcolor.hpp"
 #include "graphics/util/framectrl.hpp"
