@@ -73,6 +73,9 @@ namespace Stage
 	// 02085a10
 	extern bool challengeModeEnabled;
 
+	// 02085a60
+	extern u8 challengeModeFlag;
+
 	// 020ca874
 	extern bool phantomHandsTargetEnabled;
 
