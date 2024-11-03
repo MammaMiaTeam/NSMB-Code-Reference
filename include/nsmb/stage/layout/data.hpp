@@ -1,10 +1,14 @@
 #pragma once
-#include "nsmb/extra/assert.hpp"
-#include "entrance.hpp"
-#include "object.hpp"
-#include "view.hpp"
-#include "zone.hpp"
 
+#include "nsmb/extra/assert.hpp"
+#include "data/header.hpp"
+#include "data/camera.hpp"
+#include "data/screen.hpp"
+#include "data/entrance.hpp"
+#include "data/object.hpp"
+#include "data/view.hpp"
+#include "data/zone.hpp"
+#include "data/path.hpp"
 
 enum class StageBlockID : u32 {
 	Header,
@@ -25,36 +29,32 @@ enum class StageBlockID : u32 {
 	Max
 };
 
-
 struct StageBlocks {
 
-	void* header;
-	void* camera;
-	void* background;
-	void* tileset;
-	void* foreground;
+	StageHeader* header;
+	StageCameraInfo* camera;
+	StageScreen* background;
+	StageScreen* tileset;
+	StageScreen* foreground;
 	StageEntrance* entrances;
 	StageObject* stageObjs;
 	StageView* views;
 	StageZone* zones;
-	void* progressPaths;
-	void* paths;
-	void* pathNodes;
-	void* progressPathNodes;
+	StagePath* progressPaths;
+	StagePath* paths;
+	StagePathNode* pathNodes;
+	StagePathNode* progressPathNodes;
 	void* objectBanks;
 
 	NTR_INLINE void* operator[] (u32 blockID) {
-
 		ntr_assert(blockID < u32(StageBlockID::Max), "Invalid block ID [%d]", blockID);
-		return static_cast<void**>(&header) + blockID;
-
+		return rcast<void**>(this) + blockID;
 	}
 
 };
+NTR_SIZE_GUARD(StageBlocks, sizeof(AddressT) * 14);
 
-
-namespace Stage
-{
+namespace Stage {
 
 	// DATA
 
@@ -76,25 +76,24 @@ namespace Stage
 	extern StageBlocks stageBlocks;
 
 
-
 	constexpr u32 getBlockUnitSize(u32 blockID) {
 
 		if consteval {
 
 			constexpr u32 sizes[] = {
-				0x20,
-				0x18,
-				0x14,
-				0x14,
-				0x14,
+				sizeof(StageHeader),
+				sizeof(StageCameraInfo),
+				sizeof(StageScreen),
+				sizeof(StageScreen),
+				sizeof(StageScreen),
 				sizeof(StageEntrance),
-				0x0C,
-				0x10,
-				0x0C,
-				0x08,
-				0x08,
-				0x10,
-				0x10,
+				sizeof(StageObject),
+				sizeof(StageView),
+				sizeof(StageZone),
+				sizeof(StagePath),
+				sizeof(StagePath),
+				sizeof(StagePathNode),
+				sizeof(StagePathNode),
 				0x10
 			};
 

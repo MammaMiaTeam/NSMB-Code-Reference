@@ -1,9 +1,8 @@
 #pragma once
+
 #include "nsmb_nitro.hpp"
 
-
 enum class PlayerSpawnType : u8;
-
 
 enum class EntranceType : u8 {
 
@@ -28,13 +27,20 @@ enum class EntranceType : u8 {
 	MiniPipeLeft,
 	MiniPipeRight,
 	Jumping,
-	Vine
+	Vine,
+
+	Max,
+
+	// These were used by Nintendo during stage design, yet the game is not programmed to handle these so... UB warning
+	ConnectedMiniPipeUp,
+	ConnectedMiniPipeDown,
+	ConnectedMiniPipeLeft,
+	ConnectedMiniPipeRight
 
 };
 
-
 enum class EntranceFlags : u8 {
-	
+
 	SubScreen		= 0x01,
 	LockedPlayer1	= 0x02,
 	LockedPlayer0	= 0x04,
@@ -46,7 +52,6 @@ enum class EntranceFlags : u8 {
 };
 NTR_CREATE_BITMASK_ENUM(EntranceFlags);
 
-
 enum class EntranceTransitionFlags : u8 {
 
 	SubScreen		= 0x01,
@@ -57,15 +62,18 @@ enum class EntranceTransitionFlags : u8 {
 };
 NTR_CREATE_BITMASK_ENUM(EntranceTransitionFlags);
 
-
 enum class EntranceUseResult : u32 {
 
 	InvalidEntrance,
 	RegularEntrance,
 	ConnectedPipe,
 
-};
+	TypeMask = 0xF,
 
+	MiniPipe = 0x10
+
+};
+NTR_CREATE_BITMASK_ENUM(EntranceUseResult);
 
 struct StageEntrance {
 
@@ -92,7 +100,6 @@ struct StageEntrance {
 };
 NTR_SIZE_GUARD(StageEntrance, 0x14);
 
-
 struct EntranceInfo {
 
 	fx32 x;
@@ -101,7 +108,6 @@ struct EntranceInfo {
 	BOOL markUsedFlag;
 
 };
-
 
 namespace Entrance {
 
@@ -163,7 +169,7 @@ namespace Entrance {
 
 
 	extern u8 targetEntranceID;
-	extern u8 connectedPipeUnkByte[2];
+	extern bool connectedPipeReversePath[2];
 	extern bool subScreenSpawn[2];
 	extern u8 connectedPipePath[2];
 	extern u8 spawnEntranceID[2];
