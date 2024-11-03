@@ -2131,6 +2131,94 @@ _ZTV5Vec3s								= 0x020391F0;
 
 /* arm9 */
 /*----------------------------------------------------------------*/
+/*----------------------------- Wifi -----------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN4Wifi15isWMInitializedEv                                         = 0x02046080; /* Wifi::isWMInitialized() */
+_ZN4Wifi10shutdownWMEv                                              = 0x02046090; /* Wifi::shutdownWM() */
+_ZN4Wifi12onShutdownWMEPv                                           = 0x0204614C; /* Wifi::onShutdownWM(void*) */
+_ZN4Wifi12initializeWMEv                                            = 0x02046160; /* Wifi::initializeWM() */
+_ZN4Wifi14onInitializeWMEPv                                         = 0x020461AC; /* Wifi::onInitializeWM(void*) */
+_ZN4Wifi2MB21isChildDownloadFailedEv                                = 0x020461C0; /* Wifi::MB::isChildDownloadFailed() */
+_ZN4Wifi2MB11isFakeChildEv                                          = 0x02046210; /* Wifi::MB::isFakeChild() */
+_ZN4Wifi2MB19isChildReadyForBootEv                                  = 0x02046220; /* Wifi::MB::isChildReadyForBoot() */
+_ZN4Wifi2MB16connectFakeChildEv                                     = 0x02046240; /* Wifi::MB::connectFakeChild() */
+_ZN4Wifi2MB18terminateFakeChildEv                                   = 0x020462E8; /* Wifi::MB::terminateFakeChild() */
+_ZN4Wifi2MB26getFakeChildParentGameInfoEv                           = 0x020463EC; /* Wifi::MB::getFakeChildParentGameInfo() */
+_ZN4Wifi2MB26getFakeChildParentsBssDescEv                           = 0x020463F8; /* Wifi::MB::getFakeChildParentsBssDesc() */
+_ZN4Wifi2MB14startFakeChildEm                                       = 0x02046644; /* Wifi::MB::startFakeChild(unsigned long) */
+_ZN4Wifi2MB21getChildDownloadStateEv                                = 0x020467E8; /* Wifi::MB::getChildDownloadState() */
+_ZN4Wifi2MB15onFakeSetCStateEmPv                                    = 0x020467F8; /* Wifi::MB::onFakeSetCState(unsigned long, void*) */
+_ZN4Wifi2MB16getFakeScanStateEv                                     = 0x02046808; /* Wifi::MB::getFakeScanState() */
+_ZN4Wifi2MB15onFakeStartScanEtPv                                    = 0x02046818; /* Wifi::MB::onFakeStartScan(unsigned short, void*) */
+_ZN4Wifi2MB18getChildMacAddressEt                                   = 0x02046828; /* Wifi::MB::getChildMacAddress(unsigned short) */
+_ZN4Wifi2MB20getDownloadParameterEv                                 = 0x02046860; /* Wifi::MB::getDownloadParameter() */
+_ZN4Wifi2MB12getChildInfoEt                                         = 0x0204688C; /* Wifi::MB::getChildInfo(unsigned short) */
+_ZN4Wifi2MB6updateEt                                                = 0x020468C4; /* Wifi::MB::update(unsigned short) */
+_ZN4Wifi2MB11startParentEmP14MBGameRegistry                         = 0x02046ADC; /* Wifi::MB::startParent(unsigned long, MBGameRegistry*) */
+_ZN4Wifi17disableChildEntryEv                                       = 0x02046B80; /* Wifi::disableChildEntry() */
+_ZN4Wifi18getConnectedBitmapEv                                      = 0x02046BA8; /* Wifi::getConnectedBitmap() */
+_ZN4Wifi16hasErrorOccurredEv                                        = 0x02046BB4; /* Wifi::hasErrorOccurred() */
+_ZN4Wifi12getLinkLevelEv                                            = 0x02046BF8; /* Wifi::getLinkLevel() */
+_ZN4Wifi13getCurrentAidEv                                           = 0x02046C28; /* Wifi::getCurrentAid() */
+_ZN4Wifi28getCommunicatingConsoleCountEv                            = 0x02046C34; /* Wifi::getCommunicatingConsoleCount() */
+_ZN4Wifi22isConsoleCommunicatingEt                                  = 0x02046C44; /* Wifi::isConsoleCommunicating(unsigned short) */
+_ZN4Wifi7isChildEv                                                  = 0x02046C5C; /* Wifi::isChild() */
+_ZN4Wifi8isParentEv                                                 = 0x02046C78; /* Wifi::isParent() */
+_ZN4Wifi16isMultiBootChildEv                                        = 0x02046C88; /* Wifi::isMultiBootChild() */
+_ZN4Wifi16terminateSessionEv                                        = 0x02046CA4; /* Wifi::terminateSession() */
+_ZN4Wifi13getSharedDataEt                                           = 0x02046E98; /* Wifi::getSharedData(unsigned short) */
+_ZN4Wifi16updateSharedDataEPKv                                      = 0x02046ECC; /* Wifi::updateSharedData(void const*) */
+_ZN4Wifi10isWFSReadyEv                                              = 0x02046F9C; /* Wifi::isWFSReady() */
+_ZN4Wifi15connectToParentEm                                         = 0x02046FDC; /* Wifi::connectToParent(unsigned long) */
+_ZN4Wifi17getParentsBssDescEv                                       = 0x02047194; /* Wifi::getParentsBssDesc() */
+_ZN4Wifi14startChildScanEmPh                                        = 0x020471A0; /* Wifi::startChildScan(unsigned long, unsigned char*) */
+_ZN4Wifi13onParentFoundEP9WMBssDesc                                 = 0x020472A8; /* Wifi::onParentFound(WMBssDesc*) */
+_ZN4Wifi11startParentEmhPvt                                         = 0x020473BC; /* Wifi::startParent(unsigned long, unsigned char, void*, unsigned short) */
+_ZN4Wifi21isFastTransferEnabledEv                                   = 0x02047694; /* Wifi::isFastTransferEnabled() */
+_ZN4Wifi18enableFastTransferEv                                      = 0x020476A4; /* Wifi::enableFastTransfer() */
+_ZN4Wifi20onEnableFastTransferEPv                                   = 0x020476EC; /* Wifi::onEnableFastTransfer(void*) */
+_ZN4Wifi18enableSyncTransferEv                                      = 0x02047708; /* Wifi::enableSyncTransfer() */
+_ZN4Wifi20onEnableSyncTransferEPv                                   = 0x02047750; /* Wifi::onEnableSyncTransfer(void*) */
+_ZN4Wifi10initializeEy                                              = 0x0204776C; /* Wifi::initialize(unsigned long long) */
+_ZN4Wifi21measureOptimalChannelEv                                   = 0x0204785C; /* Wifi::measureOptimalChannel() */
+_ZN4Wifi12setupSessionEi                                            = 0x02047A94; /* Wifi::setupSession(int) */
+_ZN4Wifi15whJudgeAcceptorEP21WMStartParentCallback                  = 0x02047BDC; /* Wifi::whJudgeAcceptor(WMStartParentCallback*) */
+_ZN4Wifi11wfsCallbackEPv                                            = 0x02047C00; /* Wifi::wfsCallback(void*) */
+_ZN4Wifi12wfsAllocatorEPvmS0_                                       = 0x02047C0C; /* Wifi::wfsAllocator(void*, unsigned long, void*) */
+_ZN4Wifi16indicateCallbackEPPFvPvE                                  = 0x02047C90; /* Wifi::indicateCallback(void (**)(void*)) */
+
+_ZN4Wifi14parentsBssDescE                                           = 0x0208C0C0; /* Wifi::parentsBssDesc */
+_ZN4Wifi8recvDataE                                                  = 0x0208BA40; /* Wifi::recvData */
+_ZN4Wifi8sendDataE                                                  = 0x0208B8A0; /* Wifi::sendData */
+_ZN4Wifi21communicatingConsolesE                                    = 0x0208B848; /* Wifi::communicatingConsoles */
+_ZN4Wifi17connectionTimeoutE                                        = 0x0208B830; /* Wifi::connectionTimeout */
+_ZN4Wifi14multiBootEndedE                                           = 0x0208B824; /* Wifi::multiBootEnded */
+_ZN4Wifi13communicatingE                                            = 0x0208B820; /* Wifi::communicating */
+_ZN4Wifi12multiBootingE                                             = 0x0208B800; /* Wifi::multiBooting */
+_ZN4Wifi4heapE                                                      = 0x0208B7FC; /* Wifi::heap */
+_ZN4Wifi12fastTransferE                                             = 0x0208B7F4; /* Wifi::fastTransfer */
+_ZN4Wifi11beaconCountE                                              = 0x0208B7E8; /* Wifi::beaconCount */
+_ZN4Wifi9unused7E4E                                                 = 0x0208B7E4; /* Wifi::unused7E4 */
+_ZN4Wifi12sessionReadyE                                             = 0x0208B7DC; /* Wifi::sessionReady */
+_ZN4Wifi11sessionGgidE                                              = 0x0208B7D4; /* Wifi::sessionGgid */
+_ZN4Wifi10parentFlagE                                               = 0x0208B7D0; /* Wifi::parentFlag */
+_ZN4Wifi9wmEnabledE                                                 = 0x0208B7C8; /* Wifi::wmEnabled */
+_ZN4Wifi19pictoChatParentFlagE                                      = 0x0208B7B8; /* Wifi::pictoChatParentFlag */
+_ZN4Wifi16disconnectReasonE                                         = 0x0208B7A0; /* Wifi::disconnectReason */
+_ZN4Wifi19parentsBssDescCountE                                      = 0x0208B798; /* Wifi::parentsBssDescCount */
+_ZN4Wifi11sessionTgidE                                              = 0x0208B794; /* Wifi::sessionTgid */
+_ZN4Wifi25communicatingConsoleCountE                                = 0x02085200; /* Wifi::communicatingConsoleCount */
+_ZN4Wifi14optimalChannelE                                           = 0x020851F8; /* Wifi::optimalChannel */
+_ZN4Wifi11maxChildrenE                                              = 0x020851F4; /* Wifi::maxChildren */
+_ZN4Wifi2MB23fakeChildParentGameInfoE                               = 0x0208E7E0; /* Wifi::MB::fakeChildParentGameInfo */
+_ZN4Wifi2MB8gameInfoE                                               = 0x0208B81C; /* Wifi::MB::gameInfo */
+_ZN4Wifi2MB13fakeChildFlagE                                         = 0x0208B7C0; /* Wifi::MB::fakeChildFlag */
+_ZN4Wifi2MB10childStateE                                            = 0x02085204; /* Wifi::MB::childState */
+_ZN4Wifi2MB13fakeScanStateE                                         = 0x020851FC; /* Wifi::MB::fakeScanState */
+
+/* arm9 */
+/*----------------------------------------------------------------*/
 /*---------------------------- save ------------------------------*/
 /*----------------------------------------------------------------*/
 
