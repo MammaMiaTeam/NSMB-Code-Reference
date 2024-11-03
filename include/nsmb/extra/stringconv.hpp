@@ -10,8 +10,8 @@ namespace StringConv {
 
 	constexpr SizeT generic(char* out, u64 n, SizeT base, bool sign, bool upper) {
 
-		static constexpr char UpperChars[] = "0123456789ABCDEF";
-		static constexpr char LowerChars[] = "0123456789abcdef";
+		constexpr char UpperChars[] = "0123456789ABCDEF";
+		constexpr char LowerChars[] = "0123456789abcdef";
 
 		constexpr SizeT Size = 64;
 
@@ -54,7 +54,7 @@ namespace StringConv {
 
 	}
 
-	
+
 	template<CC::Integer I>
 	NTR_INLINE constexpr SizeT decimal(char* out, I n) {
 		return generic(out, Math::abs(n), 10, n < 0, false);

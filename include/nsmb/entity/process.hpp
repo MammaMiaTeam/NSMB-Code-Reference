@@ -38,7 +38,7 @@ namespace ProcessManager {
 
 	template<class T>
 	T* getNextObject(const T* object = nullptr) {
-		return static_cast<T*>(getNextObjectByObjectID(T::objectID, object));
+		return static_cast<T*>(getNextObjectByObjectID(T::ObjectID, object));
 	}
 
 	//0204d6a8
