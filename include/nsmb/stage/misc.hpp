@@ -16,6 +16,19 @@ struct ObjectBank
 };
 NTR_SIZE_GUARD(ObjectBank, 2);
 
+enum class ChallengeMode : u8 {
+	None = 0,               // Normal scrolling behavior, set when challengeModeEnabled is false.
+
+	NoLeftScroll = 1,       // Disables scrolling back to the left.
+	NoDownScroll = 2,       // Disables scrolling back down.
+
+	ArrowIconOnly = 3,      // Renders the arrow icon without imposing any scrolling restrictions.
+	                        // This mode occurs when the challenge mode is set to any value other than
+	                        // 0, 1, 2 or 0x80, resulting in arrow rendering only.
+
+	Disabled = 0x80         // Displays a gray arrow icon on the bottom screen, without imposing any scrolling restrictions.
+};
+
 namespace Stage
 {
 
@@ -74,7 +87,7 @@ namespace Stage
 	extern bool challengeModeEnabled;
 
 	// 02085a60
-	extern u8 challengeModeFlag;
+	extern ChallengeMode challengeMode;
 
 	// 020ca874
 	extern bool phantomHandsTargetEnabled;
