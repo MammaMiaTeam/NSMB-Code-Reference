@@ -4790,7 +4790,7 @@ _ZTV7StageFX							= 0x02127838;
 /*----------------------------------------------------------------*/
 
 _ZN5Stage20challengeModeEnabledE					= 0x02085a10;
-_ZN5Stage29challengeModeScrollingEnabledE           = 0x02085a60;
+_ZN5Stage17challengeModeFlagE                       = 0x02085a60;
 _ZN5Stage7setZoomElmhh								= 0x020facfc;
 _ZN5Stage9getAreaIDEhhh								= 0x0201f53c;
 
