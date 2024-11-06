@@ -4961,11 +4961,6 @@ _ull_mod = 0x0207df3c;
 _ll_div  = 0x0207df88;
 _ll_mod  = 0x0207df78;
 
-/* Random crap the compiler needs for absolutely no reason */
-
-__aeabi_atexit		= 0x0;
-__dso_handle		= 0x0;
-
 
 /* arm9_ov52 */
 /*----------------------------------------------------------------------*/
