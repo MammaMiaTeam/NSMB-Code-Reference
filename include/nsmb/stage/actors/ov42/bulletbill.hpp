@@ -161,10 +161,12 @@ public:
 	s8 updateStep;
 
 
+#if NTR_EXT_EXISTS(BulletBill)
 	#include NTR_EXT_INCLUDE(BulletBill)
+#endif
 
 };
-#if !NTR_HAS_EXT(BulletBill)
+#if !NTR_EXT_EXISTS(BulletBill)
 NTR_SIZE_GUARD(BulletBill, 0x5E4);
 #endif
 
@@ -193,9 +195,11 @@ public:
 	static const ActiveColliderInfo activeColliderInfo;
 
 
+#if NTR_EXT_EXISTS(BanzaiBill)
 	#include NTR_EXT_INCLUDE(BanzaiBill)
+#endif
 
 };
-#if !NTR_HAS_EXT(BanzaiBill)
+#if !NTR_EXT_EXISTS(BanzaiBill)
 NTR_SIZE_GUARD(BanzaiBill, sizeof(BulletBill));
 #endif

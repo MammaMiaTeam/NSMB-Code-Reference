@@ -41,9 +41,11 @@ public:
 	u32 playerZoomState[2];
 
 
+#if NTR_EXT_EXISTS(Zoom)
 	#include NTR_EXT_INCLUDE(Zoom)
+#endif
 
 };
-#if !NTR_HAS_EXT(Zoom)
+#if !NTR_EXT_EXISTS(Zoom)
 NTR_SIZE_GUARD(Zoom, 0x418);
 #endif

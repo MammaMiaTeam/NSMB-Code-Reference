@@ -77,9 +77,11 @@ public:
 	s8 updateStep;
 
 
+#if NTR_EXT_EXISTS(TileGod)
 	#include NTR_EXT_INCLUDE(TileGod)
+#endif
 
 };
-#if !NTR_HAS_EXT(TileGod)
+#if !NTR_EXT_EXISTS(TileGod)
 NTR_SIZE_GUARD(TileGod, 0x41C);
 #endif

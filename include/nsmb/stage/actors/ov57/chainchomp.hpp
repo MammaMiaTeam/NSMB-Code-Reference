@@ -133,9 +133,11 @@ public:
 	u8 playerCollisionCooldown;
 
 
+#if NTR_EXT_EXISTS(ChainChomp)
 	#include NTR_EXT_INCLUDE(ChainChomp)
+#endif
 
 };
-#if !NTR_HAS_EXT(ChainChomp)
+#if !NTR_EXT_EXISTS(ChainChomp)
 NTR_SIZE_GUARD(ChainChomp, 0x8A8);
 #endif

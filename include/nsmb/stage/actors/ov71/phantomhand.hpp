@@ -55,9 +55,11 @@ public:
 	s8 updateStep;
 
 
+#if NTR_EXT_EXISTS(PhantomHand)
 	#include NTR_EXT_INCLUDE(PhantomHand)
+#endif
 
 };
-#if !NTR_HAS_EXT(PhantomHand)
+#if !NTR_EXT_EXISTS(PhantomHand)
 NTR_SIZE_GUARD(PhantomHand, 0x4D4);
 #endif

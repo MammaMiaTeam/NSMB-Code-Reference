@@ -136,10 +136,12 @@ public:
 	s8 updateStep;
 
 
+#if NTR_EXT_EXISTS(BulletBillBlaster)
 	#include NTR_EXT_INCLUDE(BulletBillBlaster)
+#endif
 
 };
-#if !NTR_HAS_EXT(BulletBillBlaster)
+#if !NTR_EXT_EXISTS(BulletBillBlaster)
 NTR_SIZE_GUARD(BulletBillBlaster, 0xA44);
 #endif
 
@@ -165,9 +167,11 @@ public:
 	static const ActorProfile profile;
 
 
+#if NTR_EXT_EXISTS(BanzaiBillBlaster)
 	#include NTR_EXT_INCLUDE(BanzaiBillBlaster)
+#endif
 
 };
-#if !NTR_HAS_EXT(BanzaiBillBlaster)
+#if !NTR_EXT_EXISTS(BanzaiBillBlaster)
 NTR_SIZE_GUARD(BanzaiBillBlaster, sizeof(BulletBillBlaster));
 #endif

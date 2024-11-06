@@ -86,9 +86,11 @@ public:
 	bool playerStanding;
 
 
+#if NTR_EXT_EXISTS(Manhole)
 	#include NTR_EXT_INCLUDE(Manhole)
+#endif
 
 };
-#if !NTR_HAS_EXT(Manhole)
+#if !NTR_EXT_EXISTS(Manhole)
 NTR_SIZE_GUARD(Manhole, 0x50C);
 #endif

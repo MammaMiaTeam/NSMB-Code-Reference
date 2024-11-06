@@ -64,9 +64,11 @@ public:
 	s8 wobbleForce;
 
 
+#if NTR_EXT_EXISTS(WobbleRock)
 	#include NTR_EXT_INCLUDE(WobbleRock)
+#endif
 
 };
-#if !NTR_HAS_EXT(WobbleRock)
+#if !NTR_EXT_EXISTS(WobbleRock)
 NTR_SIZE_GUARD(WobbleRock, 0x508);
 #endif

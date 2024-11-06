@@ -146,10 +146,12 @@ public:
 	s8 updateStep;
 
 
+#if NTR_EXT_EXISTS(Gombaa)
 	#include NTR_EXT_INCLUDE(Gombaa)
+#endif
 
 };
-#if !NTR_HAS_EXT(Goomba)
+#if !NTR_EXT_EXISTS(Goomba)
 NTR_SIZE_GUARD(Goomba, 0x45C);
 #endif
 
@@ -175,10 +177,12 @@ public:
 	static const PointSensor topSensor;
 
 
+#if NTR_EXT_EXISTS(Paragoomba)
 	#include NTR_EXT_INCLUDE(Paragoomba)
+#endif
 
 };
-#if !NTR_HAS_EXT(Paragoomba)
+#if !NTR_EXT_EXISTS(Paragoomba)
 NTR_SIZE_GUARD(Paragoomba, sizeof(Goomba));
 #endif
 
@@ -208,9 +212,11 @@ public:
 	static const fx32 velocitiesX[2];
 
 
+#if NTR_EXT_EXISTS(MiniGoomba)
 	#include NTR_EXT_INCLUDE(MiniGoomba)
+#endif
 
 };
-#if !NTR_HAS_EXT(MiniGoomba)
+#if !NTR_EXT_EXISTS(MiniGoomba)
 NTR_SIZE_GUARD(MiniGoomba, sizeof(Goomba));
 #endif

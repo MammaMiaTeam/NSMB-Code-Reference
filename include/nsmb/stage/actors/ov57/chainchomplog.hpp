@@ -101,10 +101,12 @@ public:
 	DamageType damageType;
 
 
+#if NTR_EXT_EXISTS(ChainChompLog)
 	#include NTR_EXT_INCLUDE(ChainChompLog)
+#endif
 
 };
-#if !NTR_HAS_EXT(ChainChompLog)
+#if !NTR_EXT_EXISTS(ChainChompLog)
 NTR_SIZE_GUARD(ChainChompLog, 0x48C);
 #endif
 

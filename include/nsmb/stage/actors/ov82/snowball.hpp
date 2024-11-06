@@ -61,9 +61,11 @@ public:
 	s8 updateStep;
 
 
+#if NTR_EXT_EXISTS(Snowball)
 	#include NTR_EXT_INCLUDE(Snowball)
+#endif
 
 };
-#if !NTR_HAS_EXT(Snowball)
+#if !NTR_EXT_EXISTS(Snowball)
 NTR_SIZE_GUARD(Snowball, 0x4DC);
 #endif

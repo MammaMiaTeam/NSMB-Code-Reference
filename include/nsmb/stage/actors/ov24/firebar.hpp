@@ -75,9 +75,11 @@ public:
 	s8 updateStep;
 
 
+#if NTR_EXT_EXISTS(FireBar)
 	#include NTR_EXT_INCLUDE(FireBar)
+#endif
 
 };
-#if !NTR_HAS_EXT(FireBar)
+#if !NTR_EXT_EXISTS(FireBar)
 NTR_SIZE_GUARD(FireBar, 0x1CC4);
 #endif

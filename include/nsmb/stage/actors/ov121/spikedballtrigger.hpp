@@ -34,9 +34,11 @@ public:
 	u32 unused3F4;
 
 
+#if NTR_EXT_EXISTS(SpikedBallTrigger)
 	#include NTR_EXT_INCLUDE(SpikedBallTrigger)
+#endif
 
 };
-#if !NTR_HAS_EXT(SpikedBallTrigger)
+#if !NTR_EXT_EXISTS(SpikedBallTrigger)
 NTR_SIZE_GUARD(SpikedBallTrigger, 0x3F8);
 #endif

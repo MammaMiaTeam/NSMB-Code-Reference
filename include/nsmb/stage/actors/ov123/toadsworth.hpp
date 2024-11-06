@@ -44,9 +44,11 @@ public:
 	s8 updateStep;			        // Step of the current state: 0:init,1:update,-1:exit
 
 
+#if NTR_EXT_EXISTS(Toadsworth)
 	#include NTR_EXT_INCLUDE(Toadsworth)
+#endif
 
 };
-#if !NTR_HAS_EXT(Toadsworth)
+#if !NTR_EXT_EXISTS(Toadsworth)
 NTR_SIZE_GUARD(Toadsworth, 0x524);
 #endif

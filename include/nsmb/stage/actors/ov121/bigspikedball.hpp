@@ -82,9 +82,11 @@ public:
 	s8 updateStep;
 
 
+#if NTR_EXT_EXISTS(BigSpikedBall)
 	#include NTR_EXT_INCLUDE(BigSpikedBall)
+#endif
 
 };
-#if !NTR_HAS_EXT(BigSpikedBall)
+#if !NTR_EXT_EXISTS(BigSpikedBall)
 NTR_SIZE_GUARD(BigSpikedBall, 0x4A8);
 #endif

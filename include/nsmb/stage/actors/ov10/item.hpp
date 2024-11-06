@@ -167,9 +167,11 @@ public:
 	u8 unused5CF;			            // Unused (& 0x100), MP, vine, drop from top only
 
 
+#if NTR_EXT_EXISTS(Item)
 	#include NTR_EXT_INCLUDE(Item)
+#endif
 
 };
-#if !NTR_HAS_EXT(Item)
+#if !NTR_EXT_EXISTS(Item)
 NTR_SIZE_GUARD(Item, 0x5D0);
 #endif

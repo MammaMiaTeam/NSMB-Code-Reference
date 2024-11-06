@@ -50,9 +50,11 @@ public:
 	s8 updateStep;
 
 
+#if NTR_EXT_EXISTS(CoinSpawner)
 	#include NTR_EXT_INCLUDE(CoinSpawner)
+#endif
 
 };
-#if !NTR_HAS_EXT(CoinSpawner)
+#if !NTR_EXT_EXISTS(CoinSpawner)
 NTR_SIZE_GUARD(CoinSpawner, 0x410);
 #endif

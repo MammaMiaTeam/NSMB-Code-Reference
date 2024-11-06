@@ -85,9 +85,11 @@ public:
 	bool activeFlag;
 
 
+#if NTR_EXT_EXISTS(SpikedBall)
 	#include NTR_EXT_INCLUDE(SpikedBall)
+#endif
 
 };
-#if !NTR_HAS_EXT(SpikedBall)
+#if !NTR_EXT_EXISTS(SpikedBall)
 NTR_SIZE_GUARD(SpikedBall, 0x4AC);
 #endif

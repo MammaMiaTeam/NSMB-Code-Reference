@@ -73,9 +73,11 @@ public:
 	s8 updateStep;
 
 
+#if NTR_EXT_EXISTS(SnowSpike)
 	#include NTR_EXT_INCLUDE(SnowSpike)
+#endif
 
 };
-#if !NTR_HAS_EXT(SnowSpike)
+#if !NTR_EXT_EXISTS(SnowSpike)
 NTR_SIZE_GUARD(SnowSpike, 0x5A0);
 #endif

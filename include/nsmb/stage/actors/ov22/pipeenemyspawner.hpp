@@ -66,9 +66,11 @@ public:
 	s8 updateStep;
 
 
+#if NTR_EXT_EXISTS(PipeEnemySpawner)
 	#include NTR_EXT_INCLUDE(PipeEnemySpawner)
+#endif
 
 };
-#if !NTR_HAS_EXT(PipeEnemySpawner)
+#if !NTR_EXT_EXISTS(PipeEnemySpawner)
 NTR_SIZE_GUARD(PipeEnemySpawner, 0x404);
 #endif

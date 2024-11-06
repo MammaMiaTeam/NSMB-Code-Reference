@@ -84,9 +84,11 @@ public:
 	s16 bodyPartRotations[9];
 
 
+#if NTR_EXT_EXISTS(Pokey)
 	#include NTR_EXT_INCLUDE(Pokey)
+#endif
 
 };
-#if !NTR_HAS_EXT(Pokey)
+#if !NTR_EXT_EXISTS(Pokey)
 NTR_SIZE_GUARD(Pokey, 0x10B0);
 #endif

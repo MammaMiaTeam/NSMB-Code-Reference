@@ -207,9 +207,11 @@ public:
 	s8 updateStep;
 
 
+#if NTR_EXT_EXISTS(Coin)
 	#include NTR_EXT_INCLUDE(Coin)
+#endif
 
 };
-#if !NTR_HAS_EXT(Coin)
+#if !NTR_EXT_EXISTS(Coin)
 NTR_SIZE_GUARD(Coin, 0x4E8);
 #endif

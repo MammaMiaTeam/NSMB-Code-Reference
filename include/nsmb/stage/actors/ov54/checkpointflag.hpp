@@ -31,9 +31,11 @@ public:
 	bool shrinkFlag;
 
 
+#if NTR_EXT_EXISTS(CheckpointFlag)
 	#include NTR_EXT_INCLUDE(CheckpointFlag)
+#endif
 
 };
-#if !NTR_HAS_EXT(CheckpointFlag)
+#if !NTR_EXT_EXISTS(CheckpointFlag)
 NTR_SIZE_GUARD(CheckpointFlag, 0x5C);
 #endif

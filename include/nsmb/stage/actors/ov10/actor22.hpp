@@ -20,9 +20,11 @@ public:
 	static const ActorProfile profile;
 
 
+#if NTR_EXT_EXISTS(Actor22)
 	#include NTR_EXT_INCLUDE(Actor22)
+#endif
 
 };
-#if !NTR_HAS_EXT(Actor22)
+#if !NTR_EXT_EXISTS(Actor22)
 NTR_SIZE_GUARD(Actor22, sizeof(StageEntity));
 #endif

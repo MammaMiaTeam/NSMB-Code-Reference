@@ -152,9 +152,11 @@ public:
 	s8 mountedPlayerID;
 
 
+#if NTR_EXT_EXISTS(Lakitu)
 	#include NTR_EXT_INCLUDE(Lakitu)
+#endif
 
 };
-#if !NTR_HAS_EXT(Lakitu)
+#if !NTR_EXT_EXISTS(Lakitu)
 NTR_SIZE_GUARD(Lakitu, 0x5E4);
 #endif

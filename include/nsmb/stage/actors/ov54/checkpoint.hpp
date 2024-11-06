@@ -49,10 +49,12 @@ public:
 	bool collected;
 
 
+#if NTR_EXT_EXISTS(Checkpoint)
 	#include NTR_EXT_INCLUDE(Checkpoint)
+#endif
 
 };
-#if !NTR_HAS_EXT(Checkpoint)
+#if !NTR_EXT_EXISTS(Checkpoint)
 NTR_SIZE_GUARD(Checkpoint, 0x51C);
 #endif
 

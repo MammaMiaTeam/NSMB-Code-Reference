@@ -108,9 +108,11 @@ public:
 	fx32 walkSpeed;
 
 
+#if NTR_EXT_EXISTS(Splunkin)
 	#include NTR_EXT_INCLUDE(Splunkin)
+#endif
 
 };
-#if !NTR_HAS_EXT(Splunkin)
+#if !NTR_EXT_EXISTS(Splunkin)
 NTR_SIZE_GUARD(Splunkin, 0x4D8);
 #endif

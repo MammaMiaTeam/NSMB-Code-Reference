@@ -113,10 +113,12 @@ public:
 	u8 waitTimer;
 
 
+#if NTR_EXT_EXISTS(Thwomp)
 	#include NTR_EXT_INCLUDE(Thwomp)
+#endif
 
 };
-#if !NTR_HAS_EXT(Thwomp)
+#if !NTR_EXT_EXISTS(Thwomp)
 NTR_SIZE_GUARD(Thwomp, 0x4F4);
 #endif
 
@@ -145,9 +147,11 @@ public:
 	static LineSensorH topSensor;
 
 
+#if NTR_EXT_EXISTS(GiantThwomp)
 	#include NTR_EXT_INCLUDE(GiantThwomp)
+#endif
 
 };
-#if !NTR_HAS_EXT(GiantThwomp)
+#if !NTR_EXT_EXISTS(GiantThwomp)
 NTR_SIZE_GUARD(GiantThwomp, sizeof(Thwomp));
 #endif

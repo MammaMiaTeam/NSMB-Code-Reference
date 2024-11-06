@@ -64,9 +64,11 @@ public:
     s8 updateStep;
 
 
+#if NTR_EXT_EXISTS(LakituSpawner)
 	#include NTR_EXT_INCLUDE(LakituSpawner)
+#endif
 
 };
-#if !NTR_HAS_EXT(LakituSpawner)
+#if !NTR_EXT_EXISTS(LakituSpawner)
 NTR_SIZE_GUARD(LakituSpawner, 0x414);
 #endif

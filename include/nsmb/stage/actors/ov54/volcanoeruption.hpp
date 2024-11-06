@@ -82,9 +82,11 @@ public:
 	s8 updateStep;
 	
 
+#if NTR_EXT_EXISTS(VolcanoEruption)
 	#include NTR_EXT_INCLUDE(VolcanoEruption)
+#endif
 
 };
-#if !NTR_HAS_EXT(VolcanoEruption)
+#if !NTR_EXT_EXISTS(VolcanoEruption)
 NTR_SIZE_GUARD(VolcanoEruption, 0xD74);
 #endif

@@ -141,9 +141,11 @@ public:
 	s8 updateStep;
 
 
+#if NTR_EXT_EXISTS(Broozer)
 	#include NTR_EXT_INCLUDE(Broozer)
+#endif
 
 };
-#if !NTR_HAS_EXT(Broozer)
+#if !NTR_EXT_EXISTS(Broozer)
 NTR_SIZE_GUARD(Broozer, 0x52C);
 #endif

@@ -904,10 +904,12 @@ public:
 	bool lookAtActive; // set to true when "LookingAtTarget" is enabled and the player's head rotation is being calculated
 
 
+#if NTR_EXT_EXISTS(Player)
 	#include NTR_EXT_INCLUDE(Player)
+#endif
 
 };
-#if !NTR_HAS_EXT(Player)
+#if !NTR_EXT_EXISTS(Player)
 NTR_SIZE_GUARD(Player, 0xBCC);
 #endif
 

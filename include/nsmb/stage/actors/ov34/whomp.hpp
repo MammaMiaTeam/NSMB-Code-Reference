@@ -176,9 +176,11 @@ public:
 	s8 updateStep;
 
 
+#if NTR_EXT_EXISTS(Whomp)
 	#include NTR_EXT_INCLUDE(Whomp)
+#endif
 
 };
-#if !NTR_HAS_EXT(Whomp)
+#if !NTR_EXT_EXISTS(Whomp)
 NTR_SIZE_GUARD(Whomp, 0x51C);
 #endif

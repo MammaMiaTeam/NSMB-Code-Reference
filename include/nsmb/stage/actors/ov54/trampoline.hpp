@@ -151,9 +151,11 @@ public:
 	u8 contractTimer;
 
 
+#if NTR_EXT_EXISTS(Trampoline)
 	#include NTR_EXT_INCLUDE(Trampoline)
+#endif
 
 };
-#if !NTR_HAS_EXT(Trampoline)
+#if !NTR_EXT_EXISTS(Trampoline)
 NTR_SIZE_GUARD(Trampoline, 0x508);
 #endif

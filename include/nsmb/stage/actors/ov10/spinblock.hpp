@@ -87,10 +87,12 @@ public:
 	s8 updateStep;
 
 
+#if NTR_EXT_EXISTS(SpinBlock)
 	#include NTR_EXT_INCLUDE(SpinBlock)
+#endif
 
 };
-#if !NTR_HAS_EXT(SpinBlock)
+#if !NTR_EXT_EXISTS(SpinBlock)
 NTR_SIZE_GUARD(SpinBlock, 0x55C);
 #endif
 
@@ -113,10 +115,12 @@ public:
 	static const ActorProfile profile;
 
 
+#if NTR_EXT_EXISTS(SpinBlock255)
 	#include NTR_EXT_INCLUDE(SpinBlock255)
+#endif
 
 };
-#if !NTR_HAS_EXT(SpinBlock255)
+#if !NTR_EXT_EXISTS(SpinBlock255)
 NTR_SIZE_GUARD(SpinBlock255, sizeof(SpinBlock));
 #endif
 
@@ -139,9 +143,11 @@ public:
 	static const ActorProfile profile;
 
 
+#if NTR_EXT_EXISTS(SpinBlock256)
 	#include NTR_EXT_INCLUDE(SpinBlock256)
+#endif
 
 };
-#if !NTR_HAS_EXT(SpinBlock256)
+#if !NTR_EXT_EXISTS(SpinBlock256)
 NTR_SIZE_GUARD(SpinBlock256, sizeof(SpinBlock));
 #endif

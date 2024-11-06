@@ -210,10 +210,12 @@ public:
 	s8 updateStep;
 
 
+#if NTR_EXT_EXISTS(Boo)
 	#include NTR_EXT_INCLUDE(Boo)
+#endif
 
 };
-#if !NTR_HAS_EXT(Boo)
+#if !NTR_EXT_EXISTS(Boo)
 NTR_SIZE_GUARD(Boo, 0x5B0);
 #endif
 
@@ -239,9 +241,11 @@ public:
 	static const ActorProfile profile;
 
 
+#if NTR_EXT_EXISTS(BalloonBoo)
 	#include NTR_EXT_INCLUDE(BalloonBoo)
+#endif
 
 };
-#if !NTR_HAS_EXT(BalloonBoo)
+#if !NTR_EXT_EXISTS(BalloonBoo)
 NTR_SIZE_GUARD(BalloonBoo, sizeof(Boo));
 #endif

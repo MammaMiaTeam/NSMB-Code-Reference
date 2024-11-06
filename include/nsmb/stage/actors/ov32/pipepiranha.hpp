@@ -160,10 +160,12 @@ public:
 	s8 updateStep;
 
 
+#if NTR_EXT_EXISTS(PipePiranha)
 	#include NTR_EXT_INCLUDE(PipePiranha)
+#endif
 
 };
-#if !NTR_HAS_EXT(PipePiranha)
+#if !NTR_EXT_EXISTS(PipePiranha)
 NTR_SIZE_GUARD(PipePiranha, 0x59C);
 #endif
 

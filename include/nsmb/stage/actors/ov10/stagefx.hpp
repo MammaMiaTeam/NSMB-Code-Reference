@@ -143,9 +143,11 @@ public:
 	bool renderLives;
 
 
+#if NTR_EXT_EXISTS(StageFX)
 	#include NTR_EXT_INCLUDE(StageFX)
+#endif
 
 };
-#if !NTR_HAS_EXT(StageFX)
+#if !NTR_EXT_EXISTS(StageFX)
 NTR_SIZE_GUARD(StageFX, 0x16C);
 #endif

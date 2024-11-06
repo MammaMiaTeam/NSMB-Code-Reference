@@ -110,9 +110,11 @@ public:
 	s8 updateStep;
 
 
+#if NTR_EXT_EXISTS(FenceKoopa)
 	#include NTR_EXT_INCLUDE(FenceKoopa)
+#endif
 
 };
-#if !NTR_HAS_EXT(FenceKoopa)
+#if !NTR_EXT_EXISTS(FenceKoopa)
 NTR_SIZE_GUARD(FenceKoopa, 0x4B8);
 #endif
