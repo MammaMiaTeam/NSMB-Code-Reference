@@ -2318,9 +2318,9 @@ _ZN3OAM4Anim7drawSubEllNS_5FlagsEhhPK4Vec2sPKsNS_8SettingsE = 0x0200B39C;
 /*----------------------------- Net ------------------------------*/
 /*----------------------------------------------------------------*/
 
-/* multiboot.hpp
+/* multiboot.hpp */
 
-_ZN3Net14stopChildEntryEv                                           = 0x02001000; /* Net::stopChildEntry() */
+_ZN3Net14acceptChildrenEv                                           = 0x02001000; /* Net::acceptChildren() */
 _ZN3Net14getParentBssidEm                                           = 0x0200102C; /* Net::getParentBssid(unsigned long) */
 _ZN3Net17getParentGameInfoEm                                        = 0x02001050; /* Net::getParentGameInfo(unsigned long) */
 _ZN3Net22startMultiBootTransferEv                                   = 0x020010A8; /* Net::startMultiBootTransfer() */

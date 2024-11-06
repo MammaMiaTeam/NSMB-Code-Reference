@@ -31,6 +31,6 @@ namespace Net {
 
 	const u8* getParentBssid(u32 parentIndex);
 
-	void stopChildEntry();
+	void acceptChildren();
 
 }

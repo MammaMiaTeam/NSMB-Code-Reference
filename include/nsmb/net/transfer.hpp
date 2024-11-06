@@ -58,4 +58,9 @@ namespace Net {
 	extern PacketFastTransfer packetFastTrans;
 	extern bool taskManagerBusy;
 
+
+	NTR_INLINE bool isTransferStable() {
+		return packetTransIntegrity == PacketTransferIntegrity::PacketOrderIntegrity;
+	}
+
 }

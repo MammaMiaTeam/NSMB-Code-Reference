@@ -18,7 +18,9 @@ namespace Net {
 
 	BOOL startParentBroadcast();
 
-	BOOL startMultiBootParent(u8 character);
+	BOOL startChildScan();
+
+	BOOL startMultiBootParent(u8 character = 0);
 
 	BOOL checkMultiBootGgid();
 

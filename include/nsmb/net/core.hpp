@@ -26,6 +26,7 @@ namespace Net {
 		FatalDataStreamInterruption = 0x4000,
 		Timeout = 0x8000,
 	};
+	NTR_CREATE_BITMASK_ENUM(ErrorState);
 
 	enum class ConnectionState : u8 {
 		Stopped,
@@ -67,6 +68,7 @@ namespace Net {
 		TransferDone = 0x8,
 		MultiBootStarving = 0x10
 	};
+	NTR_CREATE_BITMASK_ENUM(ProgramTransferFlags);
 
 	struct MultiBootUserParam {
 		u8 language;
@@ -153,8 +155,13 @@ namespace Net {
 	extern u32 syncCount;
 	extern Packet sendPacket;
 
+
 	NTR_INLINE bool isConnected() {
 		return connectionState != ConnectionState::Stopped && connectionState != ConnectionState::Unused && connectionState != ConnectionState::Error;
+	}
+
+	NTR_INLINE void signalTimeout() {
+		errorState |= ErrorState::Timeout;
 	}
 
 }
