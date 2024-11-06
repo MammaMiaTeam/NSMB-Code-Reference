@@ -1,6 +1,7 @@
 #pragma once
 #include "nsmb_nitro.hpp"
 #include "nsmb/extra/bitmaskenum.hpp"
+#include "nsmb/net/core.hpp"
 
 
 namespace Keys {
@@ -172,16 +173,16 @@ namespace Input {
 
 
 
-	NTR_INLINE u16 getPressedKeys(u8 console = 0) {
+	NTR_INLINE u16 getPressedKeys(u8 console = Net::localAid) {
 		return consoleKeys[console].pressed;
 	}
-	NTR_INLINE u16 getHeldKeys(u8 console = 0) {
+	NTR_INLINE u16 getHeldKeys(u8 console = Net::localAid) {
 		return consoleKeys[console].held;
 	}
-	NTR_INLINE u16 getRepeatedKeys(u8 console = 0) {
+	NTR_INLINE u16 getRepeatedKeys(u8 console = Net::localAid) {
 		return consoleKeysRepeated[console];
 	}
-	NTR_INLINE u16 getUpKeys(u8 console = 0) {
+	NTR_INLINE u16 getUpKeys(u8 console = Net::localAid) {
 		return consoleKeysUp[console];
 	}
 
