@@ -153,4 +153,8 @@ namespace Net {
 	extern u32 syncCount;
 	extern Packet sendPacket;
 
+	NTR_INLINE bool isConnected() {
+		return connectionState != ConnectionState::Stopped && connectionState != ConnectionState::Unused && connectionState != ConnectionState::Error;
+	}
+
 }

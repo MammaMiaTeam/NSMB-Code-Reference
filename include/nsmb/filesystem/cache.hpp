@@ -1,5 +1,6 @@
 #pragma once
 #include "nsmb_nitro.hpp"
+#include "nsmb/system/memory.hpp"
 #include "file.hpp"
 
 
