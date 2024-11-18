@@ -1,6 +1,7 @@
 #pragma once
 
 #include "types.hpp"
+#include "nsmb/extra/bitmaskenum.hpp"
 
 namespace Net {
 

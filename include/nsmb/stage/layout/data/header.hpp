@@ -1,6 +1,7 @@
 #pragma once
 
 #include "nsmb_nitro.hpp"
+#include "nsmb/extra/bitmaskenum.hpp"
 
 enum class StageSettings : u16 {
 	StartAsMini = 0x1,

@@ -1,5 +1,6 @@
 #pragma once
 #include "nsmb_nitro.hpp"
+#include "nsmb/extra/bitmaskenum.hpp"
 #include "nsmb/math/math.hpp"
 #include "nsmb/math/vector.hpp"
 
@@ -181,7 +182,7 @@ public:
 
 	// 020a4434
 	static void initSystem();
-		
+
 	// 020A3D68
 	Player* getPlayer() const;
 

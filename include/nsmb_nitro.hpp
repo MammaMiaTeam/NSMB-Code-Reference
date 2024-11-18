@@ -31,6 +31,8 @@
 #include "nitro.h" // Nitro SDK 3.0
 #include "nnsys.h" // Nintendo Nitro System 3.0
 
+#include "nitro/cht.h" // Pictochat header
+
 
 #define rcast reinterpret_cast
 #define scast static_cast
