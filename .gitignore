@@ -10,9 +10,16 @@
 /include/nnsys.h
 
 # Misc
+/dev/
 *.bak
-*
 
+# Exclude all files from root directory
+/*
+/*/
+!/docs/
+!/include/
+
+# Include only these file from root directory
 !.editorconfig
 !.gitattributes
 !.gitignore
