@@ -11,3 +11,13 @@
 
 # Misc
 *.bak
+*
+
+!.editorconfig
+!.gitattributes
+!.gitignore
+!Doxyfile
+!README.md
+!logo.png
+!symbols7.x
+!symbols9.x
