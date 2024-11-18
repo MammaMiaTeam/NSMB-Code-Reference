@@ -20,7 +20,10 @@ struct MBPChildInfo {
 
 	union {
 		u16 playerNo;
-		u8 data[2];
+		struct {
+			u8 multiboot;
+			u8 paired;
+		};
 	};
 
 };

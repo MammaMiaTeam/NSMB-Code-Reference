@@ -10,21 +10,21 @@ namespace Net {
 
 	// TODO: Check all names, document missing bits!!!
 	enum class ErrorState : u16 {
-		ParentEntryError = 0x1,
-		MultiBootParentLost = 0x2,
-		SilentError = 0x4, // Does not trigger the OnConnectionError handler.
-		ChildDisconnect = 0x8,
-		ParentError = 0x10,
-		LocalError = 0x20,
-		ChildDesync = 0x80,
-		Console0Disconnect = 0x100,
-		Console1Disconnect = 0x200,
-		Console2Disconnect = 0x400,
-		Console3Disconnect = 0x800,
-		MultiBootFailed = 0x1000,
-		// Runtime_WFS_Error = 0x2000,
-		FatalDataStreamInterruption = 0x4000,
-		Timeout = 0x8000,
+		ParentEntryError = 0x1, // S 0200f1b4, S 0200fee4
+		MultiBootParentLost = 0x2, // O 0200fee4
+		SilentError = 0x4, // S 0200163c, S 0200fae0, (Does not trigger the OnConnectionError handler.)
+		ChildDisconnect = 0x8, // S 020014f0, S 0200fee4
+		ParentError = 0x10, // O 02010094
+		LocalError = 0x20, // O 02010094
+		ChildDesync = 0x80, // O 0200f7f8
+		Console0Desync = 0x100, // O 0200f7f8
+		Console1Desync = 0x200, // O 0200f7f8
+		Console2Desync = 0x400, // O 0200f7f8
+		Console3Desync = 0x800, // O 0200f7f8
+		MultiBootFailed = 0x1000, // S 02001698
+		// Runtime_WFS_Error = 0x2000, // O 0200e660, S 0200fee4, O 02010094 (Fast transfer error?)
+		FatalDataStreamInterruption = 0x4000, // S 0200fae0
+		Timeout = 0x8000 // O 02010784
 	};
 	NTR_CREATE_BITMASK_ENUM(ErrorState);
 
@@ -95,8 +95,6 @@ namespace Net {
 
 		void readUserInfo(MBUserInfo* userInfo);
 
-		void stopConnection();
-
 		void resetConnection();
 
 		WMBssDesc* getParentBssDesc(u32 parentIndex);
@@ -120,6 +118,7 @@ namespace Net {
 
 	BOOL shutdownWireless();
 
+	void stopConnection();
 
 	BOOL connectToParent(u32 parentIndex);
 
@@ -162,6 +161,11 @@ namespace Net {
 
 	NTR_INLINE void signalTimeout() {
 		errorState |= ErrorState::Timeout;
+	}
+
+	NTR_INLINE const MBPChildInfo* getConsoleGameInfo(u16 aid) {
+		MBPChildInfo* info = &consoleGameInfos[aid];
+		return info->paired ? info : nullptr;
 	}
 
 }
