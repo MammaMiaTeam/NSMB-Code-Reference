@@ -172,19 +172,27 @@ public:
 
 	constexpr Vec3& operator+=(const VecFx32& rhs) {
 
-		x += rhs.x;
-		y += rhs.y;
-		z += rhs.z;
+		if consteval {
+			x += rhs.x;
+			y += rhs.y;
+			z += rhs.z;
+		} else {
+			VEC_Add(this, &rhs, this);
+		}
 
 		return *this;
 
 	}
 
 	constexpr Vec3& operator-=(const VecFx32& rhs) {
-		
-		x -= rhs.x;
-		y -= rhs.y;
-		z -= rhs.z;
+
+		if consteval {
+			x -= rhs.x;
+			y -= rhs.y;
+			z -= rhs.z;
+		} else {
+			VEC_Subtract(this, &rhs, this);
+		}
 
 		return *this;
 
@@ -539,7 +547,7 @@ public:
 		return out;
 
 	}
-	
+
 	//  !!! NOT SAFE !!! oh well nintendo used them anyway
 
 	// New
