@@ -1,8 +1,7 @@
 #pragma once
 
-#include "nsmb_nitro.hpp"
+#include <nsmb/core/math/math.hpp>
 #include "meta.hpp"
-#include "nsmb/math/math.hpp"
 #include "fixedpoint.hpp"
 
 

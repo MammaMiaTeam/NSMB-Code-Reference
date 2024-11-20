@@ -1,9 +1,8 @@
 #pragma once
 
-#include "nsmb_nitro.hpp"
-#include "nsmb/extra/bits.hpp"
-#include "nsmb/extra/fixedpoint.hpp"
-#include "nsmb/math/vector.hpp"
+#include <nsmb/core/math/vector.hpp>
+#include "bits.hpp"
+#include "fixedpoint.hpp"
 #include "stringconv.hpp"
 
 
@@ -208,7 +207,7 @@ public:
 		flags = old;
 
 		return *this;
-		
+
 	}
 
 	template<class R, class T, class... Args>
@@ -384,7 +383,7 @@ private:
 		.uppercase = false,
 		.fixedVec = true
 	};
-	
+
 
 	static void insertFill(SizeT length) {
 

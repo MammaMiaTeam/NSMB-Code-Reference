@@ -1,6 +1,7 @@
 #pragma once
 
-#include "nsmb_nitro.hpp"
+#include <nsmb_nitro.hpp>
+
 
 enum {
 	MBP_STATE_STOP,
