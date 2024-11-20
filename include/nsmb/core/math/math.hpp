@@ -128,7 +128,10 @@ namespace Math { // TODO Global cleanup
 	void lerp(Vec3& start, const Vec3& end, fx32 scale, fx32 maxStep, fx32 minStep);
 
 	//020437a4 this is *not* a lerp
-	void lerpFx32(fx32& start, fx32 end, fx32 ratio, fx32 maxStep);
+	void lerpFx32(fx32& start, fx32 end, fx32 scale, fx32 maxStep);
+
+	//020437f4 this is *not* a lerp
+	fx32 lerpFx32(fx32& start, fx32 end, fx32 scale, fx32 maxStep, fx32 minStep);
 
 	//02044280 (sub?)
 	//void subtract();
