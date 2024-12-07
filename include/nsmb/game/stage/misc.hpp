@@ -115,7 +115,7 @@ namespace Stage
 	}
 
 	NTR_INLINE void setEvent(u8 id) {
-		events |= ~(1ULL << (id - 1));
+		events |= (1ULL << (id - 1));
 	}
 
 	NTR_INLINE void clearEvent(u8 id) {
@@ -179,5 +179,10 @@ namespace Stage
 	bool isOutsidePlayerRange(const Vec3& position, const FxRect& boundingBox, u8 viewID);
 
 	u32 getForegroundScreenID(u32 fgID);
+
+
+	StageEntity* spawnObject(u32 objectID, u32 settings, const Vec3* position);
+
+	extern const u16 objectIDTable[326];
 
 }
