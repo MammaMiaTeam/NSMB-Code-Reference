@@ -1,5 +1,6 @@
 #pragma once
 
+#include "entity.hpp"
 #include "layout/stagelayout.hpp"
 #include "layout/data.hpp"
 #include <nsmb/core/net/util.hpp>
@@ -7,6 +8,8 @@
 enum class CollisionType : u32;
 
 enum class PowerupState : s8;
+
+class StageEntity;
 
 struct ObjectBank
 {

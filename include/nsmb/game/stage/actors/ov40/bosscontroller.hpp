@@ -1,10 +1,10 @@
 #pragma once
 
+#include "peach.hpp"
 #include <nsmb/game/stage/entity3danm.hpp>
 
-
 // vtable at 0214672C (ov40)
-class BossController : public StageEntity3DAnm
+class alignas(4) BossController : public StageEntity3DAnm
 {
 public:
 
