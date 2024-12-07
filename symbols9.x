@@ -178,6 +178,7 @@ NNSi_G3dFuncSbc_BB = 0x20595B0;
 NNS_G3dDraw1Mat1Shp = 0x2059950;
 NNS_G3dResDefaultSetup = 0x2059B68;
 NNS_G3dInit = 0x2059DC0;
+NNS_G3dRenderObjInit = 0x02057dc4;
 NNS_G3dGetCurrentMtx = 0x2059DF0;
 NNS_G3dGetTex = 0x205A340;
 NNS_G3dGetMdlSet = 0x205A380;
