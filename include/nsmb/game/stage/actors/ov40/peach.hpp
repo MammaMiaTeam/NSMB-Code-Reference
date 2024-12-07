@@ -57,9 +57,11 @@ public:
 	u8 unk562[10];
 	
 
+#if NTR_EXT_EXISTS(Peach)
 	#include NTR_EXT_INCLUDE(Peach)
+#endif
 
 };
-#if !NTR_HAS_EXT(Peach)
+#if !NTR_EXT_EXISTS(Peach)
 NTR_SIZE_GUARD(Peach,0x56c);
 #endif
