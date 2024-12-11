@@ -6771,7 +6771,7 @@ _ZN5Peach13loadResourcesEv        = 0x02144DAC;
 _ZN5Peach7profileE                = 0x02146870;
 _ZN5Peach12bottomSensorE          = 0x021464A4;
 
-_ZTVPeach5                        = 0x0214687C;
+_ZTV5Peach                        = 0x0214687C;
 
 
 /* arm9_ov42 */
