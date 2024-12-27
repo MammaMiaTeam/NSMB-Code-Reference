@@ -146,8 +146,8 @@ public:
 	s8 updateStep;
 
 
-#if NTR_EXT_EXISTS(Gombaa)
-	#include NTR_EXT_INCLUDE(Gombaa)
+#if NTR_EXT_EXISTS(Goomba)
+	#include NTR_EXT_INCLUDE(Goomba)
 #endif
 
 };
