@@ -3412,19 +3412,16 @@ _ZN3G3D16getPaletteParamsEP13NNSG3dResTex_mRm				= 0x02019a88;
 /*------------------------- graphics misc ------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN3GFX9toonTableE											= 0x02085B80;
-_ZN3GFX14toonTableTimerE									= 0x02085B1C;
-_ZN3GFX12ambientColorE 										= 0x020caa2c;
-_ZN3GFX12diffuseColorE 										= 0x020caa30;
-_ZN3GFX13emissionColorE 									= 0x020caa34;
+_ZN3GFX9toonTableE			= 0x02085B80;
+_ZN3GFX14toonTableTimerE	= 0x02085B1C;
 
 /* arm9_ov0 */
-_ZN3GFX12ambientColorE   = 0x020caa2c;
-_ZN3GFX12diffuseColorE   = 0x020caa30;
-_ZN3GFX13emissionColorE  = 0x020caa34;
-_ZN3GFX12lightVectorsE   = 0x020caa84;
-_ZN3GFX11lightColorsE    = 0x020caa40;
-_ZN3GFX12setMatColorsEv  = 0x020a3ad8;
+_ZN3GFX12ambientColorE   	= 0x020caa2c;
+_ZN3GFX12diffuseColorE   	= 0x020caa30;
+_ZN3GFX13emissionColorE  	= 0x020caa34;
+_ZN3GFX12lightVectorsE   	= 0x020caa84;
+_ZN3GFX11lightColorsE    	= 0x020caa40;
+_ZN3GFX12setMatColorsEv  	= 0x020a3ad8;
 
 
 /* arm9 */
