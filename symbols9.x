@@ -5853,10 +5853,10 @@ _ZN4BNCD15getOamAttrCountEm							= 0x020559F4;
 /*----------------------------- bnbl -----------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN4BNBL19getYFromAnchoredPosEtm = 0x020558e8;
-_ZN4BNBL19getXFromAnchoredPosEtm = 0x02055930;
-_ZN4BNBL19getRectangleIDAtPosEPvll = 0x02055a0c;
-_ZN4BNBL17getRectangleCountEPv = 0x02055aD4;
+_ZN4BNBL3Box11getAlignedXENS0_17AlignedCoordinateEm		= 0x02055930;
+_ZN4BNBL3Box11getAlignedYENS0_17AlignedCoordinateEm		= 0x020558E8;
+_ZN4BNBL11getBoxCountEv									= 0x02055AD4;
+_ZN4BNBL6getBoxEll										= 0x02055A0C;
 
 
 /* arm9_ov0 */
