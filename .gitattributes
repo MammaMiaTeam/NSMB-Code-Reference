@@ -1,2 +1,3 @@
-# Prevent github from falsely detecting symbols.x as an RPC file 
-symbols.x -linguist-detectable
+# Prevent github from falsely detecting symbols as an RPC file 
+symbols9.x -linguist-detectable
+symbols7.x -linguist-detectable
