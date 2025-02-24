@@ -153,7 +153,7 @@ public:
 	RenderBitfield activeModels;
 	RenderBitfield skipRenderModels;
 	s8 mountedPlayerID;
-	u8 spawnSwerves;				// used in spawnState to count swerves until three, when lakitu is in play
+	u8 spawnTurns;						// Tracks turns in spawnState; lakitu becomes interactable after three
 
 
 #if NTR_EXT_EXISTS(Lakitu)

@@ -184,7 +184,7 @@ namespace Stage
 	u32 getForegroundScreenID(u32 fgID);
 
 
-	StageEntity* spawnObject(u32 objectID, u32 settings, const Vec3* position);
+	StageEntity* spawnStageObject(u32 objectID, u32 settings, const Vec3* position);
 
 	extern const u16 objectIDTable[326];
 

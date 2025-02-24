@@ -24,6 +24,6 @@ namespace GFX {
 	extern GXRgb lightColors[4];
 
 	// 020a3ad8
-	void setMatColors(); // set global mat colors (ambient, diffuse, emission)
+	void updateGlbMaterial(); // set global mat colors (ambient, diffuse, emission)
 
 }
