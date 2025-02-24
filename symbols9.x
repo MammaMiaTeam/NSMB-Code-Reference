@@ -5850,13 +5850,26 @@ _ZN5Input22unusedDirectionalFlagsE					= 0x020262ec;
 
 /* arm9 */
 /*----------------------------------------------------------------*/
+/*----------------------------- bncd -----------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN4BNCD15getDisplayFlagsEv							= 0x02055978;
+_ZN4BNCD9getObjectEm								= 0x020559A4;
+_ZN4BNCD17getBitmapDataSizeEv						= 0x020559B8;
+_ZN4BNCD13getBitmapDataEv							= 0x020559C0;
+_ZN4BNCD10getOamAttrEm								= 0x020559CC;
+_ZN4BNCD15getOamAttrCountEm							= 0x020559F4;
+
+
+/* arm9 */
+/*----------------------------------------------------------------*/
 /*----------------------------- bnbl -----------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN4BNBL19getYFromAnchoredPosEtm = 0x020558e8;
-_ZN4BNBL19getXFromAnchoredPosEtm = 0x02055930;
-_ZN4BNBL19getRectangleIDAtPosEPvll = 0x02055a0c;
-_ZN4BNBL17getRectangleCountEPv = 0x02055aD4;
+_ZN4BNBL3Box11getAlignedXENS0_17AlignedCoordinateEm		= 0x02055930;
+_ZN4BNBL3Box11getAlignedYENS0_17AlignedCoordinateEm		= 0x020558E8;
+_ZN4BNBL11getBoxCountEv									= 0x02055AD4;
+_ZN4BNBL6getBoxEll										= 0x02055A0C;
 
 
 /* arm9_ov0 */
@@ -6973,6 +6986,28 @@ _ZN10Trampoline10sMainStateE							= 0x02171750;
 _ZN10Trampoline13sCarriedStateE							= 0x02171758;
 
 _ZTV10Trampoline										= 0x0216D160;
+
+
+/* arm9_ov54 */
+/*--------------------------------------------------------*/
+/*-------------------------- door ------------------------*/
+/*--------------------------------------------------------*/
+
+_ZN4Door10loadModelsEv						= 0x02166F68;
+
+_ZN4DoorD0Ev								= 0x02166EB4;
+_ZN4DoorD1Ev								= 0x02166EF0;
+_ZN4DoorC1Ev								= 0x02166F24;
+_ZN4Door4initEb								= 0x02166D14;
+_ZN4Door6renderEv							= 0x02166CB8;
+_ZN4Door4openEv								= 0x02166BF0;
+_ZN4Door5closeEv							= 0x02166B2C;
+
+_ZN4Door17openSfxIDsForTypeE				= 0x0216C3FC;
+_ZN4Door18closeSfxIDsForTypeE				= 0x0216C40C;
+_ZN4Door14animIDsForTypeE					= 0x0216C41C;
+
+_ZTV4Door									= 0x02170520;
 
 
 /* arm9_ov54 */

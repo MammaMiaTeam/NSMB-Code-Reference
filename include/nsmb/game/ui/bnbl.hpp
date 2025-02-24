@@ -2,42 +2,90 @@
 
 #include <nsmb_nitro.hpp>
 
-namespace BNBL
+class BNBL
 {
-
-	struct File
-	{
-		struct Rect
-		{
-			u16 x;
-			u16 y;
-			u8 width;
-			u8 height;
-		};
-
-		char magic[4];
-		u16 padding;
-		u16 rectCount;
-		Rect rects[];
+public:
+	struct Header {
+		char magic[4]; // JNBL
+		u16 unused4;
+		u16 boxCount;
 	};
 
+	struct Box {
+		enum class Alignment {
+			Begin,  // Top/Left
+			Center,
+			End     // Bottom/Right
+		};
 
-	// 0x020558E8
-	u32 getYFromAnchoredPos(u16 pos_field, u32 width);
+		union AlignedCoordinate {
+			struct {
+				u16 coordinate : 12;
+				u16 alignment : 2;
+				u16 unused : 2;
+			};
+			u16 raw;
 
-	// 0x02055930
-	u32 getXFromAnchoredPos(u16 pos_field, u32 width);
+			inline s16 getCoordinate() {
+				return scast<s16>(coordinate);
+			}
 
+			inline Alignment getAlignment() {
+				return scast<Alignment>(alignment);
+			}
+		};
 
-	// 0x02055A0C
-	s16 getRectangleIDAtPos(void* bnbl, s32 x, s32 y);
+		AlignedCoordinate x;
+		AlignedCoordinate y;
+		u8 width;
+		u8 height;
 
-	NTR_INLINE s16 getTouchedRectangleID(void* bnbl) {
-		return getRectangleIDAtPos(bnbl, penX, penY);
-	}
+		// 0x02055930
+		static s32 getAlignedX(AlignedCoordinate x, u32 width);
 
+		// 0x020558E8
+		static s32 getAlignedY(AlignedCoordinate y, u32 height);
+
+		inline s32 getAlignedX() {
+			return getAlignedX(x, width);
+		}
+
+		inline s32 getAlignedY() {
+			return getAlignedY(y, height);
+		}
+
+		inline bool contains(s32 x, s32 y) {
+			s32 alignedBoxX = getAlignedX();
+			s32 alignedBoxY = getAlignedY();
+			return (alignedBoxX <= x && x <= alignedBoxX + width && alignedBoxY <= y && y <= alignedBoxY + height);
+		}
+	};
+
+	Header header;
 
 	// 0x02055AD4
-	u16 getRectangleCount(void* bnbl);
+	u16 getBoxCount();
 
+	// 0x02055A0C
+	s16 getBox(s32 x, s32 y);
+
+	inline Box* getBoxes() {
+		return rcast<Box*>(rcast<u8*>(this) + sizeof(Header));
+	}
+
+	inline Box& getBox(u32 id) {
+		return getBoxes()[id];
+	}
+
+	static inline BNBL& cast(void* data) {
+		return *rcast<BNBL*>(data);
+	}
+
+private:
+	// This class is not constructable.
+	// It must be loaded from a file and casted.
+	BNBL() = delete;
+	BNBL(const BNBL&) = delete;
+	BNBL& operator=(const BNBL&) = delete;
+	~BNBL() = delete;
 };
