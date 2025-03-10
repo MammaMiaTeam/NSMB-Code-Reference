@@ -2289,10 +2289,10 @@ _ZN4Save8mainSaveE = 0x02088bdc;
 /*----------------------------------------------------------------*/
 
 _ZN3OAM14unused_2087708E = 0x02087708;
-_ZN3OAM8_2087710E = 0x02087710;
-_ZN3OAM8_208770CE = 0x0208770C;
-_ZN3OAM8_20876FCE = 0x020876FC;
 _ZN3OAM13curTileOffsetE = 0x02087700;
+_ZN3OAM14prevTileOffsetE = 0x02087710;
+_ZN3OAM10zoomScaleXE = 0x0208770C;
+_ZN3OAM10zoomScaleYE = 0x020876FC;
 _ZN3OAM10objBuffer1E = 0x020877E0;
 _ZN3OAM10objBuffer2E = 0x02087BE0;
 _ZN3OAM12affineBufferE = 0x02087760;
