@@ -3256,6 +3256,8 @@ _ZN5Fader22disableSubScreenFadingEv				= 0x02007bd8;
 _ZN5Fader16setupSceneFadingENS_10FadingTypeEbb	= 0x020083cc;
 _ZN5Fader7fadedInEv                             = 0x02007CB0;
 _ZN5Fader8fadedOutEv                            = 0x02007C68;
+_ZN5Fader13prepareFadeInEv                      = 0x02007bb4;
+_ZN5Fader14prepareFadeOutEv                     = 0x02007b90;
 
 _ZN4Game5faderE									= 0x02088f48;
 
