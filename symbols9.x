@@ -3277,14 +3277,6 @@ _ZN8FadeMask14loadMaskModelsEv = 0x02013bd0;
 _ZN8FadeMask6updateENS_5ShapeEP7VecFx32tlNS_4ModeE = 0x02013ba8;
 _ZN8FadeMask22getCharacterFadeMaskIDEh = 0x02013b98;
 
-/* arm9 */
-/*----------------------------------------------------------------------*/
-/*----------------------------- multiplayer ----------------------------*/
-/*----------------------------------------------------------------------*/
-
-_ZN11Multiplayer4initEv = 0x02010A84;
-_ZN11Multiplayer13endConnectionEv = 0x0200F3D8;
-
 
 /* arm9 */
 /*----------------------------------------------------------------*/
