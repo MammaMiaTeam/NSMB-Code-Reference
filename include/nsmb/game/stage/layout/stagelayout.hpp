@@ -19,6 +19,15 @@ public:
 	// 020afa30
 	void readTileBehavior(u16 tileID);
 
+	// 020B7FE4
+	void animateQuestionBlocks();
+
+	// 020B807C
+	void animateBrickBlocks();
+
+	// 020B8364
+	void animateCoins(u8 frame);
+
 	// 020cac98
 	static bool doLayoutReset;
 

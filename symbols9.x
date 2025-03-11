@@ -5901,6 +5901,9 @@ _ZN11StageLayout10changeTileEmmm		= 0x020af30c;
 _ZN11StageLayout15getTileBehaviorEmml	= 0x020af8f0;
 _ZN11StageLayout10getChunkIDEmm			= 0x020b0308;
 _ZN11StageLayout17readTileBehaviourEt	= 0x020afa30;
+_ZN11StageLayout21animateQuestionBlocksEv	= 0x020B7FE4;
+_ZN11StageLayout18animateBrickBlocksEv		= 0x020B807C;
+_ZN11StageLayout12animateCoinsEh			= 0x020B8364;
 _ZN11StageLayout13doLayoutResetE		= 0x020cac98;
 
 
