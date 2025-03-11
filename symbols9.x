@@ -7039,6 +7039,35 @@ _ZTV10WobbleRock						= 0x0214892C;
 
 /* arm9_ov54 */
 /*----------------------------------------------------------------*/
+/*------------------------ red coin ring -------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN11RedCoinRingD0Ev = 0x02152F90;
+_ZN11RedCoinRingD1Ev = 0x02152EDC;
+_ZN11RedCoinRingD2Ev = 0x02152EDC;
+_ZN11RedCoinRing7profileE = 0x0216CD90;
+_ZN11RedCoinRing12sWaitCollectE = 0x0216CD80;
+_ZN11RedCoinRing10sCollectedE = 0x0216CD88;
+_ZN11RedCoinRing9constructEv = 0x02153954;
+_ZN11RedCoinRing8onCreateEv = 0x02153174;
+_ZN11RedCoinRing9onDestroyEv = 0x0215304C;
+_ZN11RedCoinRing8onRenderEv = 0x02153058;
+_ZN11RedCoinRing18onCleanupResourcesEv = 0x02153054;
+_ZN11RedCoinRing18onPrepareResourcesEv = 0x021533FC;
+_ZN11RedCoinRing10updateMainEv = 0x02153150;
+_ZN11RedCoinRing14updateDistanceEm = 0x021532BC;
+_ZN11RedCoinRing13checkCollidedEm = 0x02153370;
+_ZN11RedCoinRing13loadResourcesEv = 0x02153498;
+_ZN11RedCoinRing14collectedStateEv = 0x021534CC;
+_ZN11RedCoinRing12easeRotationERsss = 0x021535CC;
+_ZN11RedCoinRing16waitCollectStateEv = 0x02153604;
+_ZN11RedCoinRing11updateStateEv = 0x02153804;
+_ZN11RedCoinRing11switchStateEMS_FbvE = 0x02153860;
+_ZTV11RedCoinRing = 0x0216CD9C;
+
+
+/* arm9_ov54 */
+/*----------------------------------------------------------------*/
 /*-------------------------- trampoline --------------------------*/
 /*----------------------------------------------------------------*/
 
