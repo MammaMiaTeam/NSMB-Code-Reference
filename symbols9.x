@@ -6392,6 +6392,72 @@ _ZN4Item12checkConsumeEv = 0x020d475c;
 _ZN4Item18onPrepareResourcesEv = 0x020d2248;
 
 
+/* arm9_ov14 */
+/*----------------------------------------------------------------*/
+/*-------------------------- mega goomba -------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN10MegaGoombaC1Ev = 0x02132E94;
+_ZN10MegaGoombaD0Ev = 0x0212F9D0;
+_ZN10MegaGoombaD1Ev = 0x0212F900;
+
+_ZN10MegaGoomba8onCreateEv = 0x0212FD00;
+_ZN10MegaGoomba9onDestroyEv = 0x0212FAA8;
+_ZN10MegaGoomba18onPrepareResourcesEv = 0x0212FF24;
+_ZN10MegaGoomba10updateMainEv = 0x0212FB64;
+_ZN10MegaGoomba20updateFireballWiggleEv = 0x02132C80;
+_ZN10MegaGoomba11onEntityHitEv = 0x02131CF0;
+_ZN10MegaGoomba13onFireballHitEv = 0x02131EE8;
+_ZN10MegaGoomba12onStarmanHitEv = 0x02131EB4;
+_ZN10MegaGoomba12onSlidingHitEv = 0x02131CEC;
+_ZN10MegaGoomba9onMegaHitEv = 0x02131CF8;
+_ZN10MegaGoomba12onMegaKickedEv = 0x02131CF4;
+_ZN10MegaGoomba9onStompedEv = 0x02131F54;
+_ZN10MegaGoomba13onGroundPoundEv = 0x02131CE8;
+_ZN10MegaGoomba14onBlueShellHitEv = 0x02131C54;
+_ZN10MegaGoomba12damagePlayerER14ActiveColliderR6Player = 0x02131F58;
+_ZN10MegaGoomba12postRender3DEv = 0x0212FAF8;
+_ZN10MegaGoomba11switchStateEMS_FbvE = 0x02132D68;
+_ZN10MegaGoomba11updateStateEv = 0x02132D00;
+_ZN10MegaGoomba17initHeadPlatform1Ev = 0x02132C04;
+_ZN10MegaGoomba17initHeadPlatform2Ev = 0x02132B80;
+_ZN10MegaGoomba17initHeadPlatform3Ev = 0x02132AFC;
+_ZN10MegaGoomba17giveHeadKnockbackEP6Playerb = 0x021329EC;
+_ZN10MegaGoomba6damageEb = 0x021328B8;
+_ZN10MegaGoomba19updateHeadCollisionEv = 0x02132264;
+_ZN10MegaGoomba13linkCollidersEv = 0x02132204;
+_ZN10MegaGoomba15unlinkCollidersEv = 0x021321A4;
+_ZN10MegaGoomba20updateActiveColliderEv = 0x021320F0;
+_ZN10MegaGoomba14method0213209CEv = 0x0213209C;
+_ZN10MegaGoomba14method02132080Ev = 0x02132080;
+_ZN10MegaGoomba14method02131A18Ev = 0x02131A18;
+_ZN10MegaGoomba14method02131934Ev = 0x02131934;
+_ZN10MegaGoomba14method0213186CEv = 0x0213186C;
+_ZN10MegaGoomba14method02131684Ev = 0x02131684;
+_ZN10MegaGoomba14isPlayerInViewEv = 0x02131650;
+_ZN10MegaGoomba19waitActivationStateEv = 0x02131544;
+_ZN10MegaGoomba14activatedStateEv = 0x02131410;
+_ZN10MegaGoomba13cutsceneStateEv = 0x0213127C;
+_ZN10MegaGoomba13state021311E0Ev = 0x021311E0;
+_ZN10MegaGoomba13state02130F30Ev = 0x02130F30;
+_ZN10MegaGoomba13state02130D60Ev = 0x02130D60;
+_ZN10MegaGoomba13state02130C10Ev = 0x02130C10;
+_ZN10MegaGoomba13state02130A44Ev = 0x02130A44;
+_ZN10MegaGoomba13state02130858Ev = 0x02130858;
+_ZN10MegaGoomba13state02130700Ev = 0x02130700;
+_ZN10MegaGoomba13state021305F8Ev = 0x021305F8;
+_ZN10MegaGoomba13state0213040CEv = 0x0213040C;
+_ZN10MegaGoomba13state0213028CEv = 0x0213028C;
+_ZN10MegaGoomba13defeatedStateEv = 0x021300B8;
+_ZN10MegaGoomba13spawnKeyStateEv = 0x0212FFBC;
+_ZN10MegaGoomba9constructEv = 0x02132E94;
+_ZN10MegaGoomba13loadResourcesEv = 0x02132E4C;
+
+_ZN10MegaGoomba7profileE = 0x021330E8;
+
+_ZTV10MegaGoomba = 0x021D0DB4;
+
+
 /* arm9_ov22 */
 /*----------------------------------------------------------------*/
 /*--------------------- pipe enemy spawner -----------------------*/
