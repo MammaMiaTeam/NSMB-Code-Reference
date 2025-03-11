@@ -7044,7 +7044,7 @@ _ZTV10WobbleRock						= 0x0214892C;
 
 _ZN11RedCoinRingD0Ev = 0x02152F90;
 _ZN11RedCoinRingD1Ev = 0x02152EDC;
-_ZN11RedCoinRingD2Ev = 0x02152EDC;
+
 _ZN11RedCoinRing7profileE = 0x0216CD90;
 _ZN11RedCoinRing12sWaitCollectE = 0x0216CD80;
 _ZN11RedCoinRing10sCollectedE = 0x0216CD88;
@@ -7063,6 +7063,7 @@ _ZN11RedCoinRing12easeRotationERsss = 0x021535CC;
 _ZN11RedCoinRing16waitCollectStateEv = 0x02153604;
 _ZN11RedCoinRing11updateStateEv = 0x02153804;
 _ZN11RedCoinRing11switchStateEMS_FbvE = 0x02153860;
+
 _ZTV11RedCoinRing = 0x0216CD9C;
 
 
