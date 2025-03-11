@@ -5,16 +5,14 @@
 #include <nsmb/core/math/math.hpp>
 #include <nsmb/core/graphics/3d/animationctrl.hpp>
 
+// vtable at 021330F4 (ov54)
 class MegaGoomba : public StageEntity3DAnm
 {
 public:
 	using StateFunction = bool(MegaGoomba::*)();
 
-	// C1: 0x02132E94
-	MegaGoomba();
-
-	// D0: 0x0212F9D0
-	// D1: 0x0212F900
+	// D0: 0212F9D0
+	// D1: 0212F900
 	virtual ~MegaGoomba();
 
 	// 0212FD00
@@ -124,6 +122,11 @@ public:
 	static MegaGoomba* construct();
 	// 02132E4C
 	static bool loadResources();
+
+	static constexpr u16 ObjectID = 239;
+
+	static constexpr u16 UpdatePriority = ObjectID;
+	static constexpr u16 RenderPriority = 30;
 
 	// 021330E8
 	static ActorProfile profile;

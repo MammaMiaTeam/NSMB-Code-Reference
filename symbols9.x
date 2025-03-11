@@ -6397,7 +6397,6 @@ _ZN4Item18onPrepareResourcesEv = 0x020d2248;
 /*-------------------------- mega goomba -------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN10MegaGoombaC1Ev = 0x02132E94;
 _ZN10MegaGoombaD0Ev = 0x0212F9D0;
 _ZN10MegaGoombaD1Ev = 0x0212F900;
 
