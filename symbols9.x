@@ -2336,6 +2336,22 @@ _ZN3OAM4Anim7drawSubEllNS_5FlagsEhhPK4Vec2sPKsNS_8SettingsE = 0x0200B39C;
 
 
 /* arm9 */
+/*---------------------------------------------------------------*/
+/*----------------------------- UI ------------------------------*/
+/*---------------------------------------------------------------*/
+
+_ZN2UI7initSubEP4BNCDP4BNCLP4BNBL = 0x02004564;
+_ZN2UI10drawObjectEPN4BNCL6ObjectES2_bPK4Vec2smmhN3OAM5FlagsE = 0x020042D8;
+_ZN2UI17getObjectPositionEPst = 0x0200429C;
+_ZN2UI4drawEtP9GXOamAttrN3OAM5FlagsEhhPK4Vec2sPKsNS2_8SettingsEmm = 0x0200421C;
+_ZN2UI7drawSubEtP9GXOamAttrN3OAM5FlagsEhhPK4Vec2sPKsNS2_8SettingsEmm = 0x0200419C;
+
+_ZN2UI4bnblE = 0x02085888;
+_ZN2UI4bnclE = 0x0208588C;
+_ZN2UI7bnclSubE = 0x02085890;
+_ZN2UI7bncdSubE = 0x02085898;
+
+/* arm9 */
 /*----------------------------------------------------------------*/
 /*----------------------------- Net ------------------------------*/
 /*----------------------------------------------------------------*/
@@ -4894,8 +4910,6 @@ _ZN4Game14flushDataCacheEPKvm														= 0x02007684;
 _ZN4Game11taskCleanupEv																= 0x02004c30;
 _ZN4Game7runTaskEPFvPvES0_mS0_m														= 0x02004cb8;
 _ZN4Game11resetSystemEm																= 0x0200514c;
-_ZN4Game14drawBNCLSpriteEhP9GXOamAttrN3OAM5FlagsEhhPK4Vec2sPKsNS2_8SettingsEll		= 0x0200421c;
-_ZN4Game17drawBNCLSpriteSubEhP9GXOamAttrN3OAM5FlagsEhhPK4Vec2sPKsNS2_8SettingsEll	= 0x0200419c;
 _ZN4Game15initExtendedIDsEv															= 0x02004dfc;
 _ZN4Game14waitVBlankIntrEv															= 0x020058c0;
 _ZN4Game16disableVRAMBanksEv														= 0x02004be0;
