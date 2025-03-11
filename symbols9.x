@@ -7068,6 +7068,30 @@ _ZTV11RedCoinRing = 0x0216CD9C;
 
 /* arm9_ov54 */
 /*----------------------------------------------------------------*/
+/*------------------------ warp entrance -------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN12WarpEntranceD0Ev = 0x02155F60;
+_ZN12WarpEntranceD1Ev = 0x02155F04;
+
+_ZN12WarpEntrance8onCreateEv = 0x02155FEC;
+_ZN12WarpEntrance8onRenderEv = 0x02155FC4;
+_ZN12WarpEntrance10updateMainEv = 0x02155FCC;
+_ZN12WarpEntrance11switchStateERKMS_FbvE = 0x021565AC;
+_ZN12WarpEntrance11updateStateEv = 0x02156564;
+_ZN12WarpEntrance9mainStateEv = 0x02156124;
+_ZN12WarpEntrance10warpPlayerEP6Player = 0x021564C0;
+_ZN12WarpEntrance17updateWarpTriggerEv = 0x02156274;
+_ZN12WarpEntrance9constructEv = 0x02156638;
+
+_ZN12WarpEntrance7profileE = 0x0216D284;
+_ZN12WarpEntrance5sMainE = 0x02171760;
+
+_ZTV12WarpEntrance = 0x0216D290;
+
+
+/* arm9_ov54 */
+/*----------------------------------------------------------------*/
 /*-------------------------- trampoline --------------------------*/
 /*----------------------------------------------------------------*/
 
