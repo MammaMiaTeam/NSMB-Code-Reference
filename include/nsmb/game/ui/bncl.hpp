@@ -50,8 +50,8 @@ public:
 		return getObjects()[id];
 	}
 
-	static inline BNCL& cast(void* data) {
-		return *rcast<BNCL*>(data);
+	static inline BNCL* cast(void* data) {
+		return rcast<BNCL*>(data);
 	}
 
 private:
