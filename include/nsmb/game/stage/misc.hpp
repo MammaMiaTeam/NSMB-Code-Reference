@@ -1,6 +1,5 @@
 #pragma once
 
-#include "entity.hpp"
 #include "layout/stagelayout.hpp"
 #include "layout/data.hpp"
 #include <nsmb/core/net/util.hpp>
