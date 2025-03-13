@@ -4925,24 +4925,6 @@ _ZN4Game9actorTreeE																	= 0x0208fb0c;
 _ZN4Game16visiblePlaneMainE															= 0x02085a88;
 
 
-/* arm9_ov52 */
-/*-----------------------------------------------------------------*/
-/*------------------------ wifi utilities -------------------------*/
-/*-----------------------------------------------------------------*/
-
-_ZN4Wifi11getRandomMGEv			= 0x0200E6A4;
-_ZN4Wifi9getRandomEv			= 0x0200E6F4;
-_ZN4Wifi12syncRandomMGEv		= 0x0200E73C;
-_ZN4Wifi10syncRandomEv			= 0x0200E748;
-_ZN4Wifi15getConsoleCountEv		= 0x02046C34;
-
-_ZN4Wifi10currentAidE			= 0x020887F0;
-_ZN4Wifi6randomE				= 0x02088A68;
-_ZN4Wifi15randomCallCountE		= 0x02088A48;
-_ZN4Wifi19randomBranchAddressE	= 0x0208885C;
-_ZN4Wifi12consoleCountE         = 0x02085200;
-
-
 /* arm9 */
 /*----------------------------------------------------------------*/
 /*-------------------------- game misc ---------------------------*/
