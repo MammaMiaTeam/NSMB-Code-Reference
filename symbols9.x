@@ -2437,6 +2437,7 @@ _ZN3Net10initializeEa                                               = 0x02010444
 
 _ZNK3Net4Task7expiredEv                                             = 0x020106D4; /* Net::Task::expired() const */
 _ZN3Net11TaskManagerC2Ev                                            = 0x02010930; /* Net::TaskManager::TaskManager() */
+_ZN3Net11TaskManagerC1Ev                                            = 0x02010930; /* Net::TaskManager::TaskManager() */
 _ZN3Net11TaskManager12scheduleTaskEPFvPvES1_m                       = 0x020108B4; /* Net::TaskManager::scheduleTask(void (*)(void*), void*, unsigned long) */
 _ZN3Net11TaskManager7executeEv                                      = 0x02010834; /* Net::TaskManager::execute() */
 _ZN3Net11TaskManager9clearTaskEm                                    = 0x0201081C; /* Net::TaskManager::clearTask(unsigned long) */
@@ -2458,6 +2459,7 @@ _ZN3Net16getLocalizedGgidEv                                         = 0x02010AF0
 /* packet.hpp */
 
 _ZN3Net21PacketSequenceBuilderC2Ev                                  = 0x02011968; /* Net::PacketSequenceBuilder::PacketSequenceBuilder() */
+_ZN3Net21PacketSequenceBuilderC1Ev                                  = 0x02011968; /* Net::PacketSequenceBuilder::PacketSequenceBuilder() */
 _ZN3Net21PacketSequenceBuilderD1Ev                                  = 0x02011958; /* Net::PacketSequenceBuilder::~PacketSequenceBuilder() */
 _ZN3Net21PacketSequenceBuilderD0Ev                                  = 0x02011938; /* Net::PacketSequenceBuilder::~PacketSequenceBuilder() */
 _ZN3Net21PacketSequenceBuilder5clearEv                              = 0x0201190C; /* Net::PacketSequenceBuilder::clear() */
@@ -2465,14 +2467,17 @@ _ZN3Net21PacketSequenceBuilder10pushPacketEhhPKh                    = 0x0201189C
 _ZN3Net21PacketSequenceBuilder8nextByteEv                           = 0x020117C0; /* Net::PacketSequenceBuilder::nextByte() */
 
 _ZN3Net10PacketByteC2Ev                                             = 0x02010DC4; /* Net::PacketByte::PacketByte() */
+_ZN3Net10PacketByteC1Ev                                             = 0x02010DC4; /* Net::PacketByte::PacketByte() */
 _ZN3Net10PacketByteD1Ev                                             = 0x02010D9C; /* Net::PacketByte::~PacketByte() */
 _ZN3Net10PacketByteD0Ev                                             = 0x02010D6C; /* Net::PacketByte::~PacketByte() */
 
 _ZN3Net9PacketIntC2Ev                                               = 0x02010D38; /* Net::PacketInt::PacketInt() */
+_ZN3Net9PacketIntC1Ev                                               = 0x02010D38; /* Net::PacketInt::PacketInt() */
 _ZN3Net9PacketIntD1Ev                                               = 0x02010D10; /* Net::PacketInt::~PacketInt() */
 _ZN3Net9PacketIntD0Ev                                               = 0x02010CE0; /* Net::PacketInt::~PacketInt() */
 
 _ZN3Net12PacketBufferC2Ev                                           = 0x02010CC8; /* Net::PacketBuffer::PacketBuffer() */
+_ZN3Net12PacketBufferC1Ev                                           = 0x02010CC8; /* Net::PacketBuffer::PacketBuffer() */
 _ZN3Net12PacketBufferD1Ev                                           = 0x02010C74; /* Net::PacketBuffer::~PacketBuffer() */
 _ZN3Net12PacketBufferD0Ev                                           = 0x02010C18; /* Net::PacketBuffer::~PacketBuffer() */
 _ZN3Net12PacketBuffer6createEhPFvtPvES1_                            = 0x02010BB0; /* Net::PacketBuffer::create(unsigned char, void (*)(unsigned short, void*), void*) */
