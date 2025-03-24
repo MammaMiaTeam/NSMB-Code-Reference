@@ -11,6 +11,7 @@ struct __ntr {
 
 		char message[120];
 
+		const char* function;
 		const char* file;
 		int line;
 
@@ -20,7 +21,7 @@ struct __ntr {
 
 #endif
 
-	NTR_COPY(OS_Terminate) NTR_FORMAT(printf, 3, 4) static void terminate(const char* file, int line, const char* fmt, ...)
+	NTR_COPY(OS_Terminate) NTR_FORMAT(printf, 4, 5) static void terminate(const char* file, const char* function, int line, const char* fmt, ...)
 #ifndef NTR_DEBUG
 	asm("OS_Terminate");
 #else
@@ -35,6 +36,7 @@ struct __ntr {
 
 		va_end(vl);
 
+		debug.function = function;
 		debug.file = file;
 		debug.line = line;
 
@@ -45,7 +47,7 @@ struct __ntr {
 
 #ifdef NTR_DEBUG
 
-	NTR_FORMAT(printf, 4, 5) static constexpr void assert(bool condition, const char* file, int line, const char* fmt, ...) {
+	NTR_FORMAT(printf, 5, 6) static constexpr void assert(bool condition, const char* file, const char* function, int line, const char* fmt, ...) {
 
 		if (condition) {
 			return;
@@ -53,7 +55,7 @@ struct __ntr {
 
 		Log::print("ntr_assert failed in file '%s' [%d]\n", file, line);
 
-		terminate(file, line, fmt, __builtin_apply_args());
+		terminate(file, function, line, fmt, __builtin_apply_args());
 
 	}
 
@@ -62,14 +64,16 @@ struct __ntr {
 };
 
 
-#define ntr_terminate(fmt, ...) do { ::__ntr::terminate(__FILE__, __LINE__, fmt __VA_OPT__(,) __VA_ARGS__); } while (false)
+#define ntr_terminate(fmt, ...) do { ::__ntr::terminate(__FILE__, __PRETTY_FUNCTION__, __LINE__, fmt __VA_OPT__(,) __VA_ARGS__); } while (false)
 
 #ifdef NTR_DEBUG
 	#define ntr_debug_message	scast<const char*>(::__ntr::debug.message)
+	#define ntr_debug_function	scast<const char*>(::__ntr::debug.function)
 	#define ntr_debug_file		scast<const char*>(::__ntr::debug.file)
 	#define ntr_debug_line		scast<const int>(::__ntr::debug.line)
 #else
 	#define ntr_debug_message	"Unknown"
+	#define ntr_debug_function	"Unknown"
 	#define ntr_debug_file		"Unknown"
 	#define ntr_debug_line		-1
 #endif
@@ -87,7 +91,7 @@ static constexpr void __ntr_assert_constexpr(bool condition) {
 
 
 #ifdef NTR_DEBUG
-	#define __NTR_ASSERT_IMPL(cond, fmt, ...) ::__ntr::assert(!!(cond), __FILE__, __LINE__, fmt __VA_OPT__(,) __VA_ARGS__)
+	#define __NTR_ASSERT_IMPL(cond, fmt, ...) ::__ntr::assert(!!(cond), __FILE__, __PRETTY_FUNCTION__, __LINE__, fmt __VA_OPT__(,) __VA_ARGS__)
 #else
 	#define __NTR_ASSERT_IMPL(cond, fmt, ...) [[assume(cond)]]
 #endif
