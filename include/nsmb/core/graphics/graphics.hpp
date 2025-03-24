@@ -1,7 +1,7 @@
 #pragma once
 
 #include <nsmb_nitro.hpp>
-
+#include <nsmb/core/math/vector.hpp>
 
 namespace GFX {
 

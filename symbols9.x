@@ -4914,12 +4914,8 @@ _ZN4Game14storeDataCacheEPKvm														= 0x0200765c;
 _ZN4Game14flushDataCacheEPKvm														= 0x02007684;
 _ZN4Game11taskCleanupEv																= 0x02004c30;
 _ZN4Game7runTaskEPFvPvES0_mS0_m														= 0x02004cb8;
-_ZN4Game11resetSystemEm																= 0x0200514c;
-_ZN4Game15initExtendedIDsEv															= 0x02004dfc;
 _ZN4Game14waitVBlankIntrEv															= 0x020058c0;
 _ZN4Game16disableVRAMBanksEv														= 0x02004be0;
-_ZN4Game12getBootSceneEv															= 0x0200563c;
-_ZN4Game12setBootSceneEt															= 0x0200564c;
 
 _ZN4Game16mainProcessTableE                                                         = 0x0203997c;
 _ZN4Game27currentExecutingProcessListE												= 0x020852a8;
@@ -4928,6 +4924,64 @@ _ZN4Game19currentProcessTableE                                                  
 _ZN4Game9actorTreeE																	= 0x0208fb0c;
 
 _ZN4Game16visiblePlaneMainE															= 0x02085a88;
+
+
+/* arm9 */
+/*----------------------------------------------------------------*/
+/*------------------------------ app -----------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN3App15branchToStartupEv          = 0x020056A8; /* App::branchToStartup() */
+_ZN3App12branchToMainEv             = 0x0200567C; /* App::branchToMain() */
+_ZN3App13setBootTargetEm            = 0x0200566C; /* App::setBootTarget(unsigned long) */
+_ZN3App13getBootTargetEv            = 0x0200565C; /* App::getBootTarget() */
+_ZN3App12setBootSceneEm             = 0x0200564C; /* App::setBootScene(unsigned long) */
+_ZN3App12getBootSceneEv             = 0x0200563C; /* App::getBootScene() */
+_ZN3App12setBootParamEm             = 0x0200562C; /* App::setBootParam(unsigned long) */
+_ZN3App15defaultCallbackEv          = 0x02005624; /* App::defaultCallback() */
+_ZN3App12onInitializeEv             = 0x02005620; /* App::onInitialize() */
+_ZN3App17powerOffBacklightEv        = 0x020055CC; /* App::powerOffBacklight() */
+_ZN3App16powerOnBacklightEv         = 0x02005510; /* App::powerOnBacklight() */
+_ZN3App14stopDisplayDMAEv           = 0x020054BC; /* App::stopDisplayDMA() */
+_ZN3App11updateSleepEv              = 0x02005230; /* App::updateSleep() */
+_ZN3App14forceDisplayOnEv           = 0x020051EC; /* App::forceDisplayOn() */
+_ZN3App4stopEv                      = 0x02005198; /* App::stop() */
+_ZN3App5resetEm                     = 0x0200514C; /* App::reset(unsigned long) */
+_ZN3App10isSleepingEv               = 0x0200513C; /* App::isSleeping() */
+_ZN3App7playSFXEml                  = 0x02005100; /* App::playSFX(unsigned long, long) */
+_ZN3App18onLidClosedDefaultEv       = 0x020050EC; /* App::onLidClosedDefault() */
+_ZN3App18onLidOpenedDefaultEv       = 0x020050D8; /* App::onLidOpenedDefault() */
+_ZN3App17updateTaskDefaultEv        = 0x020050C0; /* App::updateTaskDefault() */
+_ZN3App9onStartupEv                 = 0x020050BC; /* App::onStartup() */
+_ZN3App15onCardPulledOutEv          = 0x02005098; /* App::onCardPulledOut() */
+_ZN3App8gameInitEv                  = 0x02004F3C; /* App::gameInit() */
+_ZN3App8gameLoopEv                  = 0x02004EA8; /* App::gameLoop() */
+_ZN3App10initializeEv               = 0x02004E78; /* App::initialize() */
+_ZN3App8gameMainEv                  = 0x02004E5C; /* App::gameMain() */
+_ZN3App13commonStartupEv            = 0x02004E20; /* App::commonStartup() */
+_ZN3App13initFileCountEb            = 0x02004DFC; /* App::initFileCount(bool) */
+_ZN3App8initBootEv                  = 0x02004D90; /* App::initBoot() */
+
+_ZN3App9bootSceneE                  = 0x02085994; /* App::bootScene */
+_ZN3App10bootTargetE                = 0x02085990; /* App::bootTarget */
+_ZN3App9bootParamE                  = 0x0208598C; /* App::bootParam */
+_ZN3App15backlightBottomE           = 0x02085988; /* App::backlightBottom */
+_ZN3App12backlightTopE              = 0x02085984; /* App::backlightTop */
+_ZN3App16sleepWakeUpTimerE          = 0x02085980; /* App::sleepWakeUpTimer */
+_ZN3App15sleepPhaseTimerE           = 0x0208597C; /* App::sleepPhaseTimer */
+_ZN3App8sleepingE                   = 0x02085978; /* App::sleeping */
+_ZN3App12sleepControlE              = 0x02085974; /* App::sleepControl */
+_ZN3App12backlightOffE              = 0x02085970; /* App::backlightOff */
+_ZN3App10sleepPhaseE                = 0x0208596C; /* App::sleepPhase */
+
+_ZN3App9mainTableE                  = 0x02039830; /* App::mainTable */
+_ZN3App12startupTableE              = 0x02039828; /* App::startupTable */
+_ZN3App10updateTaskE                = 0x02039824; /* App::updateTask */
+_ZN3App11onLidOpenedE               = 0x02039820; /* App::onLidOpened */
+_ZN3App11onLidClosedE               = 0x0203981C; /* App::onLidClosed */
+_ZN3App13postLidOpenedE             = 0x02039818; /* App::postLidOpened */
+_ZN3App12preLidClosedE              = 0x02039814; /* App::preLidClosed */
+_ZN3App11frameLengthE               = 0x02039810; /* App::frameLength */
 
 
 /* arm9 */

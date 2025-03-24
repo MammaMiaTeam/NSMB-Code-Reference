@@ -51,22 +51,10 @@ namespace Game
 
 
 
-	// 0200514c
-	void resetSystem(u32 param);
-
-	// 02004dfc
-	void initExtendedIDs();
-
 	// 020058c0
 	void waitVBlankIntr();
 
 	// 02004be0
 	void disableVRAMBanks();
-
-	// 0200563c
-	u16 getBootScene();
-
-	// 0200564c
-	void setBootScene(u16 sceneID);
 
 }
