@@ -7053,6 +7053,36 @@ _ZTV17BanzaiBillBlaster										= 0x02151E94;
 
 /* arm9_ov48 */
 /*----------------------------------------------------------------*/
+/*----------------------- tilt metal dish ------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN13TiltMetalDishD0Ev                          = 0x02146CFC; /* TiltMetalDish::~TiltMetalDish() */
+_ZN13TiltMetalDishD1Ev                          = 0x02146C60; /* TiltMetalDish::~TiltMetalDish() */
+_ZN13TiltMetalDishD2Ev                          = 0x02146C60; /* TiltMetalDish::~TiltMetalDish() */
+_ZN13TiltMetalDish8onCreateEv                   = 0x02146F94; /* TiltMetalDish::onCreate() */
+_ZN13TiltMetalDish9onDestroyEv                  = 0x02146E10; /* TiltMetalDish::onDestroy() */
+_ZN13TiltMetalDish8onRenderEv                   = 0x02146E34; /* TiltMetalDish::onRender() */
+_ZN13TiltMetalDish18onPrepareResourcesEv        = 0x021474E4; /* TiltMetalDish::onPrepareResources() */
+_ZN13TiltMetalDish10updateMainEv                = 0x02146F4C; /* TiltMetalDish::updateMain() */
+_ZNK13TiltMetalDish21getTiltAccelFromAngleEv    = 0x021473B0; /* TiltMetalDish::getTiltAccelFromAngle() const */
+_ZN13TiltMetalDish13updateBalanceEv             = 0x021472F8; /* TiltMetalDish::updateBalance() */
+_ZN13TiltMetalDish18attenuateTiltAngleEv        = 0x02147288; /* TiltMetalDish::attenuateTiltAngle() */
+_ZN13TiltMetalDish20attenuateChainWobbleEv      = 0x0214721C; /* TiltMetalDish::attenuateChainWobble() */
+_ZN13TiltMetalDish17updateChainWobbleEv         = 0x02147174; /* TiltMetalDish::updateChainWobble() */
+_ZN13TiltMetalDish7getEndsERlS0_                = 0x02146DA0; /* TiltMetalDish::getEnds(long&, long&) */
+_ZN13TiltMetalDish11switchStateEMS_FbvE         = 0x02147410; /* TiltMetalDish::switchState(bool (TiltMetalDish::*)()) */
+_ZN13TiltMetalDish11updateStateEv               = 0x021473DC; /* TiltMetalDish::updateState() */
+_ZN13TiltMetalDish9mainStateEv                  = 0x021470B4; /* TiltMetalDish::mainState() */
+_ZN13TiltMetalDish13loadResourcesEv             = 0x02147550; /* TiltMetalDish::loadResources() */
+
+_ZN13TiltMetalDish15tiltAngleLimitsE            = 0x021486F8; /* TiltMetalDish::tiltAngleLimits */
+_ZN13TiltMetalDish7profileE                     = 0x021487E8; /* TiltMetalDish::profile */
+
+_ZTV13TiltMetalDish                             = 0x021487F4; /* vtable for TiltMetalDish */
+
+
+/* arm9_ov48 */
+/*----------------------------------------------------------------*/
 /*------------------------- wobble rock --------------------------*/
 /*----------------------------------------------------------------*/
 
