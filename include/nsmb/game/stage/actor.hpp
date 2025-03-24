@@ -19,10 +19,10 @@ public:
 		Up		= 0x8
 	};
 
-	enum class ReleaseMode : u8 {
-		None,
-		Drop,
-		Throw
+	enum class CarryWeight : u8 {
+		Default,
+		Light,
+		Heavy
 	};
 
 
@@ -111,7 +111,7 @@ public:
 	CollisionMgr collisionMgr;
 	PlatformMgr platformMgr;
 
-	ReleaseMode releaseMode;
+	CarryWeight carryWeight;
 	u8 direction;
 	u8 viewID;
 	ColliderPushSide colliderPushSides;

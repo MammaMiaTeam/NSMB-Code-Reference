@@ -69,6 +69,10 @@ namespace WrapType
 namespace Game
 {
 
+	constexpr s8 DefaultStageEntrance = -1;
+	constexpr s8 CheckpointStageEntrance = -2;
+
+
 	using WrapFunction = void(*)(Vec3&, bool);
 
 	// 02085A18
