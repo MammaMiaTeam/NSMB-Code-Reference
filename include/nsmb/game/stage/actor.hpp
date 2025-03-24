@@ -11,7 +11,7 @@ class Player;
 class StageActor : public Actor {
 public:
 
-	enum class ColliderPushSide : u8 {
+	enum class PushSide : u8 {
 		None	= 0,
 		Left	= 0x1,
 		Right	= 0x2,
@@ -114,10 +114,10 @@ public:
 	CarryWeight carryWeight;
 	u8 direction;
 	u8 viewID;
-	ColliderPushSide colliderPushSides;
+	PushSide sidesPushed;
 	BOOL preUpdatePassed;
 
 };
 NTR_SIZE_GUARD(StageActor, 0x2C4);
 
-NTR_CREATE_BITMASK_ENUM(StageActor::ColliderPushSide);
+NTR_CREATE_BITMASK_ENUM(StageActor::PushSide);

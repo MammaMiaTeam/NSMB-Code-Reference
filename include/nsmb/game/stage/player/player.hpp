@@ -148,15 +148,12 @@ public:
 
 	};
 
-	enum class ColliderPushSide : u32
-	{
-
+	enum class PushSide : u32 {
 		None	= 0,
 		Down	= 0x1,
 		Up		= 0x2,
 		Right	= 0x4,
 		Left	= 0x8
-
 	};
 
 	enum class PipeType {
@@ -699,7 +696,7 @@ public:
 	s32 groundRemovedTimer;
 	u32 pipeType;
 	u32 prevAnimID;
-	ColliderPushSide colliderPushSides;
+	PushSide sidesPushed;
 	TileType bottomTileType;
 	TileType lastBottomTileType;
 
@@ -914,14 +911,14 @@ NTR_SIZE_GUARD(Player, 0xBCC);
 
 
 using PlayerFrameMode		= Player::FrameMode;
-using ColliderPushSide		= Player::ColliderPushSide;
+using PlayerPushSide		= Player::PushSide;
 using PlayerPipeType		= Player::PipeType;
 using PlayerDoorType		= Player::DoorType;
 using PlayerConstants		= Player::Constants;
 using PlayerSensorConfig	= Player::SensorConfig;
 using PlayerPowerupParam	= Player::PowerupParam;
 
-NTR_CREATE_BITMASK_ENUM(Player::ColliderPushSide);
+NTR_CREATE_BITMASK_ENUM(Player::PushSide);
 
 
 // Assumed from 020E3824 (ov10)
