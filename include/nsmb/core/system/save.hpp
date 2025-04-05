@@ -169,7 +169,7 @@ NTR_SIZE_GUARD(OptionSave, 0x14);
 
 namespace Save {
 
-	enum class returnCode {
+	enum class ReturnCode {
 		Success = 0,
 		Failure,
 		BackupBroken,
@@ -187,13 +187,13 @@ namespace Save {
 
 
 	//0204c7f4
-	returnCode setupBackup(CARDBackupType type, const char* signature);
+	ReturnCode setupBackup(CARDBackupType type, const char* signature);
 
 	//0204c114
-	returnCode readBackup(void* data, u32 size, u32 slot);
+	ReturnCode readBackup(void* data, u32 size, u32 slot);
 
 	//0204c568
-	returnCode writeBackup(void* data, u32 size, u32 slot);//returns true on failure. Slot determines the save slot. Data is written 0xA bytes after the slot start.
+	ReturnCode writeBackup(void* data, u32 size, u32 slot);//returns true on failure. Slot determines the save slot. Data is written 0xA bytes after the slot start.
 
 
 	//02012788
@@ -206,7 +206,7 @@ namespace Save {
 	bool writeMGSave(MinigameSave* header);
 
 	//020128c4
-	returnCode readMGSave(MinigameSave* header);
+	ReturnCode readMGSave(MinigameSave* header);
 
 	//020128d8
 	void clearMGSave(MinigameSave* header);
@@ -262,7 +262,7 @@ namespace Save {
 	bool writeMainSave(u32 slot, MainSave* save);
 
 	//02012f64
-	returnCode readMainSave(u32 slot, MainSave* save);
+	ReturnCode readMainSave(u32 slot, MainSave* save);
 
 	//02012f9c
 	void clearMainSave(MainSave* save);
@@ -274,7 +274,7 @@ namespace Save {
 	bool writeOptionSave(OptionSave* save);
 
 	//02013050
-	returnCode readOptionSave(OptionSave* save);
+	ReturnCode readOptionSave(OptionSave* save);
 
 	//02013064
 	void clearOptionSave(OptionSave* save);

@@ -2,6 +2,7 @@
 
 #include <nsmb/game/stage/entity.hpp>
 #include <nsmb/core/graphics/3d/model.hpp>
+#include <nsmb/core/graphics/3d/animationctrl.hpp>
 
 // vtable at 0213F934 (ov24)
 class FireBar : public StageEntity {

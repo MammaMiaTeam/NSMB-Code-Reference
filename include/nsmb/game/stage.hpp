@@ -59,7 +59,8 @@
 #include "stage/actors/ov42/bulletbill.hpp"
 #include "stage/actors/ov42/bulletbillblaster.hpp"
 
-// Overlay 48 - WobbleRock
+// Overlay 48 - TiltMetalDish, WobbleRock
+#include "stage/actors/ov48/tiltmetaldish.hpp"
 #include "stage/actors/ov48/wobblerock.hpp"
 
 // Overlay 54 - Checkpoint, CoinSpawner, Trampoline, VolcanoEruption, TileGod

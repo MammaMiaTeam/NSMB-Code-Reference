@@ -51,29 +51,10 @@ namespace Game
 
 
 
-	// 0200514c
-	void resetSystem(u32 param);
-
-	// 0200421c
-	bool drawBNCLSprite(u8 id, GXOamAttr* oamAttrs, OAM::Flags flags, u8 palette, u8 affineSet, const Vec2* scale, s16 rot, const s16 rotCenter[2], OAM::Settings settings, s32 x, s32 y);
-
-	// 0200419c
-	bool drawBNCLSpriteSub(u8 id, GXOamAttr* oamAttrs, OAM::Flags flags, u8 palette, u8 affineSet, const Vec2* scale, s16 rot, const s16 rotCenter[2], OAM::Settings settings, s32 x, s32 y);
-
-
-	// 02004dfc
-	void initExtendedIDs();
-
 	// 020058c0
 	void waitVBlankIntr();
 
 	// 02004be0
 	void disableVRAMBanks();
-
-	// 0200563c
-	u16 getBootScene();
-
-	// 0200564c
-	void setBootScene(u16 sceneID);
 
 }

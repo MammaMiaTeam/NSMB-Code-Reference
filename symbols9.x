@@ -1801,6 +1801,32 @@ _ZN9BMGReader16processBMGStringEP9FontCache = 0x02016CA4;
 _ZN9BMGReader6renderEP9FontCachePvm = 0x02016FD4;
 _ZN9BMGReader13renderClearedEP9FontCachePvm = 0x020161E4;
 
+_ZN7TextBox17loadOAMAttributesEP8FontTilemP9GXOamAttrthh = 0x020148B4;
+_ZN7TextBox15renderOpaqueBoxEllPK4Vec2 = 0x0201486C;
+_ZN7TextBox13renderAButtonEll = 0x02014824;
+_ZN7TextBoxC1Ev = 0x02014820;
+_ZN7TextBoxD1Ev = 0x0201481C;
+_ZN7TextBox8loadTextEPvPmm = 0x020146E4;
+_ZN7TextBox8loadTextEPvPm = 0x020146D0;
+_ZN7TextBox10renderTextEll = 0x020145F8;
+_ZN7TextBox12renderArrowsEhll = 0x020144BC;
+_ZN7TextBox15getArrowSelectYEh = 0x02014220;
+_ZN7TextBox18getArrowSelectLeftEh = 0x02014214;
+_ZN7TextBox19getArrowSelectRightEh = 0x02014208;
+_ZN7TextBox15getArrowDialogYEv = 0x0201424C;
+_ZN7TextBox18getArrowDialogLeftEh = 0x02014240;
+_ZN7TextBox19getArrowDialogRightEh = 0x02014234;
+_ZN7TextBox12getLineCountEv = 0x020141B8;
+_ZN7TextBox20loadLeftDialogOptionEPvPmm = 0x02014368;
+_ZN7TextBox21loadRightDialogOptionEPvPmm = 0x02014300;
+_ZN7TextBox16loadDialogOptionEPvPmmP9GXOamAttr = 0x0201427C;
+_ZN7TextBox28loadMultiplayerDialogOptionsEv = 0x020143D0;
+_ZN7TextBox29loadSingleplayerDialogOptionsEv = 0x0201443C;
+_ZN7TextBox14setStandardBoxEv = 0x02014268;
+_ZN7TextBox12setDialogBoxEv = 0x02014254;
+_ZN7TextBox13setDefaultBoxEv = 0x020144A8;
+_ZN7TextBox16calculateYOffsetEm = 0x020141C0;
+
 _ZN4Font8mainFontE = 0x02089524;
 _ZN4Font11loadingFontE = 0x02089530;
 _ZN4Font9bmgReaderE = 0x0208953C;
@@ -2263,10 +2289,10 @@ _ZN4Save8mainSaveE = 0x02088bdc;
 /*----------------------------------------------------------------*/
 
 _ZN3OAM14unused_2087708E = 0x02087708;
-_ZN3OAM8_2087710E = 0x02087710;
-_ZN3OAM8_208770CE = 0x0208770C;
-_ZN3OAM8_20876FCE = 0x020876FC;
 _ZN3OAM13curTileOffsetE = 0x02087700;
+_ZN3OAM14prevTileOffsetE = 0x02087710;
+_ZN3OAM10zoomScaleXE = 0x0208770C;
+_ZN3OAM10zoomScaleYE = 0x020876FC;
 _ZN3OAM10objBuffer1E = 0x020877E0;
 _ZN3OAM10objBuffer2E = 0x02087BE0;
 _ZN3OAM12affineBufferE = 0x02087760;
@@ -2308,6 +2334,22 @@ _ZN3OAM4Anim6updateEv = 0x0200B44C;
 _ZN3OAM4Anim10drawSpriteEllNS_5FlagsEhhPK4Vec2sPKsNS_8SettingsE = 0x0200B3F4;
 _ZN3OAM4Anim7drawSubEllNS_5FlagsEhhPK4Vec2sPKsNS_8SettingsE = 0x0200B39C;
 
+
+/* arm9 */
+/*---------------------------------------------------------------*/
+/*----------------------------- UI ------------------------------*/
+/*---------------------------------------------------------------*/
+
+_ZN2UI7initSubEP4BNCDP4BNCLP4BNBL = 0x02004564;
+_ZN2UI10drawObjectEPN4BNCL6ObjectES2_bPK4Vec2smmhN3OAM5FlagsE = 0x020042D8;
+_ZN2UI17getObjectPositionEPst = 0x0200429C;
+_ZN2UI4drawEtP9GXOamAttrN3OAM5FlagsEhhPK4Vec2sPKsNS2_8SettingsEmm = 0x0200421C;
+_ZN2UI7drawSubEtP9GXOamAttrN3OAM5FlagsEhhPK4Vec2sPKsNS2_8SettingsEmm = 0x0200419C;
+
+_ZN2UI4bnblE = 0x02085888;
+_ZN2UI4bnclE = 0x0208588C;
+_ZN2UI7bnclSubE = 0x02085890;
+_ZN2UI7bncdSubE = 0x02085898;
 
 /* arm9 */
 /*----------------------------------------------------------------*/
@@ -2395,6 +2437,7 @@ _ZN3Net10initializeEa                                               = 0x02010444
 
 _ZNK3Net4Task7expiredEv                                             = 0x020106D4; /* Net::Task::expired() const */
 _ZN3Net11TaskManagerC2Ev                                            = 0x02010930; /* Net::TaskManager::TaskManager() */
+_ZN3Net11TaskManagerC1Ev                                            = 0x02010930; /* Net::TaskManager::TaskManager() */
 _ZN3Net11TaskManager12scheduleTaskEPFvPvES1_m                       = 0x020108B4; /* Net::TaskManager::scheduleTask(void (*)(void*), void*, unsigned long) */
 _ZN3Net11TaskManager7executeEv                                      = 0x02010834; /* Net::TaskManager::execute() */
 _ZN3Net11TaskManager9clearTaskEm                                    = 0x0201081C; /* Net::TaskManager::clearTask(unsigned long) */
@@ -2416,6 +2459,7 @@ _ZN3Net16getLocalizedGgidEv                                         = 0x02010AF0
 /* packet.hpp */
 
 _ZN3Net21PacketSequenceBuilderC2Ev                                  = 0x02011968; /* Net::PacketSequenceBuilder::PacketSequenceBuilder() */
+_ZN3Net21PacketSequenceBuilderC1Ev                                  = 0x02011968; /* Net::PacketSequenceBuilder::PacketSequenceBuilder() */
 _ZN3Net21PacketSequenceBuilderD1Ev                                  = 0x02011958; /* Net::PacketSequenceBuilder::~PacketSequenceBuilder() */
 _ZN3Net21PacketSequenceBuilderD0Ev                                  = 0x02011938; /* Net::PacketSequenceBuilder::~PacketSequenceBuilder() */
 _ZN3Net21PacketSequenceBuilder5clearEv                              = 0x0201190C; /* Net::PacketSequenceBuilder::clear() */
@@ -2423,14 +2467,17 @@ _ZN3Net21PacketSequenceBuilder10pushPacketEhhPKh                    = 0x0201189C
 _ZN3Net21PacketSequenceBuilder8nextByteEv                           = 0x020117C0; /* Net::PacketSequenceBuilder::nextByte() */
 
 _ZN3Net10PacketByteC2Ev                                             = 0x02010DC4; /* Net::PacketByte::PacketByte() */
+_ZN3Net10PacketByteC1Ev                                             = 0x02010DC4; /* Net::PacketByte::PacketByte() */
 _ZN3Net10PacketByteD1Ev                                             = 0x02010D9C; /* Net::PacketByte::~PacketByte() */
 _ZN3Net10PacketByteD0Ev                                             = 0x02010D6C; /* Net::PacketByte::~PacketByte() */
 
 _ZN3Net9PacketIntC2Ev                                               = 0x02010D38; /* Net::PacketInt::PacketInt() */
+_ZN3Net9PacketIntC1Ev                                               = 0x02010D38; /* Net::PacketInt::PacketInt() */
 _ZN3Net9PacketIntD1Ev                                               = 0x02010D10; /* Net::PacketInt::~PacketInt() */
 _ZN3Net9PacketIntD0Ev                                               = 0x02010CE0; /* Net::PacketInt::~PacketInt() */
 
 _ZN3Net12PacketBufferC2Ev                                           = 0x02010CC8; /* Net::PacketBuffer::PacketBuffer() */
+_ZN3Net12PacketBufferC1Ev                                           = 0x02010CC8; /* Net::PacketBuffer::PacketBuffer() */
 _ZN3Net12PacketBufferD1Ev                                           = 0x02010C74; /* Net::PacketBuffer::~PacketBuffer() */
 _ZN3Net12PacketBufferD0Ev                                           = 0x02010C18; /* Net::PacketBuffer::~PacketBuffer() */
 _ZN3Net12PacketBuffer6createEhPFvtPvES1_                            = 0x02010BB0; /* Net::PacketBuffer::create(unsigned char, void (*)(unsigned short, void*), void*) */
@@ -2914,8 +2961,8 @@ _ZN11StageEntity17updateSideSensorsEv								= 0x02099040;
 _ZN11StageEntity18updateBottomSensorEv								= 0x020990d4;
 _ZNK11StageEntity18checkLavaCollisionEv								= 0x0209917c;
 _ZN11StageEntity22updateCollisionSensorsEv							= 0x020991f8;
-_ZNK11StageEntity20checkPlayersInOffsetEll							= 0x02099250;
-_ZNK11StageEntity20checkPlayersInOffsetEl							= 0x02099354;
+_ZNK11StageEntity19checkPlayersInRangeEll							= 0x02099250;
+_ZNK11StageEntity19checkPlayersInRangeEl							= 0x02099354;
 _ZN11StageEntity14rotateToTargetEPsS0_								= 0x020993ec;
 _ZN11StageEntity19applyFireballWiggleEv								= 0x02099440;
 _ZN11StageEntity10getActorIDEt										= 0x02099590;
@@ -2931,14 +2978,14 @@ _ZN11StageEntity19attachToPlayerHandsElll							= 0x0209a144;
 _ZN11StageEntity25updateSolidActiveColliderEmmh						= 0x0209a23c;
 _ZN11StageEntity13onPlayerStompER6Playerlb							= 0x0209a5bc;
 _ZN11StageEntity17updatePlayerStompER14ActiveColliderlbb			= 0x0209a80c;
-_ZNK11StageEntity18getScorePointsSetBEmlll							= 0x0209a938;
-_ZN11StageEntity18getScorePointsSetBERK4Vec3ml						= 0x0209a990;
-_ZNK11StageEntity18getScorePointsSetCEmlll							= 0x0209aa04;
-_ZN11StageEntity18getScorePointsSetCERK4Vec3ml						= 0x0209aa5c;
+_ZNK11StageEntity25getScorePointsStageBeatenEmlll					= 0x0209a938;
+_ZN11StageEntity25getScorePointsStageBeatenERK4Vec3ml				= 0x0209a990;
+_ZNK11StageEntity22getScorePointsEnhancedEmlll						= 0x0209aa04;
+_ZN11StageEntity22getScorePointsEnhancedERK4Vec3ml					= 0x0209aa5c;
 _ZN11StageEntity18spawnRedCoinNumberERK4Vec3ml						= 0x0209aad0;
 _ZN11StageEntity20getCollectablePointsEml							= 0x0209ab04;
-_ZNK11StageEntity18getScorePointsSetAEmlll							= 0x0209ab90;
-_ZN11StageEntity18getScorePointsSetAERK4Vec3ml						= 0x0209ac0c;
+_ZNK11StageEntity21getScorePointsRegularEmlll						= 0x0209ab90;
+_ZN11StageEntity21getScorePointsRegularERK4Vec3ml					= 0x0209ac0c;
 _ZNK11StageEntity28getVerticalDirectionToPlayerERK4Vec3				= 0x0209ac8c;
 _ZNK11StageEntity30getHorizontalDirectionToPlayerERK4Vec3			= 0x0209acd4;
 _ZN11StageEntity15destroyInactiveEm									= 0x0209adb0;
@@ -2970,15 +3017,15 @@ _ZN11StageEntity18updateFenceTurningEv								= 0x020a01ac;
 _ZN11StageEntity13updateCarriedEv									= 0x0209fb3c;
 _ZN11StageEntity14updateReleasedEv									= 0x0209fa8c;
 _ZN11StageEntity13updateDroppedEv									= 0x0209f824;
-_ZN11StageEntity12updateThrownEv									= 0x0209f6c4;
-_ZN11StageEntity18updateShellRollingEv								= 0x0209f0e4;
+_ZN11StageEntity18updateDroppedHeavyEv								= 0x0209f6c4;
+_ZN11StageEntity13updateRollingEv									= 0x0209f0e4;
 _ZN11StageEntity15updateAnimationEv									= 0x0209d9fc;
 _ZN11StageEntity6thrownEv											= 0x0209faf4;
 _ZN11StageEntity10thrownStopEv										= 0x0209faac;
 _ZN11StageEntity6virt34Ev											= 0x0209c974;
 _ZN11StageEntity7grabbedEv											= 0x020a012c;
 _ZN11StageEntity8releasedEv											= 0x020a00ac;
-_ZN11StageEntity8shellHitER6Player									= 0x0209f574;
+_ZN11StageEntity12shellStartedER6Player								= 0x0209f574;
 _ZN11StageEntity11shellKickedEv										= 0x0209f3d8;
 _ZN11StageEntity12shellStoppedEv									= 0x0209f354;
 _ZN11StageEntity20updateFireballWiggleEv							= 0x020994f8;
@@ -3230,6 +3277,8 @@ _ZN5Fader22disableSubScreenFadingEv				= 0x02007bd8;
 _ZN5Fader16setupSceneFadingENS_10FadingTypeEbb	= 0x020083cc;
 _ZN5Fader7fadedInEv                             = 0x02007CB0;
 _ZN5Fader8fadedOutEv                            = 0x02007C68;
+_ZN5Fader13prepareFadeInEv                      = 0x02007bb4;
+_ZN5Fader14prepareFadeOutEv                     = 0x02007b90;
 
 _ZN4Game5faderE									= 0x02088f48;
 
@@ -3248,14 +3297,6 @@ _ZN8FadeMask17loadMaskModelFileEv = 0x02013bdc;
 _ZN8FadeMask14loadMaskModelsEv = 0x02013bd0;
 _ZN8FadeMask6updateENS_5ShapeEP7VecFx32tlNS_4ModeE = 0x02013ba8;
 _ZN8FadeMask22getCharacterFadeMaskIDEh = 0x02013b98;
-
-/* arm9 */
-/*----------------------------------------------------------------------*/
-/*----------------------------- multiplayer ----------------------------*/
-/*----------------------------------------------------------------------*/
-
-_ZN11Multiplayer4initEv = 0x02010A84;
-_ZN11Multiplayer13endConnectionEv = 0x0200F3D8;
 
 
 /* arm9 */
@@ -4873,14 +4914,8 @@ _ZN4Game14storeDataCacheEPKvm														= 0x0200765c;
 _ZN4Game14flushDataCacheEPKvm														= 0x02007684;
 _ZN4Game11taskCleanupEv																= 0x02004c30;
 _ZN4Game7runTaskEPFvPvES0_mS0_m														= 0x02004cb8;
-_ZN4Game11resetSystemEm																= 0x0200514c;
-_ZN4Game14drawBNCLSpriteEhP9GXOamAttrN3OAM5FlagsEhhPK4Vec2sPKsNS2_8SettingsEll		= 0x0200421c;
-_ZN4Game17drawBNCLSpriteSubEhP9GXOamAttrN3OAM5FlagsEhhPK4Vec2sPKsNS2_8SettingsEll	= 0x0200419c;
-_ZN4Game15initExtendedIDsEv															= 0x02004dfc;
 _ZN4Game14waitVBlankIntrEv															= 0x020058c0;
 _ZN4Game16disableVRAMBanksEv														= 0x02004be0;
-_ZN4Game12getBootSceneEv															= 0x0200563c;
-_ZN4Game12setBootSceneEt															= 0x0200564c;
 
 _ZN4Game16mainProcessTableE                                                         = 0x0203997c;
 _ZN4Game27currentExecutingProcessListE												= 0x020852a8;
@@ -4891,22 +4926,62 @@ _ZN4Game9actorTreeE																	= 0x0208fb0c;
 _ZN4Game16visiblePlaneMainE															= 0x02085a88;
 
 
-/* arm9_ov52 */
-/*-----------------------------------------------------------------*/
-/*------------------------ wifi utilities -------------------------*/
-/*-----------------------------------------------------------------*/
+/* arm9 */
+/*----------------------------------------------------------------*/
+/*------------------------------ app -----------------------------*/
+/*----------------------------------------------------------------*/
 
-_ZN4Wifi11getRandomMGEv			= 0x0200E6A4;
-_ZN4Wifi9getRandomEv			= 0x0200E6F4;
-_ZN4Wifi12syncRandomMGEv		= 0x0200E73C;
-_ZN4Wifi10syncRandomEv			= 0x0200E748;
-_ZN4Wifi15getConsoleCountEv		= 0x02046C34;
+_ZN3App15branchToStartupEv          = 0x020056A8; /* App::branchToStartup() */
+_ZN3App12branchToMainEv             = 0x0200567C; /* App::branchToMain() */
+_ZN3App13setBootTargetEm            = 0x0200566C; /* App::setBootTarget(unsigned long) */
+_ZN3App13getBootTargetEv            = 0x0200565C; /* App::getBootTarget() */
+_ZN3App12setBootSceneEm             = 0x0200564C; /* App::setBootScene(unsigned long) */
+_ZN3App12getBootSceneEv             = 0x0200563C; /* App::getBootScene() */
+_ZN3App12setBootParamEm             = 0x0200562C; /* App::setBootParam(unsigned long) */
+_ZN3App15defaultCallbackEv          = 0x02005624; /* App::defaultCallback() */
+_ZN3App12onInitializeEv             = 0x02005620; /* App::onInitialize() */
+_ZN3App17powerOffBacklightEv        = 0x020055CC; /* App::powerOffBacklight() */
+_ZN3App16powerOnBacklightEv         = 0x02005510; /* App::powerOnBacklight() */
+_ZN3App14stopDisplayDMAEv           = 0x020054BC; /* App::stopDisplayDMA() */
+_ZN3App11updateSleepEv              = 0x02005230; /* App::updateSleep() */
+_ZN3App14forceDisplayOnEv           = 0x020051EC; /* App::forceDisplayOn() */
+_ZN3App4stopEv                      = 0x02005198; /* App::stop() */
+_ZN3App5resetEm                     = 0x0200514C; /* App::reset(unsigned long) */
+_ZN3App10isSleepingEv               = 0x0200513C; /* App::isSleeping() */
+_ZN3App7playSFXEml                  = 0x02005100; /* App::playSFX(unsigned long, long) */
+_ZN3App18onLidClosedDefaultEv       = 0x020050EC; /* App::onLidClosedDefault() */
+_ZN3App18onLidOpenedDefaultEv       = 0x020050D8; /* App::onLidOpenedDefault() */
+_ZN3App17updateTaskDefaultEv        = 0x020050C0; /* App::updateTaskDefault() */
+_ZN3App9onStartupEv                 = 0x020050BC; /* App::onStartup() */
+_ZN3App15onCardPulledOutEv          = 0x02005098; /* App::onCardPulledOut() */
+_ZN3App8gameInitEv                  = 0x02004F3C; /* App::gameInit() */
+_ZN3App8gameLoopEv                  = 0x02004EA8; /* App::gameLoop() */
+_ZN3App10initializeEv               = 0x02004E78; /* App::initialize() */
+_ZN3App8gameMainEv                  = 0x02004E5C; /* App::gameMain() */
+_ZN3App13commonStartupEv            = 0x02004E20; /* App::commonStartup() */
+_ZN3App13initFileCountEb            = 0x02004DFC; /* App::initFileCount(bool) */
+_ZN3App8initBootEv                  = 0x02004D90; /* App::initBoot() */
 
-_ZN4Wifi10currentAidE			= 0x020887F0;
-_ZN4Wifi6randomE				= 0x02088A68;
-_ZN4Wifi15randomCallCountE		= 0x02088A48;
-_ZN4Wifi19randomBranchAddressE	= 0x0208885C;
-_ZN4Wifi12consoleCountE         = 0x02085200;
+_ZN3App9bootSceneE                  = 0x02085994; /* App::bootScene */
+_ZN3App10bootTargetE                = 0x02085990; /* App::bootTarget */
+_ZN3App9bootParamE                  = 0x0208598C; /* App::bootParam */
+_ZN3App15backlightBottomE           = 0x02085988; /* App::backlightBottom */
+_ZN3App12backlightTopE              = 0x02085984; /* App::backlightTop */
+_ZN3App16sleepWakeUpTimerE          = 0x02085980; /* App::sleepWakeUpTimer */
+_ZN3App15sleepPhaseTimerE           = 0x0208597C; /* App::sleepPhaseTimer */
+_ZN3App8sleepingE                   = 0x02085978; /* App::sleeping */
+_ZN3App12sleepControlE              = 0x02085974; /* App::sleepControl */
+_ZN3App12backlightOffE              = 0x02085970; /* App::backlightOff */
+_ZN3App10sleepPhaseE                = 0x0208596C; /* App::sleepPhase */
+
+_ZN3App9mainTableE                  = 0x02039830; /* App::mainTable */
+_ZN3App12startupTableE              = 0x02039828; /* App::startupTable */
+_ZN3App10updateTaskE                = 0x02039824; /* App::updateTask */
+_ZN3App11onLidOpenedE               = 0x02039820; /* App::onLidOpened */
+_ZN3App11onLidClosedE               = 0x0203981C; /* App::onLidClosed */
+_ZN3App13postLidOpenedE             = 0x02039818; /* App::postLidOpened */
+_ZN3App12preLidClosedE              = 0x02039814; /* App::preLidClosed */
+_ZN3App11frameLengthE               = 0x02039810; /* App::frameLength */
 
 
 /* arm9 */
@@ -5881,6 +5956,9 @@ _ZN11StageLayout10changeTileEmmm		= 0x020af30c;
 _ZN11StageLayout15getTileBehaviorEmml	= 0x020af8f0;
 _ZN11StageLayout10getChunkIDEmm			= 0x020b0308;
 _ZN11StageLayout17readTileBehaviourEt	= 0x020afa30;
+_ZN11StageLayout21animateQuestionBlocksEv	= 0x020B7FE4;
+_ZN11StageLayout18animateBrickBlocksEv		= 0x020B807C;
+_ZN11StageLayout12animateCoinsEh			= 0x020B8364;
 _ZN11StageLayout13doLayoutResetE		= 0x020cac98;
 
 
@@ -6353,6 +6431,71 @@ _ZN3End6slidesE = 0x020E4198;
 _ZN4Item11switchStateEMS_FbvE = 0x020d4eb8;
 _ZN4Item12checkConsumeEv = 0x020d475c;
 _ZN4Item18onPrepareResourcesEv = 0x020d2248;
+
+
+/* arm9_ov14 */
+/*----------------------------------------------------------------*/
+/*-------------------------- mega goomba -------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN10MegaGoombaD0Ev = 0x0212F9D0;
+_ZN10MegaGoombaD1Ev = 0x0212F900;
+
+_ZN10MegaGoomba8onCreateEv = 0x0212FD00;
+_ZN10MegaGoomba9onDestroyEv = 0x0212FAA8;
+_ZN10MegaGoomba18onPrepareResourcesEv = 0x0212FF24;
+_ZN10MegaGoomba10updateMainEv = 0x0212FB64;
+_ZN10MegaGoomba20updateFireballWiggleEv = 0x02132C80;
+_ZN10MegaGoomba11onEntityHitEv = 0x02131CF0;
+_ZN10MegaGoomba13onFireballHitEv = 0x02131EE8;
+_ZN10MegaGoomba12onStarmanHitEv = 0x02131EB4;
+_ZN10MegaGoomba12onSlidingHitEv = 0x02131CEC;
+_ZN10MegaGoomba9onMegaHitEv = 0x02131CF8;
+_ZN10MegaGoomba12onMegaKickedEv = 0x02131CF4;
+_ZN10MegaGoomba9onStompedEv = 0x02131F54;
+_ZN10MegaGoomba13onGroundPoundEv = 0x02131CE8;
+_ZN10MegaGoomba14onBlueShellHitEv = 0x02131C54;
+_ZN10MegaGoomba12damagePlayerER14ActiveColliderR6Player = 0x02131F58;
+_ZN10MegaGoomba12postRender3DEv = 0x0212FAF8;
+_ZN10MegaGoomba11switchStateEMS_FbvE = 0x02132D68;
+_ZN10MegaGoomba11updateStateEv = 0x02132D00;
+_ZN10MegaGoomba17initHeadPlatform1Ev = 0x02132C04;
+_ZN10MegaGoomba17initHeadPlatform2Ev = 0x02132B80;
+_ZN10MegaGoomba17initHeadPlatform3Ev = 0x02132AFC;
+_ZN10MegaGoomba17giveHeadKnockbackEP6Playerb = 0x021329EC;
+_ZN10MegaGoomba6damageEb = 0x021328B8;
+_ZN10MegaGoomba19updateHeadCollisionEv = 0x02132264;
+_ZN10MegaGoomba13linkCollidersEv = 0x02132204;
+_ZN10MegaGoomba15unlinkCollidersEv = 0x021321A4;
+_ZN10MegaGoomba20updateActiveColliderEv = 0x021320F0;
+_ZN10MegaGoomba14method0213209CEv = 0x0213209C;
+_ZN10MegaGoomba14method02132080Ev = 0x02132080;
+_ZN10MegaGoomba14method02131A18Ev = 0x02131A18;
+_ZN10MegaGoomba14method02131934Ev = 0x02131934;
+_ZN10MegaGoomba14method0213186CEv = 0x0213186C;
+_ZN10MegaGoomba14method02131684Ev = 0x02131684;
+_ZN10MegaGoomba14isPlayerInViewEv = 0x02131650;
+_ZN10MegaGoomba19waitActivationStateEv = 0x02131544;
+_ZN10MegaGoomba14activatedStateEv = 0x02131410;
+_ZN10MegaGoomba13cutsceneStateEv = 0x0213127C;
+_ZN10MegaGoomba13state021311E0Ev = 0x021311E0;
+_ZN10MegaGoomba13state02130F30Ev = 0x02130F30;
+_ZN10MegaGoomba13state02130D60Ev = 0x02130D60;
+_ZN10MegaGoomba13state02130C10Ev = 0x02130C10;
+_ZN10MegaGoomba13state02130A44Ev = 0x02130A44;
+_ZN10MegaGoomba13state02130858Ev = 0x02130858;
+_ZN10MegaGoomba13state02130700Ev = 0x02130700;
+_ZN10MegaGoomba13state021305F8Ev = 0x021305F8;
+_ZN10MegaGoomba13state0213040CEv = 0x0213040C;
+_ZN10MegaGoomba13state0213028CEv = 0x0213028C;
+_ZN10MegaGoomba13defeatedStateEv = 0x021300B8;
+_ZN10MegaGoomba13spawnKeyStateEv = 0x0212FFBC;
+_ZN10MegaGoomba9constructEv = 0x02132E94;
+_ZN10MegaGoomba13loadResourcesEv = 0x02132E4C;
+
+_ZN10MegaGoomba7profileE = 0x021330E8;
+
+_ZTV10MegaGoomba = 0x021D0DB4;
 
 
 /* arm9_ov22 */
@@ -6910,6 +7053,36 @@ _ZTV17BanzaiBillBlaster										= 0x02151E94;
 
 /* arm9_ov48 */
 /*----------------------------------------------------------------*/
+/*----------------------- tilt metal dish ------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN13TiltMetalDishD0Ev                          = 0x02146CFC; /* TiltMetalDish::~TiltMetalDish() */
+_ZN13TiltMetalDishD1Ev                          = 0x02146C60; /* TiltMetalDish::~TiltMetalDish() */
+_ZN13TiltMetalDishD2Ev                          = 0x02146C60; /* TiltMetalDish::~TiltMetalDish() */
+_ZN13TiltMetalDish8onCreateEv                   = 0x02146F94; /* TiltMetalDish::onCreate() */
+_ZN13TiltMetalDish9onDestroyEv                  = 0x02146E10; /* TiltMetalDish::onDestroy() */
+_ZN13TiltMetalDish8onRenderEv                   = 0x02146E34; /* TiltMetalDish::onRender() */
+_ZN13TiltMetalDish18onPrepareResourcesEv        = 0x021474E4; /* TiltMetalDish::onPrepareResources() */
+_ZN13TiltMetalDish10updateMainEv                = 0x02146F4C; /* TiltMetalDish::updateMain() */
+_ZNK13TiltMetalDish21getTiltAccelFromAngleEv    = 0x021473B0; /* TiltMetalDish::getTiltAccelFromAngle() const */
+_ZN13TiltMetalDish13updateBalanceEv             = 0x021472F8; /* TiltMetalDish::updateBalance() */
+_ZN13TiltMetalDish18attenuateTiltAngleEv        = 0x02147288; /* TiltMetalDish::attenuateTiltAngle() */
+_ZN13TiltMetalDish20attenuateChainWobbleEv      = 0x0214721C; /* TiltMetalDish::attenuateChainWobble() */
+_ZN13TiltMetalDish17updateChainWobbleEv         = 0x02147174; /* TiltMetalDish::updateChainWobble() */
+_ZN13TiltMetalDish7getEndsERlS0_                = 0x02146DA0; /* TiltMetalDish::getEnds(long&, long&) */
+_ZN13TiltMetalDish11switchStateEMS_FbvE         = 0x02147410; /* TiltMetalDish::switchState(bool (TiltMetalDish::*)()) */
+_ZN13TiltMetalDish11updateStateEv               = 0x021473DC; /* TiltMetalDish::updateState() */
+_ZN13TiltMetalDish9mainStateEv                  = 0x021470B4; /* TiltMetalDish::mainState() */
+_ZN13TiltMetalDish13loadResourcesEv             = 0x02147550; /* TiltMetalDish::loadResources() */
+
+_ZN13TiltMetalDish15tiltAngleLimitsE            = 0x021486F8; /* TiltMetalDish::tiltAngleLimits */
+_ZN13TiltMetalDish7profileE                     = 0x021487E8; /* TiltMetalDish::profile */
+
+_ZTV13TiltMetalDish                             = 0x021487F4; /* vtable for TiltMetalDish */
+
+
+/* arm9_ov48 */
+/*----------------------------------------------------------------*/
 /*------------------------- wobble rock --------------------------*/
 /*----------------------------------------------------------------*/
 
@@ -6932,6 +7105,60 @@ _ZN10WobbleRock9fallStateEv				= 0x021478E0;
 _ZN10WobbleRock7profileE				= 0x02148920;
 
 _ZTV10WobbleRock						= 0x0214892C;
+
+
+/* arm9_ov54 */
+/*----------------------------------------------------------------*/
+/*------------------------ red coin ring -------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN11RedCoinRingD0Ev = 0x02152F90;
+_ZN11RedCoinRingD1Ev = 0x02152EDC;
+
+_ZN11RedCoinRing7profileE = 0x0216CD90;
+_ZN11RedCoinRing12sWaitCollectE = 0x0216CD80;
+_ZN11RedCoinRing10sCollectedE = 0x0216CD88;
+_ZN11RedCoinRing9constructEv = 0x02153954;
+_ZN11RedCoinRing8onCreateEv = 0x02153174;
+_ZN11RedCoinRing9onDestroyEv = 0x0215304C;
+_ZN11RedCoinRing8onRenderEv = 0x02153058;
+_ZN11RedCoinRing18onCleanupResourcesEv = 0x02153054;
+_ZN11RedCoinRing18onPrepareResourcesEv = 0x021533FC;
+_ZN11RedCoinRing10updateMainEv = 0x02153150;
+_ZN11RedCoinRing14updateDistanceEm = 0x021532BC;
+_ZN11RedCoinRing13checkCollidedEm = 0x02153370;
+_ZN11RedCoinRing13loadResourcesEv = 0x02153498;
+_ZN11RedCoinRing14collectedStateEv = 0x021534CC;
+_ZN11RedCoinRing12easeRotationERsss = 0x021535CC;
+_ZN11RedCoinRing16waitCollectStateEv = 0x02153604;
+_ZN11RedCoinRing11updateStateEv = 0x02153804;
+_ZN11RedCoinRing11switchStateEMS_FbvE = 0x02153860;
+
+_ZTV11RedCoinRing = 0x0216CD9C;
+
+
+/* arm9_ov54 */
+/*----------------------------------------------------------------*/
+/*------------------------ warp entrance -------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN12WarpEntranceD0Ev = 0x02155F60;
+_ZN12WarpEntranceD1Ev = 0x02155F04;
+
+_ZN12WarpEntrance8onCreateEv = 0x02155FEC;
+_ZN12WarpEntrance8onRenderEv = 0x02155FC4;
+_ZN12WarpEntrance10updateMainEv = 0x02155FCC;
+_ZN12WarpEntrance11switchStateERKMS_FbvE = 0x021565AC;
+_ZN12WarpEntrance11updateStateEv = 0x02156564;
+_ZN12WarpEntrance9mainStateEv = 0x02156124;
+_ZN12WarpEntrance10warpPlayerEP6Player = 0x021564C0;
+_ZN12WarpEntrance17updateWarpTriggerEv = 0x02156274;
+_ZN12WarpEntrance9constructEv = 0x02156638;
+
+_ZN12WarpEntrance7profileE = 0x0216D284;
+_ZN12WarpEntrance5sMainE = 0x02171760;
+
+_ZTV12WarpEntrance = 0x0216D290;
 
 
 /* arm9_ov54 */
