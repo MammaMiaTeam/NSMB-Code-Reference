@@ -47,7 +47,7 @@ public:
 	static constexpr u16 RenderPriority = 140;
 
 	static const ActorProfile profile;
-	static const ActiveColliderInfo activeColliderInfo;
+	static const AcConfig acConfig;
 	static const PointSensor bottomSensorSmall;
 	static const PointSensor bottomSensorBig;
 	static const fx16 eruptionVelocitiesX[10];				// [rockID]

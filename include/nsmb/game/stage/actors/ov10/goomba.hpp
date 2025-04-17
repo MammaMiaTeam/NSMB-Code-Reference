@@ -81,7 +81,7 @@ public:
 	static const ActorProfile profile;
 
 	// 02121854
-	static const ActiveColliderInfo activeColliderInfo;
+	static const AcConfig acConfig;
 
 	// 02121844
 	static const fx32 pipeTargetsY[4];

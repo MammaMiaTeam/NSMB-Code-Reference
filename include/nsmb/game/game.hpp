@@ -64,6 +64,7 @@ namespace WrapType
 	constexpr auto None		 = 0;
 	constexpr auto Static	 = 1;
 	constexpr auto Scrolling = 2;
+	constexpr auto Count     = 3;
 }
 
 namespace Game

@@ -57,7 +57,7 @@ public:
 	static const ActorProfile profile;
 
 	// 0218DF10
-	static const ActiveColliderInfo activeColliderInfo;
+	static const AcConfig acConfig;
 	// 0218DEFC
 	static const fx32 slopeAccelerationsX[5];
 	// 0218DEF8

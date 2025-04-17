@@ -38,6 +38,12 @@ namespace CC {
 	template<class T>
 	concept Pointer = std::is_pointer_v<T>;
 
+	template<class T>
+	concept Enum = std::is_enum_v<T>;
+
+	template<class T>
+	concept IntegralOrEnum = Integral<T> || Enum<T>;
+
 }
 
 namespace TT {
@@ -110,5 +116,8 @@ namespace TT {
 
 	template<CC::Integer T>
 	static constexpr bool HasSmallerInteger = Detail::HasSmallerInteger<T>;
+
+	template<CC::Enum T>
+	using UnderlyingType = std::underlying_type_t<T>;
 
 }
