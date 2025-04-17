@@ -55,7 +55,8 @@
 #include "stage/actors/ov40/bosscontroller.hpp"
 #include "stage/actors/ov40/peach.hpp"
 
-// Overlay 42 - BulletBill, BanzaiBill, BulletBillBlaster, BanzaiBillBlaster
+// Overlay 42 - BobOmb, BulletBill, BanzaiBill, BulletBillBlaster, BanzaiBillBlaster
+#include "stage/actors/ov42/bobomb.hpp"
 #include "stage/actors/ov42/bulletbill.hpp"
 #include "stage/actors/ov42/bulletbillblaster.hpp"
 

@@ -7064,6 +7064,68 @@ _ZN17BanzaiBillBlaster7profileE								= 0x02151D68;
 _ZTV17BanzaiBillBlaster										= 0x02151E94;
 
 
+/* arm9_ov42 */
+/*----------------------------------------------------------------*/
+/*---------------------------- bob omb ---------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN6BobOmbD2Ev                                                          = 0x0214BCEC; /* BobOmb::~BobOmb() */
+_ZN6BobOmbD1Ev                                                          = 0x0214BCEC; /* BobOmb::~BobOmb() */
+_ZN6BobOmbD0Ev                                                          = 0x0214BD54; /* BobOmb::~BobOmb() */
+_ZN6BobOmb8onCreateEv                                                   = 0x0214CFA0; /* BobOmb::onCreate() */
+_ZN6BobOmb9onDestroyEv                                                  = 0x0214C630; /* BobOmb::onDestroy() */
+_ZN6BobOmb8onRenderEv                                                   = 0x0214C758; /* BobOmb::onRender() */
+_ZN6BobOmb18onCleanupResourcesEv                                        = 0x0214C638; /* BobOmb::onCleanupResources() */
+_ZN6BobOmb18onPrepareResourcesEv                                        = 0x0214E244; /* BobOmb::onPrepareResources() */
+_ZN6BobOmb10updateMainEv                                                = 0x0214C9EC; /* BobOmb::updateMain() */
+_ZN6BobOmb13updateCarriedEv                                             = 0x0214D96C; /* BobOmb::updateCarried() */
+_ZN6BobOmb13updateDroppedEv                                             = 0x0214D90C; /* BobOmb::updateDropped() */
+_ZN6BobOmb15updateAnimationEv                                           = 0x0214C618; /* BobOmb::updateAnimation() */
+_ZN6BobOmb6thrownEv                                                     = 0x0214DA7C; /* BobOmb::thrown() */
+_ZN6BobOmb10thrownStopEv                                                = 0x0214DA60; /* BobOmb::thrownStop() */
+_ZN6BobOmb7grabbedEv                                                    = 0x0214DAE8; /* BobOmb::grabbed() */
+_ZN6BobOmb8releasedEv                                                   = 0x0214DAA0; /* BobOmb::released() */
+_ZN6BobOmb10onBlockHitEv                                                = 0x0214C63C; /* BobOmb::onBlockHit() */
+_ZN6BobOmb13onFireballHitEv                                             = 0x0214C5AC; /* BobOmb::onFireballHit() */
+_ZN6BobOmb13onGroundPoundEv                                             = 0x0214C578; /* BobOmb::onGroundPound() */
+_ZN6BobOmb15entityCollisionER14ActiveColliderR10StageActor              = 0x0214CAA8; /* BobOmb::entityCollision(ActiveCollider&, StageActor&) */
+_ZN6BobOmb12damagePlayerER14ActiveColliderR6Player                      = 0x0214CBFC; /* BobOmb::damagePlayer(ActiveCollider&, Player&) */
+_ZN6BobOmb6defeatElllh                                                  = 0x0214D19C; /* BobOmb::defeat(long, long, long, unsigned char) */
+_ZN6BobOmb9setBumpedEv                                                  = 0x0214D744; /* BobOmb::setBumped() */
+_ZN6BobOmb8tickFuseEv                                                   = 0x0214DED8; /* BobOmb::tickFuse() */
+_ZN6BobOmb7explodeEv                                                    = 0x0214BDF8; /* BobOmb::explode() */
+_ZN6BobOmb12pipeOutStateEv                                              = 0x0214D1E0; /* BobOmb::pipeOutState() */
+_ZN6BobOmb18montyTankHeldStateEv                                        = 0x0214D344; /* BobOmb::montyTankHeldState() */
+_ZN6BobOmb12explodeStateEv                                              = 0x0214D420; /* BobOmb::explodeState() */
+_ZN6BobOmb11kickedStateEv                                               = 0x0221A084; /* BobOmb::kickedState() */
+_ZN6BobOmb18groundPoundedStateEv                                        = 0x0214DB38; /* BobOmb::groundPoundedState() */
+_ZN6BobOmb12tickingStateEv                                              = 0x0214DD64; /* BobOmb::tickingState() */
+_ZN6BobOmb9turnStateEv                                                  = 0x0214DEFC; /* BobOmb::turnState() */
+_ZN6BobOmb9walkStateEv                                                  = 0x0214E018; /* BobOmb::walkState() */
+_ZN6BobOmb11updateStateEv                                               = 0x0214E114; /* BobOmb::updateState() */
+_ZN6BobOmb11switchStateEMS_FbvE                                         = 0x0214E150; /* BobOmb::switchState(bool (BobOmb::*)()) */
+_ZN6BobOmb18spawnFromMontyTankERK4Vec3b                                 = 0x0214BDC4; /* BobOmb::spawnFromMontyTank(Vec3 const&, bool) */
+_ZN6BobOmb27groundPoundedActiveCallbackER14ActiveColliderS1_            = 0x0214BE5C; /* BobOmb::groundPoundedActiveCallback(ActiveCollider&, ActiveCollider&) */
+_ZN6BobOmb20weaponActiveCallbackER14ActiveColliderS1_                   = 0x0214C118; /* BobOmb::weaponActiveCallback(ActiveCollider&, ActiveCollider&) */
+_ZN6BobOmb15explodeCallbackER14ActiveColliderS1_                        = 0x0214C3C8; /* BobOmb::explodeCallback(ActiveCollider&, ActiveCollider&) */
+_ZN6BobOmb13loadResourcesEv												= 0x0214E29C; /* BobOmb::loadResources() */
+
+_ZN6BobOmb14tileShardTypesE                                             = 0x021519DC; /* BobOmb::tileShardTypes */
+_ZN6BobOmb25directionalWalkVelocitiesE                                  = 0x021519E0; /* BobOmb::directionalWalkVelocities */
+_ZN6BobOmb27directionalBumpedVelocitiesE                                = 0x021519E4; /* BobOmb::directionalBumpedVelocities */
+_ZN6BobOmb29directionalTurnRotationSpeedsE                              = 0x021519E8; /* BobOmb::directionalTurnRotationSpeeds */
+_ZN6BobOmb9topSensorE                                                   = 0x021519EC; /* BobOmb::topSensor */
+_ZN6BobOmb12bottomSensorE                                               = 0x021519F8; /* BobOmb::bottomSensor */
+_ZN6BobOmb10sideSensorE                                                 = 0x0221E344; /* BobOmb::sideSensor */
+_ZN6BobOmb18pipeOutVelocitiesXE                                         = 0x02151A10; /* BobOmb::pipeOutVelocitiesX */
+_ZN6BobOmb18pipeOutVelocitiesYE                                         = 0x02151A20; /* BobOmb::pipeOutVelocitiesY */
+_ZN6BobOmb8acConfigE                                                    = 0x02151A30; /* BobOmb::acConfig */
+_ZN6BobOmb9blastGridE                                                   = 0x02151A4C; /* BobOmb::blastGrid */
+_ZN6BobOmb7profileE														= 0x02152460; /* BobOmb::profile */
+
+_ZTV6BobOmb                                                             = 0x02152474 - 8; /* vtable for BobOmb */
+
+
 /* arm9_ov48 */
 /*----------------------------------------------------------------*/
 /*----------------------- tilt metal dish ------------------------*/
