@@ -77,8 +77,8 @@ public:
 		return getBoxes()[id];
 	}
 
-	static inline BNBL& cast(void* data) {
-		return *rcast<BNBL*>(data);
+	static inline BNBL* cast(void* data) {
+		return rcast<BNBL*>(data);
 	}
 
 private:

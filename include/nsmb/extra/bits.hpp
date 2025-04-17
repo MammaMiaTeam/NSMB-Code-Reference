@@ -3,6 +3,7 @@
 #include "meta.hpp"
 
 #include <bit>
+#include <utility>
 
 
 template<class T>
@@ -67,6 +68,18 @@ namespace Bits {
 	template<CC::Integer I>
 	constexpr I ones(SizeT n) noexcept {
 		return n >= bitCount<I>() ? allOnes<I>() : (static_cast<TT::MakeUnsigned<I>>(1) << n) - 1;
+	}
+
+	template<CC::IntegralOrEnum I>
+	constexpr auto bitmask(I a) {
+		using L = TT::Conditional<CC::Integral<I>, I, TT::UnderlyingType<I>>;
+		return 1U << scast<L>(a);
+	}
+
+	template<CC::IntegralOrEnum I, CC::IntegralOrEnum... Args>
+	constexpr auto bitmask(I a, Args&&... args) {
+		using L = TT::Conditional<CC::Integral<I>, I, TT::UnderlyingType<I>>;
+		return (1U << scast<L>(a)) | bitmask(std::forward<Args>(args)...);
 	}
 
 }

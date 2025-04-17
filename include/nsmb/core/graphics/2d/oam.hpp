@@ -117,11 +117,10 @@ namespace OAM
 
 	extern u32 unused_2087708;				/**< \brief Gets set at 0x0200DE4C and never used. */
 
-	extern u32 _2087710;					/**< \brief Unknown 0x02087710. */
-	extern u32 _208770C;					/**< \brief Unknown 0x02087710. */
-	extern u32 _20876FC;					/**< \brief Unknown 0x02087710. */
-
 	extern u32 curTileOffset;				/**< \brief The current tile offset being used for %OAM file loading. */
+	extern u32 prevTileOffset;				/**< \brief The tile offset used to reset %OAM file loading. */
+	extern fx32 zoomScaleX;					/**< \brief The current affine transformation zoom multiplier for the X axis. */
+	extern fx32 zoomScaleY;					/**< \brief The current affine transformation zoom multiplier for the Y axis. */
 
 	extern GXOamAttr objBuffer1[128];		/**< \brief The first object buffer. (Top screen) */
 	extern GXOamAttr objBuffer2[128];		/**< \brief The second object buffer. (Top screen) */

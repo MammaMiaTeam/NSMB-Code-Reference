@@ -57,6 +57,8 @@ public:
 
 	// 02179420
 	static const ActorProfile profile;
+	
+	static const AcConfig acConfig;
 
 
 	ModelAnm bodyModel;
@@ -66,7 +68,7 @@ public:
 
 	StateFunction updateFunction;
 
-	ActiveColliderInfo activeColliderInfo;
+	AcConfig currentAcConfig;
 
 	s16 bobPosition;
 	u8 bobTimer;

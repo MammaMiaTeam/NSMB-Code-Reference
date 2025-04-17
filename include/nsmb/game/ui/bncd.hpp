@@ -31,8 +31,8 @@ public:
 
 	Header header;
 
-	static inline BNCD& cast(void* data) {
-		return *rcast<BNCD*>(data);
+	static inline BNCD* cast(void* data) {
+		return rcast<BNCD*>(data);
 	}
 
 	// 0x02055978

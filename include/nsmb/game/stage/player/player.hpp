@@ -148,15 +148,12 @@ public:
 
 	};
 
-	enum class ColliderPushSide : u32
-	{
-
+	enum class PushSide : u32 {
 		None	= 0,
 		Down	= 0x1,
 		Up		= 0x2,
 		Right	= 0x4,
 		Left	= 0x8
-
 	};
 
 	enum class PipeType {
@@ -596,8 +593,8 @@ public:
 
 	static const ActorProfile profile;
 
-	static const ActiveColliderInfo activeColliderInfo;
-	static const ActiveColliderInfo specialColliderInfo;
+	static const AcConfig acConfig;
+	static const AcConfig specialAcConfig;
 	static const FxRect slidingHitboxes[2];						// 0 = short, 1 = tall
 	static const FxRect fenceSlamHitbox;
 
@@ -615,7 +612,7 @@ public:
 	static const fx32 ledgeGrabAnimSpeeds[32];					// [abs(velH) >> 8]
 
 	static const s16 entranceSpawnInvincibleCooldown[22];		// [entrance type]
-	static const CollisionFlag wallJumpCollisionFlags[2];		// [direction]
+	static const AcAttack wallJumpCollisionFlags[2];		// [direction]
 	static const fx32 quicksandVelocitiesX[2];					// [direction]
 	static const u32 liquidWaveLevels[8];						// [powerup]
 	static const fx32 starRollSideSensorSizes[6][2];			// [powerup][bottom/top]
@@ -699,7 +696,7 @@ public:
 	s32 groundRemovedTimer;
 	u32 pipeType;
 	u32 prevAnimID;
-	ColliderPushSide colliderPushSides;
+	PushSide sidesPushed;
 	TileType bottomTileType;
 	TileType lastBottomTileType;
 
@@ -914,14 +911,14 @@ NTR_SIZE_GUARD(Player, 0xBCC);
 
 
 using PlayerFrameMode		= Player::FrameMode;
-using ColliderPushSide		= Player::ColliderPushSide;
+using PlayerPushSide		= Player::PushSide;
 using PlayerPipeType		= Player::PipeType;
 using PlayerDoorType		= Player::DoorType;
 using PlayerConstants		= Player::Constants;
 using PlayerSensorConfig	= Player::SensorConfig;
 using PlayerPowerupParam	= Player::PowerupParam;
 
-NTR_CREATE_BITMASK_ENUM(Player::ColliderPushSide);
+NTR_CREATE_BITMASK_ENUM(Player::PushSide);
 
 
 // Assumed from 020E3824 (ov10)

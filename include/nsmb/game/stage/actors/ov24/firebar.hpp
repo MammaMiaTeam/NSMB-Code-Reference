@@ -2,6 +2,7 @@
 
 #include <nsmb/game/stage/entity.hpp>
 #include <nsmb/core/graphics/3d/model.hpp>
+#include <nsmb/core/graphics/3d/animationctrl.hpp>
 
 // vtable at 0213F934 (ov24)
 class FireBar : public StageEntity {
@@ -53,7 +54,7 @@ public:
 	static const ActorProfile profile;
 
 	// 0213F230
-	static const ActiveColliderInfo activeColliderInfo;
+	static const AcConfig acConfig;
 
 	// 0213FAC0
 	static const StateFunction sMain;

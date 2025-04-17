@@ -1,5 +1,6 @@
 #pragma once
 
+#include "system/app.hpp"
 #include "system/function.hpp"
 #include "system/input.hpp"
 #include "system/memory.hpp"

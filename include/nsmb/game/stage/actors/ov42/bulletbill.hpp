@@ -107,7 +107,7 @@ public:
 	static const ActorProfile profile;
 
 	// 021518DC
-	static const ActiveColliderInfo activeColliderInfo;
+	static const AcConfig acConfig;
 
 	// 021518B0
 	static const s16 rotationsX[8];
@@ -194,7 +194,7 @@ public:
 	static const ActorProfile profile;
 
 	// 021518C0
-	static const ActiveColliderInfo activeColliderInfo;
+	static const AcConfig acConfig;
 
 
 #if NTR_EXT_EXISTS(BanzaiBill)

@@ -55,11 +55,13 @@
 #include "stage/actors/ov40/bosscontroller.hpp"
 #include "stage/actors/ov40/peach.hpp"
 
-// Overlay 42 - BulletBill, BanzaiBill, BulletBillBlaster, BanzaiBillBlaster
+// Overlay 42 - BobOmb, BulletBill, BanzaiBill, BulletBillBlaster, BanzaiBillBlaster
+#include "stage/actors/ov42/bobomb.hpp"
 #include "stage/actors/ov42/bulletbill.hpp"
 #include "stage/actors/ov42/bulletbillblaster.hpp"
 
-// Overlay 48 - WobbleRock
+// Overlay 48 - TiltMetalDish, WobbleRock
+#include "stage/actors/ov48/tiltmetaldish.hpp"
 #include "stage/actors/ov48/wobblerock.hpp"
 
 // Overlay 54 - Checkpoint, CoinSpawner, Trampoline, VolcanoEruption, TileGod
@@ -94,6 +96,9 @@
 
 // Overlay 108 - Broozer
 #include "stage/actors/ov108/broozer.hpp"
+
+// Overlay 120 - Skewer
+#include "stage/actors/ov120/skewer.hpp"
 
 // Overlay 121 - BigSpikedBall, SpikedBall, SpikedBallTrigger
 #include "stage/actors/ov121/bigspikedball.hpp"

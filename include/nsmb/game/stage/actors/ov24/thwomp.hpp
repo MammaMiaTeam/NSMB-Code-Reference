@@ -72,7 +72,7 @@ public:
 	static const ActorProfile profile;
 
 	// 0213F1F8
-	static const ActiveColliderInfo activeColliderInfo;
+	static const AcConfig acConfig;
 
 	// 0213F1E8
 	static LineSensorH topSensor;
@@ -142,7 +142,7 @@ public:
 	static const ActorProfile profile;
 
 	// 0213F214
-	static const ActiveColliderInfo activeColliderInfo;
+	static const AcConfig acConfig;
 
 	// 0213F1C8
 	static LineSensorH topSensor;

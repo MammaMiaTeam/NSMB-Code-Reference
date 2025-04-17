@@ -40,8 +40,10 @@ public:
 	// 021478E0
 	bool fallState();
 
+
 	// 02147BFC
 	static bool loadResources();
+
 
 	static constexpr u16 ObjectID = 170;
 
@@ -58,12 +60,12 @@ public:
 
 	RotatingPlatform platform;
 
-	u32 unused4FC;
+	fx32 unused4FC;
 
-	s16 wobbleAngle;
-	s16 previousAngle;
+	s16 tiltAngle;
+	s16 lastAngle;
 	s8 updateStep;
-	s8 wobbleForce;
+	s8 tiltVelocity;
 
 
 #if NTR_EXT_EXISTS(WobbleRock)

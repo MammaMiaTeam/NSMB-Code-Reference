@@ -599,7 +599,7 @@ public:
 	static const u16 horizontalKeysMask[2];
 	static const CollisionMgrResult wallClipCollisionMasks[2];
 	static const u16 horizontalInvKeysMask[2];
-	static const CollisionFlag wallCollisionFlags[2];
+	static const AcAttack wallCollisionFlags[2];
 	static const s32 horizontalKeysUnitDirection[2];
 	static const FxRect defaultBoundingBox;
 	static const fx32 walkSpeedJumpModifier[16];

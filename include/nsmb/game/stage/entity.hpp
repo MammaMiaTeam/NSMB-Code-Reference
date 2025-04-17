@@ -7,7 +7,7 @@
 struct ObjectBank;
 class Player;
 
-enum class CollisionSwitch : u16
+enum class EntityProperties : u16
 {
 	None = 0,
 	Immune				= (1U << 0),	// Immune to all collisions?
@@ -25,7 +25,7 @@ enum class CollisionSwitch : u16
 	// 1U << 13 - used in Manhole
 	NoFireball			= (1U << 14),	// Ignore fireball collision
 };
-NTR_CREATE_BITMASK_ENUM(CollisionSwitch);
+NTR_CREATE_BITMASK_ENUM(EntityProperties);
 
 
 enum class SpawnSettings : u16
@@ -89,8 +89,8 @@ struct ObjectInfo
 	// StageEntity::viewOffset
 	viewOffset;
 
-	// StageEntity::collisionSwitch
-	CollisionSwitch collisionSwitch;
+	// StageEntity::properties
+	EntityProperties properties;
 
 	// StageEntity::spawnSettings
 	SpawnSettings spawnSettings;
@@ -101,7 +101,7 @@ struct ObjectInfo
 		size{ 0, 0 },
 		spawnOffset{ 0, 0 },
 		viewOffset{ 0, 0 },
-		collisionSwitch(CollisionSwitch::None),
+		properties(EntityProperties::None),
 		spawnSettings(SpawnSettings::None)
 	{}
 
@@ -111,68 +111,78 @@ struct ObjectInfo
 		s16 renderSizeX = 0, s16 renderSizeY = 0,
 		s16 spawnOffsetX = 0, s16 spawnOffsetY = 0,
 		s16 viewOffsetX = 0, s16 viewOffsetY = 0,
-		CollisionSwitch collisionSwitch = CollisionSwitch::None,
+		EntityProperties properties = EntityProperties::None,
 		SpawnSettings spawnSettings = SpawnSettings::None
 	) :
 		position{ positionX, positionY },
 		size{ renderSizeX, renderSizeY },
 		spawnOffset{ spawnOffsetX, spawnOffsetY },
 		viewOffset{ viewOffsetX, viewOffsetY },
-		collisionSwitch(collisionSwitch),
+		properties(properties),
 		spawnSettings(spawnSettings)
 	{}
 
 };
 
 
-enum class SimplePlayerCollisionFlags : u16
-{
-	None			= 0,
-	Player0			= 1 << 0,
-	Player1			= 1 << 1,
-	SpecialPlayer0	= 1 << 2,
-	SpecialPlayer1	= 1 << 3,
+enum class SimplePlayerCollisionFlags : u16 {
+	None			= 0x0,
+	Player0			= 0x1,
+	Player1			= 0x2,
+	SpecialPlayer0	= 0x10,
+	SpecialPlayer1	= 0x20
 };
 NTR_CREATE_BITMASK_ENUM(SimplePlayerCollisionFlags);
 
 
-struct SimplePlayerCollision
-{
+struct SimplePlayerCollision {
 	Player* player;
-	fx32 x, y;
+	fx32 dx, dy;
 };
 
-struct SimplePlayerSpecialCollision
-{
+struct SimplePlayerSpecialCollision {
 	Player* player;
-	fx32 x, y;
+	fx32 dx, dy;
 	u16 flags;
 };
 
+struct EventMask {
+	u32 data[2];
+};
 
 class alignas(4) StageEntity : public StageActor
 {
 public:
 
-	enum class UpdateStateID : u32
-	{
+	enum class UpdateStateID : u32 {
 		Main,
-		SubState1,
+		State1,
 		Defeated,
 		DefeatedMega,
 		FenceTurning,
 		Carried,
 		Released,
 		Dropped,
-		Thrown,
-		ShellRolling,
+		DroppedHeavy,
+		Rolling,
 	};
 
-	enum class ThrowBehavior : u16
+	enum class ScoreType : u8 {
+		Regular,  // Only works in singleplayer
+		Enhanced,
+		None      // Used by StarCoin
+	};
+
+	enum class CarriedAction : u32 {
+		Released = 0x1,
+		Thrown = 0x2
+	};
+
+	enum class ReleaseMode : u16
 	{
-		None,
-		Drop,
-		Throw
+		Release,
+		DropLight,
+		DropHeavy
 	};
 
 	enum class CollisionResponse
@@ -215,100 +225,104 @@ public:
 	static SimplePlayerCollisionFlags simplePlayerCollisionFlags[2];
 
 
-	u16 unk2C0;
-	CollisionSwitch collisionSwitch;
+	u8 unused2C0;
+	u8 align2C1; // Alignment
+
+	EntityProperties properties;
 	SpawnSettings spawnSettings;
-	u16 unk2C6;
-	u8 userCooldown1;
-	u8 userCooldown2;
-	u8 unk2CA;
-	u8 unk2CB;
-	u32 unk2CC;
+	u16 inactiveDestroyFlag;
+
+	u8 cooldownA;
+	u8 cooldownB;
+	u8 align2CA; // Alignment
+	u8 align2CB; // Alignment
+
+	u32 unused2CC;
+
 	SimplePlayerCollision simplePlayerCollision[2];
 	SimplePlayerSpecialCollision simplePlayerSpecialCollision[2];
-	Vec3 unk308;
-	Vec3 externalForce;
-	u32 unk328;
-	u32 unk32C;
 
-	// No idea why packed is required
-	u64 eventMask __attribute__((packed));
+	Vec3 unused308;
+	Vec3 externalForce;
+	fx32 releaseForceX;
+	fx32 releaseForceY;
+
+	EventMask eventMask;
 	u8 events[2];
-	u16 unk33A; // possibly alignment
+
+	u8 align33A; // Alignment
+	u8 align33B; // Alignment
 
 	UpdateStateID updateStateID;
 	u32 unk340;
-	u32 playerID;
+	u32 spawnPlayerID;
 	u32 defeatSFX;
 	u32 liquidWaveHeight;
-	u32 bitfield;
-	u32 unk354;
+	CarriedAction carriedAction;
+	u32 collisionData;
 
-	// scale for wiggling effect
 	Vec3 wiggleScale;
 
-	// render/despawn box vectors
 	Vec2 activeSize;
 	Vec2 renderSize;
 	Vec2 viewOffset;
 
-	// physics collision vectors
 	Vec2 collisionSelfPos;
 	Vec2 collisionActorPos;
 
-	fx32 wiggleOscillator;
-	u32 unk3A8;
-	u32 unk3AC;
+	fx32 wiggleFactor;
+	u32 unused3A8;
+	u32 unused3AC;
 	CollisionType collisionType;
-	fx32 unk3B4;
+	fx32 kickedInWallDistance;
 
 	u16 wiggleTimer;
 	u16 liquidFlag;
 
 	// Behavior on entity released (note that only Bob-Ombs and trampolines will trigger the player drop animation)
-	ThrowBehavior throwBehavior;
+	ReleaseMode releaseMode;
 	u16 thrownFlag;
 
-	u16 unk3C0;
+	u16 unused3C0;
 	u16 playerCollisionCooldown[2];
 	SimplePlayerCollisionFlags simplePlayerCollisionResult;
 
 	u16* objectRespawnTimer;
 
-	u8 exitedLiquid;
-	u8 lastLiquidFlag;
-	u8 decrement; // not ticked automatically
+	u8 defeatedLeftLiquid;
+	u8 defeatedInLiquid;
+	u8 manualTimerA; // not ticked automatically
 	u8 unk3CF;
-	u8 unk3D0; // 3rd cooldown
-	u8 unk3D1;
-	u8 unk3D2;
-	u8 unk3D3;
+	u8 cooldownC; // 3rd cooldown
+	u8 align3D1; // Alignment
+	u8 align3D2; // Alignment
+	u8 align3D3; // Alignment
 
 	u8* objectSpawnFlags; // (re)spawn flags: 1 = created/exists, 8 = permanently destroyed
 
 	u8 playerDirection;
 	u8 scoreCombo;
-	u8 enhancedScore;
-	u8 unk3DB;
-	bool spawnedByCreateActorMaybe; // bool
-	u8 unk3DD;
+	ScoreType scoreType;
+	bool kickedFaster;
+	bool unused3DC;
+	u8 unused3DD;
 	u8 blockHitDirection;
 	u8 defeatedArg;
-	bool permanentDelete;
-	u8 unk3E1;
-	u8 usedInLiquid;
-	u8 unk3E3;
-	bool defeatRollRelative; // bool
-	bool invisible; // bool
+	bool permanentDestroy;
+	u8 unused3E1;
+	bool forceUpdate;
+	s8 unused3E3;
+	bool relativeDefeatSpin;
+	bool forceRender;
 	bool quicksandFlag;
 	bool slipperyFlag;
-	u8 unk3E8;
-	u8 unk3E9;
-	u8 defeatedDirection;
-	u8 freezeRelated;
+	u8 stompTriggerHeight;
+	u8 unused3E9;
+	u8 collisionDirection;
+	bool freezeFlag;
 	bool backLayer;
-	u8 unk3ED;
-	s8 functionStep; // generic function step (where is it used??)
+	bool kickedInWall;
+	s8 functionStep; // generic function step, used in InvisiblePodoboo
 
 
 
@@ -371,7 +385,7 @@ public:
 	static bool isBelowCamera(fx32 positionY, ActiveCollider& collider, u8 playerID);
 
 	NTR_INLINE static bool isAboveCamera(fx32 positionY, ActiveCollider& collider, u8 playerID) {
-		return -(positionY + collider.hitbox.rect.y + collider.hitbox.rect.halfHeight) > Stage::cameraY[playerID];
+		return -(positionY + collider.config.rect.y + collider.config.rect.halfHeight) > Stage::cameraY[playerID];
 	}
 
 	// 02098e08
@@ -401,10 +415,10 @@ public:
 	CollisionResponse updateCollisionSensors();
 
 	// 02099250
-	bool checkPlayersInOffset(fx32 x, fx32 y) const;
+	bool checkPlayersInRange(fx32 x, fx32 y) const;
 
 	// 02099354
-	bool checkPlayersInOffset(fx32 x) const;
+	bool checkPlayersInRange(fx32 x) const;
 
 	// 020993ec
 	bool rotateToTarget(s16 target[2], s16 step[2]);
@@ -422,16 +436,16 @@ public:
 	void destroy(bool permanent);
 
 	// 020998e4
-	void updateBounce(fx32 velocityStopY, fx32 amountX, fx32 amountY);
+	void updateBounce(fx32 thresholdY, fx32 amountX, fx32 amountY);
 
 	// 0209997c
-	static void damageEntityCallback(ActiveCollider& self, ActiveCollider& other);
+	static void entityAsWeaponActiveCallback(ActiveCollider& self, ActiveCollider& other);
 
 	// 02099b6c
-	static void shellCallback(ActiveCollider& self, ActiveCollider& other);
+	static void shellActiveCallback(ActiveCollider& self, ActiveCollider& other);
 
 	// 02099fb4
-	static void simplePlayerCallback(ActiveCollider& self, ActiveCollider& other);
+	static void simplePlayerActiveCallback(ActiveCollider& self, ActiveCollider& other);
 
 	// 0209a070
 	// static void spawnBrokenPipe(u8 a, u8 b, u8 c) ;
@@ -446,9 +460,10 @@ public:
 	void attachToPlayerHands(fx32 z, fx32 y, fx32 x);
 
 	// 0209a23c (TODO)
-	u32 updateSolidActiveCollider(u32 unk1, u32 flags, u8 playerID);
+	u32 updateSolidActiveCollider(bool push, u32 flags, u8 playerID);
 
 	// 0209a4f0
+	bool canPlayerStomp(ActiveCollider& collider, Player& player, bool allowClippedJump);
 
 	// 0209a5bc
 	void onPlayerStomp(Player& player, fx32 jumpVelocity, bool noPoints);
@@ -456,17 +471,21 @@ public:
 	// 0209a80c
 	PlayerStompType updatePlayerStomp(ActiveCollider& collider, fx32 jumpVelocity, bool allowClippedJump, bool noPoints);
 
+	// Stage Beaten :  800, 1000, 2000, 4000, 8000, 1-UP, 1-UP, 1-UP, 1-UP, 1-UP
+
 	// 0209a938
-	void getScorePointsSetB(u32 type, fx32 x, fx32 y, s32 playerID) const;
+	void getScorePointsStageBeaten(u32 type, fx32 x, fx32 y, s32 playerID) const;
 
 	// 0209a990
-	static void getScorePointsSetB(const Vec3& position, u32 type, s32 playerID);
+	static void getScorePointsStageBeaten(const Vec3& position, u32 type, s32 playerID);
+
+	// Enhanced     : 1000, 1000, 2000, 4000, 8000, 1-UP, 1-UP, 1-UP, 1-UP, 1-UP
 
 	// 0209aa04
-	void getScorePointsSetC(u32 type, fx32 x, fx32 y, s32 playerID) const;
+	void getScorePointsEnhanced(u32 type, fx32 x, fx32 y, s32 playerID) const;
 
 	// 0209aa5c
-	static void getScorePointsSetC(const Vec3& position, u32 type, s32 playerID);
+	static void getScorePointsEnhanced(const Vec3& position, u32 type, s32 playerID);
 
 	// 0209aad0
 	static void spawnRedCoinNumber(const Vec3& position, u32 coins, s32 playerID);
@@ -474,11 +493,14 @@ public:
 	// 0209ab04
 	static void getCollectablePoints(u32 type, s32 playerID);
 
+	// Regular      :  100,  200,  400,  800, 1000, 2000, 4000, 8000, 1-UP,   10
+	// Regular score only works in singleplayer
+
 	// 0209ab90
-	void getScorePointsSetA(u32 type, fx32 x, fx32 y, s32 playerID) const;
+	void getScorePointsRegular(u32 type, fx32 x, fx32 y, s32 playerID) const;
 
 	// 0209ac0c
-	static void getScorePointsSetA(const Vec3& position, u32 type, s32 playerID);
+	static void getScorePointsRegular(const Vec3& position, u32 type, s32 playerID);
 
 	// 0209ac8c
 	u8 getVerticalDirectionToPlayer(const Vec3& position) const;
@@ -581,9 +603,9 @@ public:
 	// 0209f824
 	virtual bool updateDropped();
 	// 0209f6c4
-	virtual bool updateThrown();
+	virtual bool updateDroppedHeavy();
 	// 0209f0e4
-	virtual bool updateShellRolling();
+	virtual bool updateRolling();
 
 	// 0209d9fc
 	virtual void updateAnimation();
@@ -599,7 +621,7 @@ public:
 	// 020a00ac
 	virtual void released();
 	// 0209f574
-	virtual void shellHit(Player& player);
+	virtual void shellStarted(Player& player);
 	// 0209f3d8
 	virtual void shellKicked();
 	// 0209f354
@@ -671,4 +693,5 @@ public:
 };
 NTR_SIZE_GUARD(StageEntity, 0x3F4);
 
+NTR_CREATE_BITMASK_ENUM(StageEntity::CarriedAction);
 NTR_CREATE_BITMASK_ENUM(StageEntity::CollisionResponse);

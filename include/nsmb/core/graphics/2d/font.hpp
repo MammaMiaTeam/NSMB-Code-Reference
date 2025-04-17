@@ -614,7 +614,7 @@ public:
 	static void loadOAMAttributes(FontTile* tiles, u32 count, GXOamAttr* tileAttributes, u16 tileBase, u8 palette, u8 priority);
 
 	//0201486c
-	static void renderOpaqueBox(s32 x, s32 y, const Vec2& scale);
+	static void renderOpaqueBox(s32 x, s32 y, const Vec2* scale);
 
 	//02014824
 	static void renderAButton(s32 x, s32 y);

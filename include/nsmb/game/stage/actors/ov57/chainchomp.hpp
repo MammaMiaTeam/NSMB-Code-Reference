@@ -85,7 +85,7 @@ public:
 	static const ActorProfile profile;
 
 	// 0217550C
-	static const ActiveColliderInfo activeColliderInfo;
+	static const AcConfig acConfig;
 
 	// 021754D4
 	static const s16 rotationStepsY[2];

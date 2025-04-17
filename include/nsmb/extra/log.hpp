@@ -224,7 +224,8 @@ public:
 
 		};
 
-		PTMF ptmf = func;
+		PTMF ptmf;
+		ptmf.func = func;
 
 		return *this << "[" << ptmf.ptr << " " << ptmf.param << "]";
 

@@ -1,6 +1,5 @@
 #pragma once
 
-#include "entity.hpp"
 #include "layout/stagelayout.hpp"
 #include "layout/data.hpp"
 #include <nsmb/core/net/util.hpp>
@@ -83,7 +82,7 @@ namespace Stage
 	extern u32 megaGroundPoundViews[2];
 
 	// 020ca850
-	extern ActorCategory actorFreezeFlag;
+	extern u8 actorFreezeFlag;
 
 	// 02085a10
 	extern bool challengeModeEnabled;

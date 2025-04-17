@@ -101,7 +101,7 @@ public:
 	// 02143938
 	static const s16 neckTargetAngles[4][2][2];
 	// 0214391C
-	static const ActiveColliderInfo activeColliderInfo;
+	static const AcConfig acConfig;
 	// 0214390C
 	static const fx32 coinVelocitiesY[4];
 	// 021438FC

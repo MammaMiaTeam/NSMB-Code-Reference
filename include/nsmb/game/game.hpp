@@ -64,10 +64,15 @@ namespace WrapType
 	constexpr auto None		 = 0;
 	constexpr auto Static	 = 1;
 	constexpr auto Scrolling = 2;
+	constexpr auto Count     = 3;
 }
 
 namespace Game
 {
+
+	constexpr s8 DefaultStageEntrance = -1;
+	constexpr s8 CheckpointStageEntrance = -2;
+
 
 	using WrapFunction = void(*)(Vec3&, bool);
 

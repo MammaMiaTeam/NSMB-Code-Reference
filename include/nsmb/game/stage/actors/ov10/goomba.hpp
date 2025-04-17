@@ -29,19 +29,19 @@ public:
 	bool updateDefeated() override;
 
 	// 020E1B78
-	virtual void onStomped();
+	void onStomped() override;
 	// 020E1B08
-	virtual void onMegaWalkShockwave();
+	void onMegaWalkShockwave() override;
 
 	// 020E2228
-	bool playerCollision(ActiveCollider& self, ActiveCollider& other);
+	bool playerCollision(ActiveCollider& self, ActiveCollider& other) override;
 	// 020E2018
-	void entityCollision(ActiveCollider& self, StageActor& actor);
+	void entityCollision(ActiveCollider& self, StageActor& actor) override;
 	// 020E1BB0
-	void damagePlayer(ActiveCollider& self, Player& player);
+	void damagePlayer(ActiveCollider& self, Player& player) override;
 
 	// 020E22B0
-	void doPlayerJump(Player& player, fx32 jumpVelocity);
+	void doPlayerJump(Player& player, fx32 jumpVelocity) override;
 
 	// 020E23F4
 	bool updateMusicEvents(fx32 jumpVelocity);
@@ -81,7 +81,7 @@ public:
 	static const ActorProfile profile;
 
 	// 02121854
-	static const ActiveColliderInfo activeColliderInfo;
+	static const AcConfig acConfig;
 
 	// 02121844
 	static const fx32 pipeTargetsY[4];
