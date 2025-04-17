@@ -97,6 +97,9 @@
 // Overlay 108 - Broozer
 #include "stage/actors/ov108/broozer.hpp"
 
+// Overlay 120 - Skewer
+#include "stage/actors/ov120/skewer.hpp"
+
 // Overlay 121 - BigSpikedBall, SpikedBall, SpikedBallTrigger
 #include "stage/actors/ov121/bigspikedball.hpp"
 #include "stage/actors/ov121/spikedball.hpp"

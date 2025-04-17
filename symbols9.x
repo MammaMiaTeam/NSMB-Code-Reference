@@ -7971,6 +7971,81 @@ _ZN7Broozer7profileE									= 0x0218AEF0;
 _ZTV7Broozer											= 0x0218AEFC;
 
 
+/* arm9_ov120 */
+/*----------------------------------------------------------------*/
+/*---------------------------- skewer ----------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN6SkewerD0Ev												= 0x0218C848; /* Skewer::~Skewer() */
+_ZN6SkewerD1Ev												= 0x0218C7C0; /* Skewer::~Skewer() */
+_ZN6SkewerD2Ev												= 0x0218C7C0; /* Skewer::~Skewer() */
+_ZN6Skewer8onCreateEv                                       = 0x0218CE4C; /* Skewer::onCreate() */
+_ZN6Skewer9onDestroyEv                                      = 0x0218C8E0; /* Skewer::onDestroy() */
+_ZN6Skewer8onRenderEv                                       = 0x0218C930; /* Skewer::onRender() */
+_ZN6Skewer18onCleanupResourcesEv                            = 0x0218C92C; /* Skewer::onCleanupResources() */
+_ZN6Skewer18onPrepareResourcesEv                            = 0x0218D070; /* Skewer::onPrepareResources() */
+_ZN6Skewer10updateMainEv                                    = 0x0218D0CC; /* Skewer::updateMain() */
+_ZN6Skewer15playerCollisionER14ActiveColliderS1_            = 0x0218C8D8; /* Skewer::playerCollision(ActiveCollider&, ActiveCollider&) */
+_ZNK6Skewer10isInCameraEv                                   = 0x0218D5E0; /* Skewer::isInCamera() const */
+_ZN6Skewer6updateEv                                         = 0x0218D2D4; /* Skewer::update() */
+_ZN6Skewer13onReachedPeakEv                                 = 0x0218D1B8; /* Skewer::onReachedPeak() */
+_ZNK6Skewer11getTimingInfoERmRbm                            = 0x0218D120; /* Skewer::getStepInfo(unsigned long&, bool&, unsigned long) const */
+_ZN6Skewer13installStatesEv                                 = 0x0218CCF8; /* Skewer::installStates() */
+_ZN6Skewer16prepareCollisionEv                              = 0x0218CAF0; /* Skewer::prepareCollision() */
+_ZN6Skewer12programStartEv                                  = 0x0218CAA8; /* Skewer::programStart() */
+_ZN6Skewer16expandingRegularEm                              = 0x0218D2BC; /* Skewer::expandingRegular(unsigned long) */
+_ZN6Skewer13expandingFastEm                                 = 0x0218D2A4; /* Skewer::expandingFast(unsigned long) */
+_ZN6Skewer13expandingSlowEm                                 = 0x0218D28C; /* Skewer::expandingSlow(unsigned long) */
+_ZN6Skewer17retractingRegularEm                             = 0x0218D26C; /* Skewer::retractingRegular(unsigned long) */
+_ZN6Skewer14retractingFastEm                                = 0x0218D250; /* Skewer::retractingFast(unsigned long) */
+_ZN6Skewer14retractingSlowEm                                = 0x0218D230; /* Skewer::retractingSlow(unsigned long) */
+_ZN6Skewer14getSkewerCountEv                                = 0x0218CA7C; /* Skewer::getSkewerCount() */
+_ZN6Skewer13loadResourcesEv                                 = 0x0218D0A8; /* Skewer::loadResources() */
+
+_ZN9SkewerMgrC1Ev                                           = 0x0218D860; /* SkewerMgr::SkewerMgr() */
+_ZN9SkewerMgrC2Ev                                           = 0x0218D860; /* SkewerMgr::SkewerMgr() */
+_ZN9SkewerMgrD1Ev                                           = 0x0218D85C; /* SkewerMgr::~SkewerMgr() */
+_ZN9SkewerMgrD2Ev                                           = 0x0218D85C; /* SkewerMgr::~SkewerMgr() */
+_ZN9SkewerMgr4linkEP6Skewer                                 = 0x0218D71C; /* SkewerMgr::link(Skewer*) */
+_ZN9SkewerMgr6unlinkEP6Skewer                               = 0x0218D6CC; /* SkewerMgr::unlink(Skewer*) */
+_ZN9SkewerMgr11synchronizeEm                                = 0x0218D658; /* SkewerMgr::synchronize(unsigned long) */
+_ZN9SkewerMgr10updateListEv                                 = 0x0218D7E0; /* SkewerMgr::updateList() */
+_ZN9SkewerMgr11tryActivateEv                                = 0x0218D780; /* SkewerMgr::tryActivate() */
+_ZN9SkewerMgr15isFrameUnlockedEv                            = 0x0218D818; /* SkewerMgr::isFrameUnlocked() */
+_ZN9SkewerMgr9lockFrameEv                                   = 0x0218D834; /* SkewerMgr::lockFrame() */
+_ZN9SkewerMgr11unlockFrameEv                                = 0x0218D848; /* SkewerMgr::unlockFrame() */
+
+_ZN6Skewer15downTipAcConfigE                                = 0x0218DB50; /* Skewer::downTipAcConfig */
+_ZN6Skewer16upPillarAcConfigE                               = 0x0218DB6C; /* Skewer::upPillarAcConfig */
+_ZN6Skewer13upTipAcConfigE                                  = 0x0218DB88; /* Skewer::upTipAcConfig */
+_ZN6Skewer18leftPillarAcConfigE                             = 0x0218DBA4; /* Skewer::leftPillarAcConfig */
+_ZN6Skewer15leftTipAcConfigE                                = 0x0218DBC0; /* Skewer::leftTipAcConfig */
+_ZN6Skewer18downPillarAcConfigE                             = 0x0218DBDC; /* Skewer::downPillarAcConfig */
+_ZN6Skewer19rightPillarAcConfigE                            = 0x0218DBF8; /* Skewer::rightPillarAcConfig */
+_ZN6Skewer16rightTipAcConfigE                               = 0x0218DC14; /* Skewer::rightTipAcConfig */
+_ZN6Skewer17distanceTableFastE                              = 0x0218DC30; /* Skewer::distanceTableFast */
+_ZN6Skewer18boundingRectanglesE                             = 0x0218DC68; /* Skewer::boundingRectangles */
+_ZN6Skewer20distanceTableRegularE                           = 0x0218DCA8; /* Skewer::distanceTableRegular */
+_ZN6Skewer17distanceTableSlowE                              = 0x0218DD08; /* Skewer::distanceTableSlow */
+_ZN6Skewer15retractProgramsE                                = 0x0218DED4; /* Skewer::retractPrograms */
+_ZN6Skewer14expandProgramsE                                 = 0x0218DEF8; /* Skewer::expandPrograms */
+_ZN6Skewer9syncTimerE                                       = 0x0218DE40; /* Skewer::syncTimer */
+
+_ZN9SkewerMgr11frameLockedE                                 = 0x0218E040; /* SkewerMgr::frameLocked */
+_ZN9SkewerMgr8managersE                                     = 0x0218E058; /* SkewerMgr::managers */
+
+_ZN10SkewerDown7profileE                                    = 0x0218DEC8; /* SkewerDown::profile */
+_ZN8SkewerUp7profileE                                       = 0x0218DEA4; /* SkewerUp::profile */
+_ZN10SkewerLeft7profileE                                    = 0x0218DEB0; /* SkewerLeft::profile */
+_ZN11SkewerRight7profileE                                   = 0x0218DEBC; /* SkewerRight::profile */
+_ZN19DistancedSkewerDown7profileE                           = 0x0218DE98; /* DistancedSkewerDown::profile */
+_ZN17DistancedSkewerUp7profileE                             = 0x0218DE8C; /* DistancedSkewerUp::profile */
+_ZN19DistancedSkewerLeft7profileE                           = 0x0218DE74; /* DistancedSkewerLeft::profile */
+_ZN20DistancedSkewerRight7profileE                          = 0x0218DE80; /* DistancedSkewerRight::profile */
+
+_ZTV6Skewer                                                 = 0x0218DF24 - 8; /* vtable for Skewer */
+
+
 /* arm9_ov121 */
 /*----------------------------------------------------------------*/
 /*-------------------------- spiked ball -------------------------*/
