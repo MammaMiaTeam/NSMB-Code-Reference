@@ -355,6 +355,25 @@ public:
 
 	}
 
+	NTR_FORMAT(printf, 1, 2) static void println(const char* fmt, ...) {
+
+		va_list vl;
+		va_start(vl, fmt);
+
+		int len = OS_VSNPrintf(buffer, BufferSize - 2, fmt, vl);
+		va_end(vl);
+
+		if (len >= 0 && len < BufferSize - 2) {
+			buffer[len] = '\n';
+			buffer[len + 1] = '\0';
+    	} else {
+			buffer[BufferSize - 1] = '\0';
+    	}
+
+		flush();
+
+	}
+
 	NTR_INLINE static void vprint(const char* fmt, va_list vl) {
 
 		OS_VSNPrintf(buffer, BufferSize, fmt, vl);
