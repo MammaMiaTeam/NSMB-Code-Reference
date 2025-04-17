@@ -68,7 +68,7 @@ public:
 	static const ActorProfile profile;
 
 	// 02189358
-	static const ActiveColliderInfo activeColliderInfo;
+	static const AcConfig acConfig;
 
 
 	StateFunction updateFunction;

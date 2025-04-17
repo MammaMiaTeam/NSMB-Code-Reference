@@ -93,22 +93,22 @@ public:
 
 	NTR_INLINE void initializeCloud() { // Inlined in several virtuals
 
-	    colliderInfo = {
+	    currentAcConfig = {
 
 	        0, 0,
 	        12.0fx, 12.0fx,
 
-	        CollisionGroup::Hostile,
-	        CollisionFlag::None,
-	        MAKE_GROUP_MASK(CollisionGroup::Player, CollisionGroup::PlayerSpecial),
-	        MAKE_FLAG_MASK_EX(CollisionFlag::None),
+	        AcGroup::Chasing,
+	        AcAttack::None,
+	        AC_GROUP_MASK(AcGroup::Player, AcGroup::PlayerSpecial),
+	        AC_ATTACK_MASK_EXC(AcAttack::None),
 	        0,
 
 	        StageEntity::damagePlayerCallback
 
 	    };
 
-	    activeCollider.init(this,colliderInfo,0);
+	    activeCollider.init(this,currentAcConfig,0);
 	    activeCollider.link();
 
 	    velocity = {};
@@ -137,7 +137,7 @@ public:
 	AnimationCtrl blinkAnimation;
 	StateFunction updateFunction;
 	StateFunction prevUpdateFunction;
-	ActiveColliderInfo colliderInfo;
+	AcConfig currentAcConfig;
 	Vec3 handPosition;
 	u32 spinyGUID;
 	u32 spawnerGUID;

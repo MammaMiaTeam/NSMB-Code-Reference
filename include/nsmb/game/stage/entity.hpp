@@ -385,7 +385,7 @@ public:
 	static bool isBelowCamera(fx32 positionY, ActiveCollider& collider, u8 playerID);
 
 	NTR_INLINE static bool isAboveCamera(fx32 positionY, ActiveCollider& collider, u8 playerID) {
-		return -(positionY + collider.hitbox.rect.y + collider.hitbox.rect.halfHeight) > Stage::cameraY[playerID];
+		return -(positionY + collider.config.rect.y + collider.config.rect.halfHeight) > Stage::cameraY[playerID];
 	}
 
 	// 02098e08
@@ -439,13 +439,13 @@ public:
 	void updateBounce(fx32 thresholdY, fx32 amountX, fx32 amountY);
 
 	// 0209997c
-	static void damageEntityCallback(ActiveCollider& self, ActiveCollider& other);
+	static void entityAsWeaponActiveCallback(ActiveCollider& self, ActiveCollider& other);
 
 	// 02099b6c
-	static void shellCallback(ActiveCollider& self, ActiveCollider& other);
+	static void shellActiveCallback(ActiveCollider& self, ActiveCollider& other);
 
 	// 02099fb4
-	static void simplePlayerCallback(ActiveCollider& self, ActiveCollider& other);
+	static void simplePlayerActiveCallback(ActiveCollider& self, ActiveCollider& other);
 
 	// 0209a070
 	// static void spawnBrokenPipe(u8 a, u8 b, u8 c) ;

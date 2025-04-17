@@ -120,7 +120,7 @@ public:
 	static const ActorProfile profile;
 
 	// 02179154
-	static const ActiveColliderInfo activeColliderInfo;
+	static const AcConfig acConfig;
 
 	// 02179190
 	static const fx32 chaseVelocitiesY[5][2];

@@ -593,8 +593,8 @@ public:
 
 	static const ActorProfile profile;
 
-	static const ActiveColliderInfo activeColliderInfo;
-	static const ActiveColliderInfo specialColliderInfo;
+	static const AcConfig acConfig;
+	static const AcConfig specialAcConfig;
 	static const FxRect slidingHitboxes[2];						// 0 = short, 1 = tall
 	static const FxRect fenceSlamHitbox;
 
@@ -612,7 +612,7 @@ public:
 	static const fx32 ledgeGrabAnimSpeeds[32];					// [abs(velH) >> 8]
 
 	static const s16 entranceSpawnInvincibleCooldown[22];		// [entrance type]
-	static const CollisionFlag wallJumpCollisionFlags[2];		// [direction]
+	static const AcAttack wallJumpCollisionFlags[2];		// [direction]
 	static const fx32 quicksandVelocitiesX[2];					// [direction]
 	static const u32 liquidWaveLevels[8];						// [powerup]
 	static const fx32 starRollSideSensorSizes[6][2];			// [powerup][bottom/top]

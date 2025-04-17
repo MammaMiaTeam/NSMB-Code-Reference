@@ -44,7 +44,7 @@ public:
 	static constexpr u16 RenderPriority = 180;
 
 	static const ActorProfile profile;
-	static const ActiveColliderInfo activeColliderInfo;
+	static const AcConfig acConfig;
 	static const PointSensor sideSensor;
 	static const PointSensor bottomSensor;
 	static const PointSensor topSensor;

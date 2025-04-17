@@ -96,7 +96,7 @@ public:
 	static const ActorProfile profile;
 
 	// 02144FE0
-	static const ActiveColliderInfo activeColliderInfo;
+	static const AcConfig acConfig;
 
 	// 02144FD4
 	static PointSensor sideSensor;

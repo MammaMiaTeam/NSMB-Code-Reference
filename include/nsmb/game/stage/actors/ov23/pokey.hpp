@@ -50,7 +50,7 @@ public:
 
 	static const ActorProfile profile;
 
-	static const ActiveColliderInfo activeColliderInfo;
+	static const AcConfig acConfig;
 
 	static const PointSensor bottomSensor;
 	static const PointSensor sideSensor;
@@ -66,7 +66,7 @@ public:
 	StateFunction updateFunction;
 	StateFunction lastUpdateFunction;
 
-	ActiveColliderInfo colliderInfo;
+	AcConfig currentAcConfig;
 
 	u16 removedBodyParts;
 	u16 hiddenBodyParts;

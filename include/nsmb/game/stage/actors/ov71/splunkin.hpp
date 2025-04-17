@@ -72,7 +72,7 @@ public:
 	static const ActorProfile profile;
 
 	// 0x021792D4
-	static const ActiveColliderInfo activeColliderInfo;
+	static const AcConfig acConfig;
 
 	// 0x021792C8
 	static const PointSensor sideSensor;

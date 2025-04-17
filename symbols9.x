@@ -2969,9 +2969,9 @@ _ZN11StageEntity10getActorIDEt										= 0x02099590;
 _ZN11StageEntity13setTimedEventEmlbbb								= 0x020995a4;
 _ZN11StageEntity7destroyEb											= 0x02099884;
 _ZN11StageEntity12updateBounceElll									= 0x020998e4;
-_ZN11StageEntity20damageEntityCallbackER14ActiveColliderS1_			= 0x0209997c;
-_ZN11StageEntity13shellCallbackER14ActiveColliderS1_				= 0x02099b6c;
-_ZN11StageEntity20simplePlayerCallbackER14ActiveColliderS1_			= 0x02099fb4;
+_ZN11StageEntity28entityAsWeaponActiveCallbackER14ActiveColliderS1_	= 0x0209997c;
+_ZN11StageEntity19shellActiveCallbackER14ActiveColliderS1_			= 0x02099b6c;
+_ZN11StageEntity26simplePlayerActiveCallbackER14ActiveColliderS1_	= 0x02099fb4;
 _ZN11StageEntity9getRandomEv										= 0x0209a0e8;
 _ZN11StageEntity22tryAttachToPlayerHandsElll						= 0x0209a0f4;
 _ZN11StageEntity19attachToPlayerHandsElll							= 0x0209a144;
@@ -3941,33 +3941,46 @@ _ZTV13RoundPlatform								= 0x0203c630;
 /*----------------------- active collider ------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN14ActiveColliderC1Ev												= 0x020a4868;
-_ZN14ActiveColliderD0Ev												= 0x020a4820;
-_ZN14ActiveColliderD1Ev												= 0x020a484c;
-_ZN14ActiveColliderD2Ev												= 0x020a484c;
-_ZN14ActiveCollider5resetEv											= 0x020a4808;
-_ZN14ActiveCollider4initEP10StageActorRK18ActiveColliderInfoh		= 0x020a47a0;
-_ZN14ActiveCollider22setPositionAroundPivotEtll						= 0x020a4758;
-_ZN14ActiveCollider14clearCollisionEv								= 0x020a4714;
-_ZN14ActiveCollider4linkEv											= 0x020a46bc;
-_ZN14ActiveCollider6unlinkEv										= 0x020a4658;
-_ZN14ActiveCollider12manualUpdateEv									= 0x020a44b0;
-_ZN14ActiveCollider12unk_020a445cERK4Vec3RK18ActiveColliderInfoh	= 0x020a445c;
-_ZN14ActiveCollider10initSystemEv									= 0x020a4434;
-_ZNK14ActiveCollider9getPlayerEv									= 0x020a3d68;
-_ZN14ActiveCollider18testCollisionRoundEPS_							= 0x020a4344;
-_ZN14ActiveCollider25testCollisionOtherVsVTrpzEPS_					= 0x020a4264;
-_ZN14ActiveCollider25testCollisionVTrpzVsOtherEPS_					= 0x020a40a4;
-_ZN14ActiveCollider25testCollisionOtherVsHTrpzEPS_					= 0x020a3fc4;
-_ZN14ActiveCollider25testCollisionHTrpzVsOtherEPS_					= 0x020a3e04;
+_ZN14ActiveColliderC1Ev                                             = 0x020A4868; /* ActiveCollider::ActiveCollider() */
+_ZN14ActiveColliderC2Ev                                             = 0x020A4868; /* ActiveCollider::ActiveCollider() */
+_ZN14ActiveColliderD0Ev                                             = 0x020A4820; /* ActiveCollider::~ActiveCollider() */
+_ZN14ActiveColliderD1Ev                                             = 0x020A484C; /* ActiveCollider::~ActiveCollider() */
+_ZN14ActiveColliderD2Ev												= 0x020A484C; /* ActiveCollider::~ActiveCollider() */
 
-_ZN14ActiveCollider8listHeadE										= 0x020caac4;
-_ZN14ActiveCollider8listTailE										= 0x020caac8;
+_ZN14ActiveCollider9clearLinkEv                                     = 0x020A4808; /* ActiveCollider::clearLink() */
+_ZN14ActiveCollider4initEP10StageActorRK8AcConfigh                  = 0x020A47A0; /* ActiveCollider::init(StageActor*, AcConfig const&, unsigned char) */
+_ZN14ActiveCollider14rotatePositionEsll                             = 0x020A4758; /* ActiveCollider::rotatePosition(short, long, long) */
+_ZN14ActiveCollider14clearCollisionEv                               = 0x020A4714; /* ActiveCollider::clearCollision() */
+_ZN14ActiveCollider4linkEv                                          = 0x020A46BC; /* ActiveCollider::link() */
+_ZN14ActiveCollider6unlinkEv                                        = 0x020A4658; /* ActiveCollider::unlink() */
+_ZN14ActiveCollider13processSingleEv                                = 0x020A44B0; /* ActiveCollider::processSingle() */
+_ZN14ActiveCollider16processAnonymousERK4Vec3RK8AcConfigh           = 0x020A445C; /* ActiveCollider::processAnonymous(Vec3 const&, AcConfig const&, unsigned char) */
+_ZN14ActiveCollider10initSystemEv                                   = 0x020A4434; /* ActiveCollider::initSystem() */
+_ZN14ActiveCollider15checkRoundRoundERS_S0_                         = 0x020A4344; /* ActiveCollider::checkRoundRound(ActiveCollider&, ActiveCollider&) */
+_ZN14ActiveCollider27checkTrapHorizontallyInsideEllll               = 0x020A4328; /* ActiveCollider::checkTrapHorizontallyInside(long, long, long, long) */
+_ZN14ActiveCollider24checkTrapHorizontalSlopeEllllll                = 0x020A427C; /* ActiveCollider::checkTrapHorizontalSlope(long, long, long, long, long, long) */
+_ZN14ActiveCollider15checkOtherTrapHERS_S0_                         = 0x020A4264; /* ActiveCollider::checkOtherTrapH(ActiveCollider&, ActiveCollider&) */
+_ZN14ActiveCollider15checkTrapHOtherERS_S0_                         = 0x020A40A4; /* ActiveCollider::checkTrapHOther(ActiveCollider&, ActiveCollider&) */
+_ZN14ActiveCollider25checkTrapVerticallyInsideEllll                 = 0x020A4088; /* ActiveCollider::checkTrapVerticallyInside(long, long, long, long) */
+_ZN14ActiveCollider22checkTrapVerticalSlopeEllllll                  = 0x020A3FDC; /* ActiveCollider::checkTrapVerticalSlope(long, long, long, long, long, long) */
+_ZN14ActiveCollider15checkOtherTrapVERS_S0_                         = 0x020A3FC4; /* ActiveCollider::checkOtherTrapV(ActiveCollider&, ActiveCollider&) */
+_ZN14ActiveCollider15checkTrapVOtherERS_S0_                         = 0x020A3E04; /* ActiveCollider::checkTrapVOther(ActiveCollider&, ActiveCollider&) */
+_ZN14ActiveCollider13initFunctionsEm                                = 0x020A3D78; /* ActiveCollider::initFunctions(unsigned long) */
+_ZNK14ActiveCollider9getPlayerEv                                    = 0x020A3D68; /* ActiveCollider::getPlayer() const */
+_ZNK14ActiveCollider21checkRectIntersectionERS_                     = 0x020A3CC0; /* ActiveCollider::checkRectIntersection(ActiveCollider&) const */
 
-_ZTV14ActiveCollider												= 0x020c6f08;
+_ZN14ActiveCollider13checkFuncRectE                                 = 0x020C6EFC; /* ActiveCollider::checkFuncRect */
+_ZN14ActiveCollider14checkFuncTableE                                = 0x020CAACC; /* ActiveCollider::checkFuncTable */
+_ZN14ActiveCollider8listTailE                                       = 0x020CAAC8; /* ActiveCollider::listTail */
+_ZN14ActiveCollider8listHeadE                                       = 0x020CAAC4; /* ActiveCollider::listHead */
+
+_ZTV14ActiveCollider                                                = 0x020C6F10 - 8; /* vtable for ActiveCollider */
 
 /* arm9_itcm */
-_ZN14ActiveCollider17testCollisionRectEPS_							= 0x01ffdd88;
+_ZN14ActiveCollider10processAllEv                                   = 0x01FFDED0; /* ActiveCollider::processAll() */
+_ZN14ActiveCollider13checkRectRectERS_S0_                           = 0x01FFDD88; /* ActiveCollider::checkRectRect(ActiveCollider&, ActiveCollider&) */
+_ZN14ActiveCollider17checkRectRectWrapERS_S0_                       = 0x01FFDCD8; /* ActiveCollider::checkRectRectWrap(ActiveCollider&, ActiveCollider&) */
+_ZN14ActiveCollider21checkRectRectWrapCoreERS_S0_ll                 = 0x01FFDBB8; /* ActiveCollider::checkRectRectWrapCore(ActiveCollider&, ActiveCollider&, long, long) */
 
 
 /* arm9_ov0 */
@@ -4194,7 +4207,7 @@ _ZN6Goomba15pipeVelocitiesXE								= 0x02121804;
 _ZN6Goomba15pipeVelocitiesYE								= 0x02121814;
 _ZN6Goomba12pipeTargetsXE									= 0x02121824;
 _ZN6Goomba12pipeTargetsYE									= 0x02121844;
-_ZN6Goomba18activeColliderInfoE								= 0x02121854;
+_ZN6Goomba8acConfigE								= 0x02121854;
 _ZN6Goomba7profileE											= 0x021263FC;
 
 _ZTV6Goomba													= 0x02126420;
@@ -4315,8 +4328,8 @@ _ZN8Fireball12bottomSensorE									= 0x0212189C;
 _ZN8Fireball9topSensorE										= 0x021218A8;
 _ZN8Fireball10sideSensorE									= 0x021218B4;
 _ZN8Fireball9activeBoxE										= 0x021218C0;
-_ZN8Fireball17enemyColliderInfoE							= 0x021218D0;
-_ZN8Fireball18playerColliderInfoE							= 0x021218EC;
+_ZN8Fireball13enemyAcConfigE					    		= 0x021218D0;
+_ZN8Fireball14playerAcConfigE					    		= 0x021218EC;
 _ZN8Fireball23playerBounceVelocitiesXE						= 0x02121908;
 _ZN8Fireball23playerBounceVelocitiesYE						= 0x02121930;
 _ZN8Fireball22enemyBounceVelocitiesXE						= 0x02121958;
@@ -4458,21 +4471,21 @@ _ZN10Projectile20boomerangVelocitiesXE							= 0x02121D24;
 _ZN10Projectile20boomerangVelocitiesYE							= 0x02121D1C;
 _ZN10Projectile19boomerangDirectionsE							= 0x02121D34;
 _ZN10Projectile18boomerangActiveBoxE							= 0x02121D3C;
-_ZN10Projectile22boomerangColliderInfosE						= 0x02121D4C;
+_ZN10Projectile18boomerangAcConfigsE				    		= 0x02121D4C;
 _ZN10Projectile16hammerRotationsYE								= 0x02121DBC;
 _ZN10Projectile17hammerVelocitiesXE								= 0x02121DC0;
 _ZN10Projectile15hammerActiveBoxE								= 0x02121DC8;
-_ZN10Projectile18hammerColliderInfoE							= 0x02121DD8;
+_ZN10Projectile14hammerAcConfigE						    	= 0x02121DD8;
 _ZN10Projectile23sledgehammerVelocitiesXE						= 0x02121DF4;
 _ZN10Projectile21sledgehammerActiveBoxE							= 0x02121DFC;
-_ZN10Projectile25sledgehammerColliderInfosE						= 0x02121E0C;
+_ZN10Projectile21sledgehammerAcConfigsE					    	= 0x02121E0C;
 _ZN10Projectile25mummipokeyStoneSideSensorE						= 0x02121E44;
 _ZN10Projectile24mummipokeyStoneTopSensorE						= 0x02121E50;
 _ZN10Projectile27mummipokeyStoneBottomSensorE					= 0x02121E5C;
 _ZN10Projectile24mummipokeyStoneActiveBoxE						= 0x02121E68;
-_ZN10Projectile27mummipokeyStoneColliderInfoE					= 0x02121E78;
+_ZN10Projectile23mummipokeyStoneAcConfigE				    	= 0x02121E78;
 _ZN10Projectile22dryBowserBoneActiveBoxE						= 0x02121E94;
-_ZN10Projectile25dryBowserBoneColliderInfoE						= 0x02121EA4;
+_ZN10Projectile21dryBowserBoneAcConfigE				    		= 0x02121EA4;
 
 _ZN10Projectile11createTableE									= 0x0212A6A8;
 _ZN10Projectile15platformManagerE								= 0x0212A6D0;
@@ -5876,8 +5889,8 @@ _ZN6Player18bumpUnitDirectionsE								= 0x0212278C;
 _ZN6Player18bumpedAnimationIDsE								= 0x02122680;
 _ZN6Player15fenceSlamHitboxE								= 0x021227AC;
 _ZN6Player15slidingHitboxesE								= 0x021228C4;
-_ZN6Player19specialColliderInfoE							= 0x021228A8;
-_ZN6Player18activeColliderInfoE								= 0x0212288C;
+_ZN6Player15specialAcConfigE							    = 0x021228A8;
+_ZN6Player8acConfigE								        = 0x0212288C;
 
 _ZTV6Player													= 0x021284E0;
 
@@ -6567,7 +6580,7 @@ _ZN5Pokey17heightVelocitiesXE						= 0x0213EB14;
 _ZN5Pokey10rotationsYE								= 0x0213EADC;
 _ZN5Pokey10sideSensorE								= 0x0213EAEC;
 _ZN5Pokey12bottomSensorE							= 0x0213EAE0;
-_ZN5Pokey18activeColliderInfoE						= 0x0213EAF8;
+_ZN5Pokey8acConfigE						= 0x0213EAF8;
 _ZN5Pokey7profileE									= 0x0213EBF0;
 
 _ZTV5Pokey											= 0x0213EBFC;
@@ -6595,7 +6608,7 @@ _ZN7FireBar11switchStateERKMS_FbvE						= 0x0213EF68;
 _ZN7FireBar11updateStateEv								= 0x0213EF20;
 _ZN7FireBar9mainStateEv									= 0x0213ECC0;
 
-_ZN7FireBar18activeColliderInfoE						= 0x0213F230;
+_ZN7FireBar8acConfigE						= 0x0213F230;
 _ZN7FireBar7profileE									= 0x0213F928;
 
 _ZN7FireBar5sMainE										= 0x0213FAC0;
@@ -6638,7 +6651,7 @@ _ZN6Thwomp12shakeOffsetsE								= 0x0213F1C0;
 _ZN6Thwomp12attackRangesE								= 0x0213F1B8;
 _ZN6Thwomp12bottomSensorE								= 0x0213F1D8;
 _ZN6Thwomp9topSensorE									= 0x0213F1E8;
-_ZN6Thwomp18activeColliderInfoE							= 0x0213F1F8;
+_ZN6Thwomp8acConfigE							= 0x0213F1F8;
 _ZN6Thwomp7profileE										= 0x0213F6D0;
 
 _ZN6Thwomp5sIdleE										= 0x0213FAA0;
@@ -6661,7 +6674,7 @@ _ZN13GiantThwompD1Ev									= 0x0213E45C;
 _ZN13GiantThwompD2Ev									= 0x0213E45C;
 
 _ZN13GiantThwomp9topSensorE								= 0x0213F1C8;
-_ZN13GiantThwomp18activeColliderInfoE					= 0x0213F214;
+_ZN13GiantThwomp8acConfigE					= 0x0213F214;
 _ZN13GiantThwomp7profileE								= 0x0213F6DC;
 
 _ZTV13GiantThwomp										= 0x0213F804;
@@ -6725,7 +6738,7 @@ _ZN11PipePiranha12pipeOffsetsXE				= 0x021438DC;
 _ZN11PipePiranha12pipeOffsetsYE				= 0x021438EC;
 _ZN11PipePiranha14centerOffsetsXE			= 0x021438FC;
 _ZN11PipePiranha15coinVelocitiesYE			= 0x0214390C;
-_ZN11PipePiranha18activeColliderInfoE		= 0x0214391C;
+_ZN11PipePiranha8acConfigE		= 0x0214391C;
 _ZN11PipePiranha16neckTargetAnglesE			= 0x02143938;
 
 _ZN9PiranhaUp7profileE						= 0x021439C8;
@@ -6777,7 +6790,7 @@ _ZN10FenceKoopa14layerRotationYE						= 0x02144F58;
 _ZN10FenceKoopa10sideSensorE							= 0x02144F5C;
 _ZN10FenceKoopa9topSensorE								= 0x02144F68;
 _ZN10FenceKoopa12bottomSensorE							= 0x02144F74;
-_ZN10FenceKoopa18activeColliderInfoE					= 0x02144F80;
+_ZN10FenceKoopa8acConfigE					= 0x02144F80;
 _ZN10FenceKoopa7profileE								= 0x02145200;
 
 _ZTV12FenceKoopa										= 0x0214520C;
@@ -6832,7 +6845,7 @@ _ZN5Whomp11coinOffsetsE						= 0x02144FB8;
 _ZN5Whomp12attackRangesE					= 0x02144FC0;
 _ZN5Whomp12bottomSensorE					= 0x02144FC8;
 _ZN5Whomp10sideSensorE						= 0x02144FD4;
-_ZN5Whomp18activeColliderInfoE				= 0x02144FE0;
+_ZN5Whomp8acConfigE				= 0x02144FE0;
 _ZN5Whomp7profileE							= 0x02145388;
 
 _ZN5Whomp9sWalkIdleE						= 0x0214550C;
@@ -6974,7 +6987,7 @@ _ZN10BulletBill17bulletRollTargetsE							= 0x0215187C;
 _ZN10BulletBill15bulletRollStepsE							= 0x02151878;
 _ZN10BulletBill10rotationsYE								= 0x02151874;
 _ZN10BulletBill10rotationsXE								= 0x021518B0;
-_ZN10BulletBill18activeColliderInfoE						= 0x021518DC;
+_ZN10BulletBill8acConfigE						= 0x021518DC;
 _ZN10BulletBill7profileE									= 0x02151FB0;
 
 _ZTV10BulletBill											= 0x02151FC8;
@@ -6990,7 +7003,7 @@ _ZN10BanzaiBillD1Ev											= 0x0214A9B4;
 _ZN10BanzaiBillD2Ev											= 0x0214A9B4;
 _ZN10BanzaiBill13loadResourcesEv							= 0x0214A8B0;
 
-_ZN10BanzaiBill18activeColliderInfoE						= 0x021518C0;
+_ZN10BanzaiBill8acConfigE									= 0x021518C0;
 _ZN10BanzaiBill7profileE									= 0x02151FBC;
 
 _ZTV10BanzaiBill											= 0x021520DC;
@@ -7206,7 +7219,7 @@ _ZN10Trampoline12topSensorBigE							= 0x0216C02C;
 _ZN10Trampoline13sideSensorBigE							= 0x0216C03C;
 _ZN10Trampoline10sideSensorE							= 0x0216C04C;
 _ZN10Trampoline15bottomSensorBigE						= 0x0216C05C;
-_ZN10Trampoline18activeColliderInfoE					= 0x0216C06C;
+_ZN10Trampoline8acConfigE					= 0x0216C06C;
 _ZN10Trampoline7profileE								= 0x0216D154;
 
 _ZN10Trampoline10sMainStateE							= 0x02171750;
@@ -7349,7 +7362,7 @@ _ZN15VolcanoEruption5eruptERK4Vec3h							= 0x02162F00;
 _ZN15VolcanoEruption14activeCallbackER14ActiveColliderS1_	= 0x021634F4;
 
 _ZN15VolcanoEruption7profileE								= 0x02170130;
-_ZN15VolcanoEruption18activeColliderInfoE					= 0x0216C278;
+_ZN15VolcanoEruption8acConfigE					= 0x0216C278;
 _ZN15VolcanoEruption17bottomSensorSmallE					= 0x0216C23C;
 _ZN15VolcanoEruption15bottomSensorBigE						= 0x0216C254;
 _ZN15VolcanoEruption19eruptionVelocitiesXE					= 0x0216C264;
@@ -7483,7 +7496,7 @@ _ZN10ChainChomp19defaultGroundOffsetE						= 0x021754E0;
 _ZN10ChainChomp21defaultColliderOffsetE						= 0x021754DC;
 _ZN10ChainChomp21defaultVerticalOffsetE						= 0x021754D8;
 _ZN10ChainChomp14rotationStepsYE							= 0x021754D4;
-_ZN10ChainChomp18activeColliderInfoE						= 0x0217550C;
+_ZN10ChainChomp8acConfigE						= 0x0217550C;
 _ZN10ChainChomp7profileE									= 0x02175750;
 
 _ZTV10ChainChomp											= 0x0217575C;
@@ -7586,6 +7599,7 @@ _ZN3Amp11updateStateEPv								= 0x02178D5C;
 _ZN3Amp11switchStateEMS_FbPvEPv						= 0x02178DC4;
 _ZN3Amp13loadResourcesEv							= 0x02178EA8;
 
+_ZN3Amp8acConfigE									= 0x02179088;
 _ZN3Amp7profileE									= 0x02179420;
 
 _ZTV3Amp											= 0x0217942C;
@@ -7644,7 +7658,7 @@ _ZN3Boo19chaseAccelerationsXE						= 0x021791B8;
 _ZN3Boo16chaseVelocitiesXE							= 0x02179208;
 _ZN3Boo19chaseAccelerationsYE						= 0x02179258;
 _ZN3Boo16chaseVelocitiesYE							= 0x02179190;
-_ZN3Boo18activeColliderInfoE						= 0x02179154;
+_ZN3Boo8acConfigE						= 0x02179154;
 _ZN3Boo7profileE									= 0x02179378;
 
 _ZTV3Boo											= 0x02179390;
@@ -7727,7 +7741,7 @@ _ZN8Splunkin13turnRotationsE									= 0x021792AC;
 _ZN8Splunkin12bottomSensorE										= 0x021792B0;
 _ZN8Splunkin9topSensorE											= 0x021792BC;
 _ZN8Splunkin10sideSensorE										= 0x021792C8;
-_ZN8Splunkin18activeColliderInfoE								= 0x021792D4;
+_ZN8Splunkin8acConfigE								= 0x021792D4;
 _ZN8Splunkin7profileE											= 0x02179880;
 
 _ZTV8Splunkin													= 0x0217988C;
@@ -7760,7 +7774,7 @@ _ZN8Snowball9mainStateEv								= 0x0217A0AC;
 _ZN8Snowball14activeCallbackER14ActiveColliderS1_		= 0x02179F7C;
 
 _ZN8Snowball7profileE									= 0x0217B928;
-_ZN8Snowball18activeColliderInfoE						= 0x0217B888;
+_ZN8Snowball8acConfigE						= 0x0217B888;
 _ZN8Snowball9topSensorE									= 0x0217B858;
 _ZN8Snowball12bottomSensorE								= 0x0217B868;
 _ZN8Snowball10sideSensorE								= 0x0217B878;
@@ -7799,7 +7813,7 @@ _ZN9SnowSpike17grabSnowballStateEv						= 0x0217B294;
 _ZN9SnowSpike18throwSnowballStateEv						= 0x0217B100;
 
 _ZN9SnowSpike7profileE									= 0x0217BAA8;
-_ZN9SnowSpike18activeColliderInfoE						= 0x0217B8F0;
+_ZN9SnowSpike8acConfigE						= 0x0217B8F0;
 _ZN9SnowSpike10sideSensorE								= 0x0217B8E4;
 _ZN9SnowSpike12bottomSensorE							= 0x0217B8D8;
 _ZN9SnowSpike9topSensorE								= 0x0217B8CC;
@@ -7835,7 +7849,7 @@ _ZN7Manhole11switchStateEMS_FbPvEPv					= 0x021891CC;
 _ZN7Manhole18onPrepareResourcesEv					= 0x021892A0;
 _ZN7Manhole13loadResourcesEv						= 0x021892D8;
 
-_ZN7Manhole18activeColliderInfoE					= 0x02189358;
+_ZN7Manhole8acConfigE					= 0x02189358;
 _ZN7Manhole7profileE								= 0x02189870;
 
 _ZTV7Manhole										= 0x0218987C;
@@ -7889,7 +7903,7 @@ _ZN7Broozer5sTurnE										= 0x0218B048;
 
 _ZN7Broozer13runVelocitiesE								= 0x0218ADA4;
 _ZN7Broozer14walkVelocitiesE							= 0x0218ADAC;
-_ZN7Broozer18activeColliderInfoE						= 0x0218ADB4;
+_ZN7Broozer8acConfigE									= 0x0218ADB4;
 _ZN7Broozer7profileE									= 0x0218AEF0;
 
 _ZTV7Broozer											= 0x0218AEFC;
@@ -7924,7 +7938,7 @@ _ZN10SpikedBall10sideSensorE								= 0x0218DEDC;
 _ZN10SpikedBall11velocitiesXE								= 0x0218DEEC;
 _ZN10SpikedBall16slopeVelocitiesXE							= 0x0218DEF8;
 _ZN10SpikedBall19slopeAccelerationsXE						= 0x0218DEFC;
-_ZN10SpikedBall18activeColliderInfoE						= 0x0218DF10;
+_ZN10SpikedBall8acConfigE						= 0x0218DF10;
 _ZN10SpikedBall7profileE									= 0x0218DFA8;
 
 _ZTV10SpikedBall											= 0x0218DFB4;
@@ -7959,7 +7973,7 @@ _ZN13BigSpikedBall10sideSensorE								= 0x0218DF4C;
 _ZN13BigSpikedBall11velocitiesXE							= 0x0218DF5C;
 _ZN13BigSpikedBall16slopeVelocitiesXE						= 0x0218DF68;
 _ZN13BigSpikedBall19slopeAccelerationsXE					= 0x0218DF6C;
-_ZN13BigSpikedBall18activeColliderInfoE						= 0x022D7B20;
+_ZN13BigSpikedBall8acConfigE						= 0x022D7B20;
 _ZN13BigSpikedBall7profileE									= 0x0218E0D0;
 
 _ZTV13BigSpikedBall											= 0x0218E0DC;

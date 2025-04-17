@@ -54,7 +54,7 @@ public:
 	static const ActorProfile profile;
 
 	// 0213F230
-	static const ActiveColliderInfo activeColliderInfo;
+	static const AcConfig acConfig;
 
 	// 0213FAC0
 	static const StateFunction sMain;

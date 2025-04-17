@@ -88,7 +88,7 @@ public:
 	static const ActorProfile profile;
 
 	// 0218ADB4
-	static const ActiveColliderInfo activeColliderInfo;
+	static const AcConfig acConfig;
 
 	// 0218ADAC
 	static const fx32 walkVelocities[2];

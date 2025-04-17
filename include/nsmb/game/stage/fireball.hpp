@@ -79,9 +79,9 @@ public:
 	// 02121908
 	static const fx32 playerBounceVelocitiesX[2];
 	// 021218EC
-	static const ActiveColliderInfo playerColliderInfo;
+	static const AcConfig playerAcConfig;
 	// 021218D0
-	static const ActiveColliderInfo enemyColliderInfo;
+	static const AcConfig enemyAcConfig;
 	// 021218C0
 	static const FxRect activeBox;
 	// 021218B4

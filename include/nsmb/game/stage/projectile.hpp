@@ -124,7 +124,7 @@ public:
 	// 02121D3C
 	static const FxRect boomerangActiveBox;
 	// 02121D4C
-	static const ActiveColliderInfo boomerangColliderInfos[4];
+	static const AcConfig boomerangAcConfigs[4];
 
 	// 02121DBC
 	static const s16 hammerRotationsY[2];
@@ -133,14 +133,14 @@ public:
 	// 02121DC8
 	static const FxRect hammerActiveBox;
 	// 02121DD8
-	static const ActiveColliderInfo hammerColliderInfo;
+	static const AcConfig hammerAcConfig;
 
 	// 02121DF4
 	static const fx32 sledgehammerVelocitiesX[2];
 	// 02121DFC
 	static const FxRect sledgehammerActiveBox;
 	// 02121E0C
-	static const ActiveColliderInfo sledgehammerColliderInfos[2];
+	static const AcConfig sledgehammerAcConfigs[2];
 
 	// 02121E44
 	static const PointSensor mummipokeyStoneSideSensor;
@@ -151,12 +151,12 @@ public:
 	// 02121E68
 	static const FxRect mummipokeyStoneActiveBox;
 	// 02121E78
-	static const ActiveColliderInfo mummipokeyStoneColliderInfo;
+	static const AcConfig mummipokeyStoneAcConfig;
 
 	// 02121E94
 	static const FxRect dryBowserBoneActiveBox;
 	// 02121EA4
-	static const ActiveColliderInfo dryBowserBoneColliderInfo;
+	static const AcConfig dryBowserBoneAcConfig;
 
 	// 0212A6A8
 	static const StateFunction createTable[ProjectileTypes];

@@ -93,7 +93,7 @@ public:
 	static const ActorProfile profile;
 
 	// 0216C06C
-	static const ActiveColliderInfo activeColliderInfo;
+	static const AcConfig acConfig;
 
 	// 0216C05C
 	static const LineSensorH bottomSensorBig;
