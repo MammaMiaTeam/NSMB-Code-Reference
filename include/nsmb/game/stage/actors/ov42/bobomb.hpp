@@ -101,5 +101,11 @@ public:
 	bool primedSpawn; // Set when the spawn type will cause detonation without any interaction (self-destruct).
 	u8 primedSpawnCooldown; // When it reaches 0, collision will start being detected and bouncing physics will be applied.
 
+#if NTR_EXT_EXISTS(BobOmb)
+	#include NTR_EXT_INCLUDE(BobOmb)
+#endif
+
 };
+#if !NTR_EXT_EXISTS(BobOmb)
 NTR_SIZE_GUARD(BobOmb, 0x4BC);
+#endif

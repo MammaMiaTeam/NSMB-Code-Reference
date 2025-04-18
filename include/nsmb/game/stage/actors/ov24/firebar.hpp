@@ -13,7 +13,7 @@ public:
 
 	// D0: 0213E644
 	// D1: 0213E58C
-	virtual ~FireBar() {}
+	virtual ~FireBar();
 
 	// 0213EA14
 	s32 onCreate() override;
