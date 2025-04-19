@@ -37,12 +37,13 @@
 // Overlay 22 - PipeEnemySpawner
 #include "stage/actors/ov22/pipeenemyspawner.hpp"
 
-// Overlay 24 - Pokey
+// Overlay 23 - Pokey
 #include "stage/actors/ov23/pokey.hpp"
 
-// Overlay 24 - FireBar, Thwomp
+// Overlay 24 - FireBar, Thwomp, DryBones, BigDryBones
 #include "stage/actors/ov24/firebar.hpp"
 #include "stage/actors/ov24/thwomp.hpp"
+#include "stage/actors/ov24/drybones.hpp"
 
 // Overlay 32 - PipePiranha
 #include "stage/actors/ov32/pipepiranha.hpp"
