@@ -92,6 +92,9 @@
 #include "stage/actors/ov82/snowball.hpp"
 #include "stage/actors/ov82/snowspike.hpp"
 
+// Overlay 97 - SwellingGround
+#include "stage/actors/ov97/swellingground.hpp"
+
 // Overlay 98 - Manhole
 #include "stage/actors/ov98/manhole.hpp"
 
