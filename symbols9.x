@@ -2095,7 +2095,7 @@ _ZN6Random12generateSeedEv	= 0x020442DC;
 /*---------------------- spring function -------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN14SpringFunction24processExponentialSmoothElllll	= 0x0201DA28;
+_ZN14SpringFunction24processExponentialSmoothEllll	= 0x0201DA28;
 _ZN14SpringFunction13processSpringElb				= 0x0201DA70;
 _ZN14SpringFunction6createEllll						= 0x0201DBCC;
 
@@ -7967,6 +7967,41 @@ _ZN9SnowSpike10armBoneIDsE								= 0x0217B8A8;
 _ZN9SnowSpike10rotationsYE								= 0x0217B8A4;
 
 _ZTV9SnowSpike											= 0x0217BAB4;
+
+
+/* arm9_ov97 */
+/*----------------------------------------------------------------*/
+/*----------------------- swelling ground ------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN14SwellingGroundD1Ev                     = 0x02185600;
+_ZN14SwellingGroundD0Ev                     = 0x021856c4;
+_ZN14SwellingGround8onCreateEv              = 0x02185fc8;
+_ZN14SwellingGround9onDestroyEv             = 0x02185f88;
+_ZN14SwellingGround8onRenderEv              = 0x02185bc0;
+_ZN14SwellingGround18onCleanupResourcesEv   = 0x02185f84;
+_ZN14SwellingGround18onPrepareResourcesEv   = 0x02185f90;
+_ZN14SwellingGround10updateMainEv           = 0x02185b78;
+_ZN14SwellingGround8setStateENS_5StateE     = 0x02185830;
+_ZN14SwellingGround11updateStateEv          = 0x021857b4;
+_ZN14SwellingGround13initIdleStateEv        = 0x02185b74;
+_ZN14SwellingGround9idleStateEv             = 0x02185b28;
+_ZN14SwellingGround14initSwellStateEv       = 0x02185b24;
+_ZN14SwellingGround10swellStateEv           = 0x02185a0c;
+_ZN14SwellingGround20initSwollenIdleStateEv = 0x02185a08;
+_ZN14SwellingGround16swollenIdleStateEv     = 0x021859bc;
+_ZN14SwellingGround16initUnswellStateEv     = 0x021859b8;
+_ZN14SwellingGround12unswellStateEv         = 0x0218585c;
+_ZN14SwellingGround13loadResourcesEv        = 0x02185790;
+
+_ZN14SwellingGround12targetPointsE          = 0x02188808;
+_ZN14SwellingGround16targetPointsDownE      = 0x02188640;
+_ZN14SwellingGround14targetPointsUpE        = 0x021885b0;
+_ZN14SwellingGround10initStatesE            = 0x02188bc0;
+_ZN14SwellingGround6states                  = 0x02188be0;
+_ZN14SwellingGround7profileE                = 0x02188830;
+
+_ZTVSwellingGround14                        = 0x0218883c;
 
 
 /* arm9_ov98 */
