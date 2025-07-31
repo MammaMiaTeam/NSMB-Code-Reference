@@ -4896,6 +4896,9 @@ _ZN5Stage13storedPowerupE							= 0x02085a4c;
 /*----------------------------------------------------------------*/
 
 _ZN5Stage15stageGroupNamesE = 0x0203C8A0;
+_ZN5Stage18stageBlockUnitSizeE = 0x0203C8C8;
+_ZN5Stage15stageBlocksSizeE = 0x0208B0F8;
+_ZN5Stage19stageBlocksElementsE = 0x0208B130;
 _ZN5Stage11stageBlocksE = 0x0208B168;
 
 /* arm9 */
