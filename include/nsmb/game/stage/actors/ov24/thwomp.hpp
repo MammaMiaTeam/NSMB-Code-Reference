@@ -12,7 +12,7 @@ public:
 
 	// D0: 0213DA68
 	// D1: 0213D9E0
-	virtual ~Thwomp() {}
+	virtual ~Thwomp();
 
 	// 0213DB20
 	s32 onCreate() override;

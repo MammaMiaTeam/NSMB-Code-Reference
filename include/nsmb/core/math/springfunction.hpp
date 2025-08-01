@@ -16,7 +16,7 @@ public:
 	fx32 processSpring(fx32 pivot, bool restart = false);
 
 	// 0201DA28
-	fx32 processExponentialSmooth(fx32 start, fx32 end, fx32 factor, fx32 max, fx32 min);
+	fx32 processExponentialSmooth(fx32 start, fx32 end, fx32 factor, fx32 max);
 
 
 	fx32 value;
