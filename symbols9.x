@@ -4915,9 +4915,9 @@ _ZN9StageView9getHeightEh = 0x0201F06C;
 _ZN9StageView8getWidthEh = 0x0201F090;
 _ZN9StageView17getProgressPathIDEh = 0x0201F0B4;
 _ZN9StageView12getLightTypeEh = 0x0201F0D8;
-_ZN9StageView7getUnk3Eh = 0x0201F0F4;
-_ZN9StageView7getUnk2Eh = 0x0201F118;
-_ZN9StageView7getUnk1Eh = 0x0201F13C;
+_ZN9StageView15getForegroundIDEh = 0x0201F0F4;
+_ZN9StageView12getTilesetIDEh = 0x0201F118;
+_ZN9StageView15getBackgroundIDEh = 0x0201F13C;
 _ZN9StageView19getCameraSettingsIDEh = 0x0201F160;
 _ZN9StageView3getEhP9RectangleIlE = 0x0201F184;
 
