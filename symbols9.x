@@ -2253,6 +2253,7 @@ _ZN4Save11writeMGSaveEP12MinigameSave = 0x0201289C;
 _ZN4Save10readMGSaveEP12MinigameSave = 0x020128C4;
 _ZN4Save11clearMGSaveEP12MinigameSave = 0x020128D8;
 _ZN4Save12createMGSaveEv = 0x020128FC;
+_ZN4Save12minigameSaveE = 0x02088E24;
 _ZN4Save18getWorldmapSceneIDEv = 0x02012934;
 _ZN4Save27disableCurrentWorldmapActorEN8MainSave13WorldmapActor4TypeE = 0x0201293C;
 _ZN4Save15animationPlayedEv = 0x020129B0;
