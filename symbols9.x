@@ -2253,6 +2253,7 @@ _ZN4Save11writeMGSaveEP12MinigameSave = 0x0201289C;
 _ZN4Save10readMGSaveEP12MinigameSave = 0x020128C4;
 _ZN4Save11clearMGSaveEP12MinigameSave = 0x020128D8;
 _ZN4Save12createMGSaveEv = 0x020128FC;
+_ZN4Save12minigameSaveE = 0x02088E24;
 _ZN4Save18getWorldmapSceneIDEv = 0x02012934;
 _ZN4Save27disableCurrentWorldmapActorEN8MainSave13WorldmapActor4TypeE = 0x0201293C;
 _ZN4Save15animationPlayedEv = 0x020129B0;
@@ -4896,6 +4897,9 @@ _ZN5Stage13storedPowerupE							= 0x02085a4c;
 /*----------------------------------------------------------------*/
 
 _ZN5Stage15stageGroupNamesE = 0x0203C8A0;
+_ZN5Stage18stageBlockUnitSizeE = 0x0203C8C8;
+_ZN5Stage15stageBlocksSizeE = 0x0208B0F8;
+_ZN5Stage19stageBlocksElementsE = 0x0208B130;
 _ZN5Stage11stageBlocksE = 0x0208B168;
 
 /* arm9 */
@@ -4912,9 +4916,9 @@ _ZN9StageView9getHeightEh = 0x0201F06C;
 _ZN9StageView8getWidthEh = 0x0201F090;
 _ZN9StageView17getProgressPathIDEh = 0x0201F0B4;
 _ZN9StageView12getLightTypeEh = 0x0201F0D8;
-_ZN9StageView7getUnk3Eh = 0x0201F0F4;
-_ZN9StageView7getUnk2Eh = 0x0201F118;
-_ZN9StageView7getUnk1Eh = 0x0201F13C;
+_ZN9StageView15getForegroundIDEh = 0x0201F0F4;
+_ZN9StageView12getTilesetIDEh = 0x0201F118;
+_ZN9StageView15getBackgroundIDEh = 0x0201F13C;
 _ZN9StageView19getCameraSettingsIDEh = 0x0201F160;
 _ZN9StageView3getEhP9RectangleIlE = 0x0201F184;
 

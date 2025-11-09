@@ -34,13 +34,13 @@ struct StageView {
 	static u8 getLightType(u8 viewID);
 
 	// 0x0201F0F4
-	static u8 getUnk3(u8 viewID);
+	static u8 getForegroundID(u8 viewID);
 
 	// 0x0201F118
-	static u8 getUnk2(u8 viewID);
+	static u8 getTilesetID(u8 viewID);
 
 	// 0x0201F13C
-	static u8 getUnk1(u8 viewID);
+	static u8 getBackgroundID(u8 viewID);
 
 	// 0x0201F160
 	static u8 getCameraSettingsID(u8 viewID);
@@ -53,9 +53,9 @@ struct StageView {
 	u8 id;
 	u8 cameraSettingsID;
 	u8 bgmID;
-	u8 unk1;
-	u8 unk2;
-	u8 unk3;
+	u8 backgroundID;
+	u8 tilesetID;
+	u8 foregroundID;
 	u8 lightType;
 	u8 progressPathID;
 
