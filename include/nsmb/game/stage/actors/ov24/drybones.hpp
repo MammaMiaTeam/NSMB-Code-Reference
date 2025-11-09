@@ -1,6 +1,7 @@
 #pragma once
 
 #include <nsmb/game/stage/entity3danm.hpp>
+#include <nsmb/game/physics/platformmgr.hpp>
 
 // vtable at 0213F468 (ov24)
 class DryBones : public StageEntity3DAnm {
@@ -194,8 +195,7 @@ NTR_CREATE_BITMASK_ENUM(DryBones::CollisionFlags);
 
 
 // vtable at 0213f588 (ov24)
-class BigDryBones : public DryBones
-{
+class BigDryBones : public DryBones {
 public:
 
 	// D1: 0213d8d0

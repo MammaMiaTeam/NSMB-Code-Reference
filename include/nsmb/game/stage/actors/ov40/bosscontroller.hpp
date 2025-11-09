@@ -4,8 +4,7 @@
 #include <nsmb/game/stage/entity3danm.hpp>
 
 // vtable at 0214672C (ov40)
-class alignas(4) BossController : public StageEntity3DAnm
-{
+class alignas(4) BossController : public StageEntity3DAnm {
 public:
 
 	using StateFunction = bool(BossController::*)();
@@ -23,7 +22,7 @@ public:
 	};
 
 	// D0: 02141EC0
-	// D1: 02141E80 
+	// D1: 02141E80
 	virtual ~BossController();
 
 	// 02141F14
@@ -37,7 +36,6 @@ public:
 
 	// 021421B4
 	bool updateMain() override;
-
 	// 021439A0
 	void onFireballHit() override;
 

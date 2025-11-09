@@ -106,7 +106,7 @@ public:
 
 	u32 unused4E0;
 	u32 giantFlag;
-	u32 unusedFlag;
+	bool32 unusedFlag; // if true and landed on GroundPlatform, y velocity is set to 0 -- although this is totally useless as it gets set later in the function regardless
 	u16 shakeTimer;
 	u16 shakePhase;
 

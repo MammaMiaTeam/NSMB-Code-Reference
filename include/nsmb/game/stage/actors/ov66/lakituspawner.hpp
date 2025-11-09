@@ -3,8 +3,7 @@
 #include "lakitu.hpp"
 
 // vtable at 02178954 (ov66)
-class LakituSpawner : public StageEntity
-{
+class LakituSpawner : public StageEntity {
 public:
 
 	using StateFunction = bool(LakituSpawner::*)();

@@ -3,8 +3,7 @@
 #include <nsmb/game/stage/entity.hpp>
 
 // vtable at 0213C554 (ov22)
-class PipeEnemySpawner : public StageEntity
-{
+class PipeEnemySpawner : public StageEntity {
 public:
 
 	using StateFunction = bool(PipeEnemySpawner::*)();
@@ -58,6 +57,7 @@ public:
 	static const fx32 bobOmbOffsetsX[4];
 	// 0213C4D8
 	static const fx32 bobOmbOffsetsY[4];
+
 
 	const StateFunction* updateFunction;
 

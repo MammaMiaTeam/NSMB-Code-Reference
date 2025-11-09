@@ -5,8 +5,7 @@
 #include <nsmb/core/graphics/3d/animationctrl.hpp>
 
 // vtable at 02178AFC (ov66)
-class Lakitu : public StageEntity
-{
+class Lakitu : public StageEntity {
 public:
 
 	using StateFunction = bool(Lakitu::*)();
