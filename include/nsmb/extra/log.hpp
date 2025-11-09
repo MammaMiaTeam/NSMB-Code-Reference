@@ -122,6 +122,8 @@ public:
 
 	NTR_INLINE static void print(const char* fmt, ...) {}
 
+	NTR_INLINE static void println(const char* fmt, ...) {}
+
 	NTR_INLINE static void vprint(const char* fmt, va_list vl) {}
 
 #else

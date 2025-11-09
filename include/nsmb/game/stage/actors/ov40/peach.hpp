@@ -1,9 +1,11 @@
 #pragma once
-#include "nsmb.hpp"
+
+#include <nsmb/game/stage/entity.hpp>
+#include <nsmb/game/physics/collisionmgr.hpp>
+#include <nsmb/core/graphics/3d/modelanm.hpp>
 
 // vtable at 0214687C (ov40)
-class Peach : public StageEntity
-{
+class Peach : public StageEntity {
 public:
 
 	using StateFunction = bool(Peach::*)();
@@ -53,9 +55,9 @@ public:
 	Vec3s unk53C;
 	u8 unk548[16];
 	StateFunction updateFunction;
-	s16 updateStep; // s8 ??
+	s16 updateStep;
 	u8 unk562[10];
-	
+
 
 #if NTR_EXT_EXISTS(Peach)
 	#include NTR_EXT_INCLUDE(Peach)

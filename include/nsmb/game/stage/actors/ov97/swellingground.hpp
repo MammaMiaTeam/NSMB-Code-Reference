@@ -14,11 +14,10 @@ public:
 		Swell,
 		SwollenIdle,
 		Unswell,
-
 		Count
 	};
 
-	enum Direction : u8 {
+	enum class Direction : u8 {
 		Up,
 		Down
 	};
@@ -106,15 +105,15 @@ public:
 	SpringFunction swellFunction;
 
 	Texture texture;
-	u32 textureInfo[3]; 			// tex1, tex2, palette (?)
+	u32 textureInfo[3]; // tex1, tex2, palette (?)
 
 	StateFunction updateFunction;
 	State currentState;
 	BOOL enteringState;
 
-	u32 texParams; 					// ?
+	u32 texParams; // ?
 
-	bool enableTriggerID;			// true if swell can be triggered by events
+	bool enableTriggerID; // true if swell can be triggered by events
 
 #if NTR_EXT_EXISTS(SwellingGround)
 	#include NTR_EXT_INCLUDE(SwellingGround)
