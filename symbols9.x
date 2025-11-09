@@ -173,6 +173,7 @@ NNS_G3dGlbGetWV = 0x2057F50;
 NNS_G3dGlbGetInvV = 0x2057FF0;
 NNS_G3dGlbFlushP = 0x2058148;
 NNS_G3dGlbInit = 0x2058184;
+NNS_G3dFuncSbcTable = 0x02085578;
 NNSi_G3dFuncSbc_BBY = 0x2059220;
 NNSi_G3dFuncSbc_BB = 0x20595B0;
 NNS_G3dDraw1Mat1Shp = 0x2059950;
@@ -3647,7 +3648,7 @@ _ZTV12CollisionMgr																		= 0x020C7000;
 /*------------------------- platform mgr -------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN11PlatformMgrC2Ev								= 0x0201DA00;
+_ZN11PlatformMgrC1Ev								= 0x0201DA00;
 _ZN11PlatformMgrD2Ev								= 0x0201D9E4;
 _ZN11PlatformMgrD1Ev								= 0x0201D9E4;
 _ZN11PlatformMgrD0Ev								= 0x0201D9B8;
@@ -4244,6 +4245,75 @@ _ZN10MiniGoomba10sideSensorE								= 0x021217F8;
 _ZN10MiniGoomba7profileE									= 0x02126414;
 
 _ZTV10MiniGoomba											= 0x02126534;
+
+
+/* arm9_ov10 */
+/*----------------------------------------------------------------*/
+/*------------------------- koopa troopa -------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN11KoopaTroopaD1Ev                                             = 0x020dddb0;
+_ZN11KoopaTroopaD0Ev                                             = 0x020dde0c;
+_ZN11KoopaTroopa8onCreateEv                                      = 0x020df05c;
+_ZN11KoopaTroopa8onRenderEv                                      = 0x020de3a8;
+_ZN11KoopaTroopa9onDestroyEv                                     = 0x020de278;
+_ZN11KoopaTroopa18onCleanupResourcesEv                           = 0x020de2d4;
+_ZN11KoopaTroopa10updateMainEv                                   = 0x020def70;
+_ZN11KoopaTroopa13updateCarriedEv                                = 0x020df41c;
+_ZN11KoopaTroopa15updateAnimationEv                              = 0x020de248;
+_ZN11KoopaTroopa6thrownEv                                        = 0x020df3b0;
+_ZN11KoopaTroopa10thrownStopEv                                   = 0x020df374;
+_ZN11KoopaTroopa7grabbedEv                                       = 0x020df520;
+_ZN11KoopaTroopa8releasedEv                                      = 0x020df504;
+_ZN11KoopaTroopa11shellKickedEv                                  = 0x020df7e8;
+_ZN11KoopaTroopa12shellStoppedEv                                 = 0x020df754;
+_ZN11KoopaTroopa10onBlockHitEv                                   = 0x020de2d8;
+_ZN11KoopaTroopa9onStompedEv                                     = 0x020dde70;
+_ZN11KoopaTroopa13onGroundPoundEv                                = 0x020ddeec;
+_ZN11KoopaTroopa15entityCollisionER14ActiveColliderR10StageActor = 0x020dee0c;
+_ZN11KoopaTroopa12damagePlayerER14ActiveColliderR6Player         = 0x020de7d0;
+_ZN11KoopaTroopa6defeatElllh                                     = 0x020de1f8;
+_ZN11KoopaTroopa13onDamageDealtERK6Player                        = 0x020de5ec;
+_ZN11KoopaTroopa12checkDamagedEv                                 = 0x020de770;
+_ZN11KoopaTroopa20updateBeginShellExitEv                         = 0x020dfb94;
+_ZN11KoopaTroopa17startDespawnTimerEv                            = 0x020de1c8;
+_ZN11KoopaTroopa13updateDespawnEv                                = 0x020de11c;
+_ZN11KoopaTroopa13bowserJrThrowEht                               = 0x020de080;
+_ZN11KoopaTroopa23enableACEntityDetectionEv                      = 0x020de06c;
+_ZN11KoopaTroopa22updateRotationAndStateEv                       = 0x020e04d0;
+_ZN11KoopaTroopa11switchStateEMS_FbvE                            = 0x020e0558;
+_ZN11KoopaTroopa9walkStateEv                                     = 0x020dfc58;
+_ZN11KoopaTroopa9turnStateEv                                     = 0x020df644;
+_ZN11KoopaTroopa10danceStateEv                                   = 0x020df548;
+_ZN11KoopaTroopa12inShellStateEv                                 = 0x020df9f8;
+_ZN11KoopaTroopa14exitShellStateEv                               = 0x020df8b4;
+_ZN11KoopaTroopa12jumpFlyStateEv                                 = 0x020dffb0;
+_ZN11KoopaTroopa18horizontalFlyStateEv                           = 0x020e00f8;
+_ZN11KoopaTroopa16verticalFlyStateEv                             = 0x020e036c;
+_ZN11KoopaTroopa13loadResourcesEv                                = 0x020df358;
+
+_ZN11KoopaTroopa7profileE                                        = 0x021261b4;
+_ZN11KoopaTroopaa15defaultAcConfigE                              = 0x02121784;
+_ZN11KoopaTroopa17defaultSideSensorE                             = 0x02121774;
+_ZN11KoopaTroopa19defaultBottomSensorE                           = 0x0212175c;
+_ZN11KoopaTroopa16defaultTopSensorE                              = 0x02121750;
+_ZN11KoopaTroopa11velocitiesXE                                   = 0x0212173c;
+_ZN11KoopaTroopa18jumpFlyVelocitiesXE                            = 0x02121748;
+_ZN11KoopaTroopa13flyVelocitiesE                                 = 0x02121734;
+_ZN11KoopaTroopa24bowserJrThrowVelocitiesXE                      = 0x02121768;
+_ZN11KoopaTroopa24bowserJrThrowVelocitiesYE                      = 0x02121740;
+_ZN11KoopaTroopa19shellExitRotationsXE                           = 0x02121738;
+_ZN11KoopaTroopa14paletteOffsetsE                                = 0x02121730;
+
+_ZTV11KoopaTroopa                                                = 0x021261cc;
+
+
+/* arm9_ov10 */
+/*----------------------------------------------------------------*/
+/*---------------------- koopa paratroopa ------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN15KoopaParatroopa7profileE = 0x021261c0;
 
 
 /* arm9_ov10 */
@@ -6743,7 +6813,7 @@ _ZN8DryBones7sToppleE                                        = 0x0213fa78;
 _ZN8DryBones5sTurnE                                          = 0x0213fa80;
 _ZN8DryBones5sWalkE                                          = 0x0213fa88;
 
-_ZTV8DryBones                                                = 0x0213f588;
+_ZTV8DryBones                                                = 0x0213f468;
 
 
 /* arm9_ov24 */
@@ -7645,6 +7715,54 @@ _ZN10ChainChomp7profileE									= 0x02175750;
 _ZTV10ChainChomp											= 0x0217575C;
 
 
+/* arm9_ov58 */
+/*----------------------------------------------------------------*/
+/*-------------------------- spike bass --------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN9SpikeBassD1Ev                   = 0x021726c0;
+_ZN9SpikeBassD0Ev                   = 0x02172728;
+_ZN9SpikeBass8onCreateEv            = 0x021729e8;
+_ZN9SpikeBass8onRenderEv            = 0x021727d0;
+_ZN9SpikeBass9onDestroyEv           = 0x02172798;
+_ZN9SpikeBass18onPrepareResourcesEv = 0x02172ac0;
+_ZN9SpikeBass18onCleanupResourcesEv = 0x021727cc;
+_ZN9SpikeBass10updateMainEv         = 0x021728c0;
+_ZN9SpikeBass13updateEffectsEv      = 0x02172908;
+_ZN9SpikeBass11switchStateEMS_FbvE  = 0x021730d8;
+_ZN9SpikeBass11updateStateEv        = 0x0217309c;
+_ZN9SpikeBass9jumpStateEv           = 0x02172b4c;
+_ZN9SpikeBass14beginJumpStateEv     = 0x02172c9c;
+_ZN9SpikeBass9swimStateEv           = 0x02172dd8;
+_ZN9SpikeBass13loadResourcesEv      = 0x02172b18;
+
+_ZN9SpikeBass7profileE              = 0x02173680;
+_ZN9SpikeBass8acConfigE             = 0x02173638;
+_ZN9SpikeBass11velocitiesXE         = 0x02173630;
+
+_ZTV9SpikeBass                      = 0x0217368C;
+
+
+/* arm9_ov58 */
+/*----------------------------------------------------------------*/
+/*---------------------- spike bass spawner ----------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN16SpikeBassSpawnerD1Ev                  = 0x021731bc;
+_ZN16SpikeBassSpawnerD0Ev                  = 0x02173218;
+_ZN16SpikeBassSpawner8onCreateEv           = 0x02173294;
+_ZN16SpikeBassSpawner8onUpdateEv           = 0x0217327c;
+_ZN16SpikeBassSpawner5spawnEv              = 0x02173424;
+_ZN16SpikeBassSpawner11switchStateEMS_FbvE = 0x02173528;
+_ZN16SpikeBassSpawner11updateStateEv       = 0x021734f4;
+_ZN16SpikeBassSpawner9mainStateEv          = 0x021732d4;
+_ZN16SpikeBassSpawner13loadResourcesEv     = 0x021735e8;
+
+_ZN16SpikeBassSpawner7profileE             = 0x021737a8;
+
+_ZTV16SpikeBassSpawner                     = 0x021737b4;
+
+
 /* arm9_ov66 */
 /*----------------------------------------------------------------*/
 /*------------------------ lakitu spawner ------------------------*/
@@ -8001,7 +8119,7 @@ _ZN14SwellingGround10initStatesE            = 0x02188bc0;
 _ZN14SwellingGround6states                  = 0x02188be0;
 _ZN14SwellingGround7profileE                = 0x02188830;
 
-_ZTVSwellingGround14                        = 0x0218883c;
+_ZTV14SwellingGround                        = 0x0218883c;
 
 
 /* arm9_ov98 */

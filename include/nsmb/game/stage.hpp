@@ -25,11 +25,12 @@
 #include "stage/render/piperenderer.hpp"
 #include "stage/render/texture.hpp"
 
-// Overlay 10 - Coin, Goomba, MiniGoomba, Paragoomba, Item, SpinBlock, etc.
+// Overlay 10 - Coin, Goomba, MiniGoomba, Paragoomba, KoopaTroopa, Item, SpinBlock, etc.
 #include "stage/actors/ov10/actor22.hpp"
 #include "stage/actors/ov10/coin.hpp"
 #include "stage/actors/ov10/goomba.hpp"
 #include "stage/actors/ov10/item.hpp"
+#include "stage/actors/ov10/koopatroopa.hpp"
 #include "stage/actors/ov10/spinblock.hpp"
 #include "stage/actors/ov10/stagefx.hpp"
 #include "stage/actors/ov10/zoom.hpp"
@@ -75,6 +76,10 @@
 // Overlay 57 - ChainChomp, ChainChompLog
 #include "stage/actors/ov57/chainchomp.hpp"
 #include "stage/actors/ov57/chainchomplog.hpp"
+
+// Overlay 58 - SpikeBass, SpikeBassSpawner
+#include "stage/actors/ov58/spikebass.hpp"
+#include "stage/actors/ov58/spikebassspawner.hpp"
 
 // Overlay 66 - LakituSpawner, Lakitu
 #include "stage/actors/ov66/lakitu.hpp"
