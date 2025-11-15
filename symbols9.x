@@ -7016,6 +7016,59 @@ _ZN5Whomp6sBreakE							= 0x021454D4;
 _ZTV5Whomp									= 0x02145394;
 
 
+/* arm9_ov36 */
+/*----------------------------------------------------------------*/
+/*-------------------------- snailicorn --------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN10SnailicornD1Ev                                             = 0x02141e80;
+_ZN10SnailicornD0Ev                                             = 0x02141ea0;
+_ZN10Snailicorn8onCreateEv                                      = 0x02141f40;
+_ZN10Snailicorn18onPrepareResourcesEv                           = 0x021421b0;
+_ZN10Snailicorn10updateMainEv                                   = 0x02141ec8;
+_ZN10Snailicorn12onSlidingHitEv                                 = 0x02143030;
+_ZN10Snailicorn12onMegaKickedEv                                 = 0x02143038;
+_ZN10Snailicorn13onGroundPoundEv                                = 0x02143034;
+_ZN10Snailicorn15entityCollisionER14ActiveColliderR10StageActor = 0x02143380;
+_ZN10Snailicorn12damagePlayerER14ActiveColliderR6Player         = 0x0214303c;
+_ZN10Snailicorn10seesPlayerEv                                   = 0x02142f74;
+_ZN10Snailicorn16updateVisibilityEv                             = 0x02142fb8;
+_ZN10Snailicorn4nullEv                                          = 0x0214302c;
+_ZN10Snailicorn11updateStateEv                                  = 0x0214342c;
+_ZN10Snailicorn11switchStateERKMS_FbvE                          = 0x02143474;
+_ZN10Snailicorn9idleStateEv                                     = 0x02142e9c;
+_ZN10Snailicorn9walkStateEv                                     = 0x02142c74;
+_ZN10Snailicorn16playerHeardStateEv                             = 0x02142bd8;
+_ZN10Snailicorn8hopStateEv                                      = 0x02142ae4;
+_ZN10Snailicorn11chargeStateEv                                  = 0x021428fc;
+_ZN10Snailicorn15stopChargeStateEv                              = 0x02142724;
+_ZN10Snailicorn9turnStateEv                                     = 0x021425bc;
+_ZN10Snailicorn12stompedStateEv                                 = 0x02142420;
+_ZN10Snailicorn12stoppedStateEv                                 = 0x021422c0;
+_ZN10Snailicorn11unusedStateEv                                  = 0x02142204;
+_ZN10Snailicorn13loadResourcesEv                                = 0x02143500;
+
+_ZN10Snailicorn7profileE                                        = 0x02143770;
+_ZN10Snailicorn8acConfigE                                       = 0x02143590;
+_ZN10Snailicorn10sideSensorE                                    = 0x02143584;
+_ZN10Snailicorn12bottomSensorE                                  = 0x02143578;
+_ZN10Snailicorn15walkVelocitiesXE                               = 0x02143568;
+_ZN10Snailicorn17chargeVelocitiesXE                             = 0x02143560;
+_ZN10Snailicorn12chargeAccelsE                                  = 0x02143570;
+_ZN10Snailicorn5sIdleE                                          = 0x021438a0;
+_ZN10Snailicorn5sWalkE                                          = 0x021438a8;
+_ZN10Snailicorn12sPlayerHeardE                                  = 0x021438e8;
+_ZN10Snailicorn4sHopE                                           = 0x021438e0;
+_ZN10Snailicorn7sChargeE                                        = 0x021438d8;
+_ZN10Snailicorn11sStopChargeE                                   = 0x021438d0;
+_ZN10Snailicorn5sTurnE                                          = 0x021438c8;
+_ZN10Snailicorn8sStompedE                                       = 0x021438c0;
+_ZN10Snailicorn8sStoppedE                                       = 0x021438b8;
+_ZN10Snailicorn7sUnusedE                                        = 0x021438b0;
+
+_ZTV10Snailicorn                                                = 0x0214377C;
+
+
 /* arm9_ov40 */
 /*----------------------------------------------------------------*/
 /*------------------------ boss controller -----------------------*/
@@ -7585,6 +7638,32 @@ _ZN15VolcanoEruption17eruptionScaleSetsE					= 0x0216C2B4;
 _ZN15VolcanoEruption17fallOffsetFactorsE					= 0x0216C318;
 
 _ZTV15VolcanoEruption										= 0x0217013C;
+
+
+/* arm9_ov54 */
+/*----------------------------------------------------------------*/
+/*-------------------------- donut lift --------------------------*/
+/*----------------------------------------------------------------*/
+
+_ZN9DonutLiftD1Ev                    = 0x0216705c;
+_ZN9DonutLiftD0Ev                    = 0x021670cc;
+_ZN9DonutLift8onCreateEv             = 0x02167208;
+_ZN9DonutLift8onRenderEv             = 0x02167164;
+_ZN9DonutLift9onDestroyEv            = 0x02167144;
+_ZN9DonutLift10updateMainEv          = 0x021671bc;
+_ZN9DonutLift15updateAnimationEv     = 0x02167160;
+_ZN9DonutLift11tryTileSwapEv         = 0x02167414;
+_ZN9DonutLift11updateStateEv         = 0x02167524;
+_ZN9DonutLift11switchStateERKMS_FbvE = 0x0216756c;
+_ZN9DonutLift9mainStateEv            = 0x0216732c;
+_ZN9DonutLift19topColliderCallbackE  = 0x021674ec;
+
+_ZN9DonutLift7profileE               = 0x02170538;
+_ZN9DonutLift12colliderInfoE         = 0x02170544;
+_ZN9DonutLift5sMainE                 = 0x0217261c;
+_ZN9DonutLift6spriteE                = 0x0216f748;
+
+_ZTV9DonutLift                       = 0x02170560;
 
 
 /* arm9_ov57 */
