@@ -53,6 +53,9 @@
 #include "stage/actors/ov34/fencekoopa.hpp"
 #include "stage/actors/ov34/whomp.hpp"
 
+// Overlay 36 - Snailicorn
+#include "stage/actors/ov36/snailicorn.hpp"
+
 // Overlay 40 - BossController, Peach
 #include "stage/actors/ov40/bosscontroller.hpp"
 #include "stage/actors/ov40/peach.hpp"
@@ -66,12 +69,13 @@
 #include "stage/actors/ov48/tiltmetaldish.hpp"
 #include "stage/actors/ov48/wobblerock.hpp"
 
-// Overlay 54 - Checkpoint, CoinSpawner, Trampoline, VolcanoEruption, TileGod
+// Overlay 54 - Checkpoint, CoinSpawner, Trampoline, VolcanoEruption, TileGod, DonutLift
 #include "stage/actors/ov54/checkpoint.hpp"
 #include "stage/actors/ov54/coinspawner.hpp"
 #include "stage/actors/ov54/trampoline.hpp"
 #include "stage/actors/ov54/volcanoeruption.hpp"
 #include "stage/actors/ov54/tilegod.hpp"
+#include "stage/actors/ov54/donutlift.hpp"
 
 // Overlay 57 - ChainChomp, ChainChompLog
 #include "stage/actors/ov57/chainchomp.hpp"
