@@ -2794,7 +2794,7 @@ _ZN4Base6createEv										= 0x0204cc04;
 _ZN4Base7destroyEv										= 0x0204d08c;
 _ZN4Base18hasChildNotCreatedEv							= 0x0204cac0;
 _ZN4BaseD2Ev											= 0x0204d23c;
-_ZN4BaseD1Ev											= 0x00000000; /* TODO */
+//_ZN4BaseD1Ev											= 0x00000000; /* TODO */
 _ZN4BaseD0Ev											= 0x0204d270;
 _ZN4Base9getParentEv									= 0x0204d078;
 _ZN4BasenwEj											= 0x0204cc98;
@@ -4920,12 +4920,17 @@ _ZTV7StageFX							= 0x02127838;
 
 _ZN5Stage20challengeModeEnabledE					= 0x02085a10;
 _ZN5Stage13challengeModeE							= 0x02085a60;
-_ZN5Stage7setZoomElmhh								= 0x020facfc;
 _ZN5Stage9getAreaIDEhhh								= 0x0201f53c;
 
-/* arm9 */
 _ZN5Stage6eventsE									= 0x0208af3c;
 _ZN5Stage13starToonTableE							= 0x02026290;
+
+_ZN5Stage10stageGroupE								= 0x02085a18;
+_ZN5Stage7stageIDE									= 0x02085a14;
+_ZN5Stage5actIDE									= 0x02085a4c;
+_ZN5Stage10playerDeadE								= 0x0208b328;
+_ZN5Stage14initialPowerupE							= 0x0208b324;
+_ZN5Stage13storedPowerupE							= 0x02085a4c;
 
 /* arm9_ov0 */
 _ZN5Stage14liquidPositionE							= 0x020cae0c;
@@ -4951,14 +4956,11 @@ _ZN5Stage18phantomHandsTargetE						= 0x020ca918;
 _ZN5Stage16spawnStageObjectEmmPK4Vec3				= 0x0209c178;
 _ZN5Stage13objectIDTableE 							= 0x020c22b8;
 
+/* arm9_ov10 */
+_ZN5Stage7setZoomElmhh								= 0x020facfc;
+
 /* arm9_ov11 */
 _ZN5Stage16anmTilesOamTableE						= 0x0212f180;
-_ZN5Stage10stageGroupE								= 0x02085a18;
-_ZN5Stage7stageIDE									= 0x02085a14;
-_ZN5Stage5actIDE									= 0x02085a4c;
-_ZN5Stage10playerDeadE								= 0x0208b328;
-_ZN5Stage14initialPowerupE							= 0x0208b324;
-_ZN5Stage13storedPowerupE							= 0x02085a4c;
 
 
 /* arm9 */
@@ -6582,6 +6584,7 @@ _ZN10MegaGoomba13loadResourcesEv                        = 0x02132E4C;
 
 _ZN10MegaGoomba7profileE                                = 0x021330E8;
 
+/* arm9 */
 _ZTV10MegaGoomba                                        = 0x021D0DB4;
 
 
@@ -6604,7 +6607,7 @@ _ZN16PipeEnemySpawner11spawnBobOmbEv 			= 0x0213C248;
 
 _ZN16PipeEnemySpawner15goombaCooldownsE 		= 0x0213C4C0;
 _ZN16PipeEnemySpawner14goombaOffsetsXE 			= 0x0213C4C8;
-_ZN16PipeEnemySpawner14goombaOffsetsYE 			= 0x0213E4E8;
+_ZN16PipeEnemySpawner14goombaOffsetsYE 			= 0x0213C4E8;
 _ZN16PipeEnemySpawner14bobOmbOffsetsXE 			= 0x0213C4F8;
 _ZN16PipeEnemySpawner14bobOmbOffsetsYE 			= 0x0213C4D8;
 _ZN16PipeEnemySpawner7profileE 					= 0x0213C548;
@@ -7301,7 +7304,6 @@ _ZN6BobOmb7explodeEv                                                    = 0x0214
 _ZN6BobOmb12pipeOutStateEv                                              = 0x0214D1E0; /* BobOmb::pipeOutState() */
 _ZN6BobOmb18montyTankHeldStateEv                                        = 0x0214D344; /* BobOmb::montyTankHeldState() */
 _ZN6BobOmb12explodeStateEv                                              = 0x0214D420; /* BobOmb::explodeState() */
-_ZN6BobOmb11kickedStateEv                                               = 0x0221A084; /* BobOmb::kickedState() */
 _ZN6BobOmb18groundPoundedStateEv                                        = 0x0214DB38; /* BobOmb::groundPoundedState() */
 _ZN6BobOmb12tickingStateEv                                              = 0x0214DD64; /* BobOmb::tickingState() */
 _ZN6BobOmb9turnStateEv                                                  = 0x0214DEFC; /* BobOmb::turnState() */
@@ -7320,7 +7322,6 @@ _ZN6BobOmb27directionalBumpedVelocitiesE                                = 0x0215
 _ZN6BobOmb29directionalTurnRotationSpeedsE                              = 0x021519E8; /* BobOmb::directionalTurnRotationSpeeds */
 _ZN6BobOmb9topSensorE                                                   = 0x021519EC; /* BobOmb::topSensor */
 _ZN6BobOmb12bottomSensorE                                               = 0x021519F8; /* BobOmb::bottomSensor */
-_ZN6BobOmb10sideSensorE                                                 = 0x0221E344; /* BobOmb::sideSensor */
 _ZN6BobOmb18pipeOutVelocitiesXE                                         = 0x02151A10; /* BobOmb::pipeOutVelocitiesX */
 _ZN6BobOmb18pipeOutVelocitiesYE                                         = 0x02151A20; /* BobOmb::pipeOutVelocitiesY */
 _ZN6BobOmb8acConfigE                                                    = 0x02151A30; /* BobOmb::acConfig */
@@ -7328,6 +7329,10 @@ _ZN6BobOmb9blastGridE                                                   = 0x0215
 _ZN6BobOmb7profileE														= 0x02152460; /* BobOmb::profile */
 
 _ZTV6BobOmb                                                             = 0x02152474 - 8; /* vtable for BobOmb */
+
+/* arm9 */
+_ZN6BobOmb11kickedStateEv                                               = 0x0221A084; /* BobOmb::kickedState() */
+_ZN6BobOmb10sideSensorE                                                 = 0x0221E344; /* BobOmb::sideSensor */
 
 
 /* arm9_ov48 */
@@ -7721,7 +7726,6 @@ _ZN19ChainChompChainLink9idleStateEv				= 0x021731FC;
 _ZN19ChainChompChainLink9moveStateEv				= 0x021731C0;
 
 _ZN15ChainChompChain6createERK4Vec3					= 0x021734EC;
-_ZN15ChainChompChain6updateERK4Vec3					= 0x0227ADF0;
 _ZN15ChainChompChain6renderEv						= 0x021733F0;
 _ZN15ChainChompChain7tightenEv						= 0x021733C0;
 _ZN15ChainChompChain6loosenERK4Vec3					= 0x02173248;
@@ -7739,6 +7743,9 @@ _ZN15ChainChompChain12explodeStateERK4Vec3			= 0x0217359C;
 
 _ZN15ChainChompChain20defaultLooseDistanceE			= 0x021754D0;
 _ZN15ChainChompChain16defaultLinkScaleE				= 0x021754CC;
+
+/* arm9 */
+_ZN15ChainChompChain6updateERK4Vec3					= 0x0227ADF0;
 
 
 /* arm9_ov57 */
@@ -8413,7 +8420,6 @@ _ZN13BigSpikedBall13loadResourcesEv							= 0x0218DCBC;
 
 _ZN13BigSpikedBall14updateVelocityEv						= 0x0218DAF4;
 _ZN13BigSpikedBall11switchStateEMS_FbvE						= 0x0218DBB4;
-_ZN13BigSpikedBall11updateStateEv							= 0x022D7718;
 _ZN13BigSpikedBall9mainStateEv								= 0x0218D850;
 _ZN13BigSpikedBall14activeCallbackER14ActiveColliderS1_		= 0x0218D700;
 
@@ -8423,10 +8429,13 @@ _ZN13BigSpikedBall10sideSensorE								= 0x0218DF4C;
 _ZN13BigSpikedBall11velocitiesXE							= 0x0218DF5C;
 _ZN13BigSpikedBall16slopeVelocitiesXE						= 0x0218DF68;
 _ZN13BigSpikedBall19slopeAccelerationsXE					= 0x0218DF6C;
-_ZN13BigSpikedBall8acConfigE								= 0x022D7B20;
 _ZN13BigSpikedBall7profileE									= 0x0218E0D0;
 
 _ZTV13BigSpikedBall											= 0x0218E0DC;
+
+/* arm9 */
+_ZN13BigSpikedBall11updateStateEv							= 0x022D7718;
+_ZN13BigSpikedBall8acConfigE								= 0x022D7B20;
 
 
 /* arm9_ov121 */
