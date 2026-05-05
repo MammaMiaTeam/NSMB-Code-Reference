@@ -459,7 +459,7 @@ public:
 	// 0209a144
 	void attachToPlayerHands(fx32 z, fx32 y, fx32 x);
 
-	// 0209a23c (TODO)
+	// 0209a23c
 	u32 updateSolidActiveCollider(bool push, u32 flags, u8 playerID);
 
 	// 0209a4f0

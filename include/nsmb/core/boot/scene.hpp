@@ -4,6 +4,8 @@
 
 
 //ov1
+// The addresses of these methods are all wrong. Who knows, maybe the overlay indicated above is also wrong.
+// The entries in symbols9.x have been commented out.
 class BootScene : public Scene
 {
 public:
