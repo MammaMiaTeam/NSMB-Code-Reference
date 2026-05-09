@@ -58,11 +58,12 @@ public:
 		VSConnectScene* owner;
 	};
 
+	typedef void (VSConnectScene::*VSConnectScene_mfunc)();
 	struct SubMenu
 	{
-		void (VSConnectScene::*create)();
-		void (VSConnectScene::*update)();
-		void (VSConnectScene::*render)();
+		VSConnectScene_mfunc create;
+		VSConnectScene_mfunc update;
+		VSConnectScene_mfunc render;
 		u32 unused;
 	};
 
