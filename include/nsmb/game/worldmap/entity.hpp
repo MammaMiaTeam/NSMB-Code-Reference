@@ -3,6 +3,7 @@
 #include <nsmb/core/graphics/3d/modelanm.hpp>
 #include <nsmb/core/graphics/3d/animationctrl.hpp>
 
+// These addresses are on the heap. Is that correct?
 class WorldmapEntityModel
 {
 public:

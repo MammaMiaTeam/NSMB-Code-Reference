@@ -279,10 +279,10 @@ namespace Save {
 	//02013064
 	void clearOptionSave(OptionSave* save);
 
-	//02013090
+	//02013090 (Is this adderss wrong, or do we just have two names for the same function?)
 	bool createOptionSave();
 
-	//020130b4
+	//02013090
 	bool generateOptionSave();
 
 	//020130b4

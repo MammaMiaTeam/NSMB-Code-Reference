@@ -32,6 +32,7 @@ public:
 	//0x020E8BEC
 	static ObjectProfile profile;
 
+	// These three addresses are on the heap. Is that correct?
 	//021a65b0
 	static VecFx32 worldLightPositions[8];
 

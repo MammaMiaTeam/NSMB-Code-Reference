@@ -3,6 +3,7 @@
 #include <nsmb/core/entity/actor.hpp>
 
 //vtable: 021a9040
+// These addresses are on the heap. Is that correct?
 class WorldmapActor : public Actor
 {
 public:

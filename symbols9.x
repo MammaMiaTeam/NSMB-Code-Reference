@@ -1432,6 +1432,8 @@ _ZN2FS5Cache10CacheEntryD1Ev = 0x0200A308;
 _ZN2FS5Cache10CacheEntryD2Ev = 0x0200A308;
 
 _ZN2FS5Cache10unloadFileEm = 0x02009B94;
+_ZN2FS5Cache10fileCache0E      = 0x02086A30;
+_ZN2FS5Cache10fileCache1E      = 0x02085E30;
 _ZN2FS5Cache15activeFileCacheE = 0x02085E0C;
 _ZN2FS5Cache15overlayFileDestE = 0x02085E10;
 _ZN2FS5Cache15overlayFileSizeE = 0x02085E14;
@@ -2285,7 +2287,7 @@ _ZN4Save14readOptionSaveEP10OptionSave = 0x02013050;
 _ZN4Save15clearOptionSaveEP10OptionSave = 0x02013064;
 _ZN4Save18generateOptionSaveEv = 0x02013090;
 _ZN4Save10resetSavesEv = 0x020130B4;
-_ZN4Save15clearLoadedSaveEv = 0x02013100;
+_ZN4Save16clearLoadedSavesEv = 0x02013100;
 
 _ZN4Save10optionSaveE = 0x02088f18;
 _ZN4Save8mainSaveE = 0x02088bdc;
@@ -3180,6 +3182,7 @@ _ZTV11StageCamera			= 0x02123cb8;
 /*------------------------ world camera --------------------------*/
 /*----------------------------------------------------------------*/
 
+_ZN11WorldCameraC3Ev			= 0x020CD2C0;
 _ZN11WorldCameraD0Ev			= 0x020CCC68;
 _ZN11WorldCameraD1Ev			= 0x020CCC04;
 _ZN11WorldCameraD2Ev			= 0x020CCC04;
@@ -3187,7 +3190,7 @@ _ZN11WorldCamera8onCreateEv		= 0x020CD040;
 _ZN11WorldCamera8onUpdateEv		= 0x020CCD7C;
 _ZN11WorldCamera8onRenderEv		= 0x020CCF6C;
 _ZN11WorldCamera11enterState0Ev	= 0x020CCD78;
-_ZN11WorldCamera5state0Ev		= 0x020CCD74;
+_ZN11WorldCamera6state0Ev		= 0x020CCD74;
 _ZN11WorldCamera8setStateEm		= 0x020CCD48;
 _ZN11WorldCamera11updateStateEv	= 0x020CCCD4;
 
@@ -3201,18 +3204,19 @@ _ZTV11WorldCamera				= 0x020E58E8;
 /*----------------------- worldmap camera ------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN14WorldMapCameraD0Ev				= 0x020D15B4;
-_ZN14WorldMapCameraD1Ev				= 0x020D1544;
-_ZN14WorldMapCameraD2Ev				= 0x020D1544;
-_ZN14WorldMapCamera8onCreateEv		= 0x020D1CCC;
-_ZN14WorldMapCamera8onUpdateEv		= 0x020D1884;
-_ZN14WorldMapCamera8onRenderEv		= 0x020D1BF8;
-_ZN14WorldMapCamera8setStateEm		= 0x020D16A0;
-_ZN14WorldMapCamera11updateStateEv	= 0x020D162C;
+_ZN14WorldMapCameraC3Ev                   = 0x020D1F98;
+_ZN14WorldMapCameraD0Ev                   = 0x020D15B4;
+_ZN14WorldMapCameraD1Ev                   = 0x020D1544;
+_ZN14WorldMapCameraD2Ev                   = 0x020D1544;
+_ZN14WorldMapCamera8onCreateEv            = 0x020D1CCC;
+_ZN14WorldMapCamera8onUpdateEv            = 0x020D1884;
+_ZN14WorldMapCamera8onRenderEv            = 0x020D1BF8;
+_ZN14WorldMapCamera8setStateEm            = 0x020D16A0;
+_ZN14WorldMapCamera11updateStateEv        = 0x020D162C;
 
-_ZN14WorldMapCamera7profileE		= 0x020E8BEC;
+_ZN14WorldMapCamera7profileE              = 0x020E8BEC;
 
-_ZTV14WorldMapCamera				= 0x020E8C3C;
+_ZTV14WorldMapCamera                      = 0x020E8C3C;
 
 
 /* arm9_ov9 */
@@ -3232,6 +3236,7 @@ _ZTV14FixedOrthoView	= 0x020DAB34;
 /*---------------------- titlescreen camera ----------------------*/
 /*----------------------------------------------------------------*/
 
+_ZN17TitleScreenCameraC3Ev				= 0x020D3D74;
 _ZN17TitleScreenCameraD0Ev				= 0x020D3938;
 _ZN17TitleScreenCameraD1Ev				= 0x020D38D4;
 _ZN17TitleScreenCameraD2Ev				= 0x020D38D4;
@@ -3269,9 +3274,6 @@ _ZN8FadeMaskD2Ev								= 0x0201413c;
 
 _ZN8FadeMask17loadMaskModelFileEv               = 0x02013bdc;
 
-_ZN8FadeMask									= 0x0203bd8c;
-
-
 /* arm9 */
 /*----------------------------------------------------------------*/
 /*---------------------------- fader -----------------------------*/
@@ -3290,7 +3292,7 @@ _ZN5Fader19alphaBlendingPlane2E					= 0x02085c34;
 _ZN5Fader16alphaBlendingEVAE					= 0x02085c30;
 _ZN5Fader16alphaBlendingEVBE					= 0x02085c2c;
 
-_ZN5Fader12startFadeOutEmh						= 0x02007c44;
+_ZN5Fader12startFadeOutEmh						= 0x02007cf8;
 _ZN5Fader22enableMainScreenFadingEv				= 0x02007c44;
 _ZN5Fader23disableMainScreenFadingEv			= 0x02007c20;
 _ZN5Fader21enableSubScreenFadingEv				= 0x02007bfc;
@@ -3308,7 +3310,10 @@ _ZN5Fader10tryFadeOutEv                         = 0x02007df0;
 _ZN5Fader11startFadeInEmh                       = 0x02007e34;
 _ZN5Fader4fadeEv                                = 0x02007f70;
 
+_ZN5Fader16hBlankIrqHandlerEv                   = 0x02007af8;
+
 _ZN4Game5faderE									= 0x02088f48;
+_ZN4Game11activeFaderE							= 0x02085b14;
 
 
 _ZN8FadeMask20characterFadeMaskIDsE = 0x0203bd88;
@@ -3471,7 +3476,7 @@ _ZTV7Texture									= 0x0203c494;
 /*----------------------------------------------------------------*/
 
 _ZN3G3D10initializeEv										= 0x02019b6c;
-_ZN3G3D9shutdownEv											= 0x02019b78;
+_ZN3G3D8shutdownEv											= 0x02019b78;
 _ZN3G3D16getTextureParamsEP13NNSG3dResTex_mRm				= 0x02019afc;
 _ZN3G3D16getPaletteParamsEP13NNSG3dResTex_mRm				= 0x02019a88;
 
@@ -3726,7 +3731,7 @@ _ZN8Entrance16playerSpawnTypesE										= 0x0203C6C4;
 _ZN8Entrance17entranceInfoTableE									= 0x0203C6DC;
 
 _ZN8Entrance16targetEntranceIDE										= 0x0208B084;
-_ZN8Entrance20connectedPipeUnkByteE									= 0x0208B088;
+_ZN8Entrance24connectedPipeReversePathE								= 0x0208B088;
 _ZN8Entrance14subScreenSpawnE										= 0x0208B08C;
 _ZN8Entrance17connectedPipePathE									= 0x0208B090;
 _ZN8Entrance15spawnEntranceIDE										= 0x0208B094;
@@ -4336,7 +4341,7 @@ _ZN11KoopaTroopa16verticalFlyStateEv                             = 0x020e036c;
 _ZN11KoopaTroopa13loadResourcesEv                                = 0x020df358;
 
 _ZN11KoopaTroopa7profileE                                        = 0x021261b4;
-_ZN11KoopaTroopaa15defaultAcConfigE                              = 0x02121784;
+_ZN11KoopaTroopa15defaultAcConfigE                               = 0x02121784;
 _ZN11KoopaTroopa17defaultSideSensorE                             = 0x02121774;
 _ZN11KoopaTroopa19defaultBottomSensorE                           = 0x0212175c;
 _ZN11KoopaTroopa16defaultTopSensorE                              = 0x02121750;
@@ -4493,10 +4498,10 @@ _ZN6Effect9initShineEv = 0x020e4eb8;
 _ZN6Effect19updateFireballTrailEv = 0x020e4ed4;
 _ZN6Effect19renderFireballTrailEv = 0x020e4ef8;
 _ZN6Effect17initFireballTrailEv = 0x020e4f74;
-_ZN6Effect17updateDroppedStarEv = 0x020e4fac;
-_ZN6Effect17updateFallingStarEv = 0x020e50b4;
-_ZN6Effect17updateStarCollectEv = 0x020e51c8;
-_ZN6Effect17updateDisplayStarEv = 0x020e5338;
+_ZN6Effect17updateDroppedCardEv = 0x020e4fac;
+_ZN6Effect17updateFallingCardEv = 0x020e50b4;
+_ZN6Effect17updateCardCollectEv = 0x020e51c8;
+_ZN6Effect17updateDisplayCardEv = 0x020e5338;
 _ZN6Effect10renderCardEv = 0x020e53dc;
 _ZN6Effect8initCardEv = 0x020e5424;
 _ZN6Effect13updateGlitterEv = 0x020e5428;
@@ -4947,7 +4952,7 @@ _ZN7StageFX18stageClearPalettesE		= 0x0212771C;
 _ZN7StageFX23stageClearLuigiPalettesE	= 0x021277BC;
 _ZN7StageFX23stageClearMarioPalettesE	= 0x021277C8;
 _ZN7StageFX18stageClearOAMDatasE		= 0x02127764;
-_ZN7StageFX13vsLoseOAMDatasE			= 0x021276E4;
+_ZN7StageFX14vsLoseOAMDatasE			= 0x021276E4;
 _ZN7StageFX13vsWinOAMDatasE				= 0x02127754;
 _ZN7StageFX16stageClearScalesE			= 0x0212780C;
 _ZN7StageFX13timesUpScalesE				= 0x021277E0;
@@ -6063,7 +6068,7 @@ _ZN5Input22playerKeysPressedStackE					= 0x02087690;
 _ZN5Input19playerKeysHeldStackE						= 0x020876a0;
 _ZN5Input13playerMappingE							= 0x020876b0;
 
-_ZN5Input22unusedDirectionalFlagsE					= 0x020262ec;
+_ZN5InputL22unusedDirectionalFlagsE					= 0x020262ec;
 
 
 /* arm9 */
@@ -6290,11 +6295,11 @@ _ZN3End9Slideshow21transitStateFunctionsE	= 0x020F1518;
 _ZN3End8Graphics10clearCacheEv										= 0x020E2D0C;
 _ZN3End8Graphics11loadTexPlttEPvmm									= 0x020E2AE0;
 _ZN3End8Graphics13hasCachedDataEv									= 0x020E2C70;
-_ZN3End8Graphics16getResourceIndexEP12NNSG3dResMdlPKc				= 0x020E2A50;
-_ZN3End8Graphics16getResourceIndexEP13NNSG3dResDictPKc				= 0x020E2AA4;
-_ZN3End8Graphics17cacheModelTextureEP13NNSG3dResMdl_PKcPvmS5_mmm		= 0x020E2BA0;
-_ZN3End8Graphics17getPaletteAddressEP17NNSG3dResMatData_				= 0x020E2A68;
-_ZN3End8Graphics17getTextureAddressEP17NNSG3dResMatData_				= 0x020E2A8C;
+_ZN3End8Graphics16getResourceIndexEP13NNSG3dResMdl_PKc				= 0x020E2A50;
+_ZN3End8Graphics16getResourceIndexEP14NNSG3dResDict_PKc				= 0x020E2AA4;
+_ZN3End8Graphics17cacheModelTextureEP13NNSG3dResMdl_PKcPvmS5_mmm	= 0x020E2BA0;
+_ZN3End8Graphics17getPaletteAddressEP17NNSG3dResMatData_			= 0x020E2A68;
+_ZN3End8Graphics17getTextureAddressEP17NNSG3dResMatData_			= 0x020E2A8C;
 _ZN3End8Graphics19endingVBlankHandlerEv								= 0x020E2C8C;
 _ZN3End8Graphics7loadTexEPvmm										= 0x020E2B14;
 _ZN3End8Graphics9cacheDataEPvmmb									= 0x020E2B48;
@@ -6801,15 +6806,15 @@ _ZTV6Thwomp												= 0x0213F6E8;
 /*------------------------- giant thwomp -------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN13GiantThwompD0Ev									= 0x0213E4F0;
-_ZN13GiantThwompD1Ev									= 0x0213E45C;
-_ZN13GiantThwompD2Ev									= 0x0213E45C;
+_ZN11GiantThwompD0Ev									= 0x0213E4F0;
+_ZN11GiantThwompD1Ev									= 0x0213E45C;
+_ZN11GiantThwompD2Ev									= 0x0213E45C;
 
-_ZN13GiantThwomp9topSensorE								= 0x0213F1C8;
-_ZN13GiantThwomp8acConfigE								= 0x0213F214;
-_ZN13GiantThwomp7profileE								= 0x0213F6DC;
+_ZN11GiantThwomp9topSensorE								= 0x0213F1C8;
+_ZN11GiantThwomp8acConfigE								= 0x0213F214;
+_ZN11GiantThwomp7profileE								= 0x0213F6DC;
 
-_ZTV13GiantThwomp										= 0x0213F804;
+_ZTV11GiantThwomp										= 0x0213F804;
 
 
 /* arm9_ov24 */
@@ -7820,7 +7825,7 @@ _ZN10ChainChomp12onStarmanHitEv								= 0x02173CC8;
 _ZN10ChainChomp9onMegaHitEv									= 0x02173C70;
 _ZN10ChainChomp14onBlueShellHitEv							= 0x02173C9C;
 _ZN10ChainChomp12damagePlayerER14ActiveColliderR6Player		= 0x02173D20;
-_ZN10ChainChompg13loadResourcesEv							= 0x021753B8;
+_ZN10ChainChomp13loadResourcesEv							= 0x021753B8;
 
 _ZN10ChainChomp15destroyInactiveEv							= 0x02174D58;
 _ZN10ChainChomp15checkOutOfRangeERK4Vec3RK6FxRect			= 0x02174E6C;
@@ -8257,7 +8262,7 @@ _ZN14SwellingGround12targetPointsE          = 0x02188808;
 _ZN14SwellingGround16targetPointsDownE      = 0x02188640;
 _ZN14SwellingGround14targetPointsUpE        = 0x021885b0;
 _ZN14SwellingGround10initStatesE            = 0x02188bc0;
-_ZN14SwellingGround6states                  = 0x02188be0;
+_ZN14SwellingGround6statesE                 = 0x02188be0;
 _ZN14SwellingGround7profileE                = 0x02188830;
 
 _ZTV14SwellingGround                        = 0x0218883c;
@@ -8364,7 +8369,7 @@ _ZN6Skewer15playerCollisionER14ActiveColliderS1_            = 0x0218C8D8; /* Ske
 _ZNK6Skewer10isInCameraEv                                   = 0x0218D5E0; /* Skewer::isInCamera() const */
 _ZN6Skewer6updateEv                                         = 0x0218D2D4; /* Skewer::update() */
 _ZN6Skewer13onReachedPeakEv                                 = 0x0218D1B8; /* Skewer::onReachedPeak() */
-_ZNK6Skewer11getTimingInfoERmRbm                            = 0x0218D120; /* Skewer::getStepInfo(unsigned long&, bool&, unsigned long) const */
+_ZNK6Skewer11getStepInfoERmRbm                              = 0x0218D120; /* Skewer::getStepInfo(unsigned long&, bool&, unsigned long) const */
 _ZN6Skewer13installStatesEv                                 = 0x0218CCF8; /* Skewer::installStates() */
 _ZN6Skewer16prepareCollisionEv                              = 0x0218CAF0; /* Skewer::prepareCollision() */
 _ZN6Skewer12programStartEv                                  = 0x0218CAA8; /* Skewer::programStart() */

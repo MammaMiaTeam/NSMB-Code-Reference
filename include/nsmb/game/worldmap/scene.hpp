@@ -7,6 +7,7 @@
 #include <nsmb/core/system/save.hpp>
 
 //vtable: 021a61ac
+// Some, maybe all of the addresses given here are incorrect. (I checked a few of the methods and they are not the start of any function.)
 class WorldmapScene : public Scene
 {
 public:
