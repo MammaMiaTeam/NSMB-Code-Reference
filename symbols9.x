@@ -2576,7 +2576,7 @@ _ZN3Net15taskManagerBusyE                                           = 0x02088808
 _ZN3Net20multiBootParentBssidE                                      = 0x0203AB88; /* Net::multiBootParentBssid */
 _ZN3Net22signalStrengthGraphicsE                                    = 0x0203AB90; /* Net::signalStrengthGraphics */
 _ZN3Net20signalStrengthSpriteE                                      = 0x0203ABB0; /* Net::signalStrengthSprite */
-_ZN3Net10gameInfoEUE                                                = 0x0203ACE0; /* Net::gameInfoEU */
+_ZN3Net10gameInfoEUE                                                = 0x0203AC68; /* Net::gameInfoEU */
 _ZN3Net10gameInfoJPE                                                = 0x0203ACA4; /* Net::gameInfoJP */
 _ZN3Net10gameInfoUSE                                                = 0x0203ACE0; /* Net::gameInfoUS */
 _ZN3Net21packetSequencerBitmapE                                     = 0x0203AE6C; /* Net::packetSequencerBitmap */
@@ -3843,9 +3843,6 @@ _ZN4Game19setupMarioResourcesEv						= 0x02020C64;
 _ZN4Game19playTransitionMusicEl						= 0x020210DC;
 _ZN4Game19playerModelCallbackEP9NNSG3dRS_			= 0x02021108;
 
-_ZN4Game13playerPowerupE							= 0x0208B324;
-_ZN4Game10playerDeadE								= 0x0208B328;
-_ZN4Game22playerInventoryPowerupE					= 0x0208B32C;
 _ZN4Game15playerCharacterE							= 0x0208B330;
 _ZN4Game15playerMegaTimerE							= 0x0208B334;
 _ZN4Game16playerInCutsceneE							= 0x0208B338;
@@ -4354,6 +4351,7 @@ _ZN11KoopaTroopa19shellExitRotationsXE                           = 0x02121738;
 _ZN11KoopaTroopa14paletteOffsetsE                                = 0x02121730;
 
 _ZTV11KoopaTroopa                                                = 0x021261cc;
+_ZTV15KoopaParatroopa                                            = _ZTV11KoopaTroopa;
 
 
 /* arm9_ov10 */
@@ -4975,10 +4973,9 @@ _ZN5Stage13starToonTableE							= 0x02026290;
 
 _ZN5Stage10stageGroupE								= 0x02085a18;
 _ZN5Stage7stageIDE									= 0x02085a14;
-_ZN5Stage5actIDE									= 0x02085a4c;
 _ZN5Stage10playerDeadE								= 0x0208b328;
 _ZN5Stage14initialPowerupE							= 0x0208b324;
-_ZN5Stage13storedPowerupE							= 0x02085a4c;
+_ZN5Stage13storedPowerupE							= 0x0208b32c;
 
 /* arm9_ov0 */
 _ZN5Stage14liquidPositionE							= 0x020cae0c;
@@ -6109,6 +6106,8 @@ _ZN11StageLayout18animateBrickBlocksEv    = 0x020B807C;
 _ZN11StageLayout12animateCoinsEh          = 0x020B8364;
 _ZN11StageLayout13doLayoutResetE          = 0x020cac98;
 
+_ZTV11StageLayout                         = _ZTV6Object;
+
 
 /* arm9_ov8 */
 /*----------------------------------------------------------------*/
@@ -6961,6 +6960,10 @@ _ZN12PiranhaRight7profileE					= 0x021439E0;
 _ZN11PiranhaLeft7profileE					= 0x021439EC;
 
 _ZTV11PipePiranha							= 0x021439F8;
+_ZTV9PiranhaUp								= _ZTV11PipePiranha;
+_ZTV11PiranhaDown							= _ZTV11PipePiranha;
+_ZTV12PiranhaRight							= _ZTV11PipePiranha;
+_ZTV11PiranhaLeft							= _ZTV11PipePiranha;
 
 
 /* arm9_ov34 */
@@ -7007,7 +7010,7 @@ _ZN10FenceKoopa12bottomSensorE							= 0x02144F74;
 _ZN10FenceKoopa8acConfigE					= 0x02144F80;
 _ZN10FenceKoopa7profileE								= 0x02145200;
 
-_ZTV12FenceKoopa										= 0x0214520C;
+_ZTV10FenceKoopa										= 0x0214520C;
 
 
 /* arm9_ov34 */
@@ -7648,6 +7651,7 @@ _ZN10Checkpoint7profileE								= 0x0216FF58;
 _ZN18VerticalCheckpoint7profileE						= 0x0216FF64;
 
 _ZTV10Checkpoint										= 0x0216FF70;
+_ZTV18VerticalCheckpoint								= _ZTV10Checkpoint;
 
 
 /* arm9_ov54 */
@@ -8424,6 +8428,14 @@ _ZN19DistancedSkewerLeft7profileE                           = 0x0218DE74; /* Dis
 _ZN20DistancedSkewerRight7profileE                          = 0x0218DE80; /* DistancedSkewerRight::profile */
 
 _ZTV6Skewer                                                 = 0x0218DF24 - 8; /* vtable for Skewer */
+_ZTV10SkewerDown                                            = _ZTV6Skewer;
+_ZTV8SkewerUp                                               = _ZTV6Skewer;
+_ZTV10SkewerLeft                                            = _ZTV6Skewer;
+_ZTV11SkewerRight                                           = _ZTV6Skewer;
+_ZTV19DistancedSkewerDown                                   = _ZTV6Skewer;
+_ZTV17DistancedSkewerUp                                     = _ZTV6Skewer;
+_ZTV19DistancedSkewerLeft                                   = _ZTV6Skewer;
+_ZTV20DistancedSkewerRight                                  = _ZTV6Skewer;
 
 
 /* arm9_ov121 */
@@ -8511,7 +8523,9 @@ _ZN17SpikedBallTrigger9onDestroyEv							= 0x0218DDD8;
 _ZN17SpikedBallTrigger18onCleanupResourcesEv				= 0x0218DDE0;
 _ZN17SpikedBallTrigger10updateMainEv						= 0x0218DDE4;
 
-_ZN17SpikedBallTrigger7profileE								= 0x0218E1FC;
+_ZN17SpikedBallTrigger7profileE								= 0x0218E1F0;
+
+_ZTV17SpikedBallTrigger										= 0x0218E1FC;
 
 
 /* arm9_ov5 */

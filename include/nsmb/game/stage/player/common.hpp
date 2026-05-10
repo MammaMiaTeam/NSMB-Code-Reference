@@ -23,9 +23,6 @@ namespace Game {
 
 	};
 
-	extern u8 playerPowerup[2];
-	extern bool playerDead[2];
-	extern u8 playerInventoryPowerup[2];
 	extern u8 playerCharacter[2];
 	extern s16 playerMegaTimer[2];
 	extern BOOL playerInCutscene;
