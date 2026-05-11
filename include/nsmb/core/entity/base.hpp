@@ -15,9 +15,6 @@ public:
 	//0204d2ac (C2, most likely protected)
 	Base();
 
-	//0204d23c (D2, D1 is pure??)
-	//~Base()
-
 	//0204cba0
 	BaseReturnState processCreate();
 
@@ -60,7 +57,7 @@ public:
 	//0204cac0
 	bool hasChildNotCreated();
 
-	//D1 is null
+	// D1 is null; D0: 0x0204d270; D2: 0x0204d23c
 	virtual ~Base();
 
 	//0204d078
