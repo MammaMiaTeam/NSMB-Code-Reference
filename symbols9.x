@@ -3233,6 +3233,112 @@ _ZN13WorldmapActor18onPrepareResourcesEv  = 0x020e96bc;
 
 _ZTV13WorldmapActor                       = 0x020E9680;
 
+
+/*----------------------------------------------------------------*/
+/*----------------------- worldmap scene -------------------------*/
+/*----------------------------------------------------------------*/
+_ZN13WorldmapSceneC1Ev                            = 0x020d14f8;
+_ZN13WorldmapSceneD0Ev                            = 0x020CD9E4;
+_ZN13WorldmapSceneD1Ev                            = 0x020CD9AC;
+_ZN13WorldmapScene8onCreateEv                     = 0x020cf7c8;
+_ZN13WorldmapScene9onDestroyEv                    = 0x020cf794;
+_ZN13WorldmapScene8onUpdateEv                     = 0x020cf034;
+_ZN13WorldmapScene10postUpdateE15BaseReturnState  = 0x020cf12c;
+_ZN13WorldmapScene8onRenderEv                     = 0x020cf15c;
+_ZN13WorldmapScene18onCleanupResourcesEv          = 0x020cf790;
+_ZN13WorldmapScene18onUpdateWorldEnterEv          = 0x020cefd4;
+_ZN13WorldmapScene16onUpdateWorldmapEv            = 0x020ced90;
+_ZN13WorldmapScene17onUpdatePauseMenuEv           = 0x020ce674;
+_ZN13WorldmapScene18onUpdateSaveDialogEv          = 0x020ce330;
+_ZN13WorldmapScene23onUpdateWorldTransitionEv     = 0x020ce228;
+_ZN13WorldmapScene15updateSubscreenEv             = 0x020d08dc;
+_ZN13WorldmapScene23updateWorldmapSubscreenEv     = 0x020d0788;
+_ZN13WorldmapScene12swipeMenuOutEv                = 0x020d0708;
+_ZN13WorldmapScene15loadOptionsMenuEv             = 0x020d06fc;
+_ZN13WorldmapScene11swipeMenuInEv                 = 0x020d06c8;
+_ZN13WorldmapScene17updateOptionsMenuEv           = 0x020d06bc;
+_ZN13WorldmapScene17loadWorldmapIconsEv           = 0x020d06b0;
+_ZN13WorldmapScene15renderSubscreenEv             = 0x020d113c;
+_ZN13WorldmapScene17renderOptionsMenuEv           = 0x020d0a4c;
+_ZN13WorldmapScene23renderWorldmapSubscreenEv     = 0x020d0a58;
+
+_ZTV13WorldmapScene                               = 0x020E67EC - 8;
+
+_ZN13WorldmapScene25disableBowserJRAnimationsEm   = 0x020cdccc;
+_ZN13WorldmapScene16getStarCoinCountEv            = 0x020cdf9c;
+_ZN13WorldmapScene16getStarCoinSpentEv            = 0x020cdec0;
+_ZN13WorldmapScene20checkLevelCompletionEv        = 0x020cddd8;
+_ZN13WorldmapScene19checkPathCompletionEv         = 0x020cdcf8;
+_ZN13WorldmapScene15checkCompletionEv             = 0x020ce0a0;
+_ZN13WorldmapScene16getWorldMapIndexEm            = 0x020dd038;
+_ZN13WorldmapScene25getWorldmapPathMaskFileIDEm   = 0x020dc1f8;
+_ZN13WorldmapScene21getWorldmapPathFileIDEm       = 0x020dc218;
+_ZN13WorldmapScene20getWorldmapModelFileEmm       = 0x020ce214;
+_ZN13WorldmapScene18loadWorldmapModelsEv          = 0x020d20ac;
+_ZN13WorldmapScene23loadBowserJRPeachModelsEv     = 0x020db28c;
+_ZN13WorldmapScene24updateChallengeModeStateEPm   = 0x020d0548;
+_ZN13WorldmapScene23resetChallengeModeStateEPm    = 0x020d0614;
+_ZN13WorldmapScene23resetChallengeModeStateEv     = 0x020d0534;
+_ZN13WorldmapScene24isChallengeModeTriggeredEv    = 0x020d04fc;
+_ZN13WorldmapScene10isLPressedEv                  = 0x020d0620;
+_ZN13WorldmapScene10isRPressedEv                  = 0x020d0644;
+_ZN13WorldmapScene10isXPressedEv                  = 0x020d0668;
+_ZN13WorldmapScene10isYPressedEv                  = 0x020d068c;
+_ZN13WorldmapScene10setTextBoxEmN7TextBox4TypeEPv = 0x020cdc30;
+_ZN13WorldmapScene13showPauseMenuEv               = 0x020ced20;
+_ZN13WorldmapScene14showSaveDialogEv              = 0x020ce5ec;
+_ZN13WorldmapScene21transitionToNextWorldEv       = 0x020ce22c;
+_ZN13WorldmapScene14getNextWorldIDEm              = 0x020ce298;
+_ZN13WorldmapScene18getLightDirectionXEm          = 0x020ce16c;
+_ZN13WorldmapScene18getLightDirectionYEm          = 0x020ce16c;
+_ZN13WorldmapScene18getLightDirectionZEm          = 0x020ce16c;
+_ZN13WorldmapScene18getWorldmapMusicIDEm          = 0x020ce12c;
+_ZN13WorldmapScene12fadeWorldmapEtm               = 0x020cdb44;
+_ZN13WorldmapScene20getWorldmapNodeCountEm        = 0x020cda7c;
+_ZN13WorldmapScene18getLeftCameraLimitEm          = 0x020ce1b4;
+_ZN13WorldmapScene19getRightCameraLimitEm         = 0x020ce184;
+
+_ZN13WorldmapScene20worldmapIconAnimatorE         = 0x020ee49c;
+_ZN13WorldmapScene10worldPathsE                   = 0x020e6e38;
+_ZN13WorldmapScene8loooooolE                      = 0x020e79c4;
+_ZN13WorldmapScene8w1LevelsE                      = 0x020e74d4;
+_ZN13WorldmapScene8w2LevelsE                      = 0x020e75b8;
+_ZN13WorldmapScene8w3LevelsE                      = 0x020e715c;
+_ZN13WorldmapScene8w4LevelsE                      = 0x020e730c;
+_ZN13WorldmapScene8w5LevelsE                      = 0x020e78a4;
+_ZN13WorldmapScene8w6LevelsE                      = 0x020e76a8;
+_ZN13WorldmapScene8w7LevelsE                      = 0x020e7234;
+_ZN13WorldmapScene8w8LevelsE                      = 0x020e73f0;
+_ZN13WorldmapScene7w1PathsE                       = 0x020e6a78;
+_ZN13WorldmapScene7w2PathsE                       = 0x020e6cb0;
+_ZN13WorldmapScene7w3PathsE                       = 0x020e6ad4;
+_ZN13WorldmapScene7w4PathsE                       = 0x020e6a1c;
+_ZN13WorldmapScene7w5PathsE                       = 0x020e7064;
+_ZN13WorldmapScene7w6PathsE                       = 0x020e6dd0;
+_ZN13WorldmapScene7w7PathsE                       = 0x020e6d10;
+_ZN13WorldmapScene7w8PathsE                       = 0x020e69c4;
+_ZN13WorldmapScene15wmPathMaskFilesE              = 0x020e36c0;
+_ZN13WorldmapScene11wmPathFilesE                  = 0x020e369c;
+_ZN13WorldmapScene20worldmapModelFileIDsE         = 0x020e8794;
+_ZN13WorldmapScene23worldStarCoinsCompletedE      = 0x020ee390;
+_ZN13WorldmapScene9nextWorldE                     = 0x020e5a2c;
+_ZN13WorldmapScene24challengeModeButtonNameXE     = 0x020e5a34;
+_ZN13WorldmapScene24challengeModeButtonNameLE     = 0x020e5a38;
+_ZN13WorldmapScene24challengeModeButtonNameYE     = 0x020e5a3c;
+_ZN13WorldmapScene24challengeModeButtonNameRE     = 0x020e5a40;
+_ZN13WorldmapScene19challengeModeStatesE          = 0x020e2dfc;
+_ZN13WorldmapScene25currentChallengeModeStateE    = 0x020ee3d4;
+_ZN13WorldmapScene12textBoxScaleE                 = 0x020ee3e0;
+_ZN13WorldmapScene8textFileE                      = 0x020ee3f4;
+_ZN13WorldmapScene7textBoxE                       = 0x020ee58c;
+_ZN13WorldmapScene16currentTextIndexE             = 0x020ee3b8;
+_ZN13WorldmapScene11textBoxTypeE                  = 0x020ee374;
+_ZN13WorldmapScene15isGameCompletedE              = 0x020ee380;
+_ZN13WorldmapScene11textIndicesE                  = 0x020e64ec;
+_ZN13WorldmapScene15lightDirectionsE              = 0x020e6bf0;
+_ZN13WorldmapScene16worldmapMusicIDsE             = 0x020e650c;
+_ZN13WorldmapScene12cameraLimitsE                 = 0x020e6714;
+
 /* arm9_ov9 */
 /*----------------------------------------------------------------*/
 /*----------------------- fixed ortho view -----------------------*/

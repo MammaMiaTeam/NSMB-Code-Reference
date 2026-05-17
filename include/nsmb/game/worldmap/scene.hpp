@@ -6,8 +6,7 @@
 #include <nsmb/core/graphics/particle.hpp>
 #include <nsmb/core/system/save.hpp>
 
-//vtable: 021a61ac
-// Some, maybe all of the addresses given here are incorrect. (I checked a few of the methods and they are not the start of any function.)
+//vtable: 020E67EC (overlay 8)
 class WorldmapScene : public Scene
 {
 public:
@@ -134,11 +133,6 @@ public:
 #pragma warning LevelStruct not defined!!!
 	};
 
-	struct ShitStruct {
-		u32 unk00;
-		u32 unk04;
-	};
-
 	struct WorldPath {
 		u32 world0;
 		u32 world1;
@@ -162,117 +156,107 @@ public:
 		u32 unk10;//Enter stop delay (at 0x15 the oscillation stops if scale == 1.0)
 		Mode unk14;//Mode
 
-		//02190e38
 		IconAnimator(Mode mode);
 
-		//02190c6c
 		void update();
-
-
 	};
 
-	//021ade5c
+	//0x020ee49c
 	static IconAnimator worldmapIconAnimator;
 
-	//021a67f8
+	//0x020e6e38
 	static WorldPath worldPaths[9];
 
-	//021a7384
+	//0x020e79c4
 	static WorldStruct looooool[8];
 
-	//021a60d4
-	static ShitStruct shit[8];
-
-	//021a6e94
+	//0x020e74d4
 	static LevelStruct w1Levels[0x13];
 
-	//021a6f78
+	//0x020e75b8
 	static LevelStruct w2Levels[0x14];
 
-	//021a6b1c
+	//0x020e715c
 	static LevelStruct w3Levels[0x12];
 
-	//021a6ccc
+	//0x020e730c
 	static LevelStruct w4Levels[0x13];
 
-	//021a7264
+	//0x020e78a4
 	static LevelStruct w5Levels[0x18];
 
-	//021a7068
+	//0x020e76a8
 	static LevelStruct w6Levels[0x15];
 
-	//021a6bf4
+	//0x020e7234
 	static LevelStruct w7Levels[0x12];
 
-	//021a6db0
+	//0x020e73f0
 	static LevelStruct w8Levels[0x13];
 
-	//021a6438
+	//0x020e6a78
 	static PathStruct w1Paths[0x17];
 
-	//021a6670
+	//0x020e6cb0
 	static PathStruct w2Paths[0x18];
 
-	//021a6494
+	//0x020e6ad4
 	static PathStruct w3Paths[0x17];
 
-	//021a63dc
+	//0x020e6a1c
 	static PathStruct w4Paths[0x17];
 
-	//021a6a24
+	//0x020e7064
 	static PathStruct w5Paths[0x1E];
 
-	//021a6790
+	//0x020e6dd0
 	static PathStruct w6Paths[0x1A];
 
-	//021a66d0
+	//0x020e6d10
 	static PathStruct w7Paths[0x18];
 
-	//021a6384
+	//0x020e69c4
 	static PathStruct w8Paths[0x16];
 
 
-	//021a3080
+	//0x020e36c0
 	static u32 wmPathMaskFiles[9];
 
-	//021a305c
+	//0x020e369c
 	static u32 wmPathFiles[9];
 
-	//021a8154
+	//0x020e8794
 	static u32 worldmapModelFileIDs[8][16];
 
-	//021add50
+	//0x020ee390
 	static u8 worldStarCoinsCompleted;//Bitmask (1 << world)
 
-	//021a53ec
+	//0x020e5a2c
 	static s8 nextWorld;//-1 if none pressed, else pressed icon = world
 
 //Don't really belong here
 /*
-	//021ade74
+	//0x020ee4b4
 	static Function updateStates[5];
 
-	//021addb0
+	//0x020ee3f0
 	static UpdateState currentUpdateState;
 
 	//020cc2c0
 	static SubscreenState currentSubscreenState;
 
-	//021ade9c
+	//0x020ee4dc
 	static Function subscreenUpdateStates[11];
 
-	//021add8c
+	//0x020ee3cc
 	static u32 subscreenUpdateStateFlags;//0x1: Initialized
 
-	//021adef4
+	//0x020ee534
 	static Function subscreenRenderStates[11];
 
-	//021addb8
+	//0x020ee3f8
 	static u32 subscreenRenderStateFlags;//0x1: Initialized
 */
-
-	//02085a10
-	static bool challengeModeEnabled;
 
 	typedef bool(*ChallengeModeStateFunction)();
 
@@ -281,231 +265,231 @@ public:
 		const char* buttonName;
 	};
 
-	//021a53f4
+	//0x020e5a34
 	static const char challengeModeButtonNameX[2];
 
-	//021a53f8
+	//0x020e5a38
 	static const char challengeModeButtonNameL[2];
 
-	//021a53fc
+	//0x020e5a3c
 	static const char challengeModeButtonNameY[2];
 
-	//021a5400
+	//0x020e5a40
 	static const char challengeModeButtonNameR[2];
 
-	//021a27bc
+	//0x020e2dfc
 	static ChallengeModeState challengeModeStates[8];
 
-	//021add94
+	//0x020ee3d4
 	static u32 currentChallengeModeState;
 
-	//021adda0
+	//0x020ee3e0
 	static fx32 textBoxScale;
 
-	//021addb4
+	//0x020ee3f4
 	static void* textFile;
 
-	//021adf4c
+	//0x020ee58c
 	static TextBox textBox;
 
-	//021add78
+	//0x020ee3b8
 	static u32 currentTextIndex;
 
-	//021add34
+	//0x020ee374
 	static TextBoxType textBoxType;
 
-	//021add40
+	//0x020ee380
 	static bool isGameCompleted;
 
-	//021a5eac
+	//0x020e64ec
 	static u32 textIndices[2 * 4];
 
-	//021a65b0
+	//0x020e6bf0
 	static VecFx32 lightDirections[8];
 
-	//021a5ecc
+	//0x020e650c
 	static u32 worldmapMusicIDs[10];
 
-	//021a60d4
+	//0x020e6714
 	static fx32 cameraLimits[8][2];//0=Left,1=Right
 
 
-	//02190eb8
+	//0x020d14f8
 	WorldmapScene();
 
 	//D0:0218d3a4
 	//D1:0218d36c
 	virtual ~WorldmapScene() override;
 
-	//0218f188
+	//0x020cf7c8
 	virtual s32 onCreate() override;
 
-	//0218f154
+	//0x020cf794
 	virtual s32 onDestroy() override;
 
-	//0218e9f4
+	//0x020cf034
 	virtual s32 onUpdate() override;
 
-	//0218eaec
+	//0x020cf12c
 	virtual void postUpdate(BaseReturnState state) override;
 
-	//0218eb1c
+	//0x020cf15c
 	virtual s32 onRender() override;
 
-	//0218f150
+	//0x020cf790
 	virtual void onCleanupResources() override;
 
-	//0218d68c
+	//0x020cdccc
 	static void disableBowserJRAnimations(u32 lastWorld);//Disables all animations up to (including) lastWorld
 
-	//0218d95c
+	//0x020cdf9c
 	static u32 getStarCoinCount();
 
-	//0218d880
+	//0x020cdec0
 	static u32 getStarCoinSpent();
 
-	//0218d798
+	//0x020cddd8
 	static void checkLevelCompletion();
 
-	//0218d6b8
+	//0x020cdcf8
 	static void checkPathCompletion();
 
-	//0218da60
+	//0x020ce0a0
 	static void checkCompletion();
 
-	//0219c9f8
+	//0x020dd038
 	static u32 getWorldMapIndex(u32 worldID);
 
-	//0219bbb8
+	//0x020dc1f8
 	static u32 getWorldmapPathMaskFileID(u32 world);
 
-	//0219bbd8
+	//0x020dc218
 	static u32 getWorldmapPathFileID(u32 world);
 
-	//0218fb04
+	//0x020d0144
 	//EWWWWWWW
 
-	//0218dbd4
+	//0x020ce214
 	static u32 getWorldmapModelFile(u32 world, u32 index);
 
-	//02191a6c
+	//0x020d20ac
 	static bool loadWorldmapModels();
 
-	//0219ac4c
+	//0x020db28c
 	static bool loadBowserJRPeachModels();
 
-	//02190e38
+	//0x020d1478
 	//IDK
 
 	//0201ec88 - CheckIfLevelAlreadyBeaten
 	//Bitch do I look like I care? NO
 
-	//0218e994
+	//0x020cefd4
 	void onUpdateWorldEnter();//State 0
 
-	//0218e750
+	//0x020ced90
 	void onUpdateWorldmap();//State 1
 
-	//0218e034
+	//0x020ce674
 	void onUpdatePauseMenu();//State 2
 
-	//0218dcf0
+	//0x020ce330
 	void onUpdateSaveDialog();//State 3
 
-	//0218dbe8
+	//0x020ce228
 	void onUpdateWorldTransition();//State 4, does nothing
 
-	//0219029c
+	//0x020d08dc
 	void updateSubscreen();
 
-	//02190148
+	//0x020d0788
 	void updateWorldmapSubscreen();//State 0
 
-	//021900c8
+	//0x020d0708
 	void swipeMenuOut();//State 1 & 5-8
 
-	//021900bc
+	//0x020d06fc
 	void loadOptionsMenu();//State 2
 
-	//02190088
+	//0x020d06c8
 	void swipeMenuIn();//State 3 & 10
 
-	//0219007c
+	//0x020d06bc
 	void updateOptionsMenu();//State 4
 
-	//02190070
+	//0x020d06b0
 	void loadWorldmapIcons();//State 9
 
-	//02190afc
+	//0x020d113c
 	void renderSubscreen();
 
-	//0219040c
+	//0x020d0a4c
 	void renderOptionsMenu();
 
-	//02190418
+	//0x020d0a58
 	void renderWorldmapSubscreen();
 
-	//0218ff08
+	//0x020d0548
 	static bool updateChallengeModeState(u32* currentState);
 
-	//0218ffd4
+	//0x020d0614
 	static void resetChallengeModeState(u32* currentState);
 
-	//0218fef4
+	//0x020d0534
 	static void resetChallengeModeState();
 
-	//0218febc
+	//0x020d04fc
 	static bool isChallengeModeTriggered();
 
-	//0218ffe0
+	//0x020d0620
 	static bool isLPressed();
 
-	//02190004
+	//0x020d0644
 	static bool isRPressed();
 
-	//02190028
+	//0x020d0668
 	static bool isXPressed();
 
-	//0219004c
+	//0x020d068c
 	static bool isYPressed();
 
-	//0218d5f0
+	//0x020cdc30
 	static FontString* setTextBox(u32 stringIndex, TextBox::Type type, void* bmg);
 
-	//0218e6e0
+	//0x020ced20
 	static void showPauseMenu();
 
-	//0218dfac
+	//0x020ce5ec
 	static void showSaveDialog();
 
-	//0218dbec
+	//0x020ce22c
 	static void transitionToNextWorld();
 
-	//0218dc58
+	//0x020ce298
 	static u32 getNextWorldID(u32 currentWorld);
 
-	//0218db2c
+	//0x020ce16c
 	static fx32 getLightDirectionX(u32 world);
 
-	//0218db2c
+	//0x020ce16c
 	static fx32 getLightDirectionY(u32 world);
 
-	//0218db2c
+	//0x020ce16c
 	static fx32 getLightDirectionZ(u32 world);
 
-	//0218daec
+	//0x020ce12c
 	static u32 getWorldmapMusicID(u32 world);
 
-	//0218d504
+	//0x020cdb44
 	static void fadeWorldmap(u16 sceneID, u32 settings);
 
-	//0218d43c
+	//0x020cda7c
 	static u16 getWorldmapNodeCount(u32 world);
 
-	//0218db74
+	//0x020ce1b4
 	static fx32 getLeftCameraLimit(u32 world);
 
-	//0218db44
+	//0x020ce184
 	static fx32 getRightCameraLimit(u32 world);
 
 };
