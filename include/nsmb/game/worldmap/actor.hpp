@@ -2,8 +2,7 @@
 
 #include <nsmb/core/entity/actor.hpp>
 
-//vtable: 021a9040
-// These addresses are on the heap. Is that correct?
+//vtable: 020E9680 (overlay 8)
 class WorldmapActor : public Actor
 {
 public:
@@ -26,16 +25,30 @@ public:
 		StarcoinSignWaiting,
 	};
 
-	//C1:02199d58
-	//C3:0219ab98
+	//C1:020da398
 	WorldmapActor();
 
-	//D0:02199788
-	//D1:02199a74
+	//D0:020d9dc8
+	//D1:020da0b4
 	virtual ~WorldmapActor() override;
 
-	//021983cc
+	//020d8a0c
 	virtual s32 onCreate() override;
+
+	//020d81d0
+	virtual s32 onDestroy() override;
+
+	//020d6e30
+	virtual s32 onUpdate() override;
+
+	//020d7734
+	virtual s32 onRender() override;
+
+	//020d81cc
+	virtual void onCleanupResources() override;
+
+	//020e96bc
+	virtual bool onPrepareResources() override;
 
 	static constexpr u16 ObjectID = 319;
 

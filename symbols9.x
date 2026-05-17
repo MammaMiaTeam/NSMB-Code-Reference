@@ -3218,6 +3218,20 @@ _ZN14WorldMapCamera7profileE              = 0x020E8BEC;
 
 _ZTV14WorldMapCamera                      = 0x020E8C3C;
 
+/*----------------------------------------------------------------*/
+/*----------------------- worldmap actor -------------------------*/
+/*----------------------------------------------------------------*/
+_ZN13WorldmapActorC1Ev                    = 0x020da398;
+_ZN13WorldmapActorD0Ev                    = 0x020d9dc8;
+_ZN13WorldmapActorD1Ev                    = 0x020da0b4;
+_ZN13WorldmapActor8onCreateEv             = 0x020d8a0c;
+_ZN13WorldmapActor9onDestroyEv            = 0x020d81d0;
+_ZN13WorldmapActor8onUpdateEv             = 0x020d6e30;
+_ZN13WorldmapActor8onRenderEv             = 0x020d7734;
+_ZN13WorldmapActor18onCleanupResourcesEv  = 0x020d81cc;
+_ZN13WorldmapActor18onPrepareResourcesEv  = 0x020e96bc;
+
+_ZTV13WorldmapActor                       = 0x020E9680;
 
 /* arm9_ov9 */
 /*----------------------------------------------------------------*/
