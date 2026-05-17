@@ -3,7 +3,7 @@
 #include <nsmb/game/player.hpp>
 
 //vtable 021a9530
-// These addresses are on the heap. Is that correct?
+// TODO: These addresses are incorrect.
 class WorldmapPlayerModel
 {
 public:
