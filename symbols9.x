@@ -1463,10 +1463,6 @@ _ZN2FS8Internal15loadOverlayInfoEP13FSOverlayInfo11MIProcessorm = 0x020085A0;
 _ZN2FS8Internal8openFileEP6FSFile8FSFileID = 0x0200860C;
 _ZN2FS8Internal8openFileEP6FSFilePKc = 0x020085E4;
 _ZN2FS8Internal8readFileEP6FSFilePvl = 0x020085AC;
-_ZN2FS8InternalL13openFileCrashE = 0x0203A280;
-_ZN2FS8InternalL13readFileCrashE = 0x0203A290;
-_ZN2FS8InternalL17readFileFastCrashE = 0x0203A2A0;
-_ZN2FS8InternalL24convertPathToFileIDCrashE = 0x0203A2B4;
 
 _ZN2FS7Archive10mountFrontEmP4Heap = 0x0200917C;
 _ZN2FS7Archive10unmountAllEv = 0x02009084;
@@ -5091,8 +5087,6 @@ _ZN5Stage9getAreaIDEhhh								= 0x0201f53c;
 _ZN5Stage6eventsE									= 0x0208af3c;
 _ZN5Stage13starToonTableE							= 0x02026290;
 
-_ZN5Stage10stageGroupE								= 0x02085a18;
-_ZN5Stage7stageIDE									= 0x02085a14;
 _ZN5Stage10playerDeadE								= 0x0208b328;
 _ZN5Stage14initialPowerupE							= 0x0208b324;
 _ZN5Stage13storedPowerupE							= 0x0208b32c;
@@ -6763,8 +6757,7 @@ _ZN10MegaGoomba13loadResourcesEv                        = 0x02132E4C;
 
 _ZN10MegaGoomba7profileE                                = 0x021330E8;
 
-/* arm9 */
-_ZTV10MegaGoomba                                        = 0x021D0DB4;
+_ZTV10MegaGoomba                                        = 0x021330FC - 8;
 
 
 /* arm9_ov22 */
@@ -6800,9 +6793,9 @@ _ZTV16PipeEnemySpawner 							= 0x0213C554;
 /*---------------------------- pokey -----------------------------*/
 /*----------------------------------------------------------------*/
 
-_ZN75PokeyD0Ev										= 0x0213BFD8;
-_ZN75PokeyD1Ev										= 0x0213BF00;
-_ZN75PokeyD2Ev										= 0x0213BF00;
+_ZN5PokeyD0Ev										= 0x0213BFD8;
+_ZN5PokeyD1Ev										= 0x0213BF00;
+_ZN5PokeyD2Ev										= 0x0213BF00;
 _ZN5Pokey8onCreateEv								= 0x0213D2C0;
 _ZN5Pokey9onDestroyEv								= 0x0213C4E4;
 _ZN5Pokey8onRenderEv								= 0x0213C530;

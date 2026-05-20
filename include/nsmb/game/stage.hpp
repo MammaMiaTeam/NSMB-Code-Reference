@@ -35,6 +35,9 @@
 #include "stage/actors/ov10/stagefx.hpp"
 #include "stage/actors/ov10/zoom.hpp"
 
+// Overlay 14 - MegaGoomba
+#include "stage/actors/ov14/megagoomba.hpp"
+
 // Overlay 22 - PipeEnemySpawner
 #include "stage/actors/ov22/pipeenemyspawner.hpp"
 
@@ -69,13 +72,16 @@
 #include "stage/actors/ov48/tiltmetaldish.hpp"
 #include "stage/actors/ov48/wobblerock.hpp"
 
-// Overlay 54 - Checkpoint, CoinSpawner, Trampoline, VolcanoEruption, TileGod, DonutLift
+// Overlay 54 - Checkpoint, CoinSpawner, Trampoline, VolcanoEruption, TileGod, DonutLift, RedCoinRing, WarpEntrance, Door
 #include "stage/actors/ov54/checkpoint.hpp"
 #include "stage/actors/ov54/coinspawner.hpp"
 #include "stage/actors/ov54/trampoline.hpp"
 #include "stage/actors/ov54/volcanoeruption.hpp"
 #include "stage/actors/ov54/tilegod.hpp"
 #include "stage/actors/ov54/donutlift.hpp"
+#include "stage/actors/ov54/redcoinring.hpp"
+#include "stage/actors/ov54/warpentrance.hpp"
+#include "stage/actors/ov54/door.hpp"
 
 // Overlay 57 - ChainChomp, ChainChompLog
 #include "stage/actors/ov57/chainchomp.hpp"
