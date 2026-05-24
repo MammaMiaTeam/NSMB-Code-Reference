@@ -6297,7 +6297,7 @@ _ZN3End8Graphics17getPaletteAddressEP16NNSG3dResMatData				= 0x020E2A68;
 _ZN3End8Graphics17getTextureAddressEP16NNSG3dResMatData				= 0x020E2A8C;
 _ZN3End8Graphics19endingVBlankHandlerEv								= 0x020E2C8C;
 _ZN3End8Graphics7loadTexEPvjj										= 0x020E2B14;
-_ZN3End8Graphics9cacheDataEPvjjb									= 0x020E2AE0;
+_ZN3End8Graphics9cacheDataEPvjjb									= 0x020E2B48;
 _ZN3End8Graphics9initCacheEv										= 0x020E2D20;
 
 _ZN3End8Graphics10cacheIndexE										= 0x020F1648;
