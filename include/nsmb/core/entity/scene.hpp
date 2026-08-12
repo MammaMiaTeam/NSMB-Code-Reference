@@ -101,6 +101,11 @@ public:
 		switchScene(u16(sceneID), settings);
 	}
 
+	template<class T>
+	NTR_INLINE static void switchScene(u32 settings = 0) {
+		switchScene(T::ObjectID, settings);
+	}
+
 	//020131d8
 	static void switchToFileCorruptedScene(u32 settings);
 
