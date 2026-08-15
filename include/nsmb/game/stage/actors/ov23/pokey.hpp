@@ -10,6 +10,8 @@ public:
 
 	using StateFunction = bool(Pokey::*)();
 
+	virtual ~Pokey();
+
 	s32 onCreate() override;
 	s32 onDestroy() override;
 	s32 onRender() override;

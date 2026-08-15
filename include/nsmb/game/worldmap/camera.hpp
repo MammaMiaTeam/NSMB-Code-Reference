@@ -2,7 +2,7 @@
 
 #include <nsmb/core/graphics/util/perspview.hpp>
 
-// ov8
+// vtable at 0x020E8C3C (overlay 8)
 class WorldMapCamera : public PerspView
 {
 public:
@@ -32,6 +32,7 @@ public:
 	//0x020E8BEC
 	static ObjectProfile profile;
 
+	// TODO: These three addresses are incorrect.
 	//021a65b0
 	static VecFx32 worldLightPositions[8];
 

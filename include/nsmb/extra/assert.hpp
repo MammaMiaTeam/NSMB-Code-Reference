@@ -21,9 +21,9 @@ struct __ntr {
 
 #endif
 
-	NTR_COPY(OS_Terminate) NTR_FORMAT(printf, 4, 5) static void terminate(const char* file, const char* function, int line, const char* fmt, ...)
+	NTR_COPY(OS_Terminate) NTR_FORMAT(printf, 4, 5) NTR_INLINE static void terminate(const char* file, const char* function, int line, const char* fmt, ...)
 #ifndef NTR_DEBUG
-	asm("OS_Terminate");
+	{ OS_Terminate(); }
 #else
 	{
 

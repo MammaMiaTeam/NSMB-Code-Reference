@@ -3,6 +3,7 @@
 #include <nsmb/game/player.hpp>
 
 //vtable 021a9530
+// TODO: These addresses are incorrect.
 class WorldmapPlayerModel
 {
 public:

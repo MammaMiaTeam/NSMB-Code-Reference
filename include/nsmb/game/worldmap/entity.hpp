@@ -3,6 +3,7 @@
 #include <nsmb/core/graphics/3d/modelanm.hpp>
 #include <nsmb/core/graphics/3d/animationctrl.hpp>
 
+// TODO: These addresses are incorrect.
 class WorldmapEntityModel
 {
 public:

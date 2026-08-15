@@ -5,7 +5,7 @@
 #include <nsmb/core/math/math.hpp>
 #include <nsmb/core/graphics/3d/animationctrl.hpp>
 
-// vtable at 021330F4 (ov54)
+// vtable at 021330F4 (ov14)
 class MegaGoomba : public StageEntity3DAnm
 {
 public:
