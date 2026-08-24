@@ -1,0 +1,279 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/TheGameratorT/NCPatcher/main/schema/regions.schema.json
+#
+# The overlays New Super Mario Bros. (NTR-A2DE) has, and how far each may
+# grow before it runs into whatever the game placed after it.
+#
+# This is game knowledge, not project configuration: the same table serves
+# every project built against this game. A project points at it with
+#
+#     targets:
+#       arm9:
+#         region-catalog: ${env.NSMBREF_ROOT}/overlays9.yaml
+#
+# and overrides any entry by declaring that region itself. An overlay
+# nothing is built into is dropped, so listing them all costs nothing.
+version: 1
+
+regions:
+  - dest: ov0
+    maxsize: 0x33C00
+  - dest: ov1
+    maxsize: 0x56400
+  - dest: ov2
+    maxsize: 0x56400
+  - dest: ov3
+    maxsize: 0x56400
+  - dest: ov4
+    maxsize: 0x56400
+  - dest: ov5
+    maxsize: 0x56400
+  - dest: ov6
+    maxsize: 0x56400
+  - dest: ov7
+    maxsize: 0x56400
+  - dest: ov8
+    maxsize: 0x56400
+  - dest: ov9
+    maxsize: 0x56400
+  - dest: ov10
+    maxsize: 0x5EE80
+  - dest: ov11
+    maxsize: 0x47A0
+  - dest: ov12
+    maxsize: 0xC600
+  - dest: ov13
+    maxsize: 0xC600
+  - dest: ov14
+    maxsize: 0xC600
+  - dest: ov15
+    maxsize: 0xC600
+  - dest: ov16
+    maxsize: 0xC600
+  - dest: ov17
+    maxsize: 0xC600
+  - dest: ov18
+    maxsize: 0xC600
+  - dest: ov19
+    maxsize: 0xC600
+  - dest: ov20
+    maxsize: 0xC600
+  - dest: ov21
+    maxsize: 0xC600
+  - dest: ov22
+    maxsize: 0x5F80
+  - dest: ov23
+    maxsize: 0x5F80
+  - dest: ov24
+    maxsize: 0x5F80
+  - dest: ov25
+    maxsize: 0x5F80
+  - dest: ov26
+    maxsize: 0x5F80
+  - dest: ov27
+    maxsize: 0x5F80
+  - dest: ov28
+    maxsize: 0x5F80
+  - dest: ov29
+    maxsize: 0x5F80
+  - dest: ov30
+    maxsize: 0x5F80
+  - dest: ov31
+    maxsize: 0x5F80
+  - dest: ov32
+    maxsize: 0x4DE0
+  - dest: ov33
+    maxsize: 0x4DE0
+  - dest: ov34
+    maxsize: 0x4DE0
+  - dest: ov35
+    maxsize: 0x4DE0
+  - dest: ov36
+    maxsize: 0x4DE0
+  - dest: ov37
+    maxsize: 0x4DE0
+  - dest: ov38
+    maxsize: 0x4DE0
+  - dest: ov39
+    maxsize: 0x4DE0
+  - dest: ov40
+    maxsize: 0x4DE0
+  - dest: ov41
+    maxsize: 0x4DE0
+  - dest: ov42
+    maxsize: 0xBBE0
+  - dest: ov43
+    maxsize: 0xBBE0
+  - dest: ov44
+    maxsize: 0xBBE0
+  - dest: ov45
+    maxsize: 0xBBE0
+  - dest: ov46
+    maxsize: 0xBBE0
+  - dest: ov47
+    maxsize: 0xBBE0
+  - dest: ov48
+    maxsize: 0xBBE0
+  - dest: ov49
+    maxsize: 0xBBE0
+  - dest: ov50
+    maxsize: 0xBBE0
+  - dest: ov51
+    maxsize: 0xBBE0
+  - dest: ov52
+    maxsize: 0xA420
+  - dest: ov53
+    maxsize: 0x2CD80
+  - dest: ov54
+    maxsize: 0x1FE80
+  - dest: ov55
+    maxsize: 0x1A100
+  - dest: ov56
+    maxsize: 0x32E0
+  - dest: ov57
+    maxsize: 0x32E0
+  - dest: ov58
+    maxsize: 0x32E0
+  - dest: ov59
+    maxsize: 0x32E0
+  - dest: ov60
+    maxsize: 0x32E0
+  - dest: ov61
+    maxsize: 0x32E0
+  - dest: ov62
+    maxsize: 0x32E0
+  - dest: ov63
+    maxsize: 0x32E0
+  - dest: ov64
+    maxsize: 0x32E0
+  - dest: ov65
+    maxsize: 0x32E0
+  - dest: ov66
+    maxsize: 0x4020
+  - dest: ov67
+    maxsize: 0x4020
+  - dest: ov68
+    maxsize: 0x4020
+  - dest: ov69
+    maxsize: 0x4020
+  - dest: ov70
+    maxsize: 0x4020
+  - dest: ov71
+    maxsize: 0x4020
+  - dest: ov72
+    maxsize: 0x4020
+  - dest: ov73
+    maxsize: 0x4020
+  - dest: ov74
+    maxsize: 0x4020
+  - dest: ov75
+    maxsize: 0x4020
+  - dest: ov76
+    maxsize: 0x41A0
+  - dest: ov77
+    maxsize: 0x41A0
+  - dest: ov78
+    maxsize: 0x41A0
+  - dest: ov79
+    maxsize: 0x41A0
+  - dest: ov80
+    maxsize: 0x41A0
+  - dest: ov81
+    maxsize: 0x41A0
+  - dest: ov82
+    maxsize: 0x41A0
+  - dest: ov83
+    maxsize: 0x41A0
+  - dest: ov84
+    maxsize: 0x41A0
+  - dest: ov85
+    maxsize: 0x41A0
+  - dest: ov86
+    maxsize: 0x7AA0
+  - dest: ov87
+    maxsize: 0x7AA0
+  - dest: ov88
+    maxsize: 0x7AA0
+  - dest: ov89
+    maxsize: 0x7AA0
+  - dest: ov90
+    maxsize: 0x7AA0
+  - dest: ov91
+    maxsize: 0x7AA0
+  - dest: ov92
+    maxsize: 0x7AA0
+  - dest: ov93
+    maxsize: 0x7AA0
+  - dest: ov94
+    maxsize: 0x7AA0
+  - dest: ov95
+    maxsize: 0x7AA0
+  - dest: ov96
+    maxsize: 0x43E0
+  - dest: ov97
+    maxsize: 0x43E0
+  - dest: ov98
+    maxsize: 0x43E0
+  - dest: ov99
+    maxsize: 0x43E0
+  - dest: ov100
+    maxsize: 0x43E0
+  - dest: ov101
+    maxsize: 0x43E0
+  - dest: ov102
+    maxsize: 0x43E0
+  - dest: ov103
+    maxsize: 0x43E0
+  - dest: ov104
+    maxsize: 0x43E0
+  - dest: ov105
+    maxsize: 0x43E0
+  - dest: ov106
+    maxsize: 0x2DE0
+  - dest: ov107
+    maxsize: 0x2DE0
+  - dest: ov108
+    maxsize: 0x2DE0
+  - dest: ov109
+    maxsize: 0x2DE0
+  - dest: ov110
+    maxsize: 0x2DE0
+  - dest: ov111
+    maxsize: 0x2DE0
+  - dest: ov112
+    maxsize: 0x2DE0
+  - dest: ov113
+    maxsize: 0x2DE0
+  - dest: ov114
+    maxsize: 0x2DE0
+  - dest: ov115
+    maxsize: 0x2DE0
+  - dest: ov116
+    maxsize: 0x3A20
+  - dest: ov117
+    maxsize: 0x3A20
+  - dest: ov118
+    maxsize: 0x3A20
+  - dest: ov119
+    maxsize: 0x3A20
+  - dest: ov120
+    maxsize: 0x3A20
+  - dest: ov121
+    maxsize: 0x3A20
+  - dest: ov122
+    maxsize: 0x3A20
+  - dest: ov123
+    maxsize: 0x3A20
+  - dest: ov124
+    maxsize: 0x3A20
+  - dest: ov125
+    maxsize: 0x3A20
+  - dest: ov126
+    maxsize: 0x20240
+  - dest: ov127
+    maxsize: 0x20240
+  - dest: ov128
+    maxsize: 0x69DC0
+  - dest: ov129
+    maxsize: 0x69DC0
+  - dest: ov130
+    maxsize: 0x19820
